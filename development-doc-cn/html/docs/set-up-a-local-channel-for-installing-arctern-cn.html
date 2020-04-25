@@ -1,0 +1,490 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>构建本地 Conda Channel &mdash; Arctern 0.1.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Arctern
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../python/python.html">Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../spark/spark.html">Spark</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../restful/restful.html">Restful</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Arctern</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>构建本地 Conda Channel</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/docs/set-up-a-local-channel-for-installing-arctern-cn.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="conda-channel">
+<h1>构建本地 Conda Channel<a class="headerlink" href="#conda-channel" title="永久链接至标题">¶</a></h1>
+<p>本文档介绍在 Conda 环境中通过构建本地 channel 安装 Arctern 的步骤，用于解决使用 Conda 在线安装 Arctern 时由于网络原因导致失败的问题。</p>
+<div class="section" id="id1">
+<h2>大纲<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="#prerequisities">安装要求</a></p></li>
+<li><p><a class="reference external" href="#downloaddependencies">下载依赖项</a></p></li>
+<li><p><a class="reference external" href="#buildlocalchannelindex">为本地Conda Channel建立索引</a></p></li>
+<li><p><a class="reference external" href="#installdependency">安装依赖库</a></p></li>
+<li><p><a class="reference external" href="#constructenv">创建 Arctern Conda 环境</a></p></li>
+<li><p><a class="reference external" href="#install">从本地Conda channel安装 Arctern</a></p></li>
+<li><p><a class="reference external" href="#verification">验证是否安装成功</a></p></li>
+<li><p><a class="reference external" href="#pathconfiguration">配置 Spark的 Python 路径</a></p></li>
+<li><p><a class="reference external" href="#test">测试样例</a></p></li>
+<li><p><a class="reference external" href="#uninstallation">卸载</a></p></li>
+<li><p><a class="reference external" href="#faq">FAQ</a></p></li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h2>安装要求<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>CPU 版本</p></li>
+</ul>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>操作系统</td>
+<td>Ubuntu LTS 18.04</td>
+</tr>
+<tr>
+<td>Conda</td>
+<td>Miniconda Python3</td>
+</tr>
+<tr>
+<td>Spark</td>
+<td>3.0</td>
+</tr>
+</tbody>
+</table><ul class="simple">
+<li><p>GPU 版本</p></li>
+</ul>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>操作系统</td>
+<td>Ubuntu LTS 18.04</td>
+</tr>
+<tr>
+<td>Conda</td>
+<td>Miniconda Python3</td>
+</tr>
+<tr>
+<td>Spark</td>
+<td>3.0</td>
+</tr>
+<tr>
+<td>CUDA</td>
+<td>10.0</td>
+</tr>
+<tr>
+<td>Nvidia driver</td>
+<td>4.30</td>
+</tr>
+</tbody>
+</table></div>
+<div class="section" id="span-id-downloaddependencies-span">
+<h2><span id = "downloaddependencies">下载依赖项</span><a class="headerlink" href="#span-id-downloaddependencies-span" title="永久链接至标题">¶</a></h2>
+<div class="section" id="conda">
+<h3>在线安装 Conda 环境依赖包<a class="headerlink" href="#conda" title="永久链接至标题">¶</a></h3>
+<p>通过以下命令在线安装 conda-build 和 requests 包。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ conda install conda-build
+$ conda install requests
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h3>下载依赖项<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
+<p>下载以下文件并保存在同一路径下。</p>
+<ul class="simple">
+<li><p><a class="reference external" href="./scripts/arctern_dependencies.txt">arctern_dependencies.txt</a></p></li>
+<li><p><a class="reference external" href="./scripts/download_dependencies.py">download_dependencies.py</a></p></li>
+</ul>
+<p>执行以下命令下载依赖项：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ python download_dependencies.py
+</pre></div>
+</div>
+<p>上述命令将下载 Arctern 所需的依赖项并保存在本地，并有类似如下输出：</p>
+<div class="highlight-txt notranslate"><div class="highlight"><pre><span></span>Using environment list file: arctern_dependencies.txt
+Getting  _libgcc_mutex-0.1-main.conda
+URL: https://repo.anaconda.com/pkgs/main/linux-64/_libgcc_mutex-0.1-main.conda
+	 Downloaded linux-64\_libgcc_mutex-0.1-main.conda
+Getting  ca-certificates-2019.11.28-hecc5488_0.tar.bz2
+URL: https://conda.anaconda.org/conda-forge/linux-64/ca-certificates-2019.11.28-hecc5488_0.tar.bz2
+	 Downloaded linux-64\ca-certificates-2019.11.28-hecc5488_0.tar.bz2
+Getting  ld_impl_linux-64-2.33.1-h53a641e_7.conda
+URL: https://repo.anaconda.com/pkgs/main/linux-64/ld_impl_linux-64-2.33.1-h53a641e_7.conda
+	 Downloaded linux-64\ld_impl_linux-64-2.33.1-h53a641e_7.conda
+Getting  libgfortran-ng-7.3.0-hdf63c60_5.tar.bz2
+URL: https://conda.anaconda.org/conda-forge/linux-64/libgfortran-ng-7.3.0-hdf63c60_5.tar.bz2
+	 Downloaded linux-64\libgfortran-ng-7.3.0-hdf63c60_5.tar.bz2
+Getting  libstdcxx-ng-9.1.0-hdf63c60_0.conda
+URL: https://repo.anaconda.com/pkgs/main/linux-64/libstdcxx-ng-9.1.0-hdf63c60_0.conda
+	 Downloaded linux-64\libstdcxx-ng-9.1.0-hdf63c60_0.conda
+Getting  libwebp-base-1.1.0-2.tar.bz2
+URL: https://conda.anaconda.org/conda-forge/linux-64/libwebp-base-1.1.0-2.tar.bz2
+	 Downloaded linux-64\libwebp-base-1.1.0-2.tar.bz2
+
+...
+</pre></div>
+</div>
+<p>下载完成后，会在当前目录下创建具有如下结构的文件夹:</p>
+<div class="highlight-txt notranslate"><div class="highlight"><pre><span></span>channel
+├── label
+│   └── cuda10.0
+│       └── linux-64
+│           └── ...
+├── linux-64
+│   └── ...
+└── noarch
+    └── ...
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="span-id-buildlocalchannelindex-conda-channel-span">
+<h2><span id = "buildlocalchannelindex">为本地 Conda Channel 建立索引</span><a class="headerlink" href="#span-id-buildlocalchannelindex-conda-channel-span" title="永久链接至标题">¶</a></h2>
+<p>使用下述命令构建索引。Conda 将会在每个依赖包对应的目录下创建一个清单文件 <code class="docutils literal notranslate"><span class="pre">repodata.json</span></code>，从而将其作为本地channel。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> channel
+$ conda index .
+</pre></div>
+</div>
+<p>运行命令会报告以下输出，其中[/path/to/channel]为channel目录所在路径。</p>
+<div class="highlight-txt notranslate"><div class="highlight"><pre><span></span>updating index in: [/path/to/channel]/linux-64
+...
+updating index in: [/path/to/channel]/noarch
+...
+updating index in: [/path/to/channel]/label/cuda10.0/linux-64
+...
+</pre></div>
+</div>
+<p>完成此步骤后，channel 目录即可被 Conda 识别为本地 channel。</p>
+</div>
+<div class="section" id="span-id-installdependency-span">
+<h2><span id = "installdependency">安装依赖库</span><a class="headerlink" href="#span-id-installdependency-span" title="永久链接至标题">¶</a></h2>
+<ul>
+<li><p>CPU 版本</p>
+<p>使用以下命令安装 Arctern CPU 版本的依赖库：</p>
+</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>    sudo apt install libgl-dev libosmesa6-dev libglu1-mesa-dev
+</pre></div>
+</div>
+<ul>
+<li><p>GPU 版本</p>
+<p>使用以下命令安装 Arctern GPU 版本的依赖库：</p>
+</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>    sudo apt install libgl1-mesa-dev libegl1-mesa-dev
+</pre></div>
+</div>
+</div>
+<div class="section" id="span-id-constructenv-arctern-conda-span">
+<h2><span id = "constructenv">创建 Arctern Conda 环境</span><a class="headerlink" href="#span-id-constructenv-arctern-conda-span" title="永久链接至标题">¶</a></h2>
+<div class="section" id="arctern">
+<h3>创建 Arctern 虚拟环境<a class="headerlink" href="#arctern" title="永久链接至标题">¶</a></h3>
+<p>通过以下命令创建 Arctern Conda 环境：</p>
+<p><code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">create</span> <span class="pre">-n</span> <span class="pre">arctern</span></code></p>
+<p>创建成功后，可以通过 <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">env</span> <span class="pre">list</span></code> 命令查看所有Conda环境，其输出结果应包含Arctern环境，类似如下：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda environments:
+base         ...
+arctern      ...
+...
+</pre></div>
+</div>
+<p>进入 Arctern 环境：</p>
+<p><code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">activate</span> <span class="pre">arctern</span></code></p>
+<p><strong>注意：后续工作必须在 Arctern 环境中进行</strong></p>
+</div>
+</div>
+<div class="section" id="span-id-install-conda-channel-arctern-span">
+<h2><span id = "install">从本地Conda channel安装 Arctern</span><a class="headerlink" href="#span-id-install-conda-channel-arctern-span" title="永久链接至标题">¶</a></h2>
+<ul>
+<li><p>CPU 版本</p>
+<p>执行以下命令在 Conda 环境中安装 CPU 版本 Arctern：</p>
+</li>
+</ul>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ conda install -c file:///<span class="o">[</span>path/to/channel<span class="o">]</span> -n arctern arctern-spark --offline --override-channels
+</pre></div>
+</div>
+<p>例如:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ conda install -c file:///tmp/arctern-dependencies/channel -n arctern arctern-spark --offline --override-channels
+</pre></div>
+</div>
+<ul>
+<li><p>GPU版本</p>
+<p>执行以下命令在 Conda 环境中安装 GPU 版本 Arctern：</p>
+</li>
+</ul>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>    conda install -c file:///<span class="o">[</span>path/to/channel<span class="o">]</span>/label/cuda10.0 -n arctern libarctern --offline --override-channels
+    conda install -c file:///<span class="o">[</span>path/to/channel<span class="o">]</span> -n arctern arctern arctern-spark --offline --override-channels
+</pre></div>
+</div>
+<p>例如:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>    conda install -c file:///tmp/arctern-dependencies/channel/label/cuda10.0 -n arctern libarctern --offline --override-channels
+    conda install -c file:///tmp/arctern-dependencies/channel -n arctern arctern arctern-spark --offline --override-channels
+</pre></div>
+</div>
+</div>
+<div class="section" id="span-id-verification-span">
+<h2><span id = "verification">安装验证</span><a class="headerlink" href="#span-id-verification-span" title="永久链接至标题">¶</a></h2>
+<p>进入 Python 环境，尝试导入 <code class="docutils literal notranslate"><span class="pre">arctern</span></code> 和 <code class="docutils literal notranslate"><span class="pre">arctern_pyspark</span></code> 验证安装是否成功。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Python</span> <span class="mf">3.7</span><span class="o">.</span><span class="mi">6</span> <span class="o">|</span> <span class="n">packaged</span> <span class="n">by</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="o">|</span> <span class="p">(</span><span class="n">default</span><span class="p">,</span> <span class="n">Jan</span> <span class="mi">29</span> <span class="mi">2020</span><span class="p">,</span> <span class="mi">14</span><span class="p">:</span><span class="mi">55</span><span class="p">:</span><span class="mi">04</span><span class="p">)</span>
+<span class="p">[</span><span class="n">GCC</span> <span class="mf">7.3</span><span class="o">.</span><span class="mi">0</span><span class="p">]</span> <span class="n">on</span> <span class="n">linux</span>
+<span class="n">Type</span> <span class="s2">&quot;help&quot;</span><span class="p">,</span> <span class="s2">&quot;copyright&quot;</span><span class="p">,</span> <span class="s2">&quot;credits&quot;</span> <span class="ow">or</span> <span class="s2">&quot;license&quot;</span> <span class="k">for</span> <span class="n">more</span> <span class="n">information</span><span class="o">.</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">arctern</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">arctern_pyspark</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="span-id-pathconfiguration-spark-python-span">
+<h2><span id = "pathconfiguration">配置 Spark 的 Python 路径</span><a class="headerlink" href="#span-id-pathconfiguration-spark-python-span" title="永久链接至标题">¶</a></h2>
+<p>在文件 <code class="docutils literal notranslate"><span class="pre">conf/spark-default.conf</span></code> 的最后添加以下内容。其中 <code class="docutils literal notranslate"><span class="pre">[path/to/your/conda]</span></code> 为Conda的安装路径。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>spark.executorEnv.PROJ_LIB <span class="o">[</span>path/to/your/conda<span class="o">]</span>/envs/arctern/share/proj
+spark.executorEnv.GDAL_DATA <span class="o">[</span>path/to/your/conda<span class="o">]</span>/envs/arctern/share/gdal
+</pre></div>
+</div>
+<p>在文件 <code class="docutils literal notranslate"><span class="pre">conf/spark-env.sh</span></code> 的最后添加以下内容。其中 <code class="docutils literal notranslate"><span class="pre">[path/to/your/conda]</span></code> 为Conda的安装路径。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">PYSPARK_PYTHON</span><span class="o">=[</span>path/to/your/conda<span class="o">]</span>/envs/arctern/bin/python
+</pre></div>
+</div>
+<p>通过如下方式，检查 PySpark 是否使用 $PYSPARK_PYTHON 指定的 Python 路径。其中 <code class="docutils literal notranslate"><span class="pre">[path/to/your/spark]</span></code> 为 Spark 的安装路径。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">your</span><span class="o">/</span><span class="n">spark</span><span class="p">]</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">pyspark</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">sys</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">prefix</span><span class="p">)</span>
+<span class="p">[</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">your</span><span class="o">/</span><span class="n">conda</span><span class="p">]</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">arctern</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="span-id-test-span">
+<h2><span id = "test">测试样例</span><a class="headerlink" href="#span-id-test-span" title="永久链接至标题">¶</a></h2>
+<p>下载测试文件</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget https://raw.githubusercontent.com/zilliztech/arctern/conda/spark/pyspark/examples/gis/spark_udf_ex.py
+</pre></div>
+</div>
+<p>通过以下命令提交 Spark 任务，其中 <code class="docutils literal notranslate"><span class="pre">[path/to/]spark_udf_ex.py</span></code> 为测试文件所在的路径。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># local mode</span>
+<span class="o">[</span>path/to/your/spark<span class="o">]</span>/bin/spark-submit <span class="o">[</span>path/to/<span class="o">]</span>spark_udf_ex.py
+
+<span class="c1"># standalone mode</span>
+<span class="o">[</span>path/to/your/spark<span class="o">]</span>/bin/spark-submit --master <span class="o">[</span>spark service address<span class="o">]</span> <span class="o">[</span>path/to/<span class="o">]</span>spark_udf_ex.py
+
+<span class="c1"># hadoop/yarn mode</span>
+<span class="o">[</span>path/to/your/spark<span class="o">]</span>/bin/spark-submit --master yarn <span class="o">[</span>path/to/<span class="o">]</span>spark_udf_ex.py
+</pre></div>
+</div>
+</div>
+<div class="section" id="span-id-uninstallation-span">
+<h2><span id = "uninstallation">卸载</span><a class="headerlink" href="#span-id-uninstallation-span" title="永久链接至标题">¶</a></h2>
+<p>在 Conda 环境中输入以下命令可卸载 Arctern</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conda uninstall -n arctern libarctern arctern arctern-spark
+</pre></div>
+</div>
+</div>
+<div class="section" id="span-id-faq-faq-span">
+<h2><span id = "faq">FAQ</span><a class="headerlink" href="#span-id-faq-faq-span" title="永久链接至标题">¶</a></h2>
+<div class="section" id="spark">
+<h3>对Spark的支持<a class="headerlink" href="#spark" title="永久链接至标题">¶</a></h3>
+<p>Arctern 可以运行在 Spark 的各种模式下，需要在每台运行 Spark 的机器上，执行如下操作：</p>
+<ul class="simple">
+<li><p>创建 Conda 虚拟环境</p></li>
+<li><p>安装 Arctern</p></li>
+<li><p>配置 Spark 环境变量</p></li>
+</ul>
+<p>如果 Spark 运行在 <code class="docutils literal notranslate"><span class="pre">standalone</span></code> 集群模式下，提交任务机器的 Spark 环境需要与集群的 Spark 环境完全一致，包括以下几点：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">spark</span></code> 安装的绝对路径与集群中每台机器完全一致</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">conda</span></code> 安装的绝对路径与集群中每个机器完全一致</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">conda</span></code> 虚拟环境名与集群中每个机器完全一致</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, zilliz
+      <span class="lastupdated">
+        最后更新于 4月 25, 2020.
+      </span>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
