@@ -37,8 +37,8 @@
   <link rel="stylesheet" href="../../../../../_static/graphviz.css" type="text/css" />
     <link rel="index" title="索引" href="../../../../../genindex.html" />
     <link rel="search" title="搜索" href="../../../../../search.html" />
-    <link rel="next" title="ST_NPoints" href="Spark_ST_NPoints.html" />
-    <link rel="prev" title="ST_HausdorffDistance" href="Spark_ST_HausdorffDistance.html" /> 
+    <link rel="next" title="ST_Transform" href="Spark_ST_Transform.html" />
+    <link rel="prev" title="ST_Centroid" href="Spark_ST_Centroid.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -90,46 +90,24 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../../data_source/data_import_and_export.html">数据导入导出</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../../../api.html">API</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../../../register/sql_functions_register.html">SQL Functions Register</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="../../geospatial_functions.html">GeoSpatial Functions</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="Spark_ST_Point.html">ST_Point</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Spark_ST_Intersection.html">ST_Intersection</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Spark_ST_IsValid.html">ST_IsValid</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../constructor_functions.html">Constructor Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../accessor_functions.html">Accessor Functions</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../../processing_functions.html">Processing Functions</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="Spark_ST_Buffer.html">ST_Buffer</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Spark_ST_PrecisionReduce.html">ST_PrecisionReduce</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Spark_ST_Equals.html">ST_Equals</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Spark_ST_Touches.html">ST_Touches</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Spark_ST_Overlaps.html">ST_Overlaps</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Spark_ST_Crosses.html">ST_Crosses</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Spark_ST_IsSimple.html">ST_IsSimple</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Spark_ST_GeometryType.html">ST_GeometryType</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Spark_ST_Intersection.html">ST_Intersection</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Spark_ST_MakeValid.html">ST_MakeValid</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Spark_ST_SimplifyPreserveTopology.html">ST_SimplifyPreserveTopology</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Spark_ST_PolygonFromEnvelope.html">ST_PolygonFromEnvelope</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Spark_ST_Contains.html">ST_Contains</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Spark_ST_Intersects.html">ST_Intersects</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Spark_ST_Within.html">ST_Within</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Spark_ST_Distance.html">ST_Distance</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Spark_ST_DistanceSphere.html">ST_DistanceSphere</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Spark_ST_Area.html">ST_Area</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Spark_ST_Centroid.html">ST_Centroid</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Spark_ST_Length.html">ST_Length</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Spark_ST_HausdorffDistance.html">ST_HausdorffDistance</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">ST_ConvexHull</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Spark_ST_NPoints.html">ST_NPoints</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Spark_ST_Envelope.html">ST_Envelope</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Spark_ST_Buffer.html">ST_Buffer</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Spark_ST_Transform.html">ST_Transform</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Spark_ST_CurveToLine.html">ST_CurveToLine</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Spark_ST_GeomFromGeoJSON.html">ST_GeomFromGeoJSON</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Spark_ST_PointFromText.html">ST_PointFromText</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Spark_ST_PolygonFromText.html">ST_PolygonFromText</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Spark_ST_LineStringFromText.html">ST_LineStringFromText</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Spark_ST_GeomFromText.html">ST_GeomFromText</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Spark_ST_GeomFromWKT.html">ST_GeomFromWKT</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Spark_ST_AsText.html">ST_AsText</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../../measurement_functions.html">Measurement Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../relationship_functions.html">Relationship Functions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../aggr_functions.html">Aggregation Functions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../render/layer.html">Layer Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../render/layer.html">Layer Functions (Experimental)</a></li>
 </ul>
 </li>
 </ul>
@@ -184,7 +162,7 @@
         
           <li><a href="../../../api.html">API</a> &raquo;</li>
         
-          <li><a href="../../geospatial_functions.html">GeoSpatial Functions</a> &raquo;</li>
+          <li><a href="../../processing_functions.html">Processing Functions</a> &raquo;</li>
         
       <li>ST_ConvexHull</li>
     
@@ -254,10 +232,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="Spark_ST_NPoints.html" class="btn btn-neutral float-right" title="ST_NPoints" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="Spark_ST_Transform.html" class="btn btn-neutral float-right" title="ST_Transform" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="Spark_ST_HausdorffDistance.html" class="btn btn-neutral float-left" title="ST_HausdorffDistance" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="Spark_ST_Centroid.html" class="btn btn-neutral float-left" title="ST_Centroid" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

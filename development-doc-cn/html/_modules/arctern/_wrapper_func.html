@@ -357,7 +357,7 @@
     <span class="n">rs</span> <span class="o">=</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_AsText</span><span class="p">(</span><span class="n">geo</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">rs</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span></div>
 
-<span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
+<div class="viewcode-block" id="ST_AsGeoJSON"><a class="viewcode-back" href="../../python/api/geospatial/function/geospatial/ST_AsGeoJson.html#arctern._wrapper_func.ST_AsGeoJSON">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_AsGeoJSON</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Return the GeoJSON representation of the geometry.</span>
@@ -380,7 +380,7 @@
     <span class="kn">import</span> <span class="nn">pyarrow</span> <span class="k">as</span> <span class="nn">pa</span>
     <span class="n">geo</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
     <span class="n">rs</span> <span class="o">=</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_AsGeoJSON</span><span class="p">(</span><span class="n">geo</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">rs</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">rs</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="ST_Intersection"><a class="viewcode-back" href="../../python/api/geospatial/function/geospatial/ST_Intersection.html#arctern._wrapper_func.ST_Intersection">[文档]</a><span class="k">def</span> <span class="nf">ST_Intersection</span><span class="p">(</span><span class="n">geo1</span><span class="p">,</span> <span class="n">geo2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-25 14:19+0800\n"
+"POT-Creation-Date: 2020-04-25 17:30+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -128,6 +128,6 @@ msgstr ""
 msgid "示例:"
 msgstr ""
 
-#: ../../source/python/api/render/function/layer/weighted_pointmap.md:108
+#: ../../source/python/api/render/function/layer/weighted_pointmap.md:109
 msgid "渲染结果如下："
 msgstr ""
