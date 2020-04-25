@@ -38,7 +38,7 @@
     <link rel="index" title="索引" href="../../../../../genindex.html" />
     <link rel="search" title="搜索" href="../../../../../search.html" />
     <link rel="next" title="weighted_point_map_layer" href="weighted_pointmap.html" />
-    <link rel="prev" title="Layer Functions" href="../../layer.html" /> 
+    <link rel="prev" title="Layer Functions (Experimental)" href="../../layer.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -94,8 +94,8 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../geospatial/measurement_functions.html">Measurement Functions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../geospatial/relationship_functions.html">Relationship Functions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../geospatial/aggr_functions.html">Aggregation Functions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../plot.html">Plot Functions</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="../../layer.html">Layer Functions</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../plot.html">Plot Functions (Experimental)</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../../layer.html">Layer Functions (Experimental)</a><ul class="current">
 <li class="toctree-l4 current"><a class="current reference internal" href="#">point_map_layer</a></li>
 <li class="toctree-l4"><a class="reference internal" href="weighted_pointmap.html">weighted_point_map_layer</a></li>
 <li class="toctree-l4"><a class="reference internal" href="heatmap.html">heat_map_layer</a></li>
@@ -158,7 +158,7 @@
         
           <li><a href="../../../api.html">API</a> &raquo;</li>
         
-          <li><a href="../../layer.html">Layer Functions</a> &raquo;</li>
+          <li><a href="../../layer.html">Layer Functions (Experimental)</a> &raquo;</li>
         
       <li>point_map_layer</li>
     
@@ -220,6 +220,7 @@ opacity,coordinate_system)</strong></p>
     <span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">arctern.util.vega</span> <span class="kn">import</span> <span class="n">vega_pointmap</span>
     <span class="o">&gt;&gt;&gt;</span> 
     <span class="o">&gt;&gt;&gt;</span> <span class="c1"># 读取 csv 文件并创建绘图数据</span>
+    <span class="o">&gt;&gt;&gt;</span> <span class="c1"># test_data.csv下载链接: https://github.com/zilliztech/arctern-resources/raw/benchmarks/benchmarks/dataset/layer_rendering_test_data/test_data.csv</span>
     <span class="o">&gt;&gt;&gt;</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;test_data.csv&quot;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;longitude&#39;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">,</span> <span class="s1">&#39;latitude&#39;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">,</span> <span class="s1">&#39;color_weights&#39;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">,</span> <span class="s1">&#39;size_weights&#39;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">,</span> <span class="s1">&#39;region_boundaries&#39;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">object</span><span class="p">})</span>
     <span class="o">&gt;&gt;&gt;</span> <span class="n">region</span> <span class="o">=</span> <span class="n">arctern</span><span class="o">.</span><span class="n">ST_GeomFromText</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s1">&#39;POLYGON ((-74.01398981737215 40.71353244267465, -74.01398981737215 40.74480271529791, -73.96979949831308 40.74480271529791, -73.96979949831308 40.71353244267465, -74.01398981737215 40.71353244267465))&#39;</span><span class="p">]))</span>
     <span class="o">&gt;&gt;&gt;</span> <span class="n">d</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">region</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
@@ -253,7 +254,7 @@ opacity,coordinate_system)</strong></p>
         <a href="weighted_pointmap.html" class="btn btn-neutral float-right" title="weighted_point_map_layer" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../../layer.html" class="btn btn-neutral float-left" title="Layer Functions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../../layer.html" class="btn btn-neutral float-left" title="Layer Functions (Experimental)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
