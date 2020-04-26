@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>arctern._wrapper_func &mdash; Arctern 0.1.0 文档</title>
+  <title>arctern._wrapper_func &mdash; Arctern 0.1.x 文档</title>
   
 
   
@@ -249,6 +249,35 @@
         <span class="k">return</span> <span class="n">wrapper</span>
     <span class="k">return</span> <span class="n">decorate</span>
 
+<span class="k">def</span> <span class="nf">arctern_caller</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="o">*</span><span class="n">func_args</span><span class="p">):</span>
+    <span class="kn">import</span> <span class="nn">pyarrow</span>
+    <span class="n">num_chunks</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">func_args</span><span class="p">:</span>
+        <span class="c1"># pylint: disable=c-extension-no-member</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="n">pyarrow</span><span class="o">.</span><span class="n">lib</span><span class="o">.</span><span class="n">ChunkedArray</span><span class="p">):</span>
+            <span class="n">num_chunks</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">arg</span><span class="o">.</span><span class="n">chunks</span><span class="p">)</span>
+            <span class="k">break</span>
+
+    <span class="k">if</span> <span class="n">num_chunks</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">func_args</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">result</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span>
+
+    <span class="n">result_total</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">for</span> <span class="n">chunk_idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_chunks</span><span class="p">):</span>
+        <span class="n">args</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">func_args</span><span class="p">:</span>
+            <span class="c1"># pylint: disable=c-extension-no-member</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="n">pyarrow</span><span class="o">.</span><span class="n">lib</span><span class="o">.</span><span class="n">ChunkedArray</span><span class="p">):</span>
+                <span class="n">args</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">arg</span><span class="o">.</span><span class="n">chunks</span><span class="p">[</span><span class="n">chunk_idx</span><span class="p">])</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">args</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">result_total</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">result_total</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">result_total</span> <span class="o">=</span> <span class="n">result_total</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">(),</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">result_total</span>
+
 <div class="viewcode-block" id="ST_Point"><a class="viewcode-back" href="../../python/api/geospatial/function/geospatial/ST_Point.html#arctern._wrapper_func.ST_Point">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;double&#39;</span><span class="p">,</span> <span class="s1">&#39;double&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_Point</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -277,8 +306,7 @@
     <span class="kn">import</span> <span class="nn">pyarrow</span> <span class="k">as</span> <span class="nn">pa</span>
     <span class="n">arr_x</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;double&#39;</span><span class="p">)</span>
     <span class="n">arr_y</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;double&#39;</span><span class="p">)</span>
-    <span class="n">rs</span> <span class="o">=</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_Point</span><span class="p">(</span><span class="n">arr_x</span><span class="p">,</span> <span class="n">arr_y</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">rs</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span></div>
+    <span class="k">return</span> <span class="n">arctern_caller</span><span class="p">(</span><span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_Point</span><span class="p">,</span> <span class="n">arr_x</span><span class="p">,</span> <span class="n">arr_y</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="ST_GeomFromGeoJSON"><a class="viewcode-back" href="../../python/api/geospatial/function/geospatial/ST_GeomFromGeoJSON.html#arctern._wrapper_func.ST_GeomFromGeoJSON">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;string&#39;</span><span class="p">)</span>
@@ -303,8 +331,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="kn">import</span> <span class="nn">pyarrow</span> <span class="k">as</span> <span class="nn">pa</span>
     <span class="n">geo</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">json</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;string&#39;</span><span class="p">)</span>
-    <span class="n">rs</span> <span class="o">=</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_GeomFromGeoJSON</span><span class="p">(</span><span class="n">geo</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">rs</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span></div>
+    <span class="k">return</span> <span class="n">arctern_caller</span><span class="p">(</span><span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_GeomFromGeoJSON</span><span class="p">,</span> <span class="n">geo</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="ST_GeomFromText"><a class="viewcode-back" href="../../python/api/geospatial/function/geospatial/ST_GeomFromText.html#arctern._wrapper_func.ST_GeomFromText">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;string&#39;</span><span class="p">)</span>
@@ -329,8 +356,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="kn">import</span> <span class="nn">pyarrow</span> <span class="k">as</span> <span class="nn">pa</span>
     <span class="n">geo</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;string&#39;</span><span class="p">)</span>
-    <span class="n">rs</span> <span class="o">=</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_GeomFromText</span><span class="p">(</span><span class="n">geo</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">rs</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span></div>
+    <span class="k">return</span> <span class="n">arctern_caller</span><span class="p">(</span><span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_GeomFromText</span><span class="p">,</span> <span class="n">geo</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="ST_AsText"><a class="viewcode-back" href="../../python/api/geospatial/function/geospatial/ST_AsText.html#arctern._wrapper_func.ST_AsText">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_AsText</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
@@ -354,8 +380,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="kn">import</span> <span class="nn">pyarrow</span> <span class="k">as</span> <span class="nn">pa</span>
     <span class="n">geo</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
-    <span class="n">rs</span> <span class="o">=</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_AsText</span><span class="p">(</span><span class="n">geo</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">rs</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span></div>
+    <span class="k">return</span> <span class="n">arctern_caller</span><span class="p">(</span><span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_AsText</span><span class="p">,</span> <span class="n">geo</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="ST_AsGeoJSON"><a class="viewcode-back" href="../../python/api/geospatial/function/geospatial/ST_AsGeoJson.html#arctern._wrapper_func.ST_AsGeoJSON">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_AsGeoJSON</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
@@ -379,10 +404,10 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="kn">import</span> <span class="nn">pyarrow</span> <span class="k">as</span> <span class="nn">pa</span>
     <span class="n">geo</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
-    <span class="n">rs</span> <span class="o">=</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_AsGeoJSON</span><span class="p">(</span><span class="n">geo</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">rs</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span></div>
+    <span class="k">return</span> <span class="n">arctern_caller</span><span class="p">(</span><span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_AsGeoJSON</span><span class="p">,</span> <span class="n">geo</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="ST_Intersection"><a class="viewcode-back" href="../../python/api/geospatial/function/geospatial/ST_Intersection.html#arctern._wrapper_func.ST_Intersection">[文档]</a><span class="k">def</span> <span class="nf">ST_Intersection</span><span class="p">(</span><span class="n">geo1</span><span class="p">,</span> <span class="n">geo2</span><span class="p">):</span>
+<div class="viewcode-block" id="ST_Intersection"><a class="viewcode-back" href="../../python/api/geospatial/function/geospatial/ST_Intersection.html#arctern._wrapper_func.ST_Intersection">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="s1">&#39;binary&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">ST_Intersection</span><span class="p">(</span><span class="n">geo1</span><span class="p">,</span> <span class="n">geo2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculate the point set intersection of two geometry objects.</span>
 
@@ -408,8 +433,7 @@
     <span class="kn">import</span> <span class="nn">pyarrow</span> <span class="k">as</span> <span class="nn">pa</span>
     <span class="n">arr_geo1</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">geo1</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
     <span class="n">arr_geo2</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">geo2</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
-    <span class="n">rs</span> <span class="o">=</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_Intersection</span><span class="p">(</span><span class="n">arr_geo1</span><span class="p">,</span> <span class="n">arr_geo2</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">rs</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span></div>
+    <span class="k">return</span> <span class="n">arctern_caller</span><span class="p">(</span><span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_Intersection</span><span class="p">,</span> <span class="n">arr_geo1</span><span class="p">,</span> <span class="n">arr_geo2</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="ST_IsValid"><a class="viewcode-back" href="../../python/api/geospatial/function/geospatial/ST_IsValid.html#arctern._wrapper_func.ST_IsValid">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_IsValid</span><span class="p">(</span><span class="n">geos</span><span class="p">):</span>
@@ -434,8 +458,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="kn">import</span> <span class="nn">pyarrow</span> <span class="k">as</span> <span class="nn">pa</span>
     <span class="n">arr_geos</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">geos</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
-    <span class="n">rs</span> <span class="o">=</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_IsValid</span><span class="p">(</span><span class="n">arr_geos</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">rs</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span></div>
+    <span class="k">return</span> <span class="n">arctern_caller</span><span class="p">(</span><span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_IsValid</span><span class="p">,</span> <span class="n">arr_geos</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="ST_PrecisionReduce"><a class="viewcode-back" href="../../python/api/geospatial/function/geospatial/ST_PrecisionReduce.html#arctern._wrapper_func.ST_PrecisionReduce">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_PrecisionReduce</span><span class="p">(</span><span class="n">geos</span><span class="p">,</span> <span class="n">precision</span><span class="p">):</span>
@@ -464,10 +487,10 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="kn">import</span> <span class="nn">pyarrow</span> <span class="k">as</span> <span class="nn">pa</span>
     <span class="n">arr_geos</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">geos</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
-    <span class="n">rs</span> <span class="o">=</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_PrecisionReduce</span><span class="p">(</span><span class="n">arr_geos</span><span class="p">,</span> <span class="n">precision</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">rs</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span></div>
+    <span class="k">return</span> <span class="n">arctern_caller</span><span class="p">(</span><span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_PrecisionReduce</span><span class="p">,</span> <span class="n">arr_geos</span><span class="p">,</span> <span class="n">precision</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="ST_Equals"><a class="viewcode-back" href="../../python/api/geospatial/function/geospatial/ST_Equals.html#arctern._wrapper_func.ST_Equals">[文档]</a><span class="k">def</span> <span class="nf">ST_Equals</span><span class="p">(</span><span class="n">geo1</span><span class="p">,</span> <span class="n">geo2</span><span class="p">):</span>
+<div class="viewcode-block" id="ST_Equals"><a class="viewcode-back" href="../../python/api/geospatial/function/geospatial/ST_Equals.html#arctern._wrapper_func.ST_Equals">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="s1">&#39;binary&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">ST_Equals</span><span class="p">(</span><span class="n">geo1</span><span class="p">,</span> <span class="n">geo2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Check whether geometries are &quot;spatially equal&quot;. &quot;Spatially equal&quot; here means two geometries represent</span>
 <span class="sd">    the same geometry structure.</span>
@@ -495,10 +518,10 @@
     <span class="kn">import</span> <span class="nn">pyarrow</span> <span class="k">as</span> <span class="nn">pa</span>
     <span class="n">arr_geo1</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">geo1</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
     <span class="n">arr_geo2</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">geo2</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
-    <span class="n">rs</span> <span class="o">=</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_Equals</span><span class="p">(</span><span class="n">arr_geo1</span><span class="p">,</span> <span class="n">arr_geo2</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">rs</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span></div>
+    <span class="k">return</span> <span class="n">arctern_caller</span><span class="p">(</span><span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_Equals</span><span class="p">,</span> <span class="n">arr_geo1</span><span class="p">,</span> <span class="n">arr_geo2</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="ST_Touches"><a class="viewcode-back" href="../../python/api/geospatial/function/geospatial/ST_Touches.html#arctern._wrapper_func.ST_Touches">[文档]</a><span class="k">def</span> <span class="nf">ST_Touches</span><span class="p">(</span><span class="n">geo1</span><span class="p">,</span> <span class="n">geo2</span><span class="p">):</span>
+<div class="viewcode-block" id="ST_Touches"><a class="viewcode-back" href="../../python/api/geospatial/function/geospatial/ST_Touches.html#arctern._wrapper_func.ST_Touches">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="s1">&#39;binary&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">ST_Touches</span><span class="p">(</span><span class="n">geo1</span><span class="p">,</span> <span class="n">geo2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Check whether geometries &quot;touch&quot;. &quot;Touch&quot; here means two geometries have common points, and the</span>
 <span class="sd">    common points locate only on their boundaries.</span>
@@ -526,10 +549,10 @@
     <span class="kn">import</span> <span class="nn">pyarrow</span> <span class="k">as</span> <span class="nn">pa</span>
     <span class="n">arr_geo1</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">geo1</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
     <span class="n">arr_geo2</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">geo2</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
-    <span class="n">rs</span> <span class="o">=</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_Touches</span><span class="p">(</span><span class="n">arr_geo1</span><span class="p">,</span> <span class="n">arr_geo2</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">rs</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span></div>
+    <span class="k">return</span> <span class="n">arctern_caller</span><span class="p">(</span><span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_Touches</span><span class="p">,</span> <span class="n">arr_geo1</span><span class="p">,</span> <span class="n">arr_geo2</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="ST_Overlaps"><a class="viewcode-back" href="../../python/api/geospatial/function/geospatial/ST_Overlaps.html#arctern._wrapper_func.ST_Overlaps">[文档]</a><span class="k">def</span> <span class="nf">ST_Overlaps</span><span class="p">(</span><span class="n">geo1</span><span class="p">,</span> <span class="n">geo2</span><span class="p">):</span>
+<div class="viewcode-block" id="ST_Overlaps"><a class="viewcode-back" href="../../python/api/geospatial/function/geospatial/ST_Overlaps.html#arctern._wrapper_func.ST_Overlaps">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="s1">&#39;binary&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">ST_Overlaps</span><span class="p">(</span><span class="n">geo1</span><span class="p">,</span> <span class="n">geo2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Check whether geometries &quot;spatially overlap&quot;. &quot;Spatially overlap&quot; here means two geometries</span>
 <span class="sd">    intersect but one does not completely contain another.</span>
@@ -557,10 +580,10 @@
     <span class="kn">import</span> <span class="nn">pyarrow</span> <span class="k">as</span> <span class="nn">pa</span>
     <span class="n">arr_geo1</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">geo1</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
     <span class="n">arr_geo2</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">geo2</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
-    <span class="n">rs</span> <span class="o">=</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_Overlaps</span><span class="p">(</span><span class="n">arr_geo1</span><span class="p">,</span> <span class="n">arr_geo2</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">rs</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span></div>
+    <span class="k">return</span> <span class="n">arctern_caller</span><span class="p">(</span><span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_Overlaps</span><span class="p">,</span> <span class="n">arr_geo1</span><span class="p">,</span> <span class="n">arr_geo2</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="ST_Crosses"><a class="viewcode-back" href="../../python/api/geospatial/function/geospatial/ST_Crosses.html#arctern._wrapper_func.ST_Crosses">[文档]</a><span class="k">def</span> <span class="nf">ST_Crosses</span><span class="p">(</span><span class="n">geo1</span><span class="p">,</span> <span class="n">geo2</span><span class="p">):</span>
+<div class="viewcode-block" id="ST_Crosses"><a class="viewcode-back" href="../../python/api/geospatial/function/geospatial/ST_Crosses.html#arctern._wrapper_func.ST_Crosses">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="s1">&#39;binary&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">ST_Crosses</span><span class="p">(</span><span class="n">geo1</span><span class="p">,</span> <span class="n">geo2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Check whether geometries &quot;spatially cross&quot;. &quot;Spatially cross&quot; here means two geometries have</span>
 <span class="sd">    some, but not all interior points in common. The intersection of the interiors of the geometries</span>
@@ -590,8 +613,7 @@
     <span class="kn">import</span> <span class="nn">pyarrow</span> <span class="k">as</span> <span class="nn">pa</span>
     <span class="n">arr_geo1</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">geo1</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
     <span class="n">arr_geo2</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">geo2</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
-    <span class="n">rs</span> <span class="o">=</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_Crosses</span><span class="p">(</span><span class="n">arr_geo1</span><span class="p">,</span> <span class="n">arr_geo2</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">rs</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span></div>
+    <span class="k">return</span> <span class="n">arctern_caller</span><span class="p">(</span><span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_Crosses</span><span class="p">,</span> <span class="n">arr_geo1</span><span class="p">,</span> <span class="n">arr_geo2</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="ST_IsSimple"><a class="viewcode-back" href="../../python/api/geospatial/function/geospatial/ST_IsSimple.html#arctern._wrapper_func.ST_IsSimple">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_IsSimple</span><span class="p">(</span><span class="n">geos</span><span class="p">):</span>
@@ -617,8 +639,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="kn">import</span> <span class="nn">pyarrow</span> <span class="k">as</span> <span class="nn">pa</span>
     <span class="n">arr_geos</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">geos</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
-    <span class="n">rs</span> <span class="o">=</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_IsSimple</span><span class="p">(</span><span class="n">arr_geos</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">rs</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span></div>
+    <span class="k">return</span> <span class="n">arctern_caller</span><span class="p">(</span><span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_IsSimple</span><span class="p">,</span> <span class="n">arr_geos</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="ST_GeometryType"><a class="viewcode-back" href="../../python/api/geospatial/function/geospatial/ST_GeometryType.html#arctern._wrapper_func.ST_GeometryType">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_GeometryType</span><span class="p">(</span><span class="n">geos</span><span class="p">):</span>
@@ -643,8 +664,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="kn">import</span> <span class="nn">pyarrow</span> <span class="k">as</span> <span class="nn">pa</span>
     <span class="n">arr_geos</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">geos</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
-    <span class="n">rs</span> <span class="o">=</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_GeometryType</span><span class="p">(</span><span class="n">arr_geos</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">rs</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span></div>
+    <span class="k">return</span> <span class="n">arctern_caller</span><span class="p">(</span><span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_GeometryType</span><span class="p">,</span> <span class="n">arr_geos</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="ST_MakeValid"><a class="viewcode-back" href="../../python/api/geospatial/function/geospatial/ST_MakeValid.html#arctern._wrapper_func.ST_MakeValid">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_MakeValid</span><span class="p">(</span><span class="n">geos</span><span class="p">):</span>
@@ -669,8 +689,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="kn">import</span> <span class="nn">pyarrow</span> <span class="k">as</span> <span class="nn">pa</span>
     <span class="n">arr_geos</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">geos</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
-    <span class="n">rs</span> <span class="o">=</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_MakeValid</span><span class="p">(</span><span class="n">arr_geos</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">rs</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span></div>
+    <span class="k">return</span> <span class="n">arctern_caller</span><span class="p">(</span><span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_MakeValid</span><span class="p">,</span> <span class="n">arr_geos</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="ST_SimplifyPreserveTopology"><a class="viewcode-back" href="../../python/api/geospatial/function/geospatial/ST_SimplifyPreserveTopology.html#arctern._wrapper_func.ST_SimplifyPreserveTopology">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_SimplifyPreserveTopology</span><span class="p">(</span><span class="n">geos</span><span class="p">,</span> <span class="n">distance_tolerance</span><span class="p">):</span>
@@ -698,8 +717,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="kn">import</span> <span class="nn">pyarrow</span> <span class="k">as</span> <span class="nn">pa</span>
     <span class="n">arr_geos</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">geos</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
-    <span class="n">rs</span> <span class="o">=</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_SimplifyPreserveTopology</span><span class="p">(</span><span class="n">arr_geos</span><span class="p">,</span> <span class="n">distance_tolerance</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">rs</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span></div>
+    <span class="k">return</span> <span class="n">arctern_caller</span><span class="p">(</span><span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_SimplifyPreserveTopology</span><span class="p">,</span> <span class="n">arr_geos</span><span class="p">,</span> <span class="n">distance_tolerance</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="ST_PolygonFromEnvelope"><a class="viewcode-back" href="../../python/api/geospatial/function/geospatial/ST_PolygonFromEnvelope.html#arctern._wrapper_func.ST_PolygonFromEnvelope">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;double&#39;</span><span class="p">,</span> <span class="s1">&#39;double&#39;</span><span class="p">,</span> <span class="s1">&#39;double&#39;</span><span class="p">,</span> <span class="s1">&#39;double&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_PolygonFromEnvelope</span><span class="p">(</span><span class="n">min_x</span><span class="p">,</span> <span class="n">min_y</span><span class="p">,</span> <span class="n">max_x</span><span class="p">,</span> <span class="n">max_y</span><span class="p">):</span>
@@ -739,10 +757,10 @@
     <span class="n">arr_min_y</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">min_y</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;double&#39;</span><span class="p">)</span>
     <span class="n">arr_max_x</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">max_x</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;double&#39;</span><span class="p">)</span>
     <span class="n">arr_max_y</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">max_y</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;double&#39;</span><span class="p">)</span>
-    <span class="n">rs</span> <span class="o">=</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_PolygonFromEnvelope</span><span class="p">(</span><span class="n">arr_min_x</span><span class="p">,</span> <span class="n">arr_min_y</span><span class="p">,</span> <span class="n">arr_max_x</span><span class="p">,</span> <span class="n">arr_max_y</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">rs</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span></div>
+    <span class="k">return</span> <span class="n">arctern_caller</span><span class="p">(</span><span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_PolygonFromEnvelope</span><span class="p">,</span> <span class="n">arr_min_x</span><span class="p">,</span> <span class="n">arr_min_y</span><span class="p">,</span> <span class="n">arr_max_x</span><span class="p">,</span> <span class="n">arr_max_y</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="ST_Contains"><a class="viewcode-back" href="../../python/api/geospatial/function/geospatial/ST_Contains.html#arctern._wrapper_func.ST_Contains">[文档]</a><span class="k">def</span> <span class="nf">ST_Contains</span><span class="p">(</span><span class="n">geo1</span><span class="p">,</span> <span class="n">geo2</span><span class="p">):</span>
+<div class="viewcode-block" id="ST_Contains"><a class="viewcode-back" href="../../python/api/geospatial/function/geospatial/ST_Contains.html#arctern._wrapper_func.ST_Contains">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="s1">&#39;binary&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">ST_Contains</span><span class="p">(</span><span class="n">geo1</span><span class="p">,</span> <span class="n">geo2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Check whether geometry &quot;geo1&quot; contains geometry &quot;geo2&quot;. &quot;geo1 contains geo2&quot; means no points</span>
 <span class="sd">    of &quot;geo2&quot; lie in the exterior of &quot;geo1&quot; and at least one point of the interior of &quot;geo2&quot; lies</span>
@@ -771,10 +789,10 @@
     <span class="kn">import</span> <span class="nn">pyarrow</span> <span class="k">as</span> <span class="nn">pa</span>
     <span class="n">arr_geo1</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">geo1</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
     <span class="n">arr_geo2</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">geo2</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
-    <span class="n">rs</span> <span class="o">=</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_Contains</span><span class="p">(</span><span class="n">arr_geo1</span><span class="p">,</span> <span class="n">arr_geo2</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">rs</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span></div>
+    <span class="k">return</span> <span class="n">arctern_caller</span><span class="p">(</span><span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_Contains</span><span class="p">,</span> <span class="n">arr_geo1</span><span class="p">,</span> <span class="n">arr_geo2</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="ST_Intersects"><a class="viewcode-back" href="../../python/api/geospatial/function/geospatial/ST_Intersects.html#arctern._wrapper_func.ST_Intersects">[文档]</a><span class="k">def</span> <span class="nf">ST_Intersects</span><span class="p">(</span><span class="n">geo1</span><span class="p">,</span> <span class="n">geo2</span><span class="p">):</span>
+<div class="viewcode-block" id="ST_Intersects"><a class="viewcode-back" href="../../python/api/geospatial/function/geospatial/ST_Intersects.html#arctern._wrapper_func.ST_Intersects">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="s1">&#39;binary&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">ST_Intersects</span><span class="p">(</span><span class="n">geo1</span><span class="p">,</span> <span class="n">geo2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Check whether two geometries intersect (i.e., share any portion of space).</span>
 
@@ -801,10 +819,10 @@
     <span class="kn">import</span> <span class="nn">pyarrow</span> <span class="k">as</span> <span class="nn">pa</span>
     <span class="n">arr_geo1</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">geo1</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
     <span class="n">arr_geo2</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">geo2</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
-    <span class="n">rs</span> <span class="o">=</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_Intersects</span><span class="p">(</span><span class="n">arr_geo1</span><span class="p">,</span> <span class="n">arr_geo2</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">rs</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span></div>
+    <span class="k">return</span> <span class="n">arctern_caller</span><span class="p">(</span><span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_Intersects</span><span class="p">,</span> <span class="n">arr_geo1</span><span class="p">,</span> <span class="n">arr_geo2</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="ST_Within"><a class="viewcode-back" href="../../python/api/geospatial/function/geospatial/ST_Within.html#arctern._wrapper_func.ST_Within">[文档]</a><span class="k">def</span> <span class="nf">ST_Within</span><span class="p">(</span><span class="n">geo1</span><span class="p">,</span> <span class="n">geo2</span><span class="p">):</span>
+<div class="viewcode-block" id="ST_Within"><a class="viewcode-back" href="../../python/api/geospatial/function/geospatial/ST_Within.html#arctern._wrapper_func.ST_Within">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="s1">&#39;binary&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">ST_Within</span><span class="p">(</span><span class="n">geo1</span><span class="p">,</span> <span class="n">geo2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Check whether geometry &quot;geo1&quot; is within geometry &quot;geo2&quot;. &quot;geo1 within geo2&quot; means no points of &quot;geo1&quot; lie in the</span>
 <span class="sd">    exterior of &quot;geo2&quot; and at least one point of the interior of &quot;geo1&quot; lies in the interior of &quot;geo2&quot;.</span>
@@ -832,10 +850,10 @@
     <span class="kn">import</span> <span class="nn">pyarrow</span> <span class="k">as</span> <span class="nn">pa</span>
     <span class="n">arr_geo1</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">geo1</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
     <span class="n">arr_geo2</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">geo2</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
-    <span class="n">rs</span> <span class="o">=</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_Within</span><span class="p">(</span><span class="n">arr_geo1</span><span class="p">,</span> <span class="n">arr_geo2</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">rs</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span></div>
+    <span class="k">return</span> <span class="n">arctern_caller</span><span class="p">(</span><span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_Within</span><span class="p">,</span> <span class="n">arr_geo1</span><span class="p">,</span> <span class="n">arr_geo2</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="ST_Distance"><a class="viewcode-back" href="../../python/api/geospatial/function/geospatial/ST_Distance.html#arctern._wrapper_func.ST_Distance">[文档]</a><span class="k">def</span> <span class="nf">ST_Distance</span><span class="p">(</span><span class="n">geo1</span><span class="p">,</span> <span class="n">geo2</span><span class="p">):</span>
+<div class="viewcode-block" id="ST_Distance"><a class="viewcode-back" href="../../python/api/geospatial/function/geospatial/ST_Distance.html#arctern._wrapper_func.ST_Distance">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="s1">&#39;binary&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">ST_Distance</span><span class="p">(</span><span class="n">geo1</span><span class="p">,</span> <span class="n">geo2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculates the minimum 2D Cartesian (planar) distance between &quot;geo1&quot; and &quot;geo2&quot;.</span>
 
@@ -866,10 +884,10 @@
     <span class="kn">import</span> <span class="nn">pyarrow</span> <span class="k">as</span> <span class="nn">pa</span>
     <span class="n">arr_geo1</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">geo1</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
     <span class="n">arr_geo2</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">geo2</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
-    <span class="n">rs</span> <span class="o">=</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_Distance</span><span class="p">(</span><span class="n">arr_geo1</span><span class="p">,</span> <span class="n">arr_geo2</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">rs</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span></div>
+    <span class="k">return</span> <span class="n">arctern_caller</span><span class="p">(</span><span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_Distance</span><span class="p">,</span> <span class="n">arr_geo1</span><span class="p">,</span> <span class="n">arr_geo2</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="ST_DistanceSphere"><a class="viewcode-back" href="../../python/api/geospatial/function/geospatial/ST_DistanceSphere.html#arctern._wrapper_func.ST_DistanceSphere">[文档]</a><span class="k">def</span> <span class="nf">ST_DistanceSphere</span><span class="p">(</span><span class="n">geo1</span><span class="p">,</span> <span class="n">geo2</span><span class="p">):</span>
+<div class="viewcode-block" id="ST_DistanceSphere"><a class="viewcode-back" href="../../python/api/geospatial/function/geospatial/ST_DistanceSphere.html#arctern._wrapper_func.ST_DistanceSphere">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="s1">&#39;binary&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">ST_DistanceSphere</span><span class="p">(</span><span class="n">geo1</span><span class="p">,</span> <span class="n">geo2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns minimum distance in meters between two lon/lat points.Uses a spherical earth</span>
 <span class="sd">    and radius derived from the spheroid defined by the SRID.</span>
@@ -901,8 +919,7 @@
     <span class="kn">import</span> <span class="nn">pyarrow</span> <span class="k">as</span> <span class="nn">pa</span>
     <span class="n">arr_geo1</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">geo1</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
     <span class="n">arr_geo2</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">geo2</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
-    <span class="n">rs</span> <span class="o">=</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_DistanceSphere</span><span class="p">(</span><span class="n">arr_geo1</span><span class="p">,</span> <span class="n">arr_geo2</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">rs</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span></div>
+    <span class="k">return</span> <span class="n">arctern_caller</span><span class="p">(</span><span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_DistanceSphere</span><span class="p">,</span> <span class="n">arr_geo1</span><span class="p">,</span> <span class="n">arr_geo2</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="ST_Area"><a class="viewcode-back" href="../../python/api/geospatial/function/geospatial/ST_Area.html#arctern._wrapper_func.ST_Area">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_Area</span><span class="p">(</span><span class="n">geos</span><span class="p">):</span>
@@ -928,8 +945,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="kn">import</span> <span class="nn">pyarrow</span> <span class="k">as</span> <span class="nn">pa</span>
     <span class="n">arr_geos</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">geos</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
-    <span class="n">rs</span> <span class="o">=</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_Area</span><span class="p">(</span><span class="n">arr_geos</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">rs</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span></div>
+    <span class="k">return</span> <span class="n">arctern_caller</span><span class="p">(</span><span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_Area</span><span class="p">,</span> <span class="n">arr_geos</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="ST_Centroid"><a class="viewcode-back" href="../../python/api/geospatial/function/geospatial/ST_Centroid.html#arctern._wrapper_func.ST_Centroid">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_Centroid</span><span class="p">(</span><span class="n">geos</span><span class="p">):</span>
@@ -955,8 +971,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="kn">import</span> <span class="nn">pyarrow</span> <span class="k">as</span> <span class="nn">pa</span>
     <span class="n">arr_geos</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">geos</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
-    <span class="n">rs</span> <span class="o">=</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_Centroid</span><span class="p">(</span><span class="n">arr_geos</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">rs</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span></div>
+    <span class="k">return</span> <span class="n">arctern_caller</span><span class="p">(</span><span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_Centroid</span><span class="p">,</span> <span class="n">arr_geos</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="ST_Length"><a class="viewcode-back" href="../../python/api/geospatial/function/geospatial/ST_Length.html#arctern._wrapper_func.ST_Length">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_Length</span><span class="p">(</span><span class="n">geos</span><span class="p">):</span>
@@ -982,8 +997,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="kn">import</span> <span class="nn">pyarrow</span> <span class="k">as</span> <span class="nn">pa</span>
     <span class="n">arr_geos</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">geos</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
-    <span class="n">rs</span> <span class="o">=</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_Length</span><span class="p">(</span><span class="n">arr_geos</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">rs</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span></div>
+    <span class="k">return</span> <span class="n">arctern_caller</span><span class="p">(</span><span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_Length</span><span class="p">,</span> <span class="n">arr_geos</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="ST_HausdorffDistance"><a class="viewcode-back" href="../../python/api/geospatial/function/geospatial/ST_HausdorffDistance.html#arctern._wrapper_func.ST_HausdorffDistance">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="s1">&#39;binary&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_HausdorffDistance</span><span class="p">(</span><span class="n">geo1</span><span class="p">,</span> <span class="n">geo2</span><span class="p">):</span>
@@ -1016,8 +1030,7 @@
     <span class="kn">import</span> <span class="nn">pyarrow</span> <span class="k">as</span> <span class="nn">pa</span>
     <span class="n">arr1</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">geo1</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
     <span class="n">arr2</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">geo2</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
-    <span class="n">rs</span> <span class="o">=</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_HausdorffDistance</span><span class="p">(</span><span class="n">arr1</span><span class="p">,</span> <span class="n">arr2</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">rs</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span></div>
+    <span class="k">return</span> <span class="n">arctern_caller</span><span class="p">(</span><span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_HausdorffDistance</span><span class="p">,</span> <span class="n">arr1</span><span class="p">,</span> <span class="n">arr2</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="ST_ConvexHull"><a class="viewcode-back" href="../../python/api/geospatial/function/geospatial/ST_ConvexHull.html#arctern._wrapper_func.ST_ConvexHull">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_ConvexHull</span><span class="p">(</span><span class="n">geos</span><span class="p">):</span>
@@ -1042,8 +1055,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="kn">import</span> <span class="nn">pyarrow</span> <span class="k">as</span> <span class="nn">pa</span>
     <span class="n">arr_geos</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">geos</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
-    <span class="n">rs</span> <span class="o">=</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_ConvexHull</span><span class="p">(</span><span class="n">arr_geos</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">rs</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span></div>
+    <span class="k">return</span> <span class="n">arctern_caller</span><span class="p">(</span><span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_ConvexHull</span><span class="p">,</span> <span class="n">arr_geos</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="ST_NPoints"><a class="viewcode-back" href="../../python/api/geospatial/function/geospatial/ST_NPoints.html#arctern._wrapper_func.ST_NPoints">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_NPoints</span><span class="p">(</span><span class="n">geos</span><span class="p">):</span>
@@ -1068,8 +1080,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="kn">import</span> <span class="nn">pyarrow</span> <span class="k">as</span> <span class="nn">pa</span>
     <span class="n">arr_geos</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">geos</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
-    <span class="n">rs</span> <span class="o">=</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_NPoints</span><span class="p">(</span><span class="n">arr_geos</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">rs</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span></div>
+    <span class="k">return</span> <span class="n">arctern_caller</span><span class="p">(</span><span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_NPoints</span><span class="p">,</span> <span class="n">arr_geos</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="ST_Envelope"><a class="viewcode-back" href="../../python/api/geospatial/function/geospatial/ST_Envelope.html#arctern._wrapper_func.ST_Envelope">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_Envelope</span><span class="p">(</span><span class="n">geos</span><span class="p">):</span>
@@ -1109,8 +1120,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="kn">import</span> <span class="nn">pyarrow</span> <span class="k">as</span> <span class="nn">pa</span>
     <span class="n">arr_geos</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">geos</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
-    <span class="n">rs</span> <span class="o">=</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_Envelope</span><span class="p">(</span><span class="n">arr_geos</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">rs</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span></div>
+    <span class="k">return</span> <span class="n">arctern_caller</span><span class="p">(</span><span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_Envelope</span><span class="p">,</span> <span class="n">arr_geos</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="ST_Buffer"><a class="viewcode-back" href="../../python/api/geospatial/function/geospatial/ST_Buffer.html#arctern._wrapper_func.ST_Buffer">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_Buffer</span><span class="p">(</span><span class="n">geos</span><span class="p">,</span> <span class="n">distance</span><span class="p">):</span>
@@ -1139,8 +1149,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="kn">import</span> <span class="nn">pyarrow</span> <span class="k">as</span> <span class="nn">pa</span>
     <span class="n">arr_geos</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">geos</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
-    <span class="n">rs</span> <span class="o">=</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_Buffer</span><span class="p">(</span><span class="n">arr_geos</span><span class="p">,</span> <span class="n">distance</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">rs</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span></div>
+    <span class="k">return</span> <span class="n">arctern_caller</span><span class="p">(</span><span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_Buffer</span><span class="p">,</span> <span class="n">arr_geos</span><span class="p">,</span> <span class="n">distance</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="ST_Union_Aggr"><a class="viewcode-back" href="../../python/api/geospatial/function/aggr/ST_Union_Aggr.html#arctern._wrapper_func.ST_Union_Aggr">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_Union_Aggr</span><span class="p">(</span><span class="n">geos</span><span class="p">):</span>
@@ -1166,8 +1175,10 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="kn">import</span> <span class="nn">pyarrow</span> <span class="k">as</span> <span class="nn">pa</span>
     <span class="n">arr_geos</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">geos</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
-    <span class="n">rs</span> <span class="o">=</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_Union_Aggr</span><span class="p">(</span><span class="n">arr_geos</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">rs</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span></div>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">arctern_caller</span><span class="p">(</span><span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_Union_Aggr</span><span class="p">,</span> <span class="n">arr_geos</span><span class="p">)</span>
+    <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">arctern_caller</span><span class="p">(</span><span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_Union_Aggr</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">result</span></div>
 
 <div class="viewcode-block" id="ST_Envelope_Aggr"><a class="viewcode-back" href="../../python/api/geospatial/function/aggr/ST_Envelope_Aggr.html#arctern._wrapper_func.ST_Envelope_Aggr">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_Envelope_Aggr</span><span class="p">(</span><span class="n">geos</span><span class="p">):</span>
@@ -1193,8 +1204,10 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="kn">import</span> <span class="nn">pyarrow</span> <span class="k">as</span> <span class="nn">pa</span>
     <span class="n">arr_geos</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">geos</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
-    <span class="n">rs</span> <span class="o">=</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_Envelope_Aggr</span><span class="p">(</span><span class="n">arr_geos</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">rs</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span></div>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">arctern_caller</span><span class="p">(</span><span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_Envelope_Aggr</span><span class="p">,</span> <span class="n">arr_geos</span><span class="p">)</span>
+    <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">arctern_caller</span><span class="p">(</span><span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_Envelope_Aggr</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">result</span></div>
 
 <div class="viewcode-block" id="ST_Transform"><a class="viewcode-back" href="../../python/api/geospatial/function/geospatial/ST_Transform.html#arctern._wrapper_func.ST_Transform">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_Transform</span><span class="p">(</span><span class="n">geos</span><span class="p">,</span> <span class="n">from_srid</span><span class="p">,</span> <span class="n">to_srid</span><span class="p">):</span>
@@ -1229,8 +1242,7 @@
     <span class="n">src</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="n">from_srid</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf8&quot;</span><span class="p">)</span>
     <span class="n">dst</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="n">to_srid</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf8&quot;</span><span class="p">)</span>
 
-    <span class="n">rs</span> <span class="o">=</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_Transform</span><span class="p">(</span><span class="n">arr_geos</span><span class="p">,</span> <span class="n">src</span><span class="p">,</span> <span class="n">dst</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">rs</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span></div>
+    <span class="k">return</span> <span class="n">arctern_caller</span><span class="p">(</span><span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_Transform</span><span class="p">,</span> <span class="n">arr_geos</span><span class="p">,</span> <span class="n">src</span><span class="p">,</span> <span class="n">dst</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="ST_CurveToLine"><a class="viewcode-back" href="../../python/api/geospatial/function/geospatial/ST_CurveToLine.html#arctern._wrapper_func.ST_CurveToLine">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_CurveToLine</span><span class="p">(</span><span class="n">geos</span><span class="p">):</span>
@@ -1255,8 +1267,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="kn">import</span> <span class="nn">pyarrow</span> <span class="k">as</span> <span class="nn">pa</span>
     <span class="n">arr_geos</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">geos</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
-    <span class="n">rs</span> <span class="o">=</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_CurveToLine</span><span class="p">(</span><span class="n">arr_geos</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">rs</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span></div>
+    <span class="k">return</span> <span class="n">arctern_caller</span><span class="p">(</span><span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_CurveToLine</span><span class="p">,</span> <span class="n">arr_geos</span><span class="p">)</span></div>
 
 <span class="k">def</span> <span class="nf">point_map_layer</span><span class="p">(</span><span class="n">vega</span><span class="p">,</span> <span class="n">points</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
     <span class="kn">import</span> <span class="nn">pyarrow</span> <span class="k">as</span> <span class="nn">pa</span>
@@ -1461,7 +1472,7 @@
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 4月 25, 2020.
+        最后更新于 4月 26, 2020.
       </span>
 
     </p>

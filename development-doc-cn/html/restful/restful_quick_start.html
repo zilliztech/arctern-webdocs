@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Quick Start &mdash; Arctern 0.1.0 文档</title>
+  <title>Quick Start &mdash; Arctern 0.1.x 文档</title>
   
 
   
@@ -163,7 +163,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/restful/restful-nyc-taxi-example.md.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/restful/restful_quick_start.md.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -187,7 +187,7 @@
 </div>
 <div class="section" id="id3">
 <h3>数据准备<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
-<p>在服务器端下载<a class="reference external" href="https://github.com/zilliztech/arctern-resources/tree/master/benchmarks/dataset/nyc_taxi/0_2M_nyc_taxi_and_building/0_2M_nyc_taxi_and_building.csv">纽约出租车数据集</a>，该数据集包含2009年纽约市出租车运营记录，各字段的含义如下：</p>
+<p>在服务器端下载<a class="reference external" href="https://media.githubusercontent.com/media/zilliztech/arctern-resources/benchmarks/benchmarks/dataset/nyc_taxi/0_2M_nyc_taxi_and_building/0_2M_nyc_taxi_and_building.csv">纽约出租车数据集</a>，该数据集包含2009年纽约市出租车运营记录，各字段的含义如下：</p>
 <ul class="simple">
 <li><p>VendorID: string，运营商名称；</p></li>
 <li><p>tpep_pickup_datetime: string，上车时间；</p></li>
@@ -430,7 +430,7 @@
 </div>
 <div class="section" id="id10">
 <h3>绘制点图<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h3>
-<p>使用 <code class="docutils literal notranslate"><span class="pre">/pointmap</span></code> 接口根据乘客上车地点绘制点图。点图中具体参数说明请参见 <a class="reference external" href="./restful-api">restful api reference</a>。</p>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">/pointmap</span></code> 接口根据乘客上车地点绘制点图。点图中具体参数说明请参见 <a class="reference external" href="./api/function/pointmap.html">点图 Restful API 说明</a>。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">requests</span>
 <span class="gp">&gt;&gt;&gt; </span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>\
@@ -466,7 +466,7 @@
 </div>
 <div class="section" id="id11">
 <h3>带权点图<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h3>
-<p>使用 <code class="docutils literal notranslate"><span class="pre">/weighted_pointmap</span></code> 接口根据乘客上车地点绘制带权点图，使用总费用作为点的权重，总费用越高，权重越大，点的颜色越深。权重图中具体参数说明请参见 <a class="reference external" href="./restful-api">restful api reference</a>。</p>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">/weighted_pointmap</span></code> 接口根据乘客上车地点绘制带权点图，使用总费用作为点的权重，总费用越高，权重越大，点的颜色越深。权重图中具体参数说明请参见 <a class="reference external" href="./api/function/weighted_pointmap.html">带权点图 Restful API 说明</a>。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">requests</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>\
 <span class="go">    &quot;scope&quot;: &quot;scope1&quot;,\</span>
@@ -512,7 +512,7 @@
 </div>
 <div class="section" id="id12">
 <h3>热力图<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h3>
-<p>使用 <code class="docutils literal notranslate"><span class="pre">/heatmap</span></code> 接口根据乘客下车地点以及行程费用绘制热力图，费用高的区域为红色，费用低的区域为绿色。热力图中具体参数说明请参见 <a class="reference external" href="./restful-api">restful api reference</a>。</p>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">/heatmap</span></code> 接口根据乘客下车地点以及行程费用绘制热力图，费用高的区域为红色，费用低的区域为绿色。热力图中具体参数说明请参见 <a class="reference external" href="./api/function/heatmap.html">热力图 Restful API 说明</a>。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">requests</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>\
 <span class="go">    &quot;scope&quot;: &quot;scope1&quot;,\</span>
@@ -547,7 +547,7 @@
 </div>
 <div class="section" id="id13">
 <h3>轮廓图<a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h3>
-<p>使用 <code class="docutils literal notranslate"><span class="pre">/choroplethmap</span></code> 接口，根据下车地点所在建筑物、小费金额绘制轮廓图，小费金额高为黄色，小费金额低为蓝色。轮廓图中具体参数说明请参见 <a class="reference external" href="./restful-api">restful api reference</a>。</p>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">/choroplethmap</span></code> 接口，根据下车地点所在建筑物、小费金额绘制轮廓图，小费金额高为黄色，小费金额低为蓝色。轮廓图中具体参数说明请参见 <a class="reference external" href="./api/function/choroplethmap.html">轮廓图 Restful API 说明</a>。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">requests</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>\
 <span class="go">    &quot;scope&quot;: &quot;scope1&quot;,\</span>
@@ -632,7 +632,7 @@
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 4月 25, 2020.
+        最后更新于 4月 26, 2020.
       </span>
 
     </p>
