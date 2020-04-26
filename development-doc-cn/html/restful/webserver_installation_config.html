@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Arctern Restful Server 安装与配置 &mdash; Arctern 0.1.0 文档</title>
+  <title>Arctern Restful Server 安装与配置 &mdash; Arctern 0.1.x 文档</title>
   
 
   
@@ -37,7 +37,7 @@
   <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="Quick Start" href="restful-nyc-taxi-example.html" />
+    <link rel="next" title="Quick Start" href="restful_quick_start.html" />
     <link rel="prev" title="Restful" href="restful.html" /> 
 </head>
 
@@ -112,7 +112,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="restful-nyc-taxi-example.html">Quick Start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restful_quick_start.html">Quick Start</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/api.html">API</a></li>
 </ul>
 </li>
@@ -185,7 +185,7 @@
   <div class="section" id="arctern-restful-server">
 <h1>Arctern Restful Server 安装与配置<a class="headerlink" href="#arctern-restful-server" title="永久链接至标题">¶</a></h1>
 <p>Arctern 提供基于 Restful 接口的 Web 服务。通过配置可将 Restful Server 与 Arctern-Spark 进行对接，从而以 Restful API 的形式提供 Arctern-Spark 的时空数据分析与展示能力。</p>
-<p>以下将介绍 Arctern Restful Server 的安装和配置流程。更多 Arctern Restfull API 信息请查看 Restful 服务<a class="reference external" href="./api/api.html">接口文档</a>和<a class="reference internal" href="restful-nyc-taxi-example.html"><span class="doc">使用示例</span></a>。</p>
+<p>以下将介绍 Arctern Restful Server 的安装和配置流程。更多 Arctern Restfull API 信息请查看 Restful 服务<a class="reference external" href="./api/api.html">接口文档</a>和<a class="reference internal" href="restful_quick_start.html"><span class="doc">使用示例</span></a>。</p>
 <blockquote>
 <div><p>注意：Arctern Restful Server 仅负责 Restful 请求的接收和解析，实际操作由 Restful Server 所连接的 Arctern-Spark 执行。在安装 Arctern Restful Server 前请确保环境存在已安装好 Arctern-Spark 的后台系统。安装 Arctern-Spark 的方式请参照其<a class="reference external" href="../spark/installation_and_deployment/installation_and_deployment.html">安装文档</a>.</p>
 </div></blockquote>
@@ -309,7 +309,7 @@ master-addr <span class="o">=</span> spark://spark_master_ip:port
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python manage.py -r -i <span class="m">192</span>.168.1.2 -p <span class="m">8088</span> 
 </pre></div>
 </div>
-<p>成功完成以上步骤后，即完成了 Arctern Restful Server 的安装和配置，请参考 Arctern Restful 服务<a class="reference external" href="./restful-api">接口文档</a>和<a class="reference internal" href="restful-nyc-taxi-example.html"><span class="doc">使用示例</span></a>使用 Arctern Restful 服务。</p>
+<p>成功完成以上步骤后，即完成了 Arctern Restful Server 的安装和配置，请参考 Arctern Restful 服务<a class="reference external" href="./api/api.html">接口文档</a>和<a class="reference internal" href="restful_quick_start.html"><span class="doc">使用示例</span></a>使用 Arctern Restful 服务。</p>
 </div>
 </div>
 </div>
@@ -322,7 +322,7 @@ master-addr <span class="o">=</span> spark://spark_master_ip:port
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="restful-nyc-taxi-example.html" class="btn btn-neutral float-right" title="Quick Start" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="restful_quick_start.html" class="btn btn-neutral float-right" title="Quick Start" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="restful.html" class="btn btn-neutral float-left" title="Restful" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -336,7 +336,7 @@ master-addr <span class="o">=</span> spark://spark_master_ip:port
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 4月 25, 2020.
+        最后更新于 4月 26, 2020.
       </span>
 
     </p>
