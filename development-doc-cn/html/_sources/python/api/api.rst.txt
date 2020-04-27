@@ -3,7 +3,7 @@ API
 
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 4
 
    geospatial/constructor_functions
    geospatial/accessor_functions
