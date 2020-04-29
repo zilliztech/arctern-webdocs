@@ -241,7 +241,7 @@ python setup.py install
 <h2>安装 Arctern Restful Server<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
 <div class="section" id="id4">
 <h3>基于源码的安装<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
-<p>从 <a class="reference external" href="https://github.com/zilliztech/arctern">Arctern Github 仓库</a> 下载源码，在 <code class="docutils literal notranslate"><span class="pre">gui/server</span></code> 路径下运行以下命令构建 Arctern Restful Server 依赖环境：</p>
+<p>从 <a class="reference external" href="https://github.com/zilliztech/arctern">Arctern Github 仓库</a> 下载源码，在 <code class="docutils literal notranslate"><span class="pre">gui/server/arctern_server</span></code> 路径下运行以下命令构建 Arctern Restful Server 依赖环境：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install -r requirements.txt
 </pre></div>
 </div>
@@ -258,7 +258,7 @@ python setup.py install
 <h2>配置后台 Arctern-Spark 信息<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
 <div class="section" id="id6">
 <h3>配置基于源码安装的 Arctern Restful Server<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
-<p>修改 Arctern 项目中 <code class="docutils literal notranslate"><span class="pre">gui/server</span></code> 路径下的 <code class="docutils literal notranslate"><span class="pre">config.ini</span></code> 文件，配置 Arctern Restful Server 所使用的 Arctern-Spark 后台信息。文件配置示例如下，其中 <code class="docutils literal notranslate"><span class="pre">spark_master_ip</span></code> 和 <code class="docutils literal notranslate"><span class="pre">port</span></code> 分别为后台 Arctern-Spark 中 master 节点的 IP 地址和端口号：</p>
+<p>修改 Arctern 项目中 <code class="docutils literal notranslate"><span class="pre">gui/server/arctern_server</span></code> 路径下的 <code class="docutils literal notranslate"><span class="pre">config.ini</span></code> 文件，配置 Arctern Restful Server 所使用的 Arctern-Spark 后台信息。文件配置示例如下，其中 <code class="docutils literal notranslate"><span class="pre">spark_master_ip</span></code> 和 <code class="docutils literal notranslate"><span class="pre">port</span></code> 分别为后台 Arctern-Spark 中 master 节点的 IP 地址和端口号：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>spark<span class="o">]</span>
 master-addr <span class="o">=</span> spark://spark_master_ip:port
 </pre></div>
@@ -282,8 +282,9 @@ master-addr <span class="o">=</span> spark://spark_master_ip:port
 <h2>启动 Arctern Restful Server<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
 <div class="section" id="id8">
 <h3>启动基于源码安装的 Arctern Restful Server<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h3>
-<p>在 Arctern项目的 <code class="docutils literal notranslate"><span class="pre">gui/server</span></code> 目录下使用以下命令启动服务：</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python manage.py
+<p>在 Arctern 项目的 <code class="docutils literal notranslate"><span class="pre">gui/server/arctern_server</span></code> 目录下使用以下命令启动服务，其中<code class="docutils literal notranslate"><span class="pre">/path/to/server</span></code> 为 Arctern 项目下 <code class="docutils literal notranslate"><span class="pre">gui/server</span></code> 目录的绝对路径。</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">PYTHONPATH</span><span class="o">=</span>/path/to/server:<span class="nv">$PYTHONPATH</span>
+python manage.py
 </pre></div>
 </div>
 </div>
@@ -306,9 +307,11 @@ master-addr <span class="o">=</span> spark://spark_master_ip:port
 <li><p>–loglevel= [log level]：配置日志级别(debug/info/warn/error/fatal)，默认值为: <code class="docutils literal notranslate"><span class="pre">info</span></code></p></li>
 </ul>
 <p>示例：</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python manage.py -r -i <span class="m">192</span>.168.1.2 -p <span class="m">8088</span> 
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">PYTHONPATH</span><span class="o">=</span>/path/to/server:<span class="nv">$PYTHONPATH</span>
+python manage.py -r -i <span class="m">192</span>.168.1.2 -p <span class="m">8088</span> 
 </pre></div>
 </div>
+<p>其中<code class="docutils literal notranslate"><span class="pre">/path/to/server</span></code> 为 Arctern 项目下 <code class="docutils literal notranslate"><span class="pre">gui/server</span></code> 目录的绝对路径。</p>
 <p>成功完成以上步骤后，即完成了 Arctern Restful Server 的安装和配置，请参考 Arctern Restful 服务<a class="reference external" href="./api/api.html">接口文档</a>和<a class="reference internal" href="restful_quick_start.html"><span class="doc">使用示例</span></a>使用 Arctern Restful 服务。</p>
 </div>
 </div>
@@ -336,7 +339,7 @@ master-addr <span class="o">=</span> spark://spark_master_ip:port
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 4月 27, 2020.
+        最后更新于 4月 29, 2020.
       </span>
 
     </p>

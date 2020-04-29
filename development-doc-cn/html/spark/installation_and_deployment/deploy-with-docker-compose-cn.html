@@ -285,6 +285,7 @@ $ sudo systemctl restart docker
 <div class="section" id="docker-compose-yml">
 <h3>下载 docker-compose.yml 文件<a class="headerlink" href="#docker-compose-yml" title="永久链接至标题">¶</a></h3>
 <p>创建 docker compose 工作目录，下载 <a class="reference external" href="https://raw.githubusercontent.com/zilliztech/arctern-docs/branch-0.1.x/scripts/docker-compose.yml">docker-compose.yml</a> 文件并保存至该目录。</p>
+<p>如果需要运行 GPU 版本 Arctern-Spark，请将 docker-compose.yml 文件中的两处 <code class="docutils literal notranslate"><span class="pre">ARCTERN_REPO:-arcternio/arctern-spark</span></code> 修改为 <code class="docutils literal notranslate"><span class="pre">ARCTERN_REPO:-arcternio/arctern-spark-gpu</span></code>。</p>
 </div>
 </div>
 <div class="section" id="id9">
@@ -358,7 +359,7 @@ $ spark-submit --master spark://spark-master:7077 spark_udf_ex.py
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 4月 27, 2020.
+        最后更新于 4月 29, 2020.
       </span>
 
     </p>
