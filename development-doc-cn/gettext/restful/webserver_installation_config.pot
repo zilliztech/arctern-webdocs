@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-27 11:43+0800\n"
+"POT-Creation-Date: 2020-04-29 15:27+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -97,7 +97,7 @@ msgid "基于源码的安装"
 msgstr ""
 
 #: ../../source/restful/webserver_installation_config.md:65
-msgid "从 Arctern Github 仓库 下载源码，在 gui/server 路径下运行以下命令构建 Arctern Restful Server 依赖环境："
+msgid "从 Arctern Github 仓库 下载源码，在 gui/server/arctern_server 路径下运行以下命令构建 Arctern Restful Server 依赖环境："
 msgstr ""
 
 #: ../../source/restful/webserver_installation_config.md:71
@@ -117,7 +117,7 @@ msgid "配置基于源码安装的 Arctern Restful Server"
 msgstr ""
 
 #: ../../source/restful/webserver_installation_config.md:83
-msgid "修改 Arctern 项目中 gui/server 路径下的 config.ini 文件，配置 Arctern Restful Server 所使用的 Arctern-Spark 后台信息。文件配置示例如下，其中 spark_master_ip 和 port 分别为后台 Arctern-Spark 中 master 节点的 IP 地址和端口号："
+msgid "修改 Arctern 项目中 gui/server/arctern_server 路径下的 config.ini 文件，配置 Arctern Restful Server 所使用的 Arctern-Spark 后台信息。文件配置示例如下，其中 spark_master_ip 和 port 分别为后台 Arctern-Spark 中 master 节点的 IP 地址和端口号："
 msgstr ""
 
 #: ../../source/restful/webserver_installation_config.md:90
@@ -141,53 +141,57 @@ msgid "启动基于源码安装的 Arctern Restful Server"
 msgstr ""
 
 #: ../../source/restful/webserver_installation_config.md:110
-msgid "在 Arctern项目的 gui/server 目录下使用以下命令启动服务："
+msgid "在 Arctern 项目的 gui/server/arctern_server 目录下使用以下命令启动服务，其中/path/to/server 为 Arctern 项目下 gui/server 目录的绝对路径。"
 msgstr ""
 
-#: ../../source/restful/webserver_installation_config.md:116
+#: ../../source/restful/webserver_installation_config.md:117
 msgid "启动基于 PIP 安装的 Arctern Restful Server"
 msgstr ""
 
-#: ../../source/restful/webserver_installation_config.md:118
+#: ../../source/restful/webserver_installation_config.md:119
 msgid "完成配置后，使用以下命令启动服务："
 msgstr ""
 
-#: ../../source/restful/webserver_installation_config.md:124
+#: ../../source/restful/webserver_installation_config.md:125
 msgid "命令参数介绍"
 msgstr ""
 
-#: ../../source/restful/webserver_installation_config.md:126
+#: ../../source/restful/webserver_installation_config.md:127
 msgid "通过命令参数可在启动时对 Arctern Restful Server 进行配置，以上两种方式使用完全相同的参数，具体的内容和含义如下："
 msgstr ""
 
-#: ../../source/restful/webserver_installation_config.md:129
+#: ../../source/restful/webserver_installation_config.md:130
 msgid "-h：显示帮助信息"
 msgstr ""
 
-#: ../../source/restful/webserver_installation_config.md:131
+#: ../../source/restful/webserver_installation_config.md:132
 msgid "-r：以 release 模式启动服务"
 msgstr ""
 
-#: ../../source/restful/webserver_installation_config.md:133
+#: ../../source/restful/webserver_installation_config.md:134
 msgid "-p：为服务指定 http 端口"
 msgstr ""
 
-#: ../../source/restful/webserver_installation_config.md:135
+#: ../../source/restful/webserver_installation_config.md:136
 msgid "-i：为服务指定 IP 地址"
 msgstr ""
 
-#: ../../source/restful/webserver_installation_config.md:137
+#: ../../source/restful/webserver_installation_config.md:138
 msgid "--logfile= [path/to/logfile]： 配置日志文件路径信息，默认值为： ./log.txt"
 msgstr ""
 
-#: ../../source/restful/webserver_installation_config.md:139
+#: ../../source/restful/webserver_installation_config.md:140
 msgid "--loglevel= [log level]：配置日志级别(debug/info/warn/error/fatal)，默认值为: info"
 msgstr ""
 
-#: ../../source/restful/webserver_installation_config.md:141
+#: ../../source/restful/webserver_installation_config.md:142
 msgid "示例："
 msgstr ""
 
-#: ../../source/restful/webserver_installation_config.md:148
+#: ../../source/restful/webserver_installation_config.md:149
+msgid "其中/path/to/server 为 Arctern 项目下 gui/server 目录的绝对路径。"
+msgstr ""
+
+#: ../../source/restful/webserver_installation_config.md:152
 msgid "成功完成以上步骤后，即完成了 Arctern Restful Server 的安装和配置，请参考 Arctern Restful 服务接口文档和使用示例使用 Arctern Restful 服务。"
 msgstr ""

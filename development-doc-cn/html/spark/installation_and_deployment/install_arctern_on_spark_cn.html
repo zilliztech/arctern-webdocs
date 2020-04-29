@@ -281,15 +281,16 @@ arctern_spark      ...
 <li><p>CPU 版本</p></li>
 </ul>
 <p>执行以下命令在 Conda 环境中安装 arctern_spark CPU 版本：</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>    conda install -y -q -n arctern_spark -c conda-forge -c arctern-dev arctern-spark
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>    conda install -c arctern libarctern
+    conda install -c arctern arctern-spark
 </pre></div>
 </div>
 <ul class="simple">
 <li><p>GPU版本</p></li>
 </ul>
 <p>执行以下命令在 Conda 环境中安装 arctern_spark GPU 版本：</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>    conda install -y -q -n arctern_spark -c conda-forge -c arctern-dev/label/cuda10.0 libarctern
-    conda install -y -q -n arctern_spark -c conda-forge -c arctern-dev arctern arctern-spark
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>    conda install -c arctern/label/cuda10.0 libarctern 
+    conda install -c arctern arctern-spark
 </pre></div>
 </div>
 </div>
@@ -344,7 +345,7 @@ spark.executorEnv.GDAL_DATA <span class="o">[</span>path/to/your/conda<span clas
 <div class="section" id="id6">
 <h2>卸载<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
 <p>在 Conda 环境中输入以下命令可卸载 Arctern-Spark</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conda uninstall -n arctern_spark libarctern arctern arctern-spark
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conda uninstall libarctern arctern arctern-spark
 </pre></div>
 </div>
 </div>
@@ -390,7 +391,7 @@ spark.executorEnv.GDAL_DATA <span class="o">[</span>path/to/your/conda<span clas
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 4月 27, 2020.
+        最后更新于 4月 29, 2020.
       </span>
 
     </p>

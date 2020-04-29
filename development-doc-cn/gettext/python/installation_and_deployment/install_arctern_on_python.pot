@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-27 11:43+0800\n"
+"POT-Creation-Date: 2020-04-29 15:27+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -87,38 +87,38 @@ msgstr ""
 msgid "执行以下命令在 Conda 环境中安装 Arctern CPU 版本："
 msgstr ""
 
-#: ../../source/python/installation_and_deployment/install_arctern_on_python.md:108
+#: ../../source/python/installation_and_deployment/install_arctern_on_python.md:109
 msgid "GPU版本"
 msgstr ""
 
-#: ../../source/python/installation_and_deployment/install_arctern_on_python.md:110
+#: ../../source/python/installation_and_deployment/install_arctern_on_python.md:111
 msgid "执行以下命令在 Conda 环境中安装 Arctern GPU 版本："
 msgstr ""
 
-#: ../../source/python/installation_and_deployment/install_arctern_on_python.md:117
+#: ../../source/python/installation_and_deployment/install_arctern_on_python.md:118
 msgid "安装验证"
 msgstr ""
 
-#: ../../source/python/installation_and_deployment/install_arctern_on_python.md:119
+#: ../../source/python/installation_and_deployment/install_arctern_on_python.md:120
 msgid "进入 Python 环境，尝试导入 arctern 验证安装是否成功。"
 msgstr ""
 
-#: ../../source/python/installation_and_deployment/install_arctern_on_python.md:128
+#: ../../source/python/installation_and_deployment/install_arctern_on_python.md:129
 msgid "测试样例"
 msgstr ""
 
-#: ../../source/python/installation_and_deployment/install_arctern_on_python.md:130
+#: ../../source/python/installation_and_deployment/install_arctern_on_python.md:131
 msgid "下载测试文件"
 msgstr ""
 
-#: ../../source/python/installation_and_deployment/install_arctern_on_python.md:135
+#: ../../source/python/installation_and_deployment/install_arctern_on_python.md:136
 msgid "通过以下命令执行测试文件"
 msgstr ""
 
-#: ../../source/python/installation_and_deployment/install_arctern_on_python.md:140
+#: ../../source/python/installation_and_deployment/install_arctern_on_python.md:141
 msgid "若最后打印结果类似以下内容，则表示通过测试样例。"
 msgstr ""
 
-#: ../../source/python/installation_and_deployment/install_arctern_on_python.md:145
+#: ../../source/python/installation_and_deployment/install_arctern_on_python.md:146
 msgid "卸载"
 msgstr ""
