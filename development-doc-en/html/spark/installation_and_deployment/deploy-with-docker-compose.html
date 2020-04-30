@@ -1,0 +1,388 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="python" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="python" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Using docker compose to deploy Arctern &mdash; Arctern 0.2.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Arctern
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../spark.html">Spark</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Arctern</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Using docker compose to deploy Arctern</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/spark/installation_and_deployment/deploy-with-docker-compose.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="using-docker-compose-to-deploy-arctern">
+<h1>Using docker compose to deploy Arctern<a class="headerlink" href="#using-docker-compose-to-deploy-arctern" title="Permalink to this headline">¶</a></h1>
+<p>This document introduces how to deploy Arctern on a pseudo-distributed PySpark environment with Docker Compose on a singe machine.</p>
+<p><span style="color:red">Notice: The introduced method deployes only a toy environment to let users try and use Arctern Spark APIs, please do NOT use it in a production environment.</span></p>
+<!-- TOC --><ul class="simple">
+<li><p><a class="reference external" href="#prerequisites">Prerequisites</a></p>
+<ul>
+<li><p><a class="reference external" href="#operating-system-requirements">Operating system requirements</a></p></li>
+<li><p><a class="reference external" href="#software-dependencies">Software dependencies</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#configuring-docker">Configuring Docker</a></p>
+<ul>
+<li><p><a class="reference external" href="#confirm-docker-status">Confirm Docker status</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#configuring-nvidia-docker-optional">Configuring NVIDIA Docker (Optional)</a></p>
+<ul>
+<li><p><a class="reference external" href="#confirm-nvidia-docker-status">Confirm NVIDIA Docker status</a></p></li>
+<li><p><a class="reference external" href="#configure-default-runtime-environment">Configure default runtime environment</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#installing-and-configuring-docker-compose">Installing and configuring Docker compose</a></p>
+<ul>
+<li><p><a class="reference external" href="#install-docker-compose">Install Docker compose</a></p></li>
+<li><p><a class="reference external" href="#download-docker-composeyml-file">Download docker-compose.yml file</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#deployment-verification">Deployment Verification</a></p>
+<ul>
+<li><p><a class="reference external" href="#launch-distributed-cluster">Launch distributed cluster</a></p></li>
+<li><p><a class="reference external" href="#download-and-execute-verification-code">Download and execute verification code</a></p></li>
+<li><p><a class="reference external" href="#shutdown-distributed-cluster">Shutdown distributed cluster</a></p></li>
+</ul>
+</li>
+</ul>
+<!-- /TOC --><div class="section" id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="operating-system-requirements">
+<h3>Operating system requirements<a class="headerlink" href="#operating-system-requirements" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Operating system</th>
+<th>Version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CentOS</td>
+<td>7 or higher</td>
+</tr>
+<tr>
+<td>Ubuntu LTS</td>
+<td>16.04 or higher</td>
+</tr>
+</tbody>
+</table></div>
+<div class="section" id="software-dependencies">
+<h3>Software dependencies<a class="headerlink" href="#software-dependencies" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Component</th>
+<th>Version</th>
+<th>Required?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Docker</td>
+<td>17.06.0 or higher</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Docker compose</td>
+<td>1.17.1 or higher</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Nvidia Docker</td>
+<td>Version 2</td>
+<td>No</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="section" id="configuring-docker">
+<h2>Configuring Docker<a class="headerlink" href="#configuring-docker" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="confirm-docker-status">
+<h3>Confirm Docker status<a class="headerlink" href="#confirm-docker-status" title="Permalink to this headline">¶</a></h3>
+<p>Use the following command to confirm the status of docker daemon:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ docker info
+</pre></div>
+</div>
+<p>If the command above cannot print docker information, please run <strong>Docker</strong> daemon.</p>
+<blockquote>
+<div><p>Note: On Linux, Docker needs sudo privileges. To run Docker command without <code class="docutils literal notranslate"><span class="pre">sudo</span></code>, create the <code class="docutils literal notranslate"><span class="pre">docker</span></code> group and add your user. For details, see the <a class="reference external" href="https://docs.docker.com/install/linux/linux-postinstall/">post-installation steps for Linux</a>.</p>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="configuring-nvidia-docker-optional">
+<h2>Configuring NVIDIA Docker (Optional)<a class="headerlink" href="#configuring-nvidia-docker-optional" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="confirm-nvidia-docker-status">
+<h3>Confirm NVIDIA Docker status<a class="headerlink" href="#confirm-nvidia-docker-status" title="Permalink to this headline">¶</a></h3>
+<p>To run Arctern with GPU support, you need to <a class="reference external" href="https://github.com/nvidia/nvidia-docker/wiki/Installation-(version-2.0)">install NVIDIA Docker Version 2.0</a>.</p>
+<p>Use the following command to confirm whether NVIDIA docker is installed:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ nvidia-docker version
+NVIDIA Docker: <span class="m">2</span>.0.3
+</pre></div>
+</div>
+</div>
+<div class="section" id="configure-default-runtime-environment">
+<h3>Configure default runtime environment<a class="headerlink" href="#configure-default-runtime-environment" title="Permalink to this headline">¶</a></h3>
+<p>Edit <code class="docutils literal notranslate"><span class="pre">/etc/docker/daemon.json</span></code> and add  &quot;default-runtime&quot; configuration:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;default-runtime&quot;</span><span class="p">:</span> <span class="s2">&quot;nvidia&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;runtimes&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;nvidia&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;nvidia-container-runtime&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;runtimeArgs&quot;</span><span class="p">:</span> <span class="p">[]</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Use the following command to reload docker:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ sudo systemctl daemon-reload
+$ sudo systemctl restart docker
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="installing-and-configuring-docker-compose">
+<h2>Installing and configuring Docker compose<a class="headerlink" href="#installing-and-configuring-docker-compose" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="install-docker-compose">
+<h3>Install Docker compose<a class="headerlink" href="#install-docker-compose" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://docs.docker.com/compose/install/">Install Docker compose</a> and use the following command to confirm Docker compose version info:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ docker-compose version
+</pre></div>
+</div>
+</div>
+<div class="section" id="download-docker-compose-yml-file">
+<h3>Download docker-compose.yml file<a class="headerlink" href="#download-docker-compose-yml-file" title="Permalink to this headline">¶</a></h3>
+<p>Create an directory for docker compose, download <a class="reference external" href="https://raw.githubusercontent.com/zilliztech/arctern-docs/master/scripts/docker-compose.yml">docker-compose.yml</a> file to the created directory.</p>
+</div>
+</div>
+<div class="section" id="deployment-verification">
+<h2>Deployment Verification<a class="headerlink" href="#deployment-verification" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="launch-distributed-cluster">
+<h3>Launch distributed cluster<a class="headerlink" href="#launch-distributed-cluster" title="Permalink to this headline">¶</a></h3>
+<p>Execute the following command in the docker compose directory to launch spark cluster.</p>
+<p>Frontend mode:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ sudo docker-compose up
+</pre></div>
+</div>
+<p>Backend mode:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ sudo docker-compose up -d
+</pre></div>
+</div>
+</div>
+<div class="section" id="download-and-execute-verification-code">
+<h3>Download and execute verification code<a class="headerlink" href="#download-and-execute-verification-code" title="Permalink to this headline">¶</a></h3>
+<p>Run the following command to check information of running containers:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ sudo docker ps    <span class="c1"># 输出如下：</span>
+CONTAINER ID        IMAGE                                                                  COMMAND                  CREATED             STATUS              PORTS                                            NAMES
+acbc7dfa299f        registry.zilliz.com/arctern/arctern-spark:master-ubuntu18.04-release   <span class="s2">&quot;/entrypoint.sh /run…&quot;</span>   About an hour ago   Up About an hour                                                     docker_spark-worker_1
+b7c75a456982        registry.zilliz.com/arctern/arctern-spark:master-ubuntu18.04-release   <span class="s2">&quot;/entrypoint.sh /run…&quot;</span>   About an hour ago   Up About an hour    <span class="m">0</span>.0.0.0:7077-&gt;7077/tcp, <span class="m">0</span>.0.0.0:8080-&gt;8080/tcp   docker_spark-master_1
+</pre></div>
+</div>
+<p>Enter the master container, the name of which is &quot;docker_spark-master_1&quot;. In the example output above, the ID of master container is <code class="docutils literal notranslate"><span class="pre">b7c75a456982</span></code>.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ sudo docker <span class="nb">exec</span> -it b7c75a456982 bash
+</pre></div>
+</div>
+<p>Download verification code:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /tmp
+$ wget https://raw.githubusercontent.com/zilliztech/arctern/conda/spark/pyspark/examples/gis/spark_udf_ex.py
+</pre></div>
+</div>
+<p>Executed the verification code with <code class="docutils literal notranslate"><span class="pre">spark-submit</span></code></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /tmp
+$ spark-submit --master spark://spark-master:7077 spark_udf_ex.py
+</pre></div>
+</div>
+<p>Notice：In the <code class="docutils literal notranslate"><span class="pre">docker-compose.yml</span></code> file, the IP address of master container is mapped as <code class="docutils literal notranslate"><span class="pre">spark-master</span></code>, so we can replace the IP address of master container as <code class="docutils literal notranslate"><span class="pre">spark-master</span></code>. Besides, the <code class="docutils literal notranslate"><span class="pre">docker-compose.yml</span></code> file also mapped port <code class="docutils literal notranslate"><span class="pre">7077</span></code> of master container to <code class="docutils literal notranslate"><span class="pre">7077</span></code> port of its host server, therefore we can also replace <code class="docutils literal notranslate"><span class="pre">spark-master</span></code> with the IP address of the host server.</p>
+</div>
+<div class="section" id="shutdown-distributed-cluster">
+<h3>Shutdown distributed cluster<a class="headerlink" href="#shutdown-distributed-cluster" title="Permalink to this headline">¶</a></h3>
+<p>Execute the following command in the docker compose directory to shutdown spark cluster.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ sudo docker-compose down
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, zilliz
+      <span class="lastupdated">
+        Last updated on Apr 30, 2020.
+      </span>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

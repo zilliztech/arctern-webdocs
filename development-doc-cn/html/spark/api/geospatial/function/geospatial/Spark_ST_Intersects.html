@@ -90,11 +90,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../../data_source/data_import_and_export.html">数据导入导出</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../../../api.html">API</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../../../register/sql_functions_register.html">SQL Functions Register</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../constructor_functions.html">Constructor Library</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../accessor_functions.html">Accessor Library</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../processing_functions.html">Processing Library</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../measurement_functions.html">Measurement Library</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="../../relationship_functions.html">Relationship Library</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../constructor_functions.html">Geometry Contructor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../accessor_functions.html">Geometry Accessor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../processing_functions.html">Geometry Processing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../measurement_functions.html">Measurement Functions</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../../relationship_functions.html">Spatial Relationship</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="Spark_ST_Equals.html">ST_Equals</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Spark_ST_Touches.html">ST_Touches</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Spark_ST_Overlaps.html">ST_Overlaps</a></li>
@@ -104,7 +104,7 @@
 <li class="toctree-l4"><a class="reference internal" href="Spark_ST_Within.html">ST_Within</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../../aggr_functions.html">Aggregation Library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../aggr_functions.html">Aggregate Functions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../render/layer.html">Layer Functions (Experimental)</a></li>
 </ul>
 </li>
@@ -160,7 +160,7 @@
         
           <li><a href="../../../api.html">API</a> &raquo;</li>
         
-          <li><a href="../../relationship_functions.html">Relationship Library</a> &raquo;</li>
+          <li><a href="../../relationship_functions.html">Spatial Relationship</a> &raquo;</li>
         
       <li>ST_Intersects</li>
     
@@ -183,9 +183,9 @@
             
   <div class="section" id="st-intersects">
 <h1>ST_Intersects<a class="headerlink" href="#st-intersects" title="永久链接至标题">¶</a></h1>
-<dl class="function">
+<dl class="py function">
 <dt id="arctern_pyspark._wrapper_func.ST_Intersects">
-<code class="sig-prename descclassname">arctern_pyspark.</code><code class="sig-name descname">ST_Intersects</code><span class="sig-paren">(</span><em class="sig-param">geo1</em>, <em class="sig-param">geo2</em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/arctern_pyspark/_wrapper_func.html#ST_Intersects"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#arctern_pyspark._wrapper_func.ST_Intersects" title="永久链接至目标">¶</a></dt>
+<code class="sig-prename descclassname">arctern_pyspark.</code><code class="sig-name descname">ST_Intersects</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">geo1</span></em>, <em class="sig-param"><span class="n">geo2</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/arctern_pyspark/_wrapper_func.html#ST_Intersects"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#arctern_pyspark._wrapper_func.ST_Intersects" title="永久链接至目标">¶</a></dt>
 <dd><p>检查两个几何体是否存在交集，即共享任何一个空间部分。</p>
 <dl class="field-list">
 <dt class="field-odd">参数</dt>
@@ -247,7 +247,7 @@
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 4月 29, 2020.
+        最后更新于 4月 30, 2020.
       </span>
 
     </p>
