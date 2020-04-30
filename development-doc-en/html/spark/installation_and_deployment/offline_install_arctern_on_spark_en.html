@@ -1,0 +1,363 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="python" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="python" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Offline Installation Guide &mdash; Arctern 0.2.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Arctern
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../spark.html">Spark</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Arctern</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Offline Installation Guide</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/spark/installation_and_deployment/offline_install_arctern_on_spark_en.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="offline-installation-guide">
+<h1>Offline Installation Guide<a class="headerlink" href="#offline-installation-guide" title="Permalink to this headline">¶</a></h1>
+<p>This topic introduces how to install Arctern offline in Spark.</p>
+<div class="section" id="toc">
+<h2>TOC<a class="headerlink" href="#toc" title="Permalink to this headline">¶</a></h2>
+<!-- TOC --><ul class="simple">
+<li><p><a class="reference external" href="#prerequisites">Prerequisites</a></p></li>
+<li><p><a class="reference external" href="#predownload">Pre-download</a></p></li>
+<li><p><a class="reference external" href="#setting-up-arctern-conda-environment">Setting up Arctern Conda environment</a></p></li>
+<li><p><a class="reference external" href="#offline-installing-arctern">Offline Installing Arctern</a></p></li>
+<li><p><a class="reference external" href="#validating-installation">Validating installation</a></p></li>
+<li><p><a class="reference external" href="#configure-python-path-for-spark">Configuring Python path for Spark</a></p></li>
+<li><p><a class="reference external" href="#test-case">Test case</a></p></li>
+<li><p><a class="reference external" href="#uninstalling-arctern">Uninstalling Arctern</a></p></li>
+<li><p><a class="reference external" href="#faq">FAQ</a></p>
+<ul>
+<li><p><a class="reference external" href="#support-for-spark">Support for Spark</a></p></li>
+</ul>
+</li>
+</ul>
+<!-- /TOC --></div>
+<div class="section" id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
+<p>The following environment is required for offline installation of Arctern:</p>
+<ul class="simple">
+<li><p>Linux operating system</p></li>
+<li><p>Conda (refer to: https://docs.conda.io/projects/conda/en/latest/user-guide/install/download.html)</p></li>
+<li><p>spark 3.0 (refer to: https://spark.apache.org/downloads.html)</p></li>
+</ul>
+<p>GPU version also needs to set up the following environment:</p>
+<ul class="simple">
+<li><p>CUDA Toolkit 10.0 (refer to: https://developer.nvidia.com/cuda-10.0-download-archive)</p></li>
+<li><p>Nvidia driver 4.30 (refer to: https://www.nvidia.com/Download/index.aspx)</p></li>
+</ul>
+</div>
+<div class="section" id="predownload">
+<h2>Predownload<a class="headerlink" href="#predownload" title="Permalink to this headline">¶</a></h2>
+<p>You need to pre-download the latest arctern conda package in a connected environment from arctern's channel.</p>
+<ul>
+<li><p>CPU version</p>
+<p>Use the following command to get and unzip package related:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ wget .......arctern_local_channel_cpu.tar.gz
+$ tar vxf arctern_local_channel_cpu.tar.gz
+$ wget ....so_dep.tar.gz
+$ tar vxf so_dep.tar.gz <span class="o">(</span>add to LD_LIBRARY_PATH<span class="o">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>GPU version</p>
+<p>Use the following command to get and unzip package related:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ wget .....arctern_local_channel_gpu.tar.gz
+$ tar vxf arctern_local_channel_gpu.tar.gz
+$ wget ....so_dep.tar.gz
+$ tar vxf so_dep.tar.gz <span class="o">(</span>add to LD_LIBRARY_PATH<span class="o">)</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="setting-up-arctern-conda-offline-environment">
+<h2>Setting up Arctern Conda Offline Environment<a class="headerlink" href="#setting-up-arctern-conda-offline-environment" title="Permalink to this headline">¶</a></h2>
+<p>Use the following command to set up Arctern Conda offline environment:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ conda config --set offline True
+$ conda create -n &lt;your_env_name&gt;
+</pre></div>
+</div>
+<p>After the environment is created, you can use <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">env</span> <span class="pre">list</span></code> to check all Conda environments. The result should include the Arctern environment.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda environments:
+base         ...
+&lt;your_env_name&gt;      ...
+...
+</pre></div>
+</div>
+<p>Enter Arctern conda environment:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ conda activate &lt;your_env_name&gt;
+</pre></div>
+</div>
+<p><strong>Note: The following steps must be performed in the Arctern conda environment</strong></p>
+</div>
+<div class="section" id="offline-installing-arctern">
+<h2>Offline Installing Arctern<a class="headerlink" href="#offline-installing-arctern" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>CPU version</p>
+<p>Use the following command to install Arctern CPU version:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ conda install -c file://path_to_arctern_local_channel_cpu -n &lt;your_env_name&gt; arctern-spark --offline --override-channels
+</pre></div>
+</div>
+</li>
+<li><p>GPU version</p>
+<p>Use the following command to install Arctern CPU version:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ conda install -c file://path_to_arctern_local_channel_gpu -n &lt;your_env_name&gt; arctern-spark --offline --override-channels
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="validating-installation">
+<h2>Validating installation<a class="headerlink" href="#validating-installation" title="Permalink to this headline">¶</a></h2>
+<p>In Python, import <code class="docutils literal notranslate"><span class="pre">arctern</span></code> and <code class="docutils literal notranslate"><span class="pre">arctern_pyspark</span></code> to validate whether the installation is successful.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Python</span> <span class="mf">3.7</span><span class="o">.</span><span class="mi">6</span> <span class="o">|</span> <span class="n">packaged</span> <span class="n">by</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="o">|</span> <span class="p">(</span><span class="n">default</span><span class="p">,</span> <span class="n">Jan</span> <span class="mi">29</span> <span class="mi">2020</span><span class="p">,</span> <span class="mi">14</span><span class="p">:</span><span class="mi">55</span><span class="p">:</span><span class="mi">04</span><span class="p">)</span>
+<span class="p">[</span><span class="n">GCC</span> <span class="mf">7.3</span><span class="o">.</span><span class="mi">0</span><span class="p">]</span> <span class="n">on</span> <span class="n">linux</span>
+<span class="n">Type</span> <span class="s2">&quot;help&quot;</span><span class="p">,</span> <span class="s2">&quot;copyright&quot;</span><span class="p">,</span> <span class="s2">&quot;credits&quot;</span> <span class="ow">or</span> <span class="s2">&quot;license&quot;</span> <span class="k">for</span> <span class="n">more</span> <span class="n">information</span><span class="o">.</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">arctern</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">arctern_pyspark</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="configuring-python-path-for-spark">
+<h2>Configuring Python path for Spark<a class="headerlink" href="#configuring-python-path-for-spark" title="Permalink to this headline">¶</a></h2>
+<p>Add the following content to <code class="docutils literal notranslate"><span class="pre">conf/spark-default.conf</span></code>. <code class="docutils literal notranslate"><span class="pre">[path/to/your/conda]</span></code> is the installation path of Conda.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>spark.executorEnv.PROJ_LIB <span class="o">[</span>path/to/your/conda<span class="o">]</span>/envs/arctern/share/proj
+spark.executorEnv.GDAL_DATA <span class="o">[</span>path/to/your/conda<span class="o">]</span>/envs/arctern/share/gdal
+</pre></div>
+</div>
+<p>Add the following content to <code class="docutils literal notranslate"><span class="pre">conf/spark-env.sh</span></code>. <code class="docutils literal notranslate"><span class="pre">[path/to/your/conda]</span></code> is the installation path of Conda.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">PYSPARK_PYTHON</span><span class="o">=[</span>path/to/your/conda<span class="o">]</span>/envs/arctern/bin/python
+</pre></div>
+</div>
+<p>Check whether PySpark uses the Python path determined by <code class="docutils literal notranslate"><span class="pre">$PYSPARK_PYTHON</span></code>. <code class="docutils literal notranslate"><span class="pre">[path/to/your/spark]</span></code> is the installation path of Spark.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">your</span><span class="o">/</span><span class="n">spark</span><span class="p">]</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">pyspark</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">sys</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">prefix</span><span class="p">)</span>
+<span class="p">[</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">your</span><span class="o">/</span><span class="n">conda</span><span class="p">]</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">arctern</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="test-case">
+<h2>Test case<a class="headerlink" href="#test-case" title="Permalink to this headline">¶</a></h2>
+<p>Download test file.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget https://raw.githubusercontent.com/zilliztech/arctern/conda/spark/pyspark/examples/gis/spark_udf_ex.py
+</pre></div>
+</div>
+<p>Use the following command to submit Spark task. <code class="docutils literal notranslate"><span class="pre">[path/to/]spark_udf_ex.py</span></code> is the path of the test file.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># local mode</span>
+$ <span class="o">[</span>path/to/your/spark<span class="o">]</span>/bin/spark-submit <span class="o">[</span>path/to/<span class="o">]</span>spark_udf_ex.py
+
+<span class="c1"># standalone mode</span>
+$ <span class="o">[</span>path/to/your/spark<span class="o">]</span>/bin/spark-submit --master <span class="o">[</span>spark service address<span class="o">]</span> <span class="o">[</span>path/to/<span class="o">]</span>spark_udf_ex.py
+
+<span class="c1"># hadoop/yarn mode</span>
+$ <span class="o">[</span>path/to/your/spark<span class="o">]</span>/bin/spark-submit --master yarn <span class="o">[</span>path/to/<span class="o">]</span>spark_udf_ex.py
+</pre></div>
+</div>
+</div>
+<div class="section" id="uninstalling-arctern">
+<h2>Uninstalling Arctern<a class="headerlink" href="#uninstalling-arctern" title="Permalink to this headline">¶</a></h2>
+<p>Use the following command to uninstall Arctern.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ conda uninstall -n arctern libarctern arctern arctern-spark
+</pre></div>
+</div>
+</div>
+<div class="section" id="faq">
+<h2>FAQ<a class="headerlink" href="#faq" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="support-for-spark">
+<h3>Support for Spark<a class="headerlink" href="#support-for-spark" title="Permalink to this headline">¶</a></h3>
+<p>Arctern can run in any mode of Spark. You must complete the following tasks for each host that runs Spark.</p>
+<ul class="simple">
+<li><p>Set up Conda environment</p></li>
+<li><p>Arctern Install Arctern</p></li>
+<li><p>Configure Spark environment variables</p></li>
+</ul>
+<p>If Spark runs at <code class="docutils literal notranslate"><span class="pre">standalone</span></code> cluster mode, the Spark environment of the host that submit tasks must be consistent with the Spark environment of the cluster by:</p>
+<ul class="simple">
+<li><p>The absolute installation path of <code class="docutils literal notranslate"><span class="pre">spark</span></code> must be the same as each host in the cluster</p></li>
+<li><p>The absolute installation path of <code class="docutils literal notranslate"><span class="pre">conda</span></code> must be the same as each host in the cluster</p></li>
+<li><p>The name of the virtual environment must be the same as each host in the cluster</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, zilliz
+      <span class="lastupdated">
+        Last updated on Apr 30, 2020.
+      </span>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
