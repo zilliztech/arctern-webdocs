@@ -1,5 +1,5 @@
-Aggregation Library
-====================
+Aggregate Functions
+=====================
 
 
 .. toctree::

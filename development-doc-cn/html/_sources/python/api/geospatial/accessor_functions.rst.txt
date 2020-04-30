@@ -1,5 +1,5 @@
-Accessor Library
-=================
+Geometry Accessor
+==================
 
 
 .. toctree::

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-29 20:38+0800\n"
+"POT-Creation-Date: 2020-04-30 17:11+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,34 +20,34 @@ msgstr ""
 msgid "ST_Point"
 msgstr ""
 
-#: ../../../../../miniconda3/envs/arctern/lib/python3.8/site-packages/arctern-0.1.0-py3.8.egg/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Point:1
+#: ../../../../../miniconda3/envs/zgis_dev/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Point:1
 msgid "Construct Point geometries according to the coordinates."
 msgstr ""
 
-#: ../../../../../miniconda3/envs/arctern/lib/python3.8/site-packages/arctern-0.1.0-py3.8.egg/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Point:0
+#: ../../../../../miniconda3/envs/zgis_dev/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Point:0
 msgid "参数"
 msgstr ""
 
-#: ../../../../../miniconda3/envs/arctern/lib/python3.8/site-packages/arctern-0.1.0-py3.8.egg/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Point:4
+#: ../../../../../miniconda3/envs/zgis_dev/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Point:4
 msgid "Abscissa of the point."
 msgstr ""
 
-#: ../../../../../miniconda3/envs/arctern/lib/python3.8/site-packages/arctern-0.1.0-py3.8.egg/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Point:7
+#: ../../../../../miniconda3/envs/zgis_dev/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Point:7
 msgid "Ordinate of the point."
 msgstr ""
 
-#: ../../../../../miniconda3/envs/arctern/lib/python3.8/site-packages/arctern-0.1.0-py3.8.egg/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Point:0
+#: ../../../../../miniconda3/envs/zgis_dev/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Point:0
 msgid "返回类型"
 msgstr ""
 
-#: ../../../../../miniconda3/envs/arctern/lib/python3.8/site-packages/arctern-0.1.0-py3.8.egg/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Point:0
+#: ../../../../../miniconda3/envs/zgis_dev/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Point:0
 msgid "返回"
 msgstr ""
 
-#: ../../../../../miniconda3/envs/arctern/lib/python3.8/site-packages/arctern-0.1.0-py3.8.egg/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Point:10
+#: ../../../../../miniconda3/envs/zgis_dev/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Point:10
 msgid "Point in WKB form."
 msgstr ""
 
-#: ../../../../../miniconda3/envs/arctern/lib/python3.8/site-packages/arctern-0.1.0-py3.8.egg/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Point:0
+#: ../../../../../miniconda3/envs/zgis_dev/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Point:0
 msgid "example"
 msgstr ""

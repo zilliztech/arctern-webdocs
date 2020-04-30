@@ -1,5 +1,5 @@
-Relationship Library
-=====================
+Spatial Relationship
+======================
 
 
 .. toctree::
