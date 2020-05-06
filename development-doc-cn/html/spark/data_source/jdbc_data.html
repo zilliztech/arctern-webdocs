@@ -220,23 +220,25 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span>
 <span class="kn">from</span> <span class="nn">arctern_pyspark</span> <span class="kn">import</span> <span class="n">register_funcs</span>
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="c1"># 创建 SparkSession 并对其进行配置</span>
     <span class="n">spark</span> <span class="o">=</span> <span class="n">SparkSession</span> \
         <span class="o">.</span><span class="n">builder</span> \
         <span class="o">.</span><span class="n">appName</span><span class="p">(</span><span class="s2">&quot;polygon test&quot;</span><span class="p">)</span> \
         <span class="o">.</span><span class="n">getOrCreate</span><span class="p">()</span>
     <span class="n">spark</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;spark.sql.execution.arrow.pyspark.enabled&quot;</span><span class="p">,</span> <span class="s2">&quot;true&quot;</span><span class="p">)</span>
+    <span class="c1"># 注册 Arctern-Spark 提供的函数</span>
     <span class="n">register_funcs</span><span class="p">(</span><span class="n">spark</span><span class="p">)</span>
 
-    <span class="c1"># Note: JDBC loading and saving can be achieved via either the load/save or jdbc methods</span>
-    <span class="c1"># Loading data from a JDBC source</span>
+    <span class="c1"># 数据导入</span>
     <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;jdbc&quot;</span><span class="p">)</span> \
               <span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;url&quot;</span><span class="p">,</span> <span class="s2">&quot;jdbc:postgresql://172.17.0.2:5432/test?user=arcterner&amp;password=arcterner&quot;</span><span class="p">)</span> \
               <span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;query&quot;</span><span class="p">,</span> <span class="s2">&quot;select st_astext(geos) as geos from simple&quot;</span><span class="p">)</span> \
               <span class="o">.</span><span class="n">load</span><span class="p">()</span> \
               <span class="o">.</span><span class="n">createOrReplaceTempView</span><span class="p">(</span><span class="s2">&quot;simple&quot;</span><span class="p">)</span>
+    <span class="c1"># 对数据进行操作并打印结果</span>
     <span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;select ST_IsSimple(ST_GeomFromText(geos)) from simple&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
 
-    <span class="c1"># Saving data to a JDBC source</span>
+    <span class="c1"># 数据导出</span>
     <span class="n">spark</span><span class="o">.</span><span class="n">write</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;jdbc&quot;</span><span class="p">)</span> \
                <span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;url&quot;</span><span class="p">,</span> <span class="s2">&quot;jdbc:postgresql://172.17.0.2:5432/test?user=arcterner&amp;password=arcterner&quot;</span><span class="p">)</span> \
                <span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;query&quot;</span><span class="p">,</span> <span class="s2">&quot;select st_astext(geos) as geos from simple&quot;</span><span class="p">)</span> \
@@ -282,7 +284,7 @@
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 4月 30, 2020.
+        最后更新于 5月 06, 2020.
       </span>
 
     </p>
