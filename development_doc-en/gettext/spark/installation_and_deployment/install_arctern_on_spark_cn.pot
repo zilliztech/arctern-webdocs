@@ -1,0 +1,190 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, zilliz
+# This file is distributed under the same license as the Arctern package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Arctern \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-05-06 19:26+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:1
+msgid "在线安装"
+msgstr ""
+
+#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:2
+msgid "本文档介绍在 Spark 环境中安装 Arctern 的步骤。"
+msgstr ""
+
+#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:5
+msgid "安装要求"
+msgstr ""
+
+#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:7
+#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:71
+#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:117
+msgid "CPU 版本"
+msgstr ""
+
+#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:33
+#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:78
+msgid "GPU 版本"
+msgstr ""
+
+#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:68
+msgid "安装依赖库"
+msgstr ""
+
+#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:73
+msgid "使用以下命令安装 Arctern-Spark CPU 版本的依赖库："
+msgstr ""
+
+#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:81
+msgid "使用以下命令安装 Arctern-Spark GPU 版本的依赖库："
+msgstr ""
+
+#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:88
+msgid "创建 Arctern-Spark Conda 环境"
+msgstr ""
+
+#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:90
+#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:216
+msgid "创建 Conda 虚拟环境"
+msgstr ""
+
+#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:92
+msgid "通过以下命令为 Arctern-Spark 创建 Conda 环境。此处假设环境名称为 arctern_spark，用户可根据需求自行选择合适的环境名称。"
+msgstr ""
+
+#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:94
+msgid "conda create -n arctern_spark python=3.7"
+msgstr ""
+
+#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:96
+msgid "创建成功后，可以通过 conda env list 命令查看所有Conda环境，其输出结果应包含Arctern环境，类似如下："
+msgstr ""
+
+#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:105
+msgid "进入 Arctern-Spark 环境："
+msgstr ""
+
+#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:107
+msgid "conda activate arctern_spark"
+msgstr ""
+
+#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:110
+msgid "注意：后续工作必须在 Arctern 环境中进行"
+msgstr ""
+
+#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:114
+#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:217
+msgid "安装 Arctern-Spark"
+msgstr ""
+
+#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:119
+msgid "执行以下命令在 Conda 环境中安装 arctern_spark CPU 版本："
+msgstr ""
+
+#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:125
+msgid "GPU版本"
+msgstr ""
+
+#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:127
+msgid "执行以下命令在 Conda 环境中安装 arctern_spark GPU 版本："
+msgstr ""
+
+#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:134
+msgid "安装验证"
+msgstr ""
+
+#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:136
+msgid "进入 Python 环境，尝试导入 arctern 和 arctern_pyspark 验证安装是否成功。"
+msgstr ""
+
+#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:146
+msgid "配置 Spark 的 Python 路径"
+msgstr ""
+
+#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:148
+msgid "在文件 conf/spark-default.conf 的最后添加以下内容。其中 [path/to/your/conda] 为Conda的安装路径。"
+msgstr ""
+
+#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:155
+msgid "在文件 conf/spark-env.sh 的最后添加以下内容。其中 [path/to/your/conda] 为Conda的安装路径。"
+msgstr ""
+
+#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:161
+msgid "确认路径配置是否成功"
+msgstr ""
+
+#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:163
+msgid "执行以下命令进入 PySpark 交互界面，其中 [path/to/your/spark] 为 Spark 的安装路径。"
+msgstr ""
+
+#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:169
+msgid "在交互界面中输入一下内容打印 PySpark 的 Python 路径。"
+msgstr ""
+
+#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:175
+msgid "如果终端打印了一下内容，说明 PySpark 的 Python 路径配置成功。"
+msgstr ""
+
+#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:181
+msgid "测试样例"
+msgstr ""
+
+#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:183
+msgid "下载测试文件"
+msgstr ""
+
+#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:189
+msgid "通过以下命令提交 Spark 任务，其中 [path/to/]spark_udf_ex.py 为测试文件所在的路径。"
+msgstr ""
+
+#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:202
+msgid "卸载"
+msgstr ""
+
+#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:204
+msgid "在 Conda 环境中输入以下命令可卸载 Arctern-Spark"
+msgstr ""
+
+#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:210
+msgid "FAQ"
+msgstr ""
+
+#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:212
+msgid "对Spark的支持"
+msgstr ""
+
+#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:214
+msgid "Arctern-Spark 可以运行在 Spark 的各种模式下，需要在每台运行 Spark 的机器上，执行如下操作："
+msgstr ""
+
+#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:218
+msgid "配置 Spark 环境变量"
+msgstr ""
+
+#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:220
+msgid "如果 Spark 运行在 standalone 集群模式下，提交任务机器的 Spark 环境需要与集群的 Spark 环境完全一致，包括以下几点："
+msgstr ""
+
+#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:222
+msgid "spark 安装的绝对路径与集群中每台机器完全一致"
+msgstr ""
+
+#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:223
+msgid "conda 安装的绝对路径与集群中每个机器完全一致"
+msgstr ""
+
+#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:224
+msgid "conda 虚拟环境名与集群中每个机器完全一致"
+msgstr ""
