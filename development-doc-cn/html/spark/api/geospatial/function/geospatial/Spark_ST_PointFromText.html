@@ -189,16 +189,16 @@
 <dl class="py function">
 <dt id="arctern_pyspark._wrapper_func.ST_PointFromText">
 <code class="sig-prename descclassname">arctern_pyspark.</code><code class="sig-name descname">ST_PointFromText</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">geos</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/arctern_pyspark/_wrapper_func.html#ST_PointFromText"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#arctern_pyspark._wrapper_func.ST_PointFromText" title="永久链接至目标">¶</a></dt>
-<dd><p>将 WKT 格式的 point 的转化为 WKB 格式的 point。</p>
+<dd><p>Constructs points from the OGC Well-Known text representation.</p>
 <dl class="field-list">
 <dt class="field-odd">参数</dt>
-<dd class="field-odd"><p><strong>geos</strong> (<em>WKT</em>) – WKT 格式的 point。</p>
+<dd class="field-odd"><p><strong>geo</strong> (<em>pandas.Series.object</em>) – Geometries organized as WKT.</p>
 </dd>
-<dt class="field-even">返回类型</dt>
-<dd class="field-even"><p>WKB</p>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>Geometries organized as WKB.</p>
 </dd>
-<dt class="field-odd">返回</dt>
-<dd class="field-odd"><p>WKB 格式的 point。</p>
+<dt class="field-odd">返回类型</dt>
+<dd class="field-odd"><p>pandas.Series.object</p>
 </dd>
 <dt class="field-even">例子</dt>
 <dd class="field-even"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span>
@@ -208,9 +208,9 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="n">register_funcs</span><span class="p">(</span><span class="n">spark_session</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">test_data</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">test_data</span><span class="o">.</span><span class="n">extend</span><span class="p">([(</span><span class="s1">&#39;POINT (30 10)&#39;</span><span class="p">,)])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">data_df</span> <span class="o">=</span> <span class="n">spark_session</span><span class="o">.</span><span class="n">createDataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">test_data</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;geos&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">cache</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data_df</span> <span class="o">=</span> <span class="n">spark_session</span><span class="o">.</span><span class="n">createDataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">test_data</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">cache</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">data_df</span><span class="o">.</span><span class="n">createOrReplaceTempView</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">spark_session</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;select ST_AsText(ST_PointFromText(geos)) from data&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">spark_session</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;select ST_AsText(ST_PointFromText(data)) from data&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
 <span class="go">+---------------------------------+</span>
 <span class="go">|ST_AsText(ST_PointFromText(data))|</span>
 <span class="go">+---------------------------------+</span>
@@ -246,7 +246,7 @@
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 4月 30, 2020.
+        最后更新于 5月 11, 2020.
       </span>
 
     </p>

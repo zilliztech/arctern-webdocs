@@ -188,28 +188,30 @@
 <dl class="py function">
 <dt id="arctern._wrapper_func.ST_SimplifyPreserveTopology">
 <code class="sig-prename descclassname">arctern.</code><code class="sig-name descname">ST_SimplifyPreserveTopology</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">geos</span></em>, <em class="sig-param"><span class="n">distance_tolerance</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/arctern/_wrapper_func.html#ST_SimplifyPreserveTopology"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#arctern._wrapper_func.ST_SimplifyPreserveTopology" title="永久链接至目标">¶</a></dt>
-<dd><p>通过 Douglas-Peucker 算法使用折线近似表示几何体中的曲线。</p>
+<dd><p>For each geometry in geometries create a “simplified” version for it according
+to the precision that parameter tolerance specifies.</p>
+<p>Note simplified geometries with be construted in arrow::Array format, so extra
+memory will be allocated.</p>
 <dl class="field-list">
 <dt class="field-odd">参数</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>geos</strong> (<em>Series</em><em>(</em><em>dtype: object</em><em>)</em>) – WKB 格式的几何体。</p></li>
-<li><p><strong>distance_tolerance</strong> (<em>float</em>) – 所允许的误差范围，即直线上的点到曲线距离的最大值。</p></li>
+<li><p><strong>geos</strong> (<em>pandas.Series.object</em>) – Geometries organized as WKB.</p></li>
+<li><p><strong>distance_tolerance</strong> (<em>double</em>) – The precision of the simplified geometry.</p></li>
 </ul>
 </dd>
-<dt class="field-even">返回类型</dt>
-<dd class="field-even"><p>Series(dtype: object)</p>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>Geometries organized as WKB.</p>
 </dd>
-<dt class="field-odd">返回</dt>
-<dd class="field-odd"><p>WKB 格式的几何体。</p>
+<dt class="field-odd">返回类型</dt>
+<dd class="field-odd"><p>pandas.Series.object</p>
 </dd>
 <dt class="field-even">例子</dt>
 <dd class="field-even"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">arctern</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s2">&quot;POLYGON ((1 1,1 2,2 2,2 1,1 1))&quot;</span><span class="p">,</span><span class="s2">&quot;CIRCULARSTRING (0 0,1 1,2 0)&quot;</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">rst</span> <span class="o">=</span> <span class="n">arctern</span><span class="o">.</span><span class="n">ST_AsText</span><span class="p">(</span><span class="n">arctern</span><span class="o">.</span><span class="n">ST_SimplifyPreserveTopology</span><span class="p">(</span><span class="n">arctern</span><span class="o">.</span><span class="n">ST_GeomFromText</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="mi">1</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s2">&quot;POLYGON ((1 1,1 2,2 2,2 1,1 1))&quot;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rst</span> <span class="o">=</span> <span class="n">arctern</span><span class="o">.</span><span class="n">ST_AsText</span><span class="p">(</span><span class="n">arctern</span><span class="o">.</span><span class="n">ST_SimplifyPreserveTopology</span><span class="p">(</span><span class="n">arctern</span><span class="o">.</span><span class="n">ST_GeomFromText</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="mi">10000</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">rst</span><span class="p">)</span>
 <span class="go">    0    POLYGON ((1 1,1 2,2 2,2 1,1 1))</span>
-<span class="go">    1               LINESTRING (0 0,2 0)</span>
 <span class="go">    dtype: object</span>
 </pre></div>
 </div>
@@ -241,7 +243,7 @@
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 4月 30, 2020.
+        最后更新于 5月 11, 2020.
       </span>
 
     </p>

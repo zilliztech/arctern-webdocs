@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-30 17:11+0800\n"
+"POT-Creation-Date: 2020-05-11 14:48+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -161,21 +161,57 @@ msgid "可以在EPSG网站验证验证转换结果的正确性："
 msgstr ""
 
 #: ../../source/spark/quick_start/quick-start-spark.md:213
-msgid "在指定地理区域（经度范围：-73.991504至-73.945155；纬度范围：40.770759至40.783434）中随机选取200个坐标点，并将这些坐标点从EPSG:4326坐标系转到EPSG:3857坐标系。"
-msgstr ""
-
-#: ../../source/spark/quick_start/quick-start-spark.md:225
 msgid "使用 Arctern-Spark 绘制图层"
 msgstr ""
 
-#: ../../source/spark/quick_start/quick-start-spark.md:227
-msgid "导入绘图需要使用的模块："
+#: ../../source/spark/quick_start/quick-start-spark.md:215
+msgid "导入绘图需要使用的模块并定义相关变量："
 msgstr ""
 
-#: ../../source/spark/quick_start/quick-start-spark.md:235
-msgid "通过 Arctern-Spark 提供的绘图函数绘制图层："
+#: ../../source/spark/quick_start/quick-start-spark.md:231
+msgid "通过 Arctern-Spark 提供的绘图函数绘制点图图层："
 msgstr ""
 
-#: ../../source/spark/quick_start/quick-start-spark.md:243
-msgid "绘图结果如下："
+#: ../../source/spark/quick_start/quick-start-spark.md:244
+msgid "点图图层绘制结果如下："
+msgstr ""
+
+#: ../../source/spark/quick_start/quick-start-spark.md:248
+msgid "通过 Arctern-Spark 提供的绘图函数绘制带权点图图层："
+msgstr ""
+
+#: ../../source/spark/quick_start/quick-start-spark.md:261
+msgid "带权点图图层绘制结果如下："
+msgstr ""
+
+#: ../../source/spark/quick_start/quick-start-spark.md:265
+msgid "通过 Arctern-Spark 提供的绘图函数绘制热力图图层："
+msgstr ""
+
+#: ../../source/spark/quick_start/quick-start-spark.md:278
+msgid "热力图图层绘制结果如下："
+msgstr ""
+
+#: ../../source/spark/quick_start/quick-start-spark.md:282
+msgid "通过 Arctern-Spark 提供的绘图函数绘制轮廓图图层："
+msgstr ""
+
+#: ../../source/spark/quick_start/quick-start-spark.md:295
+msgid "轮廓图图层绘制结果如下："
+msgstr ""
+
+#: ../../source/spark/quick_start/quick-start-spark.md:299
+msgid "通过 Arctern-Spark 提供的绘图函数绘制图标图图层："
+msgstr ""
+
+#: ../../source/spark/quick_start/quick-start-spark.md:312
+msgid "图标图图层绘制结果如下："
+msgstr ""
+
+#: ../../source/spark/quick_start/quick-start-spark.md:316
+msgid "通过 Arctern-Spark 提供的绘图函数绘制渔网图图层："
+msgstr ""
+
+#: ../../source/spark/quick_start/quick-start-spark.md:329
+msgid "渔网图图层绘制结果如下："
 msgstr ""

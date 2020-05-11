@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-30 17:11+0800\n"
+"POT-Creation-Date: 2020-05-11 14:48+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -77,21 +77,33 @@ msgid "collect_result：可选参数，默认值为 1。1 表示将 SQL 语句�
 msgstr ""
 
 #: ../../source/restful/api/function/query.md:42
-msgid "python样例："
+msgid "样例"
 msgstr ""
 
-#: ../../source/restful/api/function/query.md:84
-msgid "curl样例："
+#: ../../source/restful/api/function/query.md:44
+msgid "python"
 msgstr ""
 
-#: ../../source/restful/api/function/query.md:108
+#: ../../source/restful/api/function/query.md:46
+msgid "本文示例代码使用 python 的 requests 库调用 Arctern Restful API，使用下面的命令安装 requests："
+msgstr ""
+
+#: ../../source/restful/api/function/query.md:52
+msgid "调用示例"
+msgstr ""
+
+#: ../../source/restful/api/function/query.md:96
+msgid "curl"
+msgstr ""
+
+#: ../../source/restful/api/function/query.md:120
 msgid "返回说明"
 msgstr ""
 
-#: ../../source/restful/api/function/query.md:110
+#: ../../source/restful/api/function/query.md:122
 msgid "样例："
 msgstr ""
 
-#: ../../source/restful/api/function/query.md:123
+#: ../../source/restful/api/function/query.md:135
 msgid "失败样例："
 msgstr ""

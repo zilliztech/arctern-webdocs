@@ -187,19 +187,19 @@
 <dd><p>对输入中的每一个几何体,返回代表其类型的字符串。</p>
 <dl class="field-list">
 <dt class="field-odd">参数</dt>
-<dd class="field-odd"><p><strong>geos</strong> (<em>Series</em><em>(</em><em>dtype: object</em><em>)</em>) – WKB 格式的几何体。</p>
+<dd class="field-odd"><p><strong>geos</strong> (<em>pandas.Series.object</em>) – Geometries organized as WKB.</p>
 </dd>
-<dt class="field-even">返回类型</dt>
-<dd class="field-even"><p>Series(dtype: object)</p>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>Geometries organized as WKB.</p>
 </dd>
-<dt class="field-odd">返回</dt>
-<dd class="field-odd"><p>几何体的类型，例如 ST_LINESTRING，ST_POLYGON，ST_POINT，ST_MULTIPOINT。</p>
+<dt class="field-odd">返回类型</dt>
+<dd class="field-odd"><p>pandas.Series.object</p>
 </dd>
 <dt class="field-even">例子</dt>
 <dd class="field-even"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">arctern</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s2">&quot;POLYGON ((1 1,1 2,2 2,2 1,1 1))&quot;</span><span class="p">,</span> <span class="s2">&quot;POLYGON ((1 1,1 2,2 2,2 1,1 1))&quot;</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">rst</span> <span class="o">=</span> <span class="n">arctern</span><span class="o">.</span><span class="n">ST_GeometryType</span><span class="p">(</span><span class="n">arctern</span><span class="o">.</span><span class="n">ST_GeomFromText</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rst</span> <span class="o">=</span> <span class="n">arctern</span><span class="o">.</span><span class="n">ST_AsText</span><span class="p">(</span><span class="n">arctern</span><span class="o">.</span><span class="n">ST_GeometryType</span><span class="p">(</span><span class="n">arctern</span><span class="o">.</span><span class="n">ST_GeomFromText</span><span class="p">(</span><span class="n">data</span><span class="p">)))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">rst</span><span class="p">)</span>
 <span class="go">    0    ST_POLYGON</span>
 <span class="go">    1    ST_POLYGON</span>
@@ -234,7 +234,7 @@
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 4月 30, 2020.
+        最后更新于 5月 11, 2020.
       </span>
 
     </p>

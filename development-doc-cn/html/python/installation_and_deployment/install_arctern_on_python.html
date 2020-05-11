@@ -243,7 +243,7 @@
 <div class="section" id="arctern-conda">
 <h2>创建 Arctern Conda 环境<a class="headerlink" href="#arctern-conda" title="永久链接至标题">¶</a></h2>
 <p>通过以下命令创建 Arctern Conda 环境。此处假设环境名称为 <code class="docutils literal notranslate"><span class="pre">arctern_python</span></code>，用户可根据需求自行选择合适的环境名称。</p>
-<p><code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">create</span> <span class="pre">-n</span> <span class="pre">arctern_python</span> <span class="pre">python=3.7</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">create</span> <span class="pre">-n</span> <span class="pre">arctern_python</span> <span class="pre">-c</span> <span class="pre">conda-forge</span> <span class="pre">python=3.7.6</span></code></p>
 <p>创建成功后，可以通过 <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">env</span> <span class="pre">list</span></code> 命令查看所有Conda环境，其输出结果应包含 Arctern 环境，类似如下：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda environments:
 base                ...
@@ -263,33 +263,37 @@ arctern_python      ...
 <li><p>CPU 版本</p></li>
 </ul>
 <p>执行以下命令在 Conda 环境中安装 Arctern CPU 版本：</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>   conda install -c arctern libarctern
-   conda install -c arctern arctern
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>   conda install -c arctern -c conda-forge arctern
 </pre></div>
 </div>
 <ul class="simple">
 <li><p>GPU版本</p></li>
 </ul>
 <p>执行以下命令在 Conda 环境中安装 Arctern GPU 版本：</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>   conda install -c arctern/label/cuda10.0 libarctern 
-   conda install -c arctern arctern
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>   conda install -c arctern/label/cuda10.0 -c conda-forge libarctern 
+   conda install -c arctern -c conda-forge arctern
 </pre></div>
 </div>
 </div>
 <div class="section" id="id4">
 <h2>安装验证<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
-<p>进入 Python 环境，尝试导入 <code class="docutils literal notranslate"><span class="pre">arctern</span></code> 验证安装是否成功。</p>
+<p>进入 Python 环境，尝试导入 <code class="docutils literal notranslate"><span class="pre">arctern</span></code> 并确认版本是否正确。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Python</span> <span class="mf">3.7</span><span class="o">.</span><span class="mi">6</span> <span class="o">|</span> <span class="n">packaged</span> <span class="n">by</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="o">|</span> <span class="p">(</span><span class="n">default</span><span class="p">,</span> <span class="n">Jan</span> <span class="mi">29</span> <span class="mi">2020</span><span class="p">,</span> <span class="mi">14</span><span class="p">:</span><span class="mi">55</span><span class="p">:</span><span class="mi">04</span><span class="p">)</span>
 <span class="p">[</span><span class="n">GCC</span> <span class="mf">7.3</span><span class="o">.</span><span class="mi">0</span><span class="p">]</span> <span class="n">on</span> <span class="n">linux</span>
 <span class="n">Type</span> <span class="s2">&quot;help&quot;</span><span class="p">,</span> <span class="s2">&quot;copyright&quot;</span><span class="p">,</span> <span class="s2">&quot;credits&quot;</span> <span class="ow">or</span> <span class="s2">&quot;license&quot;</span> <span class="k">for</span> <span class="n">more</span> <span class="n">information</span><span class="o">.</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">arctern</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">arctern</span><span class="o">.</span><span class="n">version</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id5">
 <h2>测试样例<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<p>安装py.test</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda install pytest
+</pre></div>
+</div>
 <p>下载测试文件</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget https://raw.githubusercontent.com/zilliztech/arctern/branch-0.1.x/python/tests/geo/geo_test.py
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget https://raw.githubusercontent.com/zilliztech/arctern/v0.1.0/python/tests/geo/geo_test.py
 </pre></div>
 </div>
 <p>通过以下命令执行测试文件</p>
@@ -331,7 +335,7 @@ arctern_python      ...
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 4月 30, 2020.
+        最后更新于 5月 11, 2020.
       </span>
 
     </p>

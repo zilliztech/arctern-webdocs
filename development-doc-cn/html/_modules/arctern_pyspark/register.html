@@ -170,27 +170,6 @@
             <span class="k">yield</span> <span class="n">obj</span>
 
 <div class="viewcode-block" id="register_funcs"><a class="viewcode-back" href="../../spark/api/register/function/Register.html#arctern_pyspark.register.register_funcs">[文档]</a><span class="k">def</span> <span class="nf">register_funcs</span><span class="p">(</span><span class="n">spark</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Register all functions provided by Arctern for the given SparkSession.</span>
-
-<span class="sd">    :param spark: pyspark.sql.SparkSession, spark session instance.</span>
-
-<span class="sd">    :example:</span>
-<span class="sd">      &gt;&gt;&gt; from pyspark.sql import SparkSession</span>
-<span class="sd">      &gt;&gt;&gt; from arctern_pyspark import register_funcs</span>
-<span class="sd">      &gt;&gt;&gt; spark_session = SparkSession.builder.appName(&quot;Python Arrow-in-Spark example&quot;).getOrCreate()</span>
-<span class="sd">      &gt;&gt;&gt; register_funcs(spark_session)</span>
-<span class="sd">      &gt;&gt;&gt;  test_data = []</span>
-<span class="sd">      &gt;&gt;&gt; test_data.extend([(&#39;POINT (10 10)&#39;,)])</span>
-<span class="sd">      &gt;&gt;&gt; buffer_df = spark_session.createDataFrame(data=test_data, schema=[&#39;geos&#39;]).cache()</span>
-<span class="sd">      &gt;&gt;&gt; buffer_df.createOrReplaceTempView(&quot;buffer&quot;)</span>
-<span class="sd">      &gt;&gt;&gt; spark_session.sql(&quot;select ST_AsText(ST_Transform(ST_GeomFromText(geos), &#39;epsg:4326&#39;, &#39;epsg:3857&#39;)) from buffer&quot;).show(100,0)</span>
-<span class="sd">      +------------------------------------------------------------------------+</span>
-<span class="sd">      |ST_AsText(ST_Transform(ST_GeomFromText(geos), &#39;epsg:4326&#39;, &#39;epsg:3857&#39;))|</span>
-<span class="sd">      +------------------------------------------------------------------------+</span>
-<span class="sd">      |POINT (1113194.90793274 1118889.97485796)                               |</span>
-<span class="sd">      +------------------------------------------------------------------------+</span>
-<span class="sd">    &quot;&quot;&quot;</span>
     <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span>  <span class="n">_wrapper_func</span>
     <span class="n">all_funcs</span> <span class="o">=</span> <span class="n">_get_funcs_in_module</span><span class="p">(</span><span class="n">_wrapper_func</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">all_funcs</span><span class="p">:</span>
@@ -210,7 +189,7 @@
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 4月 30, 2020.
+        最后更新于 5月 11, 2020.
       </span>
 
     </p>

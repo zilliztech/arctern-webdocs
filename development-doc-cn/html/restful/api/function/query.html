@@ -92,11 +92,11 @@
 <li class="toctree-l3"><a class="reference internal" href="create_scope.html">创建scope</a></li>
 <li class="toctree-l3"><a class="reference internal" href="delete_scope.html">删除scope</a></li>
 <li class="toctree-l3"><a class="reference internal" href="loadfile.html">加载文件</a></li>
-<li class="toctree-l3"><a class="reference internal" href="savetable.html">保存文件</a></li>
 <li class="toctree-l3"><a class="reference internal" href="table_schema.html">获取表的列信息</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">查询</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id2">请求说明</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id3">返回说明</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">样例</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">返回说明</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="pointmap.html">点图</a></li>
@@ -217,8 +217,18 @@
 <li><p>sql：待执行的 SQL 查询语句；</p></li>
 <li><p>collect_result：可选参数，默认值为 <code class="docutils literal notranslate"><span class="pre">1</span></code>。<code class="docutils literal notranslate"><span class="pre">1</span></code> 表示将 SQL 语句的查询结果用 <code class="docutils literal notranslate"><span class="pre">json</span></code> 格式返回，<code class="docutils literal notranslate"><span class="pre">0</span></code> 表示仅在后台执行查询语句不返回执行结果。</p></li>
 </ul>
-<p>python样例：</p>
+</div>
+<div class="section" id="id3">
+<h2>样例<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<div class="section" id="python">
+<h3>python<a class="headerlink" href="#python" title="永久链接至标题">¶</a></h3>
+<p>本文示例代码使用 python 的 <code class="docutils literal notranslate"><span class="pre">requests</span></code> 库调用 <code class="docutils literal notranslate"><span class="pre">Arctern</span> <span class="pre">Restful</span> <span class="pre">API</span></code>，使用下面的命令安装 <code class="docutils literal notranslate"><span class="pre">requests</span></code>：</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip install requests
+</pre></div>
+</div>
+<p>调用示例</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">json</span>
 
 <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;http://localhost:8080/query&quot;</span>
 
@@ -232,12 +242,13 @@
   <span class="s1">&#39;Content-Type&#39;</span><span class="p">:</span> <span class="s1">&#39;application/json&#39;</span>
 <span class="p">}</span>
 
-<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s2">&quot;POST&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">payload</span><span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s2">&quot;POST&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">payload</span><span class="p">))</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf8&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">json</span>
 
 <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;http://localhost:8080/query&quot;</span>
 
@@ -251,12 +262,14 @@
   <span class="s1">&#39;Content-Type&#39;</span><span class="p">:</span> <span class="s1">&#39;application/json&#39;</span>
 <span class="p">}</span>
 
-<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s2">&quot;POST&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">payload</span><span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s2">&quot;POST&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">payload</span><span class="p">))</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf8&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
-<p>curl样例：</p>
+</div>
+<div class="section" id="curl">
+<h3>curl<a class="headerlink" href="#curl" title="永久链接至标题">¶</a></h3>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>curl --location --request POST <span class="s1">&#39;http://localhost:8080/query&#39;</span> <span class="se">\</span>
 --header <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\</span>
 --data-raw <span class="s1">&#39;{</span>
@@ -278,8 +291,9 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="id3">
-<h2>返回说明<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+</div>
+<div class="section" id="id4">
+<h2>返回说明<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
 <p>样例：</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;succuss&quot;</span><span class="p">,</span>
@@ -324,7 +338,7 @@
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 4月 30, 2020.
+        最后更新于 5月 11, 2020.
       </span>
 
     </p>

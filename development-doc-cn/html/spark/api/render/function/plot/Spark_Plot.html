@@ -153,57 +153,62 @@
 <dl class="py function">
 <dt id="arctern_pyspark.plot.plot">
 <code class="sig-prename descclassname">arctern_pyspark.plot.</code><code class="sig-name descname">plot</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ax</span></em>, <em class="sig-param"><span class="n">geoms</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">style_kwds</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/arctern_pyspark/plot.html#plot"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#arctern_pyspark.plot.plot" title="永久链接至目标">¶</a></dt>
-<dd><p>Plot a collection of geometries to <cite>ax</cite>. Parameters ‘linewidth’, ‘linestyle’, ‘edgecolor’,
-‘facecolor’, ‘color’, ‘marker’, ‘markersize’ are used to describe the style of plotted figure.</p>
-<p>For geometry types <cite>Polygon</cite> and <cite>MultiPolygon</cite>, only ‘linewidth’, ‘linestyle’, ‘edgecolor’,
-‘facecolor’ are effective.</p>
-<p>For geometry types <cite>Linestring</cite> and <cite>MultiLinestring</cite>, only ‘color’, ‘linewidth’, ‘linestyle’ are effective.</p>
-<p>For geometry types <cite>Point</cite> and <cite>MultiPoint</cite>, only ‘color’, ‘marker’, ‘markersize’ are effective.</p>
+<dd><p>Plots a collection of geometries to <cite>ax</cite></p>
 <dl class="field-list">
-<dt class="field-odd">参数</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>ax</strong> (<em>matplotlib.axes.Axes</em>) – The axes where geometries will be plotted.</p></li>
-<li><p><strong>geoms</strong> (<em>Series</em><em> or </em><em>DataFrame</em>) – sequence of geometries.</p></li>
-<li><p><strong>linewidth</strong> (<em>list</em><em>(</em><em>float</em><em>)</em>) – The width of line, the default value is 1.0.</p></li>
-<li><p><strong>linestyle</strong> (<em>list</em><em>(</em><em>string</em><em>)</em>) – The style of the line， the default value is ‘-‘.</p></li>
-<li><p><strong>edgecolor</strong> (<em>list</em><em>(</em><em>string</em><em>)</em>) – The edge color of the geometry, the default value is ‘black’.</p></li>
-<li><p><strong>facecolor</strong> (<em>list</em><em>(</em><em>string</em><em>)</em>) – The color of the face of the geometry, the default value is ‘C0’.</p></li>
-<li><p><strong>color</strong> (<em>list</em><em>(</em><em>string</em><em>)</em>) – The color of the geometry, the default value is ‘C0’.</p></li>
-<li><p><strong>marker</strong> (<em>string</em>) – The shape of point, the default value is ‘o’.</p></li>
-<li><p><strong>markersize</strong> (<em>double</em>) – The size of points, the default value is 6.0.</p></li>
-</ul>
+<dt class="field-odd">Parms ax</dt>
+<dd class="field-odd"><p>The axes where geometries will be plotted</p>
+</dd>
+<dt class="field-even">Parms geoms</dt>
+<dd class="field-even"><p>sequence of geometries</p>
+</dd>
+<dt class="field-odd">Parms **style_kwds<a href="#id3"><span class="problematic" id="id4">**</span></a>style_kwds</dt>
+<dd class="field-odd"><p>optional, collection of plot style
+<cite>Polygon</cite> and <cite>MultiPolygon</cite>:</p>
+<blockquote>
+<div><p>linewidth
+linestyle
+edgecolor
+facecolor</p>
+</div></blockquote>
+<dl class="simple">
+<dt><cite>LineString</cite> and <cite>MultiLineString</cite>:</dt><dd><p>color
+linewidth
+linestyle</p>
+</dd>
+<dt><cite>Point</cite> and <cite>MultiPoint</cite>:</dt><dd><p>color
+marker
+markersize</p>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Example</dt>
-<dd class="field-even"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern_pyspark</span> <span class="kn">import</span> <span class="n">register_funcs</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyspark.sql.types</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern_pyspark</span> <span class="kn">import</span> <span class="n">plot</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">spark</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;spark.sql.execution.arrow.pyspark.enabled&quot;</span><span class="p">,</span> <span class="s2">&quot;true&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">raw_data</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">raw_data</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s1">&#39;point(0 0)&#39;</span><span class="p">,))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">raw_data</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s1">&#39;linestring(0 10, 5 5, 10 0)&#39;</span><span class="p">,))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">raw_data</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s1">&#39;polygon((2 2,2 3,3 3,3 2,2 2))&#39;</span><span class="p">,))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">raw_data</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s2">&quot;GEOMETRYCOLLECTION(&quot;</span>
-<span class="go">                    &quot;polygon((1 1,1 2,2 2,2 1,1 1)),&quot;</span>
-<span class="go">                    &quot;linestring(0 1, 5 6, 10 11),&quot;</span>
-<span class="go">                    &quot;POINT(4 7))&quot;,))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">raw_schema</span> <span class="o">=</span> <span class="n">StructType</span><span class="p">([</span><span class="n">StructField</span><span class="p">(</span><span class="s1">&#39;geo&#39;</span><span class="p">,</span> <span class="n">StringType</span><span class="p">(),</span><span class="kc">False</span><span class="p">)])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">createDataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">raw_data</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="n">raw_schema</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="o">.</span><span class="n">createOrReplaceTempView</span><span class="p">(</span><span class="s2">&quot;geoms&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">df2</span><span class="o">=</span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;select st_geomfromtext(geo) from geoms&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">df2</span><span class="p">,</span>
-<span class="go">          color=[&#39;orange&#39;, &#39;green&#39;],</span>
-<span class="go">          marker=&#39;^&#39;,</span>
-<span class="go">          markersize=100,</span>
-<span class="go">          linewidth=[None, 7, 8],</span>
-<span class="go">          linestyle=[None, &#39;dashed&#39;, &#39;dashdot&#39;],</span>
-<span class="go">          edgecolor=[None, None, &#39;red&#39;],</span>
-<span class="go">          facecolor=[None, None, &#39;black&#39;])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;/tmp/plot_test.png&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
+<dd class="field-even"><p>from arctern_pyspark import register_funcs
+from pyspark.sql.types import *
+import matplotlib.pyplot as plt
+from arctern_pyspark import plot</p>
+<p>spark.conf.set(“spark.sql.execution.arrow.pyspark.enabled”, “true”)
+raw_data = []
+raw_data.append((‘point(0 0)’,))
+raw_data.append((‘linestring(0 10, 5 5, 10 0)’,))
+raw_data.append((‘polygon((2 2,2 3,3 3,3 2,2 2))’,))
+raw_data.append((“GEOMETRYCOLLECTION(”                          “polygon((1 1,1 2,2 2,2 1,1 1)),”                          “linestring(0 1, 5 6, 10 11),”                          “POINT(4 7))”,))
+raw_schema = StructType([StructField(‘geo’, StringType(),False)])</p>
+<p>df = spark.createDataFrame(data=raw_data, schema=raw_schema)
+df.createOrReplaceTempView(“geoms”)</p>
+<p>df2=spark.sql(“select st_geomfromtext(geo) from geoms”)</p>
+<p>fig, ax = plt.subplots()
+plot(ax, df2,</p>
+<blockquote>
+<div><p>color=[‘orange’, ‘green’],
+marker=’^’,
+markersize=100,
+linewidth=[None, 7, 8],
+linestyle=[None, ‘dashed’, ‘dashdot’],
+edgecolor=[None, None, ‘red’],
+facecolor=[None, None, ‘black’])</p>
+</div></blockquote>
+<p>ax.grid()
+fig.savefig(‘/tmp/plot_test.png’)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -223,7 +228,7 @@
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 4月 30, 2020.
+        最后更新于 5月 11, 2020.
       </span>
 
     </p>

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-30 17:11+0800\n"
+"POT-Creation-Date: 2020-05-11 14:48+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,7 +22,7 @@ msgid "weighted_point_map_layer"
 msgstr ""
 
 #: ../../source/python/api/render/function/layer/weighted_pointmap.md:3
-msgid "绘制一个带权点图，需要先后调用 vega_weighted_pointmap 和 weighted_point_map_layer 两个接口，首先使用 vega_weighted_pointmap 构建描述带权点图渲染样式的 VegaWeightedPointMap 对象，然后使用 weighted_point_map_layer 渲染图像。"
+msgid "绘制一个带权点图。需要先后调用 vega_weighted_pointmap 和 weighted_point_map_layer 两个接口。首先使用 vega_weighted_pointmap 构建描述带权点图渲染样式的 VegaWeightedPointMap 对象，然后使用 weighted_point_map_layer 渲染图像。"
 msgstr ""
 
 #: ../../source/python/api/render/function/layer/weighted_pointmap.md:5
@@ -128,6 +128,6 @@ msgstr ""
 msgid "示例:"
 msgstr ""
 
-#: ../../source/python/api/render/function/layer/weighted_pointmap.md:109
+#: ../../source/python/api/render/function/layer/weighted_pointmap.md:108
 msgid "渲染结果如下："
 msgstr ""

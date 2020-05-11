@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-30 17:11+0800\n"
+"POT-Creation-Date: 2020-05-11 14:48+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,7 +22,7 @@ msgid "icon_viz"
 msgstr ""
 
 #: ../../source/spark/api/render/function/layer/iconviz.md:3
-msgid "绘制一个图标图，需要先后调用 vega_icon 和 icon_viz 两个接口，首先使用 vega_icon 构建描述图标图渲染样式的 VegaIcon 对象，然后使用 icon_viz 渲染图像。"
+msgid "绘制一个图标图。需要先后调用 vega_icon 和 icon_viz 两个接口。首先使用 vega_icon 构建描述图标图渲染样式的 VegaIcon 对象，然后使用 icon_viz 渲染图像。"
 msgstr ""
 
 #: ../../source/spark/api/render/function/layer/iconviz.md:5

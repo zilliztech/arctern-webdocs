@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-30 17:11+0800\n"
+"POT-Creation-Date: 2020-05-11 14:48+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,28 +20,32 @@ msgstr ""
 msgid "ST_Intersection"
 msgstr ""
 
-#: ../../../../../miniconda3/envs/zgis_dev/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Intersection:1
-msgid "Calculate the point set intersection of two geometry objects."
+#: ../../../../../miniconda3/envs/arctern/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Intersection:1
+msgid "Calculate the point set intersection of geometries."
 msgstr ""
 
-#: ../../../../../miniconda3/envs/zgis_dev/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Intersection:0
+#: ../../../../../miniconda3/envs/arctern/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Intersection:3
+msgid "For every (left, right) pair with the same offset value in left and right, calculate a geometry that represents their point set intersection."
+msgstr ""
+
+#: ../../../../../miniconda3/envs/arctern/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Intersection:0
 msgid "参数"
 msgstr ""
 
-#: ../../../../../miniconda3/envs/zgis_dev/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Intersection:4
-#: ../../../../../miniconda3/envs/zgis_dev/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Intersection:7
-#: ../../../../../miniconda3/envs/zgis_dev/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Intersection:10
-msgid "Geometries in WKB form."
+#: ../../../../../miniconda3/envs/arctern/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Intersection:7
+#: ../../../../../miniconda3/envs/arctern/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Intersection:10
+#: ../../../../../miniconda3/envs/arctern/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Intersection:12
+msgid "Geometries organized as WKB."
 msgstr ""
 
-#: ../../../../../miniconda3/envs/zgis_dev/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Intersection:0
-msgid "返回类型"
-msgstr ""
-
-#: ../../../../../miniconda3/envs/zgis_dev/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Intersection:0
+#: ../../../../../miniconda3/envs/arctern/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Intersection:0
 msgid "返回"
 msgstr ""
 
-#: ../../../../../miniconda3/envs/zgis_dev/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Intersection:0
+#: ../../../../../miniconda3/envs/arctern/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Intersection:0
+msgid "返回类型"
+msgstr ""
+
+#: ../../../../../miniconda3/envs/arctern/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Intersection:0
 msgid "example"
 msgstr ""

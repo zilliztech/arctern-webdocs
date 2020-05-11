@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-30 17:11+0800\n"
+"POT-Creation-Date: 2020-05-11 14:48+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -89,17 +89,33 @@ msgid "coordinate_system：输入数据的坐标系统，详见 World Geodetic S
 msgstr ""
 
 #: ../../source/restful/api/function/icon_viz.md:39
-msgid "样例："
+msgid "样例"
 msgstr ""
 
-#: ../../source/restful/api/function/icon_viz.md:84
+#: ../../source/restful/api/function/icon_viz.md:41
+msgid "python"
+msgstr ""
+
+#: ../../source/restful/api/function/icon_viz.md:43
+msgid "本文示例代码使用 python 的 requests 库调用 Arctern Restful API，使用下面的命令安装 requests："
+msgstr ""
+
+#: ../../source/restful/api/function/icon_viz.md:49
+msgid "调用示例："
+msgstr ""
+
+#: ../../source/restful/api/function/icon_viz.md:78
+msgid "curl"
+msgstr ""
+
+#: ../../source/restful/api/function/icon_viz.md:97
 msgid "返回说明"
 msgstr ""
 
-#: ../../source/restful/api/function/icon_viz.md:86
+#: ../../source/restful/api/function/icon_viz.md:99
 msgid "成功样例："
 msgstr ""
 
-#: ../../source/restful/api/function/icon_viz.md:96
+#: ../../source/restful/api/function/icon_viz.md:109
 msgid "失败样例："
 msgstr ""

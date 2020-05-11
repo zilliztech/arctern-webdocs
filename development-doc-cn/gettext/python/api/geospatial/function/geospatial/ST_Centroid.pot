@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-30 17:11+0800\n"
+"POT-Creation-Date: 2020-05-11 14:48+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,30 +20,31 @@ msgstr ""
 msgid "ST_Centroid"
 msgstr ""
 
-#: ../../../../../miniconda3/envs/zgis_dev/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Centroid:1
+#: ../../../../../miniconda3/envs/arctern/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Centroid:1
 msgid "Compute the centroid of geometry."
 msgstr ""
 
-#: ../../../../../miniconda3/envs/zgis_dev/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Centroid:0
+#: ../../../../../miniconda3/envs/arctern/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Centroid:3
+msgid "For every geometry in geometries, compute the controid point of geometry."
+msgstr ""
+
+#: ../../../../../miniconda3/envs/arctern/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Centroid:0
 msgid "参数"
 msgstr ""
 
-#: ../../../../../miniconda3/envs/zgis_dev/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Centroid:4
-msgid "Geometries in WKB form."
+#: ../../../../../miniconda3/envs/arctern/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Centroid:6
+#: ../../../../../miniconda3/envs/arctern/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Centroid:8
+msgid "Geometries organized as WKB."
 msgstr ""
 
-#: ../../../../../miniconda3/envs/zgis_dev/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Centroid:0
-msgid "返回类型"
-msgstr ""
-
-#: ../../../../../miniconda3/envs/zgis_dev/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Centroid:0
+#: ../../../../../miniconda3/envs/arctern/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Centroid:0
 msgid "返回"
 msgstr ""
 
-#: ../../../../../miniconda3/envs/zgis_dev/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Centroid:7
-msgid "The centroid of geometry in WKB form.."
+#: ../../../../../miniconda3/envs/arctern/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Centroid:0
+msgid "返回类型"
 msgstr ""
 
-#: ../../../../../miniconda3/envs/zgis_dev/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Centroid:0
+#: ../../../../../miniconda3/envs/arctern/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Centroid:0
 msgid "example"
 msgstr ""

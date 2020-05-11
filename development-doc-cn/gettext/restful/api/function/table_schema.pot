@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-30 17:11+0800\n"
+"POT-Creation-Date: 2020-05-11 14:48+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -49,21 +49,33 @@ msgid "table：表名。"
 msgstr ""
 
 #: ../../source/restful/api/function/table_schema.md:14
-msgid "python样例："
+msgid "样例"
 msgstr ""
 
-#: ../../source/restful/api/function/table_schema.md:29
-msgid "curl样例："
+#: ../../source/restful/api/function/table_schema.md:16
+msgid "python"
 msgstr ""
 
-#: ../../source/restful/api/function/table_schema.md:35
+#: ../../source/restful/api/function/table_schema.md:18
+msgid "本文示例代码使用 python 的 requests 库调用 Arctern Restful API，使用下面的命令安装 requests："
+msgstr ""
+
+#: ../../source/restful/api/function/table_schema.md:24
+msgid "调用示例"
+msgstr ""
+
+#: ../../source/restful/api/function/table_schema.md:39
+msgid "curl"
+msgstr ""
+
+#: ../../source/restful/api/function/table_schema.md:45
 msgid "返回说明"
 msgstr ""
 
-#: ../../source/restful/api/function/table_schema.md:37
+#: ../../source/restful/api/function/table_schema.md:47
 msgid "成功样例："
 msgstr ""
 
-#: ../../source/restful/api/function/table_schema.md:51
+#: ../../source/restful/api/function/table_schema.md:61
 msgid "失败样例："
 msgstr ""

@@ -188,19 +188,22 @@
 <dl class="py function">
 <dt id="arctern_pyspark._wrapper_func.ST_SimplifyPreserveTopology">
 <code class="sig-prename descclassname">arctern_pyspark.</code><code class="sig-name descname">ST_SimplifyPreserveTopology</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">geos</span></em>, <em class="sig-param"><span class="n">distance_tolerance</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/arctern_pyspark/_wrapper_func.html#ST_SimplifyPreserveTopology"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#arctern_pyspark._wrapper_func.ST_SimplifyPreserveTopology" title="永久链接至目标">¶</a></dt>
-<dd><p>通过 Douglas-Peucker 算法使用折线近似表示几何体中的曲线。</p>
+<dd><p>For each geometry in geometries create a “simplified” version for it according
+to the precision that parameter tolerance specifies.</p>
+<p>Note simplified geometries with be construted in arrow::Array format, so extra
+memory will be allocated.</p>
 <dl class="field-list">
 <dt class="field-odd">参数</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>geos</strong> (<em>WKB</em>) – 几何体。</p></li>
-<li><p><strong>distance_tolerance</strong> (<em>float</em>) – 所允许的误差范围，即直线上的点到曲线距离的最大值。</p></li>
+<li><p><strong>geos</strong> (<em>pandas.Series.object</em>) – Geometries organized as WKB.</p></li>
+<li><p><strong>distance_tolerance</strong> (<em>double</em>) – The precision of the simplified geometry.</p></li>
 </ul>
 </dd>
-<dt class="field-even">返回类型</dt>
-<dd class="field-even"><p>WKB</p>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>Geometries organized as WKB.</p>
 </dd>
-<dt class="field-odd">返回</dt>
-<dd class="field-odd"><p>几何体。</p>
+<dt class="field-odd">返回类型</dt>
+<dd class="field-odd"><p>pandas.Series.object</p>
 </dd>
 <dt class="field-even">例子</dt>
 <dd class="field-even"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span>
@@ -209,18 +212,18 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="n">register_funcs</span><span class="p">(</span><span class="n">spark_session</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">test_data</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">test_data</span><span class="o">.</span><span class="n">extend</span><span class="p">([(</span>
-<span class="go">    &#39;CIRCULARSTRING (0 0,1 1,2 0)&#39;,</span>
+<span class="go">    &#39;POLYGON((8 25, 28 22, 28 20, 15 11, 33 3, 56 30, 46 33, 46 34, 47 44, 35 36, 45 33, 43 19, 29 21, 29 22, 35 26, 24 39, 8 25))&#39;,</span>
 <span class="go">    )])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">test_data</span><span class="o">.</span><span class="n">extend</span><span class="p">([(</span>
 <span class="go">    &#39;LINESTRING(250 250, 280 290, 300 230, 340 300, 360 260, 440 310, 470 360, 604 286)&#39;,</span>
 <span class="go">    )])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">simplify_preserve_topology_df</span> <span class="o">=</span> <span class="n">spark_session</span><span class="o">.</span><span class="n">createDataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">test_data</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;geos&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">cache</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">simplify_preserve_topology_df</span><span class="o">.</span><span class="n">createOrReplaceTempView</span><span class="p">(</span><span class="s2">&quot;simplify_preserve_topology&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">spark_session</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;select ST_AsText(ST_SimplifyPreserveTopology(ST_GeomFromText(geos), 1)) from simplify_preserve_topology&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">spark_session</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;select ST_AsText(ST_SimplifyPreserveTopology(ST_GeomFromText(geos), 10)) from simplify_preserve_topology&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
 <span class="go">+----------------------------------------------------------------------------+</span>
 <span class="go">|ST_AsText(ST_SimplifyPreserveTopology(ST_GeomFromText(geos), 10))           |</span>
 <span class="go">+----------------------------------------------------------------------------+</span>
-<span class="go">|LINESTRING (0 0,2 0)                                                        |</span>
+<span class="go">|POLYGON ((8 25,28 22,15 11,33 3,56 30,47 44,35 36,43 19,24 39,8 25))        |</span>
 <span class="go">|LINESTRING (250 250,280 290,300 230,340 300,360 260,440 310,470 360,604 286)|</span>
 <span class="go">+----------------------------------------------------------------------------+</span>
 </pre></div>
@@ -253,7 +256,7 @@
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 4月 30, 2020.
+        最后更新于 5月 11, 2020.
       </span>
 
     </p>

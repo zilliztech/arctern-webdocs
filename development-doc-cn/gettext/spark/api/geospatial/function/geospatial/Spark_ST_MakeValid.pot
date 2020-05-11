@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-30 17:11+0800\n"
+"POT-Creation-Date: 2020-05-11 14:48+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,30 +20,27 @@ msgstr ""
 msgid "ST_MakeValid"
 msgstr ""
 
-#: ../../../../../miniconda3/envs/zgis_dev/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/_wrapper_func.py:docstring of arctern_pyspark._wrapper_func.ST_MakeValid:1
-msgid "Create a valid representation of the geometry without losing any of the input vertices. If the geometry is already-valid, then nothing will be done."
+#: ../../../../../miniconda3/envs/arctern/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/_wrapper_func.py:docstring of arctern_pyspark._wrapper_func.ST_MakeValid:1
+msgid "For every geometry in geometries, create a valid representation of it without losing any of the input vertices. Already-valid geometries won't have further intervention. This function returns geometries which are validated. Note, new geometries are construted in arrow::Array format, so extra memory will be allocated."
 msgstr ""
 
-#: ../../../../../miniconda3/envs/zgis_dev/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/_wrapper_func.py:docstring of arctern_pyspark._wrapper_func.ST_MakeValid:0
+#: ../../../../../miniconda3/envs/arctern/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/_wrapper_func.py:docstring of arctern_pyspark._wrapper_func.ST_MakeValid:0
 msgid "参数"
 msgstr ""
 
-#: ../../../../../miniconda3/envs/zgis_dev/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/_wrapper_func.py:docstring of arctern_pyspark._wrapper_func.ST_MakeValid:5
-msgid "Geometry"
+#: ../../../../../miniconda3/envs/arctern/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/_wrapper_func.py:docstring of arctern_pyspark._wrapper_func.ST_MakeValid:7
+#: ../../../../../miniconda3/envs/arctern/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/_wrapper_func.py:docstring of arctern_pyspark._wrapper_func.ST_MakeValid:9
+msgid "Geometries organized as WKB."
 msgstr ""
 
-#: ../../../../../miniconda3/envs/zgis_dev/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/_wrapper_func.py:docstring of arctern_pyspark._wrapper_func.ST_MakeValid:0
-msgid "返回类型"
-msgstr ""
-
-#: ../../../../../miniconda3/envs/zgis_dev/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/_wrapper_func.py:docstring of arctern_pyspark._wrapper_func.ST_MakeValid:0
+#: ../../../../../miniconda3/envs/arctern/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/_wrapper_func.py:docstring of arctern_pyspark._wrapper_func.ST_MakeValid:0
 msgid "返回"
 msgstr ""
 
-#: ../../../../../miniconda3/envs/zgis_dev/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/_wrapper_func.py:docstring of arctern_pyspark._wrapper_func.ST_MakeValid:8
-msgid "Geometry if the input geometry is already-valid or can be made valid. Otherwise, NULL."
+#: ../../../../../miniconda3/envs/arctern/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/_wrapper_func.py:docstring of arctern_pyspark._wrapper_func.ST_MakeValid:0
+msgid "返回类型"
 msgstr ""
 
-#: ../../../../../miniconda3/envs/zgis_dev/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/_wrapper_func.py:docstring of arctern_pyspark._wrapper_func.ST_MakeValid:0
+#: ../../../../../miniconda3/envs/arctern/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/_wrapper_func.py:docstring of arctern_pyspark._wrapper_func.ST_MakeValid:0
 msgid "example"
 msgstr ""

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-30 17:11+0800\n"
+"POT-Creation-Date: 2020-05-11 14:48+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,6 +36,6 @@ msgstr ""
 msgid "WKT 形式数据的导入和导出："
 msgstr ""
 
-#: ../../source/spark/data_source/geometry_data_format.md:33
+#: ../../source/spark/data_source/geometry_data_format.md:39
 msgid "WKB 形式数据的导入和导出："
 msgstr ""
