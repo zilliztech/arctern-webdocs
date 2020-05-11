@@ -181,7 +181,7 @@
             
   <div class="section" id="icon-viz">
 <h1>icon_viz<a class="headerlink" href="#icon-viz" title="永久链接至标题">¶</a></h1>
-<p>绘制一个图标图，需要先后调用 vega_icon 和 icon_viz 两个接口，首先使用 vega_icon 构建描述图标图渲染样式的 VegaIcon 对象，然后使用 icon_viz 渲染图像。</p>
+<p>绘制一个图标图。需要先后调用 vega_icon 和 icon_viz 两个接口。首先使用 vega_icon 构建描述图标图渲染样式的 VegaIcon 对象，然后使用 icon_viz 渲染图像。</p>
 <div class="section" id="vega-icon">
 <h2>vega_icon<a class="headerlink" href="#vega-icon" title="永久链接至标题">¶</a></h2>
 <p><strong>arctern.util.vega.vega_icon(width,height,bounding_box,icon_path,coordinate_system)</strong></p>
@@ -221,8 +221,8 @@
     <span class="o">&gt;&gt;&gt;</span> 
     <span class="o">&gt;&gt;&gt;</span> <span class="c1"># test_data.csv下载链接: https://github.com/zilliztech/arctern-resources/raw/benchmarks/benchmarks/dataset/layer_rendering_test_data/test_data.csv</span>
     <span class="o">&gt;&gt;&gt;</span> <span class="n">table_df</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;csv&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;header&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;delimiter&quot;</span><span class="p">,</span> <span class="s2">&quot;,&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">schema</span><span class="p">(</span>
-    <span class="o">&gt;&gt;&gt;</span>     <span class="s2">&quot;longitude double, latitude double, color_weights double, size_weights double, region_boundaries string&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">(</span>
-    <span class="o">&gt;&gt;&gt;</span>     <span class="s2">&quot;file:///tmp/test_data.csv&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">cache</span><span class="p">()</span>
+    <span class="s2">&quot;longitude double, latitude double, color_weights double, size_weights double, region_boundaries string&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">(</span>
+    <span class="s2">&quot;file:///path/to/test_data.csv&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">cache</span><span class="p">()</span>
     <span class="o">&gt;&gt;&gt;</span> <span class="n">table_df</span><span class="o">.</span><span class="n">createOrReplaceTempView</span><span class="p">(</span><span class="s2">&quot;test_table&quot;</span><span class="p">)</span>
     <span class="o">&gt;&gt;&gt;</span> 
     <span class="o">&gt;&gt;&gt;</span> <span class="n">register_funcs</span><span class="p">(</span><span class="n">spark</span><span class="p">)</span>
@@ -230,7 +230,7 @@
     <span class="o">&gt;&gt;&gt;</span> <span class="c1"># df 是包含 1 列数据的 pyspark.Dataframe，该列为 WKB 类型的points</span>
     <span class="o">&gt;&gt;&gt;</span> <span class="c1"># 根据 point 数据绘制图标图</span>
     <span class="o">&gt;&gt;&gt;</span> <span class="n">df</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;select ST_Point(longitude, latitude) as point from test_table where ST_Within(ST_Point(longitude, latitude), ST_GeomFromText(&#39;POLYGON ((-74.01424568752932 40.72759334104623, -74.01424568752932 40.76721122683304, -73.96056823889673 40.76721122683304, -73.96056823889673 40.72759334104623, -74.01424568752932 40.72759334104623))&#39;))  limit 10&quot;</span><span class="p">)</span>
-    <span class="o">&gt;&gt;&gt;</span> <span class="n">vega</span> <span class="o">=</span> <span class="n">vega_icon</span><span class="p">(</span><span class="mi">1824</span><span class="p">,</span> <span class="mi">1777</span><span class="p">,</span> <span class="n">bounding_box</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mf">74.01424568752932</span><span class="p">,</span> <span class="mf">40.72759334104623</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.96056823889673</span><span class="p">,</span> <span class="mf">40.76721122683304</span><span class="p">],</span> <span class="n">icon_path</span><span class="o">=</span><span class="s1">&#39;path_to_icon_example.png&#39;</span><span class="p">,</span> <span class="n">coordinate_system</span><span class="o">=</span><span class="s1">&#39;EPSG:4326&#39;</span><span class="p">)</span>
+    <span class="o">&gt;&gt;&gt;</span> <span class="n">vega</span> <span class="o">=</span> <span class="n">vega_icon</span><span class="p">(</span><span class="mi">1824</span><span class="p">,</span> <span class="mi">1777</span><span class="p">,</span> <span class="n">bounding_box</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mf">74.01424568752932</span><span class="p">,</span> <span class="mf">40.72759334104623</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.96056823889673</span><span class="p">,</span> <span class="mf">40.76721122683304</span><span class="p">],</span> <span class="n">icon_path</span><span class="o">=</span><span class="s1">&#39;/path/to/icon.png&#39;</span><span class="p">,</span> <span class="n">coordinate_system</span><span class="o">=</span><span class="s1">&#39;EPSG:4326&#39;</span><span class="p">)</span>
     <span class="o">&gt;&gt;&gt;</span> <span class="n">res</span> <span class="o">=</span> <span class="n">icon_viz</span><span class="p">(</span><span class="n">vega</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span>
     <span class="o">&gt;&gt;&gt;</span> <span class="n">save_png</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="s1">&#39;/tmp/icon_viz.png&#39;</span><span class="p">)</span>
     <span class="o">&gt;&gt;&gt;</span> 
@@ -239,7 +239,7 @@
 </pre></div>
 </div>
 <p>渲染结果如下：
-<img alt="../../../../../_images/icon_viz.png" src="../../../../../_images/icon_viz.png" /></p>
+<img alt="../../../../../_images/icon_viz1.png" src="../../../../../_images/icon_viz1.png" /></p>
 </div>
 </div>
 </div>
@@ -266,7 +266,7 @@
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 4月 30, 2020.
+        最后更新于 5月 11, 2020.
       </span>
 
     </p>

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-30 17:11+0800\n"
+"POT-Creation-Date: 2020-05-11 14:48+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,31 +20,35 @@ msgstr ""
 msgid "ST_Within"
 msgstr ""
 
-#: ../../../../../miniconda3/envs/zgis_dev/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Within:1
-msgid "Check whether geometry \"geo1\" is within geometry \"geo2\". \"geo1 within geo2\" means no points of \"geo1\" lie in the exterior of \"geo2\" and at least one point of the interior of \"geo1\" lies in the interior of \"geo2\"."
+#: ../../../../../miniconda3/envs/arctern/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Within:1
+msgid "Check whether a geometry is within another geometry."
 msgstr ""
 
-#: ../../../../../miniconda3/envs/zgis_dev/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Within:0
+#: ../../../../../miniconda3/envs/arctern/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Within:3
+msgid "For every (left, right) pair with the same offset value in left and right, check if left is \"within\" right. Left \"within\" right means no points of left lie in the exterior of right and at least one point of the interior of left lies in the interior of right."
+msgstr ""
+
+#: ../../../../../miniconda3/envs/arctern/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Within:0
 msgid "参数"
 msgstr ""
 
-#: ../../../../../miniconda3/envs/zgis_dev/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Within:5
-#: ../../../../../miniconda3/envs/zgis_dev/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Within:8
-msgid "Geometries in WKB form."
+#: ../../../../../miniconda3/envs/arctern/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Within:9
+#: ../../../../../miniconda3/envs/arctern/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Within:12
+msgid "Geometries organized as WKB."
 msgstr ""
 
-#: ../../../../../miniconda3/envs/zgis_dev/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Within:0
-msgid "返回类型"
-msgstr ""
-
-#: ../../../../../miniconda3/envs/zgis_dev/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Within:0
+#: ../../../../../miniconda3/envs/arctern/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Within:0
 msgid "返回"
 msgstr ""
 
-#: ../../../../../miniconda3/envs/zgis_dev/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Within:11
-msgid "True if geometry \"geo1\" within geometry \"geo2\"."
+#: ../../../../../miniconda3/envs/arctern/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Within:14
+msgid "An array of booleans."
 msgstr ""
 
-#: ../../../../../miniconda3/envs/zgis_dev/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Within:0
+#: ../../../../../miniconda3/envs/arctern/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Within:0
+msgid "返回类型"
+msgstr ""
+
+#: ../../../../../miniconda3/envs/arctern/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Within:0
 msgid "example"
 msgstr ""

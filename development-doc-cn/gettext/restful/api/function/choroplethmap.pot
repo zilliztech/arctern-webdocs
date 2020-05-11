@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-30 17:11+0800\n"
+"POT-Creation-Date: 2020-05-11 14:48+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -85,15 +85,15 @@ msgid "coordinate_system：输入数据的坐标系统，详见 World Geodetic S
 msgstr ""
 
 #: ../../source/restful/api/function/choroplethmap.md:40
-msgid "color_gradient：点的颜色渐变范围，即点的颜色从左边渐变到右边；"
+msgid "color_gradient：轮廓的颜色渐变范围，即轮廓的颜色从左边渐变到右边；"
 msgstr ""
 
 #: ../../source/restful/api/function/choroplethmap.md:41
-msgid "color_bound：点颜色的取值范围，与 color_gradient 配合使用；"
+msgid "color_bound：轮廓颜色的取值范围，与 color_gradient 配合使用；"
 msgstr ""
 
 #: ../../source/restful/api/function/choroplethmap.md:42
-msgid "opacity：点的不透明度。"
+msgid "opacity：轮廓的不透明度。"
 msgstr ""
 
 #: ../../source/restful/api/function/choroplethmap.md:43
@@ -101,17 +101,33 @@ msgid "aggregation_type：聚合类型。"
 msgstr ""
 
 #: ../../source/restful/api/function/choroplethmap.md:45
-msgid "样例："
+msgid "样例"
 msgstr ""
 
-#: ../../source/restful/api/function/choroplethmap.md:94
+#: ../../source/restful/api/function/choroplethmap.md:47
+msgid "python"
+msgstr ""
+
+#: ../../source/restful/api/function/choroplethmap.md:49
+msgid "本文示例代码使用 python 的 requests 库调用 Arctern Restful API，使用下面的命令安装 requests："
+msgstr ""
+
+#: ../../source/restful/api/function/choroplethmap.md:55
+msgid "调用示例："
+msgstr ""
+
+#: ../../source/restful/api/function/choroplethmap.md:86
+msgid "curl"
+msgstr ""
+
+#: ../../source/restful/api/function/choroplethmap.md:107
 msgid "返回说明"
 msgstr ""
 
-#: ../../source/restful/api/function/choroplethmap.md:96
+#: ../../source/restful/api/function/choroplethmap.md:109
 msgid "成功样例："
 msgstr ""
 
-#: ../../source/restful/api/function/choroplethmap.md:106
+#: ../../source/restful/api/function/choroplethmap.md:119
 msgid "失败样例："
 msgstr ""

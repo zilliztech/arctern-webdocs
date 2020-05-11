@@ -181,7 +181,7 @@
             
   <div class="section" id="choropleth-map-layer">
 <h1>choropleth_map_layer<a class="headerlink" href="#choropleth-map-layer" title="永久链接至标题">¶</a></h1>
-<p>绘制一个轮廓图，需要先后调用 vega_choroplethmap 和 choropleth_map_layer 两个接口，首先使用 vega_choroplethmap 构建描述轮廓图渲染样式的 VegaChoroplethMap 对象，然后使用 choropleth_map_layer 渲染图像。</p>
+<p>绘制一个轮廓图。需要先后调用 vega_choroplethmap 和 choropleth_map_layer 两个接口。首先使用 vega_choroplethmap 构建描述轮廓图渲染样式的 VegaChoroplethMap 对象，然后使用 choropleth_map_layer 渲染图像。</p>
 <div class="section" id="vega-choroplethmap">
 <h2>vega_choroplethmap<a class="headerlink" href="#vega-choroplethmap" title="永久链接至标题">¶</a></h2>
 <p><strong>arctern.util.vega.vega_choroplethmap(width,height,bounding_box,color_gradient,
@@ -192,7 +192,7 @@ color_bound,opacity,coordinate_system,aggregation_type)</strong></p>
 <p>        * height(int) – 图片高度，单位为像素个数。</p>
 <p>        * bounding_box(list) – 图片对应的地理坐标区域，以 [x_min, y_min, x_max, y_max] 的形式表示一个矩形区域。图片左下角的像素坐标 (0, 0) 对应地理坐标 (x_min, y_min) ，图片右上角的像素坐标 (width, height) 对应地理坐标 (x_max, y_max)。</p>
 <p>        * color_gradient(list) – 轮廓的颜色渐变范围，表示形式为 [“hex_color”] 或 [“hex_color1”, “hex_color2”]。当形式为[“hex_color”] 时所有轮廓的颜色相同。当形式为[“hex_color1”, “hex_color2”] 时轮廓的颜色由输入数据中一列的值（权重）决定，且颜色在 “hex_color1” ~ “hex_color2” 之间变化。</p>
-<p>        * color_bound(list) – 可选参数，用于描述权重与颜色的对应关系，仅当color_gradient中包含两个颜色值时需要设置，表示形式为 [color_min, color_max]。权重值小于等于 color_min 时点的颜色为”hex_color1”， 权重值大于等于 color_max 时点的颜色为”hex_color2”。</p>
+<p>        * color_bound(list) – 可选参数，用于描述权重与颜色的对应关系，仅当color_gradient中包含两个颜色值时需要设置，表示形式为 [color_min, color_max]。权重值小于等于 color_min 时轮廓的颜色为”hex_color1”， 权重值大于等于 color_max 时轮廓的颜色为”hex_color2”。</p>
 <p>        * opacity(float) – 可选参数，表示轮廓的不透明度，范围为 0.0 ~ 1.0，默认值为 1.0。</p>
 <p>        * coordinate_system(str) – 可选参数，表示输入数据所属的地理坐标系统，默认值为”EPSG:3857”，当前支持的地理坐标系统请参照 <a class="reference external" href="https://spatialreference.org/">https://spatialreference.org/</a>。</p>
 <p>        * aggregation_type(str) – 可选参数，表示输入数据到轮廓权重的聚合方式，默认值为”sum”。</p>
@@ -207,7 +207,7 @@ color_bound,opacity,coordinate_system,aggregation_type)</strong></p>
 <p>    绘制轮廓图，权重用于决定轮廓的填充颜色。</p>
 <p>    参数</p>
 <p>        * vega(VegaChoroplethMap) – VegaChoroplethMap 对象。</p>
-<p>        * points(Series(dtype: object)) – 所需绘制的多边形轮廓，格式为WKB。</p>
+<p>        * region_boundaries(Series(dtype: object)) – 所需绘制的多边形轮廓，格式为WKB。</p>
 <p>        * weights(Series(dtype: float64|int64)) – 轮廓的颜色权重。</p>
 <p>    返回值类型</p>
 <p>        bytes</p>
@@ -223,7 +223,7 @@ color_bound,opacity,coordinate_system,aggregation_type)</strong></p>
     <span class="o">&gt;&gt;&gt;</span> 
     <span class="o">&gt;&gt;&gt;</span> <span class="c1"># 读取 csv 文件并创建绘图数据</span>
     <span class="o">&gt;&gt;&gt;</span> <span class="c1"># test_data.csv下载链接: https://github.com/zilliztech/arctern-resources/raw/benchmarks/benchmarks/dataset/layer_rendering_test_data/test_data.csv</span>
-    <span class="o">&gt;&gt;&gt;</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;test_data.csv&quot;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;longitude&#39;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">,</span> <span class="s1">&#39;latitude&#39;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">,</span> <span class="s1">&#39;color_weights&#39;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">,</span> <span class="s1">&#39;size_weights&#39;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">,</span> <span class="s1">&#39;region_boundaries&#39;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">object</span><span class="p">})</span>
+    <span class="o">&gt;&gt;&gt;</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;/path/to/test_data.csv&quot;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;longitude&#39;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">,</span> <span class="s1">&#39;latitude&#39;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">,</span> <span class="s1">&#39;color_weights&#39;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">,</span> <span class="s1">&#39;size_weights&#39;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">,</span> <span class="s1">&#39;region_boundaries&#39;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">object</span><span class="p">})</span>
     <span class="o">&gt;&gt;&gt;</span> <span class="n">input1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">notna</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;region_boundaries&#39;</span><span class="p">])]</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;region_boundaries&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
     <span class="o">&gt;&gt;&gt;</span> <span class="n">polygon</span> <span class="o">=</span> <span class="n">arctern</span><span class="o">.</span><span class="n">ST_GeomFromText</span><span class="p">(</span><span class="n">input1</span><span class="p">[</span><span class="s1">&#39;region_boundaries&#39;</span><span class="p">])</span>
     <span class="o">&gt;&gt;&gt;</span> 
@@ -261,7 +261,7 @@ color_bound,opacity,coordinate_system,aggregation_type)</strong></p>
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 4月 30, 2020.
+        最后更新于 5月 11, 2020.
       </span>
 
     </p>

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-30 17:11+0800\n"
+"POT-Creation-Date: 2020-05-11 14:48+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -49,21 +49,33 @@ msgid "scope：作用域名称。"
 msgstr ""
 
 #: ../../source/restful/api/function/delete_scope.md:16
-msgid "python样例："
+msgid "样例"
 msgstr ""
 
-#: ../../source/restful/api/function/delete_scope.md:31
-msgid "curl样例："
+#: ../../source/restful/api/function/delete_scope.md:18
+msgid "python"
 msgstr ""
 
-#: ../../source/restful/api/function/delete_scope.md:37
+#: ../../source/restful/api/function/delete_scope.md:20
+msgid "本文示例代码使用 python 的 requests 库调用 Arctern Restful API，使用下面的命令安装 requests："
+msgstr ""
+
+#: ../../source/restful/api/function/delete_scope.md:26
+msgid "调用示例："
+msgstr ""
+
+#: ../../source/restful/api/function/delete_scope.md:42
+msgid "curl"
+msgstr ""
+
+#: ../../source/restful/api/function/delete_scope.md:48
 msgid "返回说明"
 msgstr ""
 
-#: ../../source/restful/api/function/delete_scope.md:39
+#: ../../source/restful/api/function/delete_scope.md:50
 msgid "成功样例："
 msgstr ""
 
-#: ../../source/restful/api/function/delete_scope.md:50
+#: ../../source/restful/api/function/delete_scope.md:61
 msgid "失败样例："
 msgstr ""

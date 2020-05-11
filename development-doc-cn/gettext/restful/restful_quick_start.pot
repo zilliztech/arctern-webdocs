@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-30 17:11+0800\n"
+"POT-Creation-Date: 2020-05-11 14:48+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -117,137 +117,177 @@ msgid "下述示例中假设服务器 IP 地址为127.0.0.1，Restful服务端�
 msgstr ""
 
 #: ../../source/restful/restful_quick_start.md:36
-msgid "API调用"
+msgid "安装依赖"
 msgstr ""
 
 #: ../../source/restful/restful_quick_start.md:38
+msgid "本文示例代码使用 python 的 requests 库调用 Arctern Restful API，使用下面的命令安装 requests："
+msgstr ""
+
+#: ../../source/restful/restful_quick_start.md:44
+msgid "API调用"
+msgstr ""
+
+#: ../../source/restful/restful_quick_start.md:46
 msgid "创建作用域"
 msgstr ""
 
-#: ../../source/restful/restful_quick_start.md:40
+#: ../../source/restful/restful_quick_start.md:48
 msgid "使用 /scope 接口创建名为 nyc_taxi 的作用域。作用域用于为用户分配服务器资源，每个作用域拥有独享的上下文信息，如载入的文件数据。"
 msgstr ""
 
-#: ../../source/restful/restful_quick_start.md:57
+#: ../../source/restful/restful_quick_start.md:66
 msgid "数据导入"
 msgstr ""
 
-#: ../../source/restful/restful_quick_start.md:59
+#: ../../source/restful/restful_quick_start.md:68
 msgid "使用 /loadfile 接口导入纽约出租车数据集，将其对应的数据表命名为 raw_data，scope 字段使用先前创建的 scope 名称 nyc_taxi："
 msgstr ""
 
-#: ../../source/restful/restful_quick_start.md:107
+#: ../../source/restful/restful_quick_start.md:117
 msgid "查询表信息"
 msgstr ""
 
-#: ../../source/restful/restful_quick_start.md:109
+#: ../../source/restful/restful_quick_start.md:119
 msgid "之前的操作在后台建了一张名为 raw_data 的表，使用 /table/schema 接口查询该表中各字段的名称以及对应的数据类型："
 msgstr ""
 
-#: ../../source/restful/restful_quick_start.md:189
+#: ../../source/restful/restful_quick_start.md:199
 msgid "SQL查询"
 msgstr ""
 
-#: ../../source/restful/restful_quick_start.md:191
+#: ../../source/restful/restful_quick_start.md:201
 msgid "使用 /query 接口可完成数据表的创建、查询和删除操作。"
 msgstr ""
 
-#: ../../source/restful/restful_quick_start.md:193
+#: ../../source/restful/restful_quick_start.md:203
 msgid "创建表"
 msgstr ""
 
-#: ../../source/restful/restful_quick_start.md:195
+#: ../../source/restful/restful_quick_start.md:205
 msgid "将 raw_data 中字符串格式的时间信息转换为 timestamp 类型的数据并移除与后续操作无关的字段，保存为一张新的表 nyc_taxi。"
 msgstr ""
 
-#: ../../source/restful/restful_quick_start.md:217
+#: ../../source/restful/restful_quick_start.md:228
 msgid "查询数据"
 msgstr ""
 
-#: ../../source/restful/restful_quick_start.md:219
+#: ../../source/restful/restful_quick_start.md:230
 msgid "查询 nyc_taxi 表的行数："
 msgstr ""
 
-#: ../../source/restful/restful_quick_start.md:240
+#: ../../source/restful/restful_quick_start.md:252
 msgid "删除表"
 msgstr ""
 
-#: ../../source/restful/restful_quick_start.md:242
+#: ../../source/restful/restful_quick_start.md:254
 msgid "删除原始表 raw_data："
 msgstr ""
 
-#: ../../source/restful/restful_quick_start.md:260
+#: ../../source/restful/restful_quick_start.md:273
 msgid "绘制点图"
 msgstr ""
 
-#: ../../source/restful/restful_quick_start.md:262
+#: ../../source/restful/restful_quick_start.md:275
 msgid "使用 /pointmap 接口根据乘客上车地点绘制点图。点图中具体参数说明请参见 点图 Restful API 说明。"
 msgstr ""
 
-#: ../../source/restful/restful_quick_start.md:292
+#: ../../source/restful/restful_quick_start.md:306
 msgid "在上述样例代码中，我们将点图数据保存在了 /tmp/pointmap.png，可以在终端使用如下命令查看点图渲染效果："
 msgstr ""
 
-#: ../../source/restful/restful_quick_start.md:298
+#: ../../source/restful/restful_quick_start.md:312
 msgid "点图pointmap"
 msgstr ""
 
-#: ../../source/restful/restful_quick_start.md:300
+#: ../../source/restful/restful_quick_start.md:314
 msgid "带权点图"
 msgstr ""
 
-#: ../../source/restful/restful_quick_start.md:302
+#: ../../source/restful/restful_quick_start.md:316
 msgid "使用 /weighted_pointmap 接口根据乘客上车地点绘制带权点图，使用总费用作为点的权重，总费用越高，权重越大，点的颜色越深。权重图中具体参数说明请参见 带权点图 Restful API 说明。"
 msgstr ""
 
-#: ../../source/restful/restful_quick_start.md:345
+#: ../../source/restful/restful_quick_start.md:361
 msgid "带权点图样例："
 msgstr ""
 
-#: ../../source/restful/restful_quick_start.md:347
+#: ../../source/restful/restful_quick_start.md:363
 msgid "带权点图weighted_pointmap。"
 msgstr ""
 
-#: ../../source/restful/restful_quick_start.md:349
+#: ../../source/restful/restful_quick_start.md:365
 msgid "热力图"
 msgstr ""
 
-#: ../../source/restful/restful_quick_start.md:351
+#: ../../source/restful/restful_quick_start.md:367
 msgid "使用 /heatmap 接口根据乘客下车地点以及行程费用绘制热力图，费用高的区域为红色，费用低的区域为绿色。热力图中具体参数说明请参见 热力图 Restful API 说明。"
 msgstr ""
 
-#: ../../source/restful/restful_quick_start.md:383
+#: ../../source/restful/restful_quick_start.md:401
 msgid "热力图样例："
 msgstr ""
 
-#: ../../source/restful/restful_quick_start.md:385
+#: ../../source/restful/restful_quick_start.md:403
 msgid "热力图heatmap"
 msgstr ""
 
-#: ../../source/restful/restful_quick_start.md:387
+#: ../../source/restful/restful_quick_start.md:405
 msgid "轮廓图"
 msgstr ""
 
-#: ../../source/restful/restful_quick_start.md:389
+#: ../../source/restful/restful_quick_start.md:407
 msgid "使用 /choroplethmap 接口，根据下车地点所在建筑物、小费金额绘制轮廓图，小费金额高为黄色，小费金额低为蓝色。轮廓图中具体参数说明请参见 轮廓图 Restful API 说明。"
 msgstr ""
 
-#: ../../source/restful/restful_quick_start.md:429
+#: ../../source/restful/restful_quick_start.md:449
 msgid "轮廓图样例："
 msgstr ""
 
-#: ../../source/restful/restful_quick_start.md:431
+#: ../../source/restful/restful_quick_start.md:451
 msgid "轮廓图choroplethmap.png"
 msgstr ""
 
-#: ../../source/restful/restful_quick_start.md:433
+#: ../../source/restful/restful_quick_start.md:453
+msgid "图标图"
+msgstr ""
+
+#: ../../source/restful/restful_quick_start.md:455
+msgid "使用 /icon_viz 接口根据乘客上车地点绘制图标图。图标图中具体参数说明请参见 图标图 Restful API 说明。"
+msgstr ""
+
+#: ../../source/restful/restful_quick_start.md:491
+msgid "图标图样例："
+msgstr ""
+
+#: ../../source/restful/restful_quick_start.md:493
+msgid "图标图icon_viz"
+msgstr ""
+
+#: ../../source/restful/restful_quick_start.md:495
+msgid "渔网图"
+msgstr ""
+
+#: ../../source/restful/restful_quick_start.md:497
+msgid "使用 /fishnetmap 接口根据乘客上车地点绘制渔网图，使用总费用作为渔网网格的权重，总费用越高，权重越大，渔网网格的颜色越深。渔网图中具体参数说明请参见 渔网图 Restful API 说明。"
+msgstr ""
+
+#: ../../source/restful/restful_quick_start.md:536
+msgid "渔网图样例："
+msgstr ""
+
+#: ../../source/restful/restful_quick_start.md:538
+msgid "渔网图fishnetmap"
+msgstr ""
+
+#: ../../source/restful/restful_quick_start.md:540
 msgid "删除作用域"
 msgstr ""
 
-#: ../../source/restful/restful_quick_start.md:435
+#: ../../source/restful/restful_quick_start.md:542
 msgid "完成操作后需要通过 /scope/<scope_name> 接口删除作用域释放服务器资源。"
 msgstr ""
 
-#: ../../source/restful/restful_quick_start.md:437
+#: ../../source/restful/restful_quick_start.md:544
 msgid "<font color=\"#dd0000\">注意：</font>Arctern Restful服务不会主动释放用户申请的作用域，完成操作后请务必删除所申请的所有作用域。"
 msgstr ""

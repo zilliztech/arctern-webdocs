@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-30 17:11+0800\n"
+"POT-Creation-Date: 2020-05-11 14:48+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,7 +21,7 @@ msgid "choroplehtmap"
 msgstr ""
 
 #: ../../source/spark/api/render/function/layer/choroplethmap.md:3
-msgid "绘制一个轮廓图，需要先后调用 vega_choroplethmap 和 choroplemap 两个接口，首先使用 vega_choroplethmap 构建描述轮廓图渲染样式的 VegaChoroplethMap 对象，然后使用 choroplemap 渲染图像。"
+msgid "绘制一个轮廓图。需要先后调用 vega_choroplethmap 和 choroplemap 两个接口。首先使用 vega_choroplethmap 构建描述轮廓图渲染样式的 VegaChoroplethMap 对象，然后使用 choroplemap 渲染图像。"
 msgstr ""
 
 #: ../../source/spark/api/render/function/layer/choroplethmap.md:5
@@ -58,7 +58,7 @@ msgid "* color_gradient(list) -- 轮廓的颜色渐变范围，表示形式为 [
 msgstr ""
 
 #: ../../source/spark/api/render/function/layer/choroplethmap.md:22
-msgid "* color_bound(list) -- 可选参数，用于描述权重与颜色的对应关系，仅当color_gradient中包含两个颜色值时需要设置，表示形式为 [color_min, color_max]。权重值小于等于 color_min 时点的颜色为\"hex_color1\"， 权重值大于等于 color_max 时点的颜色为\"hex_color2\"。"
+msgid "* color_bound(list) -- 可选参数，用于描述权重与颜色的对应关系，仅当color_gradient中包含两个颜色值时需要设置，表示形式为 [color_min, color_max]。权重值小于等于 color_min 时轮廓的颜色为\"hex_color1\"， 权重值大于等于 color_max 时轮廓的颜色为\"hex_color2\"。"
 msgstr ""
 
 #: ../../source/spark/api/render/function/layer/choroplethmap.md:24

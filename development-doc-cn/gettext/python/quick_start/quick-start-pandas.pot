@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-30 17:11+0800\n"
+"POT-Creation-Date: 2020-05-11 14:48+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -105,7 +105,7 @@ msgid "加载数据"
 msgstr ""
 
 #: ../../source/python/quick_start/quick-start-pandas.md:30
-msgid "以下通过 Python 交互界面展示 Arctern 的使用方法。根据测试数据各字段的名称和数据类型，构建导入测试数据的 schema。"
+msgid "以下通过 Python 交互界面展示 Arctern 的使用方法。根据测试数据各字段的名称和数据类型，构建导入测试数据的 schema并导入数据。"
 msgstr ""
 
 #: ../../source/python/quick_start/quick-start-pandas.md:58
@@ -149,9 +149,49 @@ msgid "导入绘图需要使用的模块："
 msgstr ""
 
 #: ../../source/python/quick_start/quick-start-pandas.md:130
-msgid "通过 Arctern 提供的绘图函数绘制图层："
+msgid "通过 Arctern 提供的绘图函数绘制点图图层："
 msgstr ""
 
 #: ../../source/python/quick_start/quick-start-pandas.md:139
-msgid "绘图结果如下："
+msgid "点图图层绘制结果如下："
+msgstr ""
+
+#: ../../source/python/quick_start/quick-start-pandas.md:143
+msgid "通过 Arctern 提供的绘图函数绘制带权点图图层："
+msgstr ""
+
+#: ../../source/python/quick_start/quick-start-pandas.md:152
+msgid "带权点图图层绘制结果如下："
+msgstr ""
+
+#: ../../source/python/quick_start/quick-start-pandas.md:156
+msgid "通过 Arctern 提供的绘图函数绘制热力图图层："
+msgstr ""
+
+#: ../../source/python/quick_start/quick-start-pandas.md:165
+msgid "热力图图层绘制结果如下："
+msgstr ""
+
+#: ../../source/python/quick_start/quick-start-pandas.md:169
+msgid "通过 Arctern 提供的绘图函数绘制轮廓图图层："
+msgstr ""
+
+#: ../../source/python/quick_start/quick-start-pandas.md:178
+msgid "轮廓图图层绘制结果如下："
+msgstr ""
+
+#: ../../source/python/quick_start/quick-start-pandas.md:182
+msgid "通过 Arctern 提供的绘图函数绘制图标图图层："
+msgstr ""
+
+#: ../../source/python/quick_start/quick-start-pandas.md:191
+msgid "图标图图层绘制结果如下："
+msgstr ""
+
+#: ../../source/python/quick_start/quick-start-pandas.md:195
+msgid "通过 Arctern 提供的绘图函数绘制渔网图图层："
+msgstr ""
+
+#: ../../source/python/quick_start/quick-start-pandas.md:204
+msgid "渔网图图层绘制结果如下："
 msgstr ""

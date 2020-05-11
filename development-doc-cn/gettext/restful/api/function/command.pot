@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-30 17:11+0800\n"
+"POT-Creation-Date: 2020-05-11 14:48+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -61,21 +61,33 @@ msgid "command：待执行的 python 代码。"
 msgstr ""
 
 #: ../../source/restful/api/function/command.md:24
-msgid "python样例："
+msgid "样例"
 msgstr ""
 
-#: ../../source/restful/api/function/command.md:44
-msgid "curl样例："
+#: ../../source/restful/api/function/command.md:26
+msgid "python"
+msgstr ""
+
+#: ../../source/restful/api/function/command.md:28
+msgid "本文示例代码使用 python 的 requests 库调用 Arctern Restful API，使用下面的命令安装 requests："
+msgstr ""
+
+#: ../../source/restful/api/function/command.md:34
+msgid "调用示例："
 msgstr ""
 
 #: ../../source/restful/api/function/command.md:55
+msgid "curl"
+msgstr ""
+
+#: ../../source/restful/api/function/command.md:66
 msgid "返回说明"
 msgstr ""
 
-#: ../../source/restful/api/function/command.md:57
+#: ../../source/restful/api/function/command.md:68
 msgid "正常执行："
 msgstr ""
 
-#: ../../source/restful/api/function/command.md:67
+#: ../../source/restful/api/function/command.md:78
 msgid "执行对应代码出现异常："
 msgstr ""

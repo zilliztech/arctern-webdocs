@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-30 17:11+0800\n"
+"POT-Creation-Date: 2020-05-11 14:48+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,30 +20,30 @@ msgstr ""
 msgid "ST_GeomFromGeoJSON"
 msgstr ""
 
-#: ../../../../../miniconda3/envs/zgis_dev/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/_wrapper_func.py:docstring of arctern_pyspark._wrapper_func.ST_GeomFromGeoJSON:1
-msgid "Construct geometry from the GeoJSON representation."
+#: ../../../../../miniconda3/envs/arctern/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/_wrapper_func.py:docstring of arctern_pyspark._wrapper_func.ST_GeomFromGeoJSON:1
+msgid "Constructs geometries from the GeoJSON representation."
 msgstr ""
 
-#: ../../../../../miniconda3/envs/zgis_dev/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/_wrapper_func.py:docstring of arctern_pyspark._wrapper_func.ST_GeomFromGeoJSON:0
+#: ../../../../../miniconda3/envs/arctern/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/_wrapper_func.py:docstring of arctern_pyspark._wrapper_func.ST_GeomFromGeoJSON:0
 msgid "参数"
 msgstr ""
 
-#: ../../../../../miniconda3/envs/zgis_dev/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/_wrapper_func.py:docstring of arctern_pyspark._wrapper_func.ST_GeomFromGeoJSON:4
-msgid "Geometry in GeoJson format."
+#: ../../../../../miniconda3/envs/arctern/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/_wrapper_func.py:docstring of arctern_pyspark._wrapper_func.ST_GeomFromGeoJSON:4
+msgid "Geometries organized as json"
 msgstr ""
 
-#: ../../../../../miniconda3/envs/zgis_dev/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/_wrapper_func.py:docstring of arctern_pyspark._wrapper_func.ST_GeomFromGeoJSON:0
-msgid "返回类型"
-msgstr ""
-
-#: ../../../../../miniconda3/envs/zgis_dev/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/_wrapper_func.py:docstring of arctern_pyspark._wrapper_func.ST_GeomFromGeoJSON:0
+#: ../../../../../miniconda3/envs/arctern/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/_wrapper_func.py:docstring of arctern_pyspark._wrapper_func.ST_GeomFromGeoJSON:0
 msgid "返回"
 msgstr ""
 
-#: ../../../../../miniconda3/envs/zgis_dev/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/_wrapper_func.py:docstring of arctern_pyspark._wrapper_func.ST_GeomFromGeoJSON:7
-msgid "Geometry in WKB form."
+#: ../../../../../miniconda3/envs/arctern/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/_wrapper_func.py:docstring of arctern_pyspark._wrapper_func.ST_GeomFromGeoJSON:6
+msgid "Geometries organized as WKB."
 msgstr ""
 
-#: ../../../../../miniconda3/envs/zgis_dev/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/_wrapper_func.py:docstring of arctern_pyspark._wrapper_func.ST_GeomFromGeoJSON:0
+#: ../../../../../miniconda3/envs/arctern/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/_wrapper_func.py:docstring of arctern_pyspark._wrapper_func.ST_GeomFromGeoJSON:0
+msgid "返回类型"
+msgstr ""
+
+#: ../../../../../miniconda3/envs/arctern/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/_wrapper_func.py:docstring of arctern_pyspark._wrapper_func.ST_GeomFromGeoJSON:0
 msgid "example"
 msgstr ""

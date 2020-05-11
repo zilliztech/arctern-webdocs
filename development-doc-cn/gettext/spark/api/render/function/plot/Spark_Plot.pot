@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-30 17:11+0800\n"
+"POT-Creation-Date: 2020-05-11 14:48+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,62 +20,82 @@ msgstr ""
 msgid "plot"
 msgstr ""
 
-#: ../../../../../miniconda3/envs/zgis_dev/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/plot.py:docstring of arctern_pyspark.plot.plot:1
-msgid "Plot a collection of geometries to `ax`. Parameters 'linewidth', 'linestyle', 'edgecolor', 'facecolor', 'color', 'marker', 'markersize' are used to describe the style of plotted figure."
+#: ../../../../../miniconda3/envs/arctern/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/plot.py:docstring of arctern_pyspark.plot.plot:1
+msgid "Plots a collection of geometries to `ax`"
 msgstr ""
 
-#: ../../../../../miniconda3/envs/zgis_dev/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/plot.py:docstring of arctern_pyspark.plot.plot:4
-msgid "For geometry types `Polygon` and `MultiPolygon`, only 'linewidth', 'linestyle', 'edgecolor', 'facecolor' are effective."
+#: ../../../../../miniconda3/envs/arctern/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/plot.py:docstring of arctern_pyspark.plot.plot:0
+msgid "parms ax"
 msgstr ""
 
-#: ../../../../../miniconda3/envs/zgis_dev/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/plot.py:docstring of arctern_pyspark.plot.plot:7
-msgid "For geometry types `Linestring` and `MultiLinestring`, only 'color', 'linewidth', 'linestyle' are effective."
+#: ../../../../../miniconda3/envs/arctern/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/plot.py:docstring of arctern_pyspark.plot.plot:4
+msgid "The axes where geometries will be plotted"
 msgstr ""
 
-#: ../../../../../miniconda3/envs/zgis_dev/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/plot.py:docstring of arctern_pyspark.plot.plot:9
-msgid "For geometry types `Point` and `MultiPoint`, only 'color', 'marker', 'markersize' are effective."
+#: ../../../../../miniconda3/envs/arctern/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/plot.py:docstring of arctern_pyspark.plot.plot:0
+msgid "parms geoms"
 msgstr ""
 
-#: ../../../../../miniconda3/envs/zgis_dev/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/plot.py:docstring of arctern_pyspark.plot.plot:0
-msgid "参数"
+#: ../../../../../miniconda3/envs/arctern/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/plot.py:docstring of arctern_pyspark.plot.plot:7
+msgid "sequence of geometries"
 msgstr ""
 
-#: ../../../../../miniconda3/envs/zgis_dev/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/plot.py:docstring of arctern_pyspark.plot.plot:12
-msgid "The axes where geometries will be plotted."
+#: ../../../../../miniconda3/envs/arctern/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/plot.py:docstring of arctern_pyspark.plot.plot:0
+msgid "parms **style_kwds"
 msgstr ""
 
-#: ../../../../../miniconda3/envs/zgis_dev/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/plot.py:docstring of arctern_pyspark.plot.plot:15
-msgid "sequence of geometries."
+#: ../../../../../miniconda3/envs/arctern/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/plot.py:docstring of arctern_pyspark.plot.plot:10
+msgid "optional, collection of plot style `Polygon` and `MultiPolygon`:"
 msgstr ""
 
-#: ../../../../../miniconda3/envs/zgis_dev/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/plot.py:docstring of arctern_pyspark.plot.plot:18
-msgid "The width of line, the default value is 1.0."
+#: ../../../../../miniconda3/envs/arctern/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/plot.py:docstring of arctern_pyspark.plot.plot:12
+msgid "linewidth linestyle edgecolor facecolor"
 msgstr ""
 
-#: ../../../../../miniconda3/envs/zgis_dev/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/plot.py:docstring of arctern_pyspark.plot.plot:21
-msgid "The style of the line， the default value is '-'."
+#: ../../../../../miniconda3/envs/arctern/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/plot.py:docstring of arctern_pyspark.plot.plot:18
+msgid "`LineString` and `MultiLineString`:"
 msgstr ""
 
-#: ../../../../../miniconda3/envs/zgis_dev/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/plot.py:docstring of arctern_pyspark.plot.plot:24
-msgid "The edge color of the geometry, the default value is 'black'."
+#: ../../../../../miniconda3/envs/arctern/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/plot.py:docstring of arctern_pyspark.plot.plot:17
+msgid "color linewidth linestyle"
 msgstr ""
 
-#: ../../../../../miniconda3/envs/zgis_dev/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/plot.py:docstring of arctern_pyspark.plot.plot:27
-msgid "The color of the face of the geometry, the default value is 'C0'."
+#: ../../../../../miniconda3/envs/arctern/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/plot.py:docstring of arctern_pyspark.plot.plot:22
+msgid "`Point` and `MultiPoint`:"
 msgstr ""
 
-#: ../../../../../miniconda3/envs/zgis_dev/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/plot.py:docstring of arctern_pyspark.plot.plot:30
-msgid "The color of the geometry, the default value is 'C0'."
+#: ../../../../../miniconda3/envs/arctern/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/plot.py:docstring of arctern_pyspark.plot.plot:21
+msgid "color marker markersize"
 msgstr ""
 
-#: ../../../../../miniconda3/envs/zgis_dev/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/plot.py:docstring of arctern_pyspark.plot.plot:33
-msgid "The shape of point, the default value is 'o'."
-msgstr ""
-
-#: ../../../../../miniconda3/envs/zgis_dev/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/plot.py:docstring of arctern_pyspark.plot.plot:36
-msgid "The size of points, the default value is 6.0."
-msgstr ""
-
-#: ../../../../../miniconda3/envs/zgis_dev/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/plot.py:docstring of arctern_pyspark.plot.plot:0
+#: ../../../../../miniconda3/envs/arctern/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/plot.py:docstring of arctern_pyspark.plot.plot:0
 msgid "example"
+msgstr ""
+
+#: ../../../../../miniconda3/envs/arctern/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/plot.py:docstring of arctern_pyspark.plot.plot:25
+msgid "from arctern_pyspark import register_funcs from pyspark.sql.types import * import matplotlib.pyplot as plt from arctern_pyspark import plot"
+msgstr ""
+
+#: ../../../../../miniconda3/envs/arctern/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/plot.py:docstring of arctern_pyspark.plot.plot:30
+msgid "spark.conf.set(\"spark.sql.execution.arrow.pyspark.enabled\", \"true\") raw_data = [] raw_data.append(('point(0 0)',)) raw_data.append(('linestring(0 10, 5 5, 10 0)',)) raw_data.append(('polygon((2 2,2 3,3 3,3 2,2 2))',)) raw_data.append((\"GEOMETRYCOLLECTION(\"                          \"polygon((1 1,1 2,2 2,2 1,1 1)),\"                          \"linestring(0 1, 5 6, 10 11),\"                          \"POINT(4 7))\",)) raw_schema = StructType([StructField('geo', StringType(),False)])"
+msgstr ""
+
+#: ../../../../../miniconda3/envs/arctern/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/plot.py:docstring of arctern_pyspark.plot.plot:38
+msgid "df = spark.createDataFrame(data=raw_data, schema=raw_schema) df.createOrReplaceTempView(\"geoms\")"
+msgstr ""
+
+#: ../../../../../miniconda3/envs/arctern/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/plot.py:docstring of arctern_pyspark.plot.plot:41
+msgid "df2=spark.sql(\"select st_geomfromtext(geo) from geoms\")"
+msgstr ""
+
+#: ../../../../../miniconda3/envs/arctern/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/plot.py:docstring of arctern_pyspark.plot.plot:43
+msgid "fig, ax = plt.subplots() plot(ax, df2,"
+msgstr ""
+
+#: ../../../../../miniconda3/envs/arctern/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/plot.py:docstring of arctern_pyspark.plot.plot:45
+msgid "color=['orange', 'green'], marker='^', markersize=100, linewidth=[None, 7, 8], linestyle=[None, 'dashed', 'dashdot'], edgecolor=[None, None, 'red'], facecolor=[None, None, 'black'])"
+msgstr ""
+
+#: ../../../../../miniconda3/envs/arctern/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/plot.py:docstring of arctern_pyspark.plot.plot:52
+msgid "ax.grid() fig.savefig('/tmp/plot_test.png')"
 msgstr ""

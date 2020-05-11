@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-30 17:11+0800\n"
+"POT-Creation-Date: 2020-05-11 14:48+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -61,21 +61,33 @@ msgid "scope：可选参数，若不指定 scope，则请求的 headers 字段�
 msgstr ""
 
 #: ../../source/restful/api/function/create_scope.md:24
-msgid "python样例："
+msgid "样例"
 msgstr ""
 
-#: ../../source/restful/api/function/create_scope.md:43
-msgid "curl样例："
+#: ../../source/restful/api/function/create_scope.md:26
+msgid "python"
 msgstr ""
 
-#: ../../source/restful/api/function/create_scope.md:53
+#: ../../source/restful/api/function/create_scope.md:28
+msgid "本文示例代码使用 python 的 requests 库调用 Arctern Restful API，使用下面的命令安装 requests："
+msgstr ""
+
+#: ../../source/restful/api/function/create_scope.md:34
+msgid "调用示例："
+msgstr ""
+
+#: ../../source/restful/api/function/create_scope.md:54
+msgid "curl"
+msgstr ""
+
+#: ../../source/restful/api/function/create_scope.md:64
 msgid "返回说明"
 msgstr ""
 
-#: ../../source/restful/api/function/create_scope.md:55
+#: ../../source/restful/api/function/create_scope.md:66
 msgid "成功样例："
 msgstr ""
 
-#: ../../source/restful/api/function/create_scope.md:66
+#: ../../source/restful/api/function/create_scope.md:77
 msgid "失败样例："
 msgstr ""

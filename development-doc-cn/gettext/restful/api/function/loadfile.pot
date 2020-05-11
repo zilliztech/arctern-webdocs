@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-30 17:11+0800\n"
+"POT-Creation-Date: 2020-05-11 14:48+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -85,21 +85,33 @@ msgid "schema：各列数据的名称和类型描述，schema 字段是一个列
 msgstr ""
 
 #: ../../source/restful/api/function/loadfile.md:46
-msgid "python样例："
+msgid "样例"
 msgstr ""
 
-#: ../../source/restful/api/function/loadfile.md:88
-msgid "curl样例："
+#: ../../source/restful/api/function/loadfile.md:48
+msgid "python"
 msgstr ""
 
-#: ../../source/restful/api/function/loadfile.md:121
+#: ../../source/restful/api/function/loadfile.md:50
+msgid "本文示例代码使用 python 的 requests 库调用 Arctern Restful API，使用下面的命令安装 requests："
+msgstr ""
+
+#: ../../source/restful/api/function/loadfile.md:56
+msgid "调用示例："
+msgstr ""
+
+#: ../../source/restful/api/function/loadfile.md:106
+msgid "curl"
+msgstr ""
+
+#: ../../source/restful/api/function/loadfile.md:139
 msgid "返回说明"
 msgstr ""
 
-#: ../../source/restful/api/function/loadfile.md:123
+#: ../../source/restful/api/function/loadfile.md:141
 msgid "成功样例："
 msgstr ""
 
-#: ../../source/restful/api/function/loadfile.md:133
+#: ../../source/restful/api/function/loadfile.md:151
 msgid "失败样例："
 msgstr ""

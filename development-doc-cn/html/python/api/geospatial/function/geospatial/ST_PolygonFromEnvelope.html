@@ -189,17 +189,17 @@
 <dl class="field-list">
 <dt class="field-odd">参数</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>min_x</strong> (<em>Series</em><em>(</em><em>dtype: float64</em><em>)</em>) – 矩形横坐标的最小值。</p></li>
-<li><p><strong>min_y</strong> (<em>Series</em><em>(</em><em>dtype: float64</em><em>)</em>) – 矩形纵坐标的最小值。</p></li>
-<li><p><strong>max_x</strong> (<em>Series</em><em>(</em><em>dtype: float64</em><em>)</em>) – 矩形横坐标的最大值。</p></li>
-<li><p><strong>max_y</strong> (<em>Series</em><em>(</em><em>dtype: float64</em><em>)</em>) – 矩形纵坐标的最大值。</p></li>
+<li><p><strong>min_x</strong> (<em>pandas.Series.float64</em>) – The x axis coordinates of the lower left vertical of the rectangles.</p></li>
+<li><p><strong>min_y</strong> (<em>pandas.Series.float64</em>) – The y axis coordinates of the lower left vertical of the rectangles.</p></li>
+<li><p><strong>max_x</strong> (<em>pandas.Series.float64</em>) – The x axis coordinates of the upper right vertical of the rectangles.</p></li>
+<li><p><strong>max_y</strong> (<em>pandas.Series.float64</em>) – The y axis coordinates of the upper right vertical of the rectangles.</p></li>
 </ul>
 </dd>
-<dt class="field-even">返回类型</dt>
-<dd class="field-even"><p>Series(dtype: object)</p>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>Geometries organized as WKB.</p>
 </dd>
-<dt class="field-odd">返回</dt>
-<dd class="field-odd"><p>WKB 格式的几何体。</p>
+<dt class="field-odd">返回类型</dt>
+<dd class="field-odd"><p>pandas.Series.object</p>
 </dd>
 <dt class="field-even">例子</dt>
 <dd class="field-even"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span>
@@ -242,7 +242,7 @@
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 4月 30, 2020.
+        最后更新于 5月 11, 2020.
       </span>
 
     </p>
