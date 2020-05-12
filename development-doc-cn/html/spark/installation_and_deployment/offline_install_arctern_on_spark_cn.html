@@ -260,11 +260,11 @@ arctern_env      ...
 <div class="section" id="arctern-spark">
 <h2>安装 Arctern-Spark<a class="headerlink" href="#arctern-spark" title="永久链接至标题">¶</a></h2>
 <p>执行以下命令在 Conda 环境中安装 Arctern-Spark：</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ conda install -n arctern_env -c file:///<span class="o">[</span>path/to/channel<span class="o">]</span> arctern-spark --offline   --override-channels
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ conda install -n arctern-spark -c file:///<span class="o">[</span>path/to/channel<span class="o">]</span> arctern-spark --offline   --override-channels
 </pre></div>
 </div>
 <p>其中， <code class="docutils literal notranslate"><span class="pre">[path/to/channel]</span></code>为 <code class="docutils literal notranslate"><span class="pre">arctern-resources</span></code> 文件夹下 <code class="docutils literal notranslate"><span class="pre">arctern-resources/arctern_dependencies/conda_dependencies/channel</span></code> 目录所在路径，例如:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ conda install -n arctern_env -c file:///tmp/arctern-resources/arctern_dependencies/conda_dependencies/channel arctern-spark   --offline --override-channels
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ conda install -n arctern-spark -c file:///tmp/arctern-resources/arctern_dependencies/conda_dependencies/channel arctern-spark   --offline --override-channels
 </pre></div>
 </div>
 </div>
@@ -282,12 +282,12 @@ arctern_env      ...
 <div class="section" id="spark-python">
 <h2>配置 Spark 的 Python 路径<a class="headerlink" href="#spark-python" title="永久链接至标题">¶</a></h2>
 <p>在 <code class="docutils literal notranslate"><span class="pre">conf/spark-default.conf</span></code> 的最后添加以下内容。其中 <code class="docutils literal notranslate"><span class="pre">[path/to/your/conda]</span></code> 为 Conda 的安装路径。</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>spark.executorEnv.PROJ_LIB <span class="o">[</span>path/to/your/conda<span class="o">]</span>/envs/arctern-spark/share/proj
-spark.executorEnv.GDAL_DATA <span class="o">[</span>path/to/your/conda<span class="o">]</span>/envs/arctern-spark/share/gdal
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>spark.executorEnv.PROJ_LIB <span class="o">[</span>path/to/your/conda<span class="o">]</span>/envs/arctern_env/share/proj
+spark.executorEnv.GDAL_DATA <span class="o">[</span>path/to/your/conda<span class="o">]</span>/envs/arctern_env/share/gdal
 </pre></div>
 </div>
 <p>在文件 <code class="docutils literal notranslate"><span class="pre">conf/spark-env.sh</span></code> 的最后添加以下内容。其中 <code class="docutils literal notranslate"><span class="pre">[path/to/your/conda]</span></code> 为 Conda 的安装路径。</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">PYSPARK_PYTHON</span><span class="o">=[</span>path/to/your/conda<span class="o">]</span>/envs/arctern-spark/bin/python
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">PYSPARK_PYTHON</span><span class="o">=[</span>path/to/your/conda<span class="o">]</span>/envs/arctern_env/bin/python
 </pre></div>
 </div>
 <div class="section" id="id6">
@@ -302,7 +302,7 @@ spark.executorEnv.GDAL_DATA <span class="o">[</span>path/to/your/conda<span clas
 </pre></div>
 </div>
 <p>如果终端打印了以下内容，说明 PySpark 的 Python 路径配置成功。</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>path/to/your/conda<span class="o">]</span>/envs/arctern-spark
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>path/to/your/conda<span class="o">]</span>/envs/arctern_env
 </pre></div>
 </div>
 </div>
@@ -330,7 +330,7 @@ spark.executorEnv.GDAL_DATA <span class="o">[</span>path/to/your/conda<span clas
 <div class="section" id="id8">
 <h2>卸载<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h2>
 <p>在 Conda 环境中执行以下命令可卸载 Arctern-Spark：</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conda uninstall -n arctern libarctern arctern arctern-spark
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conda uninstall libarctern arctern arctern-spark
 </pre></div>
 </div>
 </div>

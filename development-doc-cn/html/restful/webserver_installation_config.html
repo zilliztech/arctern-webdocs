@@ -252,7 +252,7 @@ git clone https://github.com/zilliztech/arctern.git
 <span class="nb">cd</span> arctern
 git checkout branch-0.1.x
 <span class="c1"># 安装依赖</span>
-<span class="nb">cd</span> gui/server/arctern_env
+<span class="nb">cd</span> gui/server/arctern_server
 pip install -r requirements.txt
 </pre></div>
 </div>
@@ -260,7 +260,7 @@ pip install -r requirements.txt
 <div class="section" id="pip">
 <h3>基于 pip 的安装<a class="headerlink" href="#pip" title="永久链接至标题">¶</a></h3>
 <p>执行以下命令安装 Arctern RESTful Server：</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install arctern_env
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install arctern_server
 </pre></div>
 </div>
 </div>
@@ -278,8 +278,8 @@ master-addr <span class="o">=</span> spark://spark_master_ip:port
 <div class="section" id="pip-arctern-restful-server">
 <h3>配置基于 pip 安装的 Arctern RESTful Server<a class="headerlink" href="#pip-arctern-restful-server" title="永久链接至标题">¶</a></h3>
 <p>执行以下 Python 代码查看 RESTful Server 的安装目录：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">arctern_env</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">arctern_env</span><span class="o">.</span><span class="n">__path__</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">arctern_server</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arctern_server</span><span class="o">.</span><span class="n">__path__</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>执行上述代码将会在终端打印 RESTful Server 的安装目录，修改该目录下的 <code class="docutils literal notranslate"><span class="pre">config.ini</span></code>，配置 Arctern RESTful Server 所使用的 Arctern-Spark 后台信息。文件配置示例如下：</p>
