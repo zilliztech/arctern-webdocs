@@ -100,7 +100,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../spark/spark.html">Spark</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../restful/restful.html">Restful</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../restful/restful.html">RESTful</a></li>
 </ul>
 
             
@@ -169,7 +169,7 @@
             
   <div class="section" id="id1">
 <h1>安装部署<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
-<p>本文档介绍在 python 环境中安装 Arctern 的步骤。</p>
+<p>本文档介绍在 Python 环境中安装 Arctern 的步骤。</p>
 <div class="section" id="id2">
 <h2>安装要求<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
 <ul class="simple">
@@ -225,7 +225,7 @@
 <h2>安装依赖库<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
 <ul>
 <li><p>CPU 版本</p>
-<p>使用以下命令安装 Arctern CPU 版本的依赖库：</p>
+<p>执行以下命令安装 Arctern CPU 版本的依赖库：</p>
 </li>
 </ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>    sudo apt install libgl-dev libosmesa6-dev libglu1-mesa-dev
@@ -233,7 +233,7 @@
 </div>
 <ul>
 <li><p>GPU 版本</p>
-<p>使用以下命令安装 Arctern GPU 版本的依赖库：</p>
+<p>执行以下命令安装 Arctern GPU 版本的依赖库：</p>
 </li>
 </ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>    sudo apt install libgl1-mesa-dev libegl1-mesa-dev
@@ -242,19 +242,19 @@
 </div>
 <div class="section" id="arctern-conda">
 <h2>创建 Arctern Conda 环境<a class="headerlink" href="#arctern-conda" title="永久链接至标题">¶</a></h2>
-<p>通过以下命令创建 Arctern Conda 环境。此处假设环境名称为 <code class="docutils literal notranslate"><span class="pre">arctern_python</span></code>，用户可根据需求自行选择合适的环境名称。</p>
-<p><code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">create</span> <span class="pre">-n</span> <span class="pre">arctern_python</span> <span class="pre">-c</span> <span class="pre">conda-forge</span> <span class="pre">python=3.7.6</span></code></p>
-<p>创建成功后，可以通过 <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">env</span> <span class="pre">list</span></code> 命令查看所有Conda环境，其输出结果应包含 Arctern 环境，类似如下：</p>
+<p>执行以下命令创建 Arctern Conda 环境。此处假设环境名称为 <code class="docutils literal notranslate"><span class="pre">arctern_env</span></code>，你可根据需求自行选择合适的环境名称。</p>
+<p><code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">create</span> <span class="pre">-n</span> <span class="pre">arctern_env</span> <span class="pre">-c</span> <span class="pre">conda-forge</span> <span class="pre">python=3.7.6</span></code></p>
+<p>创建成功后，可以通过 <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">env</span> <span class="pre">list</span></code> 命令查看所有 Conda 环境，其输出结果应包含 Arctern 环境，类似如下：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda environments:
 base                ...
-arctern_python      ...
+arctern_env      ...
 ...
 </pre></div>
 </div>
 <p>进入 Arctern 环境：</p>
-<p><code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">activate</span> <span class="pre">arctern_python</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">activate</span> <span class="pre">arctern_env</span></code></p>
 <blockquote>
-<div><p><strong>注意：后续工作必须在 Arctern Conda 环境中进行</strong></p>
+<div><p>注意：后续工作必须在 Arctern Conda 环境中进行。</p>
 </div></blockquote>
 </div>
 <div class="section" id="arctern">
@@ -288,15 +288,15 @@ arctern_python      ...
 </div>
 <div class="section" id="id5">
 <h2>测试样例<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
-<p>安装py.test</p>
+<p>安装 py.test：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda install pytest
 </pre></div>
 </div>
-<p>下载测试文件</p>
+<p>下载测试文件：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget https://raw.githubusercontent.com/zilliztech/arctern/v0.1.0/python/tests/geo/geo_test.py
 </pre></div>
 </div>
-<p>通过以下命令执行测试文件</p>
+<p>执行以下命令执行测试文件：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>py.test <span class="o">[</span>/path/to/<span class="o">]</span>geo_test.py
 </pre></div>
 </div>
@@ -335,7 +335,7 @@ arctern_python      ...
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 5月 11, 2020.
+        最后更新于 5月 12, 2020.
       </span>
 
     </p>

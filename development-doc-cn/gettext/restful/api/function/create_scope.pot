@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-11 14:48+0800\n"
+"POT-Creation-Date: 2020-05-12 10:45+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,11 +21,11 @@ msgid "创建scope"
 msgstr ""
 
 #: ../../source/restful/api/function/create_scope.md:3
-msgid "Arctern Restful Server 使用作用域（scope）为用户分配服务器资源。每个作用域拥有独享的上下文信息，如载入的文件数据和创建的数据表。"
+msgid "Arctern RESTful Server 使用作用域（scope）为你分配服务器资源。每个作用域拥有独享的上下文信息，如载入的文件数据和创建的数据表。"
 msgstr ""
 
 #: ../../source/restful/api/function/create_scope.md:5
-msgid "在创建 scope 的同时，Arctern  Restful Server 会为 scope 创建一个名为 spark 的 SparkSession。在调用 /loadfile、/query、/pointmap 等 API 时如未传入 session 字段，则会默认使用该 SparkSession 进行操作。如需创建自定义的 SparkSession，请使用 /command 接口。"
+msgid "在创建 scope 的同时，Arctern  RESTful Server 会为 scope 创建一个名为 spark 的 SparkSession。在调用 /loadfile、/query、/pointmap 等 API 时如未传入 session 字段，则会默认使用该 SparkSession 进行操作。如需创建自定义的 SparkSession，请使用 /command 接口。"
 msgstr ""
 
 #: ../../source/restful/api/function/create_scope.md:7
@@ -65,11 +65,11 @@ msgid "样例"
 msgstr ""
 
 #: ../../source/restful/api/function/create_scope.md:26
-msgid "python"
+msgid "Python"
 msgstr ""
 
 #: ../../source/restful/api/function/create_scope.md:28
-msgid "本文示例代码使用 python 的 requests 库调用 Arctern Restful API，使用下面的命令安装 requests："
+msgid "本文示例代码使用 Python 的 requests 库调用 Arctern RESTful API，使用下面的命令安装 requests："
 msgstr ""
 
 #: ../../source/restful/api/function/create_scope.md:34

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-11 14:48+0800\n"
+"POT-Creation-Date: 2020-05-12 10:45+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -105,11 +105,11 @@ msgid "样例"
 msgstr ""
 
 #: ../../source/restful/api/function/choroplethmap.md:47
-msgid "python"
+msgid "Python"
 msgstr ""
 
 #: ../../source/restful/api/function/choroplethmap.md:49
-msgid "本文示例代码使用 python 的 requests 库调用 Arctern Restful API，使用下面的命令安装 requests："
+msgid "本文示例代码使用 Python 的 requests 库调用 Arctern RESTful API，使用下面的命令安装 requests："
 msgstr ""
 
 #: ../../source/restful/api/function/choroplethmap.md:55

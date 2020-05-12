@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-11 14:48+0800\n"
+"POT-Creation-Date: 2020-05-12 10:45+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,11 +21,11 @@ msgid "删除scope"
 msgstr ""
 
 #: ../../source/restful/api/function/delete_scope.md:3
-msgid "删除指定的 scope，用户完成操作后需要使用该接口显式释放所占用的服务器资源。"
+msgid "删除指定的 scope，你完成操作后需要使用该接口显式释放所占用的服务器资源。"
 msgstr ""
 
 #: ../../source/restful/api/function/delete_scope.md:5
-msgid "<font color=\"#dd0000\">注意：</font>Arctern Restful 服务不会主动释放用户申请的作用域，完成操作后请务必删除申请的所有作用域。"
+msgid "<font color=\"#dd0000\">注意：</font>Arctern RESTful 服务不会主动释放你申请的作用域，完成操作后请务必删除申请的所有作用域。"
 msgstr ""
 
 #: ../../source/restful/api/function/delete_scope.md:7
@@ -53,11 +53,11 @@ msgid "样例"
 msgstr ""
 
 #: ../../source/restful/api/function/delete_scope.md:18
-msgid "python"
+msgid "Python"
 msgstr ""
 
 #: ../../source/restful/api/function/delete_scope.md:20
-msgid "本文示例代码使用 python 的 requests 库调用 Arctern Restful API，使用下面的命令安装 requests："
+msgid "本文示例代码使用 Python 的 requests 库调用 Arctern RESTful API，使用下面的命令安装 requests："
 msgstr ""
 
 #: ../../source/restful/api/function/delete_scope.md:26

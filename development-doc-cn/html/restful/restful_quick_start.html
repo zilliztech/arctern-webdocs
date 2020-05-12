@@ -38,7 +38,7 @@
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
     <link rel="next" title="API" href="api/api.html" />
-    <link rel="prev" title="Arctern Restful Server 安装与配置" href="webserver_installation_config.html" /> 
+    <link rel="prev" title="Arctern RESTful Server 安装与配置" href="webserver_installation_config.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -85,8 +85,8 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../python/python.html">Pandas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../spark/spark.html">Spark</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="restful.html">Restful</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="webserver_installation_config.html">Arctern Restful Server 安装与配置</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="restful.html">RESTful</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="webserver_installation_config.html">Arctern RESTful Server 安装与配置</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Quick Start</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id1">服务器端的启动和配置</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id2">服务器启动</a></li>
@@ -158,7 +158,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="restful.html">Restful</a> &raquo;</li>
+          <li><a href="restful.html">RESTful</a> &raquo;</li>
         
       <li>Quick Start</li>
     
@@ -181,12 +181,12 @@
             
   <div class="section" id="quick-start">
 <h1>Quick Start<a class="headerlink" href="#quick-start" title="永久链接至标题">¶</a></h1>
-<p>本文以纽约出租车数据集为例，说明如何通过 <code class="docutils literal notranslate"><span class="pre">Arctern</span> <span class="pre">Restful</span> <span class="pre">API</span></code> 完成数据的导入、运算和展示。</p>
+<p>本文以纽约出租车数据集为例，说明如何通过 <code class="docutils literal notranslate"><span class="pre">Arctern</span> <span class="pre">RESTful</span> <span class="pre">API</span></code> 完成数据的导入、运算和展示。</p>
 <div class="section" id="id1">
 <h2>服务器端的启动和配置<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
 <div class="section" id="id2">
 <h3>服务器启动<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h3>
-<p>在调用 <code class="docutils literal notranslate"><span class="pre">Arctern</span> <span class="pre">Restful</span> <span class="pre">API</span></code> 之前请先启动服务，具体步骤详见<a class="reference internal" href="webserver_installation_config.html"><span class="doc">服务器启动</span></a>。</p>
+<p>在调用 <code class="docutils literal notranslate"><span class="pre">Arctern</span> <span class="pre">RESTful</span> <span class="pre">API</span></code> 之前请先启动服务，具体步骤详见<a class="reference internal" href="webserver_installation_config.html"><span class="doc">服务器启动</span></a>。</p>
 </div>
 <div class="section" id="id3">
 <h3>数据准备<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
@@ -210,11 +210,11 @@
 <li><p>buildingtext_dropoff: string，下车地点所在建筑的轮廓描述。</p></li>
 </ul>
 <p>上述和时间有关的列的格式为：<code class="docutils literal notranslate"><span class="pre">yyyy-MM-dd</span> <span class="pre">HH:mm::ss</span> <span class="pre">XXXXX</span></code>，如<code class="docutils literal notranslate"><span class="pre">2009-04-12</span> <span class="pre">03:16:33</span> <span class="pre">+00:00</span></code>。</p>
-<p>下述示例中假设服务器 IP 地址为<code class="docutils literal notranslate"><span class="pre">127.0.0.1</span></code>，Restful服务端口为<code class="docutils literal notranslate"><span class="pre">8080</span></code>，数据文件所在路径为 <code class="docutils literal notranslate"><span class="pre">/example/data/0_2M_nyc_taxi_and_building.csv</span></code>。</p>
+<p>下述示例中假设服务器 IP 地址为<code class="docutils literal notranslate"><span class="pre">127.0.0.1</span></code>，RESTful服务端口为<code class="docutils literal notranslate"><span class="pre">8080</span></code>，数据文件所在路径为 <code class="docutils literal notranslate"><span class="pre">/example/data/0_2M_nyc_taxi_and_building.csv</span></code>。</p>
 </div>
 <div class="section" id="id4">
 <h3>安装依赖<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
-<p>本文示例代码使用 python 的 <code class="docutils literal notranslate"><span class="pre">requests</span></code> 库调用 <code class="docutils literal notranslate"><span class="pre">Arctern</span> <span class="pre">Restful</span> <span class="pre">API</span></code>，使用下面的命令安装 <code class="docutils literal notranslate"><span class="pre">requests</span></code>：</p>
+<p>本文示例代码使用 Python 的 <code class="docutils literal notranslate"><span class="pre">requests</span></code> 库调用 <code class="docutils literal notranslate"><span class="pre">Arctern</span> <span class="pre">RESTful</span> <span class="pre">API</span></code>，使用下面的命令安装 <code class="docutils literal notranslate"><span class="pre">requests</span></code>：</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip install requests
 </pre></div>
 </div>
@@ -224,7 +224,7 @@
 <h2>API调用<a class="headerlink" href="#api" title="永久链接至标题">¶</a></h2>
 <div class="section" id="id5">
 <h3>创建作用域<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
-<p>使用 <code class="docutils literal notranslate"><span class="pre">/scope</span></code> 接口创建名为 <code class="docutils literal notranslate"><span class="pre">nyc_taxi</span></code> 的作用域。作用域用于为用户分配服务器资源，每个作用域拥有独享的上下文信息，如载入的文件数据。</p>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">/scope</span></code> 接口创建名为 <code class="docutils literal notranslate"><span class="pre">nyc_taxi</span></code> 的作用域。作用域用于为你分配服务器资源，每个作用域拥有独享的上下文信息，如载入的文件数据。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">requests</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">json</span>
 <span class="go">&gt;&gt;&gt;</span>
@@ -445,7 +445,7 @@
 </div>
 <div class="section" id="id11">
 <h3>绘制点图<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h3>
-<p>使用 <code class="docutils literal notranslate"><span class="pre">/pointmap</span></code> 接口根据乘客上车地点绘制点图。点图中具体参数说明请参见 <a class="reference external" href="./api/function/pointmap.html">点图 Restful API 说明</a>。</p>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">/pointmap</span></code> 接口根据乘客上车地点绘制点图。点图中具体参数说明请参见 <a class="reference external" href="./api/function/pointmap.html">点图 RESTful API 说明</a>。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">requests</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">json</span>
 <span class="gp">&gt;&gt;&gt; </span>
@@ -482,7 +482,7 @@
 </div>
 <div class="section" id="id12">
 <h3>带权点图<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h3>
-<p>使用 <code class="docutils literal notranslate"><span class="pre">/weighted_pointmap</span></code> 接口根据乘客上车地点绘制带权点图，使用总费用作为点的权重，总费用越高，权重越大，点的颜色越深。权重图中具体参数说明请参见 <a class="reference external" href="./api/function/weighted_pointmap.html">带权点图 Restful API 说明</a>。</p>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">/weighted_pointmap</span></code> 接口根据乘客上车地点绘制带权点图，使用总费用作为点的权重，总费用越高，权重越大，点的颜色越深。权重图中具体参数说明请参见 <a class="reference external" href="./api/function/weighted_pointmap.html">带权点图 RESTful API 说明</a>。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">requests</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">json</span>
 <span class="go">&gt;&gt;&gt;</span>
@@ -530,7 +530,7 @@
 </div>
 <div class="section" id="id13">
 <h3>热力图<a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h3>
-<p>使用 <code class="docutils literal notranslate"><span class="pre">/heatmap</span></code> 接口根据乘客下车地点以及行程费用绘制热力图，费用高的区域为红色，费用低的区域为绿色。热力图中具体参数说明请参见 <a class="reference external" href="./api/function/heatmap.html">热力图 Restful API 说明</a>。</p>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">/heatmap</span></code> 接口根据乘客下车地点以及行程费用绘制热力图，费用高的区域为红色，费用低的区域为绿色。热力图中具体参数说明请参见 <a class="reference external" href="./api/function/heatmap.html">热力图 RESTful API 说明</a>。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">requests</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">json</span>
 <span class="go">&gt;&gt;&gt;</span>
@@ -567,7 +567,7 @@
 </div>
 <div class="section" id="id14">
 <h3>轮廓图<a class="headerlink" href="#id14" title="永久链接至标题">¶</a></h3>
-<p>使用 <code class="docutils literal notranslate"><span class="pre">/choroplethmap</span></code> 接口，根据下车地点所在建筑物、小费金额绘制轮廓图，小费金额高为黄色，小费金额低为蓝色。轮廓图中具体参数说明请参见 <a class="reference external" href="./api/function/choroplethmap.html">轮廓图 Restful API 说明</a>。</p>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">/choroplethmap</span></code> 接口，根据下车地点所在建筑物、小费金额绘制轮廓图，小费金额高为黄色，小费金额低为蓝色。轮廓图中具体参数说明请参见 <a class="reference external" href="./api/function/choroplethmap.html">轮廓图 RESTful API 说明</a>。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">requests</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">json</span>
 <span class="go">&gt;&gt;&gt;</span>
@@ -612,7 +612,7 @@
 </div>
 <div class="section" id="id15">
 <h3>图标图<a class="headerlink" href="#id15" title="永久链接至标题">¶</a></h3>
-<p>使用 <code class="docutils literal notranslate"><span class="pre">/icon_viz</span></code> 接口根据乘客上车地点绘制图标图。图标图中具体参数说明请参见 <a class="reference external" href="./api/function/icon_viz.html">图标图 Restful API 说明</a>。</p>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">/icon_viz</span></code> 接口根据乘客上车地点绘制图标图。图标图中具体参数说明请参见 <a class="reference external" href="./api/function/icon_viz.html">图标图 RESTful API 说明</a>。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">requests</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">json</span>
 <span class="go">&gt;&gt;&gt;</span>
@@ -651,7 +651,7 @@
 </div>
 <div class="section" id="id16">
 <h3>渔网图<a class="headerlink" href="#id16" title="永久链接至标题">¶</a></h3>
-<p>使用 <code class="docutils literal notranslate"><span class="pre">/fishnetmap</span></code> 接口根据乘客上车地点绘制渔网图，使用总费用作为渔网网格的权重，总费用越高，权重越大，渔网网格的颜色越深。渔网图中具体参数说明请参见 <a class="reference external" href="./api/function/fishnetmap.html">渔网图 Restful API 说明</a>。</p>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">/fishnetmap</span></code> 接口根据乘客上车地点绘制渔网图，使用总费用作为渔网网格的权重，总费用越高，权重越大，渔网网格的颜色越深。渔网图中具体参数说明请参见 <a class="reference external" href="./api/function/fishnetmap.html">渔网图 RESTful API 说明</a>。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">requests</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">json</span>
 <span class="go">&gt;&gt;&gt;</span>
@@ -694,7 +694,7 @@
 <div class="section" id="id17">
 <h3>删除作用域<a class="headerlink" href="#id17" title="永久链接至标题">¶</a></h3>
 <p>完成操作后需要通过 <code class="docutils literal notranslate"><span class="pre">/scope/&lt;scope_name&gt;</span></code> 接口删除作用域释放服务器资源。</p>
-<p><font color="#dd0000">注意：</font><code class="docutils literal notranslate"><span class="pre">Arctern</span> <span class="pre">Restful</span></code>服务不会主动释放用户申请的作用域，完成操作后请务必删除所申请的所有作用域。</p>
+<p><font color="#dd0000">注意：</font><code class="docutils literal notranslate"><span class="pre">Arctern</span> <span class="pre">RESTful</span></code>服务不会主动释放你申请的作用域，完成操作后请务必删除所申请的所有作用域。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">requests</span>
 <span class="gp">&gt;&gt;&gt; </span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">r</span><span class="o">=</span><span class="n">requests</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s2">&quot;http://127.0.0.1:8080/scope/nyc_taxi&quot;</span><span class="p">)</span>
@@ -724,7 +724,7 @@
         <a href="api/api.html" class="btn btn-neutral float-right" title="API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="webserver_installation_config.html" class="btn btn-neutral float-left" title="Arctern Restful Server 安装与配置" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="webserver_installation_config.html" class="btn btn-neutral float-left" title="Arctern RESTful Server 安装与配置" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -735,7 +735,7 @@
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 5月 11, 2020.
+        最后更新于 5月 12, 2020.
       </span>
 
     </p>
