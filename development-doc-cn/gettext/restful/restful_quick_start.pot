@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-11 14:48+0800\n"
+"POT-Creation-Date: 2020-05-12 14:24+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,7 +21,7 @@ msgid "Quick Start"
 msgstr ""
 
 #: ../../source/restful/restful_quick_start.md:3
-msgid "本文以纽约出租车数据集为例，说明如何通过 Arctern Restful API 完成数据的导入、运算和展示。"
+msgid "本文以纽约出租车数据集为例，说明如何通过 Arctern RESTful API 完成数据的导入、运算和展示。"
 msgstr ""
 
 #: ../../source/restful/restful_quick_start.md:5
@@ -33,7 +33,7 @@ msgid "服务器启动"
 msgstr ""
 
 #: ../../source/restful/restful_quick_start.md:9
-msgid "在调用 Arctern Restful API 之前请先启动服务，具体步骤详见服务器启动。"
+msgid "在调用 Arctern RESTful API 之前请先启动服务，具体步骤详见服务器启动。"
 msgstr ""
 
 #: ../../source/restful/restful_quick_start.md:11
@@ -113,7 +113,7 @@ msgid "上述和时间有关的列的格式为：yyyy-MM-dd HH:mm::ss XXXXX，�
 msgstr ""
 
 #: ../../source/restful/restful_quick_start.md:34
-msgid "下述示例中假设服务器 IP 地址为127.0.0.1，Restful服务端口为8080，数据文件所在路径为 /example/data/0_2M_nyc_taxi_and_building.csv。"
+msgid "下述示例中假设服务器 IP 地址为127.0.0.1，RESTful服务端口为8080，数据文件所在路径为 /example/data/0_2M_nyc_taxi_and_building.csv。"
 msgstr ""
 
 #: ../../source/restful/restful_quick_start.md:36
@@ -121,7 +121,7 @@ msgid "安装依赖"
 msgstr ""
 
 #: ../../source/restful/restful_quick_start.md:38
-msgid "本文示例代码使用 python 的 requests 库调用 Arctern Restful API，使用下面的命令安装 requests："
+msgid "本文示例代码使用 Python 的 requests 库调用 Arctern RESTful API，使用下面的命令安装 requests："
 msgstr ""
 
 #: ../../source/restful/restful_quick_start.md:44
@@ -133,7 +133,7 @@ msgid "创建作用域"
 msgstr ""
 
 #: ../../source/restful/restful_quick_start.md:48
-msgid "使用 /scope 接口创建名为 nyc_taxi 的作用域。作用域用于为用户分配服务器资源，每个作用域拥有独享的上下文信息，如载入的文件数据。"
+msgid "使用 /scope 接口创建名为 nyc_taxi 的作用域。作用域用于为你分配服务器资源，每个作用域拥有独享的上下文信息，如载入的文件数据。"
 msgstr ""
 
 #: ../../source/restful/restful_quick_start.md:66
@@ -189,7 +189,7 @@ msgid "绘制点图"
 msgstr ""
 
 #: ../../source/restful/restful_quick_start.md:275
-msgid "使用 /pointmap 接口根据乘客上车地点绘制点图。点图中具体参数说明请参见 点图 Restful API 说明。"
+msgid "使用 /pointmap 接口根据乘客上车地点绘制点图。点图中具体参数说明请参见 点图 RESTful API 说明。"
 msgstr ""
 
 #: ../../source/restful/restful_quick_start.md:306
@@ -205,7 +205,7 @@ msgid "带权点图"
 msgstr ""
 
 #: ../../source/restful/restful_quick_start.md:316
-msgid "使用 /weighted_pointmap 接口根据乘客上车地点绘制带权点图，使用总费用作为点的权重，总费用越高，权重越大，点的颜色越深。权重图中具体参数说明请参见 带权点图 Restful API 说明。"
+msgid "使用 /weighted_pointmap 接口根据乘客上车地点绘制带权点图，使用总费用作为点的权重，总费用越高，权重越大，点的颜色越深。权重图中具体参数说明请参见 带权点图 RESTful API 说明。"
 msgstr ""
 
 #: ../../source/restful/restful_quick_start.md:361
@@ -221,7 +221,7 @@ msgid "热力图"
 msgstr ""
 
 #: ../../source/restful/restful_quick_start.md:367
-msgid "使用 /heatmap 接口根据乘客下车地点以及行程费用绘制热力图，费用高的区域为红色，费用低的区域为绿色。热力图中具体参数说明请参见 热力图 Restful API 说明。"
+msgid "使用 /heatmap 接口根据乘客下车地点以及行程费用绘制热力图，费用高的区域为红色，费用低的区域为绿色。热力图中具体参数说明请参见 热力图 RESTful API 说明。"
 msgstr ""
 
 #: ../../source/restful/restful_quick_start.md:401
@@ -237,7 +237,7 @@ msgid "轮廓图"
 msgstr ""
 
 #: ../../source/restful/restful_quick_start.md:407
-msgid "使用 /choroplethmap 接口，根据下车地点所在建筑物、小费金额绘制轮廓图，小费金额高为黄色，小费金额低为蓝色。轮廓图中具体参数说明请参见 轮廓图 Restful API 说明。"
+msgid "使用 /choroplethmap 接口，根据下车地点所在建筑物、小费金额绘制轮廓图，小费金额高为黄色，小费金额低为蓝色。轮廓图中具体参数说明请参见 轮廓图 RESTful API 说明。"
 msgstr ""
 
 #: ../../source/restful/restful_quick_start.md:449
@@ -253,7 +253,7 @@ msgid "图标图"
 msgstr ""
 
 #: ../../source/restful/restful_quick_start.md:455
-msgid "使用 /icon_viz 接口根据乘客上车地点绘制图标图。图标图中具体参数说明请参见 图标图 Restful API 说明。"
+msgid "使用 /icon_viz 接口根据乘客上车地点绘制图标图。图标图中具体参数说明请参见 图标图 RESTful API 说明。"
 msgstr ""
 
 #: ../../source/restful/restful_quick_start.md:491
@@ -269,7 +269,7 @@ msgid "渔网图"
 msgstr ""
 
 #: ../../source/restful/restful_quick_start.md:497
-msgid "使用 /fishnetmap 接口根据乘客上车地点绘制渔网图，使用总费用作为渔网网格的权重，总费用越高，权重越大，渔网网格的颜色越深。渔网图中具体参数说明请参见 渔网图 Restful API 说明。"
+msgid "使用 /fishnetmap 接口根据乘客上车地点绘制渔网图，使用总费用作为渔网网格的权重，总费用越高，权重越大，渔网网格的颜色越深。渔网图中具体参数说明请参见 渔网图 RESTful API 说明。"
 msgstr ""
 
 #: ../../source/restful/restful_quick_start.md:536
@@ -289,5 +289,5 @@ msgid "完成操作后需要通过 /scope/<scope_name> 接口删除作用域释�
 msgstr ""
 
 #: ../../source/restful/restful_quick_start.md:544
-msgid "<font color=\"#dd0000\">注意：</font>Arctern Restful服务不会主动释放用户申请的作用域，完成操作后请务必删除所申请的所有作用域。"
+msgid "<font color=\"#dd0000\">注意：</font>Arctern RESTful服务不会主动释放你申请的作用域，完成操作后请务必删除所申请的所有作用域。"
 msgstr ""

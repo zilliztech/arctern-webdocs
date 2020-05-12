@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-11 14:48+0800\n"
+"POT-Creation-Date: 2020-05-12 14:24+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -33,5 +33,5 @@ msgid "如果您需要获得大规模时空数据的高效处理能力，Arctern
 msgstr ""
 
 #: ../../source/index.rst:15
-msgid "如果您希望通过Arctern构建时空数据分析服务，Arctern提供了完整的Web Service与后端适配方案，详见 :ref:`Restful文档 <restful>`。"
+msgid "如果您希望通过Arctern构建时空数据分析服务，Arctern提供了完整的Web Service与后端适配方案，详见 :ref:`RESTful 文档 <restful>`。"
 msgstr ""
