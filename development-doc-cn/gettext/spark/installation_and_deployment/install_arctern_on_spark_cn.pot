@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-12 14:24+0800\n"
+"POT-Creation-Date: 2020-05-13 09:30+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -130,7 +130,7 @@ msgid "执行以下命令进入 PySpark 交互界面，其中 [path/to/your/spar
 msgstr ""
 
 #: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:160
-msgid "在交互界面中输入一下内容打印 PySpark 的 Python 路径。"
+msgid "在交互界面中输入以下内容打印 PySpark 的 Python 路径。"
 msgstr ""
 
 #: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:166
@@ -166,7 +166,7 @@ msgid "FAQ"
 msgstr ""
 
 #: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:208
-msgid "对 Spark 的支持"
+msgid "对Spark的支持"
 msgstr ""
 
 #: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:210

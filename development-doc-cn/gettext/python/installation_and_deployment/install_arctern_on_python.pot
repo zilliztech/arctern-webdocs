@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-12 14:24+0800\n"
+"POT-Creation-Date: 2020-05-13 09:30+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,100 +29,100 @@ msgid "安装要求"
 msgstr ""
 
 #: ../../source/python/installation_and_deployment/install_arctern_on_python.md:6
-#: ../../source/python/installation_and_deployment/install_arctern_on_python.md:59
-#: ../../source/python/installation_and_deployment/install_arctern_on_python.md:96
+#: ../../source/python/installation_and_deployment/install_arctern_on_python.md:58
+#: ../../source/python/installation_and_deployment/install_arctern_on_python.md:95
 msgid "CPU 版本"
 msgstr ""
 
-#: ../../source/python/installation_and_deployment/install_arctern_on_python.md:28
-#: ../../source/python/installation_and_deployment/install_arctern_on_python.md:66
+#: ../../source/python/installation_and_deployment/install_arctern_on_python.md:27
+#: ../../source/python/installation_and_deployment/install_arctern_on_python.md:65
 msgid "GPU 版本"
 msgstr ""
 
-#: ../../source/python/installation_and_deployment/install_arctern_on_python.md:57
+#: ../../source/python/installation_and_deployment/install_arctern_on_python.md:56
 msgid "安装依赖库"
 msgstr ""
 
-#: ../../source/python/installation_and_deployment/install_arctern_on_python.md:61
+#: ../../source/python/installation_and_deployment/install_arctern_on_python.md:60
 msgid "执行以下命令安装 Arctern CPU 版本的依赖库："
 msgstr ""
 
-#: ../../source/python/installation_and_deployment/install_arctern_on_python.md:68
+#: ../../source/python/installation_and_deployment/install_arctern_on_python.md:67
 msgid "执行以下命令安装 Arctern GPU 版本的依赖库："
 msgstr ""
 
-#: ../../source/python/installation_and_deployment/install_arctern_on_python.md:73
+#: ../../source/python/installation_and_deployment/install_arctern_on_python.md:72
 msgid "创建 Arctern Conda 环境"
 msgstr ""
 
-#: ../../source/python/installation_and_deployment/install_arctern_on_python.md:75
+#: ../../source/python/installation_and_deployment/install_arctern_on_python.md:74
 msgid "执行以下命令创建 Arctern Conda 环境。此处假设环境名称为 arctern_env，你可根据需求自行选择合适的环境名称。"
 msgstr ""
 
-#: ../../source/python/installation_and_deployment/install_arctern_on_python.md:77
+#: ../../source/python/installation_and_deployment/install_arctern_on_python.md:76
 msgid "conda create -n arctern_env -c conda-forge python=3.7.6"
 msgstr ""
 
-#: ../../source/python/installation_and_deployment/install_arctern_on_python.md:79
+#: ../../source/python/installation_and_deployment/install_arctern_on_python.md:78
 msgid "创建成功后，可以通过 conda env list 命令查看所有 Conda 环境，其输出结果应包含 Arctern 环境，类似如下："
 msgstr ""
 
-#: ../../source/python/installation_and_deployment/install_arctern_on_python.md:88
+#: ../../source/python/installation_and_deployment/install_arctern_on_python.md:87
 msgid "进入 Arctern 环境："
 msgstr ""
 
-#: ../../source/python/installation_and_deployment/install_arctern_on_python.md:90
+#: ../../source/python/installation_and_deployment/install_arctern_on_python.md:89
 msgid "conda activate arctern_env"
 msgstr ""
 
-#: ../../source/python/installation_and_deployment/install_arctern_on_python.md:92
+#: ../../source/python/installation_and_deployment/install_arctern_on_python.md:91
 msgid "注意：后续工作必须在 Arctern Conda 环境中进行。"
 msgstr ""
 
-#: ../../source/python/installation_and_deployment/install_arctern_on_python.md:94
+#: ../../source/python/installation_and_deployment/install_arctern_on_python.md:93
 msgid "安装 Arctern"
 msgstr ""
 
-#: ../../source/python/installation_and_deployment/install_arctern_on_python.md:98
+#: ../../source/python/installation_and_deployment/install_arctern_on_python.md:97
 msgid "执行以下命令在 Conda 环境中安装 Arctern CPU 版本："
 msgstr ""
 
-#: ../../source/python/installation_and_deployment/install_arctern_on_python.md:104
+#: ../../source/python/installation_and_deployment/install_arctern_on_python.md:103
 msgid "GPU版本"
 msgstr ""
 
-#: ../../source/python/installation_and_deployment/install_arctern_on_python.md:106
+#: ../../source/python/installation_and_deployment/install_arctern_on_python.md:105
 msgid "执行以下命令在 Conda 环境中安装 Arctern GPU 版本："
 msgstr ""
 
-#: ../../source/python/installation_and_deployment/install_arctern_on_python.md:113
+#: ../../source/python/installation_and_deployment/install_arctern_on_python.md:112
 msgid "安装验证"
 msgstr ""
 
-#: ../../source/python/installation_and_deployment/install_arctern_on_python.md:115
+#: ../../source/python/installation_and_deployment/install_arctern_on_python.md:114
 msgid "进入 Python 环境，尝试导入 arctern 并确认版本是否正确。"
 msgstr ""
 
-#: ../../source/python/installation_and_deployment/install_arctern_on_python.md:125
+#: ../../source/python/installation_and_deployment/install_arctern_on_python.md:124
 msgid "测试样例"
 msgstr ""
 
-#: ../../source/python/installation_and_deployment/install_arctern_on_python.md:127
+#: ../../source/python/installation_and_deployment/install_arctern_on_python.md:126
 msgid "安装 py.test："
 msgstr ""
 
-#: ../../source/python/installation_and_deployment/install_arctern_on_python.md:132
+#: ../../source/python/installation_and_deployment/install_arctern_on_python.md:131
 msgid "下载测试文件："
 msgstr ""
 
-#: ../../source/python/installation_and_deployment/install_arctern_on_python.md:137
+#: ../../source/python/installation_and_deployment/install_arctern_on_python.md:136
 msgid "执行以下命令执行测试文件："
 msgstr ""
 
-#: ../../source/python/installation_and_deployment/install_arctern_on_python.md:142
+#: ../../source/python/installation_and_deployment/install_arctern_on_python.md:141
 msgid "若最后打印结果类似以下内容，则表示通过测试样例。"
 msgstr ""
 
-#: ../../source/python/installation_and_deployment/install_arctern_on_python.md:147
+#: ../../source/python/installation_and_deployment/install_arctern_on_python.md:146
 msgid "卸载"
 msgstr ""

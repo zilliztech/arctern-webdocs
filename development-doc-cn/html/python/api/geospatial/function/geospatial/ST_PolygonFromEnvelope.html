@@ -109,7 +109,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../spark/spark.html">Spark</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../../restful/restful.html">RESTful</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../restful/restful.html">Restful</a></li>
 </ul>
 
             
@@ -189,17 +189,17 @@
 <dl class="field-list">
 <dt class="field-odd">参数</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>min_x</strong> (<em>pandas.Series.float64</em>) – The x axis coordinates of the lower left vertical of the rectangles.</p></li>
-<li><p><strong>min_y</strong> (<em>pandas.Series.float64</em>) – The y axis coordinates of the lower left vertical of the rectangles.</p></li>
-<li><p><strong>max_x</strong> (<em>pandas.Series.float64</em>) – The x axis coordinates of the upper right vertical of the rectangles.</p></li>
-<li><p><strong>max_y</strong> (<em>pandas.Series.float64</em>) – The y axis coordinates of the upper right vertical of the rectangles.</p></li>
+<li><p><strong>min_x</strong> (<em>Series</em><em>(</em><em>dtype: float64</em><em>)</em>) – 矩形横坐标的最小值。</p></li>
+<li><p><strong>min_y</strong> (<em>Series</em><em>(</em><em>dtype: float64</em><em>)</em>) – 矩形纵坐标的最小值。</p></li>
+<li><p><strong>max_x</strong> (<em>Series</em><em>(</em><em>dtype: float64</em><em>)</em>) – 矩形横坐标的最大值。</p></li>
+<li><p><strong>max_y</strong> (<em>Series</em><em>(</em><em>dtype: float64</em><em>)</em>) – 矩形纵坐标的最大值。</p></li>
 </ul>
 </dd>
-<dt class="field-even">返回</dt>
-<dd class="field-even"><p>Geometries organized as WKB.</p>
+<dt class="field-even">返回类型</dt>
+<dd class="field-even"><p>Series(dtype: object)</p>
 </dd>
-<dt class="field-odd">返回类型</dt>
-<dd class="field-odd"><p>pandas.Series.object</p>
+<dt class="field-odd">返回</dt>
+<dd class="field-odd"><p>WKB 格式的几何体。</p>
 </dd>
 <dt class="field-even">例子</dt>
 <dd class="field-even"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span>
@@ -208,7 +208,7 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x_max</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mf">1.0</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y_min</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mf">0.0</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y_max</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mf">1.0</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">rst</span> <span class="o">=</span> <span class="n">arctern</span><span class="o">.</span><span class="n">ST_AsText</span><span class="p">(</span><span class="n">rctern</span><span class="o">.</span><span class="n">ST_PolygonFromEnvelope</span><span class="p">(</span><span class="n">x_min</span><span class="p">,</span> <span class="n">y_min</span><span class="p">,</span> <span class="n">x_max</span><span class="p">,</span> <span class="n">y_max</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rst</span> <span class="o">=</span> <span class="n">arctern</span><span class="o">.</span><span class="n">ST_AsText</span><span class="p">(</span><span class="n">arctern</span><span class="o">.</span><span class="n">ST_PolygonFromEnvelope</span><span class="p">(</span><span class="n">x_min</span><span class="p">,</span> <span class="n">y_min</span><span class="p">,</span> <span class="n">x_max</span><span class="p">,</span> <span class="n">y_max</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">rst</span><span class="p">)</span>
 <span class="go">    0    POLYGON ((0 0,0 1,1 1,1 0,0 0))</span>
 <span class="go">    dtype: object</span>
@@ -242,7 +242,7 @@
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 5月 12, 2020.
+        最后更新于 5月 13, 2020.
       </span>
 
     </p>

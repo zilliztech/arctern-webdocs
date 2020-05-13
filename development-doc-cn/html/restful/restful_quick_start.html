@@ -85,7 +85,7 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../python/python.html">Pandas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../spark/spark.html">Spark</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="restful.html">RESTful</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="restful.html">Restful</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="webserver_installation_config.html">Arctern RESTful Server 安装与配置</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Quick Start</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id1">服务器端的启动和配置</a><ul>
@@ -158,7 +158,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="restful.html">RESTful</a> &raquo;</li>
+          <li><a href="restful.html">Restful</a> &raquo;</li>
         
       <li>Quick Start</li>
     
@@ -181,40 +181,114 @@
             
   <div class="section" id="quick-start">
 <h1>Quick Start<a class="headerlink" href="#quick-start" title="永久链接至标题">¶</a></h1>
-<p>本文以纽约出租车数据集为例，说明如何通过 <code class="docutils literal notranslate"><span class="pre">Arctern</span> <span class="pre">RESTful</span> <span class="pre">API</span></code> 完成数据的导入、运算和展示。</p>
+<p>本文以纽约出租车数据集为例，说明如何通过 <code class="docutils literal notranslate"><span class="pre">Arctern</span> <span class="pre">Restful</span> <span class="pre">API</span></code> 完成数据的导入、运算和展示。</p>
 <div class="section" id="id1">
 <h2>服务器端的启动和配置<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
 <div class="section" id="id2">
 <h3>服务器启动<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h3>
-<p>在调用 <code class="docutils literal notranslate"><span class="pre">Arctern</span> <span class="pre">RESTful</span> <span class="pre">API</span></code> 之前请先启动服务，具体步骤详见<a class="reference internal" href="webserver_installation_config.html"><span class="doc">服务器启动</span></a>。</p>
+<p>在调用 <code class="docutils literal notranslate"><span class="pre">Arctern</span> <span class="pre">Restful</span> <span class="pre">API</span></code> 之前请先启动服务，具体步骤详见<a class="reference internal" href="webserver_installation_config.html"><span class="doc">服务器启动</span></a>。</p>
 </div>
 <div class="section" id="id3">
 <h3>数据准备<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
-<p>在服务器端下载<a class="reference external" href="https://media.githubusercontent.com/media/zilliztech/arctern-resources/benchmarks/benchmarks/dataset/nyc_taxi/0_2M_nyc_taxi_and_building/0_2M_nyc_taxi_and_building.csv">纽约出租车数据集</a>，该数据集包含2009年纽约市出租车运营记录，各字段的含义如下：</p>
-<ul class="simple">
-<li><p>VendorID: string，运营商名称；</p></li>
-<li><p>tpep_pickup_datetime: string，上车时间；</p></li>
-<li><p>tpep_dropoff_datetime: string，下车时间；</p></li>
-<li><p>passenger_count: long，乘客数量；</p></li>
-<li><p>trip_distance: double，行程距离；</p></li>
-<li><p>pickup_longitude: double，上车地点-经度；</p></li>
-<li><p>pickup_latitude: double，上车地点-纬度；</p></li>
-<li><p>dropoff_longitude: double，下车地点-经度；</p></li>
-<li><p>dropoff_latitude: double，下车地点-纬度；</p></li>
-<li><p>fare_amount: double，行程费用；</p></li>
-<li><p>tip_amount: double，小费；</p></li>
-<li><p>total_amount: double，总费用；</p></li>
-<li><p>buildingid_pickup: long，上车地点所在建筑的id；</p></li>
-<li><p>buildingid_dropoff: long，下车地点所在建筑的id；</p></li>
-<li><p>buildingtext_pickup: string，上车地点所在建筑的轮廓描述；</p></li>
-<li><p>buildingtext_dropoff: string，下车地点所在建筑的轮廓描述。</p></li>
-</ul>
-<p>上述和时间有关的列的格式为：<code class="docutils literal notranslate"><span class="pre">yyyy-MM-dd</span> <span class="pre">HH:mm::ss</span> <span class="pre">XXXXX</span></code>，如<code class="docutils literal notranslate"><span class="pre">2009-04-12</span> <span class="pre">03:16:33</span> <span class="pre">+00:00</span></code>。</p>
-<p>下述示例中假设服务器 IP 地址为<code class="docutils literal notranslate"><span class="pre">127.0.0.1</span></code>，RESTful服务端口为<code class="docutils literal notranslate"><span class="pre">8080</span></code>，数据文件所在路径为 <code class="docutils literal notranslate"><span class="pre">/example/data/0_2M_nyc_taxi_and_building.csv</span></code>。</p>
+<p>在服务器端下载<a class="reference external" href="https://media.githubusercontent.com/media/zilliztech/arctern-resources/benchmarks/benchmarks/dataset/nyc_taxi/0_2M_nyc_taxi_and_building/0_2M_nyc_taxi_and_building.csv">纽约出租车数据集</a>，该数据集包含 2009 年纽约市出租车运营记录，各字段的含义如下：</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th align="left">名称</th>
+<th align="left">含义</th>
+<th align="left">类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">VendorID</td>
+<td align="left">运营商名称</td>
+<td align="left">string</td>
+</tr>
+<tr>
+<td align="left">tpep_pickup_datetime</td>
+<td align="left">上车时间</td>
+<td align="left">string</td>
+</tr>
+<tr>
+<td align="left">tpep_dropoff_datetime</td>
+<td align="left">下车时间</td>
+<td align="left">string</td>
+</tr>
+<tr>
+<td align="left">passenger_count</td>
+<td align="left">乘客数量</td>
+<td align="left">long</td>
+</tr>
+<tr>
+<td align="left">trip_distance</td>
+<td align="left">行程距离</td>
+<td align="left">double</td>
+</tr>
+<tr>
+<td align="left">pickup_longitude</td>
+<td align="left">上车地点-经度</td>
+<td align="left">double</td>
+</tr>
+<tr>
+<td align="left">pickup_latitude</td>
+<td align="left">上车地点-纬度</td>
+<td align="left">double</td>
+</tr>
+<tr>
+<td align="left">dropoff_longitude</td>
+<td align="left">下车地点-经度</td>
+<td align="left">double</td>
+</tr>
+<tr>
+<td align="left">dropoff_latitude</td>
+<td align="left">下车地点-纬度</td>
+<td align="left">double</td>
+</tr>
+<tr>
+<td align="left">fare_amount</td>
+<td align="left">行程费用</td>
+<td align="left">double</td>
+</tr>
+<tr>
+<td align="left">tip_amount</td>
+<td align="left">小费</td>
+<td align="left">double</td>
+</tr>
+<tr>
+<td align="left">total_amount</td>
+<td align="left">总费用</td>
+<td align="left">double</td>
+</tr>
+<tr>
+<td align="left">buildingid_pickup</td>
+<td align="left">上车地点所在建筑的 id</td>
+<td align="left">long</td>
+</tr>
+<tr>
+<td align="left">buildingid_dropoff</td>
+<td align="left">下车地点所在建筑的 id</td>
+<td align="left">long</td>
+</tr>
+<tr>
+<td align="left">buildingtext_pickup</td>
+<td align="left">上车地点所在建筑的轮廓描述</td>
+<td align="left">string</td>
+</tr>
+<tr>
+<td align="left">buildingtext_dropoff</td>
+<td align="left">下车地点所在建筑的轮廓描述</td>
+<td align="left">string</td>
+</tr>
+</tbody>
+</table><blockquote>
+<div><p>该数据的时间格式为：<code class="docutils literal notranslate"><span class="pre">yyyy-MM-dd</span> <span class="pre">HH:mm::ss</span> <span class="pre">XXXXX</span></code>，如 <code class="docutils literal notranslate"><span class="pre">2009-04-12</span> <span class="pre">03:16:33</span> <span class="pre">+00:00</span></code></p>
+</div></blockquote>
+<p>下述示例中假设服务器 IP 地址为<code class="docutils literal notranslate"><span class="pre">127.0.0.1</span></code>，Restful服务端口为<code class="docutils literal notranslate"><span class="pre">8080</span></code>，数据文件所在路径为 <code class="docutils literal notranslate"><span class="pre">/example/data/0_2M_nyc_taxi_and_building.csv</span></code>。</p>
 </div>
 <div class="section" id="id4">
 <h3>安装依赖<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
-<p>本文示例代码使用 Python 的 <code class="docutils literal notranslate"><span class="pre">requests</span></code> 库调用 <code class="docutils literal notranslate"><span class="pre">Arctern</span> <span class="pre">RESTful</span> <span class="pre">API</span></code>，使用下面的命令安装 <code class="docutils literal notranslate"><span class="pre">requests</span></code>：</p>
+<p>本文示例代码使用 Python 的 <code class="docutils literal notranslate"><span class="pre">requests</span></code> 库调用 <code class="docutils literal notranslate"><span class="pre">Arctern</span> <span class="pre">Restful</span> <span class="pre">API</span></code>，使用下面的命令安装 <code class="docutils literal notranslate"><span class="pre">requests</span></code>：</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip install requests
 </pre></div>
 </div>
@@ -445,7 +519,7 @@
 </div>
 <div class="section" id="id11">
 <h3>绘制点图<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h3>
-<p>使用 <code class="docutils literal notranslate"><span class="pre">/pointmap</span></code> 接口根据乘客上车地点绘制点图。点图中具体参数说明请参见 <a class="reference external" href="./api/function/pointmap.html">点图 RESTful API 说明</a>。</p>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">/pointmap</span></code> 接口根据乘客上车地点绘制点图。点图中具体参数说明请参见 <a class="reference external" href="./api/function/pointmap.html">点图 Restful API 说明</a>。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">requests</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">json</span>
 <span class="gp">&gt;&gt;&gt; </span>
@@ -465,7 +539,7 @@
 <span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s2">&quot;http://127.0.0.1:8080/pointmap&quot;</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">},</span> <span class="n">data</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">payload</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># 保存为png</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># 保存为 PNG 图片。</span>
 <span class="gp">... </span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">base64</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;/tmp/pointmap.png&quot;</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
@@ -478,11 +552,11 @@
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>eog /tmp/pointmap.png
 </pre></div>
 </div>
-<p><img alt="点图pointmap" src="../_images/pointmap.png" /></p>
+<p><img alt="点图" src="../_images/pointmap.png" /></p>
 </div>
 <div class="section" id="id12">
 <h3>带权点图<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h3>
-<p>使用 <code class="docutils literal notranslate"><span class="pre">/weighted_pointmap</span></code> 接口根据乘客上车地点绘制带权点图，使用总费用作为点的权重，总费用越高，权重越大，点的颜色越深。权重图中具体参数说明请参见 <a class="reference external" href="./api/function/weighted_pointmap.html">带权点图 RESTful API 说明</a>。</p>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">/weighted_pointmap</span></code> 接口根据乘客上车地点绘制带权点图，使用总费用作为点的权重，总费用越高，权重越大，点的颜色越深。权重图中具体参数说明请参见 <a class="reference external" href="./api/function/weighted_pointmap.html">带权点图 Restful API 说明</a>。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">requests</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">json</span>
 <span class="go">&gt;&gt;&gt;</span>
@@ -530,7 +604,7 @@
 </div>
 <div class="section" id="id13">
 <h3>热力图<a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h3>
-<p>使用 <code class="docutils literal notranslate"><span class="pre">/heatmap</span></code> 接口根据乘客下车地点以及行程费用绘制热力图，费用高的区域为红色，费用低的区域为绿色。热力图中具体参数说明请参见 <a class="reference external" href="./api/function/heatmap.html">热力图 RESTful API 说明</a>。</p>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">/heatmap</span></code> 接口根据乘客下车地点以及行程费用绘制热力图，费用高的区域为红色，费用低的区域为绿色。热力图中具体参数说明请参见<a class="reference external" href="./api/function/heatmap.html">热力图 Restful API 说明</a>。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">requests</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">json</span>
 <span class="go">&gt;&gt;&gt;</span>
@@ -563,7 +637,7 @@
 </pre></div>
 </div>
 <p>热力图样例：</p>
-<p><img alt="热力图heatmap" src="../_images/heatmap.png" /></p>
+<p><img alt="热力图" src="../_images/heatmap.png" /></p>
 </div>
 <div class="section" id="id14">
 <h3>轮廓图<a class="headerlink" href="#id14" title="永久链接至标题">¶</a></h3>
@@ -608,17 +682,17 @@
 </pre></div>
 </div>
 <p>轮廓图样例：</p>
-<p><img alt="轮廓图choroplethmap.png" src="../_images/choroplethmap.png" /></p>
+<p><img alt="轮廓图" src="../_images/choroplethmap.png" /></p>
 </div>
 <div class="section" id="id15">
 <h3>图标图<a class="headerlink" href="#id15" title="永久链接至标题">¶</a></h3>
-<p>使用 <code class="docutils literal notranslate"><span class="pre">/icon_viz</span></code> 接口根据乘客上车地点绘制图标图。图标图中具体参数说明请参见 <a class="reference external" href="./api/function/icon_viz.html">图标图 RESTful API 说明</a>。</p>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">/icon_viz</span></code> 接口根据乘客上车地点绘制图标图。图标图中具体参数说明请参见 <a class="reference external" href="./api/function/icon_viz.html">图标图 Restful API 说明</a>。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">requests</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">json</span>
 <span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># 下面 icon_path 的路径填写待显示图标所在的绝对路径，</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># 本例中的图标文件可通过如下命令获取：</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># wget https://github.com/zilliztech/arctern-docs/raw/branch-0.1.x/img/icon/icon-viz.png</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># wget https://github.com/zilliztech/arctern-docs/raw/master/img/icon/icon-viz.png</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>\
 <span class="go">    &quot;scope&quot;: &quot;nyc_taxi&quot;,\</span>
 <span class="go">    &quot;sql&quot;: &quot;select ST_Point(pickup_longitude, pickup_latitude) as point from nyc_taxi where ST_Within(ST_Point(pickup_longitude, pickup_latitude), ST_GeomFromText(&#39;POLYGON ((-73.9616334766551 40.704739019597156, -73.94232850242967 40.704739019597156, -73.94232850242967 40.728133570887906 ,-73.9616334766551 40.728133570887906, -73.9616334766551 40.704739019597156))&#39;)) limit 25&quot;,\</span>
@@ -638,7 +712,7 @@
 <span class="gp">&gt;&gt;&gt; </span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s2">&quot;http://127.0.0.1:8080/icon_viz&quot;</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">},</span> <span class="n">data</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">payload</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># 保存为png</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># 保存为 PNG 图片。</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">base64</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;/tmp/icon_viz.png&quot;</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">base64</span><span class="o">.</span><span class="n">b64decode</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s1">&#39;result&#39;</span><span class="p">]))</span>
@@ -647,11 +721,11 @@
 </pre></div>
 </div>
 <p>图标图样例：</p>
-<p><img alt="图标图icon_viz" src="../_images/icon_viz.png" /></p>
+<p><img alt="图标图" src="../_images/icon_viz.png" /></p>
 </div>
 <div class="section" id="id16">
 <h3>渔网图<a class="headerlink" href="#id16" title="永久链接至标题">¶</a></h3>
-<p>使用 <code class="docutils literal notranslate"><span class="pre">/fishnetmap</span></code> 接口根据乘客上车地点绘制渔网图，使用总费用作为渔网网格的权重，总费用越高，权重越大，渔网网格的颜色越深。渔网图中具体参数说明请参见 <a class="reference external" href="./api/function/fishnetmap.html">渔网图 RESTful API 说明</a>。</p>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">/fishnetmap</span></code> 接口根据乘客上车地点绘制渔网图，使用总费用作为渔网网格的权重，总费用越高，权重越大，渔网网格的颜色越深。渔网图中具体参数说明请参见 <a class="reference external" href="./api/function/fishnetmap.html">渔网图 Restful API 说明</a>。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">requests</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">json</span>
 <span class="go">&gt;&gt;&gt;</span>
@@ -681,7 +755,7 @@
 <span class="gp">&gt;&gt;&gt; </span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s2">&quot;http://127.0.0.1:8080/fishnetmap&quot;</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">},</span> <span class="n">data</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">payload</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># 保存为png</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># 保存为 PNG 图片。</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">base64</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;/tmp/fishnetmap.png&quot;</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">base64</span><span class="o">.</span><span class="n">b64decode</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s1">&#39;result&#39;</span><span class="p">]))</span>
@@ -689,12 +763,12 @@
 </pre></div>
 </div>
 <p>渔网图样例：</p>
-<p><img alt="渔网图fishnetmap" src="../_images/fishnetmap.png" /></p>
+<p><img alt="渔网图" src="../_images/fishnetmap.png" /></p>
 </div>
 <div class="section" id="id17">
 <h3>删除作用域<a class="headerlink" href="#id17" title="永久链接至标题">¶</a></h3>
 <p>完成操作后需要通过 <code class="docutils literal notranslate"><span class="pre">/scope/&lt;scope_name&gt;</span></code> 接口删除作用域释放服务器资源。</p>
-<p><font color="#dd0000">注意：</font><code class="docutils literal notranslate"><span class="pre">Arctern</span> <span class="pre">RESTful</span></code>服务不会主动释放你申请的作用域，完成操作后请务必删除所申请的所有作用域。</p>
+<p><font color="#dd0000">注意：</font><code class="docutils literal notranslate"><span class="pre">Arctern</span> <span class="pre">Restful</span></code>服务不会主动释放你申请的作用域，完成操作后请务必删除所申请的所有作用域。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">requests</span>
 <span class="gp">&gt;&gt;&gt; </span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">r</span><span class="o">=</span><span class="n">requests</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s2">&quot;http://127.0.0.1:8080/scope/nyc_taxi&quot;</span><span class="p">)</span>
@@ -735,7 +809,7 @@
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 5月 12, 2020.
+        最后更新于 5月 13, 2020.
       </span>
 
     </p>

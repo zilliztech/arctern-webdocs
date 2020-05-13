@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-12 14:24+0800\n"
+"POT-Creation-Date: 2020-05-13 09:30+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,169 +29,105 @@ msgid "数据准备"
 msgstr ""
 
 #: ../../source/python/quick_start/quick-start-pandas.md:7
-msgid "在 Arctern 运行环境中下载纽约出租车数据集，该数据集包含2009年纽约市出租车运营记录，各字段的含义如下："
+msgid "在 Arctern 运行环境中下载纽约出租车数据集，该数据集包含 2009 年纽约市出租车运营记录，各字段的含义如下："
 msgstr ""
 
-#: ../../source/python/quick_start/quick-start-pandas.md:9
-msgid "VendorID: string，运营商名称；"
+#: ../../source/python/quick_start/quick-start-pandas.md:101
+msgid "该数据的时间格式为：yyyy-MM-dd HH:mm::ss XXXXX，如 2009-04-12 03:16:33 +00:00"
 msgstr ""
 
-#: ../../source/python/quick_start/quick-start-pandas.md:10
-msgid "tpep_pickup_datetime: string，上车时间；"
-msgstr ""
-
-#: ../../source/python/quick_start/quick-start-pandas.md:11
-msgid "tpep_dropoff_datetime: string，下车时间；"
-msgstr ""
-
-#: ../../source/python/quick_start/quick-start-pandas.md:12
-msgid "passenger_count: long，乘客数量；"
-msgstr ""
-
-#: ../../source/python/quick_start/quick-start-pandas.md:13
-msgid "trip_distance: double，行程距离；"
-msgstr ""
-
-#: ../../source/python/quick_start/quick-start-pandas.md:14
-msgid "pickup_longitude: double，上车地点-经度；"
-msgstr ""
-
-#: ../../source/python/quick_start/quick-start-pandas.md:15
-msgid "pickup_latitude: double，上车地点-纬度；"
-msgstr ""
-
-#: ../../source/python/quick_start/quick-start-pandas.md:16
-msgid "dropoff_longitude: double，下车地点-经度；"
-msgstr ""
-
-#: ../../source/python/quick_start/quick-start-pandas.md:17
-msgid "dropoff_latitude: double，下车地点-纬度；"
-msgstr ""
-
-#: ../../source/python/quick_start/quick-start-pandas.md:18
-msgid "fare_amount: double，行程费用；"
-msgstr ""
-
-#: ../../source/python/quick_start/quick-start-pandas.md:19
-msgid "tip_amount: double，小费；"
-msgstr ""
-
-#: ../../source/python/quick_start/quick-start-pandas.md:20
-msgid "total_amount: double，总费用；"
-msgstr ""
-
-#: ../../source/python/quick_start/quick-start-pandas.md:21
-msgid "buildingid_pickup: long，上车地点所在建筑的id；"
-msgstr ""
-
-#: ../../source/python/quick_start/quick-start-pandas.md:22
-msgid "buildingid_dropoff: long，下车地点所在建筑的id；"
-msgstr ""
-
-#: ../../source/python/quick_start/quick-start-pandas.md:23
-msgid "buildingtext_pickup: string，上车地点所在建筑的轮廓描述；"
-msgstr ""
-
-#: ../../source/python/quick_start/quick-start-pandas.md:24
-msgid "buildingtext_dropoff: string，下车地点所在建筑的轮廓描述。"
-msgstr ""
-
-#: ../../source/python/quick_start/quick-start-pandas.md:26
-msgid "该数据中时间格式为：yyyy-MM-dd HH:mm::ss XXXXX，如2009-04-12 03:16:33 +00:00。"
-msgstr ""
-
-#: ../../source/python/quick_start/quick-start-pandas.md:28
+#: ../../source/python/quick_start/quick-start-pandas.md:103
 msgid "加载数据"
 msgstr ""
 
-#: ../../source/python/quick_start/quick-start-pandas.md:30
+#: ../../source/python/quick_start/quick-start-pandas.md:105
 msgid "以下通过 Python 交互界面展示 Arctern 的使用方法。根据测试数据各字段的名称和数据类型，构建导入测试数据的 schema并导入数据。"
 msgstr ""
 
-#: ../../source/python/quick_start/quick-start-pandas.md:58
-msgid "打印数据的前5行，验证数据是否加载成功："
+#: ../../source/python/quick_start/quick-start-pandas.md:133
+msgid "打印数据的前五行，验证数据是否加载成功："
 msgstr ""
 
-#: ../../source/python/quick_start/quick-start-pandas.md:72
+#: ../../source/python/quick_start/quick-start-pandas.md:147
 msgid "数据过滤"
 msgstr ""
 
-#: ../../source/python/quick_start/quick-start-pandas.md:74
-msgid "在指定地理区域（经度范围：-73.991504至-73.945155；纬度范围：40.770759至40.783434）中随机选取200 行数据。"
+#: ../../source/python/quick_start/quick-start-pandas.md:149
+msgid "在指定地理区域（经度范围：-73.991504 至 -73.945155；纬度范围：40.770759 至 40.783434）中随机选取 200 行数据。"
 msgstr ""
 
-#: ../../source/python/quick_start/quick-start-pandas.md:85
+#: ../../source/python/quick_start/quick-start-pandas.md:160
 msgid "使用 Arctern 提供的 GeoSpatial 函数处理数据"
 msgstr ""
 
-#: ../../source/python/quick_start/quick-start-pandas.md:87
+#: ../../source/python/quick_start/quick-start-pandas.md:162
 msgid "导入 arctern 模块："
 msgstr ""
 
-#: ../../source/python/quick_start/quick-start-pandas.md:93
+#: ../../source/python/quick_start/quick-start-pandas.md:168
 msgid "根据经纬度数据创建坐标点数据："
 msgstr ""
 
-#: ../../source/python/quick_start/quick-start-pandas.md:105
-msgid "将坐标点数据使用的空间坐标系从EPSG:4326坐标系转换为到EPSG:3857坐标系，更多不同空间坐标系标准的详细信息请查看维基百科相关页面。"
-msgstr ""
-
-#: ../../source/python/quick_start/quick-start-pandas.md:116
-msgid "可以在EPSG网站上验证转换是否正确"
-msgstr ""
-
-#: ../../source/python/quick_start/quick-start-pandas.md:121
-msgid "使用 Arctern 绘制图层"
-msgstr ""
-
-#: ../../source/python/quick_start/quick-start-pandas.md:123
-msgid "导入绘图需要使用的模块："
-msgstr ""
-
-#: ../../source/python/quick_start/quick-start-pandas.md:130
-msgid "通过 Arctern 提供的绘图函数绘制点图图层："
-msgstr ""
-
-#: ../../source/python/quick_start/quick-start-pandas.md:139
-msgid "点图图层绘制结果如下："
-msgstr ""
-
-#: ../../source/python/quick_start/quick-start-pandas.md:143
-msgid "通过 Arctern 提供的绘图函数绘制带权点图图层："
-msgstr ""
-
-#: ../../source/python/quick_start/quick-start-pandas.md:152
-msgid "带权点图图层绘制结果如下："
-msgstr ""
-
-#: ../../source/python/quick_start/quick-start-pandas.md:156
-msgid "通过 Arctern 提供的绘图函数绘制热力图图层："
-msgstr ""
-
-#: ../../source/python/quick_start/quick-start-pandas.md:165
-msgid "热力图图层绘制结果如下："
-msgstr ""
-
-#: ../../source/python/quick_start/quick-start-pandas.md:169
-msgid "通过 Arctern 提供的绘图函数绘制轮廓图图层："
-msgstr ""
-
-#: ../../source/python/quick_start/quick-start-pandas.md:178
-msgid "轮廓图图层绘制结果如下："
-msgstr ""
-
-#: ../../source/python/quick_start/quick-start-pandas.md:182
-msgid "通过 Arctern 提供的绘图函数绘制图标图图层："
+#: ../../source/python/quick_start/quick-start-pandas.md:180
+msgid "将坐标点数据使用的空间坐标系从 EPSG:4326 坐标系转换到 EPSG:3857 坐标系，更多不同空间坐标系标准的详细信息请查看维基百科相关页面。"
 msgstr ""
 
 #: ../../source/python/quick_start/quick-start-pandas.md:191
+msgid "你可以在 EPSG 网站上验证转换结果是否正确。"
+msgstr ""
+
+#: ../../source/python/quick_start/quick-start-pandas.md:196
+msgid "使用 Arctern 绘制图层"
+msgstr ""
+
+#: ../../source/python/quick_start/quick-start-pandas.md:198
+msgid "导入绘图需要使用的模块："
+msgstr ""
+
+#: ../../source/python/quick_start/quick-start-pandas.md:205
+msgid "通过 Arctern 提供的绘图函数绘制点图图层："
+msgstr ""
+
+#: ../../source/python/quick_start/quick-start-pandas.md:214
+msgid "点图图层绘制结果如下："
+msgstr ""
+
+#: ../../source/python/quick_start/quick-start-pandas.md:218
+msgid "通过 Arctern 提供的绘图函数绘制带权点图图层："
+msgstr ""
+
+#: ../../source/python/quick_start/quick-start-pandas.md:227
+msgid "带权点图图层绘制结果如下："
+msgstr ""
+
+#: ../../source/python/quick_start/quick-start-pandas.md:231
+msgid "通过 Arctern 提供的绘图函数绘制热力图图层："
+msgstr ""
+
+#: ../../source/python/quick_start/quick-start-pandas.md:240
+msgid "热力图图层绘制结果如下："
+msgstr ""
+
+#: ../../source/python/quick_start/quick-start-pandas.md:244
+msgid "通过 Arctern 提供的绘图函数绘制轮廓图图层："
+msgstr ""
+
+#: ../../source/python/quick_start/quick-start-pandas.md:253
+msgid "轮廓图图层绘制结果如下："
+msgstr ""
+
+#: ../../source/python/quick_start/quick-start-pandas.md:257
+msgid "通过 Arctern 提供的绘图函数绘制图标图图层："
+msgstr ""
+
+#: ../../source/python/quick_start/quick-start-pandas.md:266
 msgid "图标图图层绘制结果如下："
 msgstr ""
 
-#: ../../source/python/quick_start/quick-start-pandas.md:195
+#: ../../source/python/quick_start/quick-start-pandas.md:270
 msgid "通过 Arctern 提供的绘图函数绘制渔网图图层："
 msgstr ""
 
-#: ../../source/python/quick_start/quick-start-pandas.md:204
+#: ../../source/python/quick_start/quick-start-pandas.md:279
 msgid "渔网图图层绘制结果如下："
 msgstr ""

@@ -112,7 +112,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../spark/spark.html">Spark</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../../restful/restful.html">RESTful</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../restful/restful.html">Restful</a></li>
 </ul>
 
             
@@ -188,25 +188,23 @@
 <dl class="py function">
 <dt id="arctern._wrapper_func.ST_CurveToLine">
 <code class="sig-prename descclassname">arctern.</code><code class="sig-name descname">ST_CurveToLine</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">geos</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/arctern/_wrapper_func.html#ST_CurveToLine"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#arctern._wrapper_func.ST_CurveToLine" title="永久链接至目标">¶</a></dt>
-<dd><p>Converts a CIRCULAR STRING to regular LINESTRING or CURVEPOLYGON to POLYGON or
-MULTISURFACE to MULTIPOLYGON. Useful for outputting to devices that can’t support
-CIRCULARSTRING geometry types.</p>
+<dd><p>将几何图形中的曲线转换为近似的线性表示形式，例如，将 CIRCULAR STRING 转换为普通的 LINESTRING，将 CURVEPOLYGON 转换为 POLYGON，将 MULTISURFACE 转换为 MULTIPOLYGON。</p>
 <dl class="field-list">
 <dt class="field-odd">参数</dt>
-<dd class="field-odd"><p><strong>geos</strong> (<em>pandas.Series.object</em>) – Geometries organized as WKB.</p>
+<dd class="field-odd"><p><strong>geos</strong> (<em>Series</em><em>(</em><em>dtype: object</em><em>)</em>) – WKB 格式的几何体。</p>
 </dd>
-<dt class="field-even">返回</dt>
-<dd class="field-even"><p>Geometries organized as WKB.</p>
+<dt class="field-even">返回类型</dt>
+<dd class="field-even"><p>Series(dtype: object)</p>
 </dd>
-<dt class="field-odd">返回类型</dt>
-<dd class="field-odd"><p>pandas.Series.object</p>
+<dt class="field-odd">返回</dt>
+<dd class="field-odd"><p>WKB 格式的几何体。</p>
 </dd>
 <dt class="field-even">例子</dt>
 <dd class="field-even"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">arctern</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;CURVEPOLYGON(CIRCULARSTRING(0 0, 4 0, 4 4, 0 4, 0 0))&quot;</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">rst</span> <span class="o">=</span> <span class="n">arctern</span><span class="o">.</span><span class="n">ST_CurveToLine</span><span class="p">(</span><span class="n">arctern</span><span class="o">.</span><span class="n">ST_GeomFromText</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rst</span> <span class="o">=</span> <span class="n">arctern</span><span class="o">.</span><span class="n">ST_AsText</span><span class="p">(</span><span class="n">arctern</span><span class="o">.</span><span class="n">ST_CurveToLine</span><span class="p">(</span><span class="n">arctern</span><span class="o">.</span><span class="n">ST_GeomFromText</span><span class="p">(</span><span class="n">data</span><span class="p">)))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span> <span class="nb">str</span><span class="p">(</span><span class="n">rst</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;POLYGON&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -238,7 +236,7 @@ CIRCULARSTRING geometry types.</p>
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 5月 12, 2020.
+        最后更新于 5月 13, 2020.
       </span>
 
     </p>

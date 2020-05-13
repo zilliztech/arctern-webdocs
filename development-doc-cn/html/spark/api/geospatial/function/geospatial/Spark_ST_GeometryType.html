@@ -108,7 +108,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../../restful/restful.html">RESTful</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../restful/restful.html">Restful</a></li>
 </ul>
 
             
@@ -187,13 +187,13 @@
 <dd><p>对输入中的每一个几何体,返回表示其类型的字符串。</p>
 <dl class="field-list">
 <dt class="field-odd">参数</dt>
-<dd class="field-odd"><p><strong>geos</strong> (<em>pandas.Series.object</em>) – Geometries organized as WKB.</p>
+<dd class="field-odd"><p><strong>geos</strong> (<em>WKB</em>) – 几何体。</p>
 </dd>
-<dt class="field-even">返回</dt>
-<dd class="field-even"><p>Geometries organized as WKB.</p>
+<dt class="field-even">返回类型</dt>
+<dd class="field-even"><p>string</p>
 </dd>
-<dt class="field-odd">返回类型</dt>
-<dd class="field-odd"><p>pandas.Series.object</p>
+<dt class="field-odd">返回</dt>
+<dd class="field-odd"><p>几何体的类型，例如 ST_LINESTRING，ST_POLYGON，ST_POINT，ST_MULTIPOINT。</p>
 </dd>
 <dt class="field-even">例子</dt>
 <dd class="field-even"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span>
@@ -210,7 +210,7 @@
 <span class="go">|ST_GeometryType(ST_GeomFromText(geos))|</span>
 <span class="go">+--------------------------------------+</span>
 <span class="go">|ST_LINESTRING                         |</span>
-<span class="go">|POINT                                 |</span>
+<span class="go">|ST_POINT                              |</span>
 <span class="go">+--------------------------------------+</span>
 </pre></div>
 </div>
@@ -242,7 +242,7 @@
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 5月 12, 2020.
+        最后更新于 5月 13, 2020.
       </span>
 
     </p>

@@ -83,7 +83,7 @@
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Pandas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../spark/spark.html">Spark</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../restful/restful.html">RESTful</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../restful/restful.html">Restful</a></li>
 </ul>
 
             
@@ -161,6 +161,8 @@
 <span class="c1"># See the License for the specific language governing permissions and</span>
 <span class="c1"># limitations under the License.</span>
 
+<span class="c1"># pylint: disable=too-many-lines</span>
+
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s2">&quot;ST_Point&quot;</span><span class="p">,</span>
     <span class="s2">&quot;ST_Intersection&quot;</span><span class="p">,</span>
@@ -210,12 +212,12 @@
 <span class="kn">from</span> <span class="nn">pyspark.sql.functions</span> <span class="kn">import</span> <span class="n">pandas_udf</span><span class="p">,</span> <span class="n">PandasUDFType</span>
 
 <span class="nd">@pandas_udf</span><span class="p">(</span><span class="s2">&quot;binary&quot;</span><span class="p">,</span> <span class="n">PandasUDFType</span><span class="o">.</span><span class="n">SCALAR</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">Projection</span><span class="p">(</span><span class="n">geos</span><span class="p">,</span> <span class="n">bottom_right</span><span class="p">,</span> <span class="n">top_left</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">arctern</span><span class="o">.</span><span class="n">projection</span><span class="p">(</span><span class="n">geos</span><span class="p">,</span> <span class="n">bottom_right</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">top_left</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">height</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">width</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">Projection</span><span class="p">(</span><span class="n">geos</span><span class="p">,</span> <span class="n">bottom_geo2</span><span class="p">,</span> <span class="n">top_geo1</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">arctern</span><span class="o">.</span><span class="n">projection</span><span class="p">(</span><span class="n">geos</span><span class="p">,</span> <span class="n">bottom_geo2</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">top_geo1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">height</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">width</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 
 <span class="nd">@pandas_udf</span><span class="p">(</span><span class="s2">&quot;binary&quot;</span><span class="p">,</span> <span class="n">PandasUDFType</span><span class="o">.</span><span class="n">SCALAR</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">TransformAndProjection</span><span class="p">(</span><span class="n">geos</span><span class="p">,</span> <span class="n">src_rs</span><span class="p">,</span> <span class="n">dst_rs</span><span class="p">,</span> <span class="n">bottom_right</span><span class="p">,</span> <span class="n">top_left</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">arctern</span><span class="o">.</span><span class="n">transform_and_projection</span><span class="p">(</span><span class="n">geos</span><span class="p">,</span> <span class="n">src_rs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">dst_rs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">bottom_right</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">top_left</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">height</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">width</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">TransformAndProjection</span><span class="p">(</span><span class="n">geos</span><span class="p">,</span> <span class="n">src_rs</span><span class="p">,</span> <span class="n">dst_rs</span><span class="p">,</span> <span class="n">bottom_geo2</span><span class="p">,</span> <span class="n">top_geo1</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">arctern</span><span class="o">.</span><span class="n">transform_and_projection</span><span class="p">(</span><span class="n">geos</span><span class="p">,</span> <span class="n">src_rs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">dst_rs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">bottom_geo2</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">top_geo1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">height</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">width</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 
 <span class="nd">@pandas_udf</span><span class="p">(</span><span class="s2">&quot;binary&quot;</span><span class="p">,</span> <span class="n">PandasUDFType</span><span class="o">.</span><span class="n">SCALAR</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">WktToWkb</span><span class="p">(</span><span class="n">wkts</span><span class="p">):</span>
@@ -228,13 +230,13 @@
 <div class="viewcode-block" id="ST_PointFromText"><a class="viewcode-back" href="../../spark/api/geospatial/function/geospatial/Spark_ST_PointFromText.html#arctern_pyspark._wrapper_func.ST_PointFromText">[文档]</a><span class="nd">@pandas_udf</span><span class="p">(</span><span class="s2">&quot;binary&quot;</span><span class="p">,</span> <span class="n">PandasUDFType</span><span class="o">.</span><span class="n">SCALAR</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_PointFromText</span><span class="p">(</span><span class="n">geos</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Constructs points from the OGC Well-Known text representation.</span>
+<span class="sd">    Transform the representation of point from WKT to WKB.</span>
 
-<span class="sd">    :type geo: pandas.Series.object</span>
-<span class="sd">    :param geo: Geometries organized as WKT.</span>
+<span class="sd">    :type geos: WKT</span>
+<span class="sd">    :param geos: Point in WKT form.</span>
 
-<span class="sd">    :return: Geometries organized as WKB.</span>
-<span class="sd">    :rtype: pandas.Series.object</span>
+<span class="sd">    :rtype: WKB</span>
+<span class="sd">    :return: Point in WKB form.</span>
 
 <span class="sd">    :example:</span>
 <span class="sd">      &gt;&gt;&gt; from pyspark.sql import SparkSession</span>
@@ -244,9 +246,9 @@
 <span class="sd">      &gt;&gt;&gt; register_funcs(spark_session)</span>
 <span class="sd">      &gt;&gt;&gt; test_data = []</span>
 <span class="sd">      &gt;&gt;&gt; test_data.extend([(&#39;POINT (30 10)&#39;,)])</span>
-<span class="sd">      &gt;&gt;&gt; data_df = spark_session.createDataFrame(data=test_data, schema=[&quot;data&quot;]).cache()</span>
+<span class="sd">      &gt;&gt;&gt; data_df = spark_session.createDataFrame(data=test_data, schema=[&quot;geos&quot;]).cache()</span>
 <span class="sd">      &gt;&gt;&gt; data_df.createOrReplaceTempView(&quot;data&quot;)</span>
-<span class="sd">      &gt;&gt;&gt; spark_session.sql(&quot;select ST_AsText(ST_PointFromText(data)) from data&quot;).show(100,0)</span>
+<span class="sd">      &gt;&gt;&gt; spark_session.sql(&quot;select ST_AsText(ST_PointFromText(geos)) from data&quot;).show(100,0)</span>
 <span class="sd">      +---------------------------------+</span>
 <span class="sd">      |ST_AsText(ST_PointFromText(data))|</span>
 <span class="sd">      +---------------------------------+</span>
@@ -258,13 +260,13 @@
 <div class="viewcode-block" id="ST_PolygonFromText"><a class="viewcode-back" href="../../spark/api/geospatial/function/geospatial/Spark_ST_PolygonFromText.html#arctern_pyspark._wrapper_func.ST_PolygonFromText">[文档]</a><span class="nd">@pandas_udf</span><span class="p">(</span><span class="s2">&quot;binary&quot;</span><span class="p">,</span> <span class="n">PandasUDFType</span><span class="o">.</span><span class="n">SCALAR</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_PolygonFromText</span><span class="p">(</span><span class="n">geos</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Constructs polygons from the OGC Well-Known text representation.</span>
+<span class="sd">    Transform the representation of polygon from WKT to WKB.</span>
 
-<span class="sd">    :type geo: pandas.Series.object</span>
-<span class="sd">    :param geo: Geometries organized as WKT.</span>
+<span class="sd">    :type geos: WKT</span>
+<span class="sd">    :param geos: Polygon in WKT form.</span>
 
-<span class="sd">    :return: Geometries organized as WKB.</span>
-<span class="sd">    :rtype: pandas.Series.object</span>
+<span class="sd">    :rtype: WKB</span>
+<span class="sd">    :return: Polygon in WKB form.</span>
 
 <span class="sd">    :example:</span>
 <span class="sd">      &gt;&gt;&gt; from pyspark.sql import SparkSession</span>
@@ -274,9 +276,9 @@
 <span class="sd">      &gt;&gt;&gt; register_funcs(spark_session)</span>
 <span class="sd">      &gt;&gt;&gt; test_data = []</span>
 <span class="sd">      &gt;&gt;&gt; test_data.extend([(&#39;POLYGON ((0 0,0 1,1 1,1 0,0 0))&#39;,)])</span>
-<span class="sd">      &gt;&gt;&gt; data_df = spark_session.createDataFrame(data=test_data, schema=[&quot;data&quot;]).cache()</span>
+<span class="sd">      &gt;&gt;&gt; data_df = spark_session.createDataFrame(data=test_data, schema=[&quot;geos&quot;]).cache()</span>
 <span class="sd">      &gt;&gt;&gt; data_df.createOrReplaceTempView(&quot;data&quot;)</span>
-<span class="sd">      &gt;&gt;&gt; spark_session.sql(&quot;select ST_AsText(ST_PolygonFromText(data)) from data&quot;).show(100,0)</span>
+<span class="sd">      &gt;&gt;&gt; spark_session.sql(&quot;select ST_AsText(ST_PolygonFromText(geos)) from data&quot;).show(100,0)</span>
 <span class="sd">      +-----------------------------------+</span>
 <span class="sd">      |ST_AsText(ST_PolygonFromText(data))|</span>
 <span class="sd">      +-----------------------------------+</span>
@@ -288,13 +290,13 @@
 <div class="viewcode-block" id="ST_LineStringFromText"><a class="viewcode-back" href="../../spark/api/geospatial/function/geospatial/Spark_ST_LineStringFromText.html#arctern_pyspark._wrapper_func.ST_LineStringFromText">[文档]</a><span class="nd">@pandas_udf</span><span class="p">(</span><span class="s2">&quot;binary&quot;</span><span class="p">,</span> <span class="n">PandasUDFType</span><span class="o">.</span><span class="n">SCALAR</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_LineStringFromText</span><span class="p">(</span><span class="n">geos</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Constructs linestrings from the OGC Well-Known text representation.</span>
+<span class="sd">    Transform the representation of linestring from WKT to WKB.</span>
 
-<span class="sd">    :type geo: pandas.Series.object</span>
-<span class="sd">    :param geo: Geometries organized as WKT.</span>
+<span class="sd">    :type geos: WKT</span>
+<span class="sd">    :param geos: Linestring in WKT form.</span>
 
-<span class="sd">    :return: Geometries organized as WKB.</span>
-<span class="sd">    :rtype: pandas.Series.object</span>
+<span class="sd">    :rtype: WKB</span>
+<span class="sd">    :return: Linestring in WKB form.</span>
 
 <span class="sd">    :example:</span>
 <span class="sd">      &gt;&gt;&gt; from pyspark.sql import SparkSession</span>
@@ -304,9 +306,9 @@
 <span class="sd">      &gt;&gt;&gt; register_funcs(spark_session)</span>
 <span class="sd">      &gt;&gt;&gt; test_data = []</span>
 <span class="sd">      &gt;&gt;&gt; test_data.extend([(&#39;LINESTRING (0 0, 0 1, 1 1, 1 0)&#39;,)])</span>
-<span class="sd">      &gt;&gt;&gt; data_df = spark_session.createDataFrame(data=test_data, schema=[&quot;data&quot;]).cache()</span>
+<span class="sd">      &gt;&gt;&gt; data_df = spark_session.createDataFrame(data=test_data, schema=[&quot;geos&quot;]).cache()</span>
 <span class="sd">      &gt;&gt;&gt; data_df.createOrReplaceTempView(&quot;data&quot;)</span>
-<span class="sd">      &gt;&gt;&gt; spark_session.sql(&quot;select ST_AsText(ST_LineStringFromText(data)) from data&quot;).show(100,0)</span>
+<span class="sd">      &gt;&gt;&gt; spark_session.sql(&quot;select ST_AsText(ST_LineStringFromText(geos)) from data&quot;).show(100,0)</span>
 <span class="sd">      +--------------------------------------+</span>
 <span class="sd">      |ST_AsText(ST_LineStringFromText(data))|</span>
 <span class="sd">      +--------------------------------------+</span>
@@ -318,13 +320,13 @@
 <div class="viewcode-block" id="ST_GeomFromWKT"><a class="viewcode-back" href="../../spark/api/geospatial/function/geospatial/Spark_ST_GeomFromWKT.html#arctern_pyspark._wrapper_func.ST_GeomFromWKT">[文档]</a><span class="nd">@pandas_udf</span><span class="p">(</span><span class="s2">&quot;binary&quot;</span><span class="p">,</span> <span class="n">PandasUDFType</span><span class="o">.</span><span class="n">SCALAR</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_GeomFromWKT</span><span class="p">(</span><span class="n">geos</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Constructs geometries from the OGC Well-Known text representation.</span>
+<span class="sd">    Transform the representation of geometry from WKT to WKB.</span>
 
-<span class="sd">    :type geo: pandas.Series.object</span>
-<span class="sd">    :param geo: Geometries organized as WKT.</span>
+<span class="sd">    :type geos: WKT</span>
+<span class="sd">    :param geos: Geometry in WKT form.</span>
 
-<span class="sd">    :return: Geometries organized as WKB.</span>
-<span class="sd">    :rtype: pandas.Series.object</span>
+<span class="sd">    :rtype: WKB</span>
+<span class="sd">    :return: Geometry in WKB form.</span>
 
 <span class="sd">    :example:</span>
 <span class="sd">      &gt;&gt;&gt; from pyspark.sql import SparkSession</span>
@@ -334,9 +336,9 @@
 <span class="sd">      &gt;&gt;&gt; register_funcs(spark_session)</span>
 <span class="sd">      &gt;&gt;&gt; test_data = []</span>
 <span class="sd">      &gt;&gt;&gt; test_data.extend([(&#39;POLYGON ((0 0,0 1,1 1,1 0,0 0))&#39;,)])</span>
-<span class="sd">      &gt;&gt;&gt; data_df = spark_session.createDataFrame(data=test_data, schema=[&quot;data&quot;]).cache()</span>
+<span class="sd">      &gt;&gt;&gt; data_df = spark_session.createDataFrame(data=test_data, schema=[&quot;geos&quot;]).cache()</span>
 <span class="sd">      &gt;&gt;&gt; data_df.createOrReplaceTempView(&quot;data&quot;)</span>
-<span class="sd">      &gt;&gt;&gt; spark_session.sql(&quot;select ST_AsText(ST_GeomFromWKT(data)) from data&quot;).show(100,0)</span>
+<span class="sd">      &gt;&gt;&gt; spark_session.sql(&quot;select ST_AsText(ST_GeomFromWKT(geos)) from data&quot;).show(100,0)</span>
 <span class="sd">      +-------------------------------+</span>
 <span class="sd">      |ST_AsText(ST_GeomFromWKT(data))|</span>
 <span class="sd">      +-------------------------------+</span>
@@ -348,13 +350,13 @@
 <div class="viewcode-block" id="ST_GeomFromText"><a class="viewcode-back" href="../../spark/api/geospatial/function/geospatial/Spark_ST_GeomFromText.html#arctern_pyspark._wrapper_func.ST_GeomFromText">[文档]</a><span class="nd">@pandas_udf</span><span class="p">(</span><span class="s2">&quot;binary&quot;</span><span class="p">,</span> <span class="n">PandasUDFType</span><span class="o">.</span><span class="n">SCALAR</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_GeomFromText</span><span class="p">(</span><span class="n">geos</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Constructs geometries from the OGC Well-Known text representation.</span>
+<span class="sd">    Transform the representation of geometry from WKT to WKB.</span>
 
-<span class="sd">    :type geo: pandas.Series.object</span>
-<span class="sd">    :param geo: Geometries organized as WKT.</span>
+<span class="sd">    :type geo: WKT</span>
+<span class="sd">    :param geo: Geometry in WKT form.</span>
 
-<span class="sd">    :return: Geometries organized as WKB.</span>
-<span class="sd">    :rtype: pandas.Series.object</span>
+<span class="sd">    :rtype: WKB</span>
+<span class="sd">    :return: Geometry in WKB form.</span>
 
 <span class="sd">    :example:</span>
 <span class="sd">      &gt;&gt;&gt; from pyspark.sql import SparkSession</span>
@@ -364,11 +366,11 @@
 <span class="sd">      &gt;&gt;&gt; register_funcs(spark_session)</span>
 <span class="sd">      &gt;&gt;&gt; test_data = []</span>
 <span class="sd">      &gt;&gt;&gt; test_data.extend([(&#39;POLYGON ((0 0,0 1,1 1,1 0,0 0))&#39;,)])</span>
-<span class="sd">      &gt;&gt;&gt; data_df = spark_session.createDataFrame(data=test_data, schema=[&quot;data&quot;]).cache()</span>
+<span class="sd">      &gt;&gt;&gt; data_df = spark_session.createDataFrame(data=test_data, schema=[&quot;geos&quot;]).cache()</span>
 <span class="sd">      &gt;&gt;&gt; data_df.createOrReplaceTempView(&quot;data&quot;)</span>
-<span class="sd">      &gt;&gt;&gt; spark_session.sql(&quot;select ST_AsText(ST_GeomFromText(data)) from data&quot;).show(100,0)</span>
+<span class="sd">      &gt;&gt;&gt; spark_session.sql(&quot;select ST_AsText(ST_GeomFromText(geos)) from data&quot;).show(100,0)</span>
 <span class="sd">      +--------------------------------+</span>
-<span class="sd">      |ST_AsText(ST_GeomFromText(data))|</span>
+<span class="sd">      |ST_AsText(ST_GeomFromText(geos))|</span>
 <span class="sd">      +--------------------------------+</span>
 <span class="sd">      |POLYGON ((0 0,0 1,1 1,1 0,0 0)) |</span>
 <span class="sd">      +--------------------------------+</span>
@@ -378,13 +380,13 @@
 <div class="viewcode-block" id="ST_AsText"><a class="viewcode-back" href="../../spark/api/geospatial/function/geospatial/Spark_ST_AsText.html#arctern_pyspark._wrapper_func.ST_AsText">[文档]</a><span class="nd">@pandas_udf</span><span class="p">(</span><span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="n">PandasUDFType</span><span class="o">.</span><span class="n">SCALAR</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_AsText</span><span class="p">(</span><span class="n">geos</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Returns the Well-Known Text representation of the geometries.</span>
+<span class="sd">    Transform the representation of geometry from WKB to WKT.</span>
 
-<span class="sd">    :type geo: pandas.Series.object</span>
-<span class="sd">    :param geo: Geometries organized as WKB.</span>
+<span class="sd">    :type geo: WKB</span>
+<span class="sd">    :param geo: Geometry in WKB form.</span>
 
-<span class="sd">    :return: Geometries organized as WKT.</span>
-<span class="sd">    :rtype: pandas.Series.object</span>
+<span class="sd">    :rtype: WKT</span>
+<span class="sd">    :return: Geometry in WKT form.</span>
 
 <span class="sd">    :example:</span>
 <span class="sd">      &gt;&gt;&gt; from pyspark.sql import SparkSession</span>
@@ -394,11 +396,11 @@
 <span class="sd">      &gt;&gt;&gt; register_funcs(spark_session)</span>
 <span class="sd">      &gt;&gt;&gt; test_data = []</span>
 <span class="sd">      &gt;&gt;&gt; test_data.extend([(&#39;POLYGON ((0 0,0 1,1 1,1 0,0 0))&#39;,)])</span>
-<span class="sd">      &gt;&gt;&gt; data_df = spark_session.createDataFrame(data=test_data, schema=[&quot;data&quot;]).cache()</span>
+<span class="sd">      &gt;&gt;&gt; data_df = spark_session.createDataFrame(data=test_data, schema=[&quot;geos&quot;]).cache()</span>
 <span class="sd">      &gt;&gt;&gt; data_df.createOrReplaceTempView(&quot;data&quot;)</span>
-<span class="sd">      &gt;&gt;&gt; spark_session.sql(&quot;select ST_AsText(ST_GeomFromText(data)) from data&quot;).show(100,0)</span>
+<span class="sd">      &gt;&gt;&gt; spark_session.sql(&quot;select ST_AsText(ST_GeomFromText(geos)) from data&quot;).show(100,0)</span>
 <span class="sd">      +--------------------------------+</span>
-<span class="sd">      |ST_AsText(ST_GeomFromText(data))|</span>
+<span class="sd">      |ST_AsText(ST_GeomFromText(geos))|</span>
 <span class="sd">      +--------------------------------+</span>
 <span class="sd">      |POLYGON ((0 0,0 1,1 1,1 0,0 0)) |</span>
 <span class="sd">      +--------------------------------+</span>
@@ -408,13 +410,13 @@
 <div class="viewcode-block" id="ST_AsGeoJSON"><a class="viewcode-back" href="../../spark/api/geospatial/function/geospatial/Spark_ST_AsGeoJSON.html#arctern_pyspark._wrapper_func.ST_AsGeoJSON">[文档]</a><span class="nd">@pandas_udf</span><span class="p">(</span><span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="n">PandasUDFType</span><span class="o">.</span><span class="n">SCALAR</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_AsGeoJSON</span><span class="p">(</span><span class="n">geos</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Returns the GeoJSON representation of the geometries.</span>
+<span class="sd">    Return the GeoJSON representation of the geometry.</span>
 
-<span class="sd">    :type geo: pyarrow.array.string</span>
-<span class="sd">    :param geo: Geometries organized as WKB.</span>
+<span class="sd">    :type geo: WKB</span>
+<span class="sd">    :param geo: Geometry in WKB form.</span>
 
-<span class="sd">    :return: Geometries organized as GeoJSON.</span>
-<span class="sd">    :rtype: pyarrow.array.string</span>
+<span class="sd">    :rtype: string</span>
+<span class="sd">    :return: Geometry organized as GeoJSON format.</span>
 
 <span class="sd">    :example:</span>
 <span class="sd">      &gt;&gt;&gt; from pyspark.sql import SparkSession</span>
@@ -424,11 +426,11 @@
 <span class="sd">      &gt;&gt;&gt; register_funcs(spark_session)</span>
 <span class="sd">      &gt;&gt;&gt; test_data = []</span>
 <span class="sd">      &gt;&gt;&gt; test_data.extend([(&#39;POLYGON ((0 0,0 1,1 1,1 0,0 0))&#39;,)])</span>
-<span class="sd">      &gt;&gt;&gt; data_df = spark_session.createDataFrame(data=test_data, schema=[&quot;data&quot;]).cache()</span>
+<span class="sd">      &gt;&gt;&gt; data_df = spark_session.createDataFrame(data=test_data, schema=[&quot;geos&quot;]).cache()</span>
 <span class="sd">      &gt;&gt;&gt; data_df.createOrReplaceTempView(&quot;data&quot;)</span>
-<span class="sd">      &gt;&gt;&gt; spark_session.sql(&quot;select ST_AsGeoJSON(ST_GeomFromText(data)) from data&quot;).show(100,0)</span>
+<span class="sd">      &gt;&gt;&gt; spark_session.sql(&quot;select ST_AsGeoJSON(ST_GeomFromText(geos)) from data&quot;).show(100,0)</span>
 <span class="sd">      +------------------------------------------------------------------------------------------------------------------+</span>
-<span class="sd">      |ST_AsGeoJSON(ST_GeomFromText(data))                                                                               |</span>
+<span class="sd">      |ST_AsGeoJSON(ST_GeomFromText(geos))                                                                               |</span>
 <span class="sd">      +------------------------------------------------------------------------------------------------------------------+</span>
 <span class="sd">      |{ &quot;type&quot;: &quot;Polygon&quot;, &quot;coordinates&quot;: [ [ [ 0.0, 0.0 ], [ 0.0, 1.0 ], [ 1.0, 1.0 ], [ 1.0, 0.0 ], [ 0.0, 0.0 ] ] ] }|</span>
 <span class="sd">      +------------------------------------------------------------------------------------------------------------------+</span>
@@ -438,16 +440,16 @@
 <div class="viewcode-block" id="ST_Point"><a class="viewcode-back" href="../../spark/api/geospatial/function/geospatial/Spark_ST_Point.html#arctern_pyspark._wrapper_func.ST_Point">[文档]</a><span class="nd">@pandas_udf</span><span class="p">(</span><span class="s2">&quot;binary&quot;</span><span class="p">,</span> <span class="n">PandasUDFType</span><span class="o">.</span><span class="n">SCALAR</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_Point</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Construct points according to the coordinates.</span>
+<span class="sd">    Construct point according to the coordinates.</span>
 
-<span class="sd">    :type x: pandas.Series.float64</span>
+<span class="sd">    :type x: float</span>
 <span class="sd">    :param x: Abscissa of the point.</span>
 
-<span class="sd">    :type y: pandas.Series.float64</span>
+<span class="sd">    :type y: float</span>
 <span class="sd">    :param y: Ordinate of the point.</span>
 
-<span class="sd">    :return: Geometries organized as WKB.</span>
-<span class="sd">    :rtype: pandas.Series.object</span>
+<span class="sd">    :rtype: WKB</span>
+<span class="sd">    :return: Point in WKB form.</span>
 
 <span class="sd">    :example:</span>
 <span class="sd">      &gt;&gt;&gt; from pyspark.sql import SparkSession</span>
@@ -471,13 +473,13 @@
 <div class="viewcode-block" id="ST_GeomFromGeoJSON"><a class="viewcode-back" href="../../spark/api/geospatial/function/geospatial/Spark_ST_GeomFromGeoJSON.html#arctern_pyspark._wrapper_func.ST_GeomFromGeoJSON">[文档]</a><span class="nd">@pandas_udf</span><span class="p">(</span><span class="s2">&quot;binary&quot;</span><span class="p">,</span> <span class="n">PandasUDFType</span><span class="o">.</span><span class="n">SCALAR</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_GeomFromGeoJSON</span><span class="p">(</span><span class="n">json</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Constructs geometries from the GeoJSON representation.</span>
+<span class="sd">    Construct geometry from the GeoJSON representation.</span>
 
-<span class="sd">    :type json: pandas.Series.object</span>
-<span class="sd">    :param json: Geometries organized as json</span>
+<span class="sd">    :type json: string</span>
+<span class="sd">    :param json: Geometry in GeoJson format.</span>
 
-<span class="sd">    :return: Geometries organized as WKB.</span>
-<span class="sd">    :rtype: pandas.Series.object</span>
+<span class="sd">    :rtype: WKB</span>
+<span class="sd">    :return: Geometry in WKB form.</span>
 
 <span class="sd">    :example:</span>
 <span class="sd">      &gt;&gt;&gt; from pyspark.sql import SparkSession</span>
@@ -489,11 +491,11 @@
 <span class="sd">      &gt;&gt;&gt; test_data.extend([(&quot;{\&quot;type\&quot;:\&quot;Point\&quot;,\&quot;coordinates\&quot;:[1,2]}&quot;,)])</span>
 <span class="sd">      &gt;&gt;&gt; test_data.extend([(&quot;{\&quot;type\&quot;:\&quot;LineString\&quot;,\&quot;coordinates\&quot;:[[1,2],[4,5],[7,8]]}&quot;,)])</span>
 <span class="sd">      &gt;&gt;&gt; test_data.extend([(&quot;{\&quot;type\&quot;:\&quot;Polygon\&quot;,\&quot;coordinates\&quot;:[[[0,0],[0,1],[1,1],[1,0],[0,0]]]}&quot;,)])</span>
-<span class="sd">      &gt;&gt;&gt; json_df = spark_session.createDataFrame(data=test_data, schema=[&quot;json&quot;]).cache()</span>
+<span class="sd">      &gt;&gt;&gt; json_df = spark_session.createDataFrame(data=test_data, schema=[&quot;geos&quot;]).cache()</span>
 <span class="sd">      &gt;&gt;&gt; json_df.createOrReplaceTempView(&quot;json&quot;)</span>
-<span class="sd">      &gt;&gt;&gt; spark_session.sql(&quot;select ST_AsText(ST_GeomFromGeoJSON(json)) from json&quot;).show(100,0)</span>
+<span class="sd">      &gt;&gt;&gt; spark_session.sql(&quot;select ST_AsText(ST_GeomFromGeoJSON(geos)) from json&quot;).show(100,0)</span>
 <span class="sd">      +-----------------------------------+</span>
-<span class="sd">      |ST_AsText(ST_GeomFromGeoJSON(json))|</span>
+<span class="sd">      |ST_AsText(ST_GeomFromGeoJSON(geos))|</span>
 <span class="sd">      +-----------------------------------+</span>
 <span class="sd">      |POINT (1 2)                        |</span>
 <span class="sd">      |LINESTRING (1 2,4 5,7 8)           |</span>
@@ -503,21 +505,18 @@
     <span class="k">return</span> <span class="n">arctern</span><span class="o">.</span><span class="n">ST_GeomFromGeoJSON</span><span class="p">(</span><span class="n">json</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="ST_Intersection"><a class="viewcode-back" href="../../spark/api/geospatial/function/geospatial/Spark_ST_Intersection.html#arctern_pyspark._wrapper_func.ST_Intersection">[文档]</a><span class="nd">@pandas_udf</span><span class="p">(</span><span class="s2">&quot;binary&quot;</span><span class="p">,</span> <span class="n">PandasUDFType</span><span class="o">.</span><span class="n">SCALAR</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">ST_Intersection</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">ST_Intersection</span><span class="p">(</span><span class="n">geo1</span><span class="p">,</span> <span class="n">geo2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Calculate the point set intersection of geometries.</span>
+<span class="sd">    Calculate the point set intersection of two geometry objects.</span>
 
-<span class="sd">    For every (left, right) pair with the same offset value in left and right,</span>
-<span class="sd">    calculate a geometry that represents their point set intersection.</span>
+<span class="sd">    :type geo1: WKB</span>
+<span class="sd">    :param geo1: Geometry</span>
 
-<span class="sd">    :type left: pandas.Series.object</span>
-<span class="sd">    :param left: Geometries organized as WKB.</span>
+<span class="sd">    :type geo2: WKB</span>
+<span class="sd">    :param geo2: Geometry</span>
 
-<span class="sd">    :type right: pandas.Series.object</span>
-<span class="sd">    :param right: Geometries organized as WKB.</span>
-
-<span class="sd">    :return: Geometries organized as WKB.</span>
-<span class="sd">    :rtype: pandas.Series.object</span>
+<span class="sd">    :rtype: WKB</span>
+<span class="sd">    :return: Geometry that represents the point set intersection.</span>
 
 <span class="sd">    :example:</span>
 <span class="sd">      &gt;&gt;&gt; from pyspark.sql import SparkSession</span>
@@ -528,28 +527,28 @@
 <span class="sd">      &gt;&gt;&gt; test_data = []</span>
 <span class="sd">      &gt;&gt;&gt; test_data.extend([(&#39;POINT(0 0)&#39;, &#39;LINESTRING ( 2 0, 0 2 )&#39;)])</span>
 <span class="sd">      &gt;&gt;&gt; test_data.extend([(&#39;POINT(0 0)&#39;, &#39;LINESTRING ( 0 0, 2 2 )&#39;)])</span>
-<span class="sd">      &gt;&gt;&gt; intersection_df = spark_session.createDataFrame(data=test_data, schema=[&quot;left&quot;, &quot;right&quot;]).cache()</span>
+<span class="sd">      &gt;&gt;&gt; intersection_df = spark_session.createDataFrame(data=test_data, schema=[&quot;geo1&quot;, &quot;geo2&quot;]).cache()</span>
 <span class="sd">      &gt;&gt;&gt; intersection_df.createOrReplaceTempView(&quot;intersection&quot;)</span>
-<span class="sd">      &gt;&gt;&gt; spark_session.sql(&quot;select ST_AsText(ST_Intersection(ST_GeomFromText(left), ST_GeomFromText(right))) from intersection&quot;).show(100,0)</span>
+<span class="sd">      &gt;&gt;&gt; spark_session.sql(&quot;select ST_AsText(ST_Intersection(ST_GeomFromText(geo1), ST_GeomFromText(geo2))) from intersection&quot;).show(100,0)</span>
 <span class="sd">      +-------------------------------------------------------------------------+</span>
-<span class="sd">      |ST_AsText(ST_Intersection(ST_GeomFromText(left), ST_GeomFromText(right)))|</span>
+<span class="sd">      |ST_AsText(ST_Intersection(ST_GeomFromText(geo1), ST_GeomFromText(geo2)))|</span>
 <span class="sd">      +-------------------------------------------------------------------------+</span>
 <span class="sd">      |GEOMETRYCOLLECTION EMPTY                                                 |</span>
 <span class="sd">      |POINT (0 0)                                                              |</span>
 <span class="sd">      +-------------------------------------------------------------------------+</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">arctern</span><span class="o">.</span><span class="n">ST_Intersection</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">arctern</span><span class="o">.</span><span class="n">ST_Intersection</span><span class="p">(</span><span class="n">geo1</span><span class="p">,</span> <span class="n">geo2</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="ST_IsValid"><a class="viewcode-back" href="../../spark/api/geospatial/function/geospatial/Spark_ST_IsValid.html#arctern_pyspark._wrapper_func.ST_IsValid">[文档]</a><span class="nd">@pandas_udf</span><span class="p">(</span><span class="s2">&quot;boolean&quot;</span><span class="p">,</span> <span class="n">PandasUDFType</span><span class="o">.</span><span class="n">SCALAR</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_IsValid</span><span class="p">(</span><span class="n">geos</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    For each item in geometries, check if it is of valid geometry format.</span>
+<span class="sd">    Check if geometry is of valid geometry format.</span>
 
-<span class="sd">    :type geos: pandas.Series.object</span>
-<span class="sd">    :param geos: Geometries organized as WKB.</span>
+<span class="sd">    :type geos: WKB</span>
+<span class="sd">    :param geos: Geometry</span>
 
-<span class="sd">    :return: An array of booleans.</span>
-<span class="sd">    :rtype: pandas.Series.bool</span>
+<span class="sd">    :rtype: boolean</span>
+<span class="sd">    :return: True if geometry is valid.</span>
 
 <span class="sd">    :example:</span>
 <span class="sd">      &gt;&gt;&gt; from pyspark.sql import SparkSession</span>
@@ -575,22 +574,17 @@
 <div class="viewcode-block" id="ST_PrecisionReduce"><a class="viewcode-back" href="../../spark/api/geospatial/function/geospatial/Spark_ST_PrecisionReduce.html#arctern_pyspark._wrapper_func.ST_PrecisionReduce">[文档]</a><span class="nd">@pandas_udf</span><span class="p">(</span><span class="s2">&quot;binary&quot;</span><span class="p">,</span> <span class="n">PandasUDFType</span><span class="o">.</span><span class="n">SCALAR</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_PrecisionReduce</span><span class="p">(</span><span class="n">geos</span><span class="p">,</span> <span class="n">precision</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Reduce the precision of geometry.</span>
-
-<span class="sd">    For every geometry in geometries, reduce the decimal places of its coordinates</span>
+<span class="sd">    For the coordinates of the geometry, reduce the number of significant digits</span>
 <span class="sd">    to the given number. The last decimal place will be rounded.</span>
 
-<span class="sd">    Note, the operation is performed NOT in &quot;inplace&quot; manner, i.e., new geometries</span>
-<span class="sd">    in arrow::Array format will be construted and extra memory will be allocated.</span>
+<span class="sd">    :type geos: WKB</span>
+<span class="sd">    :param geos: Geometry</span>
 
-<span class="sd">    :type geos: pandas.Series.object</span>
-<span class="sd">    :param geos: Geometries organized as WKT.</span>
+<span class="sd">    :type precision: int</span>
+<span class="sd">    :param precision: The number to of ignificant digits.</span>
 
-<span class="sd">    :type precision: uint32</span>
-<span class="sd">    :param geos: The number to reduce the decimals places to.</span>
-
-<span class="sd">    :return: Geometries organized as WKB.</span>
-<span class="sd">    :rtype: pandas.Series.object</span>
+<span class="sd">    :rtype: WKB</span>
+<span class="sd">    :return: Geometry with reduced precision.</span>
 
 <span class="sd">    :example:</span>
 <span class="sd">      &gt;&gt;&gt; from pyspark.sql import SparkSession</span>
@@ -599,6 +593,7 @@
 <span class="sd">      &gt;&gt;&gt; register_funcs(spark_session)</span>
 <span class="sd">      &gt;&gt;&gt; test_data = []</span>
 <span class="sd">      &gt;&gt;&gt; test_data.extend([(&#39;POINT (10.777 11.888)&#39;,)])</span>
+<span class="sd">      &gt;&gt;&gt; test_data.extend([(&#39;POLYGON ((10.23 11.25,6.0 0.0001,5.7854 8.56542,10.23 11.25))&#39;,)])</span>
 <span class="sd">      &gt;&gt;&gt; precision_reduce_df = spark_session.createDataFrame(data=test_data, schema=[&quot;geos&quot;]).cache()</span>
 <span class="sd">      &gt;&gt;&gt; precision_reduce_df.createOrReplaceTempView(&quot;precision_reduce&quot;)</span>
 <span class="sd">      &gt;&gt;&gt; spark_session.sql(&quot;select ST_AsText(ST_PrecisionReduce(ST_GeomFromText(geos), 4)) from precision_reduce&quot;).show(100,0)</span>
@@ -606,27 +601,25 @@
 <span class="sd">      |ST_AsText(ST_PrecisionReduce(ST_GeomFromText(geos), 4))|</span>
 <span class="sd">      +-------------------------------------------------------+</span>
 <span class="sd">      |POINT (10.78 11.89)                                    |</span>
+<span class="sd">      |POLYGON ((10.23 11.25,6 0,5.785 8.565,10.23 11.25))    |</span>
 <span class="sd">      +-------------------------------------------------------+</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">arctern</span><span class="o">.</span><span class="n">ST_PrecisionReduce</span><span class="p">(</span><span class="n">geos</span><span class="p">,</span> <span class="n">precision</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span></div>
 
 <div class="viewcode-block" id="ST_Equals"><a class="viewcode-back" href="../../spark/api/geospatial/function/geospatial/Spark_ST_Equals.html#arctern_pyspark._wrapper_func.ST_Equals">[文档]</a><span class="nd">@pandas_udf</span><span class="p">(</span><span class="s2">&quot;boolean&quot;</span><span class="p">,</span> <span class="n">PandasUDFType</span><span class="o">.</span><span class="n">SCALAR</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">ST_Equals</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">ST_Equals</span><span class="p">(</span><span class="n">geo1</span><span class="p">,</span> <span class="n">geo2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Check whether geometries are &quot;spatially equal&quot;.</span>
-
-<span class="sd">    For every (left, right) pair with the same offset value in left and right, check</span>
-<span class="sd">    if they are &quot;spatially equal&quot;. &quot;Spatially equal&quot; here means two geometries represent</span>
+<span class="sd">    Check whether geometries are &quot;spatially equal&quot;. &quot;Spatially equal&quot; here means two geometries represent</span>
 <span class="sd">    the same geometry structure.</span>
 
-<span class="sd">    :type left: pandas.Series.object</span>
-<span class="sd">    :param left: Geometries organized as WKB.</span>
+<span class="sd">    :type geo1: WKB</span>
+<span class="sd">    :param geo1: Geometry</span>
 
-<span class="sd">    :type right: pandas.Series.object</span>
-<span class="sd">    :param right: Geometries organized as WKB.</span>
+<span class="sd">    :type geo2: WKB</span>
+<span class="sd">    :param geo2: Geometry</span>
 
-<span class="sd">    :return: An array of booleans.</span>
-<span class="sd">    :rtype: pandas.Series.bool</span>
+<span class="sd">    :rtype: boolean</span>
+<span class="sd">    :return: True if geometry &quot;geo1&quot; equals geometry &quot;geo2&quot;.</span>
 
 <span class="sd">    :example:</span>
 <span class="sd">      &gt;&gt;&gt; from pyspark.sql import SparkSession</span>
@@ -636,35 +629,34 @@
 <span class="sd">      &gt;&gt;&gt; test_data = []</span>
 <span class="sd">      &gt;&gt;&gt; test_data.extend([(&#39;LINESTRING(0 0, 10 10)&#39;, &#39;LINESTRING(0 0, 5 5, 10 10)&#39;)])</span>
 <span class="sd">      &gt;&gt;&gt; test_data.extend([(&#39;LINESTRING(10 10, 0 0)&#39;, &#39;LINESTRING(0 0, 5 5, 10 10)&#39;)])</span>
-<span class="sd">      &gt;&gt;&gt; equals_df = spark_session.createDataFrame(data=test_data, schema=[&quot;left&quot;, &quot;right&quot;]).cache()</span>
+<span class="sd">      &gt;&gt;&gt; test_data.extend([(&#39;LINESTRING(0 0, 10 10)&#39;, &#39;LINESTRING(0 0, 5 5, 8 5)&#39;)])</span>
+<span class="sd">      &gt;&gt;&gt; equals_df = spark_session.createDataFrame(data=test_data, schema=[&quot;geo1&quot;, &quot;geo2&quot;]).cache()</span>
 <span class="sd">      &gt;&gt;&gt; equals_df.createOrReplaceTempView(&quot;equals&quot;)</span>
-<span class="sd">      &gt;&gt;&gt; spark_session.sql(&quot;select ST_Equals(ST_GeomFromText(left), ST_GeomFromText(right)) from equals&quot;).show(100,0)</span>
+<span class="sd">      &gt;&gt;&gt; spark_session.sql(&quot;select ST_Equals(ST_GeomFromText(geo1), ST_GeomFromText(geo2)) from equals&quot;).show(100,0)</span>
 <span class="sd">      +--------------------------------------------------------+</span>
-<span class="sd">      |ST_Equals(ST_GeomFromText(left), ST_GeomFromText(right))|</span>
+<span class="sd">      |ST_Equals(ST_GeomFromText(geo1), ST_GeomFromText(geo2))|</span>
 <span class="sd">      +--------------------------------------------------------+</span>
 <span class="sd">      |true                                                    |</span>
 <span class="sd">      |true                                                    |</span>
+<span class="sd">      |false                                                   |</span>
 <span class="sd">      +--------------------------------------------------------+</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">arctern</span><span class="o">.</span><span class="n">ST_Equals</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">arctern</span><span class="o">.</span><span class="n">ST_Equals</span><span class="p">(</span><span class="n">geo1</span><span class="p">,</span> <span class="n">geo2</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="ST_Touches"><a class="viewcode-back" href="../../spark/api/geospatial/function/geospatial/Spark_ST_Touches.html#arctern_pyspark._wrapper_func.ST_Touches">[文档]</a><span class="nd">@pandas_udf</span><span class="p">(</span><span class="s2">&quot;boolean&quot;</span><span class="p">,</span> <span class="n">PandasUDFType</span><span class="o">.</span><span class="n">SCALAR</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">ST_Touches</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">ST_Touches</span><span class="p">(</span><span class="n">geo1</span><span class="p">,</span> <span class="n">geo2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Check whether geometries &quot;touch&quot;.</span>
-
-<span class="sd">    For every (left, right) pair with the same offset value in left and right, check</span>
-<span class="sd">    if they &quot;touch&quot;. &quot;Touch&quot; here means two geometries have common points, and the</span>
+<span class="sd">    Check whether geometries &quot;touch&quot;. &quot;Touch&quot; here means two geometries have common points, and the</span>
 <span class="sd">    common points locate only on their boundaries.</span>
 
-<span class="sd">    :type left: pandas.Series.object</span>
-<span class="sd">    :param left: Geometries organized as WKB.</span>
+<span class="sd">    :type geo1: WKB</span>
+<span class="sd">    :param geo1: Geometry</span>
 
-<span class="sd">    :type right: pandas.Series.object</span>
-<span class="sd">    :param right: Geometries organized as WKB.</span>
+<span class="sd">    :type geo2: WKB</span>
+<span class="sd">    :param geo2: Geometry</span>
 
-<span class="sd">    :return: An array of booleans.</span>
-<span class="sd">    :rtype: pandas.Series.bool</span>
+<span class="sd">    :rtype: boolean</span>
+<span class="sd">    :return: True if geometry &quot;geo1&quot; touches geometry &quot;geo2&quot;.</span>
 
 <span class="sd">    :example:</span>
 <span class="sd">      &gt;&gt;&gt; from pyspark.sql import SparkSession</span>
@@ -674,35 +666,32 @@
 <span class="sd">      &gt;&gt;&gt; test_data = []</span>
 <span class="sd">      &gt;&gt;&gt; test_data.extend([(&#39;LINESTRING(0 0, 1 1, 0 2)&#39;, &#39;POINT(1 1)&#39;)])</span>
 <span class="sd">      &gt;&gt;&gt; test_data.extend([(&#39;LINESTRING(0 0, 1 1, 0 2)&#39;, &#39;POINT(0 2)&#39;)])</span>
-<span class="sd">      &gt;&gt;&gt; touches_df = spark_session.createDataFrame(data=test_data, schema=[&quot;left&quot;, &quot;right&quot;]).cache()</span>
+<span class="sd">      &gt;&gt;&gt; touches_df = spark_session.createDataFrame(data=test_data, schema=[&quot;geo1&quot;, &quot;geo2&quot;]).cache()</span>
 <span class="sd">      &gt;&gt;&gt; touches_df.createOrReplaceTempView(&quot;touches&quot;)</span>
-<span class="sd">      &gt;&gt;&gt; spark_session.sql(&quot;select ST_Touches(ST_GeomFromText(left), ST_GeomFromText(right)) from touches&quot;).show(100,0)</span>
+<span class="sd">      &gt;&gt;&gt; spark_session.sql(&quot;select ST_Touches(ST_GeomFromText(geo1), ST_GeomFromText(geo2)) from touches&quot;).show(100,0)</span>
 <span class="sd">      +---------------------------------------------------------+</span>
-<span class="sd">      |ST_Touches(ST_GeomFromText(left), ST_GeomFromText(right))|</span>
+<span class="sd">      |ST_Touches(ST_GeomFromText(geo1), ST_GeomFromText(geo2))|</span>
 <span class="sd">      +---------------------------------------------------------+</span>
 <span class="sd">      |false                                                    |</span>
 <span class="sd">      |true                                                     |</span>
 <span class="sd">      +---------------------------------------------------------+</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">arctern</span><span class="o">.</span><span class="n">ST_Touches</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">arctern</span><span class="o">.</span><span class="n">ST_Touches</span><span class="p">(</span><span class="n">geo1</span><span class="p">,</span> <span class="n">geo2</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="ST_Overlaps"><a class="viewcode-back" href="../../spark/api/geospatial/function/geospatial/Spark_ST_Overlaps.html#arctern_pyspark._wrapper_func.ST_Overlaps">[文档]</a><span class="nd">@pandas_udf</span><span class="p">(</span><span class="s2">&quot;boolean&quot;</span><span class="p">,</span> <span class="n">PandasUDFType</span><span class="o">.</span><span class="n">SCALAR</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">ST_Overlaps</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">ST_Overlaps</span><span class="p">(</span><span class="n">geo1</span><span class="p">,</span> <span class="n">geo2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Check whether geometries &quot;spatially overlap&quot;.</span>
-
-<span class="sd">    For every (left, right) pair with the same offset value in left and right, check</span>
-<span class="sd">    if they &quot;spatially overlap&quot;. &quot;Spatially overlap&quot; here means two geometries</span>
+<span class="sd">    Check whether geometries &quot;spatially overlap&quot;. &quot;Spatially overlap&quot; here means two geometries</span>
 <span class="sd">    intersect but one does not completely contain another.</span>
 
-<span class="sd">    :type left: pandas.Series.object</span>
-<span class="sd">    :param left: Geometries organized as WKB.</span>
+<span class="sd">    :type geo1: WKB</span>
+<span class="sd">    :param geo1: Geometry</span>
 
-<span class="sd">    :type right: pandas.Series.object</span>
-<span class="sd">    :param right: Geometries organized as WKB.</span>
+<span class="sd">    :type geo2: WKB</span>
+<span class="sd">    :param geo2: Geometry</span>
 
-<span class="sd">    :return: An array of booleans.</span>
-<span class="sd">    :rtype: pandas.Series.bool</span>
+<span class="sd">    :rtype: boolean</span>
+<span class="sd">    :return: True if geometry &quot;geo1&quot; overlap geometry &quot;geo2&quot;.</span>
 
 <span class="sd">    :example:</span>
 <span class="sd">      &gt;&gt;&gt; from pyspark.sql import SparkSession</span>
@@ -712,38 +701,35 @@
 <span class="sd">      &gt;&gt;&gt; test_data = []</span>
 <span class="sd">      &gt;&gt;&gt; test_data.extend([(&#39;POLYGON((1 1, 4 1, 4 5, 1 5, 1 1))&#39;, &#39;POLYGON((3 2, 6 2, 6 6, 3 6, 3 2))&#39;)])</span>
 <span class="sd">      &gt;&gt;&gt; test_data.extend([(&#39;POINT(1 0.5)&#39;, &#39;LINESTRING(1 0, 1 1, 3 5)&#39;)])</span>
-<span class="sd">      &gt;&gt;&gt; overlaps_df = spark_session.createDataFrame(data=test_data, schema=[&quot;left&quot;, &quot;right&quot;]).cache()</span>
+<span class="sd">      &gt;&gt;&gt; overlaps_df = spark_session.createDataFrame(data=test_data, schema=[&quot;geo1&quot;, &quot;geo2&quot;]).cache()</span>
 <span class="sd">      &gt;&gt;&gt; overlaps_df.createOrReplaceTempView(&quot;overlaps&quot;)</span>
-<span class="sd">      &gt;&gt;&gt; spark.sql(&quot;select ST_Overlaps(ST_GeomFromText(left), ST_GeomFromText(right)) from overlaps&quot;).show(100,0)</span>
+<span class="sd">      &gt;&gt;&gt; spark.sql(&quot;select ST_Overlaps(ST_GeomFromText(geo1), ST_GeomFromText(geo2)) from overlaps&quot;).show(100,0)</span>
 <span class="sd">      +----------------------------------------------------------+</span>
-<span class="sd">      |ST_Overlaps(ST_GeomFromText(left), ST_GeomFromText(right))|</span>
+<span class="sd">      |ST_Overlaps(ST_GeomFromText(geo1), ST_GeomFromText(geo2))|</span>
 <span class="sd">      +----------------------------------------------------------+</span>
 <span class="sd">      |true                                                      |</span>
 <span class="sd">      |false                                                     |</span>
 <span class="sd">      +----------------------------------------------------------+</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">arctern</span><span class="o">.</span><span class="n">ST_Overlaps</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">arctern</span><span class="o">.</span><span class="n">ST_Overlaps</span><span class="p">(</span><span class="n">geo1</span><span class="p">,</span> <span class="n">geo2</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="ST_Crosses"><a class="viewcode-back" href="../../spark/api/geospatial/function/geospatial/Spark_ST_Crosses.html#arctern_pyspark._wrapper_func.ST_Crosses">[文档]</a><span class="nd">@pandas_udf</span><span class="p">(</span><span class="s2">&quot;boolean&quot;</span><span class="p">,</span> <span class="n">PandasUDFType</span><span class="o">.</span><span class="n">SCALAR</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">ST_Crosses</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">ST_Crosses</span><span class="p">(</span><span class="n">geo1</span><span class="p">,</span> <span class="n">geo2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Check whether geometries &quot;spatially cross&quot;.</span>
+<span class="sd">    Check whether geometries &quot;spatially cross&quot;. &quot;Spatially cross&quot; here means two geometries have</span>
+<span class="sd">    some, but not all interior points in common. The intersection of the interiors of the geometries</span>
+<span class="sd">    must not be the empty set and must have a dimensionality less than the maximum dimension of the two</span>
+<span class="sd">    input geometries.</span>
 
-<span class="sd">    For every (left, right) pair with the same offset value in left and right, check</span>
-<span class="sd">    if they &quot;spatially cross&quot;. &quot;Spatially cross&quot; here means two the geometries have</span>
-<span class="sd">    some, but not all interior points in common. The intersection of the interiors of</span>
-<span class="sd">    the geometries must not be the empty set and must have a dimensionality less than</span>
-<span class="sd">    the maximum dimension of the two input geometries.</span>
+<span class="sd">    :type geo1: WKB</span>
+<span class="sd">    :param geo1: Geometry</span>
 
-<span class="sd">    :type left: pandas.Series.object</span>
-<span class="sd">    :param left: Geometries organized as WKB.</span>
+<span class="sd">    :type geo2: WKB</span>
+<span class="sd">    :param geo2: Geometry</span>
 
-<span class="sd">    :type right: pandas.Series.object</span>
-<span class="sd">    :param right: Geometries organized as WKB.</span>
-
-<span class="sd">    :return: An array of booleans.</span>
-<span class="sd">    :rtype: pandas.Series.bool</span>
+<span class="sd">    :rtype: boolean</span>
+<span class="sd">    :return: True if geometry &quot;geo1&quot; crosses geometry &quot;geo2&quot;.</span>
 
 <span class="sd">    :example:</span>
 <span class="sd">      &gt;&gt;&gt; from pyspark.sql import SparkSession</span>
@@ -753,32 +739,29 @@
 <span class="sd">      &gt;&gt;&gt; test_data = []</span>
 <span class="sd">      &gt;&gt;&gt; test_data.extend([(&#39;MULTIPOINT((1 3), (4 1), (4 3))&#39;, &#39;POLYGON((2 2, 5 2, 5 5, 2 5, 2 2))&#39;)])</span>
 <span class="sd">      &gt;&gt;&gt; test_data.extend([(&#39;POLYGON((1 1, 4 1, 4 4, 1 4, 1 1))&#39;, &#39;POLYGON((2 2, 5 2, 5 5, 2 5, 2 2))&#39;)])</span>
-<span class="sd">      &gt;&gt;&gt; crosses_df = spark_session.createDataFrame(data=test_data, schema=[&quot;left&quot;, &quot;right&quot;]).cache()</span>
+<span class="sd">      &gt;&gt;&gt; crosses_df = spark_session.createDataFrame(data=test_data, schema=[&quot;geo1&quot;, &quot;geo2&quot;]).cache()</span>
 <span class="sd">      &gt;&gt;&gt; crosses_df.createOrReplaceTempView(&quot;crosses&quot;)</span>
-<span class="sd">      &gt;&gt;&gt; spark_session.sql(&quot;select ST_Crosses(ST_GeomFromText(left), ST_GeomFromText(right)) from crosses&quot;).show(100,0)</span>
+<span class="sd">      &gt;&gt;&gt; spark_session.sql(&quot;select ST_Crosses(ST_GeomFromText(geo1), ST_GeomFromText(geo2)) from crosses&quot;).show(100,0)</span>
 <span class="sd">      +---------------------------------------------------------+</span>
-<span class="sd">      |ST_Crosses(ST_GeomFromText(left), ST_GeomFromText(right))|</span>
+<span class="sd">      |ST_Crosses(ST_GeomFromText(geo1), ST_GeomFromText(geo2))|</span>
 <span class="sd">      +---------------------------------------------------------+</span>
 <span class="sd">      |true                                                     |</span>
 <span class="sd">      |false                                                    |</span>
 <span class="sd">      +---------------------------------------------------------+</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">arctern</span><span class="o">.</span><span class="n">ST_Crosses</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">arctern</span><span class="o">.</span><span class="n">ST_Crosses</span><span class="p">(</span><span class="n">geo1</span><span class="p">,</span> <span class="n">geo2</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="ST_IsSimple"><a class="viewcode-back" href="../../spark/api/geospatial/function/geospatial/Spark_ST_IsSimple.html#arctern_pyspark._wrapper_func.ST_IsSimple">[文档]</a><span class="nd">@pandas_udf</span><span class="p">(</span><span class="s2">&quot;boolean&quot;</span><span class="p">,</span> <span class="n">PandasUDFType</span><span class="o">.</span><span class="n">SCALAR</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_IsSimple</span><span class="p">(</span><span class="n">geos</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Check whether geometry is &quot;simple&quot;.</span>
+<span class="sd">    Check whether geometry is &quot;simple&quot;. &quot;Simple&quot; here means that a geometry has no anomalous geometric points</span>
+<span class="sd">    such as self intersection or self tangency.</span>
 
-<span class="sd">    For every geometry in geometries, check if it is &quot;simple&quot;. &quot;Simple&quot; here means</span>
-<span class="sd">    that a geometry has no anomalous geometric points such as self intersection or</span>
-<span class="sd">    self tangency.</span>
+<span class="sd">    :type geos: WKB</span>
+<span class="sd">    :param geos: Geometry</span>
 
-<span class="sd">    :type geos: pandas.Series.object</span>
-<span class="sd">    :param geos: Geometries organized as WKB.</span>
-
-<span class="sd">    :return: An array of booleans.</span>
-<span class="sd">    :rtype: pandas.Series.bool</span>
+<span class="sd">    :rtype: boolean</span>
+<span class="sd">    :return: True if geometry is simple.</span>
 
 <span class="sd">    :example:</span>
 <span class="sd">      &gt;&gt;&gt; from pyspark.sql import SparkSession</span>
@@ -788,6 +771,7 @@
 <span class="sd">      &gt;&gt;&gt; test_data = []</span>
 <span class="sd">      &gt;&gt;&gt; test_data.extend([(&#39;POLYGON((1 2, 3 4, 5 6, 1 2))&#39;,)])</span>
 <span class="sd">      &gt;&gt;&gt; test_data.extend([(&#39;LINESTRING(1 1,2 2,2 3.5,1 3,1 2,2 1)&#39;,)])</span>
+<span class="sd">      &gt;&gt;&gt; test_data.extend([(&#39;POINT (1 1)&#39;,)])</span>
 <span class="sd">      &gt;&gt;&gt; simple_df = spark_session.createDataFrame(data=test_data, schema=[&#39;geos&#39;]).cache()</span>
 <span class="sd">      &gt;&gt;&gt; simple_df.createOrReplaceTempView(&quot;simple&quot;)</span>
 <span class="sd">      &gt;&gt;&gt; spark_session.sql(&quot;select ST_IsSimple(ST_GeomFromText(geos)) from simple&quot;).show(100,0)</span>
@@ -796,6 +780,7 @@
 <span class="sd">      +----------------------------------+</span>
 <span class="sd">      |false                             |</span>
 <span class="sd">      |false                             |</span>
+<span class="sd">      |true                              |</span>
 <span class="sd">      +----------------------------------+</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">arctern</span><span class="o">.</span><span class="n">ST_IsSimple</span><span class="p">(</span><span class="n">geos</span><span class="p">)</span></div>
@@ -805,11 +790,11 @@
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    For each geometry in geometries, return a string that indicates is type.</span>
 
-<span class="sd">    :type geos: pandas.Series.object</span>
-<span class="sd">    :param geos: Geometries organized as WKB.</span>
+<span class="sd">    :type geos: WKB</span>
+<span class="sd">    :param geos: Geometry</span>
 
-<span class="sd">    :return: Geometries organized as WKB.</span>
-<span class="sd">    :rtype: pandas.Series.object</span>
+<span class="sd">    :rtype: string</span>
+<span class="sd">    :return: The type of geometry, e.g., &quot;ST_LINESTRING&quot;, &quot;ST_POLYGON&quot;, &quot;ST_POINT&quot;, &quot;ST_MULTIPOINT&quot;.</span>
 
 <span class="sd">    :example:</span>
 <span class="sd">      &gt;&gt;&gt; from pyspark.sql import SparkSession</span>
@@ -826,7 +811,7 @@
 <span class="sd">      |ST_GeometryType(ST_GeomFromText(geos))|</span>
 <span class="sd">      +--------------------------------------+</span>
 <span class="sd">      |ST_LINESTRING                         |</span>
-<span class="sd">      |POINT                                 |</span>
+<span class="sd">      |ST_POINT                              |</span>
 <span class="sd">      +--------------------------------------+</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">arctern</span><span class="o">.</span><span class="n">ST_GeometryType</span><span class="p">(</span><span class="n">geos</span><span class="p">)</span></div>
@@ -834,16 +819,14 @@
 <div class="viewcode-block" id="ST_MakeValid"><a class="viewcode-back" href="../../spark/api/geospatial/function/geospatial/Spark_ST_MakeValid.html#arctern_pyspark._wrapper_func.ST_MakeValid">[文档]</a><span class="nd">@pandas_udf</span><span class="p">(</span><span class="s2">&quot;binary&quot;</span><span class="p">,</span> <span class="n">PandasUDFType</span><span class="o">.</span><span class="n">SCALAR</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_MakeValid</span><span class="p">(</span><span class="n">geos</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    For every geometry in geometries, create a valid representation of it without</span>
-<span class="sd">    losing any of the input vertices. Already-valid geometries won&#39;t have further</span>
-<span class="sd">    intervention. This function returns geometries which are validated. Note, new</span>
-<span class="sd">    geometries are construted in arrow::Array format, so extra memory will be allocated.</span>
+<span class="sd">    Create a valid representation of the geometry without losing any of the input vertices. If</span>
+<span class="sd">    the geometry is already-valid, then nothing will be done.</span>
 
-<span class="sd">    :type geos: pandas.Series.object</span>
-<span class="sd">    :param geos: Geometries organized as WKB.</span>
+<span class="sd">    :type geos: WKB</span>
+<span class="sd">    :param geos: Geometry</span>
 
-<span class="sd">    :return: Geometries organized as WKB.</span>
-<span class="sd">    :rtype: pandas.Series.object</span>
+<span class="sd">    :rtype: WKB</span>
+<span class="sd">    :return: Geometry if the input geometry is already-valid or can be made valid. Otherwise, NULL.</span>
 
 <span class="sd">    :example:</span>
 <span class="sd">      &gt;&gt;&gt; from pyspark.sql import SparkSession</span>
@@ -852,7 +835,8 @@
 <span class="sd">      &gt;&gt;&gt; register_funcs(spark_session)</span>
 <span class="sd">      &gt;&gt;&gt; test_data = []</span>
 <span class="sd">      &gt;&gt;&gt; test_data.extend([(&#39;LINESTRING(0 0, 10 0, 20 0, 20 0, 30 0)&#39;,)])</span>
-<span class="sd">      &gt;&gt;&gt; test_data.extend([(&#39;POLYGON((1 5, 1 1, 3 3, 5 3, 7 1, 7 5, 5 3, 3 3, 1 5))&#39;,)])</span>
+<span class="sd">      &gt;&gt;&gt; test_data.extend([(&#39;POLYGON ((1 5, 1 1, 3 3, 5 3, 7 1, 7 5, 5 3, 3 3, 1 5))&#39;,)])</span>
+<span class="sd">      &gt;&gt;&gt; test_data.extend([(&#39;POLYGON ((1 1,1 5,3 3))&#39;,)])</span>
 <span class="sd">      &gt;&gt;&gt; make_valid_df = spark_session.createDataFrame(data=test_data, schema=[&#39;geos&#39;]).cache()</span>
 <span class="sd">      &gt;&gt;&gt; make_valid_df.createOrReplaceTempView(&quot;make_valid&quot;)</span>
 <span class="sd">      &gt;&gt;&gt; spark_session.sql(&quot;select ST_AsText(ST_MakeValid(ST_GeomFromText(geos))) from make_valid&quot;).show(100,0)</span>
@@ -861,6 +845,7 @@
 <span class="sd">      +------------------------------------------------------------------------------------------------+</span>
 <span class="sd">      |LINESTRING (0 0,10 0,20 0,20 0,30 0)                                                            |</span>
 <span class="sd">      |GEOMETRYCOLLECTION (MULTIPOLYGON (((3 3,1 1,1 5,3 3)),((5 3,7 5,7 1,5 3))),LINESTRING (3 3,5 3))|</span>
+<span class="sd">      |NULL                                                                                            |</span>
 <span class="sd">      +------------------------------------------------------------------------------------------------+</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">arctern</span><span class="o">.</span><span class="n">ST_MakeValid</span><span class="p">(</span><span class="n">geos</span><span class="p">)</span></div>
@@ -869,20 +854,16 @@
 <div class="viewcode-block" id="ST_SimplifyPreserveTopology"><a class="viewcode-back" href="../../spark/api/geospatial/function/geospatial/Spark_ST_SimplifyPreserveTopology.html#arctern_pyspark._wrapper_func.ST_SimplifyPreserveTopology">[文档]</a><span class="nd">@pandas_udf</span><span class="p">(</span><span class="s2">&quot;binary&quot;</span><span class="p">,</span> <span class="n">PandasUDFType</span><span class="o">.</span><span class="n">SCALAR</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_SimplifyPreserveTopology</span><span class="p">(</span><span class="n">geos</span><span class="p">,</span> <span class="n">distance_tolerance</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    For each geometry in geometries create a &quot;simplified&quot; version for it according</span>
-<span class="sd">    to the precision that parameter tolerance specifies.</span>
+<span class="sd">    Returns a &quot;simplified&quot; version of the given geometry using the Douglas-Peucker algorithm.</span>
 
-<span class="sd">    Note simplified geometries with be construted in arrow::Array format, so extra</span>
-<span class="sd">    memory will be allocated.</span>
+<span class="sd">    :type geos: WKB</span>
+<span class="sd">    :param geos: Geometry</span>
 
-<span class="sd">    :type geos: pandas.Series.object</span>
-<span class="sd">    :param geos: Geometries organized as WKB.</span>
+<span class="sd">    :type distance_tolerance: float</span>
+<span class="sd">    :param distance_tolerance: The maximum distance between a point on a linestring and a curve.</span>
 
-<span class="sd">    :type distance_tolerance: double</span>
-<span class="sd">    :param distance_tolerance: The precision of the simplified geometry.</span>
-
-<span class="sd">    :return: Geometries organized as WKB.</span>
-<span class="sd">    :rtype: pandas.Series.object</span>
+<span class="sd">    :rtype: WKB</span>
+<span class="sd">    :return: Geometry</span>
 
 <span class="sd">    :example:</span>
 <span class="sd">      &gt;&gt;&gt; from pyspark.sql import SparkSession</span>
@@ -891,18 +872,18 @@
 <span class="sd">      &gt;&gt;&gt; register_funcs(spark_session)</span>
 <span class="sd">      &gt;&gt;&gt; test_data = []</span>
 <span class="sd">      &gt;&gt;&gt; test_data.extend([(</span>
-<span class="sd">          &#39;POLYGON((8 25, 28 22, 28 20, 15 11, 33 3, 56 30, 46 33, 46 34, 47 44, 35 36, 45 33, 43 19, 29 21, 29 22, 35 26, 24 39, 8 25))&#39;,</span>
+<span class="sd">          &#39;CIRCULARSTRING (0 0,1 1,2 0)&#39;,</span>
 <span class="sd">          )])</span>
 <span class="sd">      &gt;&gt;&gt; test_data.extend([(</span>
 <span class="sd">          &#39;LINESTRING(250 250, 280 290, 300 230, 340 300, 360 260, 440 310, 470 360, 604 286)&#39;,</span>
 <span class="sd">          )])</span>
 <span class="sd">      &gt;&gt;&gt; simplify_preserve_topology_df = spark_session.createDataFrame(data=test_data, schema=[&#39;geos&#39;]).cache()</span>
 <span class="sd">      &gt;&gt;&gt; simplify_preserve_topology_df.createOrReplaceTempView(&quot;simplify_preserve_topology&quot;)</span>
-<span class="sd">      &gt;&gt;&gt; spark_session.sql(&quot;select ST_AsText(ST_SimplifyPreserveTopology(ST_GeomFromText(geos), 10)) from simplify_preserve_topology&quot;).show(100,0)</span>
+<span class="sd">      &gt;&gt;&gt; spark_session.sql(&quot;select ST_AsText(ST_SimplifyPreserveTopology(ST_GeomFromText(geos), 1)) from simplify_preserve_topology&quot;).show(100,0)</span>
 <span class="sd">      +----------------------------------------------------------------------------+</span>
 <span class="sd">      |ST_AsText(ST_SimplifyPreserveTopology(ST_GeomFromText(geos), 10))           |</span>
 <span class="sd">      +----------------------------------------------------------------------------+</span>
-<span class="sd">      |POLYGON ((8 25,28 22,15 11,33 3,56 30,47 44,35 36,43 19,24 39,8 25))        |</span>
+<span class="sd">      |LINESTRING (0 0,2 0)                                                        |</span>
 <span class="sd">      |LINESTRING (250 250,280 290,300 230,340 300,360 260,440 310,470 360,604 286)|</span>
 <span class="sd">      +----------------------------------------------------------------------------+</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -911,23 +892,23 @@
 <div class="viewcode-block" id="ST_PolygonFromEnvelope"><a class="viewcode-back" href="../../spark/api/geospatial/function/geospatial/Spark_ST_PolygonFromEnvelope.html#arctern_pyspark._wrapper_func.ST_PolygonFromEnvelope">[文档]</a><span class="nd">@pandas_udf</span><span class="p">(</span><span class="s2">&quot;binary&quot;</span><span class="p">,</span> <span class="n">PandasUDFType</span><span class="o">.</span><span class="n">SCALAR</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_PolygonFromEnvelope</span><span class="p">(</span><span class="n">min_x</span><span class="p">,</span> <span class="n">min_y</span><span class="p">,</span> <span class="n">max_x</span><span class="p">,</span> <span class="n">max_y</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Construct polygon(rectangle) geometries from arr_min_x, arr_min_y, arr_max_x,</span>
+<span class="sd">    Construct a polygon(rectangle) geometry from arr_min_x, arr_min_y, arr_max_x,</span>
 <span class="sd">    arr_max_y. The edges of polygon are parallel to coordinate axis.</span>
 
-<span class="sd">    :type min_x: pandas.Series.float64</span>
-<span class="sd">    :param min_x: The x axis coordinates of the lower left vertical of the rectangles.</span>
+<span class="sd">    :type min_x: float</span>
+<span class="sd">    :param min_x: The minimum value of x coordinate of the rectangles.</span>
 
-<span class="sd">    :type min_y: pandas.Series.float64</span>
-<span class="sd">    :param min_y: The y axis coordinates of the lower left vertical of the rectangles.</span>
+<span class="sd">    :type min_y: float</span>
+<span class="sd">    :param min_y: The minimum value of y coordinate of the rectangles.</span>
 
-<span class="sd">    :type max_x: pandas.Series.float64</span>
-<span class="sd">    :param max_x: The x axis coordinates of the upper right vertical of the rectangles.</span>
+<span class="sd">    :type max_x: float</span>
+<span class="sd">    :param max_x: The maximum value of x coordinate of the rectangles.</span>
 
-<span class="sd">    :type max_y: pandas.Series.float64</span>
-<span class="sd">    :param max_y: The y axis coordinates of the upper right vertical of the rectangles.</span>
+<span class="sd">    :type max_y: float</span>
+<span class="sd">    :param max_y: The maximum value of y coordinate of the rectangles.</span>
 
-<span class="sd">    :return: Geometries organized as WKB.</span>
-<span class="sd">    :rtype: pandas.Series.object</span>
+<span class="sd">    :rtype: WKB</span>
+<span class="sd">    :return: Geometry</span>
 
 <span class="sd">    :example:</span>
 <span class="sd">      &gt;&gt;&gt; from pyspark.sql import SparkSession</span>
@@ -950,23 +931,20 @@
     <span class="k">return</span> <span class="n">arctern</span><span class="o">.</span><span class="n">ST_PolygonFromEnvelope</span><span class="p">(</span><span class="n">min_x</span><span class="p">,</span> <span class="n">min_y</span><span class="p">,</span> <span class="n">max_x</span><span class="p">,</span> <span class="n">max_y</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="ST_Contains"><a class="viewcode-back" href="../../spark/api/geospatial/function/geospatial/Spark_ST_Contains.html#arctern_pyspark._wrapper_func.ST_Contains">[文档]</a><span class="nd">@pandas_udf</span><span class="p">(</span><span class="s2">&quot;boolean&quot;</span><span class="p">,</span> <span class="n">PandasUDFType</span><span class="o">.</span><span class="n">SCALAR</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">ST_Contains</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">ST_Contains</span><span class="p">(</span><span class="n">geo1</span><span class="p">,</span> <span class="n">geo2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Check whether a geometry contain another geometry.</span>
+<span class="sd">    Check whether geometry &quot;geo1&quot; contains geometry &quot;geo2&quot;. &quot;geo1 contains geo2&quot; means no points</span>
+<span class="sd">    of &quot;geo2&quot; lie in the exterior of &quot;geo1&quot; and at least one point of the interior of &quot;geo2&quot; lies</span>
+<span class="sd">    in the interior of &quot;geo1&quot;.</span>
 
-<span class="sd">    For every (left, right) pair with the same offset value in left and right, check</span>
-<span class="sd">    if left_geometry &quot;contains&quot; right_geometry. Left &quot;contains&quot; right means no points</span>
-<span class="sd">    of right_geometry lie in the exterior of left_geometry and at least one point of</span>
-<span class="sd">    the interior of right_geometry lies in the interior of left_geometry.</span>
+<span class="sd">    :type geo1: WKB</span>
+<span class="sd">    :param geo1: Geometry</span>
 
-<span class="sd">    :type left: pandas.Series.object</span>
-<span class="sd">    :param left: Geometries organized as WKB.</span>
+<span class="sd">    :type geo2: WKB</span>
+<span class="sd">    :param geo2: Geometry</span>
 
-<span class="sd">    :type right: pandas.Series.object</span>
-<span class="sd">    :param right: Geometries organized as WKB.</span>
-
-<span class="sd">    :return: An array of booleans.</span>
-<span class="sd">    :rtype: pandas.Series.bool</span>
+<span class="sd">    :rtype: boolean</span>
+<span class="sd">    :return: True if geometry &quot;geo1&quot; contains geometry &quot;geo2&quot;.</span>
 
 <span class="sd">    :example:</span>
 <span class="sd">      &gt;&gt;&gt; from pyspark.sql import SparkSession</span>
@@ -976,34 +954,31 @@
 <span class="sd">      &gt;&gt;&gt; test_data = []</span>
 <span class="sd">      &gt;&gt;&gt; test_data.extend([(&#39;POLYGON((-1 3,2 1,0 -3,-1 3))&#39;,&#39;POLYGON((0 2,1 1,0 -1,0 2))&#39;)])</span>
 <span class="sd">      &gt;&gt;&gt; test_data.extend([(&#39;POLYGON((0 2,1 1,0 -1,0 2))&#39;,&#39;POLYGON((-1 3,2 1,0 -3,-1 3))&#39;)])</span>
-<span class="sd">      &gt;&gt;&gt; contains_df = spark_session.createDataFrame(data=test_data, schema=[&quot;left&quot;, &quot;right&quot;]).cache()</span>
+<span class="sd">      &gt;&gt;&gt; contains_df = spark_session.createDataFrame(data=test_data, schema=[&quot;geo1&quot;, &quot;geo2&quot;]).cache()</span>
 <span class="sd">      &gt;&gt;&gt; contains_df.createOrReplaceTempView(&quot;contains&quot;)</span>
-<span class="sd">      &gt;&gt;&gt; spark_session.sql(&quot;select ST_Contains(ST_GeomFromText(left), ST_GeomFromText(right)) from contains&quot;).show(100,0)</span>
+<span class="sd">      &gt;&gt;&gt; spark_session.sql(&quot;select ST_Contains(ST_GeomFromText(geo1), ST_GeomFromText(geo2)) from contains&quot;).show(100,0)</span>
 <span class="sd">      +----------------------------------------------------------+</span>
-<span class="sd">      |ST_Contains(ST_GeomFromText(left), ST_GeomFromText(right))|</span>
+<span class="sd">      |ST_Contains(ST_GeomFromText(geo1), ST_GeomFromText(geo2))|</span>
 <span class="sd">      +----------------------------------------------------------+</span>
 <span class="sd">      |true                                                      |</span>
 <span class="sd">      |false                                                     |</span>
 <span class="sd">      +----------------------------------------------------------+</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">arctern</span><span class="o">.</span><span class="n">ST_Contains</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">arctern</span><span class="o">.</span><span class="n">ST_Contains</span><span class="p">(</span><span class="n">geo1</span><span class="p">,</span> <span class="n">geo2</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="ST_Intersects"><a class="viewcode-back" href="../../spark/api/geospatial/function/geospatial/Spark_ST_Intersects.html#arctern_pyspark._wrapper_func.ST_Intersects">[文档]</a><span class="nd">@pandas_udf</span><span class="p">(</span><span class="s2">&quot;boolean&quot;</span><span class="p">,</span> <span class="n">PandasUDFType</span><span class="o">.</span><span class="n">SCALAR</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">ST_Intersects</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">ST_Intersects</span><span class="p">(</span><span class="n">geo1</span><span class="p">,</span> <span class="n">geo2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Check whether two geometries intersect.</span>
+<span class="sd">    Check whether two geometries intersect (i.e., share any portion of space).</span>
 
-<span class="sd">    For every (left, right) pair with the same offset value in left and right, check</span>
-<span class="sd">    if left and right shares any portion of space.</span>
+<span class="sd">    :type geo1: WKB</span>
+<span class="sd">    :param geo1: Geometry</span>
 
-<span class="sd">    :type left: pandas.Series.object</span>
-<span class="sd">    :param left: Geometries organized as WKB.</span>
+<span class="sd">    :type geo2: WKB</span>
+<span class="sd">    :param geo2: Geometry</span>
 
-<span class="sd">    :type right: pandas.Series.object</span>
-<span class="sd">    :param right: Geometries organized as WKB.</span>
-
-<span class="sd">    :return: An array of booleans.</span>
-<span class="sd">    :rtype: pandas.Series.bool</span>
+<span class="sd">    :rtype: boolean</span>
+<span class="sd">    :return: True if geometry &quot;geo1&quot; intersects geometry &quot;geo2&quot;.</span>
 
 <span class="sd">    :example:</span>
 <span class="sd">      &gt;&gt;&gt; from pyspark.sql import SparkSession</span>
@@ -1013,36 +988,32 @@
 <span class="sd">      &gt;&gt;&gt; test_data = []</span>
 <span class="sd">      &gt;&gt;&gt; test_data.extend([(&#39;POINT(0 0)&#39;, &#39;LINESTRING ( 0 0, 0 2 )&#39;)])</span>
 <span class="sd">      &gt;&gt;&gt; test_data.extend([(&#39;POINT(0 0)&#39;,&#39;LINESTRING ( 2 0, 0 2 )&#39;)])</span>
-<span class="sd">      &gt;&gt;&gt; intersects_df = spark_session.createDataFrame(data=test_data, schema=[&quot;left&quot;, &quot;right&quot;]).cache()</span>
+<span class="sd">      &gt;&gt;&gt; intersects_df = spark_session.createDataFrame(data=test_data, schema=[&quot;geo1&quot;, &quot;geo2&quot;]).cache()</span>
 <span class="sd">      &gt;&gt;&gt; intersects_df.createOrReplaceTempView(&quot;intersects&quot;)</span>
-<span class="sd">      &gt;&gt;&gt; spark_session.sql(&quot;select ST_Intersects(ST_GeomFromText(left), ST_GeomFromText(right)) from intersects&quot;).show(100,0)</span>
+<span class="sd">      &gt;&gt;&gt; spark_session.sql(&quot;select ST_Intersects(ST_GeomFromText(geo1), ST_GeomFromText(geo2)) from intersects&quot;).show(100,0)</span>
 <span class="sd">      +------------------------------------------------------------+</span>
-<span class="sd">      |ST_Intersects(ST_GeomFromText(left), ST_GeomFromText(right))|</span>
+<span class="sd">      |ST_Intersects(ST_GeomFromText(geo1), ST_GeomFromText(geo2))|</span>
 <span class="sd">      +------------------------------------------------------------+</span>
 <span class="sd">      |true                                                        |</span>
 <span class="sd">      |false                                                       |</span>
 <span class="sd">      +------------------------------------------------------------+</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">arctern</span><span class="o">.</span><span class="n">ST_Intersects</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">arctern</span><span class="o">.</span><span class="n">ST_Intersects</span><span class="p">(</span><span class="n">geo1</span><span class="p">,</span> <span class="n">geo2</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="ST_Within"><a class="viewcode-back" href="../../spark/api/geospatial/function/geospatial/Spark_ST_Within.html#arctern_pyspark._wrapper_func.ST_Within">[文档]</a><span class="nd">@pandas_udf</span><span class="p">(</span><span class="s2">&quot;boolean&quot;</span><span class="p">,</span> <span class="n">PandasUDFType</span><span class="o">.</span><span class="n">SCALAR</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">ST_Within</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">ST_Within</span><span class="p">(</span><span class="n">geo1</span><span class="p">,</span> <span class="n">geo2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Check whether a geometry is within another geometry.</span>
+<span class="sd">    Check whether geometry &quot;geo1&quot; is within geometry &quot;geo2&quot;. &quot;geo1 within geo2&quot; means no points of &quot;geo1&quot; lie in the</span>
+<span class="sd">    exterior of &quot;geo2&quot; and at least one point of the interior of &quot;geo1&quot; lies in the interior of &quot;geo2&quot;.</span>
 
-<span class="sd">    For every (left, right) pair with the same offset value in left and right, check</span>
-<span class="sd">    if left is &quot;within&quot; right. Left &quot;within&quot; right means no points of left lie in the</span>
-<span class="sd">    exterior of right and at least one point of the interior of left lies in the interior</span>
-<span class="sd">    of right.</span>
+<span class="sd">    :type geo1: WKB</span>
+<span class="sd">    :param geo1: Geometry</span>
 
-<span class="sd">    :type left: pandas.Series.object</span>
-<span class="sd">    :param left: Geometries organized as WKB.</span>
+<span class="sd">    :type geo2: WKB</span>
+<span class="sd">    :param geo2: Geometry</span>
 
-<span class="sd">    :type right: pandas.Series.object</span>
-<span class="sd">    :param right: Geometries organized as WKB.</span>
-
-<span class="sd">    :return: An array of booleans.</span>
-<span class="sd">    :rtype: pandas.Series.bool</span>
+<span class="sd">    :rtype: boolean</span>
+<span class="sd">    :return: True if geometry &quot;geo1&quot; within geometry &quot;geo2&quot;.</span>
 
 <span class="sd">    :example:</span>
 <span class="sd">      &gt;&gt;&gt; from pyspark.sql import SparkSession</span>
@@ -1052,34 +1023,31 @@
 <span class="sd">      &gt;&gt;&gt; test_data = []</span>
 <span class="sd">      &gt;&gt;&gt; test_data.extend([(&#39;POLYGON((2 2, 7 2, 7 5, 2 5, 2 2))&#39;,&#39;POLYGON((1 1, 8 1, 8 7, 1 7, 1 1))&#39;)])</span>
 <span class="sd">      &gt;&gt;&gt; test_data.extend([(&#39;POLYGON((0 2, 5 2, 5 5, 0 5, 0 2))&#39;,&#39;POLYGON((1 1, 8 1, 8 7, 1 7, 1 1))&#39;)])</span>
-<span class="sd">      &gt;&gt;&gt; within_df = spark_session.createDataFrame(data=test_data, schema=[&quot;left&quot;, &quot;right&quot;]).cache()</span>
+<span class="sd">      &gt;&gt;&gt; within_df = spark_session.createDataFrame(data=test_data, schema=[&quot;geo1&quot;, &quot;geo2&quot;]).cache()</span>
 <span class="sd">      &gt;&gt;&gt; within_df.createOrReplaceTempView(&quot;within&quot;)</span>
-<span class="sd">      &gt;&gt;&gt; spark_session.sql(&quot;select ST_Within(ST_GeomFromText(left), ST_GeomFromText(right)) from within&quot;).show(100,0)</span>
+<span class="sd">      &gt;&gt;&gt; spark_session.sql(&quot;select ST_Within(ST_GeomFromText(geo1), ST_GeomFromText(geo2)) from within&quot;).show(100,0)</span>
 <span class="sd">      +--------------------------------------------------------+</span>
-<span class="sd">      |ST_Within(ST_GeomFromText(left), ST_GeomFromText(right))|</span>
+<span class="sd">      |ST_Within(ST_GeomFromText(geo1), ST_GeomFromText(geo2))|</span>
 <span class="sd">      +--------------------------------------------------------+</span>
 <span class="sd">      |true                                                    |</span>
 <span class="sd">      |false                                                   |</span>
 <span class="sd">      +--------------------------------------------------------+</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">arctern</span><span class="o">.</span><span class="n">ST_Within</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">arctern</span><span class="o">.</span><span class="n">ST_Within</span><span class="p">(</span><span class="n">geo1</span><span class="p">,</span> <span class="n">geo2</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="ST_Distance"><a class="viewcode-back" href="../../spark/api/geospatial/function/geospatial/Spark_ST_Distance.html#arctern_pyspark._wrapper_func.ST_Distance">[文档]</a><span class="nd">@pandas_udf</span><span class="p">(</span><span class="s2">&quot;double&quot;</span><span class="p">,</span> <span class="n">PandasUDFType</span><span class="o">.</span><span class="n">SCALAR</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">ST_Distance</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">ST_Distance</span><span class="p">(</span><span class="n">geo1</span><span class="p">,</span> <span class="n">geo2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Calculate the distance between two geometries.</span>
+<span class="sd">    Calculates the minimum 2D Cartesian (planar) distance between &quot;geo1&quot; and &quot;geo2&quot;.</span>
 
-<span class="sd">    For every (left, right) pair with the same offset value in left and right,</span>
-<span class="sd">    calculates the minimum 2D Cartesian (planar) distance between left and right.</span>
+<span class="sd">    :type geo1: WKB</span>
+<span class="sd">    :param geo1: Geometry</span>
 
-<span class="sd">    :type left: pandas.Series.object</span>
-<span class="sd">    :param left: Geometries organized as WKB.</span>
+<span class="sd">    :type geo2: WKB</span>
+<span class="sd">    :param geo2: Geometry</span>
 
-<span class="sd">    :type right: pandas.Series.object</span>
-<span class="sd">    :param right: Geometries organized as WKB.</span>
-
-<span class="sd">    :return: An array of double.</span>
-<span class="sd">    :rtype: pandas.Series.float64</span>
+<span class="sd">    :rtype: float</span>
+<span class="sd">    :return: The value that represents the distance between geometry &quot;geo1&quot; and geometry &quot;geo2&quot;.</span>
 
 <span class="sd">    :example:</span>
 <span class="sd">      &gt;&gt;&gt; from pyspark.sql import SparkSession</span>
@@ -1089,35 +1057,32 @@
 <span class="sd">      &gt;&gt;&gt; test_data = []</span>
 <span class="sd">      &gt;&gt;&gt; test_data.extend([(&#39;POLYGON((-1 -1,2 2,0 1,-1 -1))&#39;,&#39;POLYGON((5 2,7 4,5 5,5 2))&#39;)])</span>
 <span class="sd">      &gt;&gt;&gt; test_data.extend([(&#39;POINT(31.75 31.25)&#39;,&#39;LINESTRING(32 32,32 35,40.5 35,32 35,32 32)&#39;)])</span>
-<span class="sd">      &gt;&gt;&gt; distance_df = spark_session.createDataFrame(data=test_data, schema=[&quot;left&quot;, &quot;right&quot;]).cache()</span>
+<span class="sd">      &gt;&gt;&gt; distance_df = spark_session.createDataFrame(data=test_data, schema=[&quot;geo1&quot;, &quot;geo2&quot;]).cache()</span>
 <span class="sd">      &gt;&gt;&gt; distance_df.createOrReplaceTempView(&quot;distance&quot;)</span>
-<span class="sd">      &gt;&gt;&gt; spark_session.sql(&quot;select ST_Distance(ST_GeomFromText(left), ST_GeomFromText(right)) from distance&quot;).show(100,0)</span>
+<span class="sd">      &gt;&gt;&gt; spark_session.sql(&quot;select ST_Distance(ST_GeomFromText(geo1), ST_GeomFromText(geo2)) from distance&quot;).show(100,0)</span>
 <span class="sd">      +----------------------------------------------------------+</span>
-<span class="sd">      |ST_Distance(ST_GeomFromText(left), ST_GeomFromText(right))|</span>
+<span class="sd">      |ST_Distance(ST_GeomFromText(geo1), ST_GeomFromText(geo2))|</span>
 <span class="sd">      +----------------------------------------------------------+</span>
 <span class="sd">      |3                                                         |</span>
 <span class="sd">      |0.7905694150420949                                        |</span>
 <span class="sd">      +----------------------------------------------------------+</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">arctern</span><span class="o">.</span><span class="n">ST_Distance</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">arctern</span><span class="o">.</span><span class="n">ST_Distance</span><span class="p">(</span><span class="n">geo1</span><span class="p">,</span> <span class="n">geo2</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="ST_DistanceSphere"><a class="viewcode-back" href="../../spark/api/geospatial/function/geospatial/Spark_ST_DistanceSphere.html#arctern_pyspark._wrapper_func.ST_DistanceSphere">[文档]</a><span class="nd">@pandas_udf</span><span class="p">(</span><span class="s2">&quot;double&quot;</span><span class="p">,</span> <span class="n">PandasUDFType</span><span class="o">.</span><span class="n">SCALAR</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">ST_DistanceSphere</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">ST_DistanceSphere</span><span class="p">(</span><span class="n">geo1</span><span class="p">,</span> <span class="n">geo2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Returns minimum distance in meters between two lon/lat points.</span>
-<span class="sd">    Uses a spherical earth and radius derived from the spheroid defined by the SRID.</span>
+<span class="sd">    Returns minimum distance in meters between two lon/lat points.Uses a spherical earth</span>
+<span class="sd">    and radius derived from the spheroid defined by the SRID.</span>
 
-<span class="sd">    For every (left, right) pair with the same offset value in left and right,</span>
-<span class="sd">    calculates the minimum spherical distance between left and right.</span>
+<span class="sd">    :type geo1: WKB</span>
+<span class="sd">    :param geo1: Geometry</span>
 
-<span class="sd">    :type left: pandas.Series.object</span>
-<span class="sd">    :param left: Geometries organized as WKB.</span>
+<span class="sd">    :type geo2: WKB</span>
+<span class="sd">    :param geo2: Geometry</span>
 
-<span class="sd">    :type right: pandas.Series.object</span>
-<span class="sd">    :param right: Geometries organized as WKB.</span>
-
-<span class="sd">    :return: An array of double.</span>
-<span class="sd">    :rtype: pandas.Series.float64</span>
+<span class="sd">    :rtype: float</span>
+<span class="sd">    :return: The value that represents the distance between geometry &quot;geo1&quot; and geometry &quot;geo2&quot;.</span>
 
 <span class="sd">    :example:</span>
 <span class="sd">      &gt;&gt;&gt; from pyspark.sql import SparkSession</span>
@@ -1126,32 +1091,29 @@
 <span class="sd">      &gt;&gt;&gt; register_funcs(spark_session)</span>
 <span class="sd">      &gt;&gt;&gt; test_data = []</span>
 <span class="sd">      &gt;&gt;&gt; test_data.extend([(&#39;POINT(31.75 31.25)&#39;,&#39;POINT(31.75 31.25)&#39;)])</span>
-<span class="sd">      &gt;&gt;&gt; test_data.extend([(&#39;POINT(31.75 31.25)&#39;,&#39;POINT(31.75 31.25)&#39;)])</span>
-<span class="sd">      &gt;&gt;&gt; distance_sphere_df = spark_session.createDataFrame(data=test_data, schema=[&quot;left&quot;, &quot;right&quot;]).cache()</span>
+<span class="sd">      &gt;&gt;&gt; test_data.extend([(&#39;POINT(31.75 31.25)&#39;,&#39;POINT(32.75 31.25)&#39;)])</span>
+<span class="sd">      &gt;&gt;&gt; distance_sphere_df = spark_session.createDataFrame(data=test_data, schema=[&quot;geo1&quot;, &quot;geo2&quot;]).cache()</span>
 <span class="sd">      &gt;&gt;&gt; distance_sphere_df.createOrReplaceTempView(&quot;distance_sphere&quot;)</span>
-<span class="sd">      &gt;&gt;&gt; spark_session.sql(&quot;select ST_Distance(ST_GeomFromText(left), ST_GeomFromText(right)) from distance_sphere&quot;).show(100,0)</span>
-<span class="sd">      +----------------------------------------------------------+</span>
-<span class="sd">      |ST_Distance(ST_GeomFromText(left), ST_GeomFromText(right))|</span>
-<span class="sd">      +----------------------------------------------------------+</span>
-<span class="sd">      |3                                                         |</span>
-<span class="sd">      |0.7905694150420949                                        |</span>
-<span class="sd">      +----------------------------------------------------------+</span>
+<span class="sd">      &gt;&gt;&gt; spark_session.sql(&quot;select ST_DistanceSphere(ST_GeomFromText(geo1), ST_GeomFromText(geo2)) from distance_sphere&quot;).show(100,0)</span>
+<span class="sd">      +---------------------------------------------------------------+</span>
+<span class="sd">      |ST_DistanceSphere(ST_GeomFromText(geo1), ST_GeomFromText(geo2))|</span>
+<span class="sd">      +---------------------------------------------------------------+</span>
+<span class="sd">      |0.0                                                            |</span>
+<span class="sd">      |95088.35938555223                                              |</span>
+<span class="sd">      +---------------------------------------------------------------+</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">arctern</span><span class="o">.</span><span class="n">ST_DistanceSphere</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">arctern</span><span class="o">.</span><span class="n">ST_DistanceSphere</span><span class="p">(</span><span class="n">geo1</span><span class="p">,</span> <span class="n">geo2</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="ST_Area"><a class="viewcode-back" href="../../spark/api/geospatial/function/geospatial/Spark_ST_Area.html#arctern_pyspark._wrapper_func.ST_Area">[文档]</a><span class="nd">@pandas_udf</span><span class="p">(</span><span class="s2">&quot;double&quot;</span><span class="p">,</span> <span class="n">PandasUDFType</span><span class="o">.</span><span class="n">SCALAR</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_Area</span><span class="p">(</span><span class="n">geos</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Calculate the area of geometry.</span>
+<span class="sd">    Calculate the 2D Cartesian (planar) area of geometry.</span>
 
-<span class="sd">    For every geometry in geometries, calculate the 2D Cartesian (planar) area</span>
-<span class="sd">    of geometry.</span>
+<span class="sd">    :type geos: WKB</span>
+<span class="sd">    :param geos: Geometry</span>
 
-<span class="sd">    :type geos: pandas.Series.object</span>
-<span class="sd">    :param geos: Geometries organized as WKB.</span>
-
-<span class="sd">    :return: An array of double.</span>
-<span class="sd">    :rtype: pandas.Series.float64</span>
+<span class="sd">    :rtype: float</span>
+<span class="sd">    :return: The value that represents the area of geometry.</span>
 
 <span class="sd">    :example:</span>
 <span class="sd">      &gt;&gt;&gt; from pyspark.sql import SparkSession</span>
@@ -1178,13 +1140,11 @@
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Compute the centroid of geometry.</span>
 
-<span class="sd">    For every geometry in geometries, compute the controid point of geometry.</span>
+<span class="sd">    :type geos: WKB</span>
+<span class="sd">    :param geos: Geometry</span>
 
-<span class="sd">    :type geos: pandas.Series.object</span>
-<span class="sd">    :param geos: Geometries organized as WKB.</span>
-
-<span class="sd">    :return: Geometries organized as WKB.</span>
-<span class="sd">    :rtype: pandas.Series.object</span>
+<span class="sd">    :rtype: WKB</span>
+<span class="sd">    :return: The centroid of geometry in WKB form.</span>
 
 <span class="sd">    :example:</span>
 <span class="sd">      &gt;&gt;&gt; from pyspark.sql import SparkSession</span>
@@ -1211,13 +1171,11 @@
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculate the length of linear geometries.</span>
 
-<span class="sd">    For every geometry in geometries, calculate the length of geometry.</span>
+<span class="sd">    :type geos: WKB</span>
+<span class="sd">    :param geos: Geometry</span>
 
-<span class="sd">    :type geos: pandas.Series.object</span>
-<span class="sd">    :param geos: Geometries organized as WKB.</span>
-
-<span class="sd">    :return: An array of double.</span>
-<span class="sd">    :rtype: pandas.Series.float64</span>
+<span class="sd">    :rtype: float</span>
+<span class="sd">    :return: The value that represents the length of geometry.</span>
 
 <span class="sd">    :example:</span>
 <span class="sd">      &gt;&gt;&gt; from pyspark.sql import SparkSession</span>
@@ -1242,31 +1200,17 @@
 <div class="viewcode-block" id="ST_HausdorffDistance"><a class="viewcode-back" href="../../spark/api/geospatial/function/geospatial/Spark_ST_HausdorffDistance.html#arctern_pyspark._wrapper_func.ST_HausdorffDistance">[文档]</a><span class="nd">@pandas_udf</span><span class="p">(</span><span class="s2">&quot;double&quot;</span><span class="p">,</span> <span class="n">PandasUDFType</span><span class="o">.</span><span class="n">SCALAR</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_HausdorffDistance</span><span class="p">(</span><span class="n">geo1</span><span class="p">,</span> <span class="n">geo2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Returns the Hausdorff distance between two geometries, a measure of how similar</span>
-<span class="sd">    or dissimilar 2 geometries are.</span>
+<span class="sd">    Returns the Hausdorff distance between two geometries, which is a measure of how similar</span>
+<span class="sd">    two geometries are.</span>
 
-<span class="sd">    Implements algorithm for computing a distance metric which can be thought of as</span>
-<span class="sd">    the &quot;Discrete Hausdorff Distance&quot;. This is the Hausdorff distance restricted to</span>
-<span class="sd">    discrete points for one of the geometries. Wikipedia article on Hausdorff distance</span>
+<span class="sd">    :type geo1: WKB</span>
+<span class="sd">    :param geo1: Geometry</span>
 
-<span class="sd">    Martin Davis note on how Hausdorff Distance calculation was used to prove</span>
-<span class="sd">    correctness of the CascadePolygonUnion approach.</span>
+<span class="sd">    :type geo2: WKB</span>
+<span class="sd">    :param geo2: Geometry</span>
 
-<span class="sd">    When densifyFrac is specified, this function performs a segment densification before</span>
-<span class="sd">    computing the discrete hausdorff distance. The densifyFrac parameter sets the fraction</span>
-<span class="sd">    by which to densify each segment. Each segment will be split into a number of equal-length</span>
-<span class="sd">    subsegments, whose fraction of the total length is closest to the given fraction.</span>
-
-<span class="sd">    Units are in the units of the spatial reference system of the geometries.</span>
-
-<span class="sd">    :type geo1: pandas.Series.object</span>
-<span class="sd">    :param geo1: Geometries organized as WKB.</span>
-
-<span class="sd">    :type geo2: pandas.Series.object</span>
-<span class="sd">    :param geo2: Geometries organized as WKB.</span>
-
-<span class="sd">    :return: An array of double.</span>
-<span class="sd">    :rtype: pandas.Series.float64</span>
+<span class="sd">    :rtype: float</span>
+<span class="sd">    :return: The value that represents the hausdorff distance between geo1 and geo2.</span>
 
 <span class="sd">    :example:</span>
 <span class="sd">      &gt;&gt;&gt; from pyspark.sql import SparkSession</span>
@@ -1291,16 +1235,13 @@
 <div class="viewcode-block" id="ST_ConvexHull"><a class="viewcode-back" href="../../spark/api/geospatial/function/geospatial/Spark_ST_ConvexHull.html#arctern_pyspark._wrapper_func.ST_ConvexHull">[文档]</a><span class="nd">@pandas_udf</span><span class="p">(</span><span class="s2">&quot;binary&quot;</span><span class="p">,</span> <span class="n">PandasUDFType</span><span class="o">.</span><span class="n">SCALAR</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_ConvexHull</span><span class="p">(</span><span class="n">geos</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Compute the convex hull of geometry.</span>
+<span class="sd">    Compute the smallest convex geometry that encloses all geometries in the given geometry.</span>
 
-<span class="sd">    Compute the smallest convex geometry that encloses all geometries for a geometry</span>
-<span class="sd">    in geometries.</span>
+<span class="sd">    :type geos: WKB</span>
+<span class="sd">    :param geos: Geometry</span>
 
-<span class="sd">    :type geos: pandas.Series.object</span>
-<span class="sd">    :param geos: Geometries organized as WKB.</span>
-
-<span class="sd">    :return: Geometries organized as WKB.</span>
-<span class="sd">    :rtype: pandas.Series.object</span>
+<span class="sd">    :rtype: WKB</span>
+<span class="sd">    :return: Geometry</span>
 
 <span class="sd">    :example:</span>
 <span class="sd">      &gt;&gt;&gt; from pyspark.sql import SparkSession</span>
@@ -1325,13 +1266,13 @@
 <div class="viewcode-block" id="ST_NPoints"><a class="viewcode-back" href="../../spark/api/geospatial/function/geospatial/Spark_ST_NPoints.html#arctern_pyspark._wrapper_func.ST_NPoints">[文档]</a><span class="nd">@pandas_udf</span><span class="p">(</span><span class="s2">&quot;int&quot;</span><span class="p">,</span> <span class="n">PandasUDFType</span><span class="o">.</span><span class="n">SCALAR</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_NPoints</span><span class="p">(</span><span class="n">geos</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Calculates the points number for every geometry in geometries.</span>
+<span class="sd">    Calculate the number of points for the given geometry.</span>
 
-<span class="sd">    :type geos: pandas.Series.object</span>
-<span class="sd">    :param geos: Geometries organized as WKB.</span>
+<span class="sd">    :type geos: WKB</span>
+<span class="sd">    :param geos: Geometry</span>
 
-<span class="sd">    :return : An array of int64.</span>
-<span class="sd">    :rtype : pandas.Series.int64</span>
+<span class="sd">    :rtype: int</span>
+<span class="sd">    :return: The number of points.</span>
 
 <span class="sd">    :example:</span>
 <span class="sd">      &gt;&gt;&gt; from pyspark.sql import SparkSession</span>
@@ -1356,13 +1297,13 @@
 <div class="viewcode-block" id="ST_Envelope"><a class="viewcode-back" href="../../spark/api/geospatial/function/geospatial/Spark_ST_Envelope.html#arctern_pyspark._wrapper_func.ST_Envelope">[文档]</a><span class="nd">@pandas_udf</span><span class="p">(</span><span class="s2">&quot;binary&quot;</span><span class="p">,</span> <span class="n">PandasUDFType</span><span class="o">.</span><span class="n">SCALAR</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_Envelope</span><span class="p">(</span><span class="n">geos</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Compute the double-precision minimum bounding box geometry for every geometry in geometries.</span>
+<span class="sd">    Compute the double-precision minimum bounding box geometry for the given geometry.</span>
 
-<span class="sd">    :type geos: pandas.Series.object</span>
-<span class="sd">    :param geos: Geometries organized as WKB.</span>
+<span class="sd">    :type geos: WKB</span>
+<span class="sd">    :param geos: Geometry</span>
 
-<span class="sd">    :return: Geometries organized as WKB.</span>
-<span class="sd">    :rtype: pandas.Series.object</span>
+<span class="sd">    :rtype: WKB</span>
+<span class="sd">    :return: Geometry</span>
 
 <span class="sd">    :example:</span>
 <span class="sd">      &gt;&gt;&gt; from pyspark.sql import SparkSession</span>
@@ -1398,19 +1339,19 @@
 
 <span class="c1"># TODO: ST_Buffer, how to polymorphicly define the behaviour of spark udf</span>
 <div class="viewcode-block" id="ST_Buffer"><a class="viewcode-back" href="../../spark/api/geospatial/function/geospatial/Spark_ST_Buffer.html#arctern_pyspark._wrapper_func.ST_Buffer">[文档]</a><span class="nd">@pandas_udf</span><span class="p">(</span><span class="s2">&quot;binary&quot;</span><span class="p">,</span> <span class="n">PandasUDFType</span><span class="o">.</span><span class="n">SCALAR</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">ST_Buffer</span><span class="p">(</span><span class="n">geos</span><span class="p">,</span> <span class="n">dfDist</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">ST_Buffer</span><span class="p">(</span><span class="n">geos</span><span class="p">,</span> <span class="n">distance</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Returns a geometry that represents all points whose distance from this geos is</span>
-<span class="sd">    less than or equal to distance.</span>
+<span class="sd">    Return a geometry that represents all points whose distance from the given geometry is</span>
+<span class="sd">    less than or equal to &quot;distance&quot;.</span>
 
-<span class="sd">    :type geos: pandas.Series.object</span>
-<span class="sd">    :param geos: Geometries organized as WKB.</span>
+<span class="sd">    :type geos: WKB</span>
+<span class="sd">    :param geos: Geometry</span>
 
-<span class="sd">    :type ofDist: int64</span>
-<span class="sd">    :param ofDist: The maximum distance of the returned geometry from the given geometry.</span>
+<span class="sd">    :type distance: float</span>
+<span class="sd">    :param distance: The maximum distance of the returned geometry from the given geometry.</span>
 
-<span class="sd">    :return: Geometries organized as WKB.</span>
-<span class="sd">    :rtype: pandas.Series.object</span>
+<span class="sd">    :rtype: WKB</span>
+<span class="sd">    :return: Geometry</span>
 
 <span class="sd">    :example:</span>
 <span class="sd">      &gt;&gt;&gt; from pyspark.sql import SparkSession</span>
@@ -1428,18 +1369,18 @@
 <span class="sd">      |POLYGON EMPTY                                 |</span>
 <span class="sd">      +----------------------------------------------+</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">arctern</span><span class="o">.</span><span class="n">ST_Buffer</span><span class="p">(</span><span class="n">geos</span><span class="p">,</span> <span class="n">dfDist</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span></div>
+    <span class="k">return</span> <span class="n">arctern</span><span class="o">.</span><span class="n">ST_Buffer</span><span class="p">(</span><span class="n">geos</span><span class="p">,</span> <span class="n">distance</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span></div>
 
 <div class="viewcode-block" id="ST_Union_Aggr"><a class="viewcode-back" href="../../spark/api/geospatial/function/aggr/Spark_ST_Union_Aggr.html#arctern_pyspark._wrapper_func.ST_Union_Aggr">[文档]</a><span class="nd">@pandas_udf</span><span class="p">(</span><span class="s2">&quot;binary&quot;</span><span class="p">,</span> <span class="n">PandasUDFType</span><span class="o">.</span><span class="n">GROUPED_AGG</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_Union_Aggr</span><span class="p">(</span><span class="n">geos</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    This function returns a MULTI geometry or NON-MULTI geometry from a set of geometries.</span>
+<span class="sd">    Return a geometry that represents the union of a set of geometries.</span>
 
-<span class="sd">    :type geos: pandas.Series.object</span>
-<span class="sd">    :param geos: Geometries organized as WKB.</span>
+<span class="sd">    :type geos: WKB</span>
+<span class="sd">    :param geos: Geometry</span>
 
-<span class="sd">    :return: Geometry organized as WKB.</span>
-<span class="sd">    :rtype: pandas.Series.object</span>
+<span class="sd">    :rtype: WKB</span>
+<span class="sd">    :return: Geometry</span>
 
 <span class="sd">    :example:</span>
 <span class="sd">      &gt;&gt;&gt; from pyspark.sql import SparkSession</span>
@@ -1455,7 +1396,7 @@
 <span class="sd">      +-----------------------------------------------+</span>
 <span class="sd">      |ST_AsText(ST_Union_Aggr(ST_GeomFromText(geos)))|</span>
 <span class="sd">      +-----------------------------------------------+</span>
-<span class="sd">      |POLYGON ((4 1,4 0,0 0,0 4,4 4,4 2,5 2,5 1,4 1))|</span>
+<span class="sd">      |POLYGON ((1 1,1 2,2 2,3 2,3 1,2 1,1 1))        |</span>
 <span class="sd">      +-----------------------------------------------+</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">rst</span> <span class="o">=</span> <span class="n">arctern</span><span class="o">.</span><span class="n">ST_Union_Aggr</span><span class="p">(</span><span class="n">geos</span><span class="p">)</span>
@@ -1464,14 +1405,13 @@
 <div class="viewcode-block" id="ST_Envelope_Aggr"><a class="viewcode-back" href="../../spark/api/geospatial/function/aggr/Spark_ST_Envelope_Aggr.html#arctern_pyspark._wrapper_func.ST_Envelope_Aggr">[文档]</a><span class="nd">@pandas_udf</span><span class="p">(</span><span class="s2">&quot;binary&quot;</span><span class="p">,</span> <span class="n">PandasUDFType</span><span class="o">.</span><span class="n">GROUPED_AGG</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_Envelope_Aggr</span><span class="p">(</span><span class="n">geos</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Compute the double-precision minimum bounding box geometry for every geometry in geometries,</span>
-<span class="sd">    then returns a MULTI geometry or NON-MULTI geometry from a set of geometries.</span>
+<span class="sd">    Compute the double-precision minimum bounding box geometry for the union of given geometries.</span>
 
-<span class="sd">    :type geos: pandas.Series.object</span>
-<span class="sd">    :param geos: Geometries organized as WKB.</span>
+<span class="sd">    :type geos: WKB</span>
+<span class="sd">    :param geos: Geometry</span>
 
-<span class="sd">    :return: Geometry organized as WKB.</span>
-<span class="sd">    :rtype: pandas.Series.object</span>
+<span class="sd">    :rtype: WKB</span>
+<span class="sd">    :return: Geometry</span>
 
 <span class="sd">    :example:</span>
 <span class="sd">      &gt;&gt;&gt; from pyspark.sql import SparkSession</span>
@@ -1494,29 +1434,28 @@
     <span class="k">return</span> <span class="n">rst</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="ST_Transform"><a class="viewcode-back" href="../../spark/api/geospatial/function/geospatial/Spark_ST_Transform.html#arctern_pyspark._wrapper_func.ST_Transform">[文档]</a><span class="nd">@pandas_udf</span><span class="p">(</span><span class="s2">&quot;binary&quot;</span><span class="p">,</span> <span class="n">PandasUDFType</span><span class="o">.</span><span class="n">SCALAR</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">ST_Transform</span><span class="p">(</span><span class="n">geos</span><span class="p">,</span> <span class="n">src_rs</span><span class="p">,</span> <span class="n">dst_rs</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">ST_Transform</span><span class="p">(</span><span class="n">geos</span><span class="p">,</span> <span class="n">from_srid</span><span class="p">,</span> <span class="n">to_srid</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Returns a new geometry with its coordinates transformed to a different spatial</span>
-<span class="sd">    reference system.</span>
+<span class="sd">    Return a new geometry with its coordinates transformed from spatial reference system &quot;src_rs&quot; to a &quot;dst_rs&quot;.</span>
 
-<span class="sd">    :type geos: pandas.Series.object</span>
-<span class="sd">    :param geos: Geometries organized as WKB.</span>
+<span class="sd">    :type geos: WKB</span>
+<span class="sd">    :param geos: Geometry</span>
 
-<span class="sd">    :type src_rs: string</span>
-<span class="sd">    :param src_rs: The current srid of geometries.</span>
+<span class="sd">    :type from_srid: string</span>
+<span class="sd">    :param from_srid: The current srid of geometries.</span>
 
-<span class="sd">    :type dst_rs: string</span>
-<span class="sd">    :param dst_rs: The target srid of geometries tranfrom to.</span>
+<span class="sd">    :type to_srid: string</span>
+<span class="sd">    :param to_srid: The target srid of geometries tranfrom to.</span>
 
-<span class="sd">    :return: Geometries organized as WKB.</span>
-<span class="sd">    :rtype: pandas.Series.object</span>
+<span class="sd">    :rtype: WKB</span>
+<span class="sd">    :return: Geometry</span>
 
 <span class="sd">    :example:</span>
 <span class="sd">      &gt;&gt;&gt; from pyspark.sql import SparkSession</span>
 <span class="sd">      &gt;&gt;&gt; from arctern_pyspark import register_funcs</span>
 <span class="sd">      &gt;&gt;&gt; spark_session = SparkSession.builder.appName(&quot;Python Arrow-in-Spark example&quot;).getOrCreate()</span>
 <span class="sd">      &gt;&gt;&gt; register_funcs(spark_session)</span>
-<span class="sd">      &gt;&gt;&gt;  test_data = []</span>
+<span class="sd">      &gt;&gt;&gt; test_data = []</span>
 <span class="sd">      &gt;&gt;&gt; test_data.extend([(&#39;POINT (10 10)&#39;,)])</span>
 <span class="sd">      &gt;&gt;&gt; buffer_df = spark_session.createDataFrame(data=test_data, schema=[&#39;geos&#39;]).cache()</span>
 <span class="sd">      &gt;&gt;&gt; buffer_df.createOrReplaceTempView(&quot;buffer&quot;)</span>
@@ -1527,20 +1466,20 @@
 <span class="sd">      |POINT (1113194.90793274 1118889.97485796)                               |</span>
 <span class="sd">      +------------------------------------------------------------------------+</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">arctern</span><span class="o">.</span><span class="n">ST_Transform</span><span class="p">(</span><span class="n">geos</span><span class="p">,</span> <span class="n">src_rs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">dst_rs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span></div>
+    <span class="k">return</span> <span class="n">arctern</span><span class="o">.</span><span class="n">ST_Transform</span><span class="p">(</span><span class="n">geos</span><span class="p">,</span> <span class="n">from_srid</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">to_srid</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span></div>
 
 <div class="viewcode-block" id="ST_CurveToLine"><a class="viewcode-back" href="../../spark/api/geospatial/function/geospatial/Spark_ST_CurveToLine.html#arctern_pyspark._wrapper_func.ST_CurveToLine">[文档]</a><span class="nd">@pandas_udf</span><span class="p">(</span><span class="s2">&quot;binary&quot;</span><span class="p">,</span> <span class="n">PandasUDFType</span><span class="o">.</span><span class="n">SCALAR</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_CurveToLine</span><span class="p">(</span><span class="n">geos</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Converts a CIRCULAR STRING to regular LINESTRING or CURVEPOLYGON to POLYGON or</span>
+<span class="sd">    Convert curves in a geometry to approximate linear representation, e.g., CIRCULAR STRING to regular LINESTRING, CURVEPOLYGON to POLYGON, and</span>
 <span class="sd">    MULTISURFACE to MULTIPOLYGON. Useful for outputting to devices that can&#39;t support</span>
 <span class="sd">    CIRCULARSTRING geometry types.</span>
 
-<span class="sd">    :type geos: pandas.Series.object</span>
-<span class="sd">    :param geos: Geometries organized as WKB.</span>
+<span class="sd">    :type geos: WKB</span>
+<span class="sd">    :param geos: Geometry</span>
 
-<span class="sd">    :return: Geometries organized as WKB.</span>
-<span class="sd">    :rtype: pandas.Series.object</span>
+<span class="sd">    :rtype: WKB</span>
+<span class="sd">    :return: Geometry</span>
 
 <span class="sd">    :example:</span>
 <span class="sd">      &gt;&gt;&gt; from pyspark.sql import SparkSession</span>
@@ -1569,7 +1508,7 @@
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 5月 12, 2020.
+        最后更新于 5月 13, 2020.
       </span>
 
     </p>

@@ -112,7 +112,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../../restful/restful.html">RESTful</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../restful/restful.html">Restful</a></li>
 </ul>
 
             
@@ -188,23 +188,19 @@
 <dl class="py function">
 <dt id="arctern_pyspark._wrapper_func.ST_PrecisionReduce">
 <code class="sig-prename descclassname">arctern_pyspark.</code><code class="sig-name descname">ST_PrecisionReduce</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">geos</span></em>, <em class="sig-param"><span class="n">precision</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/arctern_pyspark/_wrapper_func.html#ST_PrecisionReduce"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#arctern_pyspark._wrapper_func.ST_PrecisionReduce" title="永久链接至目标">¶</a></dt>
-<dd><p>Reduce the precision of geometry.</p>
-<p>For every geometry in geometries, reduce the decimal places of its coordinates
-to the given number. The last decimal place will be rounded.</p>
-<p>Note, the operation is performed NOT in “inplace” manner, i.e., new geometries
-in arrow::Array format will be construted and extra memory will be allocated.</p>
+<dd><p>根据指定的有效数字位数，降低几何体的坐标精度。</p>
 <dl class="field-list">
 <dt class="field-odd">参数</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>geos</strong> (<em>pandas.Series.object</em>) – Geometries organized as WKT.</p></li>
-<li><p><strong>geos</strong> – The number to reduce the decimals places to.</p></li>
+<li><p><strong>geos</strong> (<em>WKB</em>) – 几何体。</p></li>
+<li><p><strong>precision</strong> (<em>int</em>) – 有效数字位数。</p></li>
 </ul>
 </dd>
-<dt class="field-even">返回</dt>
-<dd class="field-even"><p>Geometries organized as WKB.</p>
+<dt class="field-even">返回类型</dt>
+<dd class="field-even"><p>WKB</p>
 </dd>
-<dt class="field-odd">返回类型</dt>
-<dd class="field-odd"><p>pandas.Series.object</p>
+<dt class="field-odd">返回</dt>
+<dd class="field-odd"><p>降低坐标精度后的几何体。</p>
 </dd>
 <dt class="field-even">例子</dt>
 <dd class="field-even"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span>
@@ -213,6 +209,7 @@ in arrow::Array format will be construted and extra memory will be allocated.</p
 <span class="gp">&gt;&gt;&gt; </span><span class="n">register_funcs</span><span class="p">(</span><span class="n">spark_session</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">test_data</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">test_data</span><span class="o">.</span><span class="n">extend</span><span class="p">([(</span><span class="s1">&#39;POINT (10.777 11.888)&#39;</span><span class="p">,)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">test_data</span><span class="o">.</span><span class="n">extend</span><span class="p">([(</span><span class="s1">&#39;POLYGON ((10.23 11.25,6.0 0.0001,5.7854 8.56542,10.23 11.25))&#39;</span><span class="p">,)])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">precision_reduce_df</span> <span class="o">=</span> <span class="n">spark_session</span><span class="o">.</span><span class="n">createDataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">test_data</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;geos&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">cache</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">precision_reduce_df</span><span class="o">.</span><span class="n">createOrReplaceTempView</span><span class="p">(</span><span class="s2">&quot;precision_reduce&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">spark_session</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;select ST_AsText(ST_PrecisionReduce(ST_GeomFromText(geos), 4)) from precision_reduce&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
@@ -220,6 +217,7 @@ in arrow::Array format will be construted and extra memory will be allocated.</p
 <span class="go">|ST_AsText(ST_PrecisionReduce(ST_GeomFromText(geos), 4))|</span>
 <span class="go">+-------------------------------------------------------+</span>
 <span class="go">|POINT (10.78 11.89)                                    |</span>
+<span class="go">|POLYGON ((10.23 11.25,6 0,5.785 8.565,10.23 11.25))    |</span>
 <span class="go">+-------------------------------------------------------+</span>
 </pre></div>
 </div>
@@ -251,7 +249,7 @@ in arrow::Array format will be construted and extra memory will be allocated.</p
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 5月 12, 2020.
+        最后更新于 5月 13, 2020.
       </span>
 
     </p>

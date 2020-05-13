@@ -10,7 +10,6 @@
 | 操作系统 |Ubuntu LTS 18.04|
 | Conda  | Miniconda Python3  |
 
-
 * GPU 版本
 
 |  名称    |   版本     |
