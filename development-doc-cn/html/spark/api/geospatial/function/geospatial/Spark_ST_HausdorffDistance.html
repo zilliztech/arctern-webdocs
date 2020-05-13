@@ -108,7 +108,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../../restful/restful.html">RESTful</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../restful/restful.html">Restful</a></li>
 </ul>
 
             
@@ -184,30 +184,19 @@
 <dl class="py function">
 <dt id="arctern_pyspark._wrapper_func.ST_HausdorffDistance">
 <code class="sig-prename descclassname">arctern_pyspark.</code><code class="sig-name descname">ST_HausdorffDistance</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">geo1</span></em>, <em class="sig-param"><span class="n">geo2</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/arctern_pyspark/_wrapper_func.html#ST_HausdorffDistance"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#arctern_pyspark._wrapper_func.ST_HausdorffDistance" title="永久链接至目标">¶</a></dt>
-<dd><p>Returns the Hausdorff distance between two geometries, a measure of how similar
-or dissimilar 2 geometries are.</p>
-<p>Implements algorithm for computing a distance metric which can be thought of as
-the “Discrete Hausdorff Distance”. This is the Hausdorff distance restricted to
-discrete points for one of the geometries. Wikipedia article on Hausdorff distance</p>
-<p>Martin Davis note on how Hausdorff Distance calculation was used to prove
-correctness of the CascadePolygonUnion approach.</p>
-<p>When densifyFrac is specified, this function performs a segment densification before
-computing the discrete hausdorff distance. The densifyFrac parameter sets the fraction
-by which to densify each segment. Each segment will be split into a number of equal-length
-subsegments, whose fraction of the total length is closest to the given fraction.</p>
-<p>Units are in the units of the spatial reference system of the geometries.</p>
+<dd><p>返回两个几何体之间的 Hausdorff 距离。Haudorff 距离用于度量两个几何体之间的相似度。</p>
 <dl class="field-list">
 <dt class="field-odd">参数</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>geo1</strong> (<em>pandas.Series.object</em>) – Geometries organized as WKB.</p></li>
-<li><p><strong>geo2</strong> (<em>pandas.Series.object</em>) – Geometries organized as WKB.</p></li>
+<li><p><strong>geo1</strong> (<em>WKB</em>) – 几何体。</p></li>
+<li><p><strong>geo2</strong> (<em>WKB</em>) – 几何体。</p></li>
 </ul>
 </dd>
-<dt class="field-even">返回</dt>
-<dd class="field-even"><p>An array of double.</p>
+<dt class="field-even">返回类型</dt>
+<dd class="field-even"><p>float</p>
 </dd>
-<dt class="field-odd">返回类型</dt>
-<dd class="field-odd"><p>pandas.Series.float64</p>
+<dt class="field-odd">返回</dt>
+<dd class="field-odd"><p>geo1 与 geo2 之间 Huasdorff 距离的值。</p>
 </dd>
 <dt class="field-even">例子</dt>
 <dd class="field-even"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span>
@@ -256,7 +245,7 @@ subsegments, whose fraction of the total length is closest to the given fraction
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 5月 12, 2020.
+        最后更新于 5月 13, 2020.
       </span>
 
     </p>

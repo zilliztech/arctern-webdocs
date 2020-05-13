@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-12 14:24+0800\n"
+"POT-Creation-Date: 2020-05-13 09:30+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,42 +20,42 @@ msgstr ""
 msgid "ST_PolygonFromEnvelope"
 msgstr ""
 
-#: ../../../../../miniconda3/envs/arctern/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/_wrapper_func.py:docstring of arctern_pyspark._wrapper_func.ST_PolygonFromEnvelope:1
-msgid "Construct polygon(rectangle) geometries from arr_min_x, arr_min_y, arr_max_x, arr_max_y. The edges of polygon are parallel to coordinate axis."
+#: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/_wrapper_func.py:docstring of arctern_pyspark._wrapper_func.ST_PolygonFromEnvelope:1
+msgid "Construct a polygon(rectangle) geometry from arr_min_x, arr_min_y, arr_max_x, arr_max_y. The edges of polygon are parallel to coordinate axis."
 msgstr ""
 
-#: ../../../../../miniconda3/envs/arctern/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/_wrapper_func.py:docstring of arctern_pyspark._wrapper_func.ST_PolygonFromEnvelope:0
+#: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/_wrapper_func.py:docstring of arctern_pyspark._wrapper_func.ST_PolygonFromEnvelope:0
 msgid "参数"
 msgstr ""
 
-#: ../../../../../miniconda3/envs/arctern/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/_wrapper_func.py:docstring of arctern_pyspark._wrapper_func.ST_PolygonFromEnvelope:5
-msgid "The x axis coordinates of the lower left vertical of the rectangles."
+#: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/_wrapper_func.py:docstring of arctern_pyspark._wrapper_func.ST_PolygonFromEnvelope:5
+msgid "The minimum value of x coordinate of the rectangles."
 msgstr ""
 
-#: ../../../../../miniconda3/envs/arctern/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/_wrapper_func.py:docstring of arctern_pyspark._wrapper_func.ST_PolygonFromEnvelope:8
-msgid "The y axis coordinates of the lower left vertical of the rectangles."
+#: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/_wrapper_func.py:docstring of arctern_pyspark._wrapper_func.ST_PolygonFromEnvelope:8
+msgid "The minimum value of y coordinate of the rectangles."
 msgstr ""
 
-#: ../../../../../miniconda3/envs/arctern/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/_wrapper_func.py:docstring of arctern_pyspark._wrapper_func.ST_PolygonFromEnvelope:11
-msgid "The x axis coordinates of the upper right vertical of the rectangles."
+#: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/_wrapper_func.py:docstring of arctern_pyspark._wrapper_func.ST_PolygonFromEnvelope:11
+msgid "The maximum value of x coordinate of the rectangles."
 msgstr ""
 
-#: ../../../../../miniconda3/envs/arctern/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/_wrapper_func.py:docstring of arctern_pyspark._wrapper_func.ST_PolygonFromEnvelope:14
-msgid "The y axis coordinates of the upper right vertical of the rectangles."
+#: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/_wrapper_func.py:docstring of arctern_pyspark._wrapper_func.ST_PolygonFromEnvelope:14
+msgid "The maximum value of y coordinate of the rectangles."
 msgstr ""
 
-#: ../../../../../miniconda3/envs/arctern/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/_wrapper_func.py:docstring of arctern_pyspark._wrapper_func.ST_PolygonFromEnvelope:0
-msgid "返回"
-msgstr ""
-
-#: ../../../../../miniconda3/envs/arctern/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/_wrapper_func.py:docstring of arctern_pyspark._wrapper_func.ST_PolygonFromEnvelope:16
-msgid "Geometries organized as WKB."
-msgstr ""
-
-#: ../../../../../miniconda3/envs/arctern/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/_wrapper_func.py:docstring of arctern_pyspark._wrapper_func.ST_PolygonFromEnvelope:0
+#: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/_wrapper_func.py:docstring of arctern_pyspark._wrapper_func.ST_PolygonFromEnvelope:0
 msgid "返回类型"
 msgstr ""
 
-#: ../../../../../miniconda3/envs/arctern/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/_wrapper_func.py:docstring of arctern_pyspark._wrapper_func.ST_PolygonFromEnvelope:0
+#: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/_wrapper_func.py:docstring of arctern_pyspark._wrapper_func.ST_PolygonFromEnvelope:0
+msgid "返回"
+msgstr ""
+
+#: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/_wrapper_func.py:docstring of arctern_pyspark._wrapper_func.ST_PolygonFromEnvelope:17
+msgid "Geometry"
+msgstr ""
+
+#: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern_pyspark-0.0.0-py3.7.egg/arctern_pyspark/_wrapper_func.py:docstring of arctern_pyspark._wrapper_func.ST_PolygonFromEnvelope:0
 msgid "example"
 msgstr ""

@@ -1,6 +1,6 @@
 .. _restful:
 
-RESTful
+Restful
 =======
 
 .. toctree::

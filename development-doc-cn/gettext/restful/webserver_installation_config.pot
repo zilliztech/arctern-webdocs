@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-12 14:24+0800\n"
+"POT-Creation-Date: 2020-05-13 09:30+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,7 +25,7 @@ msgid "Arctern 提供基于 RESTful 接口的 Web 服务。通过配置可将 RE
 msgstr ""
 
 #: ../../source/restful/webserver_installation_config.md:5
-msgid "以下将介绍 Arctern RESTful Server 的安装和配置流程。更多 Arctern RESTful API 信息请查看 RESTful 服务接口文档和使用示例。"
+msgid "以下将介绍 Arctern RESTful Server 的安装和配置流程。更多 Arctern Restful API 信息请查看 RESTful 服务接口文档和使用示例。"
 msgstr ""
 
 #: ../../source/restful/webserver_installation_config.md:7
@@ -65,7 +65,7 @@ msgid "进入 arctern_env 虚拟环境："
 msgstr ""
 
 #: ../../source/restful/webserver_installation_config.md:39
-msgid "注意，以下步骤需要在 Conda 的 Arctern 虚拟环境下进行。"
+msgid "注意：以下步骤需要在 Conda 的 Arctern 虚拟环境下进行。"
 msgstr ""
 
 #: ../../source/restful/webserver_installation_config.md:41
@@ -77,7 +77,7 @@ msgid "Arctern RESTful Server 的运行依赖于 Arctern-Spark，执行以下命
 msgstr ""
 
 #: ../../source/restful/webserver_installation_config.md:49
-msgid "此处安装 Arctern-Spark 仅用于解决 RESTful Server 的运行时依赖，不能作为执行 RESTful 请求的 Arctern-Spark 后台。"
+msgid "注意：此处安装 Arctern-Spark 仅用于解决 RESTful Server 的运行时依赖，不能作为执行 RESTful 请求的 Arctern-Spark 后台。"
 msgstr ""
 
 #: ../../source/restful/webserver_installation_config.md:51
@@ -118,7 +118,7 @@ msgid "配置基于源码安装的 Arctern RESTful Server"
 msgstr ""
 
 #: ../../source/restful/webserver_installation_config.md:96
-msgid "在 Arctern 项目的 gui/server/arctern_env 目录下，修改 config.ini 文件以配置 Arctern RESTful Server 所使用的 Arctern-Spark 后台信息。文件配置示例如下，其中 spark_master_ip 和 port 分别为后台 Arctern-Spark 中 master 节点的 IP 地址和端口号。"
+msgid "在 Arctern 项目的 gui/server/arctern_server 目录下，修改 config.ini 文件以配置 Arctern RESTful Server 所使用的 Arctern-Spark 后台信息。文件配置示例如下，其中 spark_master_ip 和 port 分别为后台 Arctern-Spark 中 master 节点的 IP 地址和端口号："
 msgstr ""
 
 #: ../../source/restful/webserver_installation_config.md:103
@@ -133,82 +133,82 @@ msgstr ""
 msgid "执行上述代码将会在终端打印 RESTful Server 的安装目录，修改该目录下的 config.ini，配置 Arctern RESTful Server 所使用的 Arctern-Spark 后台信息。文件配置示例如下："
 msgstr ""
 
-#: ../../source/restful/webserver_installation_config.md:119
+#: ../../source/restful/webserver_installation_config.md:122
 msgid "master-addr 的值在不同的 Spark 部署模式下有以下三种情况："
 msgstr ""
 
-#: ../../source/restful/webserver_installation_config.md:121
+#: ../../source/restful/webserver_installation_config.md:124
 msgid "local 模式："
 msgstr ""
 
-#: ../../source/restful/webserver_installation_config.md:132
+#: ../../source/restful/webserver_installation_config.md:135
 msgid "standalone  集群模式："
 msgstr ""
 
-#: ../../source/restful/webserver_installation_config.md:142
+#: ../../source/restful/webserver_installation_config.md:145
 msgid "yarn 集群模式："
 msgstr ""
 
-#: ../../source/restful/webserver_installation_config.md:150
+#: ../../source/restful/webserver_installation_config.md:153
 msgid "启动 Arctern RESTful Server"
 msgstr ""
 
-#: ../../source/restful/webserver_installation_config.md:152
+#: ../../source/restful/webserver_installation_config.md:155
 msgid "启动基于源码安装的 Arctern RESTful Server"
 msgstr ""
 
-#: ../../source/restful/webserver_installation_config.md:154
-msgid "在 Arctern 项目的 gui/server/arctern_env 目录下执行以下命令启动服务，其中 /path/to/server 为 Arctern 项目下 gui/server 目录的绝对路径。"
+#: ../../source/restful/webserver_installation_config.md:157
+msgid "在 Arctern 项目的 gui/server/arctern_server 目录下执行以下命令启动服务，其中 /path/to/server 为 Arctern 项目下 gui/server 目录的绝对路径。"
 msgstr ""
 
-#: ../../source/restful/webserver_installation_config.md:162
+#: ../../source/restful/webserver_installation_config.md:165
 msgid "启动基于 pip 安装的 Arctern RESTful Server"
 msgstr ""
 
-#: ../../source/restful/webserver_installation_config.md:164
+#: ../../source/restful/webserver_installation_config.md:167
 msgid "完成配置后，执行以下命令启动服务："
 msgstr ""
 
-#: ../../source/restful/webserver_installation_config.md:170
+#: ../../source/restful/webserver_installation_config.md:173
 msgid "命令参数介绍"
 msgstr ""
 
-#: ../../source/restful/webserver_installation_config.md:172
+#: ../../source/restful/webserver_installation_config.md:175
 msgid "通过命令参数可在启动时对 Arctern RESTful Server 进行配置，以上两种方式使用完全相同的参数，具体的内容和含义如下："
 msgstr ""
 
-#: ../../source/restful/webserver_installation_config.md:174
+#: ../../source/restful/webserver_installation_config.md:177
 msgid "-h：显示帮助信息"
 msgstr ""
 
-#: ../../source/restful/webserver_installation_config.md:176
+#: ../../source/restful/webserver_installation_config.md:179
 msgid "-r：以 release 模式启动服务"
 msgstr ""
 
-#: ../../source/restful/webserver_installation_config.md:178
+#: ../../source/restful/webserver_installation_config.md:181
 msgid "-p：为服务指定 http 端口，默认为 8080"
 msgstr ""
 
-#: ../../source/restful/webserver_installation_config.md:180
+#: ../../source/restful/webserver_installation_config.md:183
 msgid "-i：为服务指定 IP 地址，默认为本机IP 127.0.0.1"
 msgstr ""
 
-#: ../../source/restful/webserver_installation_config.md:182
-msgid "--logfile= [path/to/logfile]： 配置日志文件路径信息，默认值为： ./log.txt"
+#: ../../source/restful/webserver_installation_config.md:185
+msgid "--logfile= [path/to/logfile]： 配置日志文件路径信息，默认值为：./log.txt"
 msgstr ""
 
-#: ../../source/restful/webserver_installation_config.md:184
+#: ../../source/restful/webserver_installation_config.md:187
 msgid "--loglevel= [log level]：配置日志级别(debug/info/warn/error/fatal)，默认值为: info"
 msgstr ""
 
-#: ../../source/restful/webserver_installation_config.md:186
+#: ../../source/restful/webserver_installation_config.md:189
 msgid "示例："
 msgstr ""
 
-#: ../../source/restful/webserver_installation_config.md:193
+#: ../../source/restful/webserver_installation_config.md:196
 msgid "其中 /path/to/server 为 Arctern 项目下 gui/server 目录的绝对路径。"
 msgstr ""
 
-#: ../../source/restful/webserver_installation_config.md:196
-msgid "成功完成以上步骤后，即完成了 Arctern RESTful Server 的安装和配置，请参考 Arctern RESTful 服务接口文档和使用示例使用 Arctern RESTful 服务。"
+#: ../../source/restful/webserver_installation_config.md:199
+msgid "完成以上步骤即完成了 Arctern RESTful Server 的安装和配置，请参考 Arctern RESTful 服务接口文档和使用示例使用 Arctern RESTful 服务。"
 msgstr ""

@@ -83,7 +83,7 @@
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Pandas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../spark/spark.html">Spark</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../restful/restful.html">RESTful</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../restful/restful.html">Restful</a></li>
 </ul>
 
             
@@ -163,62 +163,72 @@
 
 <div class="viewcode-block" id="plot"><a class="viewcode-back" href="../../spark/api/render/function/plot/Spark_Plot.html#arctern_pyspark.plot.plot">[文档]</a><span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">geoms</span><span class="p">,</span> <span class="o">**</span><span class="n">style_kwds</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">     Plots a collection of geometries to `ax`</span>
+<span class="sd">    Plot a collection of geometries to `ax`. Parameters &#39;linewidth&#39;, &#39;linestyle&#39;, &#39;edgecolor&#39;,</span>
+<span class="sd">    &#39;facecolor&#39;, &#39;color&#39;, &#39;marker&#39;, &#39;markersize&#39; are used to describe the style of plotted figure.</span>
 
-<span class="sd">     :type ax: matplotlib.axes.Axes</span>
-<span class="sd">     :parms ax: The axes where geometries will be plotted</span>
+<span class="sd">    For geometry types `Polygon` and `MultiPolygon`, only &#39;linewidth&#39;, &#39;linestyle&#39;, &#39;edgecolor&#39;,</span>
+<span class="sd">    &#39;facecolor&#39; are effective.</span>
 
-<span class="sd">     :type geoms: pyspark.sql.dataframe.DataFrame</span>
-<span class="sd">     :parms geoms: sequence of geometries</span>
+<span class="sd">    For geometry types `Linestring` and `MultiLinestring`, only &#39;color&#39;, &#39;linewidth&#39;, &#39;linestyle&#39; are effective.</span>
 
-<span class="sd">     :type **style_kwds: dict</span>
-<span class="sd">     :parms **style_kwds: optional, collection of plot style</span>
-<span class="sd">         `Polygon` and `MultiPolygon`:</span>
-<span class="sd">             linewidth</span>
-<span class="sd">             linestyle</span>
-<span class="sd">             edgecolor</span>
-<span class="sd">             facecolor</span>
-<span class="sd">         `LineString` and `MultiLineString`:</span>
-<span class="sd">             color</span>
-<span class="sd">             linewidth</span>
-<span class="sd">             linestyle</span>
-<span class="sd">         `Point` and `MultiPoint`:</span>
-<span class="sd">             color</span>
-<span class="sd">             marker</span>
-<span class="sd">             markersize</span>
-<span class="sd">     :example:</span>
-<span class="sd">         from arctern_pyspark import register_funcs</span>
-<span class="sd">         from pyspark.sql.types import *</span>
-<span class="sd">         import matplotlib.pyplot as plt</span>
-<span class="sd">         from arctern_pyspark import plot</span>
+<span class="sd">    For geometry types `Point` and `MultiPoint`, only &#39;color&#39;, &#39;marker&#39;, &#39;markersize&#39; are effective.</span>
 
-<span class="sd">         spark.conf.set(&quot;spark.sql.execution.arrow.pyspark.enabled&quot;, &quot;true&quot;)</span>
-<span class="sd">         raw_data = []</span>
-<span class="sd">         raw_data.append((&#39;point(0 0)&#39;,))</span>
-<span class="sd">         raw_data.append((&#39;linestring(0 10, 5 5, 10 0)&#39;,))</span>
-<span class="sd">         raw_data.append((&#39;polygon((2 2,2 3,3 3,3 2,2 2))&#39;,))</span>
-<span class="sd">         raw_data.append((&quot;GEOMETRYCOLLECTION(&quot; \</span>
-<span class="sd">                         &quot;polygon((1 1,1 2,2 2,2 1,1 1)),&quot; \</span>
-<span class="sd">                         &quot;linestring(0 1, 5 6, 10 11),&quot; \</span>
-<span class="sd">                         &quot;POINT(4 7))&quot;,))</span>
-<span class="sd">         raw_schema = StructType([StructField(&#39;geo&#39;, StringType(),False)])</span>
+<span class="sd">    :type ax: matplotlib.axes.Axes</span>
+<span class="sd">    :param ax: The axes where geometries will be plotted.</span>
 
-<span class="sd">         df = spark.createDataFrame(data=raw_data, schema=raw_schema)</span>
-<span class="sd">         df.createOrReplaceTempView(&quot;geoms&quot;)</span>
+<span class="sd">    :type geoms: Series or DataFrame</span>
+<span class="sd">    :param geoms: sequence of geometries.</span>
 
-<span class="sd">         df2=spark.sql(&quot;select st_geomfromtext(geo) from geoms&quot;)</span>
+<span class="sd">    :type linewidth: list(float)</span>
+<span class="sd">    :param linewidth: The width of line, the default value is 1.0.</span>
 
-<span class="sd">         fig, ax = plt.subplots()</span>
-<span class="sd">         plot(ax, df2,</span>
-<span class="sd">              color=[&#39;orange&#39;, &#39;green&#39;],</span>
-<span class="sd">              marker=&#39;^&#39;,</span>
-<span class="sd">              markersize=100,</span>
-<span class="sd">              linewidth=[None, 7, 8],</span>
-<span class="sd">              linestyle=[None, &#39;dashed&#39;, &#39;dashdot&#39;],</span>
-<span class="sd">              edgecolor=[None, None, &#39;red&#39;],</span>
-<span class="sd">              facecolor=[None, None, &#39;black&#39;])</span>
-<span class="sd">         ax.grid()</span>
-<span class="sd">         fig.savefig(&#39;/tmp/plot_test.png&#39;)</span>
+<span class="sd">    :type linestyle: list(string)</span>
+<span class="sd">    :param linestyle: The style of the line， the default value is &#39;-&#39;.</span>
+
+<span class="sd">    :type edgecolor: list(string)</span>
+<span class="sd">    :param edgecolor: The edge color of the geometry, the default value is &#39;black&#39;.</span>
+
+<span class="sd">    :type facecolor: list(string)</span>
+<span class="sd">    :param facecolor: The color of the face of the geometry, the default value is &#39;C0&#39;.</span>
+
+<span class="sd">    :type color: list(string)</span>
+<span class="sd">    :param color: The color of the geometry, the default value is &#39;C0&#39;.</span>
+
+<span class="sd">    :type marker: string</span>
+<span class="sd">    :param marker: The shape of point, the default value is &#39;o&#39;.</span>
+
+<span class="sd">    :type markersize: double</span>
+<span class="sd">    :param markersize: The size of points, the default value is 6.0.</span>
+
+<span class="sd">    :example:</span>
+<span class="sd">       &gt;&gt;&gt; from arctern_pyspark import register_funcs</span>
+<span class="sd">       &gt;&gt;&gt; from pyspark.sql.types import *</span>
+<span class="sd">       &gt;&gt;&gt; import matplotlib.pyplot as plt</span>
+<span class="sd">       &gt;&gt;&gt; from arctern_pyspark import plot</span>
+<span class="sd">       &gt;&gt;&gt; spark.conf.set(&quot;spark.sql.execution.arrow.pyspark.enabled&quot;, &quot;true&quot;)</span>
+<span class="sd">       &gt;&gt;&gt; raw_data = []</span>
+<span class="sd">       &gt;&gt;&gt; raw_data.append((&#39;point(0 0)&#39;,))</span>
+<span class="sd">       &gt;&gt;&gt; raw_data.append((&#39;linestring(0 10, 5 5, 10 0)&#39;,))</span>
+<span class="sd">       &gt;&gt;&gt; raw_data.append((&#39;polygon((2 2,2 3,3 3,3 2,2 2))&#39;,))</span>
+<span class="sd">       &gt;&gt;&gt; raw_data.append((&quot;GEOMETRYCOLLECTION(&quot;</span>
+<span class="sd">                           &quot;polygon((1 1,1 2,2 2,2 1,1 1)),&quot;</span>
+<span class="sd">                           &quot;linestring(0 1, 5 6, 10 11),&quot;</span>
+<span class="sd">                           &quot;POINT(4 7))&quot;,))</span>
+<span class="sd">       &gt;&gt;&gt; raw_schema = StructType([StructField(&#39;geo&#39;, StringType(),False)])</span>
+<span class="sd">       &gt;&gt;&gt; df = spark.createDataFrame(data=raw_data, schema=raw_schema)</span>
+<span class="sd">       &gt;&gt;&gt; df.createOrReplaceTempView(&quot;geoms&quot;)</span>
+<span class="sd">       &gt;&gt;&gt; df2=spark.sql(&quot;select st_geomfromtext(geo) from geoms&quot;)</span>
+<span class="sd">       &gt;&gt;&gt; fig, ax = plt.subplots()</span>
+<span class="sd">       &gt;&gt;&gt; plot(ax, df2,</span>
+<span class="sd">                 color=[&#39;orange&#39;, &#39;green&#39;],</span>
+<span class="sd">                 marker=&#39;^&#39;,</span>
+<span class="sd">                 markersize=100,</span>
+<span class="sd">                 linewidth=[None, 7, 8],</span>
+<span class="sd">                 linestyle=[None, &#39;dashed&#39;, &#39;dashdot&#39;],</span>
+<span class="sd">                 edgecolor=[None, None, &#39;red&#39;],</span>
+<span class="sd">                 facecolor=[None, None, &#39;black&#39;])</span>
+<span class="sd">       &gt;&gt;&gt; ax.grid()</span>
+<span class="sd">       &gt;&gt;&gt; fig.savefig(&#39;/tmp/plot_test.png&#39;)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="kn">import</span> <span class="nn">pyspark.sql.dataframe</span>
     <span class="kn">import</span> <span class="nn">arctern</span>
@@ -239,7 +249,7 @@
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 5月 12, 2020.
+        最后更新于 5月 13, 2020.
       </span>
 
     </p>

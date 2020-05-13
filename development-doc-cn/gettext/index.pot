@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-12 14:24+0800\n"
+"POT-Creation-Date: 2020-05-13 09:30+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,21 +17,45 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../../source/index.rst:7
-msgid "欢迎访问Arctern文档"
+msgid "欢迎访问 Arctern 文档"
 msgstr ""
 
 #: ../../source/index.rst:9
-msgid "Arctern项目致力于构建开源的时空数据分析平台。"
+msgid "Arctern 聚焦时空数据科学，目标是加速时空数据的处理、分析、模型预测与呈现。Arctern 基于开源大数据生态，构建灵活、强大、高性能的时空数据分析平台，帮助你应对 5G/IoT 带来的新型数据挑战。"
 msgstr ""
 
 #: ../../source/index.rst:11
-msgid "如果您聚焦于单机环境的数据科学工作，Arctern提供了地理数据分析与可视化渲染接口，接口的Python绑定可与Pandas、Matplotlib无缝交互。详见Arctern项目的 :ref:`Pandas文档 <python>`。"
+msgid "如果你正在寻找下述问题的解决方案，欢迎使用 Arctern："
 msgstr ""
 
 #: ../../source/index.rst:13
-msgid "如果您需要获得大规模时空数据的高效处理能力，Arctern-Spark提供了地理数据分析与可视化渲染的分布式方案，并支持分布式GPU加速。详见Arctern项目的 :ref:`Spark文档 <spark>`。"
+msgid "高效的标准地理信息分析库（OGC标准）；"
+msgstr ""
+
+#: ../../source/index.rst:14
+msgid "高级时空数据处理算法与模型，如轨迹分析、电子围栏数据处理、时空数据统计、时空数据挖掘等；"
 msgstr ""
 
 #: ../../source/index.rst:15
-msgid "如果您希望通过Arctern构建时空数据分析服务，Arctern提供了完整的Web Service与后端适配方案，详见 :ref:`RESTful 文档 <restful>`。"
+msgid "海量时空数据的渲染与可视化；"
+msgstr ""
+
+#: ../../source/index.rst:16
+msgid "与 Pandas 生态无缝集成的时空数据分析（见 :ref:`Pandas 文档 <python>`）；"
+msgstr ""
+
+#: ../../source/index.rst:17
+msgid "与 Spark 生态无缝集成的时空数据分析（见 :ref:`Spark 文档 <spark>`）；"
+msgstr ""
+
+#: ../../source/index.rst:18
+msgid "以 SQL 为基础的时空数据交互式分析；"
+msgstr ""
+
+#: ../../source/index.rst:19
+msgid "面向时空数据分析的 RESTful 调用（见 :ref:`RESTful 文档 <restful>`）；"
+msgstr ""
+
+#: ../../source/index.rst:20
+msgid "GPU 加速的地理信息处理。"
 msgstr ""

@@ -109,7 +109,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../spark/spark.html">Spark</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../../restful/restful.html">RESTful</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../restful/restful.html">Restful</a></li>
 </ul>
 
             
@@ -185,16 +185,16 @@
 <dl class="py function">
 <dt id="arctern._wrapper_func.ST_GeomFromGeoJSON">
 <code class="sig-prename descclassname">arctern.</code><code class="sig-name descname">ST_GeomFromGeoJSON</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">json</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/arctern/_wrapper_func.html#ST_GeomFromGeoJSON"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#arctern._wrapper_func.ST_GeomFromGeoJSON" title="永久链接至目标">¶</a></dt>
-<dd><p>Constructs a geometry object from the GeoJSON representation.</p>
+<dd><p>根据 GeoJson 字符串构造几何体。</p>
 <dl class="field-list">
 <dt class="field-odd">参数</dt>
-<dd class="field-odd"><p><strong>json</strong> (<em>pandas.Series.object</em>) – Geometries organized as json</p>
+<dd class="field-odd"><p><strong>json</strong> (<em>Series</em><em>(</em><em>dtype: object</em><em>)</em>) – Json 格式的几何体。</p>
 </dd>
-<dt class="field-even">返回</dt>
-<dd class="field-even"><p>Geometries organized as WKB.</p>
+<dt class="field-even">返回类型</dt>
+<dd class="field-even"><p>Series(dtype: object)</p>
 </dd>
-<dt class="field-odd">返回类型</dt>
-<dd class="field-odd"><p>pandas.Series.object</p>
+<dt class="field-odd">返回</dt>
+<dd class="field-odd"><p>WKB 格式的几何体。</p>
 </dd>
 <dt class="field-even">例子</dt>
 <dd class="field-even"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span>
@@ -234,7 +234,7 @@
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 5月 12, 2020.
+        最后更新于 5月 13, 2020.
       </span>
 
     </p>
