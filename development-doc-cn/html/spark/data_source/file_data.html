@@ -37,7 +37,7 @@
   <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="搜索" href="../../search.html" />
-    <link rel="next" title="JDBC连接" href="jdbc_data.html" />
+    <link rel="next" title="JDBC 连接" href="jdbc_data.html" />
     <link rel="prev" title="Geometry 数据格式" href="geometry_data_format.html" /> 
 </head>
 
@@ -90,7 +90,7 @@
 <li class="toctree-l2 current"><a class="reference internal" href="data_import_and_export.html">数据导入导出</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="geometry_data_format.html">Geometry 数据格式</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">文件的导入与导出</a></li>
-<li class="toctree-l3"><a class="reference internal" href="jdbc_data.html">JDBC连接</a></li>
+<li class="toctree-l3"><a class="reference internal" href="jdbc_data.html">JDBC 连接</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../api/api.html">API</a></li>
@@ -167,8 +167,8 @@
             
   <div class="section" id="id1">
 <h1>文件的导入与导出<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
-<p>Arctern-Spark 借助 Spark 的文件读写功能完成数据的导入和导出。Spark支持多种数据格式文件导入，以下是针对csv、parquet、json、orc等数据格式文件的导入导出例子。更多的文件格式支持请查看<a class="reference external" href="https://spark.apache.org/docs/latest/sql-data-sources-load-save-functions.html">Spark官方文档</a></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#CSV文件导入，导出为PARQUET文件</span>
+<p>Arctern-Spark 借助 Spark 的文件读写功能完成数据的导入和导出。Spark 支持多种数据格式文件导入，以下是针对 CSV、PARQUET、JSON、ORC 等数据格式文件的导入导出例子。更多的文件格式支持请查看 <a class="reference external" href="https://spark.apache.org/docs/latest/sql-data-sources-load-save-functions.html">Spark 官方文档</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导入 CSV 文件，导出 PARQUET 文件</span>
 <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">CSV 文件内容：</span>
 <span class="sd">geos</span>
@@ -179,14 +179,18 @@
 <span class="sd">&#39;&#39;&#39;</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">arctern_pyspark</span> <span class="kn">import</span> <span class="n">register_funcs</span>
+
 <span class="c1"># 创建 SparkSession 并对其进行配置</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">spark_session</span> <span class="o">=</span> <span class="n">SparkSession</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">appName</span><span class="p">(</span><span class="s2">&quot;Python Arrow-in-Spark example&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getOrCreate</span><span class="p">()</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">spark_session</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;spark.sql.execution.arrow.pyspark.enabled&quot;</span><span class="p">,</span> <span class="s2">&quot;true&quot;</span><span class="p">)</span>
+
 <span class="c1"># 注册 Arctern-Spark 提供的函数</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">register_funcs</span><span class="p">(</span><span class="n">spark_session</span><span class="p">)</span>
+
 <span class="c1"># 数据导入</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">df</span> <span class="o">=</span> <span class="n">spark_session</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;csv&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">options</span><span class="p">(</span><span class="n">header</span><span class="o">=</span><span class="s1">&#39;true&#39;</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s1">&#39;|&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;/path/to/geos.csv&quot;</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">df</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+
 <span class="o">+---------------------------------------------+</span>
 <span class="o">|</span><span class="n">geos</span>                                         <span class="o">|</span>
 <span class="o">+---------------------------------------------+</span>
@@ -195,9 +199,11 @@
 <span class="o">|</span><span class="n">POLYGON</span> <span class="p">((</span><span class="mi">1</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span> <span class="mi">2</span><span class="p">))</span>               <span class="o">|</span>
 <span class="o">|</span><span class="n">POLYGON</span> <span class="p">((</span><span class="mi">1</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span> <span class="mi">1</span><span class="p">))</span>          <span class="o">|</span>
 <span class="o">+---------------------------------------------+</span>
+
 <span class="c1"># 为导入数据创建数据表 ‘simple’ 并对其进行处理</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">df</span><span class="o">.</span><span class="n">createOrReplaceTempView</span><span class="p">(</span><span class="s2">&quot;simple&quot;</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">spark_session</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;select ST_IsSimple(ST_GeomFromText(geos)) from simple&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+
 <span class="o">+----------------------------------+</span>                                            
 <span class="o">|</span><span class="n">ST_IsSimple</span><span class="p">(</span><span class="n">ST_GeomFromText</span><span class="p">(</span><span class="n">geos</span><span class="p">))</span><span class="o">|</span>
 <span class="o">+----------------------------------+</span>
@@ -206,13 +212,13 @@
 <span class="o">|</span><span class="n">false</span>                             <span class="o">|</span>
 <span class="o">|</span><span class="n">true</span>                              <span class="o">|</span>
 <span class="o">+----------------------------------+</span>
+
 <span class="c1"># 数据导出</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;geos&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;/path/to/geos.parquet&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;parquet&quot;</span><span class="p">)</span>
-
-
-<span class="c1">#PARQUET文件导入，导出为JSON文件</span>
+<span class="c1"># 导入 PARQUET 文件，导出 JSON 文件</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">df</span> <span class="o">=</span> <span class="n">spark_session</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;parquet&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">options</span><span class="p">(</span><span class="n">header</span><span class="o">=</span><span class="s1">&#39;true&#39;</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s1">&#39;|&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;/path/to/geos.parquet&quot;</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">df</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+
 <span class="o">+---------------------------------------------+</span>
 <span class="o">|</span><span class="n">geos</span>                                         <span class="o">|</span>
 <span class="o">+---------------------------------------------+</span>
@@ -221,8 +227,10 @@
 <span class="o">|</span><span class="n">POLYGON</span> <span class="p">((</span><span class="mi">1</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span> <span class="mi">2</span><span class="p">))</span>               <span class="o">|</span>
 <span class="o">|</span><span class="n">POLYGON</span> <span class="p">((</span><span class="mi">1</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span> <span class="mi">1</span><span class="p">))</span>          <span class="o">|</span>
 <span class="o">+---------------------------------------------+</span>
+
 <span class="o">&gt;&gt;&gt;</span> <span class="n">df</span><span class="o">.</span><span class="n">createOrReplaceTempView</span><span class="p">(</span><span class="s2">&quot;simple&quot;</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">spark_session</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;select ST_IsSimple(ST_GeomFromText(geos)) from simple&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+
 <span class="o">+----------------------------------+</span>                                            
 <span class="o">|</span><span class="n">ST_IsSimple</span><span class="p">(</span><span class="n">ST_GeomFromText</span><span class="p">(</span><span class="n">geos</span><span class="p">))</span><span class="o">|</span>
 <span class="o">+----------------------------------+</span>
@@ -232,11 +240,10 @@
 <span class="o">|</span><span class="n">true</span>                              <span class="o">|</span>
 <span class="o">+----------------------------------+</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;geos&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;/path/to/geos.json&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;json&quot;</span><span class="p">)</span>
-
-
-<span class="c1"># JSON文件导入，导出为ORC文件</span>
+<span class="c1"># 导入 JSON 文件，导出 ORC 文件</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">df</span> <span class="o">=</span> <span class="n">spark_session</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;json&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">options</span><span class="p">(</span><span class="n">header</span><span class="o">=</span><span class="s1">&#39;true&#39;</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s1">&#39;|&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;/path/to/geos.json&quot;</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">df</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+
 <span class="o">+---------------------------------------------+</span>
 <span class="o">|</span><span class="n">geos</span>                                         <span class="o">|</span>
 <span class="o">+---------------------------------------------+</span>
@@ -245,8 +252,10 @@
 <span class="o">|</span><span class="n">POLYGON</span> <span class="p">((</span><span class="mi">1</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span> <span class="mi">2</span><span class="p">))</span>               <span class="o">|</span>
 <span class="o">|</span><span class="n">POLYGON</span> <span class="p">((</span><span class="mi">1</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span> <span class="mi">1</span><span class="p">))</span>          <span class="o">|</span>
 <span class="o">+---------------------------------------------+</span>
+
 <span class="o">&gt;&gt;&gt;</span> <span class="n">df</span><span class="o">.</span><span class="n">createOrReplaceTempView</span><span class="p">(</span><span class="s2">&quot;simple&quot;</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">spark_session</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;select ST_IsSimple(ST_GeomFromText(geos)) from simple&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+
 <span class="o">+----------------------------------+</span>                                            
 <span class="o">|</span><span class="n">ST_IsSimple</span><span class="p">(</span><span class="n">ST_GeomFromText</span><span class="p">(</span><span class="n">geos</span><span class="p">))</span><span class="o">|</span>
 <span class="o">+----------------------------------+</span>
@@ -256,11 +265,10 @@
 <span class="o">|</span><span class="n">true</span>                              <span class="o">|</span>
 <span class="o">+----------------------------------+</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">df</span><span class="o">.</span><span class="n">write</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;/path/to/geos.orc&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;orc&quot;</span><span class="p">)</span>
-
-
-<span class="c1"># ORC文件导入，导出为CSV文件</span>
+<span class="c1"># 导入 ORC 文件，导出 CSV 文件</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">df</span> <span class="o">=</span> <span class="n">spark_session</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;orc&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">options</span><span class="p">(</span><span class="n">header</span><span class="o">=</span><span class="s1">&#39;true&#39;</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s1">&#39;|&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;/path/to/geos.orc&quot;</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">df</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+
 <span class="o">+---------------------------------------------+</span>
 <span class="o">|</span><span class="n">geos</span>                                         <span class="o">|</span>
 <span class="o">+---------------------------------------------+</span>
@@ -269,8 +277,10 @@
 <span class="o">|</span><span class="n">POLYGON</span> <span class="p">((</span><span class="mi">1</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span> <span class="mi">2</span><span class="p">))</span>               <span class="o">|</span>
 <span class="o">|</span><span class="n">POLYGON</span> <span class="p">((</span><span class="mi">1</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span> <span class="mi">1</span><span class="p">))</span>          <span class="o">|</span>
 <span class="o">+---------------------------------------------+</span>
+
 <span class="o">&gt;&gt;&gt;</span> <span class="n">df</span><span class="o">.</span><span class="n">createOrReplaceTempView</span><span class="p">(</span><span class="s2">&quot;simple&quot;</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">spark_session</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;select ST_IsSimple(ST_GeomFromText(geos)) from simple&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+
 <span class="o">+----------------------------------+</span>                                            
 <span class="o">|</span><span class="n">ST_IsSimple</span><span class="p">(</span><span class="n">ST_GeomFromText</span><span class="p">(</span><span class="n">geos</span><span class="p">))</span><span class="o">|</span>
 <span class="o">+----------------------------------+</span>
@@ -279,6 +289,7 @@
 <span class="o">|</span><span class="n">false</span>                             <span class="o">|</span>
 <span class="o">|</span><span class="n">true</span>                              <span class="o">|</span>
 <span class="o">+----------------------------------+</span>
+
 <span class="o">&gt;&gt;&gt;</span> <span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;geos&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;/path/to/geos.csv&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;csv&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -292,7 +303,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="jdbc_data.html" class="btn btn-neutral float-right" title="JDBC连接" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="jdbc_data.html" class="btn btn-neutral float-right" title="JDBC 连接" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="geometry_data_format.html" class="btn btn-neutral float-left" title="Geometry 数据格式" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -306,7 +317,7 @@
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 5月 13, 2020.
+        最后更新于 5月 14, 2020.
       </span>
 
     </p>

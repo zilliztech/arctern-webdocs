@@ -191,6 +191,10 @@
 <td>Conda</td>
 <td>Miniconda Python3</td>
 </tr>
+<tr>
+<td>JDK</td>
+<td>JDK 8</td>
+</tr>
 </tbody>
 </table><ul class="simple">
 <li><p>GPU 版本</p></li>
@@ -219,6 +223,10 @@
 <td>Nvidia driver</td>
 <td>4.30</td>
 </tr>
+<tr>
+<td>JDK</td>
+<td>JDK 8</td>
+</tr>
 </tbody>
 </table></div>
 <div class="section" id="id3">
@@ -229,6 +237,12 @@
 </li>
 </ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>    sudo apt install libgl-dev libosmesa6-dev libglu1-mesa-dev
+
+    <span class="c1"># 配置 JDK 环境变量，路径需要配置为本地 JDK 8 路径</span>
+    <span class="nb">export</span> <span class="nv">JAVA_HOME</span><span class="o">=</span>/path/to/java8
+    <span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="nv">$JAVA_HOME</span>/bin:<span class="nv">$PATH</span>
+    <span class="nb">export</span> <span class="nv">JRE_HOME</span><span class="o">=</span><span class="nv">$JAVA_HOME</span>/jre
+    <span class="nb">export</span> <span class="nv">CLASSPATH</span><span class="o">=</span>.:<span class="nv">$JAVA_HOME</span>/lib:<span class="si">${</span><span class="nv">JRE_HOME</span><span class="si">}</span>/lib
 </pre></div>
 </div>
 <ul>
@@ -237,6 +251,12 @@
 </li>
 </ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>    sudo apt install libgl1-mesa-dev libegl1-mesa-dev
+
+    <span class="c1"># 配置 JDK 环境变量，路径需要配置为本地 JDK 8 路径</span>
+    <span class="nb">export</span> <span class="nv">JAVA_HOME</span><span class="o">=</span>/path/to/java8
+    <span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="nv">$JAVA_HOME</span>/bin:<span class="nv">$PATH</span>
+    <span class="nb">export</span> <span class="nv">JRE_HOME</span><span class="o">=</span><span class="nv">$JAVA_HOME</span>/jre
+    <span class="nb">export</span> <span class="nv">CLASSPATH</span><span class="o">=</span>.:<span class="nv">$JAVA_HOME</span>/lib:<span class="si">${</span><span class="nv">JRE_HOME</span><span class="si">}</span>/lib
 </pre></div>
 </div>
 </div>
@@ -335,7 +355,7 @@ arctern_env      ...
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 5月 13, 2020.
+        最后更新于 5月 14, 2020.
       </span>
 
     </p>

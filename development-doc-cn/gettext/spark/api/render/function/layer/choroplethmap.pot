@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-13 09:30+0800\n"
+"POT-Creation-Date: 2020-05-14 12:00+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -108,7 +108,7 @@ msgid "* vega(VegaChoroplethMap) -- VegaChoroplethMap 对象。"
 msgstr ""
 
 #: ../../source/spark/api/render/function/layer/choroplethmap.md:52
-msgid "* region_boundaries(WKB) -- 所需绘制的多边形轮廓，格式为WKB。"
+msgid "* region_boundaries(WKB) -- 所需绘制的多边形轮廓，格式为 WKB。"
 msgstr ""
 
 #: ../../source/spark/api/render/function/layer/choroplethmap.md:54
@@ -120,7 +120,7 @@ msgid "bytes"
 msgstr ""
 
 #: ../../source/spark/api/render/function/layer/choroplethmap.md:64
-msgid "base64编码的png图片。"
+msgid "base64 编码的 PNG 图片。"
 msgstr ""
 
 #: ../../source/spark/api/render/function/layer/choroplethmap.md:67

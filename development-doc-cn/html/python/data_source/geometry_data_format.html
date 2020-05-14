@@ -169,8 +169,8 @@
             
   <div class="section" id="geometry">
 <h1>Geometry 数据格式<a class="headerlink" href="#geometry" title="永久链接至标题">¶</a></h1>
-<p>Arctern 在数据导入导出时支持 <a class="reference external" href="https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry">Well Know Text(WKT)</a>  和 <a class="reference external" href="https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry#Well-known_binary">Well Know Binary (WKB)</a> 两种形式的几何体数据。相对 WKB 而言，WKT 形式的数据更方便人工阅读，但是计算机对其处理的效率相对较低并且占用的存储空间也更大。</p>
-<p>目前 Arctern API 仅支持 WKB 形式的几何体数据作为传入和返回参数。如下例所示，如果数据源中使用 WKT 形式的数据，在数据导入后需要调用 <code class="docutils literal notranslate"><span class="pre">ST_GeomFromText</span></code> 函数将数据转换为 WKB 形式；相应的，在数据导出时，也需要调用 <code class="docutils literal notranslate"><span class="pre">ST_GeomFromText</span></code> 函数将数据转换回 WKT形式。数据形式的转换将带来额外的数据开销。因此，建议对几何体数据没有可读性要求的用户将数据存储为 WKB 形式。</p>
+<p>Arctern 在数据导入导出时支持 <a class="reference external" href="https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry">Well Know Text (WKT)</a> 和 <a class="reference external" href="https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry#Well-known_binary">Well Know Binary (WKB)</a> 两种形式的几何体数据。相对 WKB 而言，WKT 形式的数据更方便人工阅读，但是计算机对其处理的效率相对较低并且占用的存储空间也更大。</p>
+<p>目前 Arctern API 仅支持 WKB 形式的几何体数据作为传入和返回参数。如下例所示，如果数据源中使用 WKT 形式的数据，在数据导入后需要调用 <code class="docutils literal notranslate"><span class="pre">ST_GeomFromText</span></code> 函数将数据转换为 WKB 形式；相应的，在数据导出时，也需要调用 <code class="docutils literal notranslate"><span class="pre">ST_GeomFromText</span></code> 函数将数据转换回 WKT 形式。数据形式的转换将带来额外的数据开销。因此，建议对几何体数据没有可读性要求的用户将数据存储为 WKB 形式。</p>
 <div class="section" id="id1">
 <h2>样例<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
 <p>WKT 形式数据的导入和导出：</p>
@@ -186,9 +186,11 @@
 <span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">arctern</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;/path/to/geos.csv&quot;</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s1">&#39;|&#39;</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;geos&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;geos&#39;</span><span class="p">)</span>
+
 <span class="c1"># 在对数据进行处理之前使用 ST_GeomFromText 将数据转换为 WKB 形式</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">data</span> <span class="o">=</span> <span class="n">arctern</span><span class="o">.</span><span class="n">ST_GeomFromText</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">valid_data</span> <span class="o">=</span> <span class="n">arctern</span><span class="o">.</span><span class="n">ST_MakeValid</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
 <span class="c1"># 在将数据导出之前使用 ST_AsText 将数据转换为 WKT 形式</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">valid_data</span> <span class="o">=</span> <span class="n">arctern</span><span class="o">.</span><span class="n">ST_AsText</span><span class="p">(</span><span class="n">valid_data</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">valid_data</span> <span class="o">=</span> <span class="n">valid_data</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s1">&#39;geos&#39;</span><span class="p">)</span>
@@ -208,6 +210,7 @@
 <span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">arctern</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;/path/to/geos.csv&quot;</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s1">&#39;|&#39;</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;geos&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+
 <span class="c1"># 在对数据处理之前无需对数据进行转换</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">valid_data</span> <span class="o">=</span> <span class="n">arctern</span><span class="o">.</span><span class="n">ST_MakeValid</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">valid_data</span> <span class="o">=</span> <span class="n">valid_data</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s1">&#39;geos&#39;</span><span class="p">)</span>
@@ -239,7 +242,7 @@
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 5月 13, 2020.
+        最后更新于 5月 14, 2020.
       </span>
 
     </p>
