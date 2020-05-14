@@ -204,6 +204,10 @@
 <td>Spark</td>
 <td>3.0</td>
 </tr>
+<tr>
+<td>JDK</td>
+<td>JDK 8</td>
+</tr>
 </tbody>
 </table><ul class="simple">
 <li><p>GPU 版本</p></li>
@@ -236,6 +240,10 @@
 <td>Nvidia driver</td>
 <td>4.30</td>
 </tr>
+<tr>
+<td>JDK</td>
+<td>JDK 8</td>
+</tr>
 </tbody>
 </table></div>
 <div class="section" id="id3">
@@ -246,6 +254,12 @@
 </li>
 </ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>    sudo apt install libgl-dev libosmesa6-dev libglu1-mesa-dev
+
+    <span class="c1"># 配置 JDK 环境变量，路径需要配置为本地 JDK 8 路径</span>
+    <span class="nb">export</span> <span class="nv">JAVA_HOME</span><span class="o">=</span>/path/to/java8
+    <span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="nv">$JAVA_HOME</span>/bin:<span class="nv">$PATH</span>
+    <span class="nb">export</span> <span class="nv">JRE_HOME</span><span class="o">=</span><span class="nv">$JAVA_HOME</span>/jre
+    <span class="nb">export</span> <span class="nv">CLASSPATH</span><span class="o">=</span>.:<span class="nv">$JAVA_HOME</span>/lib:<span class="si">${</span><span class="nv">JRE_HOME</span><span class="si">}</span>/lib
 </pre></div>
 </div>
 <ul>
@@ -254,6 +268,12 @@
 </li>
 </ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>    sudo apt install libgl1-mesa-dev libegl1-mesa-dev
+
+    <span class="c1"># 配置 JDK 环境变量，路径需要配置为本地 JDK 8 路径</span>
+    <span class="nb">export</span> <span class="nv">JAVA_HOME</span><span class="o">=</span>/path/to/java8
+    <span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="nv">$JAVA_HOME</span>/bin:<span class="nv">$PATH</span>
+    <span class="nb">export</span> <span class="nv">JRE_HOME</span><span class="o">=</span><span class="nv">$JAVA_HOME</span>/jre
+    <span class="nb">export</span> <span class="nv">CLASSPATH</span><span class="o">=</span>.:<span class="nv">$JAVA_HOME</span>/lib:<span class="si">${</span><span class="nv">JRE_HOME</span><span class="si">}</span>/lib
 </pre></div>
 </div>
 </div>
@@ -310,12 +330,22 @@ arctern_env      ...
 </div>
 <div class="section" id="spark-python">
 <h2>配置 Spark 的 Python 路径<a class="headerlink" href="#spark-python" title="永久链接至标题">¶</a></h2>
-<p>在文件 <code class="docutils literal notranslate"><span class="pre">conf/spark-default.conf</span></code> 的最后添加以下内容。其中 <code class="docutils literal notranslate"><span class="pre">[path/to/your/conda]</span></code> 为 Conda 的安装路径。</p>
+<p>下载 <a class="reference external" href="https://mirrors.sonic.net/apache/spark/spark-3.0.0-preview2/spark-3.0.0-preview2-bin-hadoop2.7.tgz">spark-3.0.0-preview2编译包</a> 并解压spark压缩包。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>tar -xvzf spark-3.0.0-preview2-bin-hadoop2.7.tgz
+</pre></div>
+</div>
+<p>创建 <code class="docutils literal notranslate"><span class="pre">spark-default.conf</span></code> 以及 <code class="docutils literal notranslate"><span class="pre">spark-env.sh</span></code> 文件。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> spark-3.0.0-preview2-bin-hadoop2.7/conf
+cp spark-defaults.conf.template spark-defaults.conf
+cp spark-env.sh.template spark-env.sh
+</pre></div>
+</div>
+<p>在文件 <code class="docutils literal notranslate"><span class="pre">spark-default.conf</span></code> 的最后添加以下内容。其中 <code class="docutils literal notranslate"><span class="pre">[path/to/your/conda]</span></code> 为 Conda 的安装路径。可以通过 <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">env</span> <span class="pre">info</span></code> 来查看当前的conda环境信息。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>spark.executorEnv.PROJ_LIB <span class="o">[</span>path/to/your/conda<span class="o">]</span>/envs/arctern_env/share/proj
 spark.executorEnv.GDAL_DATA <span class="o">[</span>path/to/your/conda<span class="o">]</span>/envs/arctern_env/share/gdal
 </pre></div>
 </div>
-<p>在文件 <code class="docutils literal notranslate"><span class="pre">conf/spark-env.sh</span></code> 的最后添加以下内容。其中 <code class="docutils literal notranslate"><span class="pre">[path/to/your/conda]</span></code> 为Conda的安装路径。</p>
+<p>在文件 <code class="docutils literal notranslate"><span class="pre">spark-env.sh</span></code> 的最后添加以下内容。其中 <code class="docutils literal notranslate"><span class="pre">[path/to/your/conda]</span></code> 为Conda的安装路径。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">PYSPARK_PYTHON</span><span class="o">=[</span>path/to/your/conda<span class="o">]</span>/envs/arctern_env/bin/python
 </pre></div>
 </div>
@@ -407,7 +437,7 @@ spark.executorEnv.GDAL_DATA <span class="o">[</span>path/to/your/conda<span clas
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 5月 13, 2020.
+        最后更新于 5月 14, 2020.
       </span>
 
     </p>

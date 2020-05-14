@@ -166,8 +166,8 @@
             
   <div class="section" id="id1">
 <h1>文件的导入与导出<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
-<p>Arctern 借助 Pandas 的文件读写功能完成数据的导入和导出。Pandas 支持多种数据文件格式，如CSV、HTML、JSON、ORC等，详细内容可参考<a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/io.html">官方文档</a>,下面是针对 CSV 和JSON 格式数据的导入导出示例：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#导入CSV文件，导出为JSON文件</span>
+<p>Arctern 借助 Pandas 的文件读写功能完成数据的导入和导出。Pandas 支持多种数据文件格式，如 CSV、HTML、JSON、ORC 等，详细内容可参考<a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/io.html">官方文档</a>,下面是针对 CSV 和 JSON 格式数据的导入导出示例：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导入 CSV 文件，导出 JSON 文件</span>
 <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">CSV 文件内容：</span>
 <span class="sd">geos</span>
@@ -184,19 +184,18 @@
 <span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">rst</span><span class="p">)</span>
 <span class="mi">0</span>     <span class="kc">True</span>
 <span class="mi">1</span>     <span class="kc">True</span>
-<span class="mi">2</span>    <span class="kc">False</span>
+<span class="mi">2</span>     <span class="kc">False</span>
 <span class="mi">3</span>     <span class="kc">True</span>
 <span class="n">dtype</span><span class="p">:</span> <span class="nb">bool</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">df</span><span class="o">.</span><span class="n">to_json</span><span class="p">(</span><span class="s2">&quot;/path/to/geos.json&quot;</span><span class="p">)</span>
-
-<span class="c1">#导入JSON文件，导出为CSV文件</span>
+<span class="c1"># 导入 JSON 文件，导出 CSV 文件</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="s2">&quot;/path/to/geos.json&quot;</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;geos&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;geos&#39;</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">rst</span> <span class="o">=</span> <span class="n">arctern</span><span class="o">.</span><span class="n">ST_IsSimple</span><span class="p">(</span><span class="n">arctern</span><span class="o">.</span><span class="n">ST_GeomFromText</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">rst</span><span class="p">)</span>
 <span class="mi">0</span>     <span class="kc">True</span>
 <span class="mi">1</span>     <span class="kc">True</span>
-<span class="mi">2</span>    <span class="kc">False</span>
+<span class="mi">2</span>     <span class="kc">False</span>
 <span class="mi">3</span>     <span class="kc">True</span>
 <span class="n">dtype</span><span class="p">:</span> <span class="nb">bool</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;/path/to/geos.csv&quot;</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">quoting</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -226,7 +225,7 @@
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 5月 13, 2020.
+        最后更新于 5月 14, 2020.
       </span>
 
     </p>

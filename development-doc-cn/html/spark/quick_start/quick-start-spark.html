@@ -171,7 +171,11 @@
 <p>本文以纽约出租车数据集为例，演示如何使用 Arctern-Spark 完成数据的导入、运算和展示。</p>
 <div class="section" id="id1">
 <h2>数据准备<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
-<p>在 Arctern-Spark 运行环境中下载<a class="reference external" href="https://media.githubusercontent.com/media/zilliztech/arctern-resources/benchmarks/benchmarks/dataset/nyc_taxi/0_2M_nyc_taxi_and_building/0_2M_nyc_taxi_and_building.csv">纽约出租车数据集</a>，该数据集包含 2009 年纽约市出租车运营记录，各字段的含义如下：</p>
+<p>在 Arctern-Spark 运行环境中下载纽约出租车数据集。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget https://media.githubusercontent.com/media/zilliztech/arctern-resources/benchmarks/benchmarks/dataset/nyc_taxi/0_2M_nyc_taxi_and_building/0_2M_nyc_taxi_and_building.csv
+</pre></div>
+</div>
+<p>该数据集包含 2009 年纽约市出租车运营记录，各字段的含义如下：</p>
 <table border="1" class="docutils">
 <thead>
 <tr>
@@ -326,12 +330,13 @@ SparkSession available as &#39;spark&#39;.
 </pre></div>
 </div>
 <p>加载测试数据，并创建临时表 <code class="docutils literal notranslate"><span class="pre">origin_nyc_taxi</span></code>：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">origin_df</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;csv&quot;</span><span class="p">)</span> \
-<span class="gp">... </span>                      <span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;header&quot;</span><span class="p">,</span><span class="kc">True</span><span class="p">)</span> \
-<span class="gp">... </span>                      <span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;delimiter&quot;</span><span class="p">,</span><span class="s2">&quot;,&quot;</span><span class="p">)</span> \
-<span class="gp">... </span>                      <span class="o">.</span><span class="n">schema</span><span class="p">(</span><span class="n">nyc_schema</span><span class="p">)</span> \
-<span class="gp">... </span>                      <span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;/tmp/0_2M_nyc_taxi_and_building.csv&quot;</span><span class="p">)</span> \
-<span class="gp">... </span>                      <span class="o">.</span><span class="n">createOrReplaceTempView</span><span class="p">(</span><span class="s2">&quot;origin_nyc_taxi&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 文件路径配置为本地路径</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">origin_df</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;csv&quot;</span><span class="p">)</span> \
+<span class="o">...</span>                       <span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;header&quot;</span><span class="p">,</span><span class="kc">True</span><span class="p">)</span> \
+<span class="o">...</span>                       <span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;delimiter&quot;</span><span class="p">,</span><span class="s2">&quot;,&quot;</span><span class="p">)</span> \
+<span class="o">...</span>                       <span class="o">.</span><span class="n">schema</span><span class="p">(</span><span class="n">nyc_schema</span><span class="p">)</span> \
+<span class="o">...</span>                       <span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;/path/to/0_2M_nyc_taxi_and_building.csv&quot;</span><span class="p">)</span> \
+<span class="o">...</span>                       <span class="o">.</span><span class="n">createOrReplaceTempView</span><span class="p">(</span><span class="s2">&quot;origin_nyc_taxi&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>查询数据表 <code class="docutils literal notranslate"><span class="pre">origin_nyc_taxi</span></code> 的行数，验证数据是否加载成功：</p>
@@ -507,7 +512,7 @@ SparkSession available as &#39;spark&#39;.
 <span class="n">pickup_sql</span> <span class="o">=</span> <span class="s2">&quot;select st_point(pickup_longitude, pickup_latitude) from nyc_taxi where &quot;</span> \
 <span class="sa">f</span><span class="s2">&quot;(pickup_longitude between </span><span class="si">{</span><span class="n">pos1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="n">pos2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">) and (pickup_latitude between </span><span class="si">{</span><span class="n">pos1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="n">pos2</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">) limit 25&quot;</span>
 <span class="n">pickup_df</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="n">pickup_sql</span><span class="p">)</span>
-<span class="c1"># 根据查询结果绘制图标图图层。</span>
+<span class="c1"># 根据查询结果绘制图标图图层, icon_path 配置为本地路径。</span>
 <span class="n">vega</span> <span class="o">=</span> <span class="n">vega_icon</span><span class="p">(</span><span class="mi">1024</span><span class="p">,</span> <span class="mi">384</span><span class="p">,</span> <span class="n">bounding_box</span><span class="o">=</span><span class="p">[</span><span class="n">pos1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pos1</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">pos2</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pos2</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">icon_path</span><span class="o">=</span><span class="s1">&#39;/path/to/icon.png&#39;</span><span class="p">,</span> <span class="n">coordinate_system</span><span class="o">=</span><span class="s2">&quot;EPSG:4326&quot;</span><span class="p">)</span>
 <span class="n">res</span> <span class="o">=</span> <span class="n">icon_viz</span><span class="p">(</span><span class="n">vega</span><span class="p">,</span> <span class="n">pickup_df</span><span class="p">)</span>
 <span class="n">save_png</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="s2">&quot;/tmp/arctern_iconviz.png&quot;</span><span class="p">)</span>
@@ -553,7 +558,7 @@ SparkSession available as &#39;spark&#39;.
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 5月 13, 2020.
+        最后更新于 5月 14, 2020.
       </span>
 
     </p>

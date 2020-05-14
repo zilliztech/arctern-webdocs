@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>JDBC连接 &mdash; Arctern 0.1.x 文档</title>
+  <title>JDBC 连接 &mdash; Arctern 0.1.x 文档</title>
   
 
   
@@ -90,8 +90,8 @@
 <li class="toctree-l2 current"><a class="reference internal" href="data_import_and_export.html">数据导入导出</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="geometry_data_format.html">Geometry 数据格式</a></li>
 <li class="toctree-l3"><a class="reference internal" href="file_data.html">文件的导入与导出</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">JDBC连接</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#postgis">Postgis配置信息</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">JDBC 连接</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#postgis">Postgis 配置信息</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id1">JDBC 数据导入示例</a></li>
 </ul>
 </li>
@@ -150,7 +150,7 @@
         
           <li><a href="data_import_and_export.html">数据导入导出</a> &raquo;</li>
         
-      <li>JDBC连接</li>
+      <li>JDBC 连接</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -170,38 +170,38 @@
            <div itemprop="articleBody">
             
   <div class="section" id="jdbc">
-<h1>JDBC连接<a class="headerlink" href="#jdbc" title="永久链接至标题">¶</a></h1>
-<p>Arctern-Spark 可借助 Spark 的 JDBC 连接功能，完成数据从数据库的导入和导出。以下例子将展示如何利用 JDBC 从 postgis 中导入数据，更多详细信息请查看<a class="reference external" href="https://spark.apache.org/docs/latest/sql-data-sources-load-save-functions.html">Spark官方文档</a>。</p>
+<h1>JDBC 连接<a class="headerlink" href="#jdbc" title="永久链接至标题">¶</a></h1>
+<p>Arctern-Spark 可借助 Spark 的 JDBC 连接功能，完成数据从数据库的导入和导出。以下例子将展示如何利用 JDBC 从 postgis 中导入数据，更多详细信息请查看 <a class="reference external" href="https://spark.apache.org/docs/latest/sql-data-sources-load-save-functions.html">Spark 官方文档</a>。</p>
 <div class="section" id="postgis">
-<h2>Postgis配置信息<a class="headerlink" href="#postgis" title="永久链接至标题">¶</a></h2>
+<h2>Postgis 配置信息<a class="headerlink" href="#postgis" title="永久链接至标题">¶</a></h2>
 <p>假设 Postgis 的相关配置如下：</p>
 <table border="1" class="docutils">
 <thead>
 <tr>
-<th align="center">配置</th>
-<th align="center">值</th>
+<th align="left">配置</th>
+<th align="left">值</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="center">IP address</td>
-<td align="center">172.17.0.2</td>
+<td align="left">IP address</td>
+<td align="left">172.17.0.2</td>
 </tr>
 <tr>
-<td align="center">port</td>
-<td align="center">5432</td>
+<td align="left">port</td>
+<td align="left">5432</td>
 </tr>
 <tr>
-<td align="center">database name</td>
-<td align="center">test</td>
+<td align="left">database name</td>
+<td align="left">test</td>
 </tr>
 <tr>
-<td align="center">user name</td>
-<td align="center">acterner</td>
+<td align="left">user name</td>
+<td align="left">acterner</td>
 </tr>
 <tr>
-<td align="center">password</td>
-<td align="center">acterner</td>
+<td align="left">password</td>
+<td align="left">acterner</td>
 </tr>
 </tbody>
 </table><p>使用如下命令测试 postgis 连接：</p>
@@ -211,8 +211,8 @@
 </div>
 <div class="section" id="id1">
 <h2>JDBC 数据导入示例<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
-<p>在提交spark任务时，需要指定jdbc驱动。从 <a class="reference external" href="https://jdbc.postgresql.org/download.html">postgres 官网</a>下载其最新的JDBC驱动，以下示例中使用的的驱动为 <code class="docutils literal notranslate"><span class="pre">postgresql-42.2.11.jar</span></code>。</p>
-<p>以下命令为  Arctern-Spark 通过 JDBC 从 Postgis 导入数据的示例：</p>
+<p>在提交 Spark 任务时，需要指定 JDBC 驱动。从 <a class="reference external" href="https://jdbc.postgresql.org/download.html">postgres 官网</a>下载其最新的 JDBC 驱动，以下示例中使用的的驱动为 <code class="docutils literal notranslate"><span class="pre">postgresql-42.2.11.jar</span></code>。</p>
+<p>以下命令为 Arctern-Spark 通过 JDBC 从 Postgis 导入数据的示例：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./bin/spark-submit  --driver-class-path ~/postgresql-42.2.11.jar --jars ~/postgresql-42.2.11.jar ~/query_postgis.py 
 </pre></div>
 </div>
@@ -220,36 +220,36 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span>
 <span class="kn">from</span> <span class="nn">arctern_pyspark</span> <span class="kn">import</span> <span class="n">register_funcs</span>
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+
     <span class="c1"># 创建 SparkSession 并对其进行配置</span>
     <span class="n">spark</span> <span class="o">=</span> <span class="n">SparkSession</span> \
         <span class="o">.</span><span class="n">builder</span> \
         <span class="o">.</span><span class="n">appName</span><span class="p">(</span><span class="s2">&quot;polygon test&quot;</span><span class="p">)</span> \
         <span class="o">.</span><span class="n">getOrCreate</span><span class="p">()</span>
     <span class="n">spark</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;spark.sql.execution.arrow.pyspark.enabled&quot;</span><span class="p">,</span> <span class="s2">&quot;true&quot;</span><span class="p">)</span>
+
     <span class="c1"># 注册 Arctern-Spark 提供的函数</span>
     <span class="n">register_funcs</span><span class="p">(</span><span class="n">spark</span><span class="p">)</span>
-
     <span class="c1"># 数据导入</span>
     <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;jdbc&quot;</span><span class="p">)</span> \
               <span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;url&quot;</span><span class="p">,</span> <span class="s2">&quot;jdbc:postgresql://172.17.0.2:5432/test?user=arcterner&amp;password=arcterner&quot;</span><span class="p">)</span> \
               <span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;query&quot;</span><span class="p">,</span> <span class="s2">&quot;select st_astext(geos) as geos from simple&quot;</span><span class="p">)</span> \
               <span class="o">.</span><span class="n">load</span><span class="p">()</span> \
               <span class="o">.</span><span class="n">createOrReplaceTempView</span><span class="p">(</span><span class="s2">&quot;simple&quot;</span><span class="p">)</span>
+
     <span class="c1"># 对数据进行操作并打印结果</span>
     <span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;select ST_IsSimple(ST_GeomFromText(geos)) from simple&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
-
     <span class="c1"># 数据导出</span>
     <span class="n">spark</span><span class="o">.</span><span class="n">write</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;jdbc&quot;</span><span class="p">)</span> \
                <span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;url&quot;</span><span class="p">,</span> <span class="s2">&quot;jdbc:postgresql://172.17.0.2:5432/test?user=arcterner&amp;password=arcterner&quot;</span><span class="p">)</span> \
                <span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;query&quot;</span><span class="p">,</span> <span class="s2">&quot;select st_astext(geos) as geos from simple&quot;</span><span class="p">)</span> \
                <span class="o">.</span><span class="n">load</span><span class="p">()</span> \
                <span class="o">.</span><span class="n">save</span><span class="p">()</span>
-
     <span class="n">spark</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>上述代码的执行结果如下：</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">+----------------------------------+</span>                                            
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">+----------------------------------+</span>                                            
 <span class="o">|</span><span class="n">ST_IsSimple</span><span class="p">(</span><span class="n">ST_GeomFromText</span><span class="p">(</span><span class="n">geos</span><span class="p">))</span><span class="o">|</span>
 <span class="o">+----------------------------------+</span>
 <span class="o">|</span><span class="n">true</span>                              <span class="o">|</span>
@@ -284,7 +284,7 @@
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 5月 13, 2020.
+        最后更新于 5月 14, 2020.
       </span>
 
     </p>

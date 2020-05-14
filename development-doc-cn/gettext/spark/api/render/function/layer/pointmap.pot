@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-13 09:30+0800\n"
+"POT-Creation-Date: 2020-05-14 12:00+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -101,7 +101,7 @@ msgid "* vega(VegaPointMap) -- VegaPointMap 对象。"
 msgstr ""
 
 #: ../../source/spark/api/render/function/layer/pointmap.md:50
-msgid "* points(WKB) -- 所需绘制的点，格式为WKB。"
+msgid "* points(WKB) -- 所需绘制的点，格式为 WKB。"
 msgstr ""
 
 #: ../../source/spark/api/render/function/layer/pointmap.md:55
@@ -109,7 +109,7 @@ msgid "bytes"
 msgstr ""
 
 #: ../../source/spark/api/render/function/layer/pointmap.md:60
-msgid "base64编码的png图片。"
+msgid "base64 编码的 PNG 图片。"
 msgstr ""
 
 #: ../../source/spark/api/render/function/layer/pointmap.md:63
