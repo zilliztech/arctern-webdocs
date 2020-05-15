@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-14 12:00+0800\n"
+"POT-Creation-Date: 2020-05-15 17:51+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -157,7 +157,7 @@ msgid "通过 spark-submit 运行脚本："
 msgstr ""
 
 #: ../../source/spark/installation_and_deployment/deploy-with-docker-compose-cn.md:170
-msgid "注意：在 docker-compose.yml 文件中已将 master 容器的 IP 地址映射为了 spark-master，因此上述命令中可用 spark-master 代替 master 容器的 IP 地址。另外，docker-compose.yml 文件中 master容器的 7077 端口映射到了宿主机的端口（7077->7077），因此 spark-master 也可以替换为宿主机的 IP 地址。"
+msgid "注意： 在 docker-compose.yml 文件中已将 master 容器的 IP 地址映射为了 spark-master，因此上述命令中可用 spark-master 代替 master 容器的 IP 地址。另外，docker-compose.yml 文件中 master容器的 7077 端口映射到了宿主机的端口（7077->7077），因此 spark-master 也可以替换为宿主机的 IP 地址。"
 msgstr ""
 
 #: ../../source/spark/installation_and_deployment/deploy-with-docker-compose-cn.md:173

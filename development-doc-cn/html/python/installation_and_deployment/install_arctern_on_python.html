@@ -37,8 +37,8 @@
   <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="搜索" href="../../search.html" />
-    <link rel="next" title="Quick Start" href="../quick_start/quick-start-pandas.html" />
-    <link rel="prev" title="Pandas" href="../python.html" /> 
+    <link rel="next" title="快速开始" href="../quick_start/quick-start-pandas.html" />
+    <link rel="prev" title="Arctern on Pandas" href="../python.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -83,7 +83,7 @@
             
             
               <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="../python.html">Pandas</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../python.html">Arctern on Pandas</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">安装部署</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id2">安装要求</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id3">安装依赖库</a></li>
@@ -94,13 +94,13 @@
 <li class="toctree-l3"><a class="reference internal" href="#id6">卸载</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../quick_start/quick-start-pandas.html">Quick Start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick_start/quick-start-pandas.html">快速开始</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data_source/data_import_and_export.html">数据导入导出</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../api/api.html">API</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../spark/spark.html">Spark</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../restful/restful.html">Restful</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../spark/spark.html">Arctern on Spark</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../restful/restful.html">Arctern RESTful Service</a></li>
 </ul>
 
             
@@ -146,7 +146,7 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="../python.html">Pandas</a> &raquo;</li>
+          <li><a href="../python.html">Arctern on Pandas</a> &raquo;</li>
         
       <li>安装部署</li>
     
@@ -178,22 +178,22 @@
 <table border="1" class="docutils">
 <thead>
 <tr>
-<th>名称</th>
-<th>版本</th>
+<th align="left">名称</th>
+<th align="left">版本</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>操作系统</td>
-<td>Ubuntu LTS 18.04</td>
+<td align="left">操作系统</td>
+<td align="left">Ubuntu LTS 18.04</td>
 </tr>
 <tr>
-<td>Conda</td>
-<td>Miniconda Python3</td>
+<td align="left">Conda</td>
+<td align="left">Miniconda Python3</td>
 </tr>
 <tr>
-<td>JDK</td>
-<td>JDK 8</td>
+<td align="left">JDK</td>
+<td align="left">JDK 8</td>
 </tr>
 </tbody>
 </table><ul class="simple">
@@ -202,68 +202,68 @@
 <table border="1" class="docutils">
 <thead>
 <tr>
-<th>名称</th>
-<th>版本</th>
+<th align="left">名称</th>
+<th align="left">版本</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>操作系统</td>
-<td>Ubuntu LTS 18.04</td>
+<td align="left">操作系统</td>
+<td align="left">Ubuntu LTS 18.04</td>
 </tr>
 <tr>
-<td>Conda</td>
-<td>Miniconda Python3</td>
+<td align="left">Conda</td>
+<td align="left">Miniconda Python3</td>
 </tr>
 <tr>
-<td>CUDA</td>
-<td>10.0</td>
+<td align="left">CUDA</td>
+<td align="left">10.0</td>
 </tr>
 <tr>
-<td>Nvidia driver</td>
-<td>4.30</td>
+<td align="left">Nvidia driver</td>
+<td align="left">4.30</td>
 </tr>
 <tr>
-<td>JDK</td>
-<td>JDK 8</td>
+<td align="left">JDK</td>
+<td align="left">JDK 8</td>
 </tr>
 </tbody>
 </table></div>
 <div class="section" id="id3">
 <h2>安装依赖库<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
-<ul>
-<li><p>CPU 版本</p>
-<p>执行以下命令安装 Arctern CPU 版本的依赖库：</p>
-</li>
+<ul class="simple">
+<li><p>CPU 版本</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>    sudo apt install libgl-dev libosmesa6-dev libglu1-mesa-dev
+<p>执行以下命令安装 Arctern CPU 版本的依赖库：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo apt install libgl-dev libosmesa6-dev libglu1-mesa-dev
 
-    <span class="c1"># 配置 JDK 环境变量，路径需要配置为本地 JDK 8 路径</span>
-    <span class="nb">export</span> <span class="nv">JAVA_HOME</span><span class="o">=</span>/path/to/java8
-    <span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="nv">$JAVA_HOME</span>/bin:<span class="nv">$PATH</span>
-    <span class="nb">export</span> <span class="nv">JRE_HOME</span><span class="o">=</span><span class="nv">$JAVA_HOME</span>/jre
-    <span class="nb">export</span> <span class="nv">CLASSPATH</span><span class="o">=</span>.:<span class="nv">$JAVA_HOME</span>/lib:<span class="si">${</span><span class="nv">JRE_HOME</span><span class="si">}</span>/lib
+<span class="c1"># 配置 JDK 环境变量，路径需要配置为本地 JDK 8 路径</span>
+$ <span class="nb">export</span> <span class="nv">JAVA_HOME</span><span class="o">=</span>/path/to/java8
+$ <span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="nv">$JAVA_HOME</span>/bin:<span class="nv">$PATH</span>
+$ <span class="nb">export</span> <span class="nv">JRE_HOME</span><span class="o">=</span><span class="nv">$JAVA_HOME</span>/jre
+$ <span class="nb">export</span> <span class="nv">CLASSPATH</span><span class="o">=</span>.:<span class="nv">$JAVA_HOME</span>/lib:<span class="si">${</span><span class="nv">JRE_HOME</span><span class="si">}</span>/lib
 </pre></div>
 </div>
-<ul>
-<li><p>GPU 版本</p>
-<p>执行以下命令安装 Arctern GPU 版本的依赖库：</p>
-</li>
+<ul class="simple">
+<li><p>GPU 版本</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>    sudo apt install libgl1-mesa-dev libegl1-mesa-dev
+<p>执行以下命令安装 Arctern GPU 版本的依赖库：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo apt install libgl1-mesa-dev libegl1-mesa-dev
 
-    <span class="c1"># 配置 JDK 环境变量，路径需要配置为本地 JDK 8 路径</span>
-    <span class="nb">export</span> <span class="nv">JAVA_HOME</span><span class="o">=</span>/path/to/java8
-    <span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="nv">$JAVA_HOME</span>/bin:<span class="nv">$PATH</span>
-    <span class="nb">export</span> <span class="nv">JRE_HOME</span><span class="o">=</span><span class="nv">$JAVA_HOME</span>/jre
-    <span class="nb">export</span> <span class="nv">CLASSPATH</span><span class="o">=</span>.:<span class="nv">$JAVA_HOME</span>/lib:<span class="si">${</span><span class="nv">JRE_HOME</span><span class="si">}</span>/lib
+<span class="c1"># 配置 JDK 环境变量，路径需要配置为本地 JDK 8 路径</span>
+$ <span class="nb">export</span> <span class="nv">JAVA_HOME</span><span class="o">=</span>/path/to/java8
+$ <span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="nv">$JAVA_HOME</span>/bin:<span class="nv">$PATH</span>
+$ <span class="nb">export</span> <span class="nv">JRE_HOME</span><span class="o">=</span><span class="nv">$JAVA_HOME</span>/jre
+$ <span class="nb">export</span> <span class="nv">CLASSPATH</span><span class="o">=</span>.:<span class="nv">$JAVA_HOME</span>/lib:<span class="si">${</span><span class="nv">JRE_HOME</span><span class="si">}</span>/lib
 </pre></div>
 </div>
 </div>
 <div class="section" id="arctern-conda">
 <h2>创建 Arctern Conda 环境<a class="headerlink" href="#arctern-conda" title="永久链接至标题">¶</a></h2>
 <p>执行以下命令创建 Arctern Conda 环境。此处假设环境名称为 <code class="docutils literal notranslate"><span class="pre">arctern_env</span></code>，你可根据需求自行选择合适的环境名称。</p>
-<p><code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">create</span> <span class="pre">-n</span> <span class="pre">arctern_env</span> <span class="pre">-c</span> <span class="pre">conda-forge</span> <span class="pre">python=3.7.6</span></code></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ conda create -n arctern_env -c conda-forge <span class="nv">python</span><span class="o">=</span><span class="m">3</span>.7.6
+</pre></div>
+</div>
 <p>创建成功后，可以通过 <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">env</span> <span class="pre">list</span></code> 命令查看所有 Conda 环境，其输出结果应包含 Arctern 环境，类似如下：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda environments:
 base                ...
@@ -272,9 +272,11 @@ arctern_env      ...
 </pre></div>
 </div>
 <p>进入 Arctern 环境：</p>
-<p><code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">activate</span> <span class="pre">arctern_env</span></code></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ conda activate arctern_env
+</pre></div>
+</div>
 <blockquote>
-<div><p>注意：后续工作必须在 Arctern Conda 环境中进行。</p>
+<div><p><strong>注意：</strong> 后续工作必须在 Arctern Conda 环境中进行。</p>
 </div></blockquote>
 </div>
 <div class="section" id="arctern">
@@ -283,15 +285,15 @@ arctern_env      ...
 <li><p>CPU 版本</p></li>
 </ul>
 <p>执行以下命令在 Conda 环境中安装 Arctern CPU 版本：</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>   conda install -c arctern -c conda-forge arctern
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ conda install -c arctern -c conda-forge arctern
 </pre></div>
 </div>
 <ul class="simple">
 <li><p>GPU版本</p></li>
 </ul>
 <p>执行以下命令在 Conda 环境中安装 Arctern GPU 版本：</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>   conda install -c arctern/label/cuda10.0 -c conda-forge libarctern 
-   conda install -c arctern -c conda-forge arctern
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ conda install -c arctern/label/cuda10.0 -c conda-forge libarctern 
+$ conda install -c arctern -c conda-forge arctern
 </pre></div>
 </div>
 </div>
@@ -309,25 +311,25 @@ arctern_env      ...
 <div class="section" id="id5">
 <h2>测试样例<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
 <p>安装 py.test：</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda install pytest
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ conda install pytest
 </pre></div>
 </div>
 <p>下载测试文件：</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget https://raw.githubusercontent.com/zilliztech/arctern/v0.1.0/python/tests/geo/geo_test.py
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ wget https://raw.githubusercontent.com/zilliztech/arctern/v0.1.0/python/tests/geo/geo_test.py
 </pre></div>
 </div>
 <p>执行以下命令执行测试文件：</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>py.test <span class="o">[</span>/path/to/<span class="o">]</span>geo_test.py
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ py.test <span class="o">[</span>/path/to/<span class="o">]</span>geo_test.py
 </pre></div>
 </div>
 <p>若最后打印结果类似以下内容，则表示通过测试样例。</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>   <span class="m">33</span> passed, <span class="m">1</span> warning in <span class="m">0</span>.58s
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="m">33</span> passed, <span class="m">1</span> warning in <span class="m">0</span>.58s
 </pre></div>
 </div>
 </div>
 <div class="section" id="id6">
 <h2>卸载<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conda uninstall libarctern arctern
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ conda uninstall libarctern arctern
 </pre></div>
 </div>
 </div>
@@ -341,10 +343,10 @@ arctern_env      ...
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../quick_start/quick-start-pandas.html" class="btn btn-neutral float-right" title="Quick Start" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../quick_start/quick-start-pandas.html" class="btn btn-neutral float-right" title="快速开始" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../python.html" class="btn btn-neutral float-left" title="Pandas" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../python.html" class="btn btn-neutral float-left" title="Arctern on Pandas" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -355,7 +357,7 @@ arctern_env      ...
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 5月 14, 2020.
+        最后更新于 5月 15, 2020.
       </span>
 
     </p>

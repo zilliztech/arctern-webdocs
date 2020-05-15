@@ -83,11 +83,11 @@
             
             
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../../python/python.html">Pandas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../spark/spark.html">Spark</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../../restful.html">Restful</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../python/python.html">Arctern on Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../spark/spark.html">Arctern on Spark</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../restful.html">Arctern RESTful Service</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../../webserver_installation_config.html">Arctern RESTful Server 安装与配置</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../restful_quick_start.html">Quick Start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../restful_quick_start.html">快速开始</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../api.html">API</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="create_scope.html">创建scope</a></li>
 <li class="toctree-l3"><a class="reference internal" href="delete_scope.html">删除scope</a></li>
@@ -155,7 +155,7 @@
     
       <li><a href="../../../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="../../restful.html">Restful</a> &raquo;</li>
+          <li><a href="../../restful.html">Arctern RESTful Service</a> &raquo;</li>
         
           <li><a href="../api.html">API</a> &raquo;</li>
         
@@ -233,8 +233,8 @@
 <h2>样例<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
 <div class="section" id="python">
 <h3>Python<a class="headerlink" href="#python" title="永久链接至标题">¶</a></h3>
-<p>本文示例代码使用 Python 的 <code class="docutils literal notranslate"><span class="pre">requests</span></code> 库调用 <code class="docutils literal notranslate"><span class="pre">Arctern</span> <span class="pre">Restful</span> <span class="pre">API</span></code>，使用下面的命令安装 <code class="docutils literal notranslate"><span class="pre">requests</span></code>：</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip install requests
+<p>本文示例代码使用 Python 的 <code class="docutils literal notranslate"><span class="pre">requests</span></code> 库调用 <code class="docutils literal notranslate"><span class="pre">Arctern</span> <span class="pre">RESTful</span> <span class="pre">API</span></code>，使用下面的命令安装 <code class="docutils literal notranslate"><span class="pre">requests</span></code>：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install requests
 </pre></div>
 </div>
 <p>调用示例</p>
@@ -270,7 +270,7 @@
 </div>
 <div class="section" id="curl">
 <h3>curl<a class="headerlink" href="#curl" title="永久链接至标题">¶</a></h3>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>curl --location --request POST <span class="s1">&#39;http://localhost:8080/weighted_pointmap&#39;</span> <span class="se">\</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl --location --request POST <span class="s1">&#39;http://localhost:8080/weighted_pointmap&#39;</span> <span class="se">\</span>
 --header <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\</span>
 --data-raw <span class="s1">&#39;{</span>
 <span class="s1">    &quot;scope&quot;: &quot;scope_name&quot;,</span>
@@ -334,7 +334,7 @@
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 5月 14, 2020.
+        最后更新于 5月 15, 2020.
       </span>
 
     </p>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Quick Start &mdash; Arctern 0.1.x 文档</title>
+  <title>快速开始 &mdash; Arctern 0.1.x 文档</title>
   
 
   
@@ -83,9 +83,9 @@
             
             
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../python.html">Pandas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../spark/spark.html">Spark</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../restful/restful.html">Restful</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python.html">Arctern on Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../spark/spark.html">Arctern on Spark</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../restful/restful.html">Arctern RESTful Service</a></li>
 </ul>
 
             
@@ -131,9 +131,9 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="../python.html">Pandas</a> &raquo;</li>
+          <li><a href="../python.html">Arctern on Pandas</a> &raquo;</li>
         
-      <li>Quick Start</li>
+      <li>快速开始</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -152,16 +152,16 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="quick-start">
-<h1>Quick Start<a class="headerlink" href="#quick-start" title="永久链接至标题">¶</a></h1>
+  <div class="section" id="id1">
+<h1>快速开始<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
 <p>本文以纽约出租车数据集为例，展示如何使用 Arctern 完成数据的导入、运算和展示。</p>
-<div class="section" id="id1">
-<h2>数据准备<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id2">
+<h2>数据准备<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
 <p>在 Arctern 运行环境中下载纽约出租车数据集。</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget https://media.githubusercontent.com/media/zilliztech/arctern-resources/benchmarks/benchmarks/dataset/nyc_taxi/0_2M_nyc_taxi_and_building/0_2M_nyc_taxi_and_building.csv
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ wget https://media.githubusercontent.com/media/zilliztech/arctern-resources/benchmarks/benchmarks/dataset/nyc_taxi/0_2M_nyc_taxi_and_building/0_2M_nyc_taxi_and_building.csv
 </pre></div>
 </div>
-<p>该数据集包含 2009 年纽约市出租车运营记录，各字段的含义如下：</p>
+<p>该数据集包含 2009 年纽约市出租车的运营记录，各字段的含义如下：</p>
 <table border="1" class="docutils">
 <thead>
 <tr>
@@ -253,12 +253,12 @@
 </tr>
 </tbody>
 </table><blockquote>
-<div><p>该数据的时间格式为：<code class="docutils literal notranslate"><span class="pre">yyyy-MM-dd</span> <span class="pre">HH:mm::ss</span> <span class="pre">XXXXX</span></code>，如 <code class="docutils literal notranslate"><span class="pre">2009-04-12</span> <span class="pre">03:16:33</span> <span class="pre">+00:00</span></code></p>
+<div><p><strong>注意：</strong> 该数据的时间格式为：<code class="docutils literal notranslate"><span class="pre">yyyy-MM-dd</span> <span class="pre">HH:mm::ss</span> <span class="pre">XXXXX</span></code>，如 <code class="docutils literal notranslate"><span class="pre">2009-04-12</span> <span class="pre">03:16:33</span> <span class="pre">+00:00</span></code></p>
 </div></blockquote>
 </div>
-<div class="section" id="id2">
-<h2>加载数据<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
-<p>以下通过 Python 交互界面展示 Arctern 的使用方法。根据测试数据各字段的名称和数据类型，构建导入测试数据的 <code class="docutils literal notranslate"><span class="pre">schema</span></code>并导入数据。</p>
+<div class="section" id="id3">
+<h2>加载数据<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>以下通过 Python 交互界面展示 Arctern 的使用方法。根据测试数据各字段的名称和数据类型，构建导入测试数据的 <code class="docutils literal notranslate"><span class="pre">schema</span></code> 并导入数据。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">nyc_schema</span><span class="o">=</span><span class="p">{</span>
 <span class="gp">... </span>    <span class="s2">&quot;VendorID&quot;</span><span class="p">:</span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
@@ -278,8 +278,9 @@
 <span class="gp">... </span>    <span class="s2">&quot;buildingtext_pickup&quot;</span><span class="p">:</span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="s2">&quot;buildingtext_dropoff&quot;</span><span class="p">:</span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
 <span class="gp">... </span><span class="p">}</span>
-<span class="go"># 文件路径配置为本地路径</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;/path/to/0_2M_nyc_taxi_and_building.csv&quot;</span><span class="p">,</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># 文件路径需要本地配置</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;/tmp/0_2M_nyc_taxi_and_building.csv&quot;</span><span class="p">,</span>
 <span class="gp">... </span>               <span class="n">dtype</span><span class="o">=</span><span class="n">nyc_schema</span><span class="p">,</span>
 <span class="gp">... </span>               <span class="n">date_parser</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">,</span>
 <span class="gp">... </span>               <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;tpep_pickup_datetime&quot;</span><span class="p">,</span><span class="s2">&quot;tpep_dropoff_datetime&quot;</span><span class="p">])</span>
@@ -298,9 +299,9 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="id3">
-<h2>数据过滤<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
-<p>在指定地理区域（经度范围：-73.991504 至 -73.945155；纬度范围：40.770759 至 40.783434）中随机选取 <code class="docutils literal notranslate"><span class="pre">200</span></code> 行数据。</p>
+<div class="section" id="id4">
+<h2>数据过滤<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<p>在指定地理区域（经度范围：-73.991504 至 -73.945155；纬度范围：40.770759 至 40.783434）中随机选取 200 行数据。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pos1</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">73.991504</span><span class="p">,</span> <span class="mf">40.770759</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">pos2</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">73.945155</span><span class="p">,</span> <span class="mf">40.783434</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">limit_num</span><span class="o">=</span><span class="mi">200</span>
@@ -320,7 +321,7 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ST_AsText</span><span class="p">(</span><span class="n">ST_Point</span><span class="p">(</span><span class="n">pickup_df</span><span class="o">.</span><span class="n">pickup_longitude</span><span class="p">,</span> <span class="n">pickup_df</span><span class="o">.</span><span class="n">pickup_latitude</span><span class="p">))</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="go">0    POINT (-73.959908 40.776353)</span>
 <span class="go">1    POINT (-73.955183 40.773459)</span>
-<span class="go">2     POINT (-73.989523 40.77129)</span>
+<span class="go">2    POINT (-73.989523 40.77129)</span>
 <span class="go">3    POINT (-73.988154 40.774829)</span>
 <span class="go">4    POINT (-73.982687 40.771625)</span>
 <span class="go">dtype: object</span>
@@ -330,9 +331,9 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ST_AsText</span><span class="p">(</span><span class="n">ST_Transform</span><span class="p">(</span><span class="n">ST_Point</span><span class="p">(</span><span class="n">pickup_df</span><span class="o">.</span><span class="n">pickup_longitude</span><span class="p">,</span> <span class="n">pickup_df</span><span class="o">.</span><span class="n">pickup_latitude</span><span class="p">),</span><span class="s1">&#39;epsg:4326&#39;</span><span class="p">,</span> <span class="s1">&#39;epsg:3857&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="go">0    POINT (-8233179.29767736 4979409.53917853)</span>
 <span class="go">1    POINT (-8232653.31308336 4978984.12438949)</span>
-<span class="go">2     POINT (-8236476.0243972 4978665.29594441)</span>
-<span class="go">3      POINT (-8236323.6280143 4979185.5105596)</span>
-<span class="go">4     POINT (-8235715.04435814 4978714.5380168)</span>
+<span class="go">2    POINT (-8236476.0243972 4978665.29594441)</span>
+<span class="go">3    POINT (-8236323.6280143 4979185.5105596)</span>
+<span class="go">4    POINT (-8235715.04435814 4978714.5380168)</span>
 <span class="go">dtype: object</span>
 </pre></div>
 </div>
@@ -356,7 +357,7 @@
 <p>点图图层绘制结果如下：</p>
 <p><img alt="../../_images/arctern_pointmap_pandas.png" src="../../_images/arctern_pointmap_pandas.png" /></p>
 <p>通过 Arctern 提供的绘图函数绘制带权点图图层：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># 绘制带权点图图层，点的颜色根据 fare_amount 在 #115f9a ~ #d0f400 之间变化，点的大小根据 total_amount 在 15 ~ 50 之间变化。</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># 绘制带权点图图层，点的颜色根据 fare_amount 在 #115f9a ～ #d0f400 之间变化，点的大小根据 total_amount 在 15 ～ 50 之间变化。</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">vega</span> <span class="o">=</span> <span class="n">vega_weighted_pointmap</span><span class="p">(</span><span class="mi">1024</span><span class="p">,</span> <span class="mi">384</span><span class="p">,</span> <span class="n">bounding_box</span><span class="o">=</span><span class="p">[</span><span class="n">pos1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pos1</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">pos2</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pos2</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">color_gradient</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;#115f9a&quot;</span><span class="p">,</span> <span class="s2">&quot;#d0f400&quot;</span><span class="p">],</span> <span class="n">color_bound</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">50</span><span class="p">],</span> <span class="n">size_bound</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">15</span><span class="p">],</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">coordinate_system</span><span class="o">=</span><span class="s2">&quot;EPSG:4326&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">png</span> <span class="o">=</span> <span class="n">weighted_point_map_layer</span><span class="p">(</span><span class="n">vega</span><span class="p">,</span> <span class="n">ST_Point</span><span class="p">(</span><span class="n">pickup_df</span><span class="o">.</span><span class="n">pickup_longitude</span><span class="p">,</span> <span class="n">pickup_df</span><span class="o">.</span><span class="n">pickup_latitude</span><span class="p">),</span> <span class="n">color_weights</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">limit_num</span><span class="p">)</span><span class="o">.</span><span class="n">fare_amount</span><span class="p">,</span> <span class="n">size_weights</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">limit_num</span><span class="p">)</span><span class="o">.</span><span class="n">total_amount</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">save_png</span><span class="p">(</span><span class="n">png</span><span class="p">,</span> <span class="s2">&quot;/tmp/arctern_weighted_pointmap_pandas.png&quot;</span><span class="p">)</span>
@@ -383,7 +384,7 @@
 <p>轮廓图图层绘制结果如下：</p>
 <p><img alt="../../_images/arctern_choroplethmap_pandas.png" src="../../_images/arctern_choroplethmap_pandas.png" /></p>
 <p>通过 Arctern 提供的绘图函数绘制图标图图层：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># 绘制图标图图层,icon_path 配置为本地路径。</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># 绘制图标图图层 icon_path 需要本地配置。</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">vega</span> <span class="o">=</span> <span class="n">vega_icon</span><span class="p">(</span><span class="mi">1024</span><span class="p">,</span> <span class="mi">384</span><span class="p">,</span> <span class="n">bounding_box</span><span class="o">=</span><span class="p">[</span><span class="n">pos1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pos1</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">pos2</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pos2</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">icon_path</span><span class="o">=</span><span class="s1">&#39;/path/to/icon.png&#39;</span><span class="p">,</span> <span class="n">coordinate_system</span><span class="o">=</span><span class="s2">&quot;EPSG:4326&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">png</span> <span class="o">=</span> <span class="n">icon_viz_layer</span><span class="p">(</span><span class="n">vega</span><span class="p">,</span> <span class="n">ST_Point</span><span class="p">(</span><span class="n">pickup_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span><span class="o">.</span><span class="n">pickup_longitude</span><span class="p">,</span> <span class="n">pickup_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span><span class="o">.</span><span class="n">pickup_latitude</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">save_png</span><span class="p">(</span><span class="n">png</span><span class="p">,</span> <span class="s2">&quot;/tmp/arctern_iconviz_pandas.png&quot;</span><span class="p">)</span>
@@ -425,7 +426,7 @@
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 5月 14, 2020.
+        最后更新于 5月 15, 2020.
       </span>
 
     </p>

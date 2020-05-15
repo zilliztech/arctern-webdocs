@@ -83,9 +83,9 @@
             
             
               <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="../python.html">Pandas</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../python.html">Arctern on Pandas</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../installation_and_deployment/install_arctern_on_python.html">安装部署</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../quick_start/quick-start-pandas.html">Quick Start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick_start/quick-start-pandas.html">快速开始</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="data_import_and_export.html">数据导入导出</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Geometry 数据格式</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id1">样例</a></li>
@@ -97,8 +97,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../api/api.html">API</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../spark/spark.html">Spark</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../restful/restful.html">Restful</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../spark/spark.html">Arctern on Spark</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../restful/restful.html">Arctern RESTful Service</a></li>
 </ul>
 
             
@@ -144,7 +144,7 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="../python.html">Pandas</a> &raquo;</li>
+          <li><a href="../python.html">Arctern on Pandas</a> &raquo;</li>
         
           <li><a href="data_import_and_export.html">数据导入导出</a> &raquo;</li>
         
@@ -174,7 +174,7 @@
 <div class="section" id="id1">
 <h2>样例<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
 <p>WKT 形式数据的导入和导出：</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">CSV 文件内容：</span>
 <span class="sd">geos</span>
 <span class="sd">POINT (30 10)</span>
@@ -186,19 +186,19 @@
 <span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">arctern</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;/path/to/geos.csv&quot;</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s1">&#39;|&#39;</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;geos&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;geos&#39;</span><span class="p">)</span>
-
-<span class="c1"># 在对数据进行处理之前使用 ST_GeomFromText 将数据转换为 WKB 形式</span>
+<span class="o">&gt;&gt;&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="c1"># 在对数据进行处理之前使用 ST_GeomFromText 将数据转换为 WKB 形式</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">data</span> <span class="o">=</span> <span class="n">arctern</span><span class="o">.</span><span class="n">ST_GeomFromText</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">valid_data</span> <span class="o">=</span> <span class="n">arctern</span><span class="o">.</span><span class="n">ST_MakeValid</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-
-<span class="c1"># 在将数据导出之前使用 ST_AsText 将数据转换为 WKT 形式</span>
+<span class="o">&gt;&gt;&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="c1"># 在将数据导出之前使用 ST_AsText 将数据转换为 WKT 形式</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">valid_data</span> <span class="o">=</span> <span class="n">arctern</span><span class="o">.</span><span class="n">ST_AsText</span><span class="p">(</span><span class="n">valid_data</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">valid_data</span> <span class="o">=</span> <span class="n">valid_data</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s1">&#39;geos&#39;</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">valid_data</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;/path/to/valid_geos.csv&quot;</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s1">&#39;|&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>WKB 形式数据的导入和导出：</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">CSV 文件内容：</span>
 <span class="sd">geos</span>
 <span class="sd">b&#39;\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00&gt;@\x00\x00\x00\x00\x00\x00$@&#39;</span>
@@ -210,8 +210,8 @@
 <span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">arctern</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;/path/to/geos.csv&quot;</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s1">&#39;|&#39;</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;geos&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
-
-<span class="c1"># 在对数据处理之前无需对数据进行转换</span>
+<span class="o">&gt;&gt;&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="c1"># 在对数据处理之前无需对数据进行转换</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">valid_data</span> <span class="o">=</span> <span class="n">arctern</span><span class="o">.</span><span class="n">ST_MakeValid</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">valid_data</span> <span class="o">=</span> <span class="n">valid_data</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s1">&#39;geos&#39;</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">valid_data</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;/path/to/valid_geos.csv&quot;</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s1">&#39;|&#39;</span><span class="p">)</span>
@@ -242,7 +242,7 @@
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 5月 14, 2020.
+        最后更新于 5月 15, 2020.
       </span>
 
     </p>
