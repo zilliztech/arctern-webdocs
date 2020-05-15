@@ -83,8 +83,8 @@
             
             
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Pandas</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../spark.html">Spark</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Arctern on Pandas</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../spark.html">Arctern on Spark</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="installation_and_deployment.html">安装部署</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="install_arctern_on_spark_cn.html">在线安装</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">离线安装</a><ul>
@@ -102,12 +102,12 @@
 <li class="toctree-l3"><a class="reference internal" href="deploy-with-docker-compose-cn.html">基于 Docker Compose 部署</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../quick_start/quick-start-spark.html">Quick Start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick_start/quick-start-spark.html">快速开始</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data_source/data_import_and_export.html">数据导入导出</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../api/api.html">API</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../restful/restful.html">Restful</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../restful/restful.html">Arctern RESTful Service</a></li>
 </ul>
 
             
@@ -153,7 +153,7 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="../spark.html">Spark</a> &raquo;</li>
+          <li><a href="../spark.html">Arctern on Spark</a> &raquo;</li>
         
           <li><a href="installation_and_deployment.html">安装部署</a> &raquo;</li>
         
@@ -206,7 +206,7 @@ $ wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O 
 </pre></div>
 </div>
 <blockquote>
-<div><p>以下操作均在需要安装 Arctern-Spark 的离线环境中执行。</p>
+<div><p><strong>注意：</strong> 以下操作均在需要安装 Arctern-Spark 的离线环境中执行。</p>
 </div></blockquote>
 </div>
 <div class="section" id="id4">
@@ -251,9 +251,11 @@ arctern_env      ...
 </pre></div>
 </div>
 <p>进入 Arctern 环境：</p>
-<p><code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">activate</span> <span class="pre">arctern_env</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ conda activate arctern_env
+</pre></div>
+</div>
 <blockquote>
-<div><p>注意：后续工作必须在 conda 虚拟环境 (arctern_env) 中进行。</p>
+<div><p><strong>注意：</strong> 后续工作必须在 Conda 虚拟环境中进行。</p>
 </div></blockquote>
 </div>
 </div>
@@ -287,13 +289,13 @@ spark.executorEnv.GDAL_DATA <span class="o">[</span>path/to/your/conda<span clas
 </pre></div>
 </div>
 <p>在文件 <code class="docutils literal notranslate"><span class="pre">conf/spark-env.sh</span></code> 的最后添加以下内容。其中 <code class="docutils literal notranslate"><span class="pre">[path/to/your/conda]</span></code> 为 Conda 的安装路径。</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">PYSPARK_PYTHON</span><span class="o">=[</span>path/to/your/conda<span class="o">]</span>/envs/arctern_env/bin/python
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">export</span> <span class="nv">PYSPARK_PYTHON</span><span class="o">=[</span>path/to/your/conda<span class="o">]</span>/envs/arctern_env/bin/python
 </pre></div>
 </div>
 <div class="section" id="id6">
 <h3>确认路径配置是否成功<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
 <p>执行以下命令进入 PySpark 交互界面，其中 <code class="docutils literal notranslate"><span class="pre">[path/to/your/spark]</span></code> 为 Spark 的安装路径。</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>path/to/your/spark<span class="o">]</span>/bin/pyspark
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="o">[</span>path/to/your/spark<span class="o">]</span>/bin/pyspark
 </pre></div>
 </div>
 <p>在交互界面中输入以下内容打印 PySpark 的 Python 路径。</p>
@@ -313,13 +315,13 @@ spark.executorEnv.GDAL_DATA <span class="o">[</span>path/to/your/conda<span clas
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> arctern-resources/arctern_dependencies/example
 
 <span class="c1"># local mode</span>
-<span class="o">[</span>path/to/your/spark<span class="o">]</span>/bin/spark-submit spark_udf_ex.py
+$ <span class="o">[</span>path/to/your/spark<span class="o">]</span>/bin/spark-submit spark_udf_ex.py
 
 <span class="c1"># standalone mode</span>
-<span class="o">[</span>path/to/your/spark<span class="o">]</span>/bin/spark-submit --master <span class="o">[</span>spark service address<span class="o">]</span> spark_udf_ex.py
+$ <span class="o">[</span>path/to/your/spark<span class="o">]</span>/bin/spark-submit --master <span class="o">[</span>spark service address<span class="o">]</span> spark_udf_ex.py
 
 <span class="c1"># hadoop/yarn mode</span>
-<span class="o">[</span>path/to/your/spark<span class="o">]</span>/bin/spark-submit --master yarn spark_udf_ex.py
+$ <span class="o">[</span>path/to/your/spark<span class="o">]</span>/bin/spark-submit --master yarn spark_udf_ex.py
 </pre></div>
 </div>
 <p>如果测试样例运行无误，将在终端打印如下信息：</p>
@@ -330,7 +332,7 @@ spark.executorEnv.GDAL_DATA <span class="o">[</span>path/to/your/conda<span clas
 <div class="section" id="id8">
 <h2>卸载<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h2>
 <p>在 Conda 环境中执行以下命令可卸载 Arctern-Spark：</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conda uninstall libarctern arctern arctern-spark
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ conda uninstall libarctern arctern arctern-spark
 </pre></div>
 </div>
 </div>
@@ -376,7 +378,7 @@ spark.executorEnv.GDAL_DATA <span class="o">[</span>path/to/your/conda<span clas
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 5月 14, 2020.
+        最后更新于 5月 15, 2020.
       </span>
 
     </p>

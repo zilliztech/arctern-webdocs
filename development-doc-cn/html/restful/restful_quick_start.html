@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Quick Start &mdash; Arctern 0.1.x 文档</title>
+  <title>快速开始 &mdash; Arctern 0.1.x 文档</title>
   
 
   
@@ -83,30 +83,30 @@
             
             
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../python/python.html">Pandas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../spark/spark.html">Spark</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="restful.html">Restful</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../python/python.html">Arctern on Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../spark/spark.html">Arctern on Spark</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="restful.html">Arctern RESTful Service</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="webserver_installation_config.html">Arctern RESTful Server 安装与配置</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Quick Start</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">服务器端的启动和配置</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id2">服务器启动</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id3">数据准备</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id4">安装依赖</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">快速开始</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">服务器端的启动和配置</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id3">服务器启动</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">数据准备</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">安装依赖</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#api">API调用</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id5">创建作用域</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id6">数据导入</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id7">查询表信息</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">创建作用域</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">数据导入</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">查询表信息</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#sql">SQL查询</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id11">绘制点图</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id12">带权点图</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id13">热力图</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id14">轮廓图</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id15">图标图</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id16">渔网图</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id17">删除数据表</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id18">删除作用域</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id12">绘制点图</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id13">带权点图</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id14">热力图</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id15">轮廓图</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id16">图标图</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id17">渔网图</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id18">删除数据表</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id19">删除作用域</a></li>
 </ul>
 </li>
 </ul>
@@ -159,9 +159,9 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="restful.html">Restful</a> &raquo;</li>
+          <li><a href="restful.html">Arctern RESTful Service</a> &raquo;</li>
         
-      <li>Quick Start</li>
+      <li>快速开始</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -180,26 +180,26 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="quick-start">
-<h1>Quick Start<a class="headerlink" href="#quick-start" title="永久链接至标题">¶</a></h1>
+  <div class="section" id="id1">
+<h1>快速开始<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
 <p>本文以纽约出租车数据集为例，说明如何通过 <code class="docutils literal notranslate"><span class="pre">Arctern</span> <span class="pre">RESTful</span> <span class="pre">API</span></code> 完成数据的导入、运算和展示。</p>
 <blockquote>
-<div><p>注意：本文档中所有示例代码均默认在 <code class="docutils literal notranslate"><span class="pre">Python</span> <span class="pre">3.7</span></code> 环境中运行，如需在其他 Python 环境下运行可能需要对代码内容进行适当修改。</p>
+<div><p><strong>注意：</strong> 本文档中所有示例代码均默认在 <code class="docutils literal notranslate"><span class="pre">Python</span> <span class="pre">3.7</span></code> 环境中运行，如需在其他 Python 环境下运行可能需要对代码内容进行适当修改。</p>
 </div></blockquote>
-<div class="section" id="id1">
-<h2>服务器端的启动和配置<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
 <div class="section" id="id2">
-<h3>服务器启动<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h3>
+<h2>服务器端的启动和配置<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id3">
+<h3>服务器启动<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
 <p>在调用 <code class="docutils literal notranslate"><span class="pre">Arctern</span> <span class="pre">RESTful</span> <span class="pre">API</span></code> 之前请先启动服务，具体步骤详见<a class="reference internal" href="webserver_installation_config.html"><span class="doc">服务器启动</span></a>。</p>
 </div>
-<div class="section" id="id3">
-<h3>数据准备<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id4">
+<h3>数据准备<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
 <p>在服务器端下载后续示例中使用到的纽约出租车数据集，该数据集可通过如下方式下载：</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget https://media.githubusercontent.com/media/zilliztech/arctern-resources/benchmarks/benchmarks/dataset/nyc_taxi/0_2M_nyc_taxi_and_building/0_2M_nyc_taxi_and_building.csv
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ wget https://media.githubusercontent.com/media/zilliztech/arctern-resources/benchmarks/benchmarks/dataset/nyc_taxi/0_2M_nyc_taxi_and_building/0_2M_nyc_taxi_and_building.csv
 </pre></div>
 </div>
-<p>该数据集的行数为 <code class="docutils literal notranslate"><span class="pre">200000</span></code>，使用如下命令查看是否下载成功：</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wc -l 0_2M_nyc_taxi_and_building.csv
+<p>该数据集的行数为 200000，使用如下命令查看是否下载成功：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ wc -l 0_2M_nyc_taxi_and_building.csv
 </pre></div>
 </div>
 <p>该数据集包含 2009 年纽约市出租车运营记录，各字段的含义如下：</p>
@@ -294,22 +294,22 @@
 </tr>
 </tbody>
 </table><blockquote>
-<div><p>该数据的时间格式为：<code class="docutils literal notranslate"><span class="pre">yyyy-MM-dd</span> <span class="pre">HH:mm::ss</span> <span class="pre">XXXXX</span></code>，如 <code class="docutils literal notranslate"><span class="pre">2009-04-12</span> <span class="pre">03:16:33</span> <span class="pre">+00:00</span></code></p>
+<div><p><strong>注意：</strong> 该数据的时间格式为：<code class="docutils literal notranslate"><span class="pre">yyyy-MM-dd</span> <span class="pre">HH:mm::ss</span> <span class="pre">XXXXX</span></code>，如 <code class="docutils literal notranslate"><span class="pre">2009-04-12</span> <span class="pre">03:16:33</span> <span class="pre">+00:00</span></code></p>
 </div></blockquote>
-<p>下述示例中假设服务器 IP 地址为<code class="docutils literal notranslate"><span class="pre">127.0.0.1</span></code>，RESTful服务端口为<code class="docutils literal notranslate"><span class="pre">8080</span></code>。</p>
+<p>下述示例中假设服务器 IP 地址为 <code class="docutils literal notranslate"><span class="pre">127.0.0.1</span></code>，RESTful服务端口为 <code class="docutils literal notranslate"><span class="pre">8080</span></code>。</p>
 </div>
-<div class="section" id="id4">
-<h3>安装依赖<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id5">
+<h3>安装依赖<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
 <p>本文示例代码使用 Python 的 <code class="docutils literal notranslate"><span class="pre">requests</span></code> 库调用 <code class="docutils literal notranslate"><span class="pre">Arctern</span> <span class="pre">RESTful</span> <span class="pre">API</span></code>，使用下面的命令安装 <code class="docutils literal notranslate"><span class="pre">requests</span></code>：</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip install requests
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ pip install requests
 </pre></div>
 </div>
 </div>
 </div>
 <div class="section" id="api">
 <h2>API调用<a class="headerlink" href="#api" title="永久链接至标题">¶</a></h2>
-<div class="section" id="id5">
-<h3>创建作用域<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id6">
+<h3>创建作用域<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
 <p>使用 <code class="docutils literal notranslate"><span class="pre">/scope</span></code> 接口创建名为 <code class="docutils literal notranslate"><span class="pre">nyc_taxi</span></code> 的作用域。作用域用于为你分配服务器资源，每个作用域拥有独享的上下文信息，如载入的文件数据。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">requests</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">json</span>
@@ -327,45 +327,45 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="id6">
-<h3>数据导入<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id7">
+<h3>数据导入<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h3>
 <p>使用 <code class="docutils literal notranslate"><span class="pre">/loadfile</span></code> 接口导入纽约出租车数据集，将其对应的数据表命名为 <code class="docutils literal notranslate"><span class="pre">raw_data</span></code>，<code class="docutils literal notranslate"><span class="pre">scope</span></code> 字段使用先前创建的 <code class="docutils literal notranslate"><span class="pre">scope</span></code> 名称 <code class="docutils literal notranslate"><span class="pre">nyc_taxi</span></code>，其中 <code class="docutils literal notranslate"><span class="pre">file_path</span></code> 为数据文件所在的绝对路径，可根据实际情况进行更改：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">requests</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">json</span>
 <span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">file_path</span> <span class="o">=</span> <span class="s2">&quot;/example/data/0_2M_nyc_taxi_and_building.csv&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
-<span class="go">    &quot;scope&quot;: &quot;nyc_taxi&quot;,</span>
-<span class="go">    &quot;tables&quot;: [</span>
-<span class="go">        {</span>
-<span class="go">            &quot;name&quot;: &quot;raw_data&quot;,</span>
-<span class="go">            &quot;format&quot;: &quot;csv&quot;,</span>
-<span class="go">            &quot;path&quot;: file_path,</span>
-<span class="go">            &quot;options&quot;: {</span>
-<span class="go">                &quot;header&quot;: &quot;True&quot;,</span>
-<span class="go">                &quot;delimiter&quot;: &quot;,&quot;</span>
-<span class="go">            },</span>
-<span class="go">            &quot;schema&quot;: [</span>
-<span class="go">                {&quot;VendorID&quot;: &quot;string&quot;},</span>
-<span class="go">                {&quot;tpep_pickup_datetime&quot;: &quot;string&quot;},</span>
-<span class="go">                {&quot;tpep_dropoff_datetime&quot;: &quot;string&quot;},</span>
-<span class="go">                {&quot;passenger_count&quot;: &quot;long&quot;},</span>
-<span class="go">                {&quot;trip_distance&quot;: &quot;double&quot;},</span>
-<span class="go">                {&quot;pickup_longitude&quot;: &quot;double&quot;},</span>
-<span class="go">                {&quot;pickup_latitude&quot;: &quot;double&quot;},</span>
-<span class="go">                {&quot;dropoff_longitude&quot;: &quot;double&quot;},</span>
-<span class="go">                {&quot;dropoff_latitude&quot;: &quot;double&quot;},</span>
-<span class="go">                {&quot;fare_amount&quot;: &quot;double&quot;},</span>
-<span class="go">                {&quot;tip_amount&quot;: &quot;double&quot;},</span>
-<span class="go">                {&quot;total_amount&quot;: &quot;double&quot;},</span>
-<span class="go">                {&quot;buildingid_pickup&quot;: &quot;long&quot;},</span>
-<span class="go">                {&quot;buildingid_dropoff&quot;: &quot;long&quot;},</span>
-<span class="go">                {&quot;buildingtext_pickup&quot;: &quot;string&quot;},</span>
-<span class="go">                {&quot;buildingtext_dropoff&quot;: &quot;string&quot;}</span>
-<span class="go">            ]</span>
-<span class="go">        }</span>
-<span class="go">    ]</span>
-<span class="go">}</span>
+<span class="gp">... </span><span class="s2">&quot;scope&quot;</span><span class="p">:</span> <span class="s2">&quot;nyc_taxi&quot;</span><span class="p">,</span>
+<span class="gp">... </span><span class="s2">&quot;tables&quot;</span><span class="p">:</span> <span class="p">[</span>
+<span class="gp">... </span>    <span class="p">{</span>
+<span class="gp">... </span>        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;raw_data&quot;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">&quot;format&quot;</span><span class="p">:</span> <span class="s2">&quot;csv&quot;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="n">file_path</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">&quot;options&quot;</span><span class="p">:</span> <span class="p">{</span>
+<span class="gp">... </span>            <span class="s2">&quot;header&quot;</span><span class="p">:</span> <span class="s2">&quot;True&quot;</span><span class="p">,</span>
+<span class="gp">... </span>            <span class="s2">&quot;delimiter&quot;</span><span class="p">:</span> <span class="s2">&quot;,&quot;</span>
+<span class="gp">... </span>        <span class="p">},</span>
+<span class="gp">... </span>        <span class="s2">&quot;schema&quot;</span><span class="p">:</span> <span class="p">[</span>
+<span class="gp">... </span>            <span class="p">{</span><span class="s2">&quot;VendorID&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">},</span>
+<span class="gp">... </span>            <span class="p">{</span><span class="s2">&quot;tpep_pickup_datetime&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">},</span>
+<span class="gp">... </span>            <span class="p">{</span><span class="s2">&quot;tpep_dropoff_datetime&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">},</span>
+<span class="gp">... </span>            <span class="p">{</span><span class="s2">&quot;passenger_count&quot;</span><span class="p">:</span> <span class="s2">&quot;long&quot;</span><span class="p">},</span>
+<span class="gp">... </span>            <span class="p">{</span><span class="s2">&quot;trip_distance&quot;</span><span class="p">:</span> <span class="s2">&quot;double&quot;</span><span class="p">},</span>
+<span class="gp">... </span>            <span class="p">{</span><span class="s2">&quot;pickup_longitude&quot;</span><span class="p">:</span> <span class="s2">&quot;double&quot;</span><span class="p">},</span>
+<span class="gp">... </span>            <span class="p">{</span><span class="s2">&quot;pickup_latitude&quot;</span><span class="p">:</span> <span class="s2">&quot;double&quot;</span><span class="p">},</span>
+<span class="gp">... </span>            <span class="p">{</span><span class="s2">&quot;dropoff_longitude&quot;</span><span class="p">:</span> <span class="s2">&quot;double&quot;</span><span class="p">},</span>
+<span class="gp">... </span>            <span class="p">{</span><span class="s2">&quot;dropoff_latitude&quot;</span><span class="p">:</span> <span class="s2">&quot;double&quot;</span><span class="p">},</span>
+<span class="gp">... </span>            <span class="p">{</span><span class="s2">&quot;fare_amount&quot;</span><span class="p">:</span> <span class="s2">&quot;double&quot;</span><span class="p">},</span>
+<span class="gp">... </span>            <span class="p">{</span><span class="s2">&quot;tip_amount&quot;</span><span class="p">:</span> <span class="s2">&quot;double&quot;</span><span class="p">},</span>
+<span class="gp">... </span>            <span class="p">{</span><span class="s2">&quot;total_amount&quot;</span><span class="p">:</span> <span class="s2">&quot;double&quot;</span><span class="p">},</span>
+<span class="gp">... </span>            <span class="p">{</span><span class="s2">&quot;buildingid_pickup&quot;</span><span class="p">:</span> <span class="s2">&quot;long&quot;</span><span class="p">},</span>
+<span class="gp">... </span>            <span class="p">{</span><span class="s2">&quot;buildingid_dropoff&quot;</span><span class="p">:</span> <span class="s2">&quot;long&quot;</span><span class="p">},</span>
+<span class="gp">... </span>            <span class="p">{</span><span class="s2">&quot;buildingtext_pickup&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">},</span>
+<span class="gp">... </span>            <span class="p">{</span><span class="s2">&quot;buildingtext_dropoff&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">}</span>
+<span class="gp">... </span>        <span class="p">]</span>
+<span class="gp">... </span>    <span class="p">}</span>
+<span class="gp">... </span><span class="p">]</span>
+<span class="gp">... </span><span class="p">}</span>
 <span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s2">&quot;http://127.0.0.1:8080/loadfile&quot;</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">},</span> <span class="n">data</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">payload</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
@@ -378,8 +378,8 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="id7">
-<h3>查询表信息<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id8">
+<h3>查询表信息<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h3>
 <p>之前的操作在后台建了一张名为 <code class="docutils literal notranslate"><span class="pre">raw_data</span></code> 的表，使用 <code class="docutils literal notranslate"><span class="pre">/table/schema</span></code> 接口查询该表中各字段的名称以及对应的数据类型：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">requests</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s2">&quot;http://127.0.0.1:8080/table/schema?scope=nyc_taxi&amp;table=raw_data&quot;</span><span class="p">)</span>
@@ -455,25 +455,24 @@
 <span class="go">    &quot;status&quot;: &quot;success&quot;,</span>
 <span class="go">    &quot;table&quot;: &quot;raw_data&quot;</span>
 <span class="go">}</span>
-<span class="gp">&gt;&gt;&gt; </span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="sql">
 <h3>SQL查询<a class="headerlink" href="#sql" title="永久链接至标题">¶</a></h3>
 <p>使用 <code class="docutils literal notranslate"><span class="pre">/query</span></code> 接口可完成数据表的创建、查询和删除操作。</p>
-<div class="section" id="id8">
-<h4>创建表<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h4>
+<div class="section" id="id9">
+<h4>创建表<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h4>
 <p>将 <code class="docutils literal notranslate"><span class="pre">raw_data</span></code> 中字符串格式的时间信息转换为 <code class="docutils literal notranslate"><span class="pre">timestamp</span></code> 类型的数据并移除与后续操作无关的字段，保存为一张新的表 <code class="docutils literal notranslate"><span class="pre">nyc_taxi</span></code>。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">requests</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">json</span>
 <span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
-<span class="go">    &quot;scope&quot;: &quot;nyc_taxi&quot;,</span>
-<span class="go">    &quot;session&quot;: &quot;spark&quot;,</span>
-<span class="go">    &quot;sql&quot;: &quot;create table nyc_taxi as (select VendorID, to_timestamp(tpep_pickup_datetime,&#39;yyyy-MM-dd HH:mm:ss XXXXX&#39;) as tpep_pickup_datetime, to_timestamp(tpep_dropoff_datetime,&#39;yyyy-MM-dd HH:mm:ss XXXXX&#39;) as tpep_dropoff_datetime, passenger_count, trip_distance, pickup_longitude, pickup_latitude, dropoff_longitude, dropoff_latitude, fare_amount, tip_amount, total_amount, buildingid_pickup, buildingid_dropoff, buildingtext_pickup, buildingtext_dropoff from raw_data where (pickup_longitude between -180 and 180) and (pickup_latitude between -90 and 90) and (dropoff_longitude between -180 and 180) and  (dropoff_latitude between -90 and 90))&quot;,</span>
-<span class="go">    &quot;collect_result&quot;: &quot;0&quot;</span>
-<span class="go">}</span>
+<span class="gp">... </span><span class="s2">&quot;scope&quot;</span><span class="p">:</span> <span class="s2">&quot;nyc_taxi&quot;</span><span class="p">,</span>
+<span class="gp">... </span><span class="s2">&quot;session&quot;</span><span class="p">:</span> <span class="s2">&quot;spark&quot;</span><span class="p">,</span>
+<span class="gp">... </span><span class="s2">&quot;sql&quot;</span><span class="p">:</span> <span class="s2">&quot;create table nyc_taxi as (select VendorID, to_timestamp(tpep_pickup_datetime,&#39;yyyy-MM-dd HH:mm:ss XXXXX&#39;) as tpep_pickup_datetime, to_timestamp(tpep_dropoff_datetime,&#39;yyyy-MM-dd HH:mm:ss XXXXX&#39;) as tpep_dropoff_datetime, passenger_count, trip_distance, pickup_longitude, pickup_latitude, dropoff_longitude, dropoff_latitude, fare_amount, tip_amount, total_amount, buildingid_pickup, buildingid_dropoff, buildingtext_pickup, buildingtext_dropoff from raw_data where (pickup_longitude between -180 and 180) and (pickup_latitude between -90 and 90) and (dropoff_longitude between -180 and 180) and  (dropoff_latitude between -90 and 90))&quot;</span><span class="p">,</span>
+<span class="gp">... </span><span class="s2">&quot;collect_result&quot;</span><span class="p">:</span> <span class="s2">&quot;0&quot;</span>
+<span class="gp">... </span><span class="p">}</span>
 <span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s2">&quot;http://127.0.0.1:8080/query&quot;</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">},</span> <span class="n">data</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">payload</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
@@ -482,12 +481,11 @@
 <span class="go">    &#39;message&#39;: &#39;execute sql successfully!&#39;,</span>
 <span class="go">    &#39;status&#39;: &#39;success&#39;</span>
 <span class="go">}</span>
-<span class="gp">&gt;&gt;&gt; </span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="id9">
-<h4>查询数据<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h4>
+<div class="section" id="id10">
+<h4>查询数据<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h4>
 <p>查询 <code class="docutils literal notranslate"><span class="pre">nyc_taxi</span></code> 表的行数：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">requests</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">json</span>
@@ -505,12 +503,11 @@
 <span class="go">    ],</span>
 <span class="go">    &#39;status&#39;: &#39;success&#39;</span>
 <span class="go">}</span>
-<span class="gp">&gt;&gt;&gt; </span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="id10">
-<h4>删除表<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h4>
+<div class="section" id="id11">
+<h4>删除表<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h4>
 <p>删除原始表 <code class="docutils literal notranslate"><span class="pre">raw_data</span></code>：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">requests</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">json</span>
@@ -525,201 +522,191 @@
 <span class="go">    &#39;message&#39;: &#39;execute sql successfully!&#39;,</span>
 <span class="go">    &#39;status&#39;: &#39;success&#39;</span>
 <span class="go">}</span>
-<span class="gp">&gt;&gt;&gt; </span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="section" id="id11">
-<h3>绘制点图<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id12">
+<h3>绘制点图<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h3>
 <p>使用 <code class="docutils literal notranslate"><span class="pre">/pointmap</span></code> 接口根据乘客上车地点绘制点图。点图中具体参数说明请参见 <a class="reference external" href="./api/function/pointmap.html">点图 RESTful API 说明</a>。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">requests</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">json</span>
-<span class="gp">&gt;&gt;&gt; </span>
+<span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
-<span class="go">    &quot;scope&quot;: &quot;nyc_taxi&quot;,</span>
-<span class="go">    &quot;sql&quot;: &quot;select ST_Point(pickup_longitude, pickup_latitude) as point from nyc_taxi where ST_Within(ST_Point(pickup_longitude, pickup_latitude), ST_GeomFromText(&#39;POLYGON ((-73.998427 40.730309, -73.954348 40.730309, -73.954348 40.780816 ,-73.998427 40.780816, -73.998427 40.730309))&#39;))&quot;,</span>
-<span class="go">    &quot;params&quot;: {</span>
-<span class="go">         &quot;width&quot;: 1024,</span>
-<span class="go">         &quot;height&quot;: 896,</span>
-<span class="go">        &quot;bounding_box&quot;: [-73.998427, 40.730309, -73.954348, 40.780816],</span>
-<span class="go">        &quot;coordinate_system&quot;: &quot;EPSG:4326&quot;,</span>
-<span class="go">        &quot;point_color&quot;: &quot;#2DEF4A&quot;,</span>
-<span class="go">        &quot;point_size&quot;: 3,</span>
-<span class="go">        &quot;opacity&quot;: 0.5</span>
-<span class="go">    }</span>
-<span class="go">}</span>
+<span class="gp">... </span><span class="s2">&quot;scope&quot;</span><span class="p">:</span> <span class="s2">&quot;nyc_taxi&quot;</span><span class="p">,</span>
+<span class="gp">... </span><span class="s2">&quot;sql&quot;</span><span class="p">:</span> <span class="s2">&quot;select ST_Point(pickup_longitude, pickup_latitude) as point from nyc_taxi where ST_Within(ST_Point(pickup_longitude, pickup_latitude), ST_GeomFromText(&#39;POLYGON ((-73.998427 40.730309, -73.954348 40.730309, -73.954348 40.780816 ,-73.998427 40.780816, -73.998427 40.730309))&#39;))&quot;</span><span class="p">,</span>
+<span class="gp">... </span><span class="s2">&quot;params&quot;</span><span class="p">:</span> <span class="p">{</span>
+<span class="gp">... </span>     <span class="s2">&quot;width&quot;</span><span class="p">:</span> <span class="mi">1024</span><span class="p">,</span>
+<span class="gp">... </span>     <span class="s2">&quot;height&quot;</span><span class="p">:</span> <span class="mi">896</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;bounding_box&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">73.998427</span><span class="p">,</span> <span class="mf">40.730309</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.954348</span><span class="p">,</span> <span class="mf">40.780816</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="s2">&quot;coordinate_system&quot;</span><span class="p">:</span> <span class="s2">&quot;EPSG:4326&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;point_color&quot;</span><span class="p">:</span> <span class="s2">&quot;#2DEF4A&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;point_size&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;opacity&quot;</span><span class="p">:</span> <span class="mf">0.5</span>
+<span class="gp">... </span><span class="p">}</span>
+<span class="gp">... </span><span class="p">}</span>
 <span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s2">&quot;http://127.0.0.1:8080/pointmap&quot;</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">},</span> <span class="n">data</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">payload</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># 保存为 PNG 图片</span>
-<span class="gp">... </span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># 保存为 PNG 图片 </span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">base64</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;/tmp/pointmap.png&quot;</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">base64</span><span class="o">.</span><span class="n">b64decode</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s1">&#39;result&#39;</span><span class="p">]))</span>
-<span class="gp">... </span>
-<span class="gp">&gt;&gt;&gt; </span>
 </pre></div>
 </div>
 <p>点图样例：</p>
-<p><img alt="点图pointmap" src="../_images/pointmap.png" /></p>
+<p><img alt="点图" src="../_images/pointmap.png" /></p>
 </div>
-<div class="section" id="id12">
-<h3>带权点图<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id13">
+<h3>带权点图<a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h3>
 <p>使用 <code class="docutils literal notranslate"><span class="pre">/weighted_pointmap</span></code> 接口根据乘客上车地点绘制带权点图，使用总费用作为点的权重，总费用越高，权重越大，点的颜色越深。权重图中具体参数说明请参见 <a class="reference external" href="./api/function/weighted_pointmap.html">带权点图 RESTful API 说明</a>。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">requests</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">json</span>
 <span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
-<span class="go">    &quot;scope&quot;: &quot;nyc_taxi&quot;,</span>
-<span class="go">    &quot;session&quot;: &quot;spark&quot;,</span>
-<span class="go">    &quot;sql&quot;: &quot;SELECT ST_Point (pickup_longitude, pickup_latitude) AS point, total_amount AS color FROM nyc_taxi&quot;,</span>
-<span class="go">    &quot;type&quot;: &quot;weighted&quot;,</span>
-<span class="go">    &quot;params&quot;: {</span>
-<span class="go">        &quot;width&quot;: 512,</span>
-<span class="go">        &quot;height&quot;: 448,</span>
-<span class="go">        &quot;bounding_box&quot;: [</span>
-<span class="go">            -73.9616334766551,</span>
-<span class="go">            40.704739019597156,</span>
-<span class="go">            -73.94232850242967,</span>
-<span class="go">            40.728133570887906</span>
-<span class="go">        ],</span>
-<span class="go">        &quot;opacity&quot;: 0.8,</span>
-<span class="go">        &quot;coordinate_system&quot;: &quot;EPSG:4326&quot;,</span>
-<span class="go">        &quot;size_bound&quot;: [</span>
-<span class="go">            10</span>
-<span class="go">        ],</span>
-<span class="go">        &quot;color_bound&quot;: [</span>
-<span class="go">            2.5,</span>
-<span class="go">            20</span>
-<span class="go">        ],</span>
-<span class="go">        &quot;color_gradient&quot;: [</span>
-<span class="go">            &quot;#115f9a&quot;,</span>
-<span class="go">            &quot;#d0f400&quot;</span>
-<span class="go">        ]</span>
-<span class="go">    }</span>
-<span class="go">}</span>
+<span class="gp">... </span><span class="s2">&quot;scope&quot;</span><span class="p">:</span> <span class="s2">&quot;nyc_taxi&quot;</span><span class="p">,</span>
+<span class="gp">... </span><span class="s2">&quot;session&quot;</span><span class="p">:</span> <span class="s2">&quot;spark&quot;</span><span class="p">,</span>
+<span class="gp">... </span><span class="s2">&quot;sql&quot;</span><span class="p">:</span> <span class="s2">&quot;SELECT ST_Point (pickup_longitude, pickup_latitude) AS point, total_amount AS color FROM nyc_taxi&quot;</span><span class="p">,</span>
+<span class="gp">... </span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;weighted&quot;</span><span class="p">,</span>
+<span class="gp">... </span><span class="s2">&quot;params&quot;</span><span class="p">:</span> <span class="p">{</span>
+<span class="gp">... </span>    <span class="s2">&quot;width&quot;</span><span class="p">:</span> <span class="mi">512</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;height&quot;</span><span class="p">:</span> <span class="mi">448</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;bounding_box&quot;</span><span class="p">:</span> <span class="p">[</span>
+<span class="gp">... </span>        <span class="o">-</span><span class="mf">73.9616334766551</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="mf">40.704739019597156</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="o">-</span><span class="mf">73.94232850242967</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="mf">40.728133570887906</span>
+<span class="gp">... </span>    <span class="p">],</span>
+<span class="gp">... </span>    <span class="s2">&quot;opacity&quot;</span><span class="p">:</span> <span class="mf">0.8</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;coordinate_system&quot;</span><span class="p">:</span> <span class="s2">&quot;EPSG:4326&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;size_bound&quot;</span><span class="p">:</span> <span class="p">[</span>
+<span class="gp">... </span>        <span class="mi">10</span>
+<span class="gp">... </span>    <span class="p">],</span>
+<span class="gp">... </span>    <span class="s2">&quot;color_bound&quot;</span><span class="p">:</span> <span class="p">[</span>
+<span class="gp">... </span>        <span class="mf">2.5</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="mi">20</span>
+<span class="gp">... </span>    <span class="p">],</span>
+<span class="gp">... </span>    <span class="s2">&quot;color_gradient&quot;</span><span class="p">:</span> <span class="p">[</span>
+<span class="gp">... </span>        <span class="s2">&quot;#115f9a&quot;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">&quot;#d0f400&quot;</span>
+<span class="gp">... </span>    <span class="p">]</span>
+<span class="gp">... </span><span class="p">}</span>
+<span class="gp">... </span><span class="p">}</span>
 <span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s2">&quot;http://127.0.0.1:8080/weighted_pointmap&quot;</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">},</span> <span class="n">data</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">payload</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">base64</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;/tmp/weighted_pointmap.png&quot;</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">base64</span><span class="o">.</span><span class="n">b64decode</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s1">&#39;result&#39;</span><span class="p">]))</span>
-<span class="gp">... </span>
-<span class="gp">&gt;&gt;&gt; </span>
 </pre></div>
 </div>
 <p>带权点图样例：</p>
-<p><img alt="带权点图weighted_pointmap" src="../_images/weighted_pointmap.png" />。</p>
+<p><img alt="带权点图" src="../_images/weighted_pointmap.png" />。</p>
 </div>
-<div class="section" id="id13">
-<h3>热力图<a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id14">
+<h3>热力图<a class="headerlink" href="#id14" title="永久链接至标题">¶</a></h3>
 <p>使用 <code class="docutils literal notranslate"><span class="pre">/heatmap</span></code> 接口根据乘客下车地点以及行程费用绘制热力图，费用高的区域为红色，费用低的区域为绿色。热力图中具体参数说明请参见 <a class="reference external" href="./api/function/heatmap.html">热力图 RESTful API 说明</a>。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">requests</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">json</span>
 <span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
-<span class="go">    &quot;scope&quot;: &quot;nyc_taxi&quot;,</span>
-<span class="go">    &quot;session&quot;: &quot;spark&quot;,</span>
-<span class="go">    &quot;sql&quot;: &quot;SELECT ST_Point (dropoff_longitude, dropoff_latitude) AS point, avg(fare_amount) AS w FROM nyc_taxi GROUP BY point&quot;,</span>
-<span class="go">    &quot;params&quot;: {</span>
-<span class="go">        &quot;width&quot;: 512,</span>
-<span class="go">        &quot;height&quot;: 448,</span>
-<span class="go">        &quot;bounding_box&quot;: [</span>
-<span class="go">            -74.01556543545699,</span>
-<span class="go">            40.69354738164881,</span>
-<span class="go">            -73.9434424136598,</span>
-<span class="go">            40.780921656427836</span>
-<span class="go">        ],</span>
-<span class="go">        &quot;coordinate_system&quot;: &quot;EPSG:4326&quot;,</span>
-<span class="go">        &quot;map_zoom_level&quot;: 10,</span>
-<span class="go">        &quot;aggregation_type&quot;: &quot;sum&quot;</span>
-<span class="go">    }</span>
-<span class="go">}</span>
+<span class="gp">... </span><span class="s2">&quot;scope&quot;</span><span class="p">:</span> <span class="s2">&quot;nyc_taxi&quot;</span><span class="p">,</span>
+<span class="gp">... </span><span class="s2">&quot;session&quot;</span><span class="p">:</span> <span class="s2">&quot;spark&quot;</span><span class="p">,</span>
+<span class="gp">... </span><span class="s2">&quot;sql&quot;</span><span class="p">:</span> <span class="s2">&quot;SELECT ST_Point (dropoff_longitude, dropoff_latitude) AS point, avg(fare_amount) AS w FROM nyc_taxi GROUP BY point&quot;</span><span class="p">,</span>
+<span class="gp">... </span><span class="s2">&quot;params&quot;</span><span class="p">:</span> <span class="p">{</span>
+<span class="gp">... </span>    <span class="s2">&quot;width&quot;</span><span class="p">:</span> <span class="mi">512</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;height&quot;</span><span class="p">:</span> <span class="mi">448</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;bounding_box&quot;</span><span class="p">:</span> <span class="p">[</span>
+<span class="gp">... </span>        <span class="o">-</span><span class="mf">74.01556543545699</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="mf">40.69354738164881</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="o">-</span><span class="mf">73.9434424136598</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="mf">40.780921656427836</span>
+<span class="gp">... </span>    <span class="p">],</span>
+<span class="gp">... </span>    <span class="s2">&quot;coordinate_system&quot;</span><span class="p">:</span> <span class="s2">&quot;EPSG:4326&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;map_zoom_level&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;aggregation_type&quot;</span><span class="p">:</span> <span class="s2">&quot;sum&quot;</span>
+<span class="gp">... </span><span class="p">}</span>
+<span class="gp">... </span><span class="p">}</span>
 <span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s2">&quot;http://127.0.0.1:8080/heatmap&quot;</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">},</span> <span class="n">data</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">payload</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">base64</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;/tmp/heatmap.png&quot;</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">base64</span><span class="o">.</span><span class="n">b64decode</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s1">&#39;result&#39;</span><span class="p">]))</span>
-<span class="gp">... </span>
-<span class="gp">&gt;&gt;&gt; </span>
 </pre></div>
 </div>
 <p>热力图样例：</p>
-<p><img alt="热力图heatmap" src="../_images/heatmap.png" /></p>
+<p><img alt="热力图" src="../_images/heatmap.png" /></p>
 </div>
-<div class="section" id="id14">
-<h3>轮廓图<a class="headerlink" href="#id14" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id15">
+<h3>轮廓图<a class="headerlink" href="#id15" title="永久链接至标题">¶</a></h3>
 <p>使用 <code class="docutils literal notranslate"><span class="pre">/choroplethmap</span></code> 接口，根据下车地点所在建筑物、小费金额绘制轮廓图，小费金额高为黄色，小费金额低为蓝色。轮廓图中具体参数说明请参见 <a class="reference external" href="./api/function/choroplethmap.html">轮廓图 RESTful API 说明</a>。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">requests</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">json</span>
 <span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
-<span class="go">    &quot;scope&quot;: &quot;nyc_taxi&quot;,</span>
-<span class="go">    &quot;session&quot;: &quot;spark&quot;,</span>
-<span class="go">    &quot;sql&quot;: &quot;SELECT ST_GeomFromText(buildingtext_dropoff) AS wkt, avg(tip_amount) AS w FROM nyc_taxi WHERE ((buildingtext_dropoff!=&#39;&#39;)) GROUP BY wkt&quot;,</span>
-<span class="go">    &quot;params&quot;: {</span>
-<span class="go">        &quot;width&quot;: 512,</span>
-<span class="go">        &quot;height&quot;: 448,</span>
-<span class="go">        &quot;bounding_box&quot;: [</span>
-<span class="go">            -74.00235068563725,</span>
-<span class="go">            40.735104211264684,</span>
-<span class="go">            -73.96739189659048,</span>
-<span class="go">            40.77744332808598</span>
-<span class="go">        ],</span>
-<span class="go">        &quot;coordinate_system&quot;: &quot;EPSG:4326&quot;,</span>
-<span class="go">        &quot;color_gradient&quot;: [</span>
-<span class="go">            &quot;#115f9a&quot;,</span>
-<span class="go">            &quot;#d0f400&quot;</span>
-<span class="go">        ],</span>
-<span class="go">        &quot;color_bound&quot;: [</span>
-<span class="go">            0,</span>
-<span class="go">            5</span>
-<span class="go">        ],</span>
-<span class="go">        &quot;opacity&quot;: 1,</span>
-<span class="go">        &quot;aggregation_type&quot;: &quot;mean&quot;</span>
-<span class="go">    }</span>
-<span class="go">}</span>
+<span class="gp">... </span><span class="s2">&quot;scope&quot;</span><span class="p">:</span> <span class="s2">&quot;nyc_taxi&quot;</span><span class="p">,</span>
+<span class="gp">... </span><span class="s2">&quot;session&quot;</span><span class="p">:</span> <span class="s2">&quot;spark&quot;</span><span class="p">,</span>
+<span class="gp">... </span><span class="s2">&quot;sql&quot;</span><span class="p">:</span> <span class="s2">&quot;SELECT ST_GeomFromText(buildingtext_dropoff) AS wkt, avg(tip_amount) AS w FROM nyc_taxi WHERE ((buildingtext_dropoff!=&#39;&#39;)) GROUP BY wkt&quot;</span><span class="p">,</span>
+<span class="gp">... </span><span class="s2">&quot;params&quot;</span><span class="p">:</span> <span class="p">{</span>
+<span class="gp">... </span>    <span class="s2">&quot;width&quot;</span><span class="p">:</span> <span class="mi">512</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;height&quot;</span><span class="p">:</span> <span class="mi">448</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;bounding_box&quot;</span><span class="p">:</span> <span class="p">[</span>
+<span class="gp">... </span>        <span class="o">-</span><span class="mf">74.00235068563725</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="mf">40.735104211264684</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="o">-</span><span class="mf">73.96739189659048</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="mf">40.77744332808598</span>
+<span class="gp">... </span>    <span class="p">],</span>
+<span class="gp">... </span>    <span class="s2">&quot;coordinate_system&quot;</span><span class="p">:</span> <span class="s2">&quot;EPSG:4326&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;color_gradient&quot;</span><span class="p">:</span> <span class="p">[</span>
+<span class="gp">... </span>        <span class="s2">&quot;#115f9a&quot;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">&quot;#d0f400&quot;</span>
+<span class="gp">... </span>    <span class="p">],</span>
+<span class="gp">... </span>    <span class="s2">&quot;color_bound&quot;</span><span class="p">:</span> <span class="p">[</span>
+<span class="gp">... </span>        <span class="mi">0</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="mi">5</span>
+<span class="gp">... </span>    <span class="p">],</span>
+<span class="gp">... </span>    <span class="s2">&quot;opacity&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;aggregation_type&quot;</span><span class="p">:</span> <span class="s2">&quot;mean&quot;</span>
+<span class="gp">... </span><span class="p">}</span>
+<span class="gp">... </span><span class="p">}</span>
 <span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s2">&quot;http://127.0.0.1:8080/choroplethmap&quot;</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">},</span> <span class="n">data</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">payload</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">base64</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;/tmp/choroplethmap.png&quot;</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">base64</span><span class="o">.</span><span class="n">b64decode</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s1">&#39;result&#39;</span><span class="p">]))</span>
-<span class="gp">... </span>
-<span class="gp">&gt;&gt;&gt; </span>
 </pre></div>
 </div>
 <p>轮廓图样例：</p>
-<p><img alt="轮廓图choroplethmap.png" src="../_images/choroplethmap.png" /></p>
+<p><img alt="轮廓图" src="../_images/choroplethmap.png" /></p>
 </div>
-<div class="section" id="id15">
-<h3>图标图<a class="headerlink" href="#id15" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id16">
+<h3>图标图<a class="headerlink" href="#id16" title="永久链接至标题">¶</a></h3>
 <p>使用 <code class="docutils literal notranslate"><span class="pre">/icon_viz</span></code> 接口根据乘客上车地点绘制图标图。图标图中具体参数说明请参见 <a class="reference external" href="./api/function/icon_viz.html">图标图 RESTful API 说明</a>。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">requests</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">json</span>
 <span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># 下面 icon_path 的路径填写待显示图标所在的绝对路径，</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># 本例中的图标文件可通过如下命令获取：</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># wget https://github.com/zilliztech/arctern-docs/raw/master/img/icon/icon-viz.png</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># wget https://github.com/zilliztech/arctern-docs/raw/branch-0.1.x/img/icon/icon-viz.png</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">icon_path</span> <span class="o">=</span> <span class="s2">&quot;/path/to/icon_example.png&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
-<span class="go">    &quot;scope&quot;: &quot;nyc_taxi&quot;,</span>
-<span class="go">    &quot;sql&quot;: &quot;select ST_Point(pickup_longitude, pickup_latitude) as point from nyc_taxi where ST_Within(ST_Point(pickup_longitude, pickup_latitude), ST_GeomFromText(&#39;POLYGON ((-73.9616334766551 40.704739019597156, -73.94232850242967 40.704739019597156, -73.94232850242967 40.728133570887906 ,-73.9616334766551 40.728133570887906, -73.9616334766551 40.704739019597156))&#39;)) limit 25&quot;,</span>
-<span class="go">    &quot;params&quot;: {</span>
-<span class="go">        &quot;width&quot;: 512,</span>
-<span class="go">        &quot;height&quot;: 448,</span>
-<span class="go">        &quot;bounding_box&quot;: [</span>
-<span class="go">            -73.9616334766551,</span>
-<span class="go">            40.704739019597156,</span>
-<span class="go">            -73.94232850242967,</span>
-<span class="go">            40.728133570887906</span>
-<span class="go">        ],</span>
-<span class="go">        &quot;coordinate_system&quot;: &quot;EPSG:4326&quot;,</span>
-<span class="go">        &quot;icon_path&quot;: icon_path</span>
-<span class="go">    }</span>
-<span class="go">}</span>
+<span class="gp">... </span><span class="s2">&quot;scope&quot;</span><span class="p">:</span> <span class="s2">&quot;nyc_taxi&quot;</span><span class="p">,</span>
+<span class="gp">... </span><span class="s2">&quot;sql&quot;</span><span class="p">:</span> <span class="s2">&quot;select ST_Point(pickup_longitude, pickup_latitude) as point from nyc_taxi where ST_Within(ST_Point(pickup_longitude, pickup_latitude), ST_GeomFromText(&#39;POLYGON ((-73.9616334766551 40.704739019597156, -73.94232850242967 40.704739019597156, -73.94232850242967 40.728133570887906 ,-73.9616334766551 40.728133570887906, -73.9616334766551 40.704739019597156))&#39;)) limit 25&quot;</span><span class="p">,</span>
+<span class="gp">... </span><span class="s2">&quot;params&quot;</span><span class="p">:</span> <span class="p">{</span>
+<span class="gp">... </span>    <span class="s2">&quot;width&quot;</span><span class="p">:</span> <span class="mi">512</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;height&quot;</span><span class="p">:</span> <span class="mi">448</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;bounding_box&quot;</span><span class="p">:</span> <span class="p">[</span>
+<span class="gp">... </span>        <span class="o">-</span><span class="mf">73.9616334766551</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="mf">40.704739019597156</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="o">-</span><span class="mf">73.94232850242967</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="mf">40.728133570887906</span>
+<span class="gp">... </span>    <span class="p">],</span>
+<span class="gp">... </span>    <span class="s2">&quot;coordinate_system&quot;</span><span class="p">:</span> <span class="s2">&quot;EPSG:4326&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;icon_path&quot;</span><span class="p">:</span> <span class="n">icon_path</span>
+<span class="gp">... </span><span class="p">}</span>
+<span class="gp">... </span><span class="p">}</span>
 <span class="gp">&gt;&gt;&gt; </span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s2">&quot;http://127.0.0.1:8080/icon_viz&quot;</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">},</span> <span class="n">data</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">payload</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span>
@@ -727,42 +714,40 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">base64</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;/tmp/icon_viz.png&quot;</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">base64</span><span class="o">.</span><span class="n">b64decode</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s1">&#39;result&#39;</span><span class="p">]))</span>
-<span class="gp">... </span>
-<span class="go">&gt;&gt;&gt;</span>
 </pre></div>
 </div>
 <p>图标图样例：</p>
-<p><img alt="图标图icon_viz" src="../_images/icon_viz.png" /></p>
+<p><img alt="图标图" src="../_images/icon_viz.png" /></p>
 </div>
-<div class="section" id="id16">
-<h3>渔网图<a class="headerlink" href="#id16" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id17">
+<h3>渔网图<a class="headerlink" href="#id17" title="永久链接至标题">¶</a></h3>
 <p>使用 <code class="docutils literal notranslate"><span class="pre">/fishnetmap</span></code> 接口根据乘客上车地点绘制渔网图，使用总费用作为渔网网格的权重，总费用越高，权重越大，渔网网格的颜色越深。渔网图中具体参数说明请参见 <a class="reference external" href="./api/function/fishnetmap.html">渔网图 RESTful API 说明</a>。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">requests</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">json</span>
 <span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
-<span class="go">    &quot;scope&quot;: &quot;nyc_taxi&quot;,</span>
-<span class="go">    &quot;sql&quot;: &quot;SELECT ST_Point (pickup_longitude, pickup_latitude) AS point, total_amount AS color FROM nyc_taxi where ST_Within(ST_Point(pickup_longitude, pickup_latitude), ST_GeomFromText(&#39;POLYGON ((-73.9616334766551 40.704739019597156, -73.94232850242967 40.704739019597156, -73.94232850242967 40.728133570887906 ,-73.9616334766551 40.728133570887906, -73.9616334766551 40.704739019597156))&#39;))&quot;,</span>
-<span class="go">    &quot;params&quot;: {</span>
-<span class="go">        &quot;width&quot;: 512,</span>
-<span class="go">        &quot;height&quot;: 448,</span>
-<span class="go">        &quot;bounding_box&quot;: [</span>
-<span class="go">            -73.9616334766551,</span>
-<span class="go">            40.704739019597156,</span>
-<span class="go">            -73.94232850242967,</span>
-<span class="go">            40.728133570887906</span>
-<span class="go">        ],</span>
-<span class="go">        &quot;opacity&quot;: 1,</span>
-<span class="go">        &quot;coordinate_system&quot;: &quot;EPSG:4326&quot;,</span>
-<span class="go">        &quot;cell_size&quot;: 4,</span>
-<span class="go">        &quot;cell_spacing&quot;: 1,</span>
-<span class="go">        &quot;color_gradient&quot;: [</span>
-<span class="go">            &quot;#115f9a&quot;,</span>
-<span class="go">            &quot;#d0f400&quot;</span>
-<span class="go">        ],</span>
-<span class="go">        &quot;aggregation_type&quot;: &quot;sum&quot;</span>
-<span class="go">    }</span>
-<span class="go">}</span>
+<span class="gp">... </span><span class="s2">&quot;scope&quot;</span><span class="p">:</span> <span class="s2">&quot;nyc_taxi&quot;</span><span class="p">,</span>
+<span class="gp">... </span><span class="s2">&quot;sql&quot;</span><span class="p">:</span> <span class="s2">&quot;SELECT ST_Point (pickup_longitude, pickup_latitude) AS point, total_amount AS color FROM nyc_taxi where ST_Within(ST_Point(pickup_longitude, pickup_latitude), ST_GeomFromText(&#39;POLYGON ((-73.9616334766551 40.704739019597156, -73.94232850242967 40.704739019597156, -73.94232850242967 40.728133570887906 ,-73.9616334766551 40.728133570887906, -73.9616334766551 40.704739019597156))&#39;))&quot;</span><span class="p">,</span>
+<span class="gp">... </span><span class="s2">&quot;params&quot;</span><span class="p">:</span> <span class="p">{</span>
+<span class="gp">... </span>    <span class="s2">&quot;width&quot;</span><span class="p">:</span> <span class="mi">512</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;height&quot;</span><span class="p">:</span> <span class="mi">448</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;bounding_box&quot;</span><span class="p">:</span> <span class="p">[</span>
+<span class="gp">... </span>        <span class="o">-</span><span class="mf">73.9616334766551</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="mf">40.704739019597156</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="o">-</span><span class="mf">73.94232850242967</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="mf">40.728133570887906</span>
+<span class="gp">... </span>    <span class="p">],</span>
+<span class="gp">... </span>    <span class="s2">&quot;opacity&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;coordinate_system&quot;</span><span class="p">:</span> <span class="s2">&quot;EPSG:4326&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;cell_size&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;cell_spacing&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;color_gradient&quot;</span><span class="p">:</span> <span class="p">[</span>
+<span class="gp">... </span>        <span class="s2">&quot;#115f9a&quot;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">&quot;#d0f400&quot;</span>
+<span class="gp">... </span>    <span class="p">],</span>
+<span class="gp">... </span>    <span class="s2">&quot;aggregation_type&quot;</span><span class="p">:</span> <span class="s2">&quot;sum&quot;</span>
+<span class="gp">... </span><span class="p">}</span>
+<span class="gp">... </span><span class="p">}</span>
 <span class="gp">&gt;&gt;&gt; </span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s2">&quot;http://127.0.0.1:8080/fishnetmap&quot;</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">},</span> <span class="n">data</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">payload</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span>
@@ -770,14 +755,13 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">base64</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;/tmp/fishnetmap.png&quot;</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">base64</span><span class="o">.</span><span class="n">b64decode</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s1">&#39;result&#39;</span><span class="p">]))</span>
-<span class="gp">... </span>
 </pre></div>
 </div>
 <p>渔网图样例：</p>
 <p><img alt="渔网图" src="../_images/fishnetmap.png" /></p>
 </div>
-<div class="section" id="id17">
-<h3>删除数据表<a class="headerlink" href="#id17" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id18">
+<h3>删除数据表<a class="headerlink" href="#id18" title="永久链接至标题">¶</a></h3>
 <p>通过 <code class="docutils literal notranslate"><span class="pre">query</span></code> 接口创建的数据表如果后续不再被使用，请将其删除。</p>
 <p><font color="#dd0000">注意：</font><code class="docutils literal notranslate"><span class="pre">Arctern</span> <span class="pre">RESTful</span></code> 服务不会主动删除数据表，请务必删除不再使用的数据表释放服务器资源。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">requests</span>
@@ -793,12 +777,11 @@
 <span class="go">    &#39;message&#39;: &#39;execute sql successfully!&#39;,</span>
 <span class="go">    &#39;status&#39;: &#39;success&#39;</span>
 <span class="go">}</span>
-<span class="gp">&gt;&gt;&gt; </span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="id18">
-<h3>删除作用域<a class="headerlink" href="#id18" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id19">
+<h3>删除作用域<a class="headerlink" href="#id19" title="永久链接至标题">¶</a></h3>
 <p>完成操作后需要通过 <code class="docutils literal notranslate"><span class="pre">/scope/&lt;scope_name&gt;</span></code> 接口删除作用域释放服务器资源。</p>
 <p><font color="#dd0000">注意：</font><code class="docutils literal notranslate"><span class="pre">Arctern</span> <span class="pre">RESTful</span></code>服务不会主动释放你申请的作用域，完成操作后请务必删除所申请的所有作用域。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">requests</span>
@@ -812,7 +795,6 @@
 <span class="go">    &#39;message&#39;: &#39;remove scope nyc_taxi successfully!&#39;,</span>
 <span class="go">    &#39;status&#39;: &#39;success&#39;</span>
 <span class="go">}</span>
-<span class="go">&gt;&gt;&gt;</span>
 </pre></div>
 </div>
 </div>
@@ -841,7 +823,7 @@
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 5月 14, 2020.
+        最后更新于 5月 15, 2020.
       </span>
 
     </p>

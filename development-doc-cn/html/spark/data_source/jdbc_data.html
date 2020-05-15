@@ -83,10 +83,10 @@
             
             
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Pandas</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../spark.html">Spark</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Arctern on Pandas</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../spark.html">Arctern on Spark</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../installation_and_deployment/installation_and_deployment.html">安装部署</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../quick_start/quick-start-spark.html">Quick Start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick_start/quick-start-spark.html">快速开始</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="data_import_and_export.html">数据导入导出</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="geometry_data_format.html">Geometry 数据格式</a></li>
 <li class="toctree-l3"><a class="reference internal" href="file_data.html">文件的导入与导出</a></li>
@@ -100,7 +100,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../api/api.html">API</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../restful/restful.html">Restful</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../restful/restful.html">Arctern RESTful Service</a></li>
 </ul>
 
             
@@ -146,7 +146,7 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="../spark.html">Spark</a> &raquo;</li>
+          <li><a href="../spark.html">Arctern on Spark</a> &raquo;</li>
         
           <li><a href="data_import_and_export.html">数据导入导出</a> &raquo;</li>
         
@@ -205,7 +205,7 @@
 </tr>
 </tbody>
 </table><p>使用如下命令测试 postgis 连接：</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>psql <span class="nb">test</span> -h <span class="m">172</span>.17.0.2  -p <span class="m">5432</span> -U arcterner
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ psql <span class="nb">test</span> -h <span class="m">172</span>.17.0.2  -p <span class="m">5432</span> -U arcterner
 </pre></div>
 </div>
 </div>
@@ -213,7 +213,7 @@
 <h2>JDBC 数据导入示例<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
 <p>在提交 Spark 任务时，需要指定 JDBC 驱动。从 <a class="reference external" href="https://jdbc.postgresql.org/download.html">postgres 官网</a>下载其最新的 JDBC 驱动，以下示例中使用的的驱动为 <code class="docutils literal notranslate"><span class="pre">postgresql-42.2.11.jar</span></code>。</p>
 <p>以下命令为 Arctern-Spark 通过 JDBC 从 Postgis 导入数据的示例：</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./bin/spark-submit  --driver-class-path ~/postgresql-42.2.11.jar --jars ~/postgresql-42.2.11.jar ~/query_postgis.py 
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ./bin/spark-submit  --driver-class-path ~/postgresql-42.2.11.jar --jars ~/postgresql-42.2.11.jar ~/query_postgis.py 
 </pre></div>
 </div>
 <p>其中 <code class="docutils literal notranslate"><span class="pre">query_postgis.py</span></code> 具体代码如下：</p>
@@ -230,6 +230,7 @@
 
     <span class="c1"># 注册 Arctern-Spark 提供的函数</span>
     <span class="n">register_funcs</span><span class="p">(</span><span class="n">spark</span><span class="p">)</span>
+    
     <span class="c1"># 数据导入</span>
     <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;jdbc&quot;</span><span class="p">)</span> \
               <span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;url&quot;</span><span class="p">,</span> <span class="s2">&quot;jdbc:postgresql://172.17.0.2:5432/test?user=arcterner&amp;password=arcterner&quot;</span><span class="p">)</span> \
@@ -239,6 +240,7 @@
 
     <span class="c1"># 对数据进行操作并打印结果</span>
     <span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;select ST_IsSimple(ST_GeomFromText(geos)) from simple&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+
     <span class="c1"># 数据导出</span>
     <span class="n">spark</span><span class="o">.</span><span class="n">write</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;jdbc&quot;</span><span class="p">)</span> \
                <span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;url&quot;</span><span class="p">,</span> <span class="s2">&quot;jdbc:postgresql://172.17.0.2:5432/test?user=arcterner&amp;password=arcterner&quot;</span><span class="p">)</span> \
@@ -284,7 +286,7 @@
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 5月 14, 2020.
+        最后更新于 5月 15, 2020.
       </span>
 
     </p>

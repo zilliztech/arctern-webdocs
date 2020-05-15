@@ -37,8 +37,8 @@
   <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="Quick Start" href="restful_quick_start.html" />
-    <link rel="prev" title="Restful" href="restful.html" /> 
+    <link rel="next" title="快速开始" href="restful_quick_start.html" />
+    <link rel="prev" title="Arctern RESTful Service" href="restful.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -83,11 +83,13 @@
             
             
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../python/python.html">Pandas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../spark/spark.html">Spark</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="restful.html">Restful</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../python/python.html">Arctern on Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../spark/spark.html">Arctern on Spark</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="restful.html">Arctern RESTful Service</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Arctern RESTful Server 安装与配置</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id1">安装准备</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#miniconda-python3">安装 Miniconda 和 Python3</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#spark-arctern">在 Spark 中安装 Arctern</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id2">安装依赖库</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#conda">创建 Conda 虚拟环境</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#arctern-spark">安装 Arctern-Spark 包</a></li>
@@ -112,7 +114,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="restful_quick_start.html">Quick Start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restful_quick_start.html">快速开始</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/api.html">API</a></li>
 </ul>
 </li>
@@ -161,7 +163,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="restful.html">Restful</a> &raquo;</li>
+          <li><a href="restful.html">Arctern RESTful Service</a> &raquo;</li>
         
       <li>Arctern RESTful Server 安装与配置</li>
     
@@ -186,58 +188,70 @@
 <h1>Arctern RESTful Server 安装与配置<a class="headerlink" href="#arctern-restful-server" title="永久链接至标题">¶</a></h1>
 <p>Arctern 提供基于 RESTful 接口的 Web 服务。通过配置可将 RESTful Server 与 Arctern-Spark 进行对接，从而以 RESTful API 的形式提供 Arctern-Spark 的时空数据分析与展示能力。</p>
 <p>以下将介绍 Arctern RESTful Server 的安装和配置流程。更多 Arctern RESTful API 信息请查看 RESTful 服务<a class="reference external" href="./api/api.html">接口文档</a>和<a class="reference internal" href="restful_quick_start.html"><span class="doc">使用示例</span></a>。</p>
-<blockquote>
-<div><p>注意：Arctern RESTful Server 仅负责 RESTful 请求的接收和解析，实际操作由 RESTful Server 所连接的 Arctern-Spark 执行。在安装 Arctern RESTful Server 前请确保环境存在已安装好 Arctern-Spark 的后台系统。安装 Arctern-Spark 的方式请参照其<a class="reference external" href="../spark/installation_and_deployment/installation_and_deployment.html">安装文档</a>.</p>
-</div></blockquote>
 <div class="section" id="id1">
 <h2>安装准备<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
-<p>在安装 Arctern RESTful Server 前请预先安装 Miniconda Python3，Miniconda 的安装可参考 <a class="reference external" href="https://docs.conda.io/projects/conda/en/latest/user-guide/install/linux.html">Linux 系统安装 Miniconda</a>。以下内容假设在 Miniconda 安装完成后进行。</p>
+<div class="section" id="miniconda-python3">
+<h3>安装 Miniconda 和 Python3<a class="headerlink" href="#miniconda-python3" title="永久链接至标题">¶</a></h3>
+<p>在安装 Arctern RESTful Server 前请预先安装 Miniconda 和 Python3。Miniconda 的安装可参考 <a class="reference external" href="https://docs.conda.io/projects/conda/en/latest/user-guide/install/linux.html">Linux 系统安装 Miniconda</a>。</p>
+</div>
+<div class="section" id="spark-arctern">
+<h3>在 Spark 中安装 Arctern<a class="headerlink" href="#spark-arctern" title="永久链接至标题">¶</a></h3>
+<p>Arctern RESTful Server 仅负责 RESTful 请求的接收和解析，实际操作由 RESTful Server 所连接的 Arctern-Spark 执行。在安装 Arctern RESTful Server 前，你需要通过以下任意一种方式安装 Arctern-Spark 后台系统：</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../spark/installation_and_deployment/install_arctern_on_spark_cn.html"><span class="doc">在线安装</span></a></p></li>
+<li><p><a class="reference internal" href="../spark/installation_and_deployment/offline_install_arctern_on_spark_cn.html"><span class="doc">离线安装</span></a></p></li>
+<li><p><a class="reference internal" href="../spark/installation_and_deployment/deploy-with-docker-compose-cn.html"><span class="doc">基于 Docker Compose 部署</span></a></p></li>
+</ul>
+</div>
 <div class="section" id="id2">
 <h3>安装依赖库<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h3>
 <p>执行以下命令安装 Arctern RESTful Server 的依赖库：</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt install libgl-dev libosmesa6-dev libglu1-mesa-dev
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo apt install libgl-dev libosmesa6-dev libglu1-mesa-dev
 </pre></div>
 </div>
 <p>安装 Java，建议安装 open-jdk-8：</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt-get install openjdk-8-jdk
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo apt-get install openjdk-8-jdk
 </pre></div>
 </div>
 </div>
 <div class="section" id="conda">
 <h3>创建 Conda 虚拟环境<a class="headerlink" href="#conda" title="永久链接至标题">¶</a></h3>
-<p>执行以下命令为 Arctern RESTful Server 构建 Conda 环境。此处假设环境名称为 <code class="docutils literal notranslate"><span class="pre">arctern_env</span></code>，你可根据需求自行选择合适的环境名称。</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conda create -n arctern_env -c conda-forge <span class="nv">python</span><span class="o">=</span><span class="m">3</span>.7.6
+<p>执行以下命令为 Arctern RESTful Server 构建 Conda 环境。此处假设环境名称为 <code class="docutils literal notranslate"><span class="pre">arctern_server_env</span></code>，你可根据需求自行选择合适的环境名称。</p>
+<blockquote>
+<div><p><strong>注意：</strong> 如果你在同一台计算机上安装 Arctern-Spark 后台系统和 Arctern RESTful Server，请确保二者的环境名称是不同的。例如，Arctern-Spark 后台系统的名称是 <code class="docutils literal notranslate"><span class="pre">arctern_env</span></code>，Arctern RESTful Server 的名称是 <code class="docutils literal notranslate"><span class="pre">arctern_server_env</span></code>。</p>
+</div></blockquote>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ conda create -n arctern_server_env -c conda-forge <span class="nv">python</span><span class="o">=</span><span class="m">3</span>.7.6
 </pre></div>
 </div>
-<p>进入 <code class="docutils literal notranslate"><span class="pre">arctern_env</span></code> 虚拟环境：</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conda activate arctern_env
+<p>进入 <code class="docutils literal notranslate"><span class="pre">arctern_server_env</span></code> 虚拟环境：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ conda activate arctern_server_env
 </pre></div>
 </div>
 <blockquote>
-<div><p>注意，以下步骤需要在 Conda 的 Arctern 虚拟环境下进行。</p>
+<div><p><strong>注意：</strong> 后续工作必须在 Arctern Conda 环境中进行。</p>
 </div></blockquote>
 </div>
 <div class="section" id="arctern-spark">
 <h3>安装 Arctern-Spark 包<a class="headerlink" href="#arctern-spark" title="永久链接至标题">¶</a></h3>
 <p>Arctern RESTful Server 的运行依赖于 Arctern-Spark，执行以下命令在虚拟环境中安装 Arctern-Spark 包:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conda install -y -q -c conda-forge -c arctern arctern-spark
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ conda install -y -q -c conda-forge -c arctern arctern-spark
 </pre></div>
 </div>
 <blockquote>
-<div><p>此处安装 Arctern-Spark 仅用于解决 RESTful Server 的运行时依赖，不能作为执行 RESTful 请求的 Arctern-Spark 后台。</p>
+<div><p><strong>注意：</strong> 此处安装 Arctern-Spark 仅用于解决 RESTful Server 的运行时依赖，不能作为执行 RESTful 请求的 Arctern-Spark 后台。</p>
 </div></blockquote>
 </div>
 <div class="section" id="pyspark">
 <h3>安装 PySpark<a class="headerlink" href="#pyspark" title="永久链接至标题">¶</a></h3>
 <p>下载压缩包并解压：</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>wget https://mirror.bit.edu.cn/apache/spark/spark-3.0.0-preview2/spark-3.0.0-preview2-bin-hadoop2.7.tgz
-tar zxvf spark-3.0.0-preview2-bin-hadoop2.7.tgz
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ wget https://mirror.bit.edu.cn/apache/spark/spark-3.0.0-preview2/spark-3.0.0-preview2-bin-hadoop2.7.tgz
+$ tar zxvf spark-3.0.0-preview2-bin-hadoop2.7.tgz
 </pre></div>
 </div>
 <p>进入解压后产生的 <code class="docutils literal notranslate"><span class="pre">spark-3.0.0-preview2-bin-hadoop2.7</span></code> 目录，执行如下命令安装 PySpark：</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> spark-3.0.0-preview2-bin-hadoop2.7
-<span class="nb">cd</span> python
-python setup.py install
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> spark-3.0.0-preview2-bin-hadoop2.7
+$ <span class="nb">cd</span> python
+$ python setup.py install
 </pre></div>
 </div>
 </div>
@@ -248,20 +262,22 @@ python setup.py install
 <h3>基于源码的安装<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
 <p>执行以下命令安装 Arctern RESTful Server：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 下载源码</span>
-git clone https://github.com/zilliztech/arctern.git
+$ git clone https://github.com/zilliztech/arctern.git
+
 <span class="c1"># 切换分支</span>
-<span class="nb">cd</span> arctern
-git checkout master
+$ <span class="nb">cd</span> arctern
+$ git checkout branch-0.1.x
+
 <span class="c1"># 安装依赖</span>
-<span class="nb">cd</span> gui/server/arctern_server
-pip install -r requirements.txt
+$ <span class="nb">cd</span> gui/server/arctern_server
+$ pip install -r requirements.txt
 </pre></div>
 </div>
 </div>
 <div class="section" id="pip">
 <h3>基于 pip 的安装<a class="headerlink" href="#pip" title="永久链接至标题">¶</a></h3>
 <p>执行以下命令安装 Arctern RESTful Server：</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install arctern_server
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ pip install arctern_server
 </pre></div>
 </div>
 </div>
@@ -279,8 +295,8 @@ pip install -r requirements.txt
 <div class="section" id="id7">
 <h4>配置基于源码安装的 Arctern RESTful Server<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h4>
 <p>使用如下命令到达 <code class="docutils literal notranslate"><span class="pre">config.ini</span></code> 文件所在目录，其中 <code class="docutils literal notranslate"><span class="pre">/path/to/arctern</span></code> 为 arctern 源代码根目录的实际路径：</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> /path/to/arctern
-<span class="nb">cd</span> gui/server/arctern_server
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /path/to/arctern
+$ <span class="nb">cd</span> gui/server/arctern_server
 </pre></div>
 </div>
 </div>
@@ -319,15 +335,15 @@ pip install -r requirements.txt
 <div class="section" id="id10">
 <h3>启动基于源码安装的 Arctern RESTful Server<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h3>
 <p>在 Arctern 项目的 <code class="docutils literal notranslate"><span class="pre">gui/server/arctern_server</span></code> 目录下执行以下命令启动服务，其中 <code class="docutils literal notranslate"><span class="pre">/path/to/arctern</span></code> 为 Arctern 项目所在目录的绝对路径。</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">PYTHONPATH</span><span class="o">=</span>/path/to/arctern/gui/server:<span class="nv">$PYTHONPATH</span>
-python manage.py
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">export</span> <span class="nv">PYTHONPATH</span><span class="o">=</span>/path/to/arctern/gui/server:<span class="nv">$PYTHONPATH</span>
+$ python manage.py
 </pre></div>
 </div>
 </div>
 <div class="section" id="id11">
 <h3>启动基于 pip 安装的 Arctern RESTful Server<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h3>
 <p>完成配置后，执行以下命令启动服务：</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>arctern-server
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ arctern-server
 </pre></div>
 </div>
 </div>
@@ -343,8 +359,8 @@ python manage.py
 <li><p>–loglevel= [log level]：配置日志级别(debug/info/warn/error/fatal)，默认值为: <code class="docutils literal notranslate"><span class="pre">info</span></code></p></li>
 </ul>
 <p>示例：</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">PYTHONPATH</span><span class="o">=</span>/path/to/server:<span class="nv">$PYTHONPATH</span>
-python manage.py -r -i <span class="m">192</span>.168.1.2 -p <span class="m">8088</span> 
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">export</span> <span class="nv">PYTHONPATH</span><span class="o">=</span>/path/to/server:<span class="nv">$PYTHONPATH</span>
+$ python manage.py -r -i <span class="m">192</span>.168.1.2 -p <span class="m">8088</span> 
 </pre></div>
 </div>
 <p>其中 <code class="docutils literal notranslate"><span class="pre">/path/to/server</span></code> 为 Arctern 项目下 <code class="docutils literal notranslate"><span class="pre">gui/server</span></code> 目录的绝对路径。</p>
@@ -361,10 +377,10 @@ python manage.py -r -i <span class="m">192</span>.168.1.2 -p <span class="m">808
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="restful_quick_start.html" class="btn btn-neutral float-right" title="Quick Start" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="restful_quick_start.html" class="btn btn-neutral float-right" title="快速开始" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="restful.html" class="btn btn-neutral float-left" title="Restful" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="restful.html" class="btn btn-neutral float-left" title="Arctern RESTful Service" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -375,7 +391,7 @@ python manage.py -r -i <span class="m">192</span>.168.1.2 -p <span class="m">808
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 5月 14, 2020.
+        最后更新于 5月 15, 2020.
       </span>
 
     </p>

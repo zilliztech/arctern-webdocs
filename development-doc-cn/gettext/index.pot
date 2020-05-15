@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-14 12:00+0800\n"
+"POT-Creation-Date: 2020-05-15 17:51+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -41,11 +41,11 @@ msgid "海量时空数据的渲染与可视化；"
 msgstr ""
 
 #: ../../source/index.rst:16
-msgid "与 Pandas 生态无缝集成的时空数据分析（见 :ref:`Pandas 文档 <python>`）；"
+msgid "与 Pandas 生态无缝集成的时空数据分析；"
 msgstr ""
 
 #: ../../source/index.rst:17
-msgid "与 Spark 生态无缝集成的时空数据分析（见 :ref:`Spark 文档 <spark>`）；"
+msgid "与 Spark 生态无缝集成的时空数据分析；"
 msgstr ""
 
 #: ../../source/index.rst:18
@@ -53,7 +53,7 @@ msgid "以 SQL 为基础的时空数据交互式分析；"
 msgstr ""
 
 #: ../../source/index.rst:19
-msgid "面向时空数据分析的 RESTful 调用（见 :ref:`RESTful 文档 <restful>`）；"
+msgid "面向时空数据分析的 RESTful 调用；"
 msgstr ""
 
 #: ../../source/index.rst:20

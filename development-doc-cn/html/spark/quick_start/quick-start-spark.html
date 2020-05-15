@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Quick Start &mdash; Arctern 0.1.x 文档</title>
+  <title>快速开始 &mdash; Arctern 0.1.x 文档</title>
   
 
   
@@ -83,23 +83,23 @@
             
             
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Pandas</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../spark.html">Spark</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Arctern on Pandas</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../spark.html">Arctern on Spark</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../installation_and_deployment/installation_and_deployment.html">安装部署</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Quick Start</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">数据准备</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">快速开始</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">数据准备</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyspark">启动 PySpark</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#arctern-spark">注册 Arctern-Spark 功能函数</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">加载数据</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">加载数据</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#arctern-spark-geospatial">使用 Arctern-Spark 提供的 GeoSpatial 函数处理数据</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">使用 Arctern-Spark 绘制图层</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">使用 Arctern-Spark 绘制图层</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../data_source/data_import_and_export.html">数据导入导出</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../api/api.html">API</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../restful/restful.html">Restful</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../restful/restful.html">Arctern RESTful Service</a></li>
 </ul>
 
             
@@ -145,9 +145,9 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="../spark.html">Spark</a> &raquo;</li>
+          <li><a href="../spark.html">Arctern on Spark</a> &raquo;</li>
         
-      <li>Quick Start</li>
+      <li>快速开始</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -166,13 +166,13 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="quick-start">
-<h1>Quick Start<a class="headerlink" href="#quick-start" title="永久链接至标题">¶</a></h1>
+  <div class="section" id="id1">
+<h1>快速开始<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
 <p>本文以纽约出租车数据集为例，演示如何使用 Arctern-Spark 完成数据的导入、运算和展示。</p>
-<div class="section" id="id1">
-<h2>数据准备<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id2">
+<h2>数据准备<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
 <p>在 Arctern-Spark 运行环境中下载纽约出租车数据集。</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget https://media.githubusercontent.com/media/zilliztech/arctern-resources/benchmarks/benchmarks/dataset/nyc_taxi/0_2M_nyc_taxi_and_building/0_2M_nyc_taxi_and_building.csv
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ wget https://media.githubusercontent.com/media/zilliztech/arctern-resources/benchmarks/benchmarks/dataset/nyc_taxi/0_2M_nyc_taxi_and_building/0_2M_nyc_taxi_and_building.csv
 </pre></div>
 </div>
 <p>该数据集包含 2009 年纽约市出租车运营记录，各字段的含义如下：</p>
@@ -267,14 +267,14 @@
 </tr>
 </tbody>
 </table><blockquote>
-<div><p>该数据的时间格式为：<code class="docutils literal notranslate"><span class="pre">yyyy-MM-dd</span> <span class="pre">HH:mm::ss</span> <span class="pre">XXXXX</span></code>，如 <code class="docutils literal notranslate"><span class="pre">2009-04-12</span> <span class="pre">03:16:33</span> <span class="pre">+00:00</span></code></p>
+<div><p><strong>注意：</strong> 该数据的时间格式为：<code class="docutils literal notranslate"><span class="pre">yyyy-MM-dd</span> <span class="pre">HH:mm::ss</span> <span class="pre">XXXXX</span></code>，如 <code class="docutils literal notranslate"><span class="pre">2009-04-12</span> <span class="pre">03:16:33</span> <span class="pre">+00:00</span></code></p>
 </div></blockquote>
 </div>
 <div class="section" id="pyspark">
 <h2>启动 PySpark<a class="headerlink" href="#pyspark" title="永久链接至标题">¶</a></h2>
-<p>以下通过 PySpark 交互界面展示 Arctern-Spark 的使用方法，使用以下命令打开 PySpark 交互界面：</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> <span class="si">${</span><span class="nv">SPARK_HOME</span><span class="si">}</span>
-./bin/pyspark
+<p>以下通过 PySpark 交互界面展示 Arctern-Spark 的使用方法，执行以下命令打开 PySpark 交互界面：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="si">${</span><span class="nv">SPARK_HOME</span><span class="si">}</span>
+$ ./bin/pyspark
 </pre></div>
 </div>
 <p>打开交互界面后，会自动创建一个名为 <code class="docutils literal notranslate"><span class="pre">spark</span></code> 的 <code class="docutils literal notranslate"><span class="pre">SparkSession</span></code>：</p>
@@ -297,7 +297,7 @@ SparkSession available as &#39;spark&#39;.
 </div>
 <div class="section" id="arctern-spark">
 <h2>注册 Arctern-Spark 功能函数<a class="headerlink" href="#arctern-spark" title="永久链接至标题">¶</a></h2>
-<p>在使用 Arctern-Spark 之前需要在界面中输入以下代码对 Arctern-Spark 提供的功能函数进行注册：</p>
+<p>在使用 Arctern-Spark 之前，你需要在界面中输入以下代码对 Arctern-Spark 提供的功能函数进行注册：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyspark.sql.types</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern_pyspark</span> <span class="kn">import</span> <span class="n">register_funcs</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">spark</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;spark.sql.execution.arrow.pyspark.enabled&quot;</span><span class="p">,</span> <span class="s2">&quot;true&quot;</span><span class="p">)</span>
@@ -306,9 +306,9 @@ SparkSession available as &#39;spark&#39;.
 </pre></div>
 </div>
 </div>
-<div class="section" id="id2">
-<h2>加载数据<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
-<p>根据测试数据各字段的名称和数据类型，构建导入测试数据的 <code class="docutils literal notranslate"><span class="pre">schema</span></code>。因为 Spark 不支持原始数据的时间格式，需要先将其作为字符串导入，之后转换为<code class="docutils literal notranslate"><span class="pre">TimeStamp</span></code>格式。</p>
+<div class="section" id="id3">
+<h2>加载数据<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>根据测试数据各字段的名称和数据类型，构建导入测试数据的 <code class="docutils literal notranslate"><span class="pre">schema</span></code>。因为 Spark 不支持原始数据的时间格式，你需要先将其作为字符串导入，之后转换为 <code class="docutils literal notranslate"><span class="pre">TimeStamp</span></code> 格式。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">nyc_schema</span> <span class="o">=</span> <span class="n">StructType</span><span class="p">([</span>
 <span class="gp">... </span>    <span class="n">StructField</span><span class="p">(</span><span class="s2">&quot;VendorID&quot;</span><span class="p">,</span><span class="n">StringType</span><span class="p">(),</span><span class="kc">True</span><span class="p">),</span>
 <span class="gp">... </span>    <span class="n">StructField</span><span class="p">(</span><span class="s2">&quot;tpep_pickup_datetime&quot;</span><span class="p">,</span><span class="n">StringType</span><span class="p">(),</span><span class="kc">True</span><span class="p">),</span>
@@ -330,7 +330,7 @@ SparkSession available as &#39;spark&#39;.
 </pre></div>
 </div>
 <p>加载测试数据，并创建临时表 <code class="docutils literal notranslate"><span class="pre">origin_nyc_taxi</span></code>：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 文件路径配置为本地路径</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 文件路径配置为本地路径。</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">origin_df</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;csv&quot;</span><span class="p">)</span> \
 <span class="o">...</span>                       <span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;header&quot;</span><span class="p">,</span><span class="kc">True</span><span class="p">)</span> \
 <span class="o">...</span>                       <span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;delimiter&quot;</span><span class="p">,</span><span class="s2">&quot;,&quot;</span><span class="p">)</span> \
@@ -436,11 +436,11 @@ SparkSession available as &#39;spark&#39;.
 <span class="go">+----------------------------+------------------------------------------+</span>
 </pre></div>
 </div>
-<p>你可以在 <a class="reference external" href="http://epsg.io/transform#s_srs=4326&amp;t_srs=3857">EPSG</a> 网站验证验证转换结果是否正确。</p>
+<p>你可以在 <a class="reference external" href="http://epsg.io/transform#s_srs=4326&amp;t_srs=3857">EPSG</a> 网站上验证转换结果是否正确。</p>
 <p><img alt="../../_images/epsg-4326-to-3857-example1.png" src="../../_images/epsg-4326-to-3857-example1.png" /></p>
 </div>
-<div class="section" id="id3">
-<h2>使用 Arctern-Spark 绘制图层<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id4">
+<h2>使用 Arctern-Spark 绘制图层<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
 <p>导入绘图需要使用的模块并定义相关变量：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern.util</span> <span class="kn">import</span> <span class="n">save_png</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern.util.vega</span> <span class="kn">import</span> <span class="n">vega_pointmap</span><span class="p">,</span> <span class="n">vega_weighted_pointmap</span><span class="p">,</span> <span class="n">vega_heatmap</span><span class="p">,</span> <span class="n">vega_choroplethmap</span><span class="p">,</span> <span class="n">vega_icon</span><span class="p">,</span> <span class="n">vega_fishnetmap</span>
@@ -456,79 +456,79 @@ SparkSession available as &#39;spark&#39;.
 </pre></div>
 </div>
 <p>通过 Arctern-Spark 提供的绘图函数绘制点图图层：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 在指定地理区域（经度范围：-73.991504 至 -73.945155；纬度范围：40.770759 至 40.783434）中随机选取 200 个坐标点。</span>
-<span class="n">pickup_sql</span> <span class="o">=</span> <span class="s2">&quot;select st_point(pickup_longitude, pickup_latitude) as point from nyc_taxi where &quot;</span> \
-<span class="sa">f</span><span class="s2">&quot;(pickup_longitude between </span><span class="si">{</span><span class="n">pos1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="n">pos2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">) and (pickup_latitude between </span><span class="si">{</span><span class="n">pos1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="n">pos2</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">) limit </span><span class="si">{</span><span class="n">limit_num</span><span class="si">}</span><span class="s2">&quot;</span>
-<span class="n">pickup_df</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="n">pickup_sql</span><span class="p">)</span>
-<span class="c1"># 根据查询结果绘制点图图层。点大小为 10，点颜色为 #2DEF4A，点不透明度为 1.0。</span>
-<span class="n">vega</span> <span class="o">=</span> <span class="n">vega_pointmap</span><span class="p">(</span><span class="mi">1024</span><span class="p">,</span> <span class="mi">384</span><span class="p">,</span> <span class="n">bounding_box</span><span class="o">=</span><span class="p">[</span><span class="n">pos1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pos1</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">pos2</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pos2</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">point_size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">point_color</span><span class="o">=</span><span class="s2">&quot;#2DEF4A&quot;</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">coordinate_system</span><span class="o">=</span><span class="s2">&quot;EPSG:4326&quot;</span><span class="p">)</span>
-<span class="n">res</span> <span class="o">=</span> <span class="n">pointmap</span><span class="p">(</span><span class="n">vega</span><span class="p">,</span> <span class="n">pickup_df</span><span class="p">)</span>
-<span class="n">save_png</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="s1">&#39;/tmp/arctern_pointmap.png&#39;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># 在指定地理区域（经度范围：-73.991504 至 -73.945155；纬度范围：40.770759 至 40.783434）中随机选取 200 个坐标点。</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pickup_sql</span> <span class="o">=</span> <span class="s2">&quot;select st_point(pickup_longitude, pickup_latitude) as point from nyc_taxi where (pickup_longitude between </span><span class="si">{pos1[0]}</span><span class="s2"> and </span><span class="si">{pos2[0]}</span><span class="s2">) and (pickup_latitude between </span><span class="si">{pos1[1]}</span><span class="s2"> and </span><span class="si">{pos2[1]}</span><span class="s2">) limit </span><span class="si">{limit_num}</span><span class="s2">&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pickup_df</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="n">pickup_sql</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># 根据查询结果绘制点图图层。点大小为 10，点颜色为 #2DEF4A，点不透明度为 1.0。</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vega</span> <span class="o">=</span> <span class="n">vega_pointmap</span><span class="p">(</span><span class="mi">1024</span><span class="p">,</span> <span class="mi">384</span><span class="p">,</span> <span class="n">bounding_box</span><span class="o">=</span><span class="p">[</span><span class="n">pos1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pos1</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">pos2</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pos2</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">point_size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">point_color</span><span class="o">=</span><span class="s2">&quot;#2DEF4A&quot;</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">coordinate_system</span><span class="o">=</span><span class="s2">&quot;EPSG:4326&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">res</span> <span class="o">=</span> <span class="n">pointmap</span><span class="p">(</span><span class="n">vega</span><span class="p">,</span> <span class="n">pickup_df</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">save_png</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="s1">&#39;/tmp/arctern_pointmap.png&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>点图图层绘制结果如下：</p>
 <p><img alt="../../_images/arctern_pointmap.png" src="../../_images/arctern_pointmap.png" /></p>
 <p>通过 Arctern-Spark 提供的绘图函数绘制带权点图图层：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 在指定地理区域（经度范围：-73.991504 至 -73.945155；纬度范围：40.770759 至 40.783434）中随机选取 200 个坐标点，并将 fare_amount 作为颜色权重、total_amount 作为大小权重。</span>
-<span class="n">pickup_sql</span> <span class="o">=</span> <span class="s2">&quot;select st_point(pickup_longitude, pickup_latitude) as point, fare_amount as color_weight, total_amount as size_weight from nyc_taxi where &quot;</span> \
-<span class="sa">f</span><span class="s2">&quot;(pickup_longitude between </span><span class="si">{</span><span class="n">pos1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="n">pos2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">) and (pickup_latitude between </span><span class="si">{</span><span class="n">pos1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="n">pos2</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">) limit </span><span class="si">{</span><span class="n">limit_num</span><span class="si">}</span><span class="s2">&quot;</span>
-<span class="n">pickup_df</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="n">pickup_sql</span><span class="p">)</span>
-<span class="c1"># 根据查询结果绘制带权点图图层。点的颜色根据 color_weight 在 #115f9a ~ #d0f400 之间变化，点的大小根据 size_weight 在 3 ~ 15 之间变化。</span>
-<span class="n">vega</span> <span class="o">=</span> <span class="n">vega_weighted_pointmap</span><span class="p">(</span><span class="mi">1024</span><span class="p">,</span> <span class="mi">384</span><span class="p">,</span> <span class="n">bounding_box</span><span class="o">=</span><span class="p">[</span><span class="n">pos1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pos1</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">pos2</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pos2</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">color_gradient</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;#115f9a&quot;</span><span class="p">,</span> <span class="s2">&quot;#d0f400&quot;</span><span class="p">],</span> <span class="n">color_bound</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">50</span><span class="p">],</span> <span class="n">size_bound</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">15</span><span class="p">],</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">coordinate_system</span><span class="o">=</span><span class="s2">&quot;EPSG:4326&quot;</span><span class="p">)</span>
-<span class="n">res</span> <span class="o">=</span> <span class="n">weighted_pointmap</span><span class="p">(</span><span class="n">vega</span><span class="p">,</span> <span class="n">pickup_df</span><span class="p">)</span>
-<span class="n">save_png</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="s2">&quot;/tmp/arctern_weighted_pointmap.png&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># 在指定地理区域（经度范围：-73.991504 至 -73.945155；纬度范围：40.770759 至 40.783434）中随机选取 200 个坐标点，并将 fare_amount 作为颜色权重、total_amount 作为大小权重。</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pickup_sql</span> <span class="o">=</span> <span class="s2">&quot;select st_point(pickup_longitude, pickup_latitude) as point, fare_amount as color_weight, total_amount as size_weight from nyc_taxi where (pickup_longitude between </span><span class="si">{pos1[0]}</span><span class="s2"> and </span><span class="si">{pos2[0]}</span><span class="s2">) and (pickup_latitude between </span><span class="si">{pos1[1]}</span><span class="s2"> and </span><span class="si">{pos2[1]}</span><span class="s2">) limit </span><span class="si">{limit_num}</span><span class="s2">&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pickup_df</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="n">pickup_sql</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># 根据查询结果绘制带权点图图层。点的颜色根据 color_weight 在 #115f9a ~ #d0f400 之间变化，点的大小根据 size_weight 在 3 ~ 15 之间变化。</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vega</span> <span class="o">=</span> <span class="n">vega_weighted_pointmap</span><span class="p">(</span><span class="mi">1024</span><span class="p">,</span> <span class="mi">384</span><span class="p">,</span> <span class="n">bounding_box</span><span class="o">=</span><span class="p">[</span><span class="n">pos1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pos1</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">pos2</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pos2</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">color_gradient</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;#115f9a&quot;</span><span class="p">,</span> <span class="s2">&quot;#d0f400&quot;</span><span class="p">],</span> <span class="n">color_bound</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">50</span><span class="p">],</span> <span class="n">size_bound</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">15</span><span class="p">],</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">coordinate_system</span><span class="o">=</span><span class="s2">&quot;EPSG:4326&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">res</span> <span class="o">=</span> <span class="n">weighted_pointmap</span><span class="p">(</span><span class="n">vega</span><span class="p">,</span> <span class="n">pickup_df</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">save_png</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="s2">&quot;/tmp/arctern_weighted_pointmap.png&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>带权点图图层绘制结果如下：</p>
 <p><img alt="../../_images/arctern_weighted_pointmap.png" src="../../_images/arctern_weighted_pointmap.png" /></p>
 <p>通过 Arctern-Spark 提供的绘图函数绘制热力图图层：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 在指定地理区域（经度范围：-73.991504 至 -73.945155；纬度范围：40.770759 至 40.783434）中随机选取 200 个坐标点，并将 fare_amount 作为热力值。</span>
-<span class="n">pickup_sql</span> <span class="o">=</span> <span class="s2">&quot;select st_point(pickup_longitude, pickup_latitude) as point, fare_amount as weight from nyc_taxi where &quot;</span> \
-<span class="sa">f</span><span class="s2">&quot;(pickup_longitude between </span><span class="si">{</span><span class="n">pos1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="n">pos2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">) and (pickup_latitude between </span><span class="si">{</span><span class="n">pos1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="n">pos2</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">) limit </span><span class="si">{</span><span class="n">limit_num</span><span class="si">}</span><span class="s2">&quot;</span>
-<span class="n">pickup_df</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="n">pickup_sql</span><span class="p">)</span>
-<span class="c1"># 根据查询结果绘制热力图图层。</span>
-<span class="n">vega</span> <span class="o">=</span> <span class="n">vega_heatmap</span><span class="p">(</span><span class="mi">1024</span><span class="p">,</span> <span class="mi">384</span><span class="p">,</span> <span class="n">bounding_box</span><span class="o">=</span><span class="p">[</span><span class="n">pos1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pos1</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">pos2</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pos2</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">map_zoom_level</span><span class="o">=</span><span class="mf">13.0</span><span class="p">,</span> <span class="n">coordinate_system</span><span class="o">=</span><span class="s2">&quot;EPSG:4326&quot;</span><span class="p">)</span>
-<span class="n">res</span> <span class="o">=</span> <span class="n">heatmap</span><span class="p">(</span><span class="n">vega</span><span class="p">,</span> <span class="n">pickup_df</span><span class="p">)</span>
-<span class="n">save_png</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="s2">&quot;/tmp/arctern_heatmap.png&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># 在指定地理区域（经度范围：-73.991504 至 -73.945155；纬度范围：40.770759 至 40.783434）中随机选取 200 个坐标点，并将 fare_amount 作为热力值。</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pickup_sql</span> <span class="o">=</span> <span class="s2">&quot;select st_point(pickup_longitude, pickup_latitude) as point, fare_amount as weight from nyc_taxi where (pickup_longitude between </span><span class="si">{pos1[0]}</span><span class="s2"> and </span><span class="si">{pos2[0]}</span><span class="s2">) and (pickup_latitude between </span><span class="si">{pos1[1]}</span><span class="s2"> and </span><span class="si">{pos2[1]}</span><span class="s2">) limit </span><span class="si">{limit_num}</span><span class="s2">&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pickup_df</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="n">pickup_sql</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># 根据查询结果绘制热力图图层。</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vega</span> <span class="o">=</span> <span class="n">vega_heatmap</span><span class="p">(</span><span class="mi">1024</span><span class="p">,</span> <span class="mi">384</span><span class="p">,</span> <span class="n">bounding_box</span><span class="o">=</span><span class="p">[</span><span class="n">pos1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pos1</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">pos2</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pos2</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">map_zoom_level</span><span class="o">=</span><span class="mf">13.0</span><span class="p">,</span> <span class="n">coordinate_system</span><span class="o">=</span><span class="s2">&quot;EPSG:4326&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">res</span> <span class="o">=</span> <span class="n">heatmap</span><span class="p">(</span><span class="n">vega</span><span class="p">,</span> <span class="n">pickup_df</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">save_png</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="s2">&quot;/tmp/arctern_heatmap.png&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>热力图图层绘制结果如下：</p>
 <p><img alt="../../_images/arctern_heatmap.png" src="../../_images/arctern_heatmap.png" /></p>
 <p>通过 Arctern-Spark 提供的绘图函数绘制轮廓图图层：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 在指定地理区域（经度范围：-73.991504 至 -73.945155；纬度范围：40.770759 至 40.783434）中随机选取 200 个坐标点，并将 fare_amount 作为颜色权重。</span>
-<span class="n">pickup_sql</span> <span class="o">=</span> <span class="s2">&quot;select ST_GeomFromText(buildingtext_pickup) as buildings, fare_amount as color_weight from nyc_taxi where &quot;</span> \
-<span class="sa">f</span><span class="s2">&quot;(pickup_longitude between </span><span class="si">{</span><span class="n">pos1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="n">pos2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">) and (pickup_latitude between </span><span class="si">{</span><span class="n">pos1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="n">pos2</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">) and (buildingtext_pickup!=&#39;&#39;) limit </span><span class="si">{</span><span class="n">limit_num</span><span class="si">}</span><span class="s2">&quot;</span>
-<span class="n">pickup_df</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="n">pickup_sql</span><span class="p">)</span>
-<span class="c1"># 根据查询结果绘制轮廓图图层。轮廓的填充颜色根据 color_weight 在 #115f9a ~ #d0f400 之间变化。</span>
-<span class="n">vega</span> <span class="o">=</span> <span class="n">vega_choroplethmap</span><span class="p">(</span><span class="mi">1024</span><span class="p">,</span> <span class="mi">384</span><span class="p">,</span> <span class="n">bounding_box</span><span class="o">=</span><span class="p">[</span><span class="n">pos1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pos1</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">pos2</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pos2</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">color_gradient</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;#115f9a&quot;</span><span class="p">,</span> <span class="s2">&quot;#d0f400&quot;</span><span class="p">],</span> <span class="n">color_bound</span><span class="o">=</span><span class="p">[</span><span class="mf">2.5</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">coordinate_system</span><span class="o">=</span><span class="s2">&quot;EPSG:4326&quot;</span><span class="p">)</span>
-<span class="n">res</span> <span class="o">=</span> <span class="n">choroplethmap</span><span class="p">(</span><span class="n">vega</span><span class="p">,</span> <span class="n">pickup_df</span><span class="p">)</span>
-<span class="n">save_png</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="s2">&quot;/tmp/arctern_choroplethmap.png&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># 在指定地理区域（经度范围：-73.991504 至 -73.945155；纬度范围：40.770759 至 40.783434）中随机选取 200 个坐标点，并将 fare_amount 作为颜色权重。</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pickup_sql</span> <span class="o">=</span> <span class="s2">&quot;select ST_GeomFromText(buildingtext_pickup) as buildings, fare_amount as color_weight from nyc_taxi where (pickup_longitude between </span><span class="si">{pos1[0]}</span><span class="s2"> and </span><span class="si">{pos2[0]}</span><span class="s2">) and (pickup_latitude between </span><span class="si">{pos1[1]}</span><span class="s2"> and </span><span class="si">{pos2[1]}</span><span class="s2">) and (buildingtext_pickup!=&#39;&#39;) limit </span><span class="si">{limit_num}</span><span class="s2">&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pickup_df</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="n">pickup_sql</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># 根据查询结果绘制轮廓图图层。轮廓的填充颜色根据 color_weight 在 #115f9a ~ #d0f400 之间变化。</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vega</span> <span class="o">=</span> <span class="n">vega_choroplethmap</span><span class="p">(</span><span class="mi">1024</span><span class="p">,</span> <span class="mi">384</span><span class="p">,</span> <span class="n">bounding_box</span><span class="o">=</span><span class="p">[</span><span class="n">pos1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pos1</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">pos2</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pos2</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">color_gradient</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;#115f9a&quot;</span><span class="p">,</span> <span class="s2">&quot;#d0f400&quot;</span><span class="p">],</span> <span class="n">color_bound</span><span class="o">=</span><span class="p">[</span><span class="mf">2.5</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">coordinate_system</span><span class="o">=</span><span class="s2">&quot;EPSG:4326&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">res</span> <span class="o">=</span> <span class="n">choroplethmap</span><span class="p">(</span><span class="n">vega</span><span class="p">,</span> <span class="n">pickup_df</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">save_png</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="s2">&quot;/tmp/arctern_choroplethmap.png&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>轮廓图图层绘制结果如下：</p>
 <p><img alt="../../_images/arctern_choroplethmap.png" src="../../_images/arctern_choroplethmap.png" /></p>
 <p>通过 Arctern-Spark 提供的绘图函数绘制图标图图层：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 在指定地理区域（经度范围：-73.991504 至 -73.945155；纬度范围：40.770759 至 40.783434）中随机选取 25 个坐标点。</span>
-<span class="n">pickup_sql</span> <span class="o">=</span> <span class="s2">&quot;select st_point(pickup_longitude, pickup_latitude) from nyc_taxi where &quot;</span> \
-<span class="sa">f</span><span class="s2">&quot;(pickup_longitude between </span><span class="si">{</span><span class="n">pos1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="n">pos2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">) and (pickup_latitude between </span><span class="si">{</span><span class="n">pos1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="n">pos2</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">) limit 25&quot;</span>
-<span class="n">pickup_df</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="n">pickup_sql</span><span class="p">)</span>
-<span class="c1"># 根据查询结果绘制图标图图层, icon_path 配置为本地路径。</span>
-<span class="n">vega</span> <span class="o">=</span> <span class="n">vega_icon</span><span class="p">(</span><span class="mi">1024</span><span class="p">,</span> <span class="mi">384</span><span class="p">,</span> <span class="n">bounding_box</span><span class="o">=</span><span class="p">[</span><span class="n">pos1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pos1</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">pos2</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pos2</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">icon_path</span><span class="o">=</span><span class="s1">&#39;/path/to/icon.png&#39;</span><span class="p">,</span> <span class="n">coordinate_system</span><span class="o">=</span><span class="s2">&quot;EPSG:4326&quot;</span><span class="p">)</span>
-<span class="n">res</span> <span class="o">=</span> <span class="n">icon_viz</span><span class="p">(</span><span class="n">vega</span><span class="p">,</span> <span class="n">pickup_df</span><span class="p">)</span>
-<span class="n">save_png</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="s2">&quot;/tmp/arctern_iconviz.png&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># 在指定地理区域（经度范围：-73.991504 至 -73.945155；纬度范围：40.770759 至 40.783434）中随机选取 25 个坐标点。</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pickup_sql</span> <span class="o">=</span> <span class="s2">&quot;select st_point(pickup_longitude, pickup_latitude) from nyc_taxi where (pickup_longitude between </span><span class="si">{pos1[0]}</span><span class="s2"> and </span><span class="si">{pos2[0]}</span><span class="s2">) and (pickup_latitude between </span><span class="si">{pos1[1]}</span><span class="s2"> and </span><span class="si">{pos2[1]}</span><span class="s2">) limit 25&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pickup_df</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="n">pickup_sql</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># 根据查询结果绘制图标图图层，icon_path 配置为本地路径。</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vega</span> <span class="o">=</span> <span class="n">vega_icon</span><span class="p">(</span><span class="mi">1024</span><span class="p">,</span> <span class="mi">384</span><span class="p">,</span> <span class="n">bounding_box</span><span class="o">=</span><span class="p">[</span><span class="n">pos1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pos1</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">pos2</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pos2</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">icon_path</span><span class="o">=</span><span class="s1">&#39;/path/to/icon.png&#39;</span><span class="p">,</span> <span class="n">coordinate_system</span><span class="o">=</span><span class="s2">&quot;EPSG:4326&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">res</span> <span class="o">=</span> <span class="n">icon_viz</span><span class="p">(</span><span class="n">vega</span><span class="p">,</span> <span class="n">pickup_df</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">save_png</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="s2">&quot;/tmp/arctern_iconviz.png&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>图标图图层绘制结果如下：</p>
 <p><img alt="../../_images/arctern_iconviz.png" src="../../_images/arctern_iconviz.png" /></p>
 <p>通过 Arctern-Spark 提供的绘图函数绘制渔网图图层：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 在指定地理区域（经度范围：-73.991504 至 -73.945155；纬度范围：40.770759 至 40.783434）中随机选取 200 个坐标点，并将 fare_amount 作为颜色权重。</span>
-<span class="n">pickup_sql</span> <span class="o">=</span> <span class="s2">&quot;select st_point(pickup_longitude, pickup_latitude) as point, fare_amount as weight from nyc_taxi where &quot;</span> \
-<span class="sa">f</span><span class="s2">&quot;(pickup_longitude between </span><span class="si">{</span><span class="n">pos1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="n">pos2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">) and (pickup_latitude between </span><span class="si">{</span><span class="n">pos1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="n">pos2</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">) limit </span><span class="si">{</span><span class="n">limit_num</span><span class="si">}</span><span class="s2">&quot;</span>
-<span class="n">pickup_df</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="n">pickup_sql</span><span class="p">)</span>
-<span class="c1"># 根据查询结果绘制渔网图图层。</span>
-<span class="n">vega</span> <span class="o">=</span> <span class="n">vega_fishnetmap</span><span class="p">(</span><span class="mi">1024</span><span class="p">,</span> <span class="mi">384</span><span class="p">,</span> <span class="n">bounding_box</span><span class="o">=</span><span class="p">[</span><span class="n">pos1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pos1</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">pos2</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pos2</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">cell_size</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">cell_spacing</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">coordinate_system</span><span class="o">=</span><span class="s2">&quot;EPSG:4326&quot;</span><span class="p">)</span>
-<span class="n">res</span> <span class="o">=</span> <span class="n">fishnetmap</span><span class="p">(</span><span class="n">vega</span><span class="p">,</span> <span class="n">pickup_df</span><span class="p">)</span>
-<span class="n">save_png</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="s2">&quot;/tmp/arctern_fishnetmap.png&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># 在指定地理区域（经度范围：-73.991504 至 -73.945155；纬度范围：40.770759 至 40.783434）中随机选取 200 个坐标点，并将 fare_amount 作为颜色权重。</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pickup_sql</span> <span class="o">=</span> <span class="s2">&quot;select st_point(pickup_longitude, pickup_latitude) as point, fare_amount as weight from nyc_taxi where (pickup_longitude between </span><span class="si">{pos1[0]}</span><span class="s2"> and </span><span class="si">{pos2[0]}</span><span class="s2">) and (pickup_latitude between </span><span class="si">{pos1[1]}</span><span class="s2"> and </span><span class="si">{pos2[1]}</span><span class="s2">) limit </span><span class="si">{limit_num}</span><span class="s2">&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pickup_df</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="n">pickup_sql</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># 根据查询结果绘制渔网图图层。</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vega</span> <span class="o">=</span> <span class="n">vega_fishnetmap</span><span class="p">(</span><span class="mi">1024</span><span class="p">,</span> <span class="mi">384</span><span class="p">,</span> <span class="n">bounding_box</span><span class="o">=</span><span class="p">[</span><span class="n">pos1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pos1</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">pos2</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pos2</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">cell_size</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">cell_spacing</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">coordinate_system</span><span class="o">=</span><span class="s2">&quot;EPSG:4326&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">res</span> <span class="o">=</span> <span class="n">fishnetmap</span><span class="p">(</span><span class="n">vega</span><span class="p">,</span> <span class="n">pickup_df</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">save_png</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="s2">&quot;/tmp/arctern_fishnetmap.png&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>渔网图图层绘制结果如下：</p>
@@ -558,7 +558,7 @@ SparkSession available as &#39;spark&#39;.
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 5月 14, 2020.
+        最后更新于 5月 15, 2020.
       </span>
 
     </p>

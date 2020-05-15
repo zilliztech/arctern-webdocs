@@ -83,9 +83,9 @@
             
             
               <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="../python.html">Pandas</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../python.html">Arctern on Pandas</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../installation_and_deployment/install_arctern_on_python.html">安装部署</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../quick_start/quick-start-pandas.html">Quick Start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick_start/quick-start-pandas.html">快速开始</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="data_import_and_export.html">数据导入导出</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="geometry_data_format.html">Geometry 数据格式</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">文件的导入与导出</a></li>
@@ -94,8 +94,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../api/api.html">API</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../spark/spark.html">Spark</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../restful/restful.html">Restful</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../spark/spark.html">Arctern on Spark</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../restful/restful.html">Arctern RESTful Service</a></li>
 </ul>
 
             
@@ -141,7 +141,7 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="../python.html">Pandas</a> &raquo;</li>
+          <li><a href="../python.html">Arctern on Pandas</a> &raquo;</li>
         
           <li><a href="data_import_and_export.html">数据导入导出</a> &raquo;</li>
         
@@ -178,6 +178,7 @@
 <span class="sd">&#39;&#39;&#39;</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">arctern</span>
+<span class="o">&gt;&gt;&gt;</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;/path/to/geos.csv&quot;</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s1">&#39;|&#39;</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;geos&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;geos&#39;</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">rst</span> <span class="o">=</span> <span class="n">arctern</span><span class="o">.</span><span class="n">ST_IsSimple</span><span class="p">(</span><span class="n">arctern</span><span class="o">.</span><span class="n">ST_GeomFromText</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
@@ -188,7 +189,8 @@
 <span class="mi">3</span>     <span class="kc">True</span>
 <span class="n">dtype</span><span class="p">:</span> <span class="nb">bool</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">df</span><span class="o">.</span><span class="n">to_json</span><span class="p">(</span><span class="s2">&quot;/path/to/geos.json&quot;</span><span class="p">)</span>
-<span class="c1"># 导入 JSON 文件，导出 CSV 文件</span>
+<span class="o">&gt;&gt;&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="c1"># 导入 JSON 文件，导出 CSV 文件</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="s2">&quot;/path/to/geos.json&quot;</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;geos&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;geos&#39;</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">rst</span> <span class="o">=</span> <span class="n">arctern</span><span class="o">.</span><span class="n">ST_IsSimple</span><span class="p">(</span><span class="n">arctern</span><span class="o">.</span><span class="n">ST_GeomFromText</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
@@ -225,7 +227,7 @@
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 5月 14, 2020.
+        最后更新于 5月 15, 2020.
       </span>
 
     </p>

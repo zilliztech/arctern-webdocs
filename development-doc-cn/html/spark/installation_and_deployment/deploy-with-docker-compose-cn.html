@@ -37,7 +37,7 @@
   <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="搜索" href="../../search.html" />
-    <link rel="next" title="Quick Start" href="../quick_start/quick-start-spark.html" />
+    <link rel="next" title="快速开始" href="../quick_start/quick-start-spark.html" />
     <link rel="prev" title="离线安装" href="offline_install_arctern_on_spark_cn.html" /> 
 </head>
 
@@ -83,8 +83,8 @@
             
             
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Pandas</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../spark.html">Spark</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Arctern on Pandas</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../spark.html">Arctern on Spark</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="installation_and_deployment.html">安装部署</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="install_arctern_on_spark_cn.html">在线安装</a></li>
 <li class="toctree-l3"><a class="reference internal" href="offline_install_arctern_on_spark_cn.html">离线安装</a></li>
@@ -98,12 +98,12 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../quick_start/quick-start-spark.html">Quick Start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick_start/quick-start-spark.html">快速开始</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data_source/data_import_and_export.html">数据导入导出</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../api/api.html">API</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../restful/restful.html">Restful</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../restful/restful.html">Arctern RESTful Service</a></li>
 </ul>
 
             
@@ -149,7 +149,7 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="../spark.html">Spark</a> &raquo;</li>
+          <li><a href="../spark.html">Arctern on Spark</a> &raquo;</li>
         
           <li><a href="installation_and_deployment.html">安装部署</a> &raquo;</li>
         
@@ -232,7 +232,7 @@
 <div class="section" id="id4">
 <h3>确认 Docker 运行状态<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
 <p>执行以下命令确认 Docker daemon 运行状态：</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ docker info
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker info
 </pre></div>
 </div>
 <p>如果上述命令未能正常打印 Docker 相关信息，请启动 <strong>Docker</strong> daemon。</p>
@@ -247,7 +247,7 @@
 <h3>确认 NVIDIA Docker状态<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
 <p>如果需要运行 GPU 版本 Arctern-Spark，需<a class="reference external" href="https://github.com/nvidia/nvidia-docker/wiki/Installation-(version-2.0)">安装 NVIDIA Docker Version 2.0</a>。</p>
 <p>执行以下命令确认 NVIDIA Docker 是否安装成功。</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ nvidia-docker version
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ nvidia-docker version
 NVIDIA Docker: <span class="m">2</span>.0.3
 </pre></div>
 </div>
@@ -255,19 +255,19 @@ NVIDIA Docker: <span class="m">2</span>.0.3
 <div class="section" id="id6">
 <h3>设置默认运行时环境<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
 <p>编辑 <code class="docutils literal notranslate"><span class="pre">/etc/docker/daemon.json</span></code> 文件，并添加“default-runtime“相关配置:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="s2">&quot;default-runtime&quot;</span><span class="p">:</span> <span class="s2">&quot;nvidia&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;runtimes&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;nvidia&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;nvidia-container-runtime&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;runtimeArgs&quot;</span><span class="p">:</span> <span class="p">[]</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;default-runtime&quot;</span><span class="p">:</span> <span class="s2">&quot;nvidia&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;runtimes&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;nvidia&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;nvidia-container-runtime&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;runtimeArgs&quot;</span><span class="p">:</span> <span class="p">[]</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <p>执行以下命令重新加载 Docker：</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ sudo systemctl daemon-reload
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo systemctl daemon-reload
 $ sudo systemctl restart docker
 </pre></div>
 </div>
@@ -278,7 +278,7 @@ $ sudo systemctl restart docker
 <div class="section" id="id8">
 <h3>安装 Docker Compose<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h3>
 <p><a class="reference external" href="https://docs.docker.com/compose/install/">安装 Docker Compose</a>，并执行以下命令确认 Docker Compose 的版本信息：</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ docker-compose version
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker-compose version
 </pre></div>
 </div>
 </div>
@@ -299,45 +299,45 @@ $ sudo systemctl restart docker
 <h3>启动分布式集群<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h3>
 <p>在 Docker Compose 工作目录中执行以下命令启动分布式集群：</p>
 <p>前台执行：</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ sudo docker-compose up
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo docker-compose up
 </pre></div>
 </div>
 <p>后台执行：</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ sudo docker-compose up -d
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo docker-compose up -d
 </pre></div>
 </div>
 </div>
 <div class="section" id="id11">
 <h3>下载并执行验证代码<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h3>
 <p>执行以下命令查看 Docker 容器的运行情况：</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ sudo docker ps    <span class="c1"># 输出如下：</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo docker ps    <span class="c1"># 输出如下：</span>
 CONTAINER ID        IMAGE                                                                  COMMAND                  CREATED             STATUS              PORTS                                            NAMES
 acbc7dfa299f        registry.zilliz.com/arctern/arctern-spark:master-ubuntu18.04-release   <span class="s2">&quot;/entrypoint.sh /run…&quot;</span>   About an hour ago   Up About an hour                                                     docker_spark-worker_1
 b7c75a456982        registry.zilliz.com/arctern/arctern-spark:master-ubuntu18.04-release   <span class="s2">&quot;/entrypoint.sh /run…&quot;</span>   About an hour ago   Up About an hour    <span class="m">0</span>.0.0.0:7077-&gt;7077/tcp, <span class="m">0</span>.0.0.0:8080-&gt;8080/tcp   docker_spark-master_1
 </pre></div>
 </div>
 <p>在 Docker 容器的运行情况中查找 NAMES 字段为“docker_spark-master_1” 的条目（在上方示例中，其 ID 为<code class="docutils literal notranslate"><span class="pre">b7c75a456982</span></code>），并执行以下命令进入 master 容器：</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ sudo docker <span class="nb">exec</span> -it b7c75a456982 bash
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo docker <span class="nb">exec</span> -it b7c75a456982 bash
 </pre></div>
 </div>
 <p>下载测试脚本：</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /tmp
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /tmp
 $ wget https://raw.githubusercontent.com/zilliztech/arctern/v0.1.0/spark/pyspark/examples/gis/spark_udf_ex.py
 </pre></div>
 </div>
 <p>通过 <code class="docutils literal notranslate"><span class="pre">spark-submit</span></code> 运行脚本：</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /tmp
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /tmp
 $ spark-submit --master spark://spark-master:7077 spark_udf_ex.py
 </pre></div>
 </div>
 <blockquote>
-<div><p>注意：在 <code class="docutils literal notranslate"><span class="pre">docker-compose.yml</span></code> 文件中已将 master 容器的 IP 地址映射为了 <code class="docutils literal notranslate"><span class="pre">spark-master</span></code>，因此上述命令中可用 <code class="docutils literal notranslate"><span class="pre">spark-master</span></code> 代替 master 容器的 IP 地址。另外，<code class="docutils literal notranslate"><span class="pre">docker-compose.yml</span></code> 文件中 master容器的 <code class="docutils literal notranslate"><span class="pre">7077</span></code> 端口映射到了宿主机的端口（<code class="docutils literal notranslate"><span class="pre">7077</span></code>-&gt;<code class="docutils literal notranslate"><span class="pre">7077</span></code>），因此 <code class="docutils literal notranslate"><span class="pre">spark-master</span></code> 也可以替换为宿主机的 IP 地址。</p>
+<div><p><strong>注意：</strong> 在 <code class="docutils literal notranslate"><span class="pre">docker-compose.yml</span></code> 文件中已将 master 容器的 IP 地址映射为了 <code class="docutils literal notranslate"><span class="pre">spark-master</span></code>，因此上述命令中可用 <code class="docutils literal notranslate"><span class="pre">spark-master</span></code> 代替 master 容器的 IP 地址。另外，<code class="docutils literal notranslate"><span class="pre">docker-compose.yml</span></code> 文件中 master容器的 <code class="docutils literal notranslate"><span class="pre">7077</span></code> 端口映射到了宿主机的端口（<code class="docutils literal notranslate"><span class="pre">7077</span></code>-&gt;<code class="docutils literal notranslate"><span class="pre">7077</span></code>），因此 <code class="docutils literal notranslate"><span class="pre">spark-master</span></code> 也可以替换为宿主机的 IP 地址。</p>
 </div></blockquote>
 </div>
 <div class="section" id="id12">
 <h3>关闭分布式集群<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h3>
 <p>在 Docker Compose 工作目录中执行以下命令关闭分布式集群：</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ sudo docker-compose down
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo docker-compose down
 </pre></div>
 </div>
 </div>
@@ -352,7 +352,7 @@ $ spark-submit --master spark://spark-master:7077 spark_udf_ex.py
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../quick_start/quick-start-spark.html" class="btn btn-neutral float-right" title="Quick Start" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../quick_start/quick-start-spark.html" class="btn btn-neutral float-right" title="快速开始" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="offline_install_arctern_on_spark_cn.html" class="btn btn-neutral float-left" title="离线安装" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -366,7 +366,7 @@ $ spark-submit --master spark://spark-master:7077 spark_udf_ex.py
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 5月 14, 2020.
+        最后更新于 5月 15, 2020.
       </span>
 
     </p>

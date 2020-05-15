@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-14 12:00+0800\n"
+"POT-Creation-Date: 2020-05-15 17:51+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -120,7 +120,7 @@ msgid "bytes"
 msgstr ""
 
 #: ../../source/spark/api/render/function/layer/choroplethmap.md:64
-msgid "base64 编码的 PNG 图片。"
+msgid "base64编码的 PNG 图片。"
 msgstr ""
 
 #: ../../source/spark/api/render/function/layer/choroplethmap.md:67
