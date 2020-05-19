@@ -37,7 +37,7 @@
   <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="快速开始" href="restful_quick_start.html" />
+    <link rel="next" title="快速开始（Python 后台）" href="restful_quick_start_on_python.html" />
     <link rel="prev" title="Arctern RESTful Service" href="restful.html" /> 
 </head>
 
@@ -87,34 +87,29 @@
 <li class="toctree-l1"><a class="reference internal" href="../spark/spark.html">Arctern on Spark</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="restful.html">Arctern RESTful Service</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Arctern RESTful Server 安装与配置</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">安装准备</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#miniconda-python3">安装 Miniconda 和 Python3</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#spark-arctern">在 Spark 中安装 Arctern</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id2">安装依赖库</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#conda">创建 Conda 虚拟环境</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#arctern-spark">安装 Arctern-Spark 包</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pyspark">安装 PySpark</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#arctern">安装 Arctern 后台</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#python-arctern">安装基于 Python 的 Arctern 后台</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pyspark-arctern">安装基于 PySpark 的 Arctern 后台</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">安装 Arctern RESTful Server</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id4">基于源码的安装</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pip">基于 pip 的安装</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#apache-zeppelin">安装 Apache Zeppelin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#miniconda">安装 Miniconda</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">安装 Arctern RESTful Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">服务器配置</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#zeppelin">Zeppelin 后台配置</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">Arctern RESTful Server 配置</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id5">配置后台 Arctern-Spark 信息</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id6">查看配置文件路径</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id8">编辑配置文件</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#id9">启动 Arctern RESTful Server</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id10">启动基于源码安装的 Arctern RESTful Server</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id11">启动基于 pip 安装的 Arctern RESTful Server</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id12">命令参数介绍</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">运行 Arctern RESTful Server</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id5">启动 Zeppelin 后台服务</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">启动 Arctern RESTful Server</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">命令参数介绍</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="restful_quick_start.html">快速开始</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restful_quick_start_on_python.html">快速开始（Python 后台）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restful_quick_start_on_spark.html">快速开始（PySpark 后台）</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/api.html">API</a></li>
 </ul>
 </li>
@@ -186,170 +181,185 @@
             
   <div class="section" id="arctern-restful-server">
 <h1>Arctern RESTful Server 安装与配置<a class="headerlink" href="#arctern-restful-server" title="永久链接至标题">¶</a></h1>
-<p>Arctern 提供基于 RESTful 接口的 Web 服务。通过配置可将 RESTful Server 与 Arctern-Spark 进行对接，从而以 RESTful API 的形式提供 Arctern-Spark 的时空数据分析与展示能力。</p>
-<p>以下将介绍 Arctern RESTful Server 的安装和配置流程。更多 Arctern RESTful API 信息请查看 RESTful 服务<a class="reference external" href="./api/api.html">接口文档</a>和<a class="reference internal" href="restful_quick_start.html"><span class="doc">使用示例</span></a>。</p>
-<div class="section" id="id1">
-<h2>安装准备<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
-<div class="section" id="miniconda-python3">
-<h3>安装 Miniconda 和 Python3<a class="headerlink" href="#miniconda-python3" title="永久链接至标题">¶</a></h3>
-<p>在安装 Arctern RESTful Server 前请预先安装 Miniconda 和 Python3。Miniconda 的安装可参考 <a class="reference external" href="https://docs.conda.io/projects/conda/en/latest/user-guide/install/linux.html">Linux 系统安装 Miniconda</a>。</p>
+<p>Arctern RESTful Server 依赖于 Apache Zeppelin 以及 Conda，因此安装 Arctern RESTful Server 前需要先安装 Apache Zeppelin 以及 Conda。</p>
+<blockquote>
+<div><p><strong>注意：</strong> Conda 包括 Anaconda 和 Miniconda，建议使用 Miniconda。</p>
+</div></blockquote>
+<div class="section" id="arctern">
+<h2>安装 Arctern 后台<a class="headerlink" href="#arctern" title="永久链接至标题">¶</a></h2>
+<p>Arctern RESTful Server 仅负责接收和解析 RESTful 请求，实际操作由 Arctern 后台执行。在安装 Arctern RESTful Server 前，你需要事先安装 Arctern 后台系统。目前，Arctern RESTful Server 支持基于 Python 和基于 PySpark 的两种 Arctern 后台。</p>
+<div class="section" id="python-arctern">
+<h3>安装基于 Python 的 Arctern 后台<a class="headerlink" href="#python-arctern" title="永久链接至标题">¶</a></h3>
+<p>请参考如下链接：</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../python/installation_and_deployment/install_arctern_on_python.html"><span class="doc">安装 Arctern Python 后台</span></a></p></li>
+</ul>
 </div>
-<div class="section" id="spark-arctern">
-<h3>在 Spark 中安装 Arctern<a class="headerlink" href="#spark-arctern" title="永久链接至标题">¶</a></h3>
-<p>Arctern RESTful Server 仅负责 RESTful 请求的接收和解析，实际操作由 RESTful Server 所连接的 Arctern-Spark 执行。在安装 Arctern RESTful Server 前，你需要通过以下任意一种方式安装 Arctern-Spark 后台系统：</p>
+<div class="section" id="pyspark-arctern">
+<h3>安装基于 PySpark 的 Arctern 后台<a class="headerlink" href="#pyspark-arctern" title="永久链接至标题">¶</a></h3>
+<p>通过以下任意一种方式安装基于 PySpark 的 Arctern 后台：</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="../spark/installation_and_deployment/install_arctern_on_spark_cn.html"><span class="doc">在线安装</span></a></p></li>
 <li><p><a class="reference internal" href="../spark/installation_and_deployment/offline_install_arctern_on_spark_cn.html"><span class="doc">离线安装</span></a></p></li>
 <li><p><a class="reference internal" href="../spark/installation_and_deployment/deploy-with-docker-compose-cn.html"><span class="doc">基于 Docker Compose 部署</span></a></p></li>
 </ul>
 </div>
-<div class="section" id="id2">
-<h3>安装依赖库<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h3>
-<p>执行以下命令安装 Arctern RESTful Server 的依赖库：</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo apt install libgl-dev libosmesa6-dev libglu1-mesa-dev
+</div>
+<div class="section" id="apache-zeppelin">
+<h2>安装 Apache Zeppelin<a class="headerlink" href="#apache-zeppelin" title="永久链接至标题">¶</a></h2>
+<p>执行以下命令安装 Apache Zeppelin：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 下载最新的 Zeppelin 软件包</span>
+$ wget https://mirror.bit.edu.cn/apache/zeppelin/zeppelin-0.9.0-preview1/zeppelin-0.9.0-preview1-bin-all.tgz
+
+<span class="c1"># 解压</span>
+$ tar -zxvf zeppelin-0.9.0-preview1-bin-all.tgz 
 </pre></div>
 </div>
-<p>安装 Java，建议安装 open-jdk-8：</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo apt-get install openjdk-8-jdk
-</pre></div>
 </div>
+<div class="section" id="miniconda">
+<h2>安装 Miniconda<a class="headerlink" href="#miniconda" title="永久链接至标题">¶</a></h2>
+<p>Miniconda 的安装可参考 <a class="reference external" href="https://docs.conda.io/projects/conda/en/latest/user-guide/install/linux.html">Linux 系统安装 Miniconda</a>。</p>
 </div>
-<div class="section" id="conda">
-<h3>创建 Conda 虚拟环境<a class="headerlink" href="#conda" title="永久链接至标题">¶</a></h3>
-<p>执行以下命令为 Arctern RESTful Server 构建 Conda 环境。此处假设环境名称为 <code class="docutils literal notranslate"><span class="pre">arctern_server_env</span></code>，你可根据需求自行选择合适的环境名称。</p>
-<blockquote>
-<div><p><strong>注意：</strong> 如果你在同一台计算机上安装 Arctern-Spark 后台系统和 Arctern RESTful Server，请确保二者的环境名称是不同的。例如，Arctern-Spark 后台系统的名称是 <code class="docutils literal notranslate"><span class="pre">arctern_env</span></code>，Arctern RESTful Server 的名称是 <code class="docutils literal notranslate"><span class="pre">arctern_server_env</span></code>。</p>
-</div></blockquote>
+<div class="section" id="id1">
+<h2>安装 Arctern RESTful Server<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<ol class="simple">
+<li><p>执行以下命令为 Arctern RESTful Server 构建 Conda 环境。此处假设环境名称为 <code class="docutils literal notranslate"><span class="pre">arctern_server_env</span></code>，你可根据需求自行选择合适的环境名称。</p></li>
+</ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ conda create -n arctern_server_env -c conda-forge <span class="nv">python</span><span class="o">=</span><span class="m">3</span>.7.6
 </pre></div>
 </div>
-<p>进入 <code class="docutils literal notranslate"><span class="pre">arctern_server_env</span></code> 虚拟环境：</p>
+<blockquote>
+<div><p><strong>注意：</strong> 如果你在同一台计算机上安装 Arctern 后台系统和 Arctern RESTful Server，请确保二者的环境名称是不同的。例如，Arctern 后台系统的名称是 <code class="docutils literal notranslate"><span class="pre">arctern_env</span></code>，Arctern RESTful Server 的名称是 <code class="docutils literal notranslate"><span class="pre">arctern_server_env</span></code>。</p>
+</div></blockquote>
+<ol class="simple">
+<li><p>进入 <code class="docutils literal notranslate"><span class="pre">arctern_server_env</span></code> 虚拟环境：</p></li>
+</ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ conda activate arctern_server_env
 </pre></div>
 </div>
 <blockquote>
 <div><p><strong>注意：</strong> 后续工作必须在 Arctern Conda 环境中进行。</p>
 </div></blockquote>
-</div>
-<div class="section" id="arctern-spark">
-<h3>安装 Arctern-Spark 包<a class="headerlink" href="#arctern-spark" title="永久链接至标题">¶</a></h3>
-<p>Arctern RESTful Server 的运行依赖于 Arctern-Spark，执行以下命令在虚拟环境中安装 Arctern-Spark 包:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ conda install -y -q -c conda-forge -c arctern arctern-spark
+<ol class="simple">
+<li><p>安装 Arctern RESTful Server：</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ conda install -c conda-forge arctern-webserver
 </pre></div>
 </div>
-<blockquote>
-<div><p><strong>注意：</strong> 此处安装 Arctern-Spark 仅用于解决 RESTful Server 的运行时依赖，不能作为执行 RESTful 请求的 Arctern-Spark 后台。</p>
-</div></blockquote>
 </div>
-<div class="section" id="pyspark">
-<h3>安装 PySpark<a class="headerlink" href="#pyspark" title="永久链接至标题">¶</a></h3>
-<p>下载压缩包并解压：</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ wget https://mirror.bit.edu.cn/apache/spark/spark-3.0.0-preview2/spark-3.0.0-preview2-bin-hadoop2.7.tgz
-$ tar zxvf spark-3.0.0-preview2-bin-hadoop2.7.tgz
+<div class="section" id="id2">
+<h2>服务器配置<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<div class="section" id="zeppelin">
+<h3>Zeppelin 后台配置<a class="headerlink" href="#zeppelin" title="永久链接至标题">¶</a></h3>
+<p>Zeppelin 默认在本机的 8080 端口启动后台服务，如果需要更改默认的端口号，可以修改 Zeppelin 的配置文件 <code class="docutils literal notranslate"><span class="pre">zeppelin-site.xml</span></code>：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> zeppelin-0.9.0-preview1-bin-all
+<span class="nb">cd</span> conf
+vim zeppelin-site.xml   <span class="c1"># 编辑配置文件</span>
 </pre></div>
 </div>
-<p>进入解压后产生的 <code class="docutils literal notranslate"><span class="pre">spark-3.0.0-preview2-bin-hadoop2.7</span></code> 目录，执行如下命令安装 PySpark：</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> spark-3.0.0-preview2-bin-hadoop2.7
-$ <span class="nb">cd</span> python
-$ python setup.py install
+<p>将下述条目中的 8080 端口替换为你想要更改的端口号：</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;property&gt;</span>
+    <span class="nt">&lt;name&gt;</span>zeppelin.server.port<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;value&gt;</span>8080<span class="nt">&lt;/value&gt;</span>
+    <span class="nt">&lt;description&gt;</span>Server port.<span class="nt">&lt;/description&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
 </pre></div>
-</div>
 </div>
 </div>
 <div class="section" id="id3">
-<h2>安装 Arctern RESTful Server<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
-<div class="section" id="id4">
-<h3>基于源码的安装<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
-<p>执行以下命令安装 Arctern RESTful Server：</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 下载源码</span>
-$ git clone https://github.com/zilliztech/arctern.git
-
-<span class="c1"># 切换分支</span>
-$ <span class="nb">cd</span> arctern
-$ git checkout branch-0.1.x
-
-<span class="c1"># 安装依赖</span>
-$ <span class="nb">cd</span> gui/server/arctern_server
-$ pip install -r requirements.txt
-</pre></div>
-</div>
-</div>
-<div class="section" id="pip">
-<h3>基于 pip 的安装<a class="headerlink" href="#pip" title="永久链接至标题">¶</a></h3>
-<p>执行以下命令安装 Arctern RESTful Server：</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ pip install arctern_server
-</pre></div>
-</div>
-</div>
-</div>
-<div class="section" id="id5">
-<h2>配置后台 Arctern-Spark 信息<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
-<p>Arctern RESTful Server 使用配置文件 <code class="docutils literal notranslate"><span class="pre">config.ini</span></code> 标识 Arctern-Spark 后台信息，<code class="docutils literal notranslate"><span class="pre">config.ini</span></code> 文件示例如下所示：</p>
-<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[spark]</span>
-<span class="na">master-addr</span> <span class="o">=</span> <span class="s">spark://spark-master:7077</span>
-</pre></div>
-</div>
-<div class="section" id="id6">
-<h3>查看配置文件路径<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
-<p>源码以及 pip 两种安装方式下 <code class="docutils literal notranslate"><span class="pre">config.ini</span></code> 配置方式稍有不同，下面分别介绍两种方式下 <code class="docutils literal notranslate"><span class="pre">config.ini</span></code> 所在路径。</p>
-<div class="section" id="id7">
-<h4>配置基于源码安装的 Arctern RESTful Server<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h4>
-<p>使用如下命令到达 <code class="docutils literal notranslate"><span class="pre">config.ini</span></code> 文件所在目录，其中 <code class="docutils literal notranslate"><span class="pre">/path/to/arctern</span></code> 为 arctern 源代码根目录的实际路径：</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /path/to/arctern
-$ <span class="nb">cd</span> gui/server/arctern_server
-</pre></div>
-</div>
-</div>
-<div class="section" id="pip-arctern-restful-server">
-<h4>配置基于 pip 安装的 Arctern RESTful Server<a class="headerlink" href="#pip-arctern-restful-server" title="永久链接至标题">¶</a></h4>
-<p>执行以下 Python 代码查看 RESTful Server 的安装目录：</p>
+<h3>Arctern RESTful Server 配置<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
+<p>Arctern RESTful Server 的配置文件 <code class="docutils literal notranslate"><span class="pre">config.ini</span></code> 所在目录可通过如下 Python 代码查看：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">arctern_server</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">arctern_server</span><span class="o">.</span><span class="n">__path__</span><span class="p">)</span>
 <span class="go">[&#39;/path/to/arctern_server&#39;]</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="id8">
-<h3>编辑配置文件<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">master-addr</span></code> 的值在不同的 Spark 部署模式下有以下三种情况，请根据实际的 Spark 部署模式对配置文件进行编辑：</p>
-<p><code class="docutils literal notranslate"><span class="pre">local</span></code> 模式，该模式下 <code class="docutils literal notranslate"><span class="pre">config.ini</span></code> 文件内容示例如下。其中 <code class="docutils literal notranslate"><span class="pre">[]</span></code> 中的数值表示 worker 线程的数量。如果想要仅启动一个 worker 线程则可省略中括号及其中的内容。如果想要启动尽可能多的 worker 线程，请使用<code class="docutils literal notranslate"><span class="pre">local[*]</span></code> 。更加详尽的配置方式可参考 <a class="reference external" href="https://spark.apache.org/docs/latest/submitting-applications.html">Local 模式下 Spark 部署说明</a>。</p>
-<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[spark]</span>
-<span class="na">master-addr</span> <span class="o">=</span> <span class="s">local[4]</span>
+<p>目前配置文件 <code class="docutils literal notranslate"><span class="pre">config.ini</span></code> 主要包含两个部分，分别对应字段 [zepplin] 和 [interpreter]。其中字段 [zepplin] 用于指定 Arctern RESTful Server 所使用的 Zeppelin 系统的相关信息；[interpreter] 字段用于指定 Arctern 数据分析后台的相关信息。配置文件 <code class="docutils literal notranslate"><span class="pre">config.ini</span></code> 实例如下：</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[zeppelin]</span>
+<span class="na">zeppelin-server</span> <span class="o">=</span> <span class="s">localhost</span>
+<span class="na">zeppelin-port</span> <span class="o">=</span> <span class="s">8888</span>
+
+<span class="k">[interpreter]</span>
+<span class="na">type</span> <span class="o">=</span> <span class="s">python</span>
+<span class="na">name</span> <span class="o">=</span> <span class="s">arcternpython</span>
+<span class="na">python-path</span> <span class="o">=</span> <span class="s">/path/to/python</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">standalone</span> </code> 集群模式，该模式下 <code class="docutils literal notranslate"><span class="pre">config.ini</span></code> 文件内容示例如下。其中 <code class="docutils literal notranslate"><span class="pre">192.168.1.2</span></code> 为 master 节点的 IP 地址，<code class="docutils literal notranslate"><span class="pre">7077</span></code> 为 master 节点监听 spark 任务的端口号（7077 为 Spark master 节点的默认监听端口号）。请根据 Spark 集群的实际部署情况进行设置。更加详尽的配置方式可参考 <a class="reference external" href="https://spark.apache.org/docs/latest/spark-standalone.html">standalone 模式下 Spark 部署说明</a>。</p>
-<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[spark]</span>
-<span class="na">master-addr</span> <span class="o">=</span> <span class="s">spark://192.168.1.2:7077</span>
+<p>[zeppelin] 字段说明如下：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">zeppelin.zeppelin-server</span></code>： Zeppelin 后台的 IP 地址；</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">zeppelin.zeppelin-port</span></code>： Zeppelin 后台的端口号。</p></li>
+</ul>
+<p>[interpreter] 字段说明如下：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">interpreter.type</span></code>：解释器类型；</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">interpreter.name</span></code>：解释器名称；</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">interpreter.python-path</span></code>：装有 <code class="docutils literal notranslate"><span class="pre">Arctern</span></code> 运行环境的 python 解释器路径;</p></li>
+</ul>
+<p>目前 Arctern RESTful Server 提供了对 <code class="docutils literal notranslate"><span class="pre">python</span></code> 和 <code class="docutils literal notranslate"><span class="pre">pyspark</span></code> 两种 Arctern 后台的适配，因此 <code class="docutils literal notranslate"><span class="pre">interpreter.type</span></code> 的可选值为 <code class="docutils literal notranslate"><span class="pre">python</span></code> 和 <code class="docutils literal notranslate"><span class="pre">pyspark</span></code> 两种，不同的后台下 <code class="docutils literal notranslate"><span class="pre">config.ini</span></code> 的配置情况稍有不同。</p>
+<p>使用基于 python 的 Arctern 后台时，配置文件的 [interpreter] 字段示例如下：</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[interpreter]</span>
+<span class="na">type</span> <span class="o">=</span> <span class="s">python</span>
+<span class="na">name</span> <span class="o">=</span> <span class="s">arcternpython</span>
+<span class="na">python-path</span> <span class="o">=</span> <span class="s">/path/to/python</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">yarn</span></code> 集群模式，该模式下 <code class="docutils literal notranslate"><span class="pre">config.ini</span></code> 文件内容如下。此时 spark 任务的资源管理由 Hadoop Yarn 管理，详细信息可参考 <a class="reference external" href="https://spark.apache.org/docs/latest/running-on-yarn.html">基于 Hadoop Yarn 的 Spark 部署说明</a>。</p>
-<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[spark]</span>
-<span class="na">master-addr</span> <span class="o">=</span> <span class="s">yarn</span>
+<p>字段说明：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">interpreter.type</span></code>：固定为 python；</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">interpreter.name</span></code>：解释器名称；</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">interpreter.python-path</span></code>：装有 <code class="docutils literal notranslate"><span class="pre">Arctern</span></code> 运行环境的 python 解释器路径;</p></li>
+</ul>
+<p>使用基于 pyspark 的 Arctern 后台时，配置文件的 [interpreter] 字段示例如下：</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[interpreter]</span>
+<span class="na">type</span> <span class="o">=</span> <span class="s">pyspark</span>
+<span class="na">name</span> <span class="o">=</span> <span class="s">arcternpyspark</span>
+<span class="na">spark-home</span> <span class="o">=</span> <span class="s">/path/to/spark</span>
+<span class="na">master</span> <span class="o">=</span> <span class="s">local[*]</span>
+<span class="na">pyspark-python</span> <span class="o">=</span> <span class="s">python</span>
+<span class="na">pyspark-driver-python</span> <span class="o">=</span> <span class="s">python</span>
+</pre></div>
+</div>
+<p>字段说明：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">interpreter.type</span></code>：固定为 pyspark；</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">interpreter.name</span></code>：解释器名称；</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">interpreter.spark-name</span></code>： spark 软件包所在路径；</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">interpreter.master</span></code>： spark master 节点配置信息；</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">interpreter.pyspark-python</span></code>： spark worker 节点运行 python 任务的解释器路径；</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">interpreter.pyspark-driver-python</span></code>： spark driver 节点提交 python 任务的解释器路径；</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">interpreter.master</span></code> 的值在不同的 Spark 部署模式下有以下三种情况，请根据实际的 Spark 部署模式对配置文件进行编辑：</p>
+<p><code class="docutils literal notranslate"><span class="pre">local</span></code> 模式，该模式下 <code class="docutils literal notranslate"><span class="pre">config.ini</span></code> 中 <code class="docutils literal notranslate"><span class="pre">master</span></code> 字段示例如下。其中 <code class="docutils literal notranslate"><span class="pre">[]</span></code> 中的数值表示 worker 线程的数量。如果想要仅启动一个 worker 线程则可省略中括号及其中的内容。如果想要启动尽可能多的 worker 线程，请使用<code class="docutils literal notranslate"><span class="pre">local[*]</span></code> 。更加详尽的配置方式可参考 <a class="reference external" href="https://spark.apache.org/docs/latest/submitting-applications.html">Local 模式下 Spark 部署说明</a>。</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">master</span> <span class="o">=</span> <span class="s">local[4]</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">standalone</span> </code> 集群模式，该模式下 <code class="docutils literal notranslate"><span class="pre">config.ini</span></code> 中 <code class="docutils literal notranslate"><span class="pre">master</span></code> 字段示例如下。其中 <code class="docutils literal notranslate"><span class="pre">192.168.1.2</span></code> 为 master 节点的 IP 地址，<code class="docutils literal notranslate"><span class="pre">7077</span></code> 为 master 节点监听 spark 任务的端口号（7077 为 Spark master 节点的默认监听端口号）。请根据 Spark 集群的实际部署情况进行设置。更加详尽的配置方式可参考 <a class="reference external" href="https://spark.apache.org/docs/latest/spark-standalone.html">standalone 模式下 Spark 部署说明</a>。</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">master</span> <span class="o">=</span> <span class="s">spark://192.168.1.2:7077</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="section" id="id9">
-<h2>启动 Arctern RESTful Server<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h2>
-<div class="section" id="id10">
-<h3>启动基于源码安装的 Arctern RESTful Server<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h3>
-<p>在 Arctern 项目的 <code class="docutils literal notranslate"><span class="pre">gui/server/arctern_server</span></code> 目录下执行以下命令启动服务，其中 <code class="docutils literal notranslate"><span class="pre">/path/to/arctern</span></code> 为 Arctern 项目所在目录的绝对路径。</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">export</span> <span class="nv">PYTHONPATH</span><span class="o">=</span>/path/to/arctern/gui/server:<span class="nv">$PYTHONPATH</span>
-$ python manage.py
+<div class="section" id="id4">
+<h2>运行 Arctern RESTful Server<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id5">
+<h3>启动 Zeppelin 后台服务<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+<p>启动 Arctern RESTful Server 前需要启动 Zeppelin 后台服务，使用如下命令即可启动 Zeppelin 后台服务：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> zeppelin-0.9.0-preview1-bin-all
+$ ./bin/zeppelin-daemon.sh start
 </pre></div>
 </div>
 </div>
-<div class="section" id="id11">
-<h3>启动基于 pip 安装的 Arctern RESTful Server<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id6">
+<h3>启动 Arctern RESTful Server<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
 <p>完成配置后，执行以下命令启动服务：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ arctern-server
 </pre></div>
 </div>
 </div>
-<div class="section" id="id12">
-<h3>命令参数介绍<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h3>
-<p>通过命令参数可在启动时对 Arctern RESTful Server 进行配置，以上两种方式使用完全相同的参数，具体的内容和含义如下：</p>
+<div class="section" id="id7">
+<h3>命令参数介绍<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h3>
+<p>通过命令参数可在启动时对 Arctern RESTful Server 进行配置，具体的内容和含义如下：</p>
 <ul class="simple">
 <li><p>-h：显示帮助信息</p></li>
 <li><p>-r：以 release 模式启动服务</p></li>
@@ -359,12 +369,10 @@ $ python manage.py
 <li><p>–loglevel= [log level]：配置日志级别(debug/info/warn/error/fatal)，默认值为: <code class="docutils literal notranslate"><span class="pre">info</span></code></p></li>
 </ul>
 <p>示例：</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">export</span> <span class="nv">PYTHONPATH</span><span class="o">=</span>/path/to/server:<span class="nv">$PYTHONPATH</span>
-$ python manage.py -r -i <span class="m">192</span>.168.1.2 -p <span class="m">8088</span> 
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ arctern-server -r -i <span class="m">192</span>.168.1.2 -p <span class="m">8080</span>
 </pre></div>
 </div>
-<p>其中 <code class="docutils literal notranslate"><span class="pre">/path/to/server</span></code> 为 Arctern 项目下 <code class="docutils literal notranslate"><span class="pre">gui/server</span></code> 目录的绝对路径。</p>
-<p>成功完成以上步骤后，即完成了 Arctern RESTful Server 的安装和配置，请参考 Arctern RESTful 服务<a class="reference external" href="./api/api.html">接口文档</a>和<a class="reference internal" href="restful_quick_start.html"><span class="doc">使用示例</span></a>使用 Arctern RESTful 服务。</p>
+<p>成功完成以上步骤后，即完成了 Arctern RESTful Server 的安装和配置，请参考 Arctern RESTful 服务<a class="reference external" href="./api/api.html">接口文档</a>和<a class="reference external" href="./restful_quick_start">使用示例</a>使用 Arctern RESTful 服务。</p>
 </div>
 </div>
 </div>
@@ -377,7 +385,7 @@ $ python manage.py -r -i <span class="m">192</span>.168.1.2 -p <span class="m">8
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="restful_quick_start.html" class="btn btn-neutral float-right" title="快速开始" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="restful_quick_start_on_python.html" class="btn btn-neutral float-right" title="快速开始（Python 后台）" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="restful.html" class="btn btn-neutral float-left" title="Arctern RESTful Service" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -391,7 +399,7 @@ $ python manage.py -r -i <span class="m">192</span>.168.1.2 -p <span class="m">8
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 5月 15, 2020.
+        最后更新于 5月 19, 2020.
       </span>
 
     </p>

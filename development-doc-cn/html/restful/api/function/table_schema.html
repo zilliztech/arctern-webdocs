@@ -87,15 +87,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../spark/spark.html">Arctern on Spark</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../restful.html">Arctern RESTful Service</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../../webserver_installation_config.html">Arctern RESTful Server 安装与配置</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../restful_quick_start.html">快速开始</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../restful_quick_start_on_python.html">快速开始（Python 后台）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../restful_quick_start_on_spark.html">快速开始（PySpark 后台）</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../api.html">API</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="create_scope.html">创建scope</a></li>
-<li class="toctree-l3"><a class="reference internal" href="delete_scope.html">删除scope</a></li>
 <li class="toctree-l3"><a class="reference internal" href="loadfile.html">加载文件</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">获取表的列信息</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id2">请求说明</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id3">样例</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id4">返回说明</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">请求样例</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">响应样例</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="query.html">查询</a></li>
@@ -185,14 +184,12 @@
 <h2>请求说明<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
 <ul class="simple">
 <li><p>HTTP方法: <strong>GET</strong></p></li>
-<li><p>请求URL: /table/schema?scope=scope1&amp;session=spark&amp;table=table1</p></li>
-<li><p>scope：该字段指明在哪一个作用域内查询表的信息；</p></li>
-<li><p>session：可选参数，该字段指明使用哪个 <code class="docutils literal notranslate"><span class="pre">SparkSession</span></code> 查询表的信息；</p></li>
+<li><p>请求URL: /table/schema?table=table_name</p></li>
 <li><p>table：表名。</p></li>
 </ul>
 </div>
 <div class="section" id="id3">
-<h2>样例<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<h2>请求样例<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
 <div class="section" id="python">
 <h3>Python<a class="headerlink" href="#python" title="永久链接至标题">¶</a></h3>
 <p>本文示例代码使用 Python 的 <code class="docutils literal notranslate"><span class="pre">requests</span></code> 库调用 <code class="docutils literal notranslate"><span class="pre">Arctern</span> <span class="pre">RESTful</span> <span class="pre">API</span></code>，使用下面的命令安装 <code class="docutils literal notranslate"><span class="pre">requests</span></code>：</p>
@@ -202,7 +199,7 @@
 <p>调用示例</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;http://localhost:8080/table/schema?scope=scope1&amp;session=spark&amp;table=table1&quot;</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;http://localhost:8080/table/schema?table=table_name&quot;</span>
 
 <span class="n">payload</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="n">headers</span><span class="o">=</span> <span class="p">{}</span>
@@ -215,14 +212,13 @@
 </div>
 <div class="section" id="curl">
 <h3>curl<a class="headerlink" href="#curl" title="永久链接至标题">¶</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl --location --request GET <span class="s1">&#39;http://localhost:8080/table/schema?scope=scope1&amp;session=spark&amp;table=table1&#39;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl --location --request GET <span class="s1">&#39;http://localhost:8080/table/schema?table=table_name&#39;</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="section" id="id4">
-<h2>返回说明<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
-<p>成功样例：</p>
+<h2>响应样例<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;table&quot;</span><span class="p">:</span> <span class="s2">&quot;table_name&quot;</span><span class="p">,</span>
     <span class="nt">&quot;schema&quot;</span><span class="p">:</span> <span class="p">[</span>
@@ -231,14 +227,6 @@
         <span class="p">{</span><span class="nt">&quot;column2&quot;</span><span class="p">:</span> <span class="s2">&quot;int&quot;</span><span class="p">}</span>
     <span class="p">],</span>
     <span class="nt">&quot;num_rows&quot;</span><span class="p">:</span> <span class="mi">500</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<p>失败样例：</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;error&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;code&quot;</span><span class="p">:</span> <span class="s2">&quot;-1&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;table not found!&quot;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -267,7 +255,7 @@
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 5月 15, 2020.
+        最后更新于 5月 19, 2020.
       </span>
 
     </p>

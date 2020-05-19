@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-15 21:17+0800\n"
+"POT-Creation-Date: 2020-05-19 13:30+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -33,49 +33,33 @@ msgid "HTTP方法: GET"
 msgstr ""
 
 #: ../../source/restful/api/function/table_schema.md:8
-msgid "请求URL: /table/schema?scope=scope1&session=spark&table=table1"
+msgid "请求URL: /table/schema?table=table_name"
 msgstr ""
 
 #: ../../source/restful/api/function/table_schema.md:10
-msgid "scope：该字段指明在哪一个作用域内查询表的信息；"
-msgstr ""
-
-#: ../../source/restful/api/function/table_schema.md:11
-msgid "session：可选参数，该字段指明使用哪个 SparkSession 查询表的信息；"
-msgstr ""
-
-#: ../../source/restful/api/function/table_schema.md:12
 msgid "table：表名。"
 msgstr ""
 
-#: ../../source/restful/api/function/table_schema.md:14
-msgid "样例"
+#: ../../source/restful/api/function/table_schema.md:12
+msgid "请求样例"
 msgstr ""
 
-#: ../../source/restful/api/function/table_schema.md:16
+#: ../../source/restful/api/function/table_schema.md:14
 msgid "Python"
 msgstr ""
 
-#: ../../source/restful/api/function/table_schema.md:18
+#: ../../source/restful/api/function/table_schema.md:16
 msgid "本文示例代码使用 Python 的 requests 库调用 Arctern RESTful API，使用下面的命令安装 requests："
 msgstr ""
 
-#: ../../source/restful/api/function/table_schema.md:24
+#: ../../source/restful/api/function/table_schema.md:22
 msgid "调用示例"
 msgstr ""
 
-#: ../../source/restful/api/function/table_schema.md:39
+#: ../../source/restful/api/function/table_schema.md:37
 msgid "curl"
 msgstr ""
 
-#: ../../source/restful/api/function/table_schema.md:45
-msgid "返回说明"
-msgstr ""
-
-#: ../../source/restful/api/function/table_schema.md:47
-msgid "成功样例："
-msgstr ""
-
-#: ../../source/restful/api/function/table_schema.md:61
-msgid "失败样例："
+#: ../../source/restful/api/function/table_schema.md:43
+msgid "响应样例"
 msgstr ""

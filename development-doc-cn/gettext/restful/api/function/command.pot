@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-15 21:17+0800\n"
+"POT-Creation-Date: 2020-05-19 13:30+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,7 +21,7 @@ msgid "代码执行"
 msgstr ""
 
 #: ../../source/restful/api/function/command.md:3
-msgid "在指定作用域( scope )内执行给定的 python 代码。scope  用于隔离Python代码执行的上下文，使用不同 scope 执行代码，则代码中的变量相互不影响。如需在先后执行的代码中保持相同的上下文，则需使用相同的scope。"
+msgid "执行给定的 python 代码。"
 msgstr ""
 
 #: ../../source/restful/api/function/command.md:5
@@ -48,46 +48,34 @@ msgstr ""
 msgid "Body:"
 msgstr ""
 
-#: ../../source/restful/api/function/command.md:19
+#: ../../source/restful/api/function/command.md:18
 msgid "参数说明："
 msgstr ""
 
-#: ../../source/restful/api/function/command.md:21
-msgid "scope：该字段指明在哪一个作用域内执行 command；"
-msgstr ""
-
-#: ../../source/restful/api/function/command.md:22
+#: ../../source/restful/api/function/command.md:20
 msgid "command：待执行的 python 代码。"
 msgstr ""
 
-#: ../../source/restful/api/function/command.md:24
-msgid "样例"
+#: ../../source/restful/api/function/command.md:22
+msgid "请求样例"
 msgstr ""
 
-#: ../../source/restful/api/function/command.md:26
+#: ../../source/restful/api/function/command.md:24
 msgid "Python"
 msgstr ""
 
-#: ../../source/restful/api/function/command.md:28
+#: ../../source/restful/api/function/command.md:26
 msgid "本文示例代码使用 Python 的 requests 库调用 Arctern RESTful API，使用下面的命令安装 requests："
 msgstr ""
 
-#: ../../source/restful/api/function/command.md:34
+#: ../../source/restful/api/function/command.md:32
 msgid "调用示例："
 msgstr ""
 
-#: ../../source/restful/api/function/command.md:55
+#: ../../source/restful/api/function/command.md:52
 msgid "curl"
 msgstr ""
 
-#: ../../source/restful/api/function/command.md:66
-msgid "返回说明"
-msgstr ""
-
-#: ../../source/restful/api/function/command.md:68
-msgid "正常执行："
-msgstr ""
-
-#: ../../source/restful/api/function/command.md:78
-msgid "执行对应代码出现异常："
+#: ../../source/restful/api/function/command.md:62
+msgid "响应样例"
 msgstr ""
