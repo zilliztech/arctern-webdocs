@@ -87,18 +87,17 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../spark/spark.html">Arctern on Spark</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../restful.html">Arctern RESTful Service</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../../webserver_installation_config.html">Arctern RESTful Server 安装与配置</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../restful_quick_start.html">快速开始</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../restful_quick_start_on_python.html">快速开始（Python 后台）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../restful_quick_start_on_spark.html">快速开始（PySpark 后台）</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../api.html">API</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="create_scope.html">创建scope</a></li>
-<li class="toctree-l3"><a class="reference internal" href="delete_scope.html">删除scope</a></li>
 <li class="toctree-l3"><a class="reference internal" href="loadfile.html">加载文件</a></li>
 <li class="toctree-l3"><a class="reference internal" href="table_schema.html">获取表的列信息</a></li>
 <li class="toctree-l3"><a class="reference internal" href="query.html">查询</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pointmap.html">点图</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">带权点图</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id2">请求说明</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id3">样例</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id4">返回说明</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">请求样例</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">响应样例</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="heatmap.html">热力图</a></li>
@@ -180,7 +179,7 @@
             
   <div class="section" id="id1">
 <h1>带权点图<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
-<p>根据 SQL 语句以及相关画图参数绘制权重图，将绘图结果以 base64 编码方式返回。</p>
+<p>根据相关画图参数绘制权重图，将绘图结果以 base64 编码方式返回。</p>
 <div class="section" id="id2">
 <h2>请求说明<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
 <ul class="simple">
@@ -193,10 +192,13 @@
 </li>
 <li><p>Body:</p></li>
 </ul>
+<p>如果数据处理后台为 python, 则示例 json 如下：</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;scope&quot;</span><span class="p">:</span> <span class="s2">&quot;scope_name&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;session&quot;</span><span class="p">:</span> <span class="s2">&quot;session_name&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;sql&quot;</span><span class="p">:</span> <span class="s2">&quot;select ST_Point(col2, col2) as point, col2 as count1, col2 as count2 from table_name&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;input_data&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;points&quot;</span><span class="p">:</span> <span class="s2">&quot;ST_Point(raw_data.pickup_longitude, raw_data.pickup_latitude)&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;color_weights&quot;</span><span class="p">:</span> <span class="s2">&quot;raw_data.fare_amount&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;size_weights&quot;</span><span class="p">:</span> <span class="s2">&quot;raw_data.total_amount&quot;</span>
+    <span class="p">},</span>
     <span class="nt">&quot;params&quot;</span><span class="p">:</span> <span class="p">{</span>
             <span class="nt">&quot;width&quot;</span><span class="p">:</span> <span class="mi">1024</span><span class="p">,</span>
             <span class="nt">&quot;height&quot;</span><span class="p">:</span> <span class="mi">896</span><span class="p">,</span>
@@ -210,11 +212,19 @@
 <span class="p">}</span>
 </pre></div>
 </div>
+<p>若数据处理后台为 pyspark, 则 input_data 应为相应的 SQL 查询语句，示例如下：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;sql&quot;</span><span class="p">:</span> <span class="s2">&quot;select ST_Point(pickup_longitude, pickup_latitude) as point, fare_amount as count1, total_amount as count2 from raw_data&quot;</span>
+</pre></div>
+</div>
 <p>参数说明：</p>
 <ul class="simple">
-<li><p>scope：执行绘制带权点图操作的作用域名称；</p></li>
-<li><p>session：可选参数，执行绘制带权点图操作的 <code class="docutils literal notranslate"><span class="pre">SparkSession</span></code> 名称；</p></li>
-<li><p>sql：待执行的 SQL 查询语句，该查询的结果作为绘制带权点图的渲染对象；</p></li>
+<li><p>input_data：输入数据描述，需为已定义的变量名称或可执行的 python 语句；</p>
+<ul>
+<li><p>points：点的位置，格式为 WKB 的 pandas.Series；</p></li>
+<li><p>color_weights：点的颜色权重，为 float64|int64 类型的 pandas.Series；</p></li>
+<li><p>size_weights：点的大小权重，为 float64|int64 类型的 pandas.Series；</p></li>
+</ul>
+</li>
 <li><p>params：绘图参数，具体说明如下，详见 <a class="reference internal" href="../../../spark/api/render/function/layer/weighted_pointmap.html"><span class="doc">Arctern-Spark 绘图接口文档</span></a>：</p>
 <ul>
 <li><p>width：图片宽度；</p></li>
@@ -230,7 +240,7 @@
 </ul>
 </div>
 <div class="section" id="id3">
-<h2>样例<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<h2>请求样例<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
 <div class="section" id="python">
 <h3>Python<a class="headerlink" href="#python" title="永久链接至标题">¶</a></h3>
 <p>本文示例代码使用 Python 的 <code class="docutils literal notranslate"><span class="pre">requests</span></code> 库调用 <code class="docutils literal notranslate"><span class="pre">Arctern</span> <span class="pre">RESTful</span> <span class="pre">API</span></code>，使用下面的命令安装 <code class="docutils literal notranslate"><span class="pre">requests</span></code>：</p>
@@ -244,9 +254,11 @@
 <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;http://localhost:8080/weighted_pointmap&quot;</span>
 
 <span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;scope&quot;</span><span class="p">:</span> <span class="s2">&quot;scope_name&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;session&quot;</span><span class="p">:</span> <span class="s2">&quot;session_name&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;sql&quot;</span><span class="p">:</span> <span class="s2">&quot;select ST_Point(col2, col2) as point, col2 as count1, col2 as count2 from table_name&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;input_data&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;points&quot;</span><span class="p">:</span> <span class="s2">&quot;ST_Point(raw_data.pickup_longitude, raw_data.pickup_latitude)&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;color_weights&quot;</span><span class="p">:</span> <span class="s2">&quot;raw_data.fare_amount&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;size_weights&quot;</span><span class="p">:</span> <span class="s2">&quot;raw_data.total_amount&quot;</span>
+    <span class="p">},</span>
     <span class="s2">&quot;params&quot;</span><span class="p">:</span> <span class="p">{</span>
             <span class="s2">&quot;width&quot;</span><span class="p">:</span> <span class="mi">1024</span><span class="p">,</span>
             <span class="s2">&quot;height&quot;</span><span class="p">:</span> <span class="mi">896</span><span class="p">,</span>
@@ -273,9 +285,11 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl --location --request POST <span class="s1">&#39;http://localhost:8080/weighted_pointmap&#39;</span> <span class="se">\</span>
 --header <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\</span>
 --data-raw <span class="s1">&#39;{</span>
-<span class="s1">    &quot;scope&quot;: &quot;scope_name&quot;,</span>
-<span class="s1">    &quot;session&quot;: &quot;session_name&quot;,</span>
-<span class="s1">    &quot;sql&quot;: &quot;select ST_Point(col2, col2) as point, col2 as count1, col2 as count2 from table_name&quot;,</span>
+<span class="s1">    &quot;input_data&quot;: {</span>
+<span class="s1">        &quot;points&quot;: &quot;ST_Point(raw_data.pickup_longitude, raw_data.pickup_latitude)&quot;,</span>
+<span class="s1">        &quot;color_weights&quot;: &quot;raw_data.fare_amount&quot;,</span>
+<span class="s1">        &quot;size_weights&quot;: &quot;raw_data.total_amount&quot;</span>
+<span class="s1">    },</span>
 <span class="s1">    &quot;params&quot;: {</span>
 <span class="s1">            &quot;width&quot;: 1024,</span>
 <span class="s1">            &quot;height&quot;: 896,</span>
@@ -292,20 +306,11 @@
 </div>
 </div>
 <div class="section" id="id4">
-<h2>返回说明<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
-<p>成功样例：</p>
+<h2>响应样例<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;success&quot;</span><span class="p">,</span>
     <span class="nt">&quot;code&quot;</span><span class="p">:</span> <span class="s2">&quot;200&quot;</span><span class="p">,</span>
     <span class="nt">&quot;result&quot;</span><span class="p">:</span> <span class="s2">&quot;使用 base64 编码后的权重图数据&quot;</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<p>失败样例：</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;code&quot;</span><span class="p">:</span> <span class="mi">-1</span><span class="p">,</span>
-    <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Table or view not found: error_table; line 1 pos 14;\n&#39;Project [*]\n+- &#39;UnresolvedRelation [error_table]\n&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;error&quot;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -334,7 +339,7 @@
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 5月 15, 2020.
+        最后更新于 5月 19, 2020.
       </span>
 
     </p>

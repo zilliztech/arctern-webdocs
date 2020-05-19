@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-15 21:17+0800\n"
+"POT-Creation-Date: 2020-05-19 13:30+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,7 +21,7 @@ msgid "查询"
 msgstr ""
 
 #: ../../source/restful/api/function/query.md:3
-msgid "执行给定的 SQL 查询语句。"
+msgid "执行给定的 SQL 查询语句。仅当数据处理后台为 pyspark 时可用。"
 msgstr ""
 
 #: ../../source/restful/api/function/query.md:5
@@ -52,58 +52,42 @@ msgstr ""
 msgid "数据查询："
 msgstr ""
 
-#: ../../source/restful/api/function/query.md:24
+#: ../../source/restful/api/function/query.md:22
 msgid "创建数据表："
 msgstr ""
 
-#: ../../source/restful/api/function/query.md:35
+#: ../../source/restful/api/function/query.md:31
 msgid "参数说明："
 msgstr ""
 
-#: ../../source/restful/api/function/query.md:37
-msgid "scope：执行查询操作的作用域名称；"
-msgstr ""
-
-#: ../../source/restful/api/function/query.md:38
-msgid "session：可选参数，执行 SQL 的 SparkSession 名称；"
-msgstr ""
-
-#: ../../source/restful/api/function/query.md:39
+#: ../../source/restful/api/function/query.md:33
 msgid "sql：待执行的 SQL 查询语句；"
 msgstr ""
 
-#: ../../source/restful/api/function/query.md:40
+#: ../../source/restful/api/function/query.md:34
 msgid "collect_result：可选参数，默认值为 1。1 表示将 SQL 语句的查询结果用 json 格式返回，0 表示仅在后台执行查询语句不返回执行结果。"
 msgstr ""
 
-#: ../../source/restful/api/function/query.md:42
-msgid "样例"
+#: ../../source/restful/api/function/query.md:36
+msgid "请求样例"
 msgstr ""
 
-#: ../../source/restful/api/function/query.md:44
+#: ../../source/restful/api/function/query.md:38
 msgid "Python"
 msgstr ""
 
-#: ../../source/restful/api/function/query.md:46
+#: ../../source/restful/api/function/query.md:40
 msgid "本文示例代码使用 Python 的 requests 库调用 Arctern RESTful API，使用下面的命令安装 requests："
 msgstr ""
 
-#: ../../source/restful/api/function/query.md:52
+#: ../../source/restful/api/function/query.md:46
 msgid "调用示例"
 msgstr ""
 
-#: ../../source/restful/api/function/query.md:96
+#: ../../source/restful/api/function/query.md:86
 msgid "curl"
 msgstr ""
 
-#: ../../source/restful/api/function/query.md:120
-msgid "返回说明"
-msgstr ""
-
-#: ../../source/restful/api/function/query.md:122
-msgid "样例："
-msgstr ""
-
-#: ../../source/restful/api/function/query.md:135
-msgid "失败样例："
+#: ../../source/restful/api/function/query.md:106
+msgid "响应样例"
 msgstr ""
