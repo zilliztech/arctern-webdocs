@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-19 13:30+0800\n"
+"POT-Creation-Date: 2020-05-19 18:36+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -153,7 +153,7 @@ msgid "点图"
 msgstr ""
 
 #: ../../source/restful/restful_quick_start_on_spark.md:389
-msgid "带权点图"
+msgid "绘制带权点图"
 msgstr ""
 
 #: ../../source/restful/restful_quick_start_on_spark.md:391
@@ -169,8 +169,7 @@ msgid "带权点图。"
 msgstr ""
 
 #: ../../source/restful/restful_quick_start_on_spark.md:429
-#: ../../source/restful/restful_quick_start_on_spark.md:465
-msgid "热力图"
+msgid "绘制热力图"
 msgstr ""
 
 #: ../../source/restful/restful_quick_start_on_spark.md:431
@@ -181,9 +180,12 @@ msgstr ""
 msgid "热力图的绘制结果如下："
 msgstr ""
 
+#: ../../source/restful/restful_quick_start_on_spark.md:465
+msgid "热力图"
+msgstr ""
+
 #: ../../source/restful/restful_quick_start_on_spark.md:467
-#: ../../source/restful/restful_quick_start_on_spark.md:511
-msgid "轮廓图"
+msgid "绘制轮廓图"
 msgstr ""
 
 #: ../../source/restful/restful_quick_start_on_spark.md:469
@@ -194,9 +196,12 @@ msgstr ""
 msgid "轮廓图的绘制结果如下："
 msgstr ""
 
+#: ../../source/restful/restful_quick_start_on_spark.md:511
+msgid "轮廓图"
+msgstr ""
+
 #: ../../source/restful/restful_quick_start_on_spark.md:513
-#: ../../source/restful/restful_quick_start_on_spark.md:556
-msgid "图标图"
+msgid "绘制图标图"
 msgstr ""
 
 #: ../../source/restful/restful_quick_start_on_spark.md:515
@@ -207,9 +212,12 @@ msgstr ""
 msgid "图标图的绘制结果如下："
 msgstr ""
 
+#: ../../source/restful/restful_quick_start_on_spark.md:556
+msgid "图标图"
+msgstr ""
+
 #: ../../source/restful/restful_quick_start_on_spark.md:558
-#: ../../source/restful/restful_quick_start_on_spark.md:601
-msgid "渔网图"
+msgid "绘制渔网图"
 msgstr ""
 
 #: ../../source/restful/restful_quick_start_on_spark.md:560
@@ -218,6 +226,10 @@ msgstr ""
 
 #: ../../source/restful/restful_quick_start_on_spark.md:599
 msgid "渔网图的绘制结果如下："
+msgstr ""
+
+#: ../../source/restful/restful_quick_start_on_spark.md:601
+msgid "渔网图"
 msgstr ""
 
 #: ../../source/restful/restful_quick_start_on_spark.md:605

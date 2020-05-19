@@ -16,7 +16,11 @@
 .highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
 .highlight .gi { color: #00A000 } /* Generic.Inserted */
 .highlight .go { color: #888888; -moz-user-select: none; -o-user-select:none; -khtml-user-select:none; -webkit-user-select:none; -ms-user-select:none; user-select:none } /* Generic.Output */
+<<<<<<< HEAD
+.highlight .gp { color: #000080; font-weight: bold; -moz-user-select: none; -o-user-select:none; -khtml-user-select:none; -webkit-user-select:none; -ms-user-select:none; user-select:none } /* Generic.Prompt */
+=======
 .highlight .gp { color: #000080; font-weight: bold ; -moz-user-select: none; -o-user-select:none; -khtml-user-select:none; -webkit-user-select:none; -ms-user-select:none; user-select:none} /* Generic.Prompt */
+>>>>>>> 22ab06ca3f108ecc3ab9d03f2e31d195ef5c152a
 .highlight .gs { font-weight: bold } /* Generic.Strong */
 .highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
 .highlight .gt { color: #0044DD } /* Generic.Traceback */
