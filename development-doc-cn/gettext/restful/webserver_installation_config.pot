@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-19 13:30+0800\n"
+"POT-Creation-Date: 2020-05-19 18:36+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,253 +29,269 @@ msgid "注意： Conda 包括 Anaconda 和 Miniconda，建议使用 Miniconda。
 msgstr ""
 
 #: ../../source/restful/webserver_installation_config.md:7
-msgid "安装 Arctern 后台"
-msgstr ""
-
-#: ../../source/restful/webserver_installation_config.md:9
-msgid "Arctern RESTful Server 仅负责接收和解析 RESTful 请求，实际操作由 Arctern 后台执行。在安装 Arctern RESTful Server 前，你需要事先安装 Arctern 后台系统。目前，Arctern RESTful Server 支持基于 Python 和基于 PySpark 的两种 Arctern 后台。"
-msgstr ""
-
-#: ../../source/restful/webserver_installation_config.md:11
-msgid "安装基于 Python 的 Arctern 后台"
-msgstr ""
-
-#: ../../source/restful/webserver_installation_config.md:13
-msgid "请参考如下链接："
-msgstr ""
-
-#: ../../source/restful/webserver_installation_config.md:15
-msgid "安装 Arctern Python 后台"
-msgstr ""
-
-#: ../../source/restful/webserver_installation_config.md:17
-msgid "安装基于 PySpark 的 Arctern 后台"
-msgstr ""
-
-#: ../../source/restful/webserver_installation_config.md:19
-msgid "通过以下任意一种方式安装基于 PySpark 的 Arctern 后台："
-msgstr ""
-
-#: ../../source/restful/webserver_installation_config.md:21
-msgid "在线安装"
-msgstr ""
-
-#: ../../source/restful/webserver_installation_config.md:22
-msgid "离线安装"
-msgstr ""
-
-#: ../../source/restful/webserver_installation_config.md:23
-msgid "基于 Docker Compose 部署"
-msgstr ""
-
-#: ../../source/restful/webserver_installation_config.md:25
-msgid "安装 Apache Zeppelin"
-msgstr ""
-
-#: ../../source/restful/webserver_installation_config.md:27
-msgid "执行以下命令安装 Apache Zeppelin："
-msgstr ""
-
-#: ../../source/restful/webserver_installation_config.md:37
 msgid "安装 Miniconda"
 msgstr ""
 
-#: ../../source/restful/webserver_installation_config.md:39
+#: ../../source/restful/webserver_installation_config.md:9
 msgid "Miniconda 的安装可参考 Linux 系统安装 Miniconda。"
 msgstr ""
 
+#: ../../source/restful/webserver_installation_config.md:11
+msgid "安装 Arctern 后台"
+msgstr ""
+
+#: ../../source/restful/webserver_installation_config.md:13
+msgid "Arctern RESTful Server 仅负责接收和解析 RESTful 请求，实际操作由 Arctern 后台执行。在安装 Arctern RESTful Server 前，你需要事先安装 Arctern 后台系统。目前，Arctern RESTful Server 支持基于 Python 和基于 PySpark 的两种 Arctern 后台，你可以任选一种安装使用。"
+msgstr ""
+
+#: ../../source/restful/webserver_installation_config.md:15
+msgid "安装基于 Python 的 Arctern 后台"
+msgstr ""
+
+#: ../../source/restful/webserver_installation_config.md:17
+msgid "请参考如下链接："
+msgstr ""
+
+#: ../../source/restful/webserver_installation_config.md:19
+msgid "在线安装 Arctern Python 后台"
+msgstr ""
+
+#: ../../source/restful/webserver_installation_config.md:21
+msgid "安装基于 PySpark 的 Arctern 后台"
+msgstr ""
+
+#: ../../source/restful/webserver_installation_config.md:23
+msgid "通过以下任意一种方式安装基于 PySpark 的 Arctern 后台："
+msgstr ""
+
+#: ../../source/restful/webserver_installation_config.md:25
+msgid "在线安装 Arctern PySpark 后台"
+msgstr ""
+
+#: ../../source/restful/webserver_installation_config.md:26
+msgid "离线安装 Arctern PySpark 后台"
+msgstr ""
+
+#: ../../source/restful/webserver_installation_config.md:27
+msgid "基于 Docker Compose 部署"
+msgstr ""
+
+#: ../../source/restful/webserver_installation_config.md:29
+msgid "安装 Apache Zeppelin"
+msgstr ""
+
+#: ../../source/restful/webserver_installation_config.md:31
+msgid "执行以下命令安装 Apache Zeppelin："
+msgstr ""
+
 #: ../../source/restful/webserver_installation_config.md:41
-msgid "安装 Arctern RESTful Server"
+msgid "配置 Zeppelin 后台"
 msgstr ""
 
 #: ../../source/restful/webserver_installation_config.md:43
+msgid "Zeppelin 默认在本机的 8080 端口启动后台服务，如果需要更改默认的端口号，请在 zeppelin-0.9.0-preview1-bin-all/conf 目录下修改 Zeppelin 的配置文件 zeppelin-site.xml。将下方 <value> 标签内的 8080 替换为你想要使用的端口号："
+msgstr ""
+
+#: ../../source/restful/webserver_installation_config.md:52
+msgid "将下方 <value> 标签内的 8080 替换为你想要使用的端口号："
+msgstr ""
+
+#: ../../source/restful/webserver_installation_config.md:62
+msgid "安装 Arctern RESTful Server"
+msgstr ""
+
+#: ../../source/restful/webserver_installation_config.md:64
 msgid "执行以下命令为 Arctern RESTful Server 构建 Conda 环境。此处假设环境名称为 arctern_server_env，你可根据需求自行选择合适的环境名称。"
 msgstr ""
 
-#: ../../source/restful/webserver_installation_config.md:49
-msgid "注意： 如果你在同一台计算机上安装 Arctern 后台系统和 Arctern RESTful Server，请确保二者的环境名称是不同的。例如，Arctern 后台系统的名称是 arctern_env，Arctern RESTful Server 的名称是 arctern_server_env。"
+#: ../../source/restful/webserver_installation_config.md:70
+msgid "注意： 如果你在同一台计算机上安装 Arctern 后台系统和 Arctern RESTful Server，建议二者的环境名称是不同的。例如，Arctern 后台系统的名称是 arctern_env，Arctern RESTful Server 的名称是 arctern_server_env。"
 msgstr ""
 
-#: ../../source/restful/webserver_installation_config.md:51
+#: ../../source/restful/webserver_installation_config.md:72
 msgid "进入 arctern_server_env 虚拟环境："
 msgstr ""
 
-#: ../../source/restful/webserver_installation_config.md:57
-msgid "注意： 后续工作必须在 Arctern Conda 环境中进行。"
-msgstr ""
-
-#: ../../source/restful/webserver_installation_config.md:59
+#: ../../source/restful/webserver_installation_config.md:78
 msgid "安装 Arctern RESTful Server："
 msgstr ""
 
-#: ../../source/restful/webserver_installation_config.md:65
-msgid "服务器配置"
+#: ../../source/restful/webserver_installation_config.md:84
+msgid "配置 Arctern RESTful Server"
 msgstr ""
 
-#: ../../source/restful/webserver_installation_config.md:67
-msgid "Zeppelin 后台配置"
+#: ../../source/restful/webserver_installation_config.md:86
+msgid "执行以下 Python 命令查看 Arctern RESTful Server 的配置文件 config.ini 所在目录："
 msgstr ""
 
-#: ../../source/restful/webserver_installation_config.md:69
-msgid "Zeppelin 默认在本机的 8080 端口启动后台服务，如果需要更改默认的端口号，可以修改 Zeppelin 的配置文件 zeppelin-site.xml："
+#: ../../source/restful/webserver_installation_config.md:94
+msgid "目前，Arctern RESTful Server 兼容 Python 和 PySpark 两种后台系统。因此，在不同的后台下 config.ini 的配置情况稍有不同。进入 config.ini 所在目录，并编辑根据你使用的后台系统修改配置文件 config.ini。"
 msgstr ""
 
-#: ../../source/restful/webserver_installation_config.md:77
-msgid "将下述条目中的 8080 端口替换为你想要更改的端口号："
+#: ../../source/restful/webserver_installation_config.md:96
+msgid "兼容 Python 的 Arctern RESTful Server 后台"
 msgstr ""
 
-#: ../../source/restful/webserver_installation_config.md:87
-msgid "Arctern RESTful Server 配置"
+#: ../../source/restful/webserver_installation_config.md:98
+msgid "兼容 Python 后台的 Arctern RESTful Server 的配置文件 config.ini 的示例如下："
 msgstr ""
 
-#: ../../source/restful/webserver_installation_config.md:89
-msgid "Arctern RESTful Server 的配置文件 config.ini 所在目录可通过如下 Python 代码查看："
-msgstr ""
-
-#: ../../source/restful/webserver_installation_config.md:97
-msgid "目前配置文件 config.ini 主要包含两个部分，分别对应字段 [zepplin] 和 [interpreter]。其中字段 [zepplin] 用于指定 Arctern RESTful Server 所使用的 Zeppelin 系统的相关信息；[interpreter] 字段用于指定 Arctern 数据分析后台的相关信息。配置文件 config.ini 实例如下："
-msgstr ""
-
-#: ../../source/restful/webserver_installation_config.md:110
-msgid "[zeppelin] 字段说明如下："
-msgstr ""
-
-#: ../../source/restful/webserver_installation_config.md:112
-msgid "zeppelin.zeppelin-server： Zeppelin 后台的 IP 地址；"
+#: ../../source/restful/webserver_installation_config.md:111
+#: ../../source/restful/webserver_installation_config.md:139
+msgid "配置文件 config.ini 中各字段的含义如下："
 msgstr ""
 
 #: ../../source/restful/webserver_installation_config.md:113
-msgid "zeppelin.zeppelin-port： Zeppelin 后台的端口号。"
+#: ../../source/restful/webserver_installation_config.md:141
+msgid "zepplin：指定 Arctern RESTful Server 所使用的 Zeppelin 系统的相关信息。"
+msgstr ""
+
+#: ../../source/restful/webserver_installation_config.md:114
+#: ../../source/restful/webserver_installation_config.md:142
+msgid "zeppelin-host： Zeppelin 后台的 IP 地址"
 msgstr ""
 
 #: ../../source/restful/webserver_installation_config.md:115
-msgid "[interpreter] 字段说明如下："
+#: ../../source/restful/webserver_installation_config.md:143
+msgid "zeppelin-port： Zeppelin 后台的端口号"
+msgstr ""
+
+#: ../../source/restful/webserver_installation_config.md:116
+#: ../../source/restful/webserver_installation_config.md:144
+msgid "interpreter：指定 Arctern 数据分析后台的相关信息。"
 msgstr ""
 
 #: ../../source/restful/webserver_installation_config.md:117
-msgid "interpreter.type：解释器类型；"
+#: ../../source/restful/webserver_installation_config.md:145
+msgid "type：解释器类型"
 msgstr ""
 
 #: ../../source/restful/webserver_installation_config.md:118
-#: ../../source/restful/webserver_installation_config.md:135
-#: ../../source/restful/webserver_installation_config.md:153
-msgid "interpreter.name：解释器名称；"
+#: ../../source/restful/webserver_installation_config.md:146
+msgid "name：解释器名称"
 msgstr ""
 
 #: ../../source/restful/webserver_installation_config.md:119
-#: ../../source/restful/webserver_installation_config.md:136
-msgid "interpreter.python-path：装有 Arctern 运行环境的 python 解释器路径;"
+msgid "python-path：装有 Arctern 运行环境的 Python 解释器的路径"
 msgstr ""
 
 #: ../../source/restful/webserver_installation_config.md:121
-msgid "目前 Arctern RESTful Server 提供了对 python 和 pyspark 两种 Arctern 后台的适配，因此 interpreter.type 的可选值为 python 和 pyspark 两种，不同的后台下 config.ini 的配置情况稍有不同。"
+msgid "兼容 PySpark 的 Arctern RESTful Server 后台"
 msgstr ""
 
 #: ../../source/restful/webserver_installation_config.md:123
-msgid "使用基于 python 的 Arctern 后台时，配置文件的 [interpreter] 字段示例如下："
+msgid "兼容 PySpark 后台的 Arctern RESTful Server 的配置文件 config.ini 的示例如下："
 msgstr ""
 
-#: ../../source/restful/webserver_installation_config.md:132
+#: ../../source/restful/webserver_installation_config.md:147
+msgid "spark-home： Spark 软件包所在路径"
+msgstr ""
+
+#: ../../source/restful/webserver_installation_config.md:148
+msgid "master： Spark master 节点配置信息"
+msgstr ""
+
+#: ../../source/restful/webserver_installation_config.md:149
+msgid "pyspark-python： Spark worker 节点运行 Python 任务的解释器所在路径"
+msgstr ""
+
 #: ../../source/restful/webserver_installation_config.md:150
-msgid "字段说明："
-msgstr ""
-
-#: ../../source/restful/webserver_installation_config.md:134
-msgid "interpreter.type：固定为 python；"
-msgstr ""
-
-#: ../../source/restful/webserver_installation_config.md:138
-msgid "使用基于 pyspark 的 Arctern 后台时，配置文件的 [interpreter] 字段示例如下："
+msgid "pyspark-driver-python： Spark driver 节点提交 Python 任务的解释器所在路径"
 msgstr ""
 
 #: ../../source/restful/webserver_installation_config.md:152
-msgid "interpreter.type：固定为 pyspark；"
+msgid "Spark 有三种不同的部署模式：local、standalone、hadoop/yarn。目前，Arctern RESTful Server 支持 local 和 standalone 模式，你需要根据实际使用的 Spark 部署模式编辑配置文件中 interpreter.master 的值："
 msgstr ""
 
 #: ../../source/restful/webserver_installation_config.md:154
-msgid "interpreter.spark-name： spark 软件包所在路径；"
-msgstr ""
-
-#: ../../source/restful/webserver_installation_config.md:155
-msgid "interpreter.master： spark master 节点配置信息；"
+msgid "local 模式"
 msgstr ""
 
 #: ../../source/restful/webserver_installation_config.md:156
-msgid "interpreter.pyspark-python： spark worker 节点运行 python 任务的解释器路径；"
+#: ../../source/restful/webserver_installation_config.md:170
+msgid "该模式下，config.ini 中 interpreter.master 字段的示例如下："
 msgstr ""
 
-#: ../../source/restful/webserver_installation_config.md:157
-msgid "interpreter.pyspark-driver-python： spark driver 节点提交 python 任务的解释器路径；"
+#: ../../source/restful/webserver_installation_config.md:162
+msgid "其中，[] 中的数值表示 worker 线程的数量。"
 msgstr ""
 
-#: ../../source/restful/webserver_installation_config.md:159
-msgid "interpreter.master 的值在不同的 Spark 部署模式下有以下三种情况，请根据实际的 Spark 部署模式对配置文件进行编辑："
+#: ../../source/restful/webserver_installation_config.md:164
+msgid "如果仅要启动一个 worker 线程，则可省略中括号及其中的内容。"
 msgstr ""
 
-#: ../../source/restful/webserver_installation_config.md:161
-msgid "local 模式，该模式下 config.ini 中 master 字段示例如下。其中 [] 中的数值表示 worker 线程的数量。如果想要仅启动一个 worker 线程则可省略中括号及其中的内容。如果想要启动尽可能多的 worker 线程，请使用local[*] 。更加详尽的配置方式可参考 Local 模式下 Spark 部署说明。"
+#: ../../source/restful/webserver_installation_config.md:165
+msgid "如果要启动本机的所有 worker 线程，则使用 local[*] 。"
 msgstr ""
 
-#: ../../source/restful/webserver_installation_config.md:167
-msgid "standalone  集群模式，该模式下 config.ini 中 master 字段示例如下。其中 192.168.1.2 为 master 节点的 IP 地址，7077 为 master 节点监听 spark 任务的端口号（7077 为 Spark master 节点的默认监听端口号）。请根据 Spark 集群的实际部署情况进行设置。更加详尽的配置方式可参考 standalone 模式下 Spark 部署说明。"
+#: ../../source/restful/webserver_installation_config.md:166
+msgid "详细的配置方式可参考 Local 模式下 Spark 部署说明。"
 msgstr ""
 
-#: ../../source/restful/webserver_installation_config.md:173
+#: ../../source/restful/webserver_installation_config.md:168
+msgid "standalone 模式"
+msgstr ""
+
+#: ../../source/restful/webserver_installation_config.md:176
+msgid "其中，192.168.1.2 为 master 节点的 IP 地址，7077 为 master 节点监听 spark 任务的默认端口号。请根据你的 Spark 集群的实际部署情况进行设置。详细的配置方式可参考 standalone 模式下 Spark 部署说明。"
+msgstr ""
+
+#: ../../source/restful/webserver_installation_config.md:178
 msgid "运行 Arctern RESTful Server"
 msgstr ""
 
-#: ../../source/restful/webserver_installation_config.md:175
-msgid "启动 Zeppelin 后台服务"
+#: ../../source/restful/webserver_installation_config.md:180
+msgid "启动 Zeppelin 后台"
 msgstr ""
 
-#: ../../source/restful/webserver_installation_config.md:177
-msgid "启动 Arctern RESTful Server 前需要启动 Zeppelin 后台服务，使用如下命令即可启动 Zeppelin 后台服务："
+#: ../../source/restful/webserver_installation_config.md:182
+msgid "启动 Arctern RESTful Server 前需要启动 Zeppelin 后台服务，执行以下命令启动 Zeppelin 后台服务："
 msgstr ""
 
-#: ../../source/restful/webserver_installation_config.md:184
+#: ../../source/restful/webserver_installation_config.md:189
 msgid "启动 Arctern RESTful Server"
 msgstr ""
 
-#: ../../source/restful/webserver_installation_config.md:186
-msgid "完成配置后，执行以下命令启动服务："
+#: ../../source/restful/webserver_installation_config.md:191
+msgid "执行以下命令启动 Arctern RESTful Server 服务："
 msgstr ""
 
-#: ../../source/restful/webserver_installation_config.md:192
+#: ../../source/restful/webserver_installation_config.md:197
 msgid "命令参数介绍"
 msgstr ""
 
-#: ../../source/restful/webserver_installation_config.md:194
-msgid "通过命令参数可在启动时对 Arctern RESTful Server 进行配置，具体的内容和含义如下："
+#: ../../source/restful/webserver_installation_config.md:199
+msgid "启动 Arctern RESTful Server 时，你可以通过命令参数对它进行配置，具体参数及其含义如下："
 msgstr ""
 
-#: ../../source/restful/webserver_installation_config.md:196
+#: ../../source/restful/webserver_installation_config.md:201
 msgid "-h：显示帮助信息"
 msgstr ""
 
-#: ../../source/restful/webserver_installation_config.md:198
+#: ../../source/restful/webserver_installation_config.md:203
 msgid "-r：以 release 模式启动服务"
 msgstr ""
 
-#: ../../source/restful/webserver_installation_config.md:200
+#: ../../source/restful/webserver_installation_config.md:205
 msgid "-p：为服务指定 http 端口，默认为 8080"
 msgstr ""
 
-#: ../../source/restful/webserver_installation_config.md:202
-msgid "-i：为服务指定 IP 地址，默认为本机IP 127.0.0.1"
+#: ../../source/restful/webserver_installation_config.md:207
+msgid "-i：为服务指定 IP 地址，默认为本机 IP 地址 127.0.0.1"
 msgstr ""
 
-#: ../../source/restful/webserver_installation_config.md:204
-msgid "--logfile= [path/to/logfile]： 配置日志文件路径信息，默认值为： ./log.txt"
+#: ../../source/restful/webserver_installation_config.md:209
+msgid "--logfile= <path/to/logfile>： 配置日志文件路径信息，默认值为：./log.txt"
 msgstr ""
 
-#: ../../source/restful/webserver_installation_config.md:206
-msgid "--loglevel= [log level]：配置日志级别(debug/info/warn/error/fatal)，默认值为: info"
+#: ../../source/restful/webserver_installation_config.md:211
+msgid "--loglevel= <log level>：配置日志级别（debug, info, warn, error, fatal），默认值为: info。"
 msgstr ""
 
-#: ../../source/restful/webserver_installation_config.md:208
-msgid "示例："
+#: ../../source/restful/webserver_installation_config.md:213
+msgid "使用命令参数启动 Arctern RESTful Server 的示例如下："
 msgstr ""
 
-#: ../../source/restful/webserver_installation_config.md:214
-msgid "成功完成以上步骤后，即完成了 Arctern RESTful Server 的安装和配置，请参考 Arctern RESTful 服务接口文档和使用示例使用 Arctern RESTful 服务。"
+#: ../../source/restful/webserver_installation_config.md:219
+msgid "至此，你已经成功完成了 Arctern RESTful Server 的安装和配置。请参考 Arctern RESTful 服务接口文档和使用示例使用 Arctern RESTful 服务。"
 msgstr ""

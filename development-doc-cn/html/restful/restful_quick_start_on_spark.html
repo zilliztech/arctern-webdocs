@@ -100,11 +100,11 @@
 <li class="toctree-l4"><a class="reference internal" href="#id6">查询数据表信息</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#sql">SQL 查询</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id10">绘制点图</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id11">带权点图</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id12">热力图</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id13">轮廓图</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id14">图标图</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id15">渔网图</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id11">绘制带权点图</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id12">绘制热力图</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id13">绘制轮廓图</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id14">绘制图标图</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id15">绘制渔网图</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id16">删除数据表</a></li>
 </ul>
 </li>
@@ -551,7 +551,7 @@
 <p><img alt="点图" src="../_images/pointmap.png" /></p>
 </div>
 <div class="section" id="id11">
-<h3>带权点图<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h3>
+<h3>绘制带权点图<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h3>
 <p>使用 <code class="docutils literal notranslate"><span class="pre">/weighted_pointmap</span></code> 接口根据乘客的上车地点绘制带权点图。其中，将总费用作为点的权重 —— 总费用越高，权重越大，点的颜色越深。带权点图的具体参数说明请参见<a class="reference external" href="./api/function/weighted_pointmap.html">带权点图 RESTful API 说明</a>。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">requests</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">json</span>
@@ -588,7 +588,7 @@
 <p><img alt="带权点图" src="../_images/weighted_pointmap.png" />。</p>
 </div>
 <div class="section" id="id12">
-<h3>热力图<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h3>
+<h3>绘制热力图<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h3>
 <p>使用 <code class="docutils literal notranslate"><span class="pre">/heatmap</span></code> 接口根据乘客的下车地点以及行程费用绘制热力图。其中，费用高的区域为红色，费用低的区域为绿色。热力图的具体参数说明请参见 <a class="reference external" href="./api/function/heatmap.html">热力图 RESTful API 说明</a>。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">requests</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">json</span>
@@ -623,7 +623,7 @@
 <p><img alt="热力图" src="../_images/heatmap.png" /></p>
 </div>
 <div class="section" id="id13">
-<h3>轮廓图<a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h3>
+<h3>绘制轮廓图<a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h3>
 <p>使用 <code class="docutils literal notranslate"><span class="pre">/choroplethmap</span></code> 接口，根据下车地点的建筑物、小费金额绘制轮廓图。其中，小费金额高的区域为黄色，小费金额低的区域为蓝色。轮廓图的具体参数说明请参见 <a class="reference external" href="./api/function/choroplethmap.html">轮廓图 RESTful API 说明</a>。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">requests</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">json</span>
@@ -666,7 +666,7 @@
 <p><img alt="轮廓图" src="../_images/choroplethmap.png" /></p>
 </div>
 <div class="section" id="id14">
-<h3>图标图<a class="headerlink" href="#id14" title="永久链接至标题">¶</a></h3>
+<h3>绘制图标图<a class="headerlink" href="#id14" title="永久链接至标题">¶</a></h3>
 <p>使用 <code class="docutils literal notranslate"><span class="pre">/icon_viz</span></code> 接口根据乘客的上车地点绘制图标图。图标图的具体参数说明请参见<a class="reference external" href="./api/function/icon_viz.html">图标图 RESTful API 说明</a>。</p>
 <p>如果数据处理后台为 Python, 则代码示例如下：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">requests</span>
@@ -676,7 +676,7 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># wget https://github.com/zilliztech/arctern-docs/raw/branch-0.1.x/img/icon/icon-viz.png</span>
 <span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># icon_path 为待显示图标的绝对路径</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">icon_path</span> <span class="o">=</span> <span class="s2">&quot;/path/to/icon_viz.png&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">icon_path</span> <span class="o">=</span> <span class="s2">&quot;/path/to/icon-viz.png&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
 <span class="gp">... </span><span class="s2">&quot;input_data&quot;</span><span class="p">:</span> <span class="p">{</span>
 <span class="gp">... </span>    <span class="s2">&quot;sql&quot;</span><span class="p">:</span> <span class="s2">&quot;select ST_Point(pickup_longitude, pickup_latitude) as point from nyc_taxi where ST_Within(ST_Point(pickup_longitude, pickup_latitude), ST_GeomFromText(&#39;POLYGON ((-73.9616334766551 40.704739019597156, -73.94232850242967 40.704739019597156, -73.94232850242967 40.728133570887906 ,-73.9616334766551 40.728133570887906, -73.9616334766551 40.704739019597156))&#39;)) limit 25&quot;</span>
@@ -707,7 +707,7 @@
 <p><img alt="图标图" src="../_images/icon_viz.png" /></p>
 </div>
 <div class="section" id="id15">
-<h3>渔网图<a class="headerlink" href="#id15" title="永久链接至标题">¶</a></h3>
+<h3>绘制渔网图<a class="headerlink" href="#id15" title="永久链接至标题">¶</a></h3>
 <p>使用 <code class="docutils literal notranslate"><span class="pre">/fishnetmap</span></code> 接口根据乘客的上车地点绘制渔网图。其中，将总费用作为渔网网格的权重 —— 总费用越高，权重越大，渔网网格的颜色越深。渔网图的具体参数说明请参见<a class="reference external" href="./api/function/fishnetmap.html">渔网图 RESTful API 说明</a>。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">requests</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">json</span>
