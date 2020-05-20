@@ -322,15 +322,11 @@
 </div>
 <div class="section" id="arctern-geospatial">
 <h2>使用 Arctern 提供的 GeoSpatial 函数处理数据<a class="headerlink" href="#arctern-geospatial" title="永久链接至标题">¶</a></h2>
-<ol class="simple">
-<li><p>导入 <code class="docutils literal notranslate"><span class="pre">arctern</span></code> 模块：</p></li>
-</ol>
+<p>导入 <code class="docutils literal notranslate"><span class="pre">arctern</span></code> 模块：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="o">*</span>
 </pre></div>
 </div>
-<ol class="simple">
-<li><p>根据经纬度数据创建坐标点数据：</p></li>
-</ol>
+<p>根据经纬度数据创建坐标点数据：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ST_AsText</span><span class="p">(</span><span class="n">ST_Point</span><span class="p">(</span><span class="n">pickup_df</span><span class="o">.</span><span class="n">pickup_longitude</span><span class="p">,</span> <span class="n">pickup_df</span><span class="o">.</span><span class="n">pickup_latitude</span><span class="p">))</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="go">0    POINT (-73.959908 40.776353)</span>
 <span class="go">1    POINT (-73.955183 40.773459)</span>
@@ -340,9 +336,7 @@
 <span class="go">dtype: object</span>
 </pre></div>
 </div>
-<ol class="simple">
-<li><p>将坐标点数据使用的空间坐标系从 <code class="docutils literal notranslate"><span class="pre">EPSG:4326</span></code> 坐标系转换到 <code class="docutils literal notranslate"><span class="pre">EPSG:3857</span></code> 坐标系。有关空间坐标系标准的详细信息请查看<a class="reference external" href="https://en.wikipedia.org/wiki/Spatial_reference_system">维基百科相关页面</a>。</p></li>
-</ol>
+<p>将坐标点数据使用的空间坐标系从 <code class="docutils literal notranslate"><span class="pre">EPSG:4326</span></code> 坐标系转换到 <code class="docutils literal notranslate"><span class="pre">EPSG:3857</span></code> 坐标系。有关空间坐标系标准的详细信息请查看<a class="reference external" href="https://en.wikipedia.org/wiki/Spatial_reference_system">维基百科相关页面</a>。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ST_AsText</span><span class="p">(</span><span class="n">ST_Transform</span><span class="p">(</span><span class="n">ST_Point</span><span class="p">(</span><span class="n">pickup_df</span><span class="o">.</span><span class="n">pickup_longitude</span><span class="p">,</span> <span class="n">pickup_df</span><span class="o">.</span><span class="n">pickup_latitude</span><span class="p">),</span><span class="s1">&#39;epsg:4326&#39;</span><span class="p">,</span> <span class="s1">&#39;epsg:3857&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="go">0    POINT (-8233179.29767736 4979409.53917853)</span>
 <span class="go">1    POINT (-8232653.31308336 4978984.12438949)</span>
@@ -352,9 +346,7 @@
 <span class="go">dtype: object</span>
 </pre></div>
 </div>
-<ol class="simple">
-<li><p>在 <a class="reference external" href="http://epsg.io/transform#s_srs=4326&amp;t_srs=3857">EPSG</a> 网站上验证转换结果是否正确。</p></li>
-</ol>
+<p>在 <a class="reference external" href="http://epsg.io/transform#s_srs=4326&amp;t_srs=3857">EPSG</a> 网站上验证转换结果是否正确。</p>
 <p><img alt="../../_images/epsg-4326-to-3857-example.png" src="../../_images/epsg-4326-to-3857-example.png" /></p>
 </div>
 <div class="section" id="arctern">

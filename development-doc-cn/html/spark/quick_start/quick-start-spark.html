@@ -333,13 +333,15 @@ SparkSession available as &#39;spark&#39;.
 </pre></div>
 </div>
 <p>加载测试数据，并创建临时表 <code class="docutils literal notranslate"><span class="pre">origin_nyc_taxi</span></code>：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 文件路径配置为本地路径。</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">origin_df</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;csv&quot;</span><span class="p">)</span> \
-<span class="o">...</span>                       <span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;header&quot;</span><span class="p">,</span><span class="kc">True</span><span class="p">)</span> \
-<span class="o">...</span>                       <span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;delimiter&quot;</span><span class="p">,</span><span class="s2">&quot;,&quot;</span><span class="p">)</span> \
-<span class="o">...</span>                       <span class="o">.</span><span class="n">schema</span><span class="p">(</span><span class="n">nyc_schema</span><span class="p">)</span> \
-<span class="o">...</span>                       <span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;/path/to/0_2M_nyc_taxi_and_building.csv&quot;</span><span class="p">)</span> \
-<span class="o">...</span>                       <span class="o">.</span><span class="n">createOrReplaceTempView</span><span class="p">(</span><span class="s2">&quot;origin_nyc_taxi&quot;</span><span class="p">)</span>
+<blockquote>
+<div><p><strong>注意：</strong> 你需要将 <code class="docutils literal notranslate"><span class="pre">&lt;/path/to/0_2M_nyc_taxi_and_building.csv&gt;</span></code> 替换为数据文件的本地路径。</p>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">origin_df</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;csv&quot;</span><span class="p">)</span> \
+<span class="gp">... </span>                      <span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;header&quot;</span><span class="p">,</span><span class="kc">True</span><span class="p">)</span> \
+<span class="gp">... </span>                      <span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;delimiter&quot;</span><span class="p">,</span><span class="s2">&quot;,&quot;</span><span class="p">)</span> \
+<span class="gp">... </span>                      <span class="o">.</span><span class="n">schema</span><span class="p">(</span><span class="n">nyc_schema</span><span class="p">)</span> \
+<span class="gp">... </span>                      <span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;&lt;/path/to/0_2M_nyc_taxi_and_building.csv&gt;&quot;</span><span class="p">)</span> \
+<span class="gp">... </span>                      <span class="o">.</span><span class="n">createOrReplaceTempView</span><span class="p">(</span><span class="s2">&quot;origin_nyc_taxi&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>查询数据表 <code class="docutils literal notranslate"><span class="pre">origin_nyc_taxi</span></code> 的行数，验证数据是否加载成功：</p>
@@ -396,9 +398,7 @@ SparkSession available as &#39;spark&#39;.
 </div>
 <div class="section" id="arctern-spark-geospatial">
 <h2>使用 Arctern-Spark 提供的 GeoSpatial 函数处理数据<a class="headerlink" href="#arctern-spark-geospatial" title="永久链接至标题">¶</a></h2>
-<ol class="simple">
-<li><p>根据经纬度数据创建坐标点数据：</p></li>
-</ol>
+<p>根据经纬度数据创建坐标点数据：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;select st_astext(st_point(pickup_longitude, pickup_latitude)) from nyc_taxi limit 10&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
 <span class="go">+------------------------------------------------------+                        </span>
 <span class="go">|ST_AsText(ST_Point(pickup_longitude, pickup_latitude))|</span>
@@ -416,9 +416,7 @@ SparkSession available as &#39;spark&#39;.
 <span class="go">+------------------------------------------------------+</span>
 </pre></div>
 </div>
-<ol class="simple">
-<li><p>将坐标点数据使用的空间坐标系从 <code class="docutils literal notranslate"><span class="pre">EPSG:4326</span></code> 坐标系转换为 <code class="docutils literal notranslate"><span class="pre">EPSG:3857</span></code> 坐标系。有关空间坐标系标准的详细信息请查看<a class="reference external" href="https://en.wikipedia.org/wiki/Spatial_reference_system">维基百科相关页面</a>。</p></li>
-</ol>
+<p>将坐标点数据使用的空间坐标系从 <code class="docutils literal notranslate"><span class="pre">EPSG:4326</span></code> 坐标系转换为 <code class="docutils literal notranslate"><span class="pre">EPSG:3857</span></code> 坐标系。有关空间坐标系标准的详细信息请查看<a class="reference external" href="https://en.wikipedia.org/wiki/Spatial_reference_system">维基百科相关页面</a>。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;select &quot;</span> \
 <span class="gp">... </span>              <span class="s2">&quot;st_astext(&quot;</span> 
 <span class="gp">... </span>                  <span class="s2">&quot;st_point(pickup_longitude, pickup_latitude)) as epsg_4326,&quot;</span> \
@@ -443,9 +441,7 @@ SparkSession available as &#39;spark&#39;.
 <span class="go">+----------------------------+------------------------------------------+</span>
 </pre></div>
 </div>
-<ol class="simple">
-<li><p>在 <a class="reference external" href="http://epsg.io/transform#s_srs=4326&amp;t_srs=3857">EPSG</a> 网站上验证转换结果是否正确。</p></li>
-</ol>
+<p>在 <a class="reference external" href="http://epsg.io/transform#s_srs=4326&amp;t_srs=3857">EPSG</a> 网站上验证转换结果是否正确。</p>
 <p><img alt="../../_images/epsg-4326-to-3857-example1.png" src="../../_images/epsg-4326-to-3857-example1.png" /></p>
 </div>
 <div class="section" id="id4">

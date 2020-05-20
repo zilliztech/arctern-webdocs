@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-20 16:22+0800\n"
+"POT-Creation-Date: 2020-05-20 17:37+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -44,34 +44,34 @@ msgstr ""
 msgid "interpreter_master： Spark master 节点模式，可选模式包括 local 和 standalone。"
 msgstr ""
 
-#: ../../source/restful/restful_config.md:9
+#: ../../source/restful/restful_config.md:10
 msgid "注意： 在 local 模式下，Spark 在一个物理节点内运行。配置示例如 --interpreter_master=local[8]，其中 [8] 表示使用 8 个 CPU。<br>在 standalone 模式下，你需要指定 maseter url。配置示例如 --interpreter_master=spark://IP:PORT。"
 msgstr ""
 
-#: ../../source/restful/restful_config.md:10
+#: ../../source/restful/restful_config.md:12
 msgid "interpreter_pyspark_python： Spark executor 的 Python 解释器的绝对路径。"
 msgstr ""
 
-#: ../../source/restful/restful_config.md:11
+#: ../../source/restful/restful_config.md:13
 msgid "interpreter_pyspark_driver_python： Spark driver 的 Python 解释器的绝对路径。"
 msgstr ""
 
-#: ../../source/restful/restful_config.md:13
+#: ../../source/restful/restful_config.md:15
 msgid "arctern server: Arctern RESTful Server 的相关配置。"
 msgstr ""
 
-#: ../../source/restful/restful_config.md:14
+#: ../../source/restful/restful_config.md:16
 msgid "arctern_server_host: Arctern RESTful Server 的 IP 地址。"
 msgstr ""
 
-#: ../../source/restful/restful_config.md:15
+#: ../../source/restful/restful_config.md:17
 msgid "arctern_server_port: Arctern RESTful Server 的端口号。"
 msgstr ""
 
-#: ../../source/restful/restful_config.md:17
+#: ../../source/restful/restful_config.md:19
 msgid "zepplin： Arctern RESTful Server 所使用的 Zeppelin 系统的相关配置。"
 msgstr ""
 
-#: ../../source/restful/restful_config.md:18
+#: ../../source/restful/restful_config.md:20
 msgid "zeppelin_port： Zeppelin 的端口号。"
 msgstr ""

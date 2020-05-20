@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-20 16:22+0800\n"
+"POT-Creation-Date: 2020-05-20 17:37+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -76,90 +76,94 @@ msgstr ""
 msgid "加载测试数据，并创建临时表 origin_nyc_taxi："
 msgstr ""
 
-#: ../../source/spark/quick_start/quick-start-spark.md:186
+#: ../../source/spark/quick_start/quick-start-spark.md:176
+msgid "注意： 你需要将 </path/to/0_2M_nyc_taxi_and_building.csv> 替换为数据文件的本地路径。"
+msgstr ""
+
+#: ../../source/spark/quick_start/quick-start-spark.md:187
 msgid "查询数据表 origin_nyc_taxi 的行数，验证数据是否加载成功："
 msgstr ""
 
-#: ../../source/spark/quick_start/quick-start-spark.md:197
+#: ../../source/spark/quick_start/quick-start-spark.md:198
 msgid "将 origin_nyc_taxi 中日期数据从 String 类型转换成 Timestamp 类型，并创建新的临时表 nyc_taxi："
 msgstr ""
 
-#: ../../source/spark/quick_start/quick-start-spark.md:223
+#: ../../source/spark/quick_start/quick-start-spark.md:224
 msgid "查询转换后的日期数据："
 msgstr ""
 
-#: ../../source/spark/quick_start/quick-start-spark.md:243
+#: ../../source/spark/quick_start/quick-start-spark.md:244
 msgid "使用 Arctern-Spark 提供的 GeoSpatial 函数处理数据"
 msgstr ""
 
-#: ../../source/spark/quick_start/quick-start-spark.md:245
+#: ../../source/spark/quick_start/quick-start-spark.md:246
 msgid "根据经纬度数据创建坐标点数据："
 msgstr ""
 
-#: ../../source/spark/quick_start/quick-start-spark.md:265
+#: ../../source/spark/quick_start/quick-start-spark.md:266
 msgid "将坐标点数据使用的空间坐标系从 EPSG:4326 坐标系转换为 EPSG:3857 坐标系。有关空间坐标系标准的详细信息请查看维基百科相关页面。"
 msgstr ""
 
-#: ../../source/spark/quick_start/quick-start-spark.md:292
+#: ../../source/spark/quick_start/quick-start-spark.md:293
 msgid "在 EPSG 网站上验证转换结果是否正确。"
 msgstr ""
 
-#: ../../source/spark/quick_start/quick-start-spark.md:296
+#: ../../source/spark/quick_start/quick-start-spark.md:297
 msgid "使用 Arctern-Spark 绘制图层"
 msgstr ""
 
-#: ../../source/spark/quick_start/quick-start-spark.md:298
+#: ../../source/spark/quick_start/quick-start-spark.md:299
 msgid "导入绘图需要使用的模块并定义相关变量："
 msgstr ""
 
-#: ../../source/spark/quick_start/quick-start-spark.md:314
+#: ../../source/spark/quick_start/quick-start-spark.md:315
 msgid "通过 Arctern-Spark 提供的绘图函数绘制点图："
 msgstr ""
 
-#: ../../source/spark/quick_start/quick-start-spark.md:327
+#: ../../source/spark/quick_start/quick-start-spark.md:328
 msgid "点图绘制结果如下："
 msgstr ""
 
-#: ../../source/spark/quick_start/quick-start-spark.md:331
+#: ../../source/spark/quick_start/quick-start-spark.md:332
 msgid "通过 Arctern-Spark 提供的绘图函数绘制带权点图："
 msgstr ""
 
-#: ../../source/spark/quick_start/quick-start-spark.md:344
+#: ../../source/spark/quick_start/quick-start-spark.md:345
 msgid "带权点图绘制结果如下："
 msgstr ""
 
-#: ../../source/spark/quick_start/quick-start-spark.md:348
+#: ../../source/spark/quick_start/quick-start-spark.md:349
 msgid "通过 Arctern-Spark 提供的绘图函数绘制热力图："
 msgstr ""
 
-#: ../../source/spark/quick_start/quick-start-spark.md:361
+#: ../../source/spark/quick_start/quick-start-spark.md:362
 msgid "热力图绘制结果如下："
 msgstr ""
 
-#: ../../source/spark/quick_start/quick-start-spark.md:365
+#: ../../source/spark/quick_start/quick-start-spark.md:366
 msgid "通过 Arctern-Spark 提供的绘图函数绘制轮廓图："
 msgstr ""
 
-#: ../../source/spark/quick_start/quick-start-spark.md:378
+#: ../../source/spark/quick_start/quick-start-spark.md:379
 msgid "轮廓图绘制结果如下："
 msgstr ""
 
-#: ../../source/spark/quick_start/quick-start-spark.md:382
+#: ../../source/spark/quick_start/quick-start-spark.md:383
 msgid "通过 Arctern-Spark 提供的绘图函数绘制图标图："
 msgstr ""
 
-#: ../../source/spark/quick_start/quick-start-spark.md:384
+#: ../../source/spark/quick_start/quick-start-spark.md:385
 msgid "注意： 你需要将示例中的 </path/to/icon.png> 替换为本地图片的绝对路径。"
 msgstr ""
 
-#: ../../source/spark/quick_start/quick-start-spark.md:396
+#: ../../source/spark/quick_start/quick-start-spark.md:397
 msgid "图标图绘制结果如下："
 msgstr ""
 
-#: ../../source/spark/quick_start/quick-start-spark.md:400
+#: ../../source/spark/quick_start/quick-start-spark.md:401
 msgid "通过 Arctern-Spark 提供的绘图函数绘制渔网图："
 msgstr ""
 
-#: ../../source/spark/quick_start/quick-start-spark.md:413
+#: ../../source/spark/quick_start/quick-start-spark.md:414
 msgid "渔网图绘制结果如下："
 msgstr ""
