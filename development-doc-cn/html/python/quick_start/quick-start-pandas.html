@@ -156,7 +156,7 @@
 <h1>快速开始<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
 <p>本文以纽约出租车数据集为例，说明如何通过 Arctern 完成数据的导入、运算和展示。</p>
 <blockquote>
-<div><p><strong>注意：</strong> 本章所有示例代码均默认在 <code class="docutils literal notranslate"><span class="pre">Python</span> <span class="pre">3.7</span></code> 环境中运行。若要在其他 Python 环境下运行，你可能需要适当修改代码内容。</p>
+<div><p><strong>注意：</strong> 本章所有示例代码均默认在 Python 3.7 环境中运行。若要在其他 Python 环境下运行，你可能需要适当修改代码内容。</p>
 </div></blockquote>
 <div class="section" id="id2">
 <h2>数据准备<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
@@ -260,7 +260,7 @@
 </tr>
 </tbody>
 </table><blockquote>
-<div><p><strong>注意：</strong> 该数据集有 200000 行，其中时间格式为：<code class="docutils literal notranslate"><span class="pre">yyyy-MM-dd</span> <span class="pre">HH:mm::ss</span> <span class="pre">XXXXX</span></code>，如 <code class="docutils literal notranslate"><span class="pre">2009-04-12</span> <span class="pre">03:16:33</span> <span class="pre">+00:00</span></code>。</p>
+<div><p><strong>注意：</strong> 该数据集有 200000 行，其中时间格式为：<code class="docutils literal notranslate"><span class="pre">yyyy-MM-dd</span> <span class="pre">HH:mm::ss</span> <span class="pre">XXXXX</span></code>，如“2009-04-12 03:16:33 +00:00”。</p>
 </div></blockquote>
 </div>
 <div class="section" id="id3">
@@ -390,7 +390,7 @@
 </div>
 <div class="section" id="id7">
 <h3>热力图<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h3>
-<p>执行以下代码绘制热力图：</p>
+<p>执行以下命令绘制热力图：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">vega</span> <span class="o">=</span> <span class="n">vega_heatmap</span><span class="p">(</span><span class="mi">1024</span><span class="p">,</span> <span class="mi">384</span><span class="p">,</span> <span class="n">bounding_box</span><span class="o">=</span><span class="p">[</span><span class="n">pos1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pos1</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">pos2</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pos2</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">map_zoom_level</span><span class="o">=</span><span class="mf">13.0</span><span class="p">,</span> <span class="n">coordinate_system</span><span class="o">=</span><span class="s2">&quot;EPSG:4326&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">png</span> <span class="o">=</span> <span class="n">heat_map_layer</span><span class="p">(</span><span class="n">vega</span><span class="p">,</span> <span class="n">ST_Point</span><span class="p">(</span><span class="n">pickup_df</span><span class="o">.</span><span class="n">pickup_longitude</span><span class="p">,</span> <span class="n">pickup_df</span><span class="o">.</span><span class="n">pickup_latitude</span><span class="p">),</span> <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">limit_num</span><span class="p">)</span><span class="o">.</span><span class="n">fare_amount</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">save_png</span><span class="p">(</span><span class="n">png</span><span class="p">,</span> <span class="s2">&quot;/tmp/arctern_heatmap_pandas.png&quot;</span><span class="p">)</span>
@@ -401,7 +401,7 @@
 </div>
 <div class="section" id="id8">
 <h3>轮廓图<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h3>
-<p>执行以下代码绘制轮廓图：</p>
+<p>执行以下命令绘制轮廓图：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># 轮廓的填充颜色根据 fare_amount 在 #115f9a ~ #d0f400 之间变化</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">vega</span> <span class="o">=</span> <span class="n">vega_choroplethmap</span><span class="p">(</span><span class="mi">1024</span><span class="p">,</span> <span class="mi">384</span><span class="p">,</span> <span class="n">bounding_box</span><span class="o">=</span><span class="p">[</span><span class="n">pos1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pos1</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">pos2</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pos2</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">color_gradient</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;#115f9a&quot;</span><span class="p">,</span> <span class="s2">&quot;#d0f400&quot;</span><span class="p">],</span> <span class="n">color_bound</span><span class="o">=</span><span class="p">[</span><span class="mf">2.5</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">coordinate_system</span><span class="o">=</span><span class="s2">&quot;EPSG:4326&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">png</span> <span class="o">=</span> <span class="n">choropleth_map_layer</span><span class="p">(</span><span class="n">vega</span><span class="p">,</span> <span class="n">ST_GeomFromText</span><span class="p">(</span><span class="n">pickup_df</span><span class="o">.</span><span class="n">buildingtext_pickup</span><span class="p">),</span> <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">limit_num</span><span class="p">)</span><span class="o">.</span><span class="n">fare_amount</span><span class="p">)</span>
@@ -413,7 +413,7 @@
 </div>
 <div class="section" id="id9">
 <h3>图标图<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h3>
-<p>执行以下代码绘制图标图：</p>
+<p>执行以下命令绘制图标图：</p>
 <blockquote>
 <div><p><strong>注意：</strong> 你需要将示例中的 <code class="docutils literal notranslate"><span class="pre">&lt;/path/to/icon.png&gt;</span></code> 替换为本地图片的绝对路径。</p>
 </div></blockquote>
@@ -427,7 +427,7 @@
 </div>
 <div class="section" id="id10">
 <h3>渔网图<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h3>
-<p>执行以下代码绘制渔网图：</p>
+<p>执行以下命令绘制渔网图：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">vega</span> <span class="o">=</span> <span class="n">vega_fishnetmap</span><span class="p">(</span><span class="mi">1024</span><span class="p">,</span> <span class="mi">384</span><span class="p">,</span> <span class="n">bounding_box</span><span class="o">=</span><span class="p">[</span><span class="n">pos1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pos1</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">pos2</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pos2</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">cell_size</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">cell_spacing</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">coordinate_system</span><span class="o">=</span><span class="s2">&quot;EPSG:4326&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">png</span> <span class="o">=</span> <span class="n">fishnet_map_layer</span><span class="p">(</span><span class="n">vega</span><span class="p">,</span> <span class="n">ST_Point</span><span class="p">(</span><span class="n">pickup_df</span><span class="o">.</span><span class="n">pickup_longitude</span><span class="p">,</span> <span class="n">pickup_df</span><span class="o">.</span><span class="n">pickup_latitude</span><span class="p">),</span> <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">limit_num</span><span class="p">)</span><span class="o">.</span><span class="n">fare_amount</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">save_png</span><span class="p">(</span><span class="n">png</span><span class="p">,</span> <span class="s2">&quot;/tmp/arctern_fishnetmap_pandas.png&quot;</span><span class="p">)</span>

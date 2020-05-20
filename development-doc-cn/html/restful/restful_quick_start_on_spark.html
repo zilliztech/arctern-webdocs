@@ -182,15 +182,15 @@
             
   <div class="section" id="pyspark">
 <h1>快速开始（PySpark 后台）<a class="headerlink" href="#pyspark" title="永久链接至标题">¶</a></h1>
-<p>本文以纽约出租车数据集为例，以 PySpark 作为数据处理后台，说明如何通过 <code class="docutils literal notranslate"><span class="pre">Arctern</span> <span class="pre">RESTful</span> <span class="pre">API</span></code> 完成数据的导入、运算和展示。</p>
+<p>本文以纽约出租车数据集为例，以 PySpark 作为数据处理后台，说明如何通过 Arctern RESTful API 完成数据的导入、运算和展示。</p>
 <blockquote>
-<div><p><strong>注意：</strong> 本章所有示例代码均默认在 <code class="docutils literal notranslate"><span class="pre">Python</span> <span class="pre">3.7</span></code> 环境中运行。若要在其他 Python 环境下运行，你可能需要适当修改代码内容。</p>
+<div><p><strong>注意：</strong> 本章所有示例代码均默认在 Python 3.7 环境中运行。若要在其他 Python 环境下运行，你可能需要适当修改代码内容。</p>
 </div></blockquote>
 <div class="section" id="id1">
 <h2>服务器端的启动和配置<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
 <div class="section" id="id2">
 <h3>服务器启动<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h3>
-<p>在调用 <code class="docutils literal notranslate"><span class="pre">Arctern</span> <span class="pre">RESTful</span> <span class="pre">API</span></code> 之前请先启动服务，具体步骤见<a class="reference internal" href="webserver_installation_config.html"><span class="doc">服务器启动</span></a>。</p>
+<p>在调用 Arctern RESTful API 之前请先启动服务，具体步骤见<a class="reference internal" href="webserver_installation_config.html"><span class="doc">服务器启动</span></a>。</p>
 </div>
 <div class="section" id="id3">
 <h3>数据准备<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
@@ -294,12 +294,12 @@
 </tr>
 </tbody>
 </table><blockquote>
-<div><p><strong>注意：</strong> 该数据集有 200000 行，其中时间格式为：<code class="docutils literal notranslate"><span class="pre">yyyy-MM-dd</span> <span class="pre">HH:mm::ss</span> <span class="pre">XXXXX</span></code>，如 <code class="docutils literal notranslate"><span class="pre">2009-04-12</span> <span class="pre">03:16:33</span> <span class="pre">+00:00</span></code>。</p>
+<div><p><strong>注意：</strong> 该数据集有 200000 行，其中时间格式为：<code class="docutils literal notranslate"><span class="pre">yyyy-MM-dd</span> <span class="pre">HH:mm::ss</span> <span class="pre">XXXXX</span></code>，如“2009-04-12 03:16:33 +00:00”。</p>
 </div></blockquote>
 </div>
 <div class="section" id="id4">
 <h3>安装依赖<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
-<p>本文示例代码使用 Python 的 <code class="docutils literal notranslate"><span class="pre">requests</span></code> 库调用 <code class="docutils literal notranslate"><span class="pre">Arctern</span> <span class="pre">RESTful</span> <span class="pre">API</span></code>，执行以下命令安装 <code class="docutils literal notranslate"><span class="pre">requests</span></code>：</p>
+<p>本文示例代码使用 Python 的 <code class="docutils literal notranslate"><span class="pre">requests</span></code> 库调用 Arctern RESTful API，执行以下命令安装 <code class="docutils literal notranslate"><span class="pre">requests</span></code>：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ pip install requests
 </pre></div>
 </div>
@@ -307,12 +307,12 @@
 </div>
 <div class="section" id="api">
 <h2>API 调用<a class="headerlink" href="#api" title="永久链接至标题">¶</a></h2>
-<p>下述示例中，假设服务器 IP 地址为 <code class="docutils literal notranslate"><span class="pre">127.0.0.1</span></code>，RESTful 服务端口为 <code class="docutils literal notranslate"><span class="pre">8080</span></code>。如果你在启动 arctern-server 时指定了 IP 与端口，则使用指定的 IP 与端口。</p>
+<p>下述示例中，假设服务器 IP 地址为“127.0.0.1“，RESTful 服务端口为“8080“。如果你在启动 arctern-server 时指定了 IP 与端口，则使用指定的 IP 与端口。</p>
 <div class="section" id="id5">
 <h3>数据导入<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
-<p>使用 <code class="docutils literal notranslate"><span class="pre">/loadfile</span></code> 接口导入纽约出租车数据集，将其对应的数据表命名为 <code class="docutils literal notranslate"><span class="pre">raw_data</span></code>。</p>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">/loadfile</span></code> 接口导入纽约出租车数据集，将其对应的数据表命名为<code class="docutils literal notranslate"><span class="pre">raw_data</span></code>。</p>
 <blockquote>
-<div><p><strong>注意：</strong> 你需要将示例中的 <code class="docutils literal notranslate"><span class="pre">&lt;/path/to/file&gt;</span></code> 替换为数据文件的绝对路径。</p>
+<div><p><strong>注意：</strong> 你需要将示例中的 <code class="docutils literal notranslate"><span class="pre">file_path</span></code> 替换为数据文件的绝对路径。</p>
 </div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">requests</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">json</span>
@@ -323,7 +323,7 @@
 <span class="gp">... </span>    <span class="p">{</span>
 <span class="gp">... </span>        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;raw_data&quot;</span><span class="p">,</span>
 <span class="gp">... </span>        <span class="s2">&quot;format&quot;</span><span class="p">:</span> <span class="s2">&quot;csv&quot;</span><span class="p">,</span>
-<span class="gp">... </span>        <span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;/path/to/file&gt;&quot;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="n">file_path</span><span class="p">,</span>
 <span class="gp">... </span>        <span class="s2">&quot;options&quot;</span><span class="p">:</span> <span class="p">{</span>
 <span class="gp">... </span>            <span class="s2">&quot;header&quot;</span><span class="p">:</span> <span class="s2">&quot;True&quot;</span><span class="p">,</span>
 <span class="gp">... </span>            <span class="s2">&quot;delimiter&quot;</span><span class="p">:</span> <span class="s2">&quot;,&quot;</span>
@@ -349,7 +349,7 @@
 <span class="gp">... </span>    <span class="p">}</span>
 <span class="gp">... </span><span class="p">]</span>
 <span class="gp">... </span><span class="p">}</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s2">&quot;http://127.0.0.1:8080/loadfile&quot;</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">},</span> <span class="n">data</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">payload</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 <span class="go">{</span>
@@ -445,10 +445,10 @@
 <p>使用 <code class="docutils literal notranslate"><span class="pre">/query</span></code> 接口可完成数据表的创建、查询和删除操作。</p>
 <div class="section" id="id7">
 <h4>创建数据表<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h4>
-<p>将 <code class="docutils literal notranslate"><span class="pre">raw_data</span></code> 数据表中的时间信息从 <code class="docutils literal notranslate"><span class="pre">string</span></code> 类型转换为 <code class="docutils literal notranslate"><span class="pre">timestamp</span></code> 类型，并移除与后续操作无关的字段，保存为一张新的 <code class="docutils literal notranslate"><span class="pre">nyc_taxi</span></code> 数据表。</p>
+<p>将“raw_data“数据表中的时间信息从 <code class="docutils literal notranslate"><span class="pre">String</span></code> 类型转换为 <code class="docutils literal notranslate"><span class="pre">Timestamp</span></code> 类型，并移除与后续操作无关的字段，保存为一张新的 <code class="docutils literal notranslate"><span class="pre">nyc_taxi</span></code> 数据表。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">requests</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">json</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sql</span> <span class="o">=</span> <span class="s2">&quot;create table nyc_taxi as (select VendorID, to_timestamp(tpep_pickup_datetime,&#39;yyyy-MM-dd HH:mm:ss XXXXX&#39;) as tpep_pickup_datetime, to_timestamp(tpep_dropoff_datetime,&#39;yyyy-MM-dd HH:mm:ss XXXXX&#39;) as tpep_dropoff_datetime, passenger_count, trip_distance, pickup_longitude, pickup_latitude, dropoff_longitude, dropoff_latitude, fare_amount, tip_amount, total_amount, buildingid_pickup, buildingid_dropoff, buildingtext_pickup, buildingtext_dropoff from raw_data where (pickup_longitude between -180 and 180) and (pickup_latitude between -90 and 90) and (dropoff_longitude between -180 and 180) and  (dropoff_latitude between -90 and 90))&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
 <span class="gp">... </span><span class="s2">&quot;input_data&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -456,7 +456,7 @@
 <span class="gp">... </span><span class="p">},</span>
 <span class="gp">... </span><span class="s2">&quot;collect_result&quot;</span><span class="p">:</span> <span class="s2">&quot;0&quot;</span>
 <span class="gp">... </span><span class="p">}</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s2">&quot;http://127.0.0.1:8080/query&quot;</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">},</span> <span class="n">data</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">payload</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 <span class="go">{</span>
@@ -508,7 +508,7 @@
 <span class="gp">... </span><span class="p">},</span>
 <span class="gp">... </span><span class="s2">&quot;collect_result&quot;</span><span class="p">:</span> <span class="s2">&quot;0&quot;</span>
 <span class="gp">... </span><span class="p">}</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s2">&quot;http://127.0.0.1:8080/query&quot;</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">},</span> <span class="n">data</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">payload</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 <span class="go">{</span>
@@ -541,7 +541,7 @@
 <span class="gp">... </span>    <span class="s2">&quot;opacity&quot;</span><span class="p">:</span> <span class="mf">0.5</span>
 <span class="gp">... </span><span class="p">}</span>
 <span class="gp">... </span><span class="p">}</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s2">&quot;http://127.0.0.1:8080/pointmap&quot;</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">},</span> <span class="n">data</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">payload</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># 保存为 PNG 图片 </span>
@@ -579,7 +579,7 @@
 <span class="gp">... </span>    <span class="s2">&quot;color_gradient&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;#115f9a&quot;</span><span class="p">,</span> <span class="s2">&quot;#d0f400&quot;</span><span class="p">]</span>
 <span class="gp">... </span><span class="p">}</span>
 <span class="gp">... </span><span class="p">}</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s2">&quot;http://127.0.0.1:8080/weighted_pointmap&quot;</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">},</span> <span class="n">data</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">payload</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">base64</span>
@@ -592,7 +592,7 @@
 </div>
 <div class="section" id="id12">
 <h3>绘制热力图<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h3>
-<p>使用 <code class="docutils literal notranslate"><span class="pre">/heatmap</span></code> 接口根据乘客的下车地点以及行程费用绘制热力图。其中，费用高的区域为红色，费用低的区域为绿色。热力图的具体参数说明请参见 <a class="reference external" href="./api/function/heatmap.html">热力图 RESTful API 说明</a>。</p>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">/heatmap</span></code> 接口根据乘客的下车地点以及行程费用绘制热力图。其中，费用高的区域为红色，费用低的区域为绿色。热力图的具体参数说明请参见<a class="reference external" href="./api/function/heatmap.html">热力图 RESTful API 说明</a>。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">requests</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">json</span>
 <span class="gp">&gt;&gt;&gt; </span>
@@ -614,7 +614,7 @@
 <span class="gp">... </span>    <span class="s2">&quot;aggregation_type&quot;</span><span class="p">:</span> <span class="s2">&quot;sum&quot;</span>
 <span class="gp">... </span><span class="p">}</span>
 <span class="gp">... </span><span class="p">}</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s2">&quot;http://127.0.0.1:8080/heatmap&quot;</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">},</span> <span class="n">data</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">payload</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">base64</span>
@@ -657,7 +657,7 @@
 <span class="gp">... </span>    <span class="s2">&quot;aggregation_type&quot;</span><span class="p">:</span> <span class="s2">&quot;mean&quot;</span>
 <span class="gp">... </span><span class="p">}</span>
 <span class="gp">... </span><span class="p">}</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s2">&quot;http://127.0.0.1:8080/choroplethmap&quot;</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">},</span> <span class="n">data</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">payload</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">base64</span>
@@ -676,10 +676,10 @@
 </div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">requests</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">json</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># 本例中的图标文件可通过以下命令获取：</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># wget https://github.com/zilliztech/arctern-docs/raw/branch-0.1.x/img/icon/arctern-logo.png</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">icon_path</span> <span class="o">=</span> <span class="s2">&quot;&lt;/path/to/arctern-logo.png&gt;&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
 <span class="gp">... </span><span class="s2">&quot;input_data&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -755,25 +755,27 @@
 <div class="section" id="id16">
 <h3>删除数据表<a class="headerlink" href="#id16" title="永久链接至标题">¶</a></h3>
 <p>使用 <code class="docutils literal notranslate"><span class="pre">query</span></code> 接口删除 <code class="docutils literal notranslate"><span class="pre">nyc_taxi</span></code> 数据表, 释放服务器资源。</p>
-<p><font color="#dd0000">注意：</font><code class="docutils literal notranslate"><span class="pre">Arctern</span> <span class="pre">RESTful</span></code> 服务不会主动删除数据表，请务必删除不再使用的数据表释放服务器资源。</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; import requests
-&gt;&gt;&gt; import json
-&gt;&gt;&gt; 
-&gt;&gt;&gt; sql = &quot;drop table if exists nyc_taxi&quot;
-&gt;&gt;&gt; payload = {
-... &quot;input_data&quot;: {
-...    &quot;sql&quot;: sql 
-... }，
-... &quot;collect_result&quot;: &quot;0&quot;
-... }
-&gt;&gt;&gt; 
-&gt;&gt;&gt; r = requests.post(url=&quot;http://127.0.0.1:8080/query&quot;, headers={&quot;Content-Type&quot;: &quot;application/json&quot;}, data=json.dumps(payload))
-&gt;&gt;&gt; r.json()
-{
-    &#39;code&#39;: 200,
-    &#39;message&#39;: &#39;execute sql successfully!&#39;,
-    &#39;status&#39;: &#39;success&#39;
-}
+<blockquote>
+<div><p><strong>注意：</strong> <code class="docutils literal notranslate"><span class="pre">Arctern</span> <span class="pre">RESTful</span></code> 服务不会主动删除数据表，请务必删除不再使用的数据表释放服务器资源。</p>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">json</span>
+<span class="gp">&gt;&gt;&gt; </span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sql</span> <span class="o">=</span> <span class="s2">&quot;drop table if exists nyc_taxi&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
+<span class="gp">... </span><span class="s2">&quot;input_data&quot;</span><span class="p">:</span> <span class="p">{</span>
+<span class="gp">... </span>   <span class="s2">&quot;sql&quot;</span><span class="p">:</span> <span class="n">sql</span> 
+<span class="gp">... </span><span class="p">},</span>
+<span class="gp">... </span><span class="s2">&quot;collect_result&quot;</span><span class="p">:</span> <span class="s2">&quot;0&quot;</span>
+<span class="gp">... </span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s2">&quot;http://127.0.0.1:8080/query&quot;</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">},</span> <span class="n">data</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">payload</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="go">{</span>
+<span class="go">    &#39;code&#39;: 200,</span>
+<span class="go">    &#39;message&#39;: &#39;execute sql successfully!&#39;,</span>
+<span class="go">    &#39;status&#39;: &#39;success&#39; </span>
+<span class="go">}</span>
 </pre></div>
 </div>
 </div>

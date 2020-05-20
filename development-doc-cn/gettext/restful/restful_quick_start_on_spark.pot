@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-20 13:39+0800\n"
+"POT-Creation-Date: 2020-05-20 16:22+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -57,7 +57,7 @@ msgid "该数据集包含 2009 年纽约市出租车运营记录，各字段的�
 msgstr ""
 
 #: ../../source/restful/restful_quick_start_on_spark.md:121
-msgid "注意： 该数据集有 200000 行，其中时间格式为：yyyy-MM-dd HH:mm::ss XXXXX，如 2009-04-12 03:16:33 +00:00。"
+msgid "注意： 该数据集有 200000 行，其中时间格式为：yyyy-MM-dd HH:mm::ss XXXXX，如“2009-04-12 03:16:33 +00:00”。"
 msgstr ""
 
 #: ../../source/restful/restful_quick_start_on_spark.md:123
@@ -73,7 +73,7 @@ msgid "API 调用"
 msgstr ""
 
 #: ../../source/restful/restful_quick_start_on_spark.md:133
-msgid "下述示例中，假设服务器 IP 地址为 127.0.0.1，RESTful 服务端口为 8080。如果你在启动 arctern-server 时指定了 IP 与端口，则使用指定的 IP 与端口。"
+msgid "下述示例中，假设服务器 IP 地址为“127.0.0.1“，RESTful 服务端口为“8080“。如果你在启动 arctern-server 时指定了 IP 与端口，则使用指定的 IP 与端口。"
 msgstr ""
 
 #: ../../source/restful/restful_quick_start_on_spark.md:135
@@ -81,11 +81,11 @@ msgid "数据导入"
 msgstr ""
 
 #: ../../source/restful/restful_quick_start_on_spark.md:137
-msgid "使用 /loadfile 接口导入纽约出租车数据集，将其对应的数据表命名为 raw_data。"
+msgid "使用 /loadfile 接口导入纽约出租车数据集，将其对应的数据表命名为raw_data。"
 msgstr ""
 
 #: ../../source/restful/restful_quick_start_on_spark.md:139
-msgid "注意： 你需要将示例中的 </path/to/file> 替换为数据文件的绝对路径。"
+msgid "注意： 你需要将示例中的 file_path 替换为数据文件的绝对路径。"
 msgstr ""
 
 #: ../../source/restful/restful_quick_start_on_spark.md:187
@@ -109,7 +109,7 @@ msgid "创建数据表"
 msgstr ""
 
 #: ../../source/restful/restful_quick_start_on_spark.md:274
-msgid "将 raw_data 数据表中的时间信息从 string 类型转换为 timestamp 类型，并移除与后续操作无关的字段，保存为一张新的 nyc_taxi 数据表。"
+msgid "将“raw_data“数据表中的时间信息从 String 类型转换为 Timestamp 类型，并移除与后续操作无关的字段，保存为一张新的 nyc_taxi 数据表。"
 msgstr ""
 
 #: ../../source/restful/restful_quick_start_on_spark.md:297
@@ -130,7 +130,6 @@ msgid "删除原始的 raw_data 数据表。"
 msgstr ""
 
 #: ../../source/restful/restful_quick_start_on_spark.md:329
-#: ../../source/restful/restful_quick_start_on_spark.md:607
 msgid "<font color=\"#dd0000\">注意：</font>Arctern RESTful 服务不会主动删除数据表，请务必删除不再使用的数据表释放服务器资源。"
 msgstr ""
 
@@ -175,7 +174,7 @@ msgid "绘制热力图"
 msgstr ""
 
 #: ../../source/restful/restful_quick_start_on_spark.md:432
-msgid "使用 /heatmap 接口根据乘客的下车地点以及行程费用绘制热力图。其中，费用高的区域为红色，费用低的区域为绿色。热力图的具体参数说明请参见 热力图 RESTful API 说明。"
+msgid "使用 /heatmap 接口根据乘客的下车地点以及行程费用绘制热力图。其中，费用高的区域为红色，费用低的区域为绿色。热力图的具体参数说明请参见热力图 RESTful API 说明。"
 msgstr ""
 
 #: ../../source/restful/restful_quick_start_on_spark.md:464
@@ -240,4 +239,8 @@ msgstr ""
 
 #: ../../source/restful/restful_quick_start_on_spark.md:605
 msgid "使用 query 接口删除 nyc_taxi 数据表, 释放服务器资源。"
+msgstr ""
+
+#: ../../source/restful/restful_quick_start_on_spark.md:607
+msgid "注意： Arctern RESTful 服务不会主动删除数据表，请务必删除不再使用的数据表释放服务器资源。"
 msgstr ""

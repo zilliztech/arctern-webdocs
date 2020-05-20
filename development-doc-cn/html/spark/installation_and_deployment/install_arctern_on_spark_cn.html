@@ -186,26 +186,26 @@
 <table border="1" class="docutils">
 <thead>
 <tr>
-<th>名称</th>
-<th>版本</th>
+<th align="left">名称</th>
+<th align="left">版本</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>操作系统</td>
-<td>Ubuntu LTS 18.04</td>
+<td align="left">操作系统</td>
+<td align="left">Ubuntu LTS 18.04</td>
 </tr>
 <tr>
-<td>Conda</td>
-<td>Miniconda Python3</td>
+<td align="left">Conda</td>
+<td align="left">Miniconda Python3</td>
 </tr>
 <tr>
-<td>Spark</td>
-<td>3.0</td>
+<td align="left">Spark</td>
+<td align="left">3.0</td>
 </tr>
 <tr>
-<td>JDK</td>
-<td>JDK 8</td>
+<td align="left">JDK</td>
+<td align="left">JDK 8</td>
 </tr>
 </tbody>
 </table><ul class="simple">
@@ -214,34 +214,34 @@
 <table border="1" class="docutils">
 <thead>
 <tr>
-<th>名称</th>
-<th>版本</th>
+<th align="left">名称</th>
+<th align="left">版本</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>操作系统</td>
-<td>Ubuntu LTS 18.04</td>
+<td align="left">操作系统</td>
+<td align="left">Ubuntu LTS 18.04</td>
 </tr>
 <tr>
-<td>Conda</td>
-<td>Miniconda Python3</td>
+<td align="left">Conda</td>
+<td align="left">Miniconda Python3</td>
 </tr>
 <tr>
-<td>Spark</td>
-<td>3.0</td>
+<td align="left">Spark</td>
+<td align="left">3.0</td>
 </tr>
 <tr>
-<td>CUDA</td>
-<td>10.0</td>
+<td align="left">CUDA</td>
+<td align="left">10.0</td>
 </tr>
 <tr>
-<td>Nvidia driver</td>
-<td>4.30</td>
+<td align="left">Nvidia driver</td>
+<td align="left">4.30</td>
 </tr>
 <tr>
-<td>JDK</td>
-<td>JDK 8</td>
+<td align="left">JDK</td>
+<td align="left">JDK 8</td>
 </tr>
 </tbody>
 </table></div>
@@ -251,10 +251,13 @@
 <li><p>CPU 版本</p></li>
 </ul>
 <p>执行以下命令安装 Arctern-Spark CPU 版本的依赖库：</p>
+<blockquote>
+<div><p><strong>注意：</strong> 你需要将示例中的 <code class="docutils literal notranslate"><span class="pre">&lt;/path/to/java8&gt;</span></code> 替换为本地的 JDK 8 路径。</p>
+</div></blockquote>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo apt install libgl-dev libosmesa6-dev libglu1-mesa-dev
 
-<span class="c1"># 配置 JDK 环境变量，路径需要配置为本地 JDK 8 路径</span>
-$ <span class="nb">export</span> <span class="nv">JAVA_HOME</span><span class="o">=</span>/path/to/java8
+<span class="c1"># 配置 JDK 环境变量</span>
+$ <span class="nb">export</span> <span class="nv">JAVA_HOME</span><span class="o">=</span><span class="s2">&quot;&lt;/path/to/java8&gt;&quot;</span>
 $ <span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="nv">$JAVA_HOME</span>/bin:<span class="nv">$PATH</span>
 $ <span class="nb">export</span> <span class="nv">JRE_HOME</span><span class="o">=</span><span class="nv">$JAVA_HOME</span>/jre
 </pre></div>
@@ -263,10 +266,13 @@ $ <span class="nb">export</span> <span class="nv">JRE_HOME</span><span class="o"
 <li><p>GPU 版本</p></li>
 </ul>
 <p>执行以下命令安装 Arctern-Spark GPU 版本的依赖库：</p>
+<blockquote>
+<div><p><strong>注意：</strong> 你需要将示例中的 <code class="docutils literal notranslate"><span class="pre">&lt;/path/to/java8&gt;</span></code> 替换为本地的 JDK 8 路径。</p>
+</div></blockquote>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo apt install libgl1-mesa-dev libegl1-mesa-dev
 
-<span class="c1"># 配置 JDK 环境变量，路径需要配置为本地 JDK 8 路径</span>
-$ <span class="nb">export</span> <span class="nv">JAVA_HOME</span><span class="o">=</span>/path/to/java8
+<span class="c1"># 配置 JDK 环境变量</span>
+$ <span class="nb">export</span> <span class="nv">JAVA_HOME</span><span class="o">=</span><span class="s2">&quot;&lt;/path/to/java8&gt;&quot;</span>
 $ <span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="nv">$JAVA_HOME</span>/bin:<span class="nv">$PATH</span>
 $ <span class="nb">export</span> <span class="nv">JRE_HOME</span><span class="o">=</span><span class="nv">$JAVA_HOME</span>/jre
 </pre></div>
@@ -280,15 +286,15 @@ $ <span class="nb">export</span> <span class="nv">JRE_HOME</span><span class="o"
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ conda create -n arctern_env -c conda-forge <span class="nv">python</span><span class="o">=</span><span class="m">3</span>.7.6
 </pre></div>
 </div>
-<p>创建成功后，可以通过 <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">env</span> <span class="pre">list</span></code> 命令查看所有 Conda 环境，其输出结果应包含 Arctern 环境，类似如下：</p>
+<p>成功创建 Conda 环境后，你可以通过 <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">env</span> <span class="pre">list</span></code> 命令查看所有 Conda 环境，其输出结果应包含 Arctern 环境，类似如下：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda environments:
 base               ...
 arctern_env      ...
 ...
 </pre></div>
 </div>
-<p>进入 arctern-env 环境：</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ conda activate arctern_env
+<p>执行以下命令进入 arctern-env 环境：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ conda activate arctern_env
 </pre></div>
 </div>
 <blockquote>
@@ -317,41 +323,44 @@ $ conda install -c arctern -c conda-forge arctern-spark
 <div class="section" id="id4">
 <h2>安装验证<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
 <p>进入 Python 环境，尝试导入 <code class="docutils literal notranslate"><span class="pre">arctern</span></code> 和 <code class="docutils literal notranslate"><span class="pre">arctern_pyspark</span></code> 并确认版本是否正确。</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Python</span> <span class="mf">3.7</span><span class="o">.</span><span class="mi">6</span> <span class="o">|</span> <span class="n">packaged</span> <span class="n">by</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="o">|</span> <span class="p">(</span><span class="n">default</span><span class="p">,</span> <span class="n">Jan</span> <span class="mi">29</span> <span class="mi">2020</span><span class="p">,</span> <span class="mi">14</span><span class="p">:</span><span class="mi">55</span><span class="p">:</span><span class="mi">04</span><span class="p">)</span>
-<span class="p">[</span><span class="n">GCC</span> <span class="mf">7.3</span><span class="o">.</span><span class="mi">0</span><span class="p">]</span> <span class="n">on</span> <span class="n">linux</span>
-<span class="n">Type</span> <span class="s2">&quot;help&quot;</span><span class="p">,</span> <span class="s2">&quot;copyright&quot;</span><span class="p">,</span> <span class="s2">&quot;credits&quot;</span> <span class="ow">or</span> <span class="s2">&quot;license&quot;</span> <span class="k">for</span> <span class="n">more</span> <span class="n">information</span><span class="o">.</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">arctern</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">arctern_pyspark</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">arctern</span><span class="o">.</span><span class="n">version</span><span class="p">()</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">arctern_pyspark</span><span class="o">.</span><span class="n">version</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">arctern</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">arctern_pyspark</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">arctern</span><span class="o">.</span><span class="n">version</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">arctern_pyspark</span><span class="o">.</span><span class="n">version</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="spark">
 <h2>安装并配置 Spark<a class="headerlink" href="#spark" title="永久链接至标题">¶</a></h2>
 <p>以下对 local 模式以及 standalone 单机模式下的 Spark 安装和配置流程进行介绍。若需要以集群模式安装 Spark,请参考 <a class="reference external" href="https://spark.apache.org/docs/latest/">Spark 官方文档</a> 以及本文档末尾的 <a class="reference external" href="#FAQ">FAQ</a>部分。</p>
-<p>下载 <a class="reference external" href="https://mirrors.sonic.net/apache/spark/spark-3.0.0-preview2/spark-3.0.0-preview2-bin-hadoop2.7.tgz">spark-3.0.0-preview2编译包</a> 并解压spark压缩包。</p>
+<p>下载 <a class="reference external" href="https://mirrors.sonic.net/apache/spark/spark-3.0.0-preview2/spark-3.0.0-preview2-bin-hadoop2.7.tgz">spark-3.0.0-preview2编译包</a> 并解压 Spark 压缩包：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ tar -xvzf spark-3.0.0-preview2-bin-hadoop2.7.tgz
 </pre></div>
 </div>
-<p>创建 <code class="docutils literal notranslate"><span class="pre">spark-defaults.conf</span></code> 以及 <code class="docutils literal notranslate"><span class="pre">spark-env.sh</span></code> 文件。</p>
+<p>创建 spark-defaults.conf 以及 spark-env.sh 文件：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> spark-3.0.0-preview2-bin-hadoop2.7/conf
 $ cp spark-defaults.conf.template spark-defaults.conf
 $ cp spark-env.sh.template spark-env.sh
 </pre></div>
 </div>
-<p>在文件 <code class="docutils literal notranslate"><span class="pre">spark-defaults.conf</span></code> 的最后添加以下内容。其中 <code class="docutils literal notranslate"><span class="pre">[path/to/your/conda]</span></code> 为 Conda 的安装路径。可以通过 <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">env</span> <span class="pre">info</span></code> 来查看当前的conda环境信息。</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>spark.executorEnv.PROJ_LIB <span class="o">[</span>path/to/your/conda<span class="o">]</span>/envs/arctern_env/share/proj
-spark.executorEnv.GDAL_DATA <span class="o">[</span>path/to/your/conda<span class="o">]</span>/envs/arctern_env/share/gdal
+<p>在文件 spark-defaults.conf 的最后添加以下内容：</p>
+<blockquote>
+<div><p><strong>注意：</strong> 你需要将 <code class="docutils literal notranslate"><span class="pre">&lt;path/to/your/conda&gt;</span></code> 替换为本地 Conda 的安装路径。执行 <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">env</span> <span class="pre">info</span></code> 命令可查看当前的 Conda 环境信息。</p>
+</div></blockquote>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>spark.executorEnv.PROJ_LIB &lt;path/to/your/conda&gt;/envs/arctern_env/share/proj
+spark.executorEnv.GDAL_DATA &lt;path/to/your/conda&gt;/envs/arctern_env/share/gdal
 </pre></div>
 </div>
-<p>在文件 <code class="docutils literal notranslate"><span class="pre">spark-env.sh</span></code> 的最后添加以下内容。其中 <code class="docutils literal notranslate"><span class="pre">[path/to/your/conda]</span></code> 为Conda的安装路径。</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">export</span> <span class="nv">PYSPARK_PYTHON</span><span class="o">=[</span>path/to/your/conda<span class="o">]</span>/envs/arctern_env/bin/python
+<p>在文件 spark-env.sh 的最后添加以下内容：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">export</span> <span class="nv">PYSPARK_PYTHON</span><span class="o">=</span>&lt;path/to/your/conda&gt;/envs/arctern_env/bin/python
 </pre></div>
 </div>
 <div class="section" id="id5">
 <h3>确认路径配置是否成功<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
-<p>执行以下命令进入 PySpark 交互界面，其中 <code class="docutils literal notranslate"><span class="pre">[path/to/your/spark]</span></code> 为 Spark 的安装路径。</p>
+<p>执行以下命令进入 PySpark 交互界面。</p>
+<blockquote>
+<div><p><strong>注意：</strong> 你需要将 <code class="docutils literal notranslate"><span class="pre">&lt;path/to/your/spark&gt;</span></code> 替换为 Spark 的本地安装路径。</p>
+</div></blockquote>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="o">[</span>path/to/your/spark<span class="o">]</span>/bin/pyspark
 </pre></div>
 </div>
@@ -361,7 +370,10 @@ spark.executorEnv.GDAL_DATA <span class="o">[</span>path/to/your/conda<span clas
 </pre></div>
 </div>
 <p>如果终端打印了以下内容，说明 PySpark 的 Python 路径配置成功。</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>path/to/your/conda<span class="o">]</span>/envs/arctern_env
+<blockquote>
+<div><p><strong>注意：</strong> <code class="docutils literal notranslate"><span class="pre">&lt;path/to/your/conda&gt;</span></code> 代表 Conda 的本地安装路径。</p>
+</div></blockquote>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&lt;path/to/your/conda&gt;/envs/arctern_env
 </pre></div>
 </div>
 </div>
@@ -372,17 +384,21 @@ spark.executorEnv.GDAL_DATA <span class="o">[</span>path/to/your/conda<span clas
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ wget https://raw.githubusercontent.com/zilliztech/arctern/v0.1.0/spark/pyspark/examples/gis/spark_udf_ex.py
 </pre></div>
 </div>
-<p>执行以下命令提交 Spark 任务，其中 <code class="docutils literal notranslate"><span class="pre">[path/to/]spark_udf_ex.py</span></code> 为测试文件所在的路径。</p>
+<p>执行以下命令提交 Spark 任务：</p>
+<blockquote>
+<div><p><strong>注意：</strong> 你需要将 <code class="docutils literal notranslate"><span class="pre">&lt;path/to/your/spark&gt;</span></code> 替换为 Spark 的本地安装路径，将 <code class="docutils literal notranslate"><span class="pre">&lt;path/to/spark_udf_ex.py&gt;</span></code> 替换为本地测试文件的路径。</p>
+</div></blockquote>
 <p>local 模式：</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="o">[</span>path/to/your/spark<span class="o">]</span>/bin/spark-submit <span class="o">[</span>path/to/<span class="o">]</span>spark_udf_ex.py
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ &lt;path/to/your/spark&gt;/bin/spark-submit &lt;path/to/spark_udf_ex.py&gt;
 </pre></div>
 </div>
 <p>standalone 模式：</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="o">[</span>path/to/your/spark<span class="o">]</span>/bin/spark-submit --master <span class="o">[</span>spark service address<span class="o">]</span> <span class="o">[</span>path/to/<span class="o">]</span>spark_udf_ex.py
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># IP 与 PORT 为 Spark 集群 master 主机的 IP 与 端口 </span>
+$ &lt;path/to/your/spark&gt;/bin/spark-submit --master spark://&lt;IP&gt;:&lt;PORT&gt; &lt;path/to/spark_udf_ex.py&gt;
 </pre></div>
 </div>
 <p>hadoop/yarn 模式：</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="o">[</span>path/to/your/spark<span class="o">]</span>/bin/spark-submit --master yarn <span class="o">[</span>path/to/<span class="o">]</span>spark_udf_ex.py
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ &lt;path/to/your/spark&gt;/bin/spark-submit --master yarn &lt;path/to/spark_udf_ex.py&gt;
 </pre></div>
 </div>
 <p>若最后打印结果类似以下内容，则表示通过测试样例。</p>
@@ -401,13 +417,13 @@ spark.executorEnv.GDAL_DATA <span class="o">[</span>path/to/your/conda<span clas
 <h2>FAQ<a class="headerlink" href="#faq" title="永久链接至标题">¶</a></h2>
 <div class="section" id="id8">
 <h3>Spark 集群模式下的安装与配置<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h3>
-<p>在集群模式下（如 standalone 集群模式、hadoop/yarn 模式），需要在每台运行 Spark 的机器上，执行如下操作：</p>
+<p>在集群模式下（如 standalone 集群模式、hadoop/yarn 模式），你需要在每台运行 Spark 的机器上执行如下操作：</p>
 <ul class="simple">
 <li><p>创建 Conda 虚拟环境</p></li>
 <li><p>安装 Arctern-Spark</p></li>
 <li><p>配置 Spark 环境变量</p></li>
 </ul>
-<p>此外 <code class="docutils literal notranslate"><span class="pre">standalone</span></code> 集群模式下，提交任务机器的 Spark 环境需要与集群的 Spark 环境完全一致，包括以下几点：</p>
+<p>此外，在 <code class="docutils literal notranslate"><span class="pre">standalone</span></code> 集群模式下，提交任务机器的 Spark 环境需要与集群的 Spark 环境完全一致，包括以下几点：</p>
 <ul class="simple">
 <li><p>集群中每台机器的 <code class="docutils literal notranslate"><span class="pre">spark</span></code> 安装路径完全一致</p></li>
 <li><p>集群中每台机器的 <code class="docutils literal notranslate"><span class="pre">conda</span></code> 安装路径完全一致</p></li>
