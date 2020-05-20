@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-20 13:39+0800\n"
+"POT-Creation-Date: 2020-05-20 16:22+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,7 +45,7 @@ msgid "该数据集包含 2009 年纽约市出租车的运营记录，各字段�
 msgstr ""
 
 #: ../../source/python/quick_start/quick-start-pandas.md:115
-msgid "注意： 该数据集有 200000 行，其中时间格式为：yyyy-MM-dd HH:mm::ss XXXXX，如 2009-04-12 03:16:33 +00:00。"
+msgid "注意： 该数据集有 200000 行，其中时间格式为：yyyy-MM-dd HH:mm::ss XXXXX，如“2009-04-12 03:16:33 +00:00”。"
 msgstr ""
 
 #: ../../source/python/quick_start/quick-start-pandas.md:117
@@ -129,7 +129,7 @@ msgid "热力图"
 msgstr ""
 
 #: ../../source/python/quick_start/quick-start-pandas.md:254
-msgid "执行以下代码绘制热力图："
+msgid "执行以下命令绘制热力图："
 msgstr ""
 
 #: ../../source/python/quick_start/quick-start-pandas.md:262
@@ -141,7 +141,7 @@ msgid "轮廓图"
 msgstr ""
 
 #: ../../source/python/quick_start/quick-start-pandas.md:268
-msgid "执行以下代码绘制轮廓图："
+msgid "执行以下命令绘制轮廓图："
 msgstr ""
 
 #: ../../source/python/quick_start/quick-start-pandas.md:277
@@ -153,7 +153,7 @@ msgid "图标图"
 msgstr ""
 
 #: ../../source/python/quick_start/quick-start-pandas.md:283
-msgid "执行以下代码绘制图标图："
+msgid "执行以下命令绘制图标图："
 msgstr ""
 
 #: ../../source/python/quick_start/quick-start-pandas.md:285
@@ -169,7 +169,7 @@ msgid "渔网图"
 msgstr ""
 
 #: ../../source/python/quick_start/quick-start-pandas.md:299
-msgid "执行以下代码绘制渔网图："
+msgid "执行以下命令绘制渔网图："
 msgstr ""
 
 #: ../../source/python/quick_start/quick-start-pandas.md:307

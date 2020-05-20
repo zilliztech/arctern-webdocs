@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-20 13:39+0800\n"
+"POT-Creation-Date: 2020-05-20 16:22+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -57,7 +57,7 @@ msgid "该数据集包含 2009 年纽约市出租车的运营记录，各字段�
 msgstr ""
 
 #: ../../source/restful/restful_quick_start_on_python.md:121
-msgid "注意： 该数据集有 200000 行，其中时间格式为：yyyy-MM-dd HH:mm::ss XXXXX，如 2009-04-12 03:16:33 +00:00。"
+msgid "注意： 该数据集有 200000 行，其中时间格式为：yyyy-MM-dd HH:mm::ss XXXXX，如“2009-04-12 03:16:33 +00:00”。"
 msgstr ""
 
 #: ../../source/restful/restful_quick_start_on_python.md:123
@@ -85,7 +85,7 @@ msgid "使用 /loadfile 接口导入纽约出租车数据集，将其对应的�
 msgstr ""
 
 #: ../../source/restful/restful_quick_start_on_python.md:139
-msgid "注意： 你需要将示例中的 </path/to/file> 替换为数据文件的绝对路径。"
+msgid "注意： 你需要将示例中的 file_path 替换为数据文件的绝对路径。"
 msgstr ""
 
 #: ../../source/restful/restful_quick_start_on_python.md:187
@@ -93,7 +93,7 @@ msgid "查询数据表信息"
 msgstr ""
 
 #: ../../source/restful/restful_quick_start_on_python.md:189
-msgid "你已经在后台创建了一张名为 raw_data 的数据表。接着，使用 /table/schema 接口可查询该表中各字段的名称以及对应的数据类型。"
+msgid "你已经在后台创建了一张名为 raw_data的数据表。接着，使用 /table/schema 接口可查询该表中各字段的名称以及对应的数据类型。"
 msgstr ""
 
 #: ../../source/restful/restful_quick_start_on_python.md:268
@@ -149,7 +149,7 @@ msgid "绘制轮廓图"
 msgstr ""
 
 #: ../../source/restful/restful_quick_start_on_python.md:386
-msgid "使用 /choroplethmap 接口，根据下车地点的建筑物、小费金额绘制轮廓图。其中，小费金额高的区域为黄色，小费金额低的区域为蓝色。轮廓图的具体参数说明请参见 轮廓图 RESTful API 说明。"
+msgid "使用 /choroplethmap 接口，根据下车地点的建筑物、小费金额绘制轮廓图。其中，小费金额高的区域为黄色，小费金额低的区域为蓝色。轮廓图的具体参数说明请参见轮廓图 RESTful API 说明。"
 msgstr ""
 
 #: ../../source/restful/restful_quick_start_on_python.md:427

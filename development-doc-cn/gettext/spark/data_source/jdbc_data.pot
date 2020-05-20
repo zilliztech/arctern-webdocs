@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-20 13:39+0800\n"
+"POT-Creation-Date: 2020-05-20 16:22+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,15 +21,15 @@ msgid "JDBC 连接"
 msgstr ""
 
 #: ../../source/spark/data_source/jdbc_data.md:3
-msgid "Arctern-Spark 可借助 Spark 的 JDBC 连接功能，完成数据从数据库的导入和导出。以下例子将展示如何利用 JDBC 从 postgis 中导入数据，更多详细信息请查看 Spark 官方文档。"
+msgid "Arctern-Spark 可借助 Spark 的 JDBC 连接功能，完成数据从数据库的导入和导出。以下例子将展示如何利用 JDBC 从 PostGIS 中导入数据，更多详细信息请查看 Spark 官方文档。"
 msgstr ""
 
 #: ../../source/spark/data_source/jdbc_data.md:5
-msgid "Postgis 配置信息"
+msgid "PostGIS 配置信息"
 msgstr ""
 
 #: ../../source/spark/data_source/jdbc_data.md:7
-msgid "假设 Postgis 的相关配置如下："
+msgid "假设 PostGIS 的相关配置如下："
 msgstr ""
 
 #: ../../source/spark/data_source/jdbc_data.md:40
@@ -41,15 +41,15 @@ msgid "JDBC 数据导入示例"
 msgstr ""
 
 #: ../../source/spark/data_source/jdbc_data.md:48
-msgid "在提交 Spark 任务时，需要指定 JDBC 驱动。从 postgres 官网下载其最新的 JDBC 驱动，以下示例中使用的的驱动为 postgresql-42.2.11.jar。"
+msgid "在提交 Spark 任务时，需要指定 JDBC 驱动。请从 PostgreSQL 官网下载其最新的 JDBC 驱动。以下示例使用的的驱动为 postgresql-42.2.11.jar。"
 msgstr ""
 
 #: ../../source/spark/data_source/jdbc_data.md:50
-msgid "以下命令为 Arctern-Spark 通过 JDBC 从 Postgis 导入数据的示例："
+msgid "以下命令为 Arctern-Spark 通过 JDBC 从 PostGIS 导入数据的示例："
 msgstr ""
 
 #: ../../source/spark/data_source/jdbc_data.md:56
-msgid "其中 query_postgis.py 具体代码如下："
+msgid "其中，query_postgis.py 的具体代码如下："
 msgstr ""
 
 #: ../../source/spark/data_source/jdbc_data.md:91

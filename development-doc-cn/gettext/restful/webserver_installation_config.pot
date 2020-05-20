@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-20 13:39+0800\n"
+"POT-Creation-Date: 2020-05-20 16:22+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -117,7 +117,7 @@ msgid "如果选用 PySpark 作为后台，请依照以下命令示例进行配�
 msgstr ""
 
 #: ../../source/restful/webserver_installation_config.md:74
-msgid "注意： 你需要将 </path/to/python> 替换为 Arctern 所在的 Conda 环境内 Python 的绝对路径，此 Python 路径可通过 which python 命令查询。你需要将 </path/to/spark> 替换为 Arctern 所在的 Conda 环境内 Spark 的绝对路径。"
+msgid "注意： 你需要将 </path/to/python> 替换为 Python 的绝对路径，此 Python 路径可通过 which python 命令查询。你还需要将 </path/to/spark> 替换为 Spark 的绝对路径。"
 msgstr ""
 
 #: ../../source/restful/webserver_installation_config.md:76

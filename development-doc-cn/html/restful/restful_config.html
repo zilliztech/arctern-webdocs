@@ -171,8 +171,7 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">interpreter_master</span></code>： Spark master 节点模式，可选模式包括 <code class="docutils literal notranslate"><span class="pre">local</span></code> 和 <code class="docutils literal notranslate"><span class="pre">standalone</span></code>。</p></li>
 </ul>
 <blockquote>
-<div><p>在 local 模式下，Spark 在一个物理节点内运行。配置示例如 <code class="docutils literal notranslate"><span class="pre">--interpreter_master=local[8]</span></code>，其中 <code class="docutils literal notranslate"><span class="pre">[8]</span></code> 表示使用 8 个 CPU。<br>
-在 standalone 模式下，你需要指定 maseter url。配置示例如 <code class="docutils literal notranslate"><span class="pre">--interpreter_master=spark://IP:PORT</span></code>。</p>
+<div><p><strong>注意：</strong> 在 local 模式下，Spark 在一个物理节点内运行。配置示例如 <code class="docutils literal notranslate"><span class="pre">--interpreter_master=local[8]</span></code>，其中 <code class="docutils literal notranslate"><span class="pre">[8]</span></code> 表示使用 8 个 CPU。<br>在 standalone 模式下，你需要指定 maseter url。配置示例如 <code class="docutils literal notranslate"><span class="pre">--interpreter_master=spark://IP:PORT</span></code>。</p>
 </div></blockquote>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">interpreter_pyspark_python</span></code>： Spark executor 的 Python 解释器的绝对路径。</p></li>
