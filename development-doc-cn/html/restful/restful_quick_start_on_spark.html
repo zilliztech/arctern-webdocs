@@ -307,10 +307,13 @@
 </div>
 <div class="section" id="api">
 <h2>API 调用<a class="headerlink" href="#api" title="永久链接至标题">¶</a></h2>
-<p>下述示例中，假设服务器 IP 地址为 <code class="docutils literal notranslate"><span class="pre">127.0.0.1</span></code>，RESTful 服务端口为 <code class="docutils literal notranslate"><span class="pre">8080</span></code>,若在启动 arctern-server 时指定了 IP 与端口,则使用指定的 IP 与端口。</p>
+<p>下述示例中，假设服务器 IP 地址为 <code class="docutils literal notranslate"><span class="pre">127.0.0.1</span></code>，RESTful 服务端口为 <code class="docutils literal notranslate"><span class="pre">8080</span></code>。如果你在启动 arctern-server 时指定了 IP 与端口，则使用指定的 IP 与端口。</p>
 <div class="section" id="id5">
 <h3>数据导入<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
-<p>使用 <code class="docutils literal notranslate"><span class="pre">/loadfile</span></code> 接口导入纽约出租车数据集，将其对应的数据表命名为 <code class="docutils literal notranslate"><span class="pre">raw_data</span></code>。其中，<code class="docutils literal notranslate"><span class="pre">file_path</span></code> 为数据文件所在的绝对路径，你需要根据实际情况更改此路径。</p>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">/loadfile</span></code> 接口导入纽约出租车数据集，将其对应的数据表命名为 <code class="docutils literal notranslate"><span class="pre">raw_data</span></code>。</p>
+<blockquote>
+<div><p><strong>注意：</strong> 你需要将示例中的 <code class="docutils literal notranslate"><span class="pre">&lt;/path/to/file&gt;</span></code> 替换为数据文件的绝对路径。</p>
+</div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">requests</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">json</span>
 <span class="gp">&gt;&gt;&gt; </span>
@@ -320,7 +323,7 @@
 <span class="gp">... </span>    <span class="p">{</span>
 <span class="gp">... </span>        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;raw_data&quot;</span><span class="p">,</span>
 <span class="gp">... </span>        <span class="s2">&quot;format&quot;</span><span class="p">:</span> <span class="s2">&quot;csv&quot;</span><span class="p">,</span>
-<span class="gp">... </span>        <span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="n">file_path</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;/path/to/file&gt;&quot;</span><span class="p">,</span>
 <span class="gp">... </span>        <span class="s2">&quot;options&quot;</span><span class="p">:</span> <span class="p">{</span>
 <span class="gp">... </span>            <span class="s2">&quot;header&quot;</span><span class="p">:</span> <span class="s2">&quot;True&quot;</span><span class="p">,</span>
 <span class="gp">... </span>            <span class="s2">&quot;delimiter&quot;</span><span class="p">:</span> <span class="s2">&quot;,&quot;</span>
@@ -494,8 +497,7 @@
 <div class="section" id="id9">
 <h4>删除数据表<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h4>
 <p>删除原始的 <code class="docutils literal notranslate"><span class="pre">raw_data</span></code> 数据表。</p>
-<p><font color="#dd0000">注意：</font><code class="docutils literal notranslate"><span class="pre">Arctern</span> <span class="pre">RESTful</span></code> 服务不会主动删除数据表，请务必删除不再使用的数据表释放服务器资源。</p>
-<p><font color="#dd0000">注意：</font><code class="docutils literal notranslate"><span class="pre">Arctern</span> <span class="pre">RESTful</span></code> 服务不会主动删除数据表，请务必删除不再使用的数据表释放服务器资源。</p>
+<p><font color="#dd0000">注意：</font>Arctern RESTful 服务不会主动删除数据表，请务必删除不再使用的数据表释放服务器资源。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">requests</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">json</span>
 <span class="gp">&gt;&gt;&gt; </span>
@@ -669,15 +671,16 @@
 <div class="section" id="id14">
 <h3>绘制图标图<a class="headerlink" href="#id14" title="永久链接至标题">¶</a></h3>
 <p>使用 <code class="docutils literal notranslate"><span class="pre">/icon_viz</span></code> 接口根据乘客的上车地点绘制图标图。图标图的具体参数说明请参见<a class="reference external" href="./api/function/icon_viz.html">图标图 RESTful API 说明</a>。</p>
-<p>如果数据处理后台为 Python, 则代码示例如下：</p>
+<blockquote>
+<div><p><strong>注意：</strong> 你需要将示例中的 <code class="docutils literal notranslate"><span class="pre">&lt;/path/to/arctern-logo.png&gt;</span></code> 替换为待显示图标的绝对路径。</p>
+</div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">requests</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">json</span>
 <span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># 本例中的图标文件可通过以下命令获取：</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># wget https://github.com/zilliztech/arctern-docs/raw/branch-0.1.x/img/icon/arctern-logo.png</span>
 <span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># icon_path 为待显示图标的绝对路径</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">icon_path</span> <span class="o">=</span> <span class="s2">&quot;/path/to/arctern-logo.png&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">icon_path</span> <span class="o">=</span> <span class="s2">&quot;&lt;/path/to/arctern-logo.png&gt;&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
 <span class="gp">... </span><span class="s2">&quot;input_data&quot;</span><span class="p">:</span> <span class="p">{</span>
 <span class="gp">... </span>    <span class="s2">&quot;sql&quot;</span><span class="p">:</span> <span class="s2">&quot;select ST_Point(pickup_longitude, pickup_latitude) as point from nyc_taxi where ST_Within(ST_Point(pickup_longitude, pickup_latitude), ST_GeomFromText(&#39;POLYGON ((-73.9616334766551 40.704739019597156, -73.94232850242967 40.704739019597156, -73.94232850242967 40.728133570887906 ,-73.9616334766551 40.728133570887906, -73.9616334766551 40.704739019597156))&#39;)) limit 25&quot;</span>

@@ -266,6 +266,9 @@
 <div class="section" id="id3">
 <h2>加载数据<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
 <p>本文示例代码通过 Python 交互界面展示 Arctern 的使用方法。根据数据集中各字段的名称和数据类型，构建数据的 <code class="docutils literal notranslate"><span class="pre">schema</span></code> 并导入数据集。</p>
+<blockquote>
+<div><p><strong>注意：</strong> 你需要将示例中的 <code class="docutils literal notranslate"><span class="pre">&lt;/path/to/0_2M_nyc_taxi_and_building.csv&gt;</span></code> 替换为本地数据集的绝对路径。</p>
+</div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">nyc_schema</span><span class="o">=</span><span class="p">{</span>
 <span class="gp">... </span>    <span class="s2">&quot;VendorID&quot;</span><span class="p">:</span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
@@ -286,8 +289,7 @@
 <span class="gp">... </span>    <span class="s2">&quot;buildingtext_dropoff&quot;</span><span class="p">:</span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
 <span class="gp">... </span><span class="p">}</span>
 <span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># 你需要将文件路径配置为本地路径</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;/path/to/0_2M_nyc_taxi_and_building.csv&quot;</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;&lt;/path/to/0_2M_nyc_taxi_and_building.csv&gt;&quot;</span><span class="p">,</span>
 <span class="gp">... </span>               <span class="n">dtype</span><span class="o">=</span><span class="n">nyc_schema</span><span class="p">,</span>
 <span class="gp">... </span>               <span class="n">date_parser</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">,</span>
 <span class="gp">... </span>               <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;tpep_pickup_datetime&quot;</span><span class="p">,</span><span class="s2">&quot;tpep_dropoff_datetime&quot;</span><span class="p">])</span>
@@ -412,8 +414,10 @@
 <div class="section" id="id9">
 <h3>图标图<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h3>
 <p>执行以下代码绘制图标图：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># 你需要将图标图的 icon_path 配置为本地路径</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">vega</span> <span class="o">=</span> <span class="n">vega_icon</span><span class="p">(</span><span class="mi">1024</span><span class="p">,</span> <span class="mi">384</span><span class="p">,</span> <span class="n">bounding_box</span><span class="o">=</span><span class="p">[</span><span class="n">pos1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pos1</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">pos2</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pos2</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">icon_path</span><span class="o">=</span><span class="s1">&#39;/path/to/icon.png&#39;</span><span class="p">,</span> <span class="n">coordinate_system</span><span class="o">=</span><span class="s2">&quot;EPSG:4326&quot;</span><span class="p">)</span>
+<blockquote>
+<div><p><strong>注意：</strong> 你需要将示例中的 <code class="docutils literal notranslate"><span class="pre">&lt;/path/to/icon.png&gt;</span></code> 替换为本地图片的绝对路径。</p>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">vega</span> <span class="o">=</span> <span class="n">vega_icon</span><span class="p">(</span><span class="mi">1024</span><span class="p">,</span> <span class="mi">384</span><span class="p">,</span> <span class="n">bounding_box</span><span class="o">=</span><span class="p">[</span><span class="n">pos1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pos1</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">pos2</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pos2</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">icon_path</span><span class="o">=</span><span class="s2">&quot;&lt;/path/to/icon.png&gt;&quot;</span><span class="p">,</span> <span class="n">coordinate_system</span><span class="o">=</span><span class="s2">&quot;EPSG:4326&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">png</span> <span class="o">=</span> <span class="n">icon_viz_layer</span><span class="p">(</span><span class="n">vega</span><span class="p">,</span> <span class="n">ST_Point</span><span class="p">(</span><span class="n">pickup_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span><span class="o">.</span><span class="n">pickup_longitude</span><span class="p">,</span> <span class="n">pickup_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span><span class="o">.</span><span class="n">pickup_latitude</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">save_png</span><span class="p">(</span><span class="n">png</span><span class="p">,</span> <span class="s2">&quot;/tmp/arctern_iconviz_pandas.png&quot;</span><span class="p">)</span>
 </pre></div>
