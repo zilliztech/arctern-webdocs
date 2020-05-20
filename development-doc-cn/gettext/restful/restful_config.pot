@@ -1,0 +1,73 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, zilliz
+# This file is distributed under the same license as the Arctern package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Arctern \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-05-20 10:23+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../source/restful/restful_config.md:1
+msgid "Arctern RESTful Server 配置项"
+msgstr ""
+
+#: ../../source/restful/restful_config.md:3
+msgid "interpreter： Arctern 数据分析后台的相关配置。"
+msgstr ""
+
+#: ../../source/restful/restful_config.md:4
+msgid "interpreter_type： 解释器类型，可选 python,pyspark。"
+msgstr ""
+
+#: ../../source/restful/restful_config.md:5
+msgid "interpreter_name： 解释器名称，如 python3。"
+msgstr ""
+
+#: ../../source/restful/restful_config.md:6
+msgid "interpreter_python_path: python 解释器所在的绝对路径。"
+msgstr ""
+
+#: ../../source/restful/restful_config.md:7
+msgid "interpreter_spark_home： Spark 所在的绝对路径。"
+msgstr ""
+
+#: ../../source/restful/restful_config.md:8
+msgid "interpreter_master： Spark master 节点模式，可选 local、standalone两种模式。 在 local 模式下，spark 在一个物理节点内运行。配置示例如 --interpreter_master=local[8]，其中[8]表示使用8个 CPU。 在 standalone 模式下，需要指定 maseter url。配置示例如--interpreter_master=spark://IP:PORT。"
+msgstr ""
+
+#: ../../source/restful/restful_config.md:11
+msgid "interpreter_pyspark_python： Spark executor 的 Python 解释器的绝对路径。"
+msgstr ""
+
+#: ../../source/restful/restful_config.md:12
+msgid "interpreter_pyspark_driver_python： Spark driver 的 Python 解释器的绝对路径。"
+msgstr ""
+
+#: ../../source/restful/restful_config.md:14
+msgid "arctern server: Arctern RESTful Server 的相关配置。"
+msgstr ""
+
+#: ../../source/restful/restful_config.md:15
+msgid "arctern_server_host: arctern server 的 IP 地址。"
+msgstr ""
+
+#: ../../source/restful/restful_config.md:16
+msgid "arctern_server_port: arctern server 的端口号。"
+msgstr ""
+
+#: ../../source/restful/restful_config.md:18
+msgid "zepplin： Arctern RESTful Server 所使用的 Zeppelin 系统的相关配置。"
+msgstr ""
+
+#: ../../source/restful/restful_config.md:19
+msgid "zeppelin_port： Zeppelin 的端口号。"
+msgstr ""
