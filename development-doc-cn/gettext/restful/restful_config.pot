@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-20 10:23+0800\n"
+"POT-Creation-Date: 2020-05-20 13:39+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,15 +25,15 @@ msgid "interpreter： Arctern 数据分析后台的相关配置。"
 msgstr ""
 
 #: ../../source/restful/restful_config.md:4
-msgid "interpreter_type： 解释器类型，可选 python,pyspark。"
+msgid "interpreter_type： 解释器类型，可选类型包括 python 和 pyspark。"
 msgstr ""
 
 #: ../../source/restful/restful_config.md:5
-msgid "interpreter_name： 解释器名称，如 python3。"
+msgid "interpreter_name： 自定义的解释器名称，如“python3“。"
 msgstr ""
 
 #: ../../source/restful/restful_config.md:6
-msgid "interpreter_python_path: python 解释器所在的绝对路径。"
+msgid "interpreter_python_path: Python 解释器所在的绝对路径。"
 msgstr ""
 
 #: ../../source/restful/restful_config.md:7
@@ -41,7 +41,11 @@ msgid "interpreter_spark_home： Spark 所在的绝对路径。"
 msgstr ""
 
 #: ../../source/restful/restful_config.md:8
-msgid "interpreter_master： Spark master 节点模式，可选 local、standalone两种模式。 在 local 模式下，spark 在一个物理节点内运行。配置示例如 --interpreter_master=local[8]，其中[8]表示使用8个 CPU。 在 standalone 模式下，需要指定 maseter url。配置示例如--interpreter_master=spark://IP:PORT。"
+msgid "interpreter_master： Spark master 节点模式，可选模式包括 local 和 standalone。"
+msgstr ""
+
+#: ../../source/restful/restful_config.md:9
+msgid "在 local 模式下，Spark 在一个物理节点内运行。配置示例如 --interpreter_master=local[8]，其中 [8] 表示使用 8 个 CPU。<br> 在 standalone 模式下，你需要指定 maseter url。配置示例如 --interpreter_master=spark://IP:PORT。"
 msgstr ""
 
 #: ../../source/restful/restful_config.md:11
@@ -57,11 +61,11 @@ msgid "arctern server: Arctern RESTful Server 的相关配置。"
 msgstr ""
 
 #: ../../source/restful/restful_config.md:15
-msgid "arctern_server_host: arctern server 的 IP 地址。"
+msgid "arctern_server_host: Arctern RESTful Server 的 IP 地址。"
 msgstr ""
 
 #: ../../source/restful/restful_config.md:16
-msgid "arctern_server_port: arctern server 的端口号。"
+msgid "arctern_server_port: Arctern RESTful Server 的端口号。"
 msgstr ""
 
 #: ../../source/restful/restful_config.md:18

@@ -257,7 +257,6 @@
 $ <span class="nb">export</span> <span class="nv">JAVA_HOME</span><span class="o">=</span>/path/to/java8
 $ <span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="nv">$JAVA_HOME</span>/bin:<span class="nv">$PATH</span>
 $ <span class="nb">export</span> <span class="nv">JRE_HOME</span><span class="o">=</span><span class="nv">$JAVA_HOME</span>/jre
-$ <span class="nb">export</span> <span class="nv">CLASSPATH</span><span class="o">=</span>.:<span class="nv">$JAVA_HOME</span>/lib:<span class="si">${</span><span class="nv">JRE_HOME</span><span class="si">}</span>/lib
 </pre></div>
 </div>
 <ul class="simple">
@@ -270,7 +269,6 @@ $ <span class="nb">export</span> <span class="nv">CLASSPATH</span><span class="o
 $ <span class="nb">export</span> <span class="nv">JAVA_HOME</span><span class="o">=</span>/path/to/java8
 $ <span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="nv">$JAVA_HOME</span>/bin:<span class="nv">$PATH</span>
 $ <span class="nb">export</span> <span class="nv">JRE_HOME</span><span class="o">=</span><span class="nv">$JAVA_HOME</span>/jre
-$ <span class="nb">export</span> <span class="nv">CLASSPATH</span><span class="o">=</span>.:<span class="nv">$JAVA_HOME</span>/lib:<span class="si">${</span><span class="nv">JRE_HOME</span><span class="si">}</span>/lib
 </pre></div>
 </div>
 </div>
@@ -279,7 +277,7 @@ $ <span class="nb">export</span> <span class="nv">CLASSPATH</span><span class="o
 <div class="section" id="conda">
 <h3>创建 Conda 虚拟环境<a class="headerlink" href="#conda" title="永久链接至标题">¶</a></h3>
 <p>执行以下命令为 Arctern-Spark 创建 Conda 环境。此处假设环境名称为 <code class="docutils literal notranslate"><span class="pre">arctern_env</span></code>，你可根据需求自行选择合适的环境名称。</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ conda create -n arctern_env -c conda_forge <span class="nv">python</span><span class="o">=</span><span class="m">3</span>.7.6
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ conda create -n arctern_env -c conda-forge <span class="nv">python</span><span class="o">=</span><span class="m">3</span>.7.6
 </pre></div>
 </div>
 <p>创建成功后，可以通过 <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">env</span> <span class="pre">list</span></code> 命令查看所有 Conda 环境，其输出结果应包含 Arctern 环境，类似如下：</p>

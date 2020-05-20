@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-20 10:23+0800\n"
+"POT-Creation-Date: 2020-05-20 13:39+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,7 +25,7 @@ msgid "以下为 Conda 环境下的安装过程，在安装 Arctern RESTful Serv
 msgstr ""
 
 #: ../../source/restful/webserver_installation_config.md:5
-msgid "注意： Conda 包括 Anaconda 和 Miniconda，建议使用 Miniconda。"
+msgid "注意： Conda 可选 Anaconda 和 Miniconda，建议使用 Miniconda。"
 msgstr ""
 
 #: ../../source/restful/webserver_installation_config.md:7
@@ -81,7 +81,7 @@ msgid "执行以下命令为 Arctern RESTful Server 构建 Conda 环境。此处
 msgstr ""
 
 #: ../../source/restful/webserver_installation_config.md:36
-msgid "注意： 如果你在同一台计算机上安装 Arctern 后台系统和 Arctern RESTful Server，建议二者使用不同的 conda 环境。例如，为 Arctern 后台创建名为 arctern_env 的环境，为 Arctern RESTful Server 的创建名为 arctern_server_env 的环境。"
+msgid "注意： 如果你在同一台计算机上安装 Arctern 后台系统和 Arctern RESTful Server，建议二者使用不同的 Conda 环境。例如，为 Arctern 后台创建名为 arctern_env 的环境，为 Arctern RESTful Server 的创建名为 arctern_server_env 的环境。"
 msgstr ""
 
 #: ../../source/restful/webserver_installation_config.md:38
@@ -97,7 +97,7 @@ msgid "设置 Arctern RESTful Server Workspace"
 msgstr ""
 
 #: ../../source/restful/webserver_installation_config.md:52
-msgid "workspace 用于存放 Arctern RESTful Server 所依赖的第三方工具、插件、系统配置文件等信息。在初次启动 RESTful Server 前，可通过 bootstrap 命令设置 workspace。"
+msgid "workspace 用于存放 Arctern RESTful Server 所依赖的第三方工具、插件、系统配置文件等信息。在初次启动 RESTful Server 前，你需要通过 Bootstrap 命令设置 workspace。"
 msgstr ""
 
 #: ../../source/restful/webserver_installation_config.md:58
@@ -105,19 +105,19 @@ msgid "配置 Arctern RESTful Server"
 msgstr ""
 
 #: ../../source/restful/webserver_installation_config.md:60
-msgid "Arctern RESTful Server 为用户开放了一组系统配置项，包括服务端口，IP地址，数据处理后台等。其中，Python 或 PySpark 等不同的数据处理后台的选择由 interpreter_type 选项控制。"
+msgid "Arctern RESTful Server 为用户开放了一组系统配置项，包括服务端口、IP地址、数据处理后台等。其中，Python 或 PySpark 等不同的数据处理后台的选择由 interpreter_type 选项控制。"
 msgstr ""
 
 #: ../../source/restful/webserver_installation_config.md:62
-msgid "如果选用 Python 作为后台，请依照以下命令示例进行配置，配置项解释详见 Arctern RESTful Server配置选项："
+msgid "如果选用 Python 作为后台，请依照以下命令示例进行配置，配置项解释详见 Arctern RESTful Server 配置选项："
 msgstr ""
 
 #: ../../source/restful/webserver_installation_config.md:68
-msgid "如果选用 PySpark 作为后台，请依照以下命令示例进行配置，配置项解释详见 Arctern RESTful Server配置选项："
+msgid "如果选用 PySpark 作为后台，请依照以下命令示例进行配置，配置项解释详见 Arctern RESTful Server 配置选项："
 msgstr ""
 
 #: ../../source/restful/webserver_installation_config.md:74
-msgid "注意： --interpreter_path=/path/to/python 为 arctern 所在的 conda 环境内的 python 绝对路径。"
+msgid "注意： 你需要将 </path/to/python> 替换为 Arctern 所在的 Conda 环境内 Python 的绝对路径，此 Python 路径可通过 which python 命令查询。你需要将 </path/to/spark> 替换为 Arctern 所在的 Conda 环境内 Spark 的绝对路径。"
 msgstr ""
 
 #: ../../source/restful/webserver_installation_config.md:76
@@ -125,5 +125,17 @@ msgid "启动"
 msgstr ""
 
 #: ../../source/restful/webserver_installation_config.md:82
-msgid "mode 可选 release 或 debug。debug 模式会提供更对的提示信息，但 debug 模式相比 release 模式执行效率较低。"
+msgid "mode 可选 release 或 debug。debug 模式会提供更准确的提示信息，但比 release 模式的执行效率低。"
+msgstr ""
+
+#: ../../source/restful/webserver_installation_config.md:84
+msgid "FAQ"
+msgstr ""
+
+#: ../../source/restful/webserver_installation_config.md:86
+msgid "使用 http 代理对运行 Arctern RESTful Server 的影响："
+msgstr ""
+
+#: ../../source/restful/webserver_installation_config.md:88
+msgid "使用 http 代理可能会导致 RESTful API 无法被正常调用，请关闭 http 代理然后重启 Arctern RESTful Server。"
 msgstr ""
