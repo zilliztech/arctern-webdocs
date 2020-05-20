@@ -92,14 +92,13 @@
 <li class="toctree-l4"><a class="reference internal" href="#arctern-spark-conda">创建 Arctern-Spark Conda 环境</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#arctern-spark">安装 Arctern-Spark</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id4">安装验证</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#spark-python">配置 Spark 的 Python 路径</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#spark">安装并配置 Spark</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id6">测试样例</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id7">卸载</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#faq">FAQ</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="offline_install_arctern_on_spark_cn.html">离线安装</a></li>
-<li class="toctree-l3"><a class="reference internal" href="deploy-with-docker-compose-cn.html">基于 Docker Compose 部署</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../quick_start/quick-start-spark.html">快速开始</a></li>
@@ -330,19 +329,20 @@ $ conda install -c arctern -c conda-forge arctern-spark
 </pre></div>
 </div>
 </div>
-<div class="section" id="spark-python">
-<h2>配置 Spark 的 Python 路径<a class="headerlink" href="#spark-python" title="永久链接至标题">¶</a></h2>
+<div class="section" id="spark">
+<h2>安装并配置 Spark<a class="headerlink" href="#spark" title="永久链接至标题">¶</a></h2>
+<p>以下对 local 模式以及 standalone 单机模式下的 Spark 安装和配置流程进行介绍。若需要以集群模式安装 Spark,请参考 <a class="reference external" href="https://spark.apache.org/docs/latest/">Spark 官方文档</a> 以及本文档末尾的 <a class="reference external" href="#FAQ">FAQ</a>部分。</p>
 <p>下载 <a class="reference external" href="https://mirrors.sonic.net/apache/spark/spark-3.0.0-preview2/spark-3.0.0-preview2-bin-hadoop2.7.tgz">spark-3.0.0-preview2编译包</a> 并解压spark压缩包。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ tar -xvzf spark-3.0.0-preview2-bin-hadoop2.7.tgz
 </pre></div>
 </div>
-<p>创建 <code class="docutils literal notranslate"><span class="pre">spark-default.conf</span></code> 以及 <code class="docutils literal notranslate"><span class="pre">spark-env.sh</span></code> 文件。</p>
+<p>创建 <code class="docutils literal notranslate"><span class="pre">spark-defaults.conf</span></code> 以及 <code class="docutils literal notranslate"><span class="pre">spark-env.sh</span></code> 文件。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> spark-3.0.0-preview2-bin-hadoop2.7/conf
 $ cp spark-defaults.conf.template spark-defaults.conf
 $ cp spark-env.sh.template spark-env.sh
 </pre></div>
 </div>
-<p>在文件 <code class="docutils literal notranslate"><span class="pre">spark-default.conf</span></code> 的最后添加以下内容。其中 <code class="docutils literal notranslate"><span class="pre">[path/to/your/conda]</span></code> 为 Conda 的安装路径。可以通过 <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">env</span> <span class="pre">info</span></code> 来查看当前的conda环境信息。</p>
+<p>在文件 <code class="docutils literal notranslate"><span class="pre">spark-defaults.conf</span></code> 的最后添加以下内容。其中 <code class="docutils literal notranslate"><span class="pre">[path/to/your/conda]</span></code> 为 Conda 的安装路径。可以通过 <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">env</span> <span class="pre">info</span></code> 来查看当前的conda环境信息。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>spark.executorEnv.PROJ_LIB <span class="o">[</span>path/to/your/conda<span class="o">]</span>/envs/arctern_env/share/proj
 spark.executorEnv.GDAL_DATA <span class="o">[</span>path/to/your/conda<span class="o">]</span>/envs/arctern_env/share/gdal
 </pre></div>
@@ -375,14 +375,16 @@ spark.executorEnv.GDAL_DATA <span class="o">[</span>path/to/your/conda<span clas
 </pre></div>
 </div>
 <p>执行以下命令提交 Spark 任务，其中 <code class="docutils literal notranslate"><span class="pre">[path/to/]spark_udf_ex.py</span></code> 为测试文件所在的路径。</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># local mode</span>
-$ <span class="o">[</span>path/to/your/spark<span class="o">]</span>/bin/spark-submit <span class="o">[</span>path/to/<span class="o">]</span>spark_udf_ex.py
-
-<span class="c1"># standalone mode</span>
-$ <span class="o">[</span>path/to/your/spark<span class="o">]</span>/bin/spark-submit --master <span class="o">[</span>spark service address<span class="o">]</span> <span class="o">[</span>path/to/<span class="o">]</span>spark_udf_ex.py
-
-<span class="c1"># hadoop/yarn mode</span>
-$ <span class="o">[</span>path/to/your/spark<span class="o">]</span>/bin/spark-submit --master yarn <span class="o">[</span>path/to/<span class="o">]</span>spark_udf_ex.py
+<p>local 模式：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="o">[</span>path/to/your/spark<span class="o">]</span>/bin/spark-submit <span class="o">[</span>path/to/<span class="o">]</span>spark_udf_ex.py
+</pre></div>
+</div>
+<p>standalone 模式：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="o">[</span>path/to/your/spark<span class="o">]</span>/bin/spark-submit --master <span class="o">[</span>spark service address<span class="o">]</span> <span class="o">[</span>path/to/<span class="o">]</span>spark_udf_ex.py
+</pre></div>
+</div>
+<p>hadoop/yarn 模式：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="o">[</span>path/to/your/spark<span class="o">]</span>/bin/spark-submit --master yarn <span class="o">[</span>path/to/<span class="o">]</span>spark_udf_ex.py
 </pre></div>
 </div>
 <p>若最后打印结果类似以下内容，则表示通过测试样例。</p>
@@ -399,19 +401,19 @@ $ <span class="o">[</span>path/to/your/spark<span class="o">]</span>/bin/spark-s
 </div>
 <div class="section" id="faq">
 <h2>FAQ<a class="headerlink" href="#faq" title="永久链接至标题">¶</a></h2>
-<div class="section" id="spark">
-<h3>对 Spark 的支持<a class="headerlink" href="#spark" title="永久链接至标题">¶</a></h3>
-<p>Arctern-Spark 可以运行在 Spark 的各种模式下，需要在每台运行 Spark 的机器上，执行如下操作：</p>
+<div class="section" id="id8">
+<h3>Spark 集群模式下的安装与配置<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h3>
+<p>在集群模式下（如 standalone 集群模式、hadoop/yarn 模式），需要在每台运行 Spark 的机器上，执行如下操作：</p>
 <ul class="simple">
 <li><p>创建 Conda 虚拟环境</p></li>
 <li><p>安装 Arctern-Spark</p></li>
 <li><p>配置 Spark 环境变量</p></li>
 </ul>
-<p>如果 Spark 运行在 <code class="docutils literal notranslate"><span class="pre">standalone</span></code> 集群模式下，提交任务机器的 Spark 环境需要与集群的 Spark 环境完全一致，包括以下几点：</p>
+<p>此外 <code class="docutils literal notranslate"><span class="pre">standalone</span></code> 集群模式下，提交任务机器的 Spark 环境需要与集群的 Spark 环境完全一致，包括以下几点：</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">spark</span></code> 安装的绝对路径与集群中每台机器完全一致</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">conda</span></code> 安装的绝对路径与集群中每个机器完全一致</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">conda</span></code> 虚拟环境名与集群中每个机器完全一致</p></li>
+<li><p>集群中每台机器的 <code class="docutils literal notranslate"><span class="pre">spark</span></code> 安装路径完全一致</p></li>
+<li><p>集群中每台机器的 <code class="docutils literal notranslate"><span class="pre">conda</span></code> 安装路径完全一致</p></li>
+<li><p>集群中每台机器中 <code class="docutils literal notranslate"><span class="pre">conda</span></code> 虚拟环境名完全一致</p></li>
 </ul>
 </div>
 </div>
@@ -439,7 +441,7 @@ $ <span class="o">[</span>path/to/your/spark<span class="o">]</span>/bin/spark-s
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 5月 19, 2020.
+        最后更新于 5月 20, 2020.
       </span>
 
     </p>
