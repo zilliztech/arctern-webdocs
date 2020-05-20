@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-19 18:36+0800\n"
+"POT-Creation-Date: 2020-05-20 13:39+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -61,19 +61,19 @@ msgid "注意： 该数据集有 200000 行，其中时间格式为：yyyy-MM-dd
 msgstr ""
 
 #: ../../source/restful/restful_quick_start_on_spark.md:123
-msgid "下述示例中，假设服务器 IP 地址为 127.0.0.1，RESTful 服务端口为 8080。"
-msgstr ""
-
-#: ../../source/restful/restful_quick_start_on_spark.md:125
 msgid "安装依赖"
 msgstr ""
 
-#: ../../source/restful/restful_quick_start_on_spark.md:127
+#: ../../source/restful/restful_quick_start_on_spark.md:125
 msgid "本文示例代码使用 Python 的 requests 库调用 Arctern RESTful API，执行以下命令安装 requests："
 msgstr ""
 
-#: ../../source/restful/restful_quick_start_on_spark.md:133
+#: ../../source/restful/restful_quick_start_on_spark.md:131
 msgid "API 调用"
+msgstr ""
+
+#: ../../source/restful/restful_quick_start_on_spark.md:133
+msgid "下述示例中，假设服务器 IP 地址为 127.0.0.1，RESTful 服务端口为 8080。如果你在启动 arctern-server 时指定了 IP 与端口，则使用指定的 IP 与端口。"
 msgstr ""
 
 #: ../../source/restful/restful_quick_start_on_spark.md:135
@@ -81,131 +81,137 @@ msgid "数据导入"
 msgstr ""
 
 #: ../../source/restful/restful_quick_start_on_spark.md:137
-msgid "使用 /loadfile 接口导入纽约出租车数据集，将其对应的数据表命名为 raw_data。其中，file_path 为数据文件所在的绝对路径，你需要根据实际情况更改此路径。"
+msgid "使用 /loadfile 接口导入纽约出租车数据集，将其对应的数据表命名为 raw_data。"
 msgstr ""
 
-#: ../../source/restful/restful_quick_start_on_spark.md:185
-msgid "查询数据表信息"
+#: ../../source/restful/restful_quick_start_on_spark.md:139
+msgid "注意： 你需要将示例中的 </path/to/file> 替换为数据文件的绝对路径。"
 msgstr ""
 
 #: ../../source/restful/restful_quick_start_on_spark.md:187
+msgid "查询数据表信息"
+msgstr ""
+
+#: ../../source/restful/restful_quick_start_on_spark.md:189
 msgid "你已经在后台创建了一张名为 raw_data 的数据表。接着，使用 /table/schema 接口可查询该表中各字段的名称以及对应的数据类型。"
 msgstr ""
 
-#: ../../source/restful/restful_quick_start_on_spark.md:266
+#: ../../source/restful/restful_quick_start_on_spark.md:268
 msgid "SQL 查询"
 msgstr ""
 
-#: ../../source/restful/restful_quick_start_on_spark.md:268
+#: ../../source/restful/restful_quick_start_on_spark.md:270
 msgid "使用 /query 接口可完成数据表的创建、查询和删除操作。"
 msgstr ""
 
-#: ../../source/restful/restful_quick_start_on_spark.md:270
+#: ../../source/restful/restful_quick_start_on_spark.md:272
 msgid "创建数据表"
 msgstr ""
 
-#: ../../source/restful/restful_quick_start_on_spark.md:272
+#: ../../source/restful/restful_quick_start_on_spark.md:274
 msgid "将 raw_data 数据表中的时间信息从 string 类型转换为 timestamp 类型，并移除与后续操作无关的字段，保存为一张新的 nyc_taxi 数据表。"
 msgstr ""
 
-#: ../../source/restful/restful_quick_start_on_spark.md:295
+#: ../../source/restful/restful_quick_start_on_spark.md:297
 msgid "查询数据"
 msgstr ""
 
-#: ../../source/restful/restful_quick_start_on_spark.md:297
+#: ../../source/restful/restful_quick_start_on_spark.md:299
 msgid "查询 nyc_taxi 数据表的行数。"
 msgstr ""
 
-#: ../../source/restful/restful_quick_start_on_spark.md:323
+#: ../../source/restful/restful_quick_start_on_spark.md:325
 #: ../../source/restful/restful_quick_start_on_spark.md:603
 msgid "删除数据表"
 msgstr ""
 
-#: ../../source/restful/restful_quick_start_on_spark.md:325
+#: ../../source/restful/restful_quick_start_on_spark.md:327
 msgid "删除原始的 raw_data 数据表。"
 msgstr ""
 
-#: ../../source/restful/restful_quick_start_on_spark.md:327
 #: ../../source/restful/restful_quick_start_on_spark.md:329
 #: ../../source/restful/restful_quick_start_on_spark.md:607
 msgid "<font color=\"#dd0000\">注意：</font>Arctern RESTful 服务不会主动删除数据表，请务必删除不再使用的数据表释放服务器资源。"
 msgstr ""
 
-#: ../../source/restful/restful_quick_start_on_spark.md:352
+#: ../../source/restful/restful_quick_start_on_spark.md:353
 msgid "绘制点图"
 msgstr ""
 
-#: ../../source/restful/restful_quick_start_on_spark.md:354
+#: ../../source/restful/restful_quick_start_on_spark.md:355
 msgid "使用 /pointmap 接口根据乘客的上车地点绘制点图。点图的具体参数说明请参见点图 RESTful API 说明。"
 msgstr ""
 
-#: ../../source/restful/restful_quick_start_on_spark.md:356
-#: ../../source/restful/restful_quick_start_on_spark.md:517
+#: ../../source/restful/restful_quick_start_on_spark.md:357
 msgid "如果数据处理后台为 Python, 则代码示例如下："
 msgstr ""
 
-#: ../../source/restful/restful_quick_start_on_spark.md:385
+#: ../../source/restful/restful_quick_start_on_spark.md:386
 msgid "点图的绘制结果如下："
 msgstr ""
 
-#: ../../source/restful/restful_quick_start_on_spark.md:387
+#: ../../source/restful/restful_quick_start_on_spark.md:388
 msgid "点图"
 msgstr ""
 
-#: ../../source/restful/restful_quick_start_on_spark.md:389
+#: ../../source/restful/restful_quick_start_on_spark.md:390
 msgid "绘制带权点图"
 msgstr ""
 
-#: ../../source/restful/restful_quick_start_on_spark.md:391
+#: ../../source/restful/restful_quick_start_on_spark.md:392
 msgid "使用 /weighted_pointmap 接口根据乘客的上车地点绘制带权点图。其中，将总费用作为点的权重 —— 总费用越高，权重越大，点的颜色越深。带权点图的具体参数说明请参见带权点图 RESTful API 说明。"
 msgstr ""
 
-#: ../../source/restful/restful_quick_start_on_spark.md:425
+#: ../../source/restful/restful_quick_start_on_spark.md:426
 msgid "带权点图的绘制结果如下："
 msgstr ""
 
-#: ../../source/restful/restful_quick_start_on_spark.md:427
+#: ../../source/restful/restful_quick_start_on_spark.md:428
 msgid "带权点图。"
 msgstr ""
 
-#: ../../source/restful/restful_quick_start_on_spark.md:429
+#: ../../source/restful/restful_quick_start_on_spark.md:430
 msgid "绘制热力图"
 msgstr ""
 
-#: ../../source/restful/restful_quick_start_on_spark.md:431
+#: ../../source/restful/restful_quick_start_on_spark.md:432
 msgid "使用 /heatmap 接口根据乘客的下车地点以及行程费用绘制热力图。其中，费用高的区域为红色，费用低的区域为绿色。热力图的具体参数说明请参见 热力图 RESTful API 说明。"
 msgstr ""
 
-#: ../../source/restful/restful_quick_start_on_spark.md:463
+#: ../../source/restful/restful_quick_start_on_spark.md:464
 msgid "热力图的绘制结果如下："
 msgstr ""
 
-#: ../../source/restful/restful_quick_start_on_spark.md:465
+#: ../../source/restful/restful_quick_start_on_spark.md:466
 msgid "热力图"
 msgstr ""
 
-#: ../../source/restful/restful_quick_start_on_spark.md:467
+#: ../../source/restful/restful_quick_start_on_spark.md:468
 msgid "绘制轮廓图"
 msgstr ""
 
-#: ../../source/restful/restful_quick_start_on_spark.md:469
+#: ../../source/restful/restful_quick_start_on_spark.md:470
 msgid "使用 /choroplethmap 接口，根据下车地点的建筑物、小费金额绘制轮廓图。其中，小费金额高的区域为黄色，小费金额低的区域为蓝色。轮廓图的具体参数说明请参见 轮廓图 RESTful API 说明。"
 msgstr ""
 
-#: ../../source/restful/restful_quick_start_on_spark.md:509
+#: ../../source/restful/restful_quick_start_on_spark.md:510
 msgid "轮廓图的绘制结果如下："
 msgstr ""
 
-#: ../../source/restful/restful_quick_start_on_spark.md:511
+#: ../../source/restful/restful_quick_start_on_spark.md:512
 msgid "轮廓图"
 msgstr ""
 
-#: ../../source/restful/restful_quick_start_on_spark.md:513
+#: ../../source/restful/restful_quick_start_on_spark.md:514
 msgid "绘制图标图"
 msgstr ""
 
-#: ../../source/restful/restful_quick_start_on_spark.md:515
+#: ../../source/restful/restful_quick_start_on_spark.md:516
 msgid "使用 /icon_viz 接口根据乘客的上车地点绘制图标图。图标图的具体参数说明请参见图标图 RESTful API 说明。"
+msgstr ""
+
+#: ../../source/restful/restful_quick_start_on_spark.md:518
+msgid "注意： 你需要将示例中的 </path/to/arctern-logo.png> 替换为待显示图标的绝对路径。"
 msgstr ""
 
 #: ../../source/restful/restful_quick_start_on_spark.md:554
