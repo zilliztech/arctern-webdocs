@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-20 16:22+0800\n"
+"POT-Creation-Date: 2020-05-20 17:37+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -190,7 +190,7 @@ msgid "绘制轮廓图"
 msgstr ""
 
 #: ../../source/restful/restful_quick_start_on_spark.md:470
-msgid "使用 /choroplethmap 接口，根据下车地点的建筑物、小费金额绘制轮廓图。其中，小费金额高的区域为黄色，小费金额低的区域为蓝色。轮廓图的具体参数说明请参见 轮廓图 RESTful API 说明。"
+msgid "使用 /choroplethmap 接口，根据下车地点的建筑物、小费金额绘制轮廓图。其中，小费金额高的区域为黄色，小费金额低的区域为蓝色。轮廓图的具体参数说明请参见轮廓图 RESTful API 说明。"
 msgstr ""
 
 #: ../../source/restful/restful_quick_start_on_spark.md:510
