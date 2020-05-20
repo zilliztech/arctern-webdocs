@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-19 18:36+0800\n"
+"POT-Creation-Date: 2020-05-20 10:23+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -56,7 +56,7 @@ msgid "创建 Arctern-Spark Conda 环境"
 msgstr ""
 
 #: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:105
-#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:252
+#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:261
 msgid "创建 Conda 虚拟环境"
 msgstr ""
 
@@ -77,7 +77,7 @@ msgid "注意： 后续工作必须在 Arctern Conda 环境中进行。"
 msgstr ""
 
 #: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:130
-#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:253
+#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:262
 msgid "安装 Arctern-Spark"
 msgstr ""
 
@@ -102,93 +102,109 @@ msgid "进入 Python 环境，尝试导入 arctern 和 arctern_pyspark 并确认
 msgstr ""
 
 #: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:163
-msgid "配置 Spark 的 Python 路径"
+msgid "安装并配置 Spark"
 msgstr ""
 
 #: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:165
+msgid "以下对 local 模式以及 standalone 单机模式下的 Spark 安装和配置流程进行介绍。若需要以集群模式安装 Spark,请参考 Spark 官方文档 以及本文档末尾的 FAQ部分。"
+msgstr ""
+
+#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:168
 msgid "下载 spark-3.0.0-preview2编译包 并解压spark压缩包。"
 msgstr ""
 
-#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:171
-msgid "创建 spark-default.conf 以及 spark-env.sh 文件。"
+#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:174
+msgid "创建 spark-defaults.conf 以及 spark-env.sh 文件。"
 msgstr ""
 
-#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:179
-msgid "在文件 spark-default.conf 的最后添加以下内容。其中 [path/to/your/conda] 为 Conda 的安装路径。可以通过 conda env info 来查看当前的conda环境信息。"
+#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:182
+msgid "在文件 spark-defaults.conf 的最后添加以下内容。其中 [path/to/your/conda] 为 Conda 的安装路径。可以通过 conda env info 来查看当前的conda环境信息。"
 msgstr ""
 
-#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:186
+#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:189
 msgid "在文件 spark-env.sh 的最后添加以下内容。其中 [path/to/your/conda] 为Conda的安装路径。"
 msgstr ""
 
-#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:192
+#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:195
 msgid "确认路径配置是否成功"
 msgstr ""
 
-#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:194
+#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:197
 msgid "执行以下命令进入 PySpark 交互界面，其中 [path/to/your/spark] 为 Spark 的安装路径。"
 msgstr ""
 
-#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:200
+#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:203
 msgid "在交互界面中输入以下内容打印 PySpark 的 Python 路径。"
 msgstr ""
 
-#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:206
+#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:209
 msgid "如果终端打印了以下内容，说明 PySpark 的 Python 路径配置成功。"
 msgstr ""
 
-#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:212
+#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:215
 msgid "测试样例"
 msgstr ""
 
-#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:214
+#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:217
 msgid "执行以下命令下载测试文件："
 msgstr ""
 
-#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:220
+#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:223
 msgid "执行以下命令提交 Spark 任务，其中 [path/to/]spark_udf_ex.py 为测试文件所在的路径。"
 msgstr ""
 
-#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:233
+#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:225
+msgid "local 模式："
+msgstr ""
+
+#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:231
+msgid "standalone 模式："
+msgstr ""
+
+#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:237
+msgid "hadoop/yarn 模式："
+msgstr ""
+
+#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:242
 msgid "若最后打印结果类似以下内容，则表示通过测试样例。"
 msgstr ""
 
-#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:238
+#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:247
 msgid "卸载"
 msgstr ""
 
-#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:240
+#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:249
 msgid "在 Conda 环境中输入以下命令可卸载 Arctern-Spark："
 msgstr ""
 
-#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:246
+#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:255
 msgid "FAQ"
 msgstr ""
 
-#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:248
-msgid "对 Spark 的支持"
-msgstr ""
-
-#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:250
-msgid "Arctern-Spark 可以运行在 Spark 的各种模式下，需要在每台运行 Spark 的机器上，执行如下操作："
-msgstr ""
-
-#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:254
-msgid "配置 Spark 环境变量"
-msgstr ""
-
-#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:256
-msgid "如果 Spark 运行在 standalone 集群模式下，提交任务机器的 Spark 环境需要与集群的 Spark 环境完全一致，包括以下几点："
-msgstr ""
-
-#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:258
-msgid "spark 安装的绝对路径与集群中每台机器完全一致"
+#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:257
+msgid "Spark 集群模式下的安装与配置"
 msgstr ""
 
 #: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:259
-msgid "conda 安装的绝对路径与集群中每个机器完全一致"
+msgid "在集群模式下（如 standalone 集群模式、hadoop/yarn 模式），需要在每台运行 Spark 的机器上，执行如下操作："
 msgstr ""
 
-#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:260
-msgid "conda 虚拟环境名与集群中每个机器完全一致"
+#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:263
+msgid "配置 Spark 环境变量"
+msgstr ""
+
+#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:265
+msgid "此外 standalone 集群模式下，提交任务机器的 Spark 环境需要与集群的 Spark 环境完全一致，包括以下几点："
+msgstr ""
+
+#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:267
+msgid "集群中每台机器的 spark 安装路径完全一致"
+msgstr ""
+
+#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:268
+msgid "集群中每台机器的 conda 安装路径完全一致"
+msgstr ""
+
+#: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:269
+msgid "集群中每台机器中 conda 虚拟环境名完全一致"
 msgstr ""
