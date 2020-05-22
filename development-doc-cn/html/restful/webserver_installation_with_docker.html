@@ -1,0 +1,728 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>使用 docker 部署 Arctern RESTful Server &mdash; Arctern 0.1.x 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="RESTful API" href="api/api.html" />
+    <link rel="prev" title="Arctern RESTful Server 配置项" href="restful_config.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Arctern
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../python/python.html">Arctern on Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../spark/spark.html">Arctern on Spark</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="restful.html">Arctern RESTful Service</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="webserver_installation_config.html">Arctern RESTful Server 安装与配置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restful_quick_start_on_python.html">快速开始（Python 后台）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restful_quick_start_on_spark.html">快速开始（PySpark 后台）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restful_config.html">Arctern RESTful Server 配置项</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">使用 docker 部署 Arctern RESTful Server</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#docker">获取 docker 镜像和配置文件</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">获取docker 镜像</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker-compose">获取docker-compose配置文件</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">docker启动配置</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">使用示例</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id4">数据准备</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#arctern-restful-server">启动 Arctern RESTful Server</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#client">安装Client端依赖</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">数据导入</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">查询数据表信息</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">绘制带权点图</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">绘制热力图</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">绘制轮廓图</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">绘制渔网图</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#faq">FAQ</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id11">镜像拉取和数据文件下载速度太慢怎么办?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/api.html">RESTful API</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Arctern</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="restful.html">Arctern RESTful Service</a> &raquo;</li>
+        
+      <li>使用 docker 部署 Arctern RESTful Server</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/restful/webserver_installation_with_docker.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="docker-arctern-restful-server">
+<h1>使用 docker 部署 Arctern RESTful Server<a class="headerlink" href="#docker-arctern-restful-server" title="永久链接至标题">¶</a></h1>
+<p>本文介绍如何使用 docker 部署 Arctern RESTful Server，以及 <code class="docutils literal notranslate"><span class="pre">Arctern</span> <span class="pre">RESTful</span> <span class="pre">API</span></code> 的调用示例。</p>
+<div class="section" id="docker">
+<h2>获取 docker 镜像和配置文件<a class="headerlink" href="#docker" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id1">
+<h3>获取docker 镜像<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h3>
+<p>使用如下命令拉取 <code class="docutils literal notranslate"><span class="pre">docker</span></code> 镜像：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker pull dragondriver/arctern-0.1.2:latest
+$ docker pull dragondriver/arctern-server:latest
+</pre></div>
+</div>
+<p>如果上述命令耗时过长，请尝试从百度网盘下载镜像压缩文件并手工导入，具体步骤请参考文末的FAQ。</p>
+</div>
+<div class="section" id="docker-compose">
+<h3>获取docker-compose配置文件<a class="headerlink" href="#docker-compose" title="永久链接至标题">¶</a></h3>
+<p>使用如下命令下载docker配置文件 <code class="docutils literal notranslate"><span class="pre">docker-compose.yml</span></code> ，并将配置文件拷贝至部署环境：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ wget https://gitee.com/dragondriver/arctern-server-resources/raw/master/docker-compose.yml
+$ cp docker-compose.yml /your/docker/path/
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>docker启动配置<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>通过编辑 <code class="docutils literal notranslate"><span class="pre">docker-compose.yml</span></code> 文件配置端口映射和文件映射，文件内容如下：</p>
+<div class="highlight-yml notranslate"><div class="highlight"><pre><span></span>version: &#39;2.3&#39;
+
+services:
+  arctern_zeppelin:
+    image: dragondriver/arctern-0.1.2:latest
+    ports:
+      - &quot;18081:8080&quot;
+    volumes:
+      - /path/to/host_data_folder:/data/arctern
+
+  restful_server:
+    image: dragondriver/arctern-server:latest
+    depends_on:
+      - arctern_zeppelin
+    ports:
+      - &quot;18080:8080&quot;
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">ports</span></code> 为端口映射。通过该配置，可以使用宿主机的18080端口访问docker容器中的RESTful服务。</p>
+<blockquote>
+<div><p><strong>注意</strong> 冒号右侧内容为docker容器使用的服务端口，请勿修改。</p>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">volumes</span></code> 为文件目录映射。通过该设置，可以将
+宿主机的/path/to/host_data_folder映射到docker容器中的/data/arctern目录,从而实现文件共享。以下示例中均默认docker容器中使用的目录为/data/arctern。</p>
+</div>
+<div class="section" id="id3">
+<h2>使用示例<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>以下，我们以纽约出租车数据集为例，说明如何通过 <code class="docutils literal notranslate"><span class="pre">Arctern</span> <span class="pre">RESTful</span> <span class="pre">API</span></code> 完成数据的导入、数据的处理和数据的可视化渲染。</p>
+<div class="section" id="id4">
+<h3>数据准备<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
+<p>执行以下命令下载纽约出租车数据集：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /path/to/host_data_folder
+$ wget https://gitee.com/dragondriver/arctern-server-resources/raw/master/nyc_taxi.csv
+</pre></div>
+</div>
+<p>执行以下命令查看是否下载成功：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ wc -l nyc_taxi.csv
+</pre></div>
+</div>
+<p>该数据集包含 2009 年纽约市出租车的部分运营记录，各字段的含义如下：</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th align="left">名称</th>
+<th align="left">含义</th>
+<th align="left">类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">VendorID</td>
+<td align="left">运营商名称</td>
+<td align="left">string</td>
+</tr>
+<tr>
+<td align="left">tpep_pickup_datetime</td>
+<td align="left">上车时间</td>
+<td align="left">string</td>
+</tr>
+<tr>
+<td align="left">tpep_dropoff_datetime</td>
+<td align="left">下车时间</td>
+<td align="left">string</td>
+</tr>
+<tr>
+<td align="left">passenger_count</td>
+<td align="left">乘客数量</td>
+<td align="left">long</td>
+</tr>
+<tr>
+<td align="left">trip_distance</td>
+<td align="left">行程距离</td>
+<td align="left">double</td>
+</tr>
+<tr>
+<td align="left">pickup_longitude</td>
+<td align="left">上车地点的经度</td>
+<td align="left">double</td>
+</tr>
+<tr>
+<td align="left">pickup_latitude</td>
+<td align="left">上车地点的纬度</td>
+<td align="left">double</td>
+</tr>
+<tr>
+<td align="left">dropoff_longitude</td>
+<td align="left">下车地点的经度</td>
+<td align="left">double</td>
+</tr>
+<tr>
+<td align="left">dropoff_latitude</td>
+<td align="left">下车地点的纬度</td>
+<td align="left">double</td>
+</tr>
+<tr>
+<td align="left">fare_amount</td>
+<td align="left">行程费用</td>
+<td align="left">double</td>
+</tr>
+<tr>
+<td align="left">tip_amount</td>
+<td align="left">小费</td>
+<td align="left">double</td>
+</tr>
+<tr>
+<td align="left">total_amount</td>
+<td align="left">总费用</td>
+<td align="left">double</td>
+</tr>
+<tr>
+<td align="left">buildingid_pickup</td>
+<td align="left">上车地点所在建筑的 id</td>
+<td align="left">long</td>
+</tr>
+<tr>
+<td align="left">buildingid_dropoff</td>
+<td align="left">下车地点所在建筑的 id</td>
+<td align="left">long</td>
+</tr>
+<tr>
+<td align="left">buildingtext_pickup</td>
+<td align="left">上车地点所在建筑的轮廓描述</td>
+<td align="left">string</td>
+</tr>
+<tr>
+<td align="left">buildingtext_dropoff</td>
+<td align="left">下车地点所在建筑的轮廓描述</td>
+<td align="left">string</td>
+</tr>
+</tbody>
+</table><blockquote>
+<div><p><strong>注意：</strong> 该数据集有 115927 行，其中时间格式为：<code class="docutils literal notranslate"><span class="pre">yyyy-MM-dd</span> <span class="pre">HH:mm::ss</span> <span class="pre">XXXXX</span></code>，如“2009-04-12 03:16:33 +00:00”。</p>
+</div></blockquote>
+</div>
+<div class="section" id="arctern-restful-server">
+<h3>启动 Arctern RESTful Server<a class="headerlink" href="#arctern-restful-server" title="永久链接至标题">¶</a></h3>
+<p>使用如下命令启动服务:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ./bin/docker-compose up -d
+</pre></div>
+</div>
+</div>
+<div class="section" id="client">
+<h3>安装Client端依赖<a class="headerlink" href="#client" title="永久链接至标题">¶</a></h3>
+<p>本文示例代码使用 Python 的 <code class="docutils literal notranslate"><span class="pre">requests</span></code> 库调用 Arctern RESTful API，执行以下命令安装 <code class="docutils literal notranslate"><span class="pre">requests</span></code>：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ pip install requests
+</pre></div>
+</div>
+<blockquote>
+<div><p><strong>注意</strong> 在后续步骤中，请将 <code class="docutils literal notranslate"><span class="pre">requests</span></code> 调用中 <code class="docutils literal notranslate"><span class="pre">url</span></code> 的 IP 和端口替换为 docker 宿主机相应的 IP 和端口。</p>
+</div></blockquote>
+</div>
+<div class="section" id="id5">
+<h3>数据导入<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">/loadfile</span></code> 接口导入纽约出租车数据集，将其对应的数据表命名为 <code class="docutils literal notranslate"><span class="pre">raw_data</span></code>。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">json</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">docker_data_path</span><span class="o">=</span><span class="s2">&quot;/data/arctern/nyc_taxi.csv&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
+<span class="gp">... </span><span class="s2">&quot;tables&quot;</span><span class="p">:</span> <span class="p">[</span>
+<span class="gp">... </span>    <span class="p">{</span>
+<span class="gp">... </span>        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;raw_data&quot;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">&quot;format&quot;</span><span class="p">:</span> <span class="s2">&quot;csv&quot;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="n">docker_data_path</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">&quot;options&quot;</span><span class="p">:</span> <span class="p">{</span>
+<span class="gp">... </span>            <span class="s2">&quot;header&quot;</span><span class="p">:</span> <span class="s2">&quot;True&quot;</span><span class="p">,</span>
+<span class="gp">... </span>            <span class="s2">&quot;delimiter&quot;</span><span class="p">:</span> <span class="s2">&quot;,&quot;</span>
+<span class="gp">... </span>        <span class="p">},</span>
+<span class="gp">... </span>        <span class="s2">&quot;schema&quot;</span><span class="p">:</span> <span class="p">[</span>
+<span class="gp">... </span>            <span class="p">{</span><span class="s2">&quot;VendorID&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">},</span>
+<span class="gp">... </span>            <span class="p">{</span><span class="s2">&quot;tpep_pickup_datetime&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">},</span>
+<span class="gp">... </span>            <span class="p">{</span><span class="s2">&quot;tpep_dropoff_datetime&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">},</span>
+<span class="gp">... </span>            <span class="p">{</span><span class="s2">&quot;passenger_count&quot;</span><span class="p">:</span> <span class="s2">&quot;long&quot;</span><span class="p">},</span>
+<span class="gp">... </span>            <span class="p">{</span><span class="s2">&quot;trip_distance&quot;</span><span class="p">:</span> <span class="s2">&quot;double&quot;</span><span class="p">},</span>
+<span class="gp">... </span>            <span class="p">{</span><span class="s2">&quot;pickup_longitude&quot;</span><span class="p">:</span> <span class="s2">&quot;double&quot;</span><span class="p">},</span>
+<span class="gp">... </span>            <span class="p">{</span><span class="s2">&quot;pickup_latitude&quot;</span><span class="p">:</span> <span class="s2">&quot;double&quot;</span><span class="p">},</span>
+<span class="gp">... </span>            <span class="p">{</span><span class="s2">&quot;dropoff_longitude&quot;</span><span class="p">:</span> <span class="s2">&quot;double&quot;</span><span class="p">},</span>
+<span class="gp">... </span>            <span class="p">{</span><span class="s2">&quot;dropoff_latitude&quot;</span><span class="p">:</span> <span class="s2">&quot;double&quot;</span><span class="p">},</span>
+<span class="gp">... </span>            <span class="p">{</span><span class="s2">&quot;fare_amount&quot;</span><span class="p">:</span> <span class="s2">&quot;double&quot;</span><span class="p">},</span>
+<span class="gp">... </span>            <span class="p">{</span><span class="s2">&quot;tip_amount&quot;</span><span class="p">:</span> <span class="s2">&quot;double&quot;</span><span class="p">},</span>
+<span class="gp">... </span>            <span class="p">{</span><span class="s2">&quot;total_amount&quot;</span><span class="p">:</span> <span class="s2">&quot;double&quot;</span><span class="p">},</span>
+<span class="gp">... </span>            <span class="p">{</span><span class="s2">&quot;buildingid_pickup&quot;</span><span class="p">:</span> <span class="s2">&quot;long&quot;</span><span class="p">},</span>
+<span class="gp">... </span>            <span class="p">{</span><span class="s2">&quot;buildingid_dropoff&quot;</span><span class="p">:</span> <span class="s2">&quot;long&quot;</span><span class="p">},</span>
+<span class="gp">... </span>            <span class="p">{</span><span class="s2">&quot;buildingtext_pickup&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">},</span>
+<span class="gp">... </span>            <span class="p">{</span><span class="s2">&quot;buildingtext_dropoff&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">}</span>
+<span class="gp">... </span>        <span class="p">]</span>
+<span class="gp">... </span>    <span class="p">}</span>
+<span class="gp">... </span><span class="p">]</span>
+<span class="gp">... </span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s2">&quot;http://127.0.0.1:18080/loadfile&quot;</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">},</span> <span class="n">data</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">payload</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="go">{</span>
+<span class="go">    &#39;code&#39;: 200,</span>
+<span class="go">    &#39;message&#39;: &#39;load table successfully!&#39;,</span>
+<span class="go">    &#39;status&#39;: &#39;success&#39;</span>
+<span class="go">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h3>查询数据表信息<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
+<p>你已经在后台创建了一张名为 <code class="docutils literal notranslate"><span class="pre">raw_data</span></code>的数据表。接着，使用 <code class="docutils literal notranslate"><span class="pre">/table/schema</span></code> 接口可查询该表中各字段的名称以及对应的数据类型。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s2">&quot;http://127.0.0.1:18080/table/schema?table=raw_data&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="go">{</span>
+<span class="go">    &quot;code&quot;: 200,</span>
+<span class="go">    &quot;schema&quot;: [</span>
+<span class="go">        {</span>
+<span class="go">            &quot;col_name&quot;: &quot;VendorID&quot;,</span>
+<span class="go">            &quot;data_type&quot;: &quot;string&quot;</span>
+<span class="go">        },</span>
+<span class="go">        {</span>
+<span class="go">            &quot;col_name&quot;: &quot;tpep_pickup_datetime&quot;,</span>
+<span class="go">            &quot;data_type&quot;: &quot;string&quot;</span>
+<span class="go">        },</span>
+<span class="go">        {</span>
+<span class="go">            &quot;col_name&quot;: &quot;tpep_dropoff_datetime&quot;,</span>
+<span class="go">            &quot;data_type&quot;: &quot;string&quot;</span>
+<span class="go">        },</span>
+<span class="go">        {</span>
+<span class="go">            &quot;col_name&quot;: &quot;passenger_count&quot;,</span>
+<span class="go">            &quot;data_type&quot;: &quot;bigint&quot;</span>
+<span class="go">        },</span>
+<span class="go">        {</span>
+<span class="go">            &quot;col_name&quot;: &quot;trip_distance&quot;,</span>
+<span class="go">            &quot;data_type&quot;: &quot;double&quot;</span>
+<span class="go">        },</span>
+<span class="go">        {</span>
+<span class="go">            &quot;col_name&quot;: &quot;pickup_longitude&quot;,</span>
+<span class="go">            &quot;data_type&quot;: &quot;double&quot;</span>
+<span class="go">        },</span>
+<span class="go">        {</span>
+<span class="go">            &quot;col_name&quot;: &quot;pickup_latitude&quot;,</span>
+<span class="go">            &quot;data_type&quot;: &quot;double&quot;</span>
+<span class="go">        },</span>
+<span class="go">        {</span>
+<span class="go">            &quot;col_name&quot;: &quot;dropoff_longitude&quot;,</span>
+<span class="go">            &quot;data_type&quot;: &quot;double&quot;</span>
+<span class="go">        },</span>
+<span class="go">        {</span>
+<span class="go">            &quot;col_name&quot;: &quot;dropoff_latitude&quot;,</span>
+<span class="go">            &quot;data_type&quot;: &quot;double&quot;</span>
+<span class="go">        },</span>
+<span class="go">        {</span>
+<span class="go">            &quot;col_name&quot;: &quot;fare_amount&quot;,</span>
+<span class="go">            &quot;data_type&quot;: &quot;double&quot;</span>
+<span class="go">        },</span>
+<span class="go">        {</span>
+<span class="go">            &quot;col_name&quot;: &quot;tip_amount&quot;,</span>
+<span class="go">            &quot;data_type&quot;: &quot;double&quot;</span>
+<span class="go">        },</span>
+<span class="go">        {</span>
+<span class="go">            &quot;col_name&quot;: &quot;total_amount&quot;,</span>
+<span class="go">            &quot;data_type&quot;: &quot;double&quot;</span>
+<span class="go">        },</span>
+<span class="go">        {</span>
+<span class="go">            &quot;col_name&quot;: &quot;buildingid_pickup&quot;,</span>
+<span class="go">            &quot;data_type&quot;: &quot;bigint&quot;</span>
+<span class="go">        },</span>
+<span class="go">        {</span>
+<span class="go">            &quot;col_name&quot;: &quot;buildingid_dropoff&quot;,</span>
+<span class="go">            &quot;data_type&quot;: &quot;bigint&quot;</span>
+<span class="go">        },</span>
+<span class="go">        {</span>
+<span class="go">            &quot;col_name&quot;: &quot;buildingtext_pickup&quot;,</span>
+<span class="go">            &quot;data_type&quot;: &quot;string&quot;</span>
+<span class="go">        },</span>
+<span class="go">        {</span>
+<span class="go">            &quot;col_name&quot;: &quot;buildingtext_dropoff&quot;,</span>
+<span class="go">            &quot;data_type&quot;: &quot;string&quot;</span>
+<span class="go">        }</span>
+<span class="go">    ],</span>
+<span class="go">    &quot;status&quot;: &quot;success&quot;,</span>
+<span class="go">    &quot;table&quot;: &quot;raw_data&quot;</span>
+<span class="go">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id7">
+<h3>绘制带权点图<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h3>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">/weighted_pointmap</span></code> 接口根据乘客的上车地点绘制带权点图。其中，将总费用作为点的权重 —— 总费用越高，权重越大，点的颜色越深。带权点图的具体参数说明请参见<a class="reference external" href="./api/function/weighted_pointmap.html">带权点图 RESTful API 说明</a>。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">json</span>
+<span class="gp">&gt;&gt;&gt; </span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
+<span class="gp">... </span><span class="s2">&quot;input_data&quot;</span><span class="p">:</span> <span class="p">{</span>
+<span class="gp">... </span>    <span class="s2">&quot;points&quot;</span><span class="p">:</span> <span class="s2">&quot;ST_Point(raw_data.pickup_longitude, raw_data.pickup_latitude)&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;color_weights&quot;</span><span class="p">:</span> <span class="s2">&quot;raw_data.fare_amount&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;size_weights&quot;</span><span class="p">:</span> <span class="s2">&quot;raw_data.total_amount&quot;</span>
+<span class="gp">... </span><span class="p">},</span>
+<span class="gp">... </span><span class="s2">&quot;params&quot;</span><span class="p">:</span> <span class="p">{</span>
+<span class="gp">... </span>    <span class="s2">&quot;width&quot;</span><span class="p">:</span> <span class="mi">1024</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;height&quot;</span><span class="p">:</span> <span class="mi">896</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;bounding_box&quot;</span><span class="p">:</span> <span class="p">[</span>
+<span class="gp">... </span>        <span class="o">-</span><span class="mf">73.998427</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="mf">40.730309</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="o">-</span><span class="mf">73.954348</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="mf">40.780816</span>
+<span class="gp">... </span>    <span class="p">],</span>
+<span class="gp">... </span>    <span class="s2">&quot;opacity&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;coordinate_system&quot;</span><span class="p">:</span> <span class="s2">&quot;EPSG:4326&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;size_bound&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="s2">&quot;color_bound&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="s2">&quot;color_gradient&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;#115f9a&quot;</span><span class="p">,</span> <span class="s2">&quot;#d0f400&quot;</span><span class="p">]</span>
+<span class="gp">... </span><span class="p">}</span>
+<span class="gp">... </span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s2">&quot;http://127.0.0.1:18080/weighted_pointmap&quot;</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">},</span> <span class="n">data</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">payload</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">base64</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;/tmp/weighted_pointmap.png&quot;</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">base64</span><span class="o">.</span><span class="n">b64decode</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s1">&#39;result&#39;</span><span class="p">]))</span>
+</pre></div>
+</div>
+<p>带权点图的绘制结果如下：</p>
+<p><img alt="带权点图" src="../_images/weighted_pointmap.png" />。</p>
+</div>
+<div class="section" id="id8">
+<h3>绘制热力图<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h3>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">/heatmap</span></code> 接口根据乘客的下车地点以及行程费用绘制热力图。其中，费用高的区域为红色，费用低的区域为绿色。热力图的具体参数说明请参见 <a class="reference external" href="./api/function/heatmap.html">热力图 RESTful API 说明</a>。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">json</span>
+<span class="gp">&gt;&gt;&gt; </span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
+<span class="gp">... </span><span class="s2">&quot;input_data&quot;</span><span class="p">:</span> <span class="p">{</span>
+<span class="gp">... </span>    <span class="s2">&quot;points&quot;</span><span class="p">:</span> <span class="s2">&quot;ST_Point(raw_data.pickup_longitude, raw_data.pickup_latitude)&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;weights&quot;</span><span class="p">:</span> <span class="s2">&quot;raw_data.fare_amount&quot;</span>
+<span class="gp">... </span><span class="p">},</span>
+<span class="gp">... </span><span class="s2">&quot;params&quot;</span><span class="p">:</span> <span class="p">{</span>
+<span class="gp">... </span>    <span class="s2">&quot;width&quot;</span><span class="p">:</span> <span class="mi">512</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;height&quot;</span><span class="p">:</span> <span class="mi">448</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;bounding_box&quot;</span><span class="p">:</span> <span class="p">[</span>
+<span class="gp">... </span>        <span class="o">-</span><span class="mf">74.01556543545699</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="mf">40.69354738164881</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="o">-</span><span class="mf">73.9434424136598</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="mf">40.780921656427836</span>
+<span class="gp">... </span>    <span class="p">],</span>
+<span class="gp">... </span>    <span class="s2">&quot;coordinate_system&quot;</span><span class="p">:</span> <span class="s2">&quot;EPSG:4326&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;map_zoom_level&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;aggregation_type&quot;</span><span class="p">:</span> <span class="s2">&quot;sum&quot;</span>
+<span class="gp">... </span><span class="p">}</span>
+<span class="gp">... </span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s2">&quot;http://127.0.0.1:18080/heatmap&quot;</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">},</span> <span class="n">data</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">payload</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">base64</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;/tmp/heatmap.png&quot;</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">base64</span><span class="o">.</span><span class="n">b64decode</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s1">&#39;result&#39;</span><span class="p">]))</span>
+</pre></div>
+</div>
+<p>热力图的绘制结果如下：</p>
+<p><img alt="热力图" src="../_images/heatmap.png" /></p>
+</div>
+<div class="section" id="id9">
+<h3>绘制轮廓图<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h3>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">/choroplethmap</span></code> 接口，根据下车地点的建筑物、小费金额绘制轮廓图。其中，小费金额高的区域为黄色，小费金额低的区域为蓝色。轮廓图的具体参数说明请参见<a class="reference external" href="./api/function/choroplethmap.html">轮廓图 RESTful API 说明</a>。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">json</span>
+<span class="gp">&gt;&gt;&gt; </span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
+<span class="gp">... </span><span class="s2">&quot;input_data&quot;</span><span class="p">:</span> <span class="p">{</span>
+<span class="gp">... </span>    <span class="s2">&quot;region_boundaries&quot;</span><span class="p">:</span> <span class="s2">&quot;ST_GeomFromText(raw_data.dropna().buildingtext_pickup)&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;weights&quot;</span><span class="p">:</span> <span class="s2">&quot;raw_data.dropna().fare_amount&quot;</span>
+<span class="gp">... </span><span class="p">},</span>
+<span class="gp">... </span><span class="s2">&quot;params&quot;</span><span class="p">:</span> <span class="p">{</span>
+<span class="gp">... </span>    <span class="s2">&quot;width&quot;</span><span class="p">:</span> <span class="mi">512</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;height&quot;</span><span class="p">:</span> <span class="mi">448</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;bounding_box&quot;</span><span class="p">:</span> <span class="p">[</span>
+<span class="gp">... </span>        <span class="o">-</span><span class="mf">74.00235068563725</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="mf">40.735104211264684</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="o">-</span><span class="mf">73.96739189659048</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="mf">40.77744332808598</span>
+<span class="gp">... </span>    <span class="p">],</span>
+<span class="gp">... </span>    <span class="s2">&quot;coordinate_system&quot;</span><span class="p">:</span> <span class="s2">&quot;EPSG:4326&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;color_gradient&quot;</span><span class="p">:</span> <span class="p">[</span>
+<span class="gp">... </span>        <span class="s2">&quot;#115f9a&quot;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">&quot;#d0f400&quot;</span>
+<span class="gp">... </span>    <span class="p">],</span>
+<span class="gp">... </span>    <span class="s2">&quot;color_bound&quot;</span><span class="p">:</span> <span class="p">[</span>
+<span class="gp">... </span>        <span class="mi">0</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="mi">15</span>
+<span class="gp">... </span>    <span class="p">],</span>
+<span class="gp">... </span>    <span class="s2">&quot;opacity&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;aggregation_type&quot;</span><span class="p">:</span> <span class="s2">&quot;mean&quot;</span>
+<span class="gp">... </span><span class="p">}</span>
+<span class="gp">... </span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s2">&quot;http://127.0.0.1:18080/choroplethmap&quot;</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">},</span> <span class="n">data</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">payload</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">base64</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;/tmp/choroplethmap.png&quot;</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">base64</span><span class="o">.</span><span class="n">b64decode</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s1">&#39;result&#39;</span><span class="p">]))</span>
+</pre></div>
+</div>
+<p>轮廓图的绘制结果如下：</p>
+<p><img alt="轮廓图" src="../_images/choroplethmap.png" /></p>
+</div>
+<div class="section" id="id10">
+<h3>绘制渔网图<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h3>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">/fishnetmap</span></code> 接口根据乘客的上车地点绘制渔网图。其中，将总费用作为渔网网格的权重 —— 总费用越高，权重越大，渔网网格的颜色越深。渔网图的具体参数说明请参见<a class="reference external" href="./api/function/fishnetmap.html">渔网图 RESTful API 说明</a>。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">json</span>
+<span class="gp">&gt;&gt;&gt; </span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
+<span class="gp">... </span><span class="s2">&quot;input_data&quot;</span><span class="p">:</span> <span class="p">{</span>
+<span class="gp">... </span>    <span class="s2">&quot;points&quot;</span><span class="p">:</span> <span class="s2">&quot;ST_Point(raw_data.pickup_longitude, raw_data.pickup_latitude)&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;weights&quot;</span><span class="p">:</span> <span class="s2">&quot;raw_data.fare_amount&quot;</span>
+<span class="gp">... </span><span class="p">},</span>
+<span class="gp">... </span><span class="s2">&quot;params&quot;</span><span class="p">:</span> <span class="p">{</span>
+<span class="gp">... </span>    <span class="s2">&quot;width&quot;</span><span class="p">:</span> <span class="mi">512</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;height&quot;</span><span class="p">:</span> <span class="mi">448</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;bounding_box&quot;</span><span class="p">:</span> <span class="p">[</span>
+<span class="gp">... </span>        <span class="o">-</span><span class="mf">73.998427</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="mf">40.730309</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="o">-</span><span class="mf">73.954348</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="mf">40.780816</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="p">],</span>
+<span class="gp">... </span>    <span class="s2">&quot;opacity&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;coordinate_system&quot;</span><span class="p">:</span> <span class="s2">&quot;EPSG:4326&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;cell_size&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;cell_spacing&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;color_gradient&quot;</span><span class="p">:</span> <span class="p">[</span>
+<span class="gp">... </span>        <span class="s2">&quot;#115f9a&quot;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">&quot;#d0f400&quot;</span>
+<span class="gp">... </span>    <span class="p">],</span>
+<span class="gp">... </span>    <span class="s2">&quot;aggregation_type&quot;</span><span class="p">:</span> <span class="s2">&quot;sum&quot;</span>
+<span class="gp">... </span><span class="p">}</span>
+<span class="gp">... </span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s2">&quot;http://127.0.0.1:18080/fishnetmap&quot;</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">},</span> <span class="n">data</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">payload</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># 保存为 PNG 图片</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">base64</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;/tmp/fishnetmap.png&quot;</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">base64</span><span class="o">.</span><span class="n">b64decode</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s1">&#39;result&#39;</span><span class="p">]))</span>
+</pre></div>
+</div>
+<p>渔网图的绘制结果如下：</p>
+<p><img alt="渔网图" src="../_images/fishnetmap_docker.png" /></p>
+</div>
+</div>
+<div class="section" id="faq">
+<h2>FAQ<a class="headerlink" href="#faq" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id11">
+<h3>镜像拉取和数据文件下载速度太慢怎么办?<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h3>
+<p>请尝试从百度网盘下载镜像和其他相关文件。分享链接和提取码为
+链接: https://pan.baidu.com/s/1dAudI5c8Rn6_FPxbUdUG_g 提取码: buuj</p>
+<p>镜像压缩文件分别为<code class="docutils literal notranslate"><span class="pre">arctern-server.tgz</span></code> 和 <code class="docutils literal notranslate"><span class="pre">arctern-0.1.2.tgz</span></code>，下载完成后请使用如下命令解压:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ tar -zxf arctern-server.tgz
+$ tar -zxf arctern-0.1.2.tgz
+</pre></div>
+</div>
+<p>解压后得到的 arctern-server.tar 和 arctern-0.1.2.tar 即为 docker镜像。</p>
+<p>可使用以下命令将docker镜像导入到部署环境的本地仓库:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker load &lt; arctern-server.tar
+$ docker load &lt; arctern-0.1.2.tar
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="api/api.html" class="btn btn-neutral float-right" title="RESTful API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="restful_config.html" class="btn btn-neutral float-left" title="Arctern RESTful Server 配置项" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, zilliz
+      <span class="lastupdated">
+        最后更新于 5月 22, 2020.
+      </span>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

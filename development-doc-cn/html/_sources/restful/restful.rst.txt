@@ -10,4 +10,5 @@ Arctern RESTful Service
    restful_quick_start_on_python
    restful_quick_start_on_spark
    restful_config
+   webserver_installation_with_docker
    api/api
