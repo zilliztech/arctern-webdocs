@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-22 17:17+0800\n"
+"POT-Creation-Date: 2020-05-22 17:46+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -37,7 +37,7 @@ msgid "下载离线安装文件"
 msgstr ""
 
 #: ../../source/spark/installation_and_deployment/offline_install_arctern_on_spark_cn.md:26
-msgid "执行以下命令在联网环境中分别下载 Arctern-Spark 的系统依赖、Spark 和 Miniconda 安装文件，并将其拷贝至需要安装 Arctern-Spark 的离线环境。"
+msgid "执行以下命令在联网环境中分别下载 Arctern-Spark 的系统依赖、Spark 和 Miniconda 安装文件，并将其复制到需要安装 Arctern-Spark 的离线环境。"
 msgstr ""
 
 #: ../../source/spark/installation_and_deployment/offline_install_arctern_on_spark_cn.md:34

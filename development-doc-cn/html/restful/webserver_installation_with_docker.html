@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>使用 docker 部署 Arctern RESTful Server &mdash; Arctern 0.1.x 文档</title>
+  <title>使用 Docker 部署 Arctern RESTful Server &mdash; Arctern 0.1.x 文档</title>
   
 
   
@@ -90,13 +90,13 @@
 <li class="toctree-l2"><a class="reference internal" href="restful_quick_start_on_python.html">快速开始（Python 后台）</a></li>
 <li class="toctree-l2"><a class="reference internal" href="restful_quick_start_on_spark.html">快速开始（PySpark 后台）</a></li>
 <li class="toctree-l2"><a class="reference internal" href="restful_config.html">Arctern RESTful Server 配置项</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">使用 docker 部署 Arctern RESTful Server</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#docker">获取 docker 镜像和配置文件</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id1">获取docker 镜像</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#docker-compose">获取docker-compose配置文件</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">使用 Docker 部署 Arctern RESTful Server</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#docker">获取 Docker 镜像和配置文件</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">获取 Docker 镜像</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker-compose">获取 docker-compose 配置文件</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">docker启动配置</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Docker 启动配置</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id3">使用示例</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id4">数据准备</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#arctern-restful-server">启动 Arctern RESTful Server</a></li>
@@ -165,7 +165,7 @@
         
           <li><a href="restful.html">Arctern RESTful Service</a> &raquo;</li>
         
-      <li>使用 docker 部署 Arctern RESTful Server</li>
+      <li>使用 Docker 部署 Arctern RESTful Server</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -185,22 +185,24 @@
            <div itemprop="articleBody">
             
   <div class="section" id="docker-arctern-restful-server">
-<h1>使用 docker 部署 Arctern RESTful Server<a class="headerlink" href="#docker-arctern-restful-server" title="永久链接至标题">¶</a></h1>
-<p>本文介绍如何使用 docker 部署 Arctern RESTful Server，以及 <code class="docutils literal notranslate"><span class="pre">Arctern</span> <span class="pre">RESTful</span> <span class="pre">API</span></code> 的调用示例。</p>
+<h1>使用 Docker 部署 Arctern RESTful Server<a class="headerlink" href="#docker-arctern-restful-server" title="永久链接至标题">¶</a></h1>
+<p>本文介绍如何使用 Docker 部署 Arctern RESTful Server，并展示 Arctern RESTful API 的调用示例。</p>
 <div class="section" id="docker">
-<h2>获取 docker 镜像和配置文件<a class="headerlink" href="#docker" title="永久链接至标题">¶</a></h2>
+<h2>获取 Docker 镜像和配置文件<a class="headerlink" href="#docker" title="永久链接至标题">¶</a></h2>
 <div class="section" id="id1">
-<h3>获取docker 镜像<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h3>
-<p>使用如下命令拉取 <code class="docutils literal notranslate"><span class="pre">docker</span></code> 镜像：</p>
+<h3>获取 Docker 镜像<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h3>
+<p>执行以下命令拉取 Docker 镜像：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker pull dragondriver/arctern-0.1.2:latest
 $ docker pull dragondriver/arctern-server:latest
 </pre></div>
 </div>
-<p>如果上述命令耗时过长，请尝试从百度网盘下载镜像压缩文件并手工导入，具体步骤请参考文末的FAQ。</p>
+<blockquote>
+<div><p><strong>注意：</strong> 如果上述命令耗时过长，请尝试从百度网盘下载镜像压缩文件并手工导入，具体步骤请参考文末的 FAQ。</p>
+</div></blockquote>
 </div>
 <div class="section" id="docker-compose">
-<h3>获取docker-compose配置文件<a class="headerlink" href="#docker-compose" title="永久链接至标题">¶</a></h3>
-<p>使用如下命令下载docker配置文件 <code class="docutils literal notranslate"><span class="pre">docker-compose.yml</span></code> ，并将配置文件拷贝至部署环境：</p>
+<h3>获取 docker-compose 配置文件<a class="headerlink" href="#docker-compose" title="永久链接至标题">¶</a></h3>
+<p>执行以下命令下载 Docker 配置文件 <code class="docutils literal notranslate"><span class="pre">docker-compose.yml</span></code>，并将配置文件复制到部署环境：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ wget https://gitee.com/dragondriver/arctern-server-resources/raw/master/docker-compose.yml
 $ cp docker-compose.yml /your/docker/path/
 </pre></div>
@@ -208,8 +210,8 @@ $ cp docker-compose.yml /your/docker/path/
 </div>
 </div>
 <div class="section" id="id2">
-<h2>docker启动配置<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
-<p>通过编辑 <code class="docutils literal notranslate"><span class="pre">docker-compose.yml</span></code> 文件配置端口映射和文件映射，文件内容如下：</p>
+<h2>Docker 启动配置<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>编辑 <code class="docutils literal notranslate"><span class="pre">docker-compose.yml</span></code> 文件，配置端口映射和文件映射。文件内容如下：</p>
 <div class="highlight-yml notranslate"><div class="highlight"><pre><span></span>version: &#39;2.3&#39;
 
 services:
@@ -228,19 +230,18 @@ services:
       - &quot;18080:8080&quot;
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">ports</span></code> 为端口映射。通过该配置，可以使用宿主机的18080端口访问docker容器中的RESTful服务。</p>
+<p><code class="docutils literal notranslate"><span class="pre">ports</span></code> 为端口映射。通过该配置选项，可以使用宿主机的 18080 端口访问 Docker 容器中的 RESTful 服务。</p>
 <blockquote>
-<div><p><strong>注意</strong> 冒号右侧内容为docker容器使用的服务端口，请勿修改。</p>
+<div><p><strong>注意：</strong> 8080 为 Docker 容器使用的服务端口，请勿修改。</p>
 </div></blockquote>
-<p><code class="docutils literal notranslate"><span class="pre">volumes</span></code> 为文件目录映射。通过该设置，可以将
-宿主机的/path/to/host_data_folder映射到docker容器中的/data/arctern目录,从而实现文件共享。以下示例中均默认docker容器中使用的目录为/data/arctern。</p>
+<p><code class="docutils literal notranslate"><span class="pre">volumes</span></code> 为文件目录映射。通过该配置选项，可以将宿主机的“/path/to/host_data_folder“映射到 Docker 容器中的“/data/arctern“目录，从而实现文件共享。以下示例中均默认 Docker 容器中使用的目录为“/data/arctern“。</p>
 </div>
 <div class="section" id="id3">
 <h2>使用示例<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
-<p>以下，我们以纽约出租车数据集为例，说明如何通过 <code class="docutils literal notranslate"><span class="pre">Arctern</span> <span class="pre">RESTful</span> <span class="pre">API</span></code> 完成数据的导入、数据的处理和数据的可视化渲染。</p>
+<p>我们以纽约出租车数据集为例，说明如何通过 <code class="docutils literal notranslate"><span class="pre">Arctern</span> <span class="pre">RESTful</span> <span class="pre">API</span></code> 完成数据的导入、数据的处理和数据的可视化渲染。</p>
 <div class="section" id="id4">
 <h3>数据准备<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
-<p>执行以下命令下载纽约出租车数据集：</p>
+<p>在后续示例中，你需要使用纽约出租车数据集。执行以下命令下载该数据集：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /path/to/host_data_folder
 $ wget https://gitee.com/dragondriver/arctern-server-resources/raw/master/nyc_taxi.csv
 </pre></div>
@@ -249,7 +250,7 @@ $ wget https://gitee.com/dragondriver/arctern-server-resources/raw/master/nyc_ta
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ wc -l nyc_taxi.csv
 </pre></div>
 </div>
-<p>该数据集包含 2009 年纽约市出租车的部分运营记录，各字段的含义如下：</p>
+<p>该数据集包含 2009 年纽约市出租车的运营记录，各字段的含义如下：</p>
 <table border="1" class="docutils">
 <thead>
 <tr>
@@ -346,7 +347,7 @@ $ wget https://gitee.com/dragondriver/arctern-server-resources/raw/master/nyc_ta
 </div>
 <div class="section" id="arctern-restful-server">
 <h3>启动 Arctern RESTful Server<a class="headerlink" href="#arctern-restful-server" title="永久链接至标题">¶</a></h3>
-<p>使用如下命令启动服务:</p>
+<p>执行以下命令启动服务:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker-compose -f docker-compose.yml up -d
 </pre></div>
 </div>
@@ -358,7 +359,7 @@ $ wget https://gitee.com/dragondriver/arctern-server-resources/raw/master/nyc_ta
 </pre></div>
 </div>
 <blockquote>
-<div><p><strong>注意</strong> 在后续步骤中，请将 <code class="docutils literal notranslate"><span class="pre">requests</span></code> 调用中 <code class="docutils literal notranslate"><span class="pre">url</span></code> 的 IP 和端口替换为 docker 宿主机相应的 IP 和端口。</p>
+<div><p><strong>注意</strong> 在后续步骤中，请将 <code class="docutils literal notranslate"><span class="pre">requests</span></code> 调用中 <code class="docutils literal notranslate"><span class="pre">url</span></code> 的 IP 和端口替换为 Docker 宿主机相应的 IP 和端口。</p>
 </div></blockquote>
 </div>
 <div class="section" id="id5">
@@ -656,15 +657,17 @@ $ wget https://gitee.com/dragondriver/arctern-server-resources/raw/master/nyc_ta
 <h2>FAQ<a class="headerlink" href="#faq" title="永久链接至标题">¶</a></h2>
 <div class="section" id="id11">
 <h3>镜像拉取和数据文件下载速度太慢怎么办?<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h3>
-<p>请尝试从百度网盘下载镜像和其他相关文件。分享链接和提取码为
-链接: https://pan.baidu.com/s/1dAudI5c8Rn6_FPxbUdUG_g 提取码: buuj</p>
-<p>镜像压缩文件分别为<code class="docutils literal notranslate"><span class="pre">arctern-server.tgz</span></code> 和 <code class="docutils literal notranslate"><span class="pre">arctern-0.1.2.tgz</span></code>，下载完成后请使用如下命令解压:</p>
+<p>请尝试从百度网盘下载镜像和其他相关文件。分享链接和提取码为：</p>
+<blockquote>
+<div><p>链接: https://pan.baidu.com/s/1dAudI5c8Rn6_FPxbUdUG_g 提取码: buuj</p>
+</div></blockquote>
+<p>镜像压缩文件分别为 <code class="docutils literal notranslate"><span class="pre">arctern-server.tgz</span></code> 和 <code class="docutils literal notranslate"><span class="pre">arctern-0.1.2.tgz</span></code>，下载完成后请执行以下命令解压:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ tar -zxf arctern-server.tgz
 $ tar -zxf arctern-0.1.2.tgz
 </pre></div>
 </div>
-<p>解压后得到的 arctern-server.tar 和 arctern-0.1.2.tar 即为 docker镜像。</p>
-<p>可使用以下命令将docker镜像导入到部署环境的本地仓库:</p>
+<p>解压后得到的 arctern-server.tar 和 arctern-0.1.2.tar 即为 Docker 镜像。</p>
+<p>执行以下命令将 Docker 镜像导入到部署环境的本地仓库:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker load &lt; arctern-server.tar
 $ docker load &lt; arctern-0.1.2.tar
 </pre></div>

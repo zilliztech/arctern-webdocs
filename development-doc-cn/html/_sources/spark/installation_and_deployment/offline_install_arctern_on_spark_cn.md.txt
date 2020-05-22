@@ -12,7 +12,7 @@
 
 ### 下载离线安装文件
 
-执行以下命令在联网环境中分别下载 Arctern-Spark 的系统依赖、Spark 和 Miniconda 安装文件，并将其拷贝至需要安装 Arctern-Spark 的离线环境。
+执行以下命令在联网环境中分别下载 Arctern-Spark 的系统依赖、Spark 和 Miniconda 安装文件，并将其复制到需要安装 Arctern-Spark 的离线环境。
 
 ```bash
 $ git clone -b offline https://github.com/zilliztech/arctern-resources.git
