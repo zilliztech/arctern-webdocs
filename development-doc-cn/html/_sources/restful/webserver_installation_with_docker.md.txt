@@ -1,32 +1,33 @@
-# 使用 docker 部署 Arctern RESTful Server
+# 使用 Docker 部署 Arctern RESTful Server
 
-本文介绍如何使用 docker 部署 Arctern RESTful Server，以及 `Arctern RESTful API` 的调用示例。
+本文介绍如何使用 Docker 部署 Arctern RESTful Server，并展示 Arctern RESTful API 的调用示例。
 
 
-## 获取 docker 镜像和配置文件
+## 获取 Docker 镜像和配置文件
 
-### 获取docker 镜像
-使用如下命令拉取 `docker` 镜像：
+### 获取 Docker 镜像
+
+执行以下命令拉取 Docker 镜像：
 
 ```bash
 $ docker pull dragondriver/arctern-0.1.2:latest
 $ docker pull dragondriver/arctern-server:latest
 ```
 
-如果上述命令耗时过长，请尝试从百度网盘下载镜像压缩文件并手工导入，具体步骤请参考文末的FAQ。
+> **注意：** 如果上述命令耗时过长，请尝试从百度网盘下载镜像压缩文件并手工导入，具体步骤请参考文末的 FAQ。
 
-### 获取docker-compose配置文件
+### 获取 docker-compose 配置文件
 
-使用如下命令下载docker配置文件 `docker-compose.yml` ，并将配置文件拷贝至部署环境：
+执行以下命令下载 Docker 配置文件 `docker-compose.yml`，并将配置文件复制到部署环境：
 
 ```bash
 $ wget https://gitee.com/dragondriver/arctern-server-resources/raw/master/docker-compose.yml
 $ cp docker-compose.yml /your/docker/path/
 ```
 
-## docker启动配置
+## Docker 启动配置
 
-通过编辑 `docker-compose.yml` 文件配置端口映射和文件映射，文件内容如下：
+编辑 `docker-compose.yml` 文件，配置端口映射和文件映射。文件内容如下：
 
 ```yml
 version: '2.3'
@@ -47,18 +48,19 @@ services:
       - "18080:8080"
 ```
 
-`ports` 为端口映射。通过该配置，可以使用宿主机的18080端口访问docker容器中的RESTful服务。
-> **注意** 冒号右侧内容为docker容器使用的服务端口，请勿修改。
+`ports` 为端口映射。通过该配置选项，可以使用宿主机的 18080 端口访问 Docker 容器中的 RESTful 服务。
 
-`volumes` 为文件目录映射。通过该设置，可以将
-宿主机的/path/to/host_data_folder映射到docker容器中的/data/arctern目录,从而实现文件共享。以下示例中均默认docker容器中使用的目录为/data/arctern。
+> **注意：** 8080 为 Docker 容器使用的服务端口，请勿修改。
+
+`volumes` 为文件目录映射。通过该配置选项，可以将宿主机的“/path/to/host_data_folder“映射到 Docker 容器中的“/data/arctern“目录，从而实现文件共享。以下示例中均默认 Docker 容器中使用的目录为“/data/arctern“。
 
 ## 使用示例
-以下，我们以纽约出租车数据集为例，说明如何通过 `Arctern RESTful API` 完成数据的导入、数据的处理和数据的可视化渲染。
 
+我们以纽约出租车数据集为例，说明如何通过 `Arctern RESTful API` 完成数据的导入、数据的处理和数据的可视化渲染。
 
 ### 数据准备 
-执行以下命令下载纽约出租车数据集：
+
+在后续示例中，你需要使用纽约出租车数据集。执行以下命令下载该数据集：
 
 ```bash
 $ cd /path/to/host_data_folder
@@ -71,7 +73,7 @@ $ wget https://gitee.com/dragondriver/arctern-server-resources/raw/master/nyc_ta
 $ wc -l nyc_taxi.csv
 ```
 
-该数据集包含 2009 年纽约市出租车的部分运营记录，各字段的含义如下：
+该数据集包含 2009 年纽约市出租车的运营记录，各字段的含义如下：
 
 | 名称                  | 含义                       | 类型   |
 | :-------------------- | :------------------------- | :----- |
@@ -94,11 +96,9 @@ $ wc -l nyc_taxi.csv
 
 > **注意：** 该数据集有 115927 行，其中时间格式为：`yyyy-MM-dd HH:mm::ss XXXXX`，如“2009-04-12 03:16:33 +00:00”。
 
-
-
 ### 启动 Arctern RESTful Server
 
-使用如下命令启动服务:
+执行以下命令启动服务:
 
 ```bash
 $ docker-compose -f docker-compose.yml up -d
@@ -112,7 +112,7 @@ $ docker-compose -f docker-compose.yml up -d
 $ pip install requests
 ```
 
-> **注意** 在后续步骤中，请将 `requests` 调用中 `url` 的 IP 和端口替换为 docker 宿主机相应的 IP 和端口。
+> **注意** 在后续步骤中，请将 `requests` 调用中 `url` 的 IP 和端口替换为 Docker 宿主机相应的 IP 和端口。
 
 ### 数据导入
 
@@ -243,7 +243,6 @@ $ pip install requests
     "table": "raw_data"
 }
 ```
-
 
 ### 绘制带权点图
 
@@ -420,20 +419,23 @@ $ pip install requests
 ![渔网图](../../../img/restful-result/fishnetmap_docker.png)
 
 ## FAQ
-### 镜像拉取和数据文件下载速度太慢怎么办?
-请尝试从百度网盘下载镜像和其他相关文件。分享链接和提取码为
-链接: https://pan.baidu.com/s/1dAudI5c8Rn6_FPxbUdUG_g 提取码: buuj
 
-镜像压缩文件分别为`arctern-server.tgz` 和 `arctern-0.1.2.tgz`，下载完成后请使用如下命令解压:
+### 镜像拉取和数据文件下载速度太慢怎么办?
+
+请尝试从百度网盘下载镜像和其他相关文件。分享链接和提取码为：
+
+> 链接: https://pan.baidu.com/s/1dAudI5c8Rn6_FPxbUdUG_g 提取码: buuj
+
+镜像压缩文件分别为 `arctern-server.tgz` 和 `arctern-0.1.2.tgz`，下载完成后请执行以下命令解压:
 
 ```bash
 $ tar -zxf arctern-server.tgz
 $ tar -zxf arctern-0.1.2.tgz
 ```
 
-解压后得到的 arctern-server.tar 和 arctern-0.1.2.tar 即为 docker镜像。
+解压后得到的 arctern-server.tar 和 arctern-0.1.2.tar 即为 Docker 镜像。
 
-可使用以下命令将docker镜像导入到部署环境的本地仓库:
+执行以下命令将 Docker 镜像导入到部署环境的本地仓库:
 
 ```bash
 $ docker load < arctern-server.tar
