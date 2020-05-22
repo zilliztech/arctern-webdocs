@@ -116,7 +116,7 @@ $ conda install -c arctern -c conda-forge arctern-spark
 
 ## 安装并配置 Spark
 
-以下对 local 模式以及 standalone 单机模式下的 Spark 安装和配置流程进行介绍。若需要以集群模式安装 Spark,请参考 [Spark 官方文档](https://spark.apache.org/docs/latest/) 以及本文档末尾的 [FAQ](#FAQ)部分。
+以下对 local 模式以及 standalone 单机模式下的 Spark 安装和配置流程进行介绍。若需要以集群模式安装 Spark,请参考 [Spark 官方文档](https://spark.apache.org/docs/latest/) 以及本文档末尾的 FAQ 部分。
 
 下载 [spark-3.0.0-preview2编译包](https://mirrors.sonic.net/apache/spark/spark-3.0.0-preview2/spark-3.0.0-preview2-bin-hadoop2.7.tgz) 并解压 Spark 压缩包：
 

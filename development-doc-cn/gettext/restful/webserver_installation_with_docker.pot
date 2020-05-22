@@ -1,0 +1,221 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, zilliz
+# This file is distributed under the same license as the Arctern package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Arctern \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-05-22 13:25+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../source/restful/webserver_installation_with_docker.md:1
+msgid "使用 docker 部署 Arctern RESTful Server"
+msgstr ""
+
+#: ../../source/restful/webserver_installation_with_docker.md:3
+msgid "本文介绍如何使用 docker 部署 Arctern RESTful Server，以及 Arctern RESTful API 的调用示例。"
+msgstr ""
+
+#: ../../source/restful/webserver_installation_with_docker.md:6
+msgid "获取 docker 镜像和配置文件"
+msgstr ""
+
+#: ../../source/restful/webserver_installation_with_docker.md:8
+msgid "获取docker 镜像"
+msgstr ""
+
+#: ../../source/restful/webserver_installation_with_docker.md:9
+msgid "使用如下命令拉取 docker 镜像："
+msgstr ""
+
+#: ../../source/restful/webserver_installation_with_docker.md:16
+msgid "如果上述命令耗时过长，请尝试从百度网盘下载镜像压缩文件并手工导入，具体步骤请参考文末的FAQ。"
+msgstr ""
+
+#: ../../source/restful/webserver_installation_with_docker.md:18
+msgid "获取docker-compose配置文件"
+msgstr ""
+
+#: ../../source/restful/webserver_installation_with_docker.md:20
+msgid "使用如下命令下载docker配置文件 docker-compose.yml ，并将配置文件拷贝至部署环境："
+msgstr ""
+
+#: ../../source/restful/webserver_installation_with_docker.md:27
+msgid "docker启动配置"
+msgstr ""
+
+#: ../../source/restful/webserver_installation_with_docker.md:29
+msgid "通过编辑 docker-compose.yml 文件配置端口映射和文件映射，文件内容如下："
+msgstr ""
+
+#: ../../source/restful/webserver_installation_with_docker.md:50
+msgid "ports 为端口映射。通过该配置，可以使用宿主机的18080端口访问docker容器中的RESTful服务。"
+msgstr ""
+
+#: ../../source/restful/webserver_installation_with_docker.md:51
+msgid "注意 冒号右侧内容为docker容器使用的服务端口，请勿修改。"
+msgstr ""
+
+#: ../../source/restful/webserver_installation_with_docker.md:53
+msgid "volumes 为文件目录映射。通过该设置，可以将 宿主机的/path/to/host_data_folder映射到docker容器中的/data/arctern目录,从而实现文件共享。以下示例中均默认docker容器中使用的目录为/data/arctern。"
+msgstr ""
+
+#: ../../source/restful/webserver_installation_with_docker.md:56
+msgid "使用示例"
+msgstr ""
+
+#: ../../source/restful/webserver_installation_with_docker.md:57
+msgid "以下，我们以纽约出租车数据集为例，说明如何通过 Arctern RESTful API 完成数据的导入、数据的处理和数据的可视化渲染。"
+msgstr ""
+
+#: ../../source/restful/webserver_installation_with_docker.md:60
+msgid "数据准备"
+msgstr ""
+
+#: ../../source/restful/webserver_installation_with_docker.md:61
+msgid "执行以下命令下载纽约出租车数据集："
+msgstr ""
+
+#: ../../source/restful/webserver_installation_with_docker.md:68
+msgid "执行以下命令查看是否下载成功："
+msgstr ""
+
+#: ../../source/restful/webserver_installation_with_docker.md:74
+msgid "该数据集包含 2009 年纽约市出租车的部分运营记录，各字段的含义如下："
+msgstr ""
+
+#: ../../source/restful/webserver_installation_with_docker.md:168
+msgid "注意： 该数据集有 115927 行，其中时间格式为：yyyy-MM-dd HH:mm::ss XXXXX，如“2009-04-12 03:16:33 +00:00”。"
+msgstr ""
+
+#: ../../source/restful/webserver_installation_with_docker.md:172
+msgid "启动 Arctern RESTful Server"
+msgstr ""
+
+#: ../../source/restful/webserver_installation_with_docker.md:174
+msgid "使用如下命令启动服务:"
+msgstr ""
+
+#: ../../source/restful/webserver_installation_with_docker.md:180
+msgid "安装Client端依赖"
+msgstr ""
+
+#: ../../source/restful/webserver_installation_with_docker.md:182
+msgid "本文示例代码使用 Python 的 requests 库调用 Arctern RESTful API，执行以下命令安装 requests："
+msgstr ""
+
+#: ../../source/restful/webserver_installation_with_docker.md:188
+msgid "注意 在后续步骤中，请将 requests 调用中 url 的 IP 和端口替换为 docker 宿主机相应的 IP 和端口。"
+msgstr ""
+
+#: ../../source/restful/webserver_installation_with_docker.md:190
+msgid "数据导入"
+msgstr ""
+
+#: ../../source/restful/webserver_installation_with_docker.md:192
+msgid "使用 /loadfile 接口导入纽约出租车数据集，将其对应的数据表命名为 raw_data。"
+msgstr ""
+
+#: ../../source/restful/webserver_installation_with_docker.md:239
+msgid "查询数据表信息"
+msgstr ""
+
+#: ../../source/restful/webserver_installation_with_docker.md:241
+msgid "你已经在后台创建了一张名为 raw_data的数据表。接着，使用 /table/schema 接口可查询该表中各字段的名称以及对应的数据类型。"
+msgstr ""
+
+#: ../../source/restful/webserver_installation_with_docker.md:321
+msgid "绘制带权点图"
+msgstr ""
+
+#: ../../source/restful/webserver_installation_with_docker.md:323
+msgid "使用 /weighted_pointmap 接口根据乘客的上车地点绘制带权点图。其中，将总费用作为点的权重 —— 总费用越高，权重越大，点的颜色越深。带权点图的具体参数说明请参见带权点图 RESTful API 说明。"
+msgstr ""
+
+#: ../../source/restful/webserver_installation_with_docker.md:359
+msgid "带权点图的绘制结果如下："
+msgstr ""
+
+#: ../../source/restful/webserver_installation_with_docker.md:361
+msgid "带权点图。"
+msgstr ""
+
+#: ../../source/restful/webserver_installation_with_docker.md:363
+msgid "绘制热力图"
+msgstr ""
+
+#: ../../source/restful/webserver_installation_with_docker.md:365
+msgid "使用 /heatmap 接口根据乘客的下车地点以及行程费用绘制热力图。其中，费用高的区域为红色，费用低的区域为绿色。热力图的具体参数说明请参见 热力图 RESTful API 说明。"
+msgstr ""
+
+#: ../../source/restful/webserver_installation_with_docker.md:398
+msgid "热力图的绘制结果如下："
+msgstr ""
+
+#: ../../source/restful/webserver_installation_with_docker.md:400
+msgid "热力图"
+msgstr ""
+
+#: ../../source/restful/webserver_installation_with_docker.md:402
+msgid "绘制轮廓图"
+msgstr ""
+
+#: ../../source/restful/webserver_installation_with_docker.md:404
+msgid "使用 /choroplethmap 接口，根据下车地点的建筑物、小费金额绘制轮廓图。其中，小费金额高的区域为黄色，小费金额低的区域为蓝色。轮廓图的具体参数说明请参见轮廓图 RESTful API 说明。"
+msgstr ""
+
+#: ../../source/restful/webserver_installation_with_docker.md:445
+msgid "轮廓图的绘制结果如下："
+msgstr ""
+
+#: ../../source/restful/webserver_installation_with_docker.md:447
+msgid "轮廓图"
+msgstr ""
+
+#: ../../source/restful/webserver_installation_with_docker.md:449
+msgid "绘制渔网图"
+msgstr ""
+
+#: ../../source/restful/webserver_installation_with_docker.md:451
+msgid "使用 /fishnetmap 接口根据乘客的上车地点绘制渔网图。其中，将总费用作为渔网网格的权重 —— 总费用越高，权重越大，渔网网格的颜色越深。渔网图的具体参数说明请参见渔网图 RESTful API 说明。"
+msgstr ""
+
+#: ../../source/restful/webserver_installation_with_docker.md:491
+msgid "渔网图的绘制结果如下："
+msgstr ""
+
+#: ../../source/restful/webserver_installation_with_docker.md:493
+msgid "渔网图"
+msgstr ""
+
+#: ../../source/restful/webserver_installation_with_docker.md:495
+msgid "FAQ"
+msgstr ""
+
+#: ../../source/restful/webserver_installation_with_docker.md:496
+msgid "镜像拉取和数据文件下载速度太慢怎么办?"
+msgstr ""
+
+#: ../../source/restful/webserver_installation_with_docker.md:497
+msgid "请尝试从百度网盘下载镜像和其他相关文件。分享链接和提取码为 链接: https://pan.baidu.com/s/1dAudI5c8Rn6_FPxbUdUG_g 提取码: buuj"
+msgstr ""
+
+#: ../../source/restful/webserver_installation_with_docker.md:500
+msgid "镜像压缩文件分别为arctern-server.tgz 和 arctern-0.1.2.tgz，下载完成后请使用如下命令解压:"
+msgstr ""
+
+#: ../../source/restful/webserver_installation_with_docker.md:507
+msgid "解压后得到的 arctern-server.tar 和 arctern-0.1.2.tar 即为 docker镜像。"
+msgstr ""
+
+#: ../../source/restful/webserver_installation_with_docker.md:509
+msgid "可使用以下命令将docker镜像导入到部署环境的本地仓库:"
+msgstr ""

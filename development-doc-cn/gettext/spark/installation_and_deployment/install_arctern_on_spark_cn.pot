@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-20 17:37+0800\n"
+"POT-Creation-Date: 2020-05-22 13:25+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -111,7 +111,7 @@ msgid "安装并配置 Spark"
 msgstr ""
 
 #: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:165
-msgid "以下对 local 模式以及 standalone 单机模式下的 Spark 安装和配置流程进行介绍。若需要以集群模式安装 Spark,请参考 Spark 官方文档 以及本文档末尾的 FAQ部分。"
+msgid "以下对 local 模式以及 standalone 单机模式下的 Spark 安装和配置流程进行介绍。若需要以集群模式安装 Spark,请参考 Spark 官方文档 以及本文档末尾的 FAQ 部分。"
 msgstr ""
 
 #: ../../source/spark/installation_and_deployment/install_arctern_on_spark_cn.md:167
