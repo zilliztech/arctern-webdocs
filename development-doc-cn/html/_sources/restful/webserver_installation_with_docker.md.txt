@@ -101,7 +101,7 @@ $ wc -l nyc_taxi.csv
 使用如下命令启动服务:
 
 ```bash
-$ ./bin/docker-compose up -d
+$ docker-compose -f docker-compose.yml up -d
 ```
 
 ### 安装Client端依赖

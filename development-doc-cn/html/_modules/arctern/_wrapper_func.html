@@ -366,8 +366,8 @@
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Transform the representation of geometry from WKT to WKB.</span>
 
-<span class="sd">    :type json: Series(dtype: object)</span>
-<span class="sd">    :param json: Geometries in WKT form.</span>
+<span class="sd">    :type text: Series(dtype: object)</span>
+<span class="sd">    :param text: Geometries in WKT form.</span>
 
 <span class="sd">    :rtype: Series(dtype: object)</span>
 <span class="sd">    :return: Geometries in WKB form.</span>
@@ -388,12 +388,12 @@
     <span class="k">return</span> <span class="n">_to_pandas_series</span><span class="p">(</span><span class="n">result</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="ST_AsText"><a class="viewcode-back" href="../../python/api/geospatial/function/geospatial/ST_AsText.html#arctern._wrapper_func.ST_AsText">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">ST_AsText</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">ST_AsText</span><span class="p">(</span><span class="n">geos</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Transform the representation of geometry from WKB to WKT.</span>
 
-<span class="sd">    :type text: Series(dtype: object)</span>
-<span class="sd">    :param text: Geometries in WKB form.</span>
+<span class="sd">    :type geos: Series(dtype: object)</span>
+<span class="sd">    :param geos: Geometries in WKB form.</span>
 
 <span class="sd">    :rtype: Series(dtype: object)</span>
 <span class="sd">    :return: Geometries in WKT form.</span>
@@ -408,18 +408,18 @@
 <span class="sd">          dtype: object</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="kn">import</span> <span class="nn">pyarrow</span> <span class="k">as</span> <span class="nn">pa</span>
-    <span class="n">geo</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
+    <span class="n">geo</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">geos</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
     <span class="n">geo</span> <span class="o">=</span> <span class="n">_to_arrow_array_list</span><span class="p">(</span><span class="n">geo</span><span class="p">)</span>
     <span class="n">result</span> <span class="o">=</span> <span class="p">[</span><span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_AsText</span><span class="p">(</span><span class="n">g</span><span class="p">)</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">geo</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">_to_pandas_series</span><span class="p">(</span><span class="n">result</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="ST_AsGeoJSON"><a class="viewcode-back" href="../../python/api/geospatial/function/geospatial/ST_AsGeoJson.html#arctern._wrapper_func.ST_AsGeoJSON">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">ST_AsGeoJSON</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">ST_AsGeoJSON</span><span class="p">(</span><span class="n">geos</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Return the GeoJSON representation of the geometry.</span>
 
-<span class="sd">    :type text: Series(dtype: object)</span>
-<span class="sd">    :param text: Geometries in WKB form.</span>
+<span class="sd">    :type geos: Series(dtype: object)</span>
+<span class="sd">    :param geos: Geometries in WKB form.</span>
 
 <span class="sd">    :rtype: Series(dtype: object)</span>
 <span class="sd">    :return: Geometries in GeoJSON format.</span>
@@ -434,7 +434,7 @@
 <span class="sd">          dtype: object</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="kn">import</span> <span class="nn">pyarrow</span> <span class="k">as</span> <span class="nn">pa</span>
-    <span class="n">geo</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
+    <span class="n">geo</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">geos</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
     <span class="n">geo</span> <span class="o">=</span> <span class="n">_to_arrow_array_list</span><span class="p">(</span><span class="n">geo</span><span class="p">)</span>
     <span class="n">result</span> <span class="o">=</span> <span class="p">[</span><span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_AsGeoJSON</span><span class="p">(</span><span class="n">g</span><span class="p">)</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">geo</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">_to_pandas_series</span><span class="p">(</span><span class="n">result</span><span class="p">)</span></div>
@@ -692,7 +692,7 @@
 <div class="viewcode-block" id="ST_GeometryType"><a class="viewcode-back" href="../../python/api/geospatial/function/geospatial/ST_GeometryType.html#arctern._wrapper_func.ST_GeometryType">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_GeometryType</span><span class="p">(</span><span class="n">geos</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    For each geometry in geometries, return a string that indicates is type.</span>
+<span class="sd">    For each geometry in geometries, return a string that indicates it&#39;s type.</span>
 
 <span class="sd">    :type geos: Series(dtype: object)</span>
 <span class="sd">    :param geos: Geometries in WKB form.</span>

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-22 15:45+0800\n"
+"POT-Creation-Date: 2020-05-22 17:17+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,31 +20,31 @@ msgstr ""
 msgid "ST_Intersects"
 msgstr ""
 
-#: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Intersects:1
+#: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Intersects:1
 msgid "Check whether two geometries intersect (i.e., share any portion of space)."
 msgstr ""
 
-#: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Intersects:0
+#: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Intersects:0
 msgid "参数"
 msgstr ""
 
-#: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Intersects:4
-#: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Intersects:7
+#: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Intersects:4
+#: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Intersects:7
 msgid "Geometries in WKB form."
 msgstr ""
 
-#: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Intersects:0
+#: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Intersects:0
 msgid "返回类型"
 msgstr ""
 
-#: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Intersects:0
+#: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Intersects:0
 msgid "返回"
 msgstr ""
 
-#: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Intersects:10
+#: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Intersects:10
 msgid "True if geometry \"geo1\" intersects geometry \"geo2\"."
 msgstr ""
 
-#: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Intersects:0
+#: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/_wrapper_func.py:docstring of arctern._wrapper_func.ST_Intersects:0
 msgid "example"
 msgstr ""
