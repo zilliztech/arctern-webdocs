@@ -21,7 +21,7 @@ $ docker pull dragondriver/arctern-server:latest
 执行以下命令下载 Docker 配置文件 `docker-compose.yml`，并将配置文件复制到部署环境：
 
 ```bash
-$ wget https://gitee.com/dragondriver/arctern-server-resources/raw/master/docker-compose.yml
+$ wget https://raw.githubusercontent.com/DragonDriver/arctern-server-resources/master/docker-compose.yml
 $ cp docker-compose.yml /your/docker/path/
 ```
 
@@ -64,7 +64,7 @@ services:
 
 ```bash
 $ cd /path/to/host_data_folder
-$ wget https://gitee.com/dragondriver/arctern-server-resources/raw/master/nyc_taxi.csv
+$ wget https://raw.githubusercontent.com/DragonDriver/arctern-server-resources/master/nyc_taxi.csv
 ```
 
 执行以下命令查看是否下载成功：
@@ -433,11 +433,13 @@ $ tar -zxf arctern-server.tgz
 $ tar -zxf arctern-0.1.2.tgz
 ```
 
-解压后得到的 arctern-server.tar 和 arctern-0.1.2.tar 即为 Docker 镜像。
-
 执行以下命令将 Docker 镜像导入到部署环境的本地仓库:
 
 ```bash
 $ docker load < arctern-server.tar
 $ docker load < arctern-0.1.2.tar
 ```
+
+### 使用 http 代理对运行 Arctern RESTful Server 有影响吗?
+
+Docker 容器默认使用宿主机网络。宿主机使用 http 代理可能会导致 RESTful API 无法被正常调用，请关闭 http 代理然后重启 Arctern RESTful Server。
