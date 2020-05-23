@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-22 17:46+0800\n"
+"POT-Creation-Date: 2020-05-23 16:49+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -217,9 +217,13 @@ msgid "镜像压缩文件分别为 arctern-server.tgz 和 arctern-0.1.2.tgz，�
 msgstr ""
 
 #: ../../source/restful/webserver_installation_with_docker.md:509
-msgid "解压后得到的 arctern-server.tar 和 arctern-0.1.2.tar 即为 Docker 镜像。"
+msgid "执行以下命令将 Docker 镜像导入到部署环境的本地仓库:"
 msgstr ""
 
-#: ../../source/restful/webserver_installation_with_docker.md:511
-msgid "执行以下命令将 Docker 镜像导入到部署环境的本地仓库:"
+#: ../../source/restful/webserver_installation_with_docker.md:516
+msgid "使用 http 代理对运行 Arctern RESTful Server 有影响吗?"
+msgstr ""
+
+#: ../../source/restful/webserver_installation_with_docker.md:518
+msgid "Docker 容器默认使用宿主机网络。宿主机使用 http 代理可能会导致 RESTful API 无法被正常调用，请关闭 http 代理然后重启 Arctern RESTful Server。"
 msgstr ""
