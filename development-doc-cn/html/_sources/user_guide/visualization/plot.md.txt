@@ -1,339 +1,301 @@
-# 快速开始
+# 绘制图层
 
-本文以纽约出租车数据集为例，说明如何通过 Arctern 完成数据的导入、运算和展示。
+本文讲述如何使用 Arctern 绘制多种类型的透明图层，以及如何将这些透明图层叠加到背景地图上。
 
-> **注意：** 本章所有示例代码均默认在 Python 3.7 环境中运行。若要在其他 Python 环境下运行，你可能需要适当修改代码内容。
+## 生成模拟数据
 
-## 数据准备
+首先，使用随机数据生成一个出租车运营数据，之后我们将使用此数据绘图。
 
-在后续示例中，你需要使用纽约出租车数据集。执行以下命令下载该数据集：
+```python
+import pandas as pd
 
-```bash
-$ wget https://media.githubusercontent.com/media/zilliztech/arctern-resources/benchmarks/benchmarks/dataset/nyc_taxi/0_2M_nyc_taxi_and_building/0_2M_nyc_taxi_and_building.csv
+def gen_data(num_rows, bbox):
+    import random
+    pickup_longitude = [(bbox[2]-bbox[0])*random.random()+bbox[0] for i in range(num_rows)]
+    pickup_latitude = [(bbox[3]-bbox[1])*random.random()+bbox[1] for i in range(num_rows)]
+    fare_amount = [100*random.random() for i in range(num_rows)]
+    tip_amount = [fare*(random.random()*0.05+0.15) for fare in fare_amount]
+    total_amount = [fare_amount[i]+tip_amount[i] for i in range(num_rows)]
+    return pd.DataFrame({"pickup_longitude":pickup_longitude,
+                         "pickup_latitude":pickup_latitude,
+                         "fare_amount":fare_amount,
+                         "total_amount":total_amount})
+num_rows=200
+bbox=[-73.991504, 40.770759, -73.945155, 40.783434]
+df=gen_data(num_rows,bbox)
+df
 ```
 
-执行以下命令查看是否下载成功：
-
-```bash
-$ wc -l 0_2M_nyc_taxi_and_building.csv
-```
-
-该数据集包含 2009 年纽约市出租车的运营记录，各字段的含义如下：
+以上代码在经度范围为 -73.991504 ~ -73.945155、纬度范围为 40.770759 ~ 40.783434 的地理区域中，随机提取 200 个坐标点作为出租车的上客地点，并生成随机的运营费用。出租车运营数据中各参数的描述如下：
 
 | 名称                  | 含义                       | 类型   |
 | :-------------------- | :------------------------- | :----- |
-| VendorID              | 运营商名称                 | string |
-| tpep_pickup_datetime  | 上车时间                   | string |
-| tpep_dropoff_datetime | 下车时间                   | string |
-| passenger_count       | 乘客数量                   | long   |
-| trip_distance         | 行程距离                   | double |
-| pickup_longitude      | 上车地点的经度              | double |
-| pickup_latitude       | 上车地点的纬度              | double |
-| dropoff_longitude     | 下车地点的经度              | double |
-| dropoff_latitude      | 下车地点的纬度              | double |
+| pickup_longitude      | 上车地点的经度             | double |
+| pickup_latitude       | 上车地点的纬度             | double |
 | fare_amount           | 行程费用                   | double |
-| tip_amount            | 小费                       | double |
 | total_amount          | 总费用                     | double |
-| buildingid_pickup     | 上车地点所在建筑的 id      | long   |
-| buildingid_dropoff    | 下车地点所在建筑的 id      | long   |
-| buildingtext_pickup   | 上车地点所在建筑的轮廓描述 | string |
-| buildingtext_dropoff  | 下车地点所在建筑的轮廓描述 | string |
 
-> **注意：** 该数据集有 200000 行，其中时间格式为：`yyyy-MM-dd HH:mm::ss XXXXX`，如“2009-04-12 03:16:33 +00:00”。
+## 安装依赖库
 
-同时下载[arctern-icon-small.png](https://raw.githubusercontent.com/zilliztech/arctern-docs/master/img/icon/arctern-icon-small.png)用于iconviz绘制, 不需要可以忽略
-
-## 设置数据路经
-
-> **注意：** 你需要将示例中的 `/path/to/XXX.png` 替换为本地图片的绝对路径。
-
-```python
->>> CSV_PATH = "/path/to/0_2M_nyc_taxi_and_building.csv"
->>> ICON_PATH = "/path/to/arctern-icon-small.png" # 仅针对 iconviz
+```bash
+conda install -c conda-forge matplotlib
+conda install -c conda-forge contextily
+conda install -c conda-forge pyproj
 ```
 
-## 加载数据
+## 导入绘图需要使用的模块
 
-本文示例代码通过 Python 交互界面展示 Arctern 的使用方法。根据数据集中各字段的名称和数据类型，构建数据的 `schema` 并导入数据集。
+导入以下库：
 
-> **注意：** 你需要将示例中的 `</path/to/0_2M_nyc_taxi_and_building.csv>` 替换为本地数据集的绝对路径。
-
-```python
->>> import pandas as pd
->>> nyc_schema={
-...     "VendorID":"string",
-...     "tpep_pickup_datetime":"string",
-...     "tpep_dropoff_datetime":"string",
-...     "passenger_count":"int64",
-...     "trip_distance":"double",
-...     "pickup_longitude":"double",
-...     "pickup_latitude":"double",
-...     "dropoff_longitude":"double",
-...     "dropoff_latitude":"double",
-...     "fare_amount":"double",
-...     "tip_amount":"double",
-...     "total_amount":"double",
-...     "buildingid_pickup":"int64",
-...     "buildingid_dropoff":"int64",
-...     "buildingtext_pickup":"string",
-...     "buildingtext_dropoff":"string",
-... }
->>> raw_df=pd.read_csv(CSV_PATH,
-...                    dtype=nyc_schema,
-...                    date_parser=pd.to_datetime,
-...                    parse_dates=["tpep_pickup_datetime","tpep_dropoff_datetime"])
-```
-
-打印数据的前五行，验证数据是否加载成功：
+* arctern: 提供绘制和保存地理信息图层的模块。
+* matplotlib: 提供在 Juypter Notebook 中绘制图片的模块。
 
 ```python
->>> raw_df.head()
-  VendorID      tpep_pickup_datetime     tpep_dropoff_datetime  passenger_count  ...  buildingid_pickup  buildingid_dropoff  buildingtext_pickup                               buildingtext_dropoff
-0      CMT 2009-04-12 03:16:33+00:00 2009-04-12 03:20:32+00:00                1  ...                  0                   0                 <NA>                                               <NA>
-1      VTS 2009-04-14 11:22:00+00:00 2009-04-14 11:38:00+00:00                1  ...                  0              150047                 <NA>  POLYGON ((-73.9833003295812 40.7590607716671,-...
-2      CMT 2009-04-15 09:34:58+00:00 2009-04-15 09:49:35+00:00                1  ...                  0                   0                 <NA>                                               <NA>
-3      CMT 2009-04-30 18:58:19+00:00 2009-04-30 19:05:27+00:00                1  ...                  0              365034                 <NA>  POLYGON ((-73.9822052908304 40.7588972120254,-...
-4      CMT 2009-04-26 13:03:04+00:00 2009-04-26 13:27:54+00:00                1  ...                  0                   0                 <NA>                                               <NA>
-
-[5 rows x 16 columns]
+import arctern
+from arctern.util import save_png, vega
+import matplotlib.pyplot as plt
+import matplotlib.image as mpimg
 ```
 
-## 数据过滤
+## 点图
 
-在指定地理区域（经度范围：-73.991504 至 -73.945155；纬度范围：40.770759 至 40.783434）中随机选取 200 行数据, 并生成点与建筑物两种 `Geometry`对象
+### 透明点图
+
+通过 Arctern 的 `vega_pointmap` 和 `point_map_layer` 方法根据出租车运营数据绘制点图。其中，点的大小为 10、颜色为 #2DEF4A、不透明度为 1。保存图片后，通过 Matplotlib 的 `imshow` 方法预览点图。
 
 ```python
->>> bbox=[-73.991504, 40.770759, -73.945155, 40.783434] # [west, south, east, north]
->>> limit_num=200
->>> df = raw_df
->>> df = df[(df.pickup_longitude>bbox[0]) & (df.pickup_longitude<bbox[2]) & (df.pickup_latitude>bbox[1]) & (df.pickup_latitude<bbox[3])]
->>> df = df.dropna()
->>> df = df.head(limit_num)
+point_vega = vega.vega_pointmap(1024, 
+                                384, 
+                                bounding_box=bbox, 
+                                point_size=10, 
+                                point_color="#2DEF4A", 
+                                opacity=1, 
+                                coordinate_system="EPSG:4326")
+png = arctern.point_map_layer(point_vega, 
+                              arctern.ST_Point(df.pickup_longitude,df.pickup_latitude))
+save_png(png, '/tmp/arctern_pointmap.png')
+plt.imshow(mpimg.imread("/tmp/arctern_pointmap.png"))
 ```
-                                                                                                                                                       
-## 使用 Arctern 提供的 GeoSpatial 函数处理数据
 
-1. 导入 `arctern` 模块, 并预处理数据：
+![](./img/output_6_1.png)
+
+### 点图叠加背景地图
+
+通过 Matplotlib 的 `subplots` 方法创建一个图层。然后在该图层上使用 Arctern 的 `plot_pointmap` 方法根据出租车运营数据绘制带地图背景的点图。其中，点的大小为 10、颜色为 #2DEF4A、不透明度为 1。
 
 ```python
->>> from arctern import *
->>> points_series = ST_Point(df.pickup_longitude, df.pickup_latitude)
->>> fare_amount_series = df.fare_amount
->>> buildings_series = ST_GeomFromText(df.buildingtext_pickup)
+fig, ax = plt.subplots(figsize=(10, 6), dpi=200)
+arctern.plot_pointmap(ax, 
+                      arctern.ST_Point(df.pickup_longitude,df.pickup_latitude),
+                      bbox,
+                      point_size=10,
+                      point_color="#2DEF4A",
+                      opacity=1,
+                      coordinate_system="EPSG:4326")
 ```
 
-2. 根据经纬度数据创建坐标点数据：
+![](./img/output_8_0.png)
+
+## 带权点图
+
+### 透明带权点图
+
+通过 Arctern 的 `vega_weighted_pointmap` 和 `weighted_point_map_layer` 方法根据出租车运营数据绘制带权点图。其中，点的颜色根据出租车的行程费用（`df.fare_amount`）在 #115f9a ～ #d0f400 之间变化，点的大小根据出租车的总费用（`df.total_amount`）在 15 ～ 50 之间变化，点的不透明度为 1。保存图片后，通过 Matplotlib 的 `imshow` 方法预览点图。
+
+<!-- 问题：确认2个变化范围 -->
 
 ```python
->>> ST_AsText(points_series).head()
-0    POINT (-73.959908 40.776353)
-1    POINT (-73.955183 40.773459)
-2    POINT (-73.989523 40.77129)
-3    POINT (-73.988154 40.774829)
-4    POINT (-73.982687 40.771625)
-dtype: object
+point_vega = vega.vega_weighted_pointmap(1024, 
+                                    384, 
+                                    bounding_box=bbox, 
+                                    color_gradient=["#115f9a", "#d0f400"], 
+                                    color_bound=[1, 50], 
+                                    size_bound=[3, 15], 
+                                    opacity=1, 
+                                    coordinate_system="EPSG:4326")
+png = arctern.weighted_point_map_layer(point_vega, 
+                                       arctern.ST_Point(df.pickup_longitude,df.pickup_latitude),
+                                       color_weights=df.fare_amount, 
+                                       size_weights=df.total_amount)
+save_png(png, "/tmp/arctern_weighted_pointmap.png")
+plt.imshow(mpimg.imread("/tmp/arctern_weighted_pointmap.png"))
 ```
 
-将坐标点数据使用的空间坐标系从 `EPSG:4326` 坐标系转换到 `EPSG:3857` 坐标系。有关空间坐标系标准的详细信息请查看[维基百科相关页面](https://en.wikipedia.org/wiki/Spatial_reference_system)。
+![](./img/output_10_1.png)
+
+### 带权点图叠加背景地图
+
+通过 Matplotlib 的 `subplots` 方法创建一个图层。然后在该图层上使用 Arctern 的 `plot_weighted_pointmap` 方法根据出租车运营数据绘制带地图背景的带权点图。其中，点的颜色根据出租车的行程费用（`df.fare_amount`）在 #115f9a ～ #d0f400 之间变化，点的大小根据出租车的总费用（`df.total_amount`）在 15 ～ 50 之间变化，点的不透明度为 1。
+
+<!-- 问题：确认2个变化范围（同上） -->
 
 ```python
->>> ST_AsText(ST_Transform(points_series,'epsg:4326', 'epsg:3857')).head()
-0    POINT (-8233179.29767736 4979409.53917853)
-1    POINT (-8232653.31308336 4978984.12438949)
-2    POINT (-8236476.0243972 4978665.29594441)
-3    POINT (-8236323.6280143 4979185.5105596)
-4    POINT (-8235715.04435814 4978714.5380168)
-dtype: object
+fig, ax = plt.subplots(figsize=(10, 6), dpi=200)
+arctern.plot_weighted_pointmap(ax, 
+                       arctern.ST_Point(df.pickup_longitude,df.pickup_latitude), 
+                       df.fare_amount, 
+                       df.total_amount, 
+                       bbox, 
+                       color_gradient=["#115f9a", "#d0f400"], 
+                       color_bound=[1, 50], 
+                       size_bound=[3, 15], 
+                       opacity=1, 
+                       coordinate_system="EPSG:4326")
 ```
 
-在 [EPSG](http://epsg.io/transform#s_srs=4326&t_srs=3857) 网站上验证转换结果是否正确。
+![](./img/output_12_0.png)
 
-![](./img/quickstart/epsg-4326-to-3857-example.png)
+## 热力图
 
-## 使用 Arctern 绘制图层与地图
+### 透明热力图
 
-导入绘图需要使用的模块：
+通过 Arctern 的 `vega_heatmap` 和 `heat_map_layer` 方法根据出租车运营数据绘制热力图。保存图片后，通过 Matplotlib 的 `imshow` 方法预览点图。
 
 ```python
->>> from arctern.util import save_png
->>> from arctern.util.vega import vega_pointmap, vega_weighted_pointmap, vega_heatmap, vega_choroplethmap, vega_icon, vega_fishnetmap
->>> import matplotlib.pyplot as plt
+head_vega = vega.vega_heatmap(1024, 
+                              384, 
+                              bounding_box=bbox, 
+                              map_zoom_level=13.0, 
+                              coordinate_system="EPSG:4326")
+png = arctern.heat_map_layer(head_vega, 
+                     arctern.ST_Point(df.pickup_longitude,df.pickup_latitude), 
+                     df.fare_amount)
+save_png(png, "/tmp/arctern_heatmap.png")
+plt.imshow(mpimg.imread("/tmp/arctern_heatmap.png"))
 ```
 
-### 点图
+![](./img/output_14_1.png)
 
-执行以下代码绘制点图：
+### 热力图叠加背景地图
+
+通过 Matplotlib 的 `subplots` 方法创建一个图层。然后在该图层上使用 Arctern 的 `plot_heatmap` 方法根据出租车运营数据绘制带地图背景的热力图。
 
 ```python
->>> # 点的大小为 10，颜色为 #2DEF4A，不透明度为 1
->>> vega = vega_pointmap(1024, 384, bounding_box=bbox, point_size=10, point_color="#2DEF4A", opacity=1, coordinate_system="EPSG:4326")
->>> png = point_map_layer(vega, points_series)
->>> save_png(png, '/tmp/arctern_pointmap_pandas.png')
+fig, ax = plt.subplots(figsize=(10, 6), dpi=200)
+arctern.plot_heatmap(ax, 
+                     arctern.ST_Point(df.pickup_longitude,df.pickup_latitude), 
+                     df.fare_amount, 
+                     bbox, 
+                     coordinate_system="EPSG:4326")
 ```
 
-点图的绘制结果如下：
+![](./img/output_16_0.png)
 
-![](./img/quickstart/arctern_pointmap_pandas.png)
+## 轮廓图
 
-直接在 matplotlib 中绘制
+### 透明轮廓图
 
 ```python
->>> # 点的大小为 10，颜色为 #2DEF4A，不透明度为 1
->>> fig, ax = plt.subplots(figsize=(10, 6), dpi=200)
->>> plot_pointmap(ax, points_series, bbox, point_size=10, point_color="#2DEF4A", opacity=1, coordinate_system="EPSG:4326")
->>> plt.savefig('/tmp/arctern_plot_pointmap_pandas.png')
+p1="POLYGON ((-73.9559920952719 40.7798302112586,-73.9558373836227 40.780041920447,-73.955817052153 40.7800697417696,-73.9561541507251 40.7802120850128,-73.9560310179165 40.780380581462,-73.9559809829928 40.7804490491413,-73.9554245436102 40.780214085171,-73.9552722050953 40.7801497573115,-73.9554553121101 40.7798991968954,-73.9556088484124 40.7796890996611,-73.955620419799 40.7796732651862,-73.9559015149432 40.7797919620232,-73.9559920952719 40.7798302112586))"
+p2="POLYGON ((-73.9542329907899 40.7787670145087,-73.9545101860555 40.7783876598084,-73.9546846384315 40.778461320293,-73.9548206058685 40.7785187302746,-73.9549036921298 40.7785538112695,-73.9550251774329 40.7786051054324,-73.9550562469185 40.7786182243649,-73.9549683394669 40.7787385313679,-73.9547798956672 40.778996428053,-73.954779053804 40.7789975803655,-73.9545166590009 40.7788867891633,-73.9544446005066 40.7788563633454,-73.9542329907899 40.7787670145087))"
+choropleth_vega = vega.vega_choroplethmap(1024, 
+                                          384, 
+                                          bounding_box=bbox, 
+                                          color_gradient=["#115f9a", "#d0f400"], 
+                                          color_bound=[2.5, 5], 
+                                          opacity=1.0, 
+                                          coordinate_system="EPSG:4326")
+png = arctern.choropleth_map_layer(choropleth_vega, 
+                                   arctern.ST_GeomFromText(pd.Series([p1,p2])),
+                                   pd.Series([50,50]))
+save_png(png, "/tmp/arctern_choroplethmap.png")
+plt.imshow(mpimg.imread("/tmp/arctern_choroplethmap.png"))
 ```
 
-绘制结果如下：
+![](./img/output_18_1.png)
 
-![](./img/quickstart/arctern_plot_pointmap_pandas.png)
-
-### 带权点图
-
-执行以下代码绘制带权点图：
+### 轮廓图叠加背景地图
 
 ```python
->>> # 点的颜色根据 fare_amount 在 #115f9a ～ #d0f400 之间变化，点的大小根据 total_amount 在 15 ～ 50 之间变化
->>> vega = vega_weighted_pointmap(1024, 384, bounding_box=bbox, color_gradient=["#115f9a", "#d0f400"], color_bound=[1, 50], size_bound=[3, 15], opacity=1.0, coordinate_system="EPSG:4326")
->>> png = weighted_point_map_layer(vega, points_series, color_weights=df.fare_amount, size_weights=df.total_amount)
->>> save_png(png, "/tmp/arctern_weighted_pointmap_pandas.png")
+p1="POLYGON ((-73.9559920952719 40.7798302112586,-73.9558373836227 40.780041920447,-73.955817052153 40.7800697417696,-73.9561541507251 40.7802120850128,-73.9560310179165 40.780380581462,-73.9559809829928 40.7804490491413,-73.9554245436102 40.780214085171,-73.9552722050953 40.7801497573115,-73.9554553121101 40.7798991968954,-73.9556088484124 40.7796890996611,-73.955620419799 40.7796732651862,-73.9559015149432 40.7797919620232,-73.9559920952719 40.7798302112586))"
+p2="POLYGON ((-73.9542329907899 40.7787670145087,-73.9545101860555 40.7783876598084,-73.9546846384315 40.778461320293,-73.9548206058685 40.7785187302746,-73.9549036921298 40.7785538112695,-73.9550251774329 40.7786051054324,-73.9550562469185 40.7786182243649,-73.9549683394669 40.7787385313679,-73.9547798956672 40.778996428053,-73.954779053804 40.7789975803655,-73.9545166590009 40.7788867891633,-73.9544446005066 40.7788563633454,-73.9542329907899 40.7787670145087))"
+fig, ax = plt.subplots(figsize=(10, 6), dpi=200)
+arctern.plot_choroplethmap(ax, 
+                           arctern.ST_GeomFromText(pd.Series([p1,p2])),
+                           pd.Series([50,50]),
+                           bbox, 
+                           color_gradient=["#115f9a", "#d0f400"], 
+                           color_bound=[2.5, 5], 
+                           opacity=1.0, 
+                           coordinate_system="EPSG:4326")
 ```
 
-带权点图的绘制结果如下：
+![](./img/output_20_0.png)
 
-![](./img/quickstart/arctern_weighted_pointmap_pandas.png)
+## 图标图
 
-直接在 matplotlib 中绘制
+### 透明图标图
+
+下载图标
+```bash
+wget https://raw.githubusercontent.com/zilliztech/arctern-docs/master/img/icon/arctern-icon-small.png -o /tmp/arctern-logo.png
+```
 
 ```python
->>> # 点的颜色根据 fare_amount 在 #115f9a ～ #d0f400 之间变化，点的大小根据 total_amount 在 15 ～ 50 之间变化
->>> fig, ax = plt.subplots(figsize=(10, 6), dpi=200)
->>> plot_weighted_pointmap(ax, points_series, df.fare_amount, df.total_amount, bbox, color_gradient=["#115f9a", "#d0f400"], color_bound=[1, 50], size_bound=[3, 15], opacity=1.0, coordinate_system="EPSG:4326")
->>> plt.savefig("/tmp/arctern_plot_weighted_pointmap_pandas.png")
+icon_vega = vega.vega_icon(1024, 
+                           384, 
+                           bounding_box=bbox, 
+                           icon_path="/tmp/arctern-logo.png", 
+                           coordinate_system="EPSG:4326")
+png = arctern.icon_viz_layer(icon_vega,
+                             arctern.ST_Point(df.pickup_longitude,df.pickup_latitude))
+save_png(png, "/tmp/arctern_iconviz.png")
+plt.imshow(mpimg.imread("/tmp/arctern_iconviz.png"))
 ```
-绘制结果如下：
 
-![](./img/quickstart/arctern_plot_weighted_pointmap_pandas.png)
+![](./img/output_22_1.png)
 
-### 热力图
+### 图标图叠加背景地图
 
-执行以下命令绘制热力图：
+下载图标
+```bash
+wget https://raw.githubusercontent.com/zilliztech/arctern-docs/master/img/icon/arctern-icon-small.png -o /tmp/arctern-logo.png
+```
 
 ```python
->>> # 绘制热力图图层。
->>> vega = vega_heatmap(1024, 384, bounding_box=bbox, map_zoom_level=13.0, coordinate_system="EPSG:4326")
->>> png = heat_map_layer(vega, points_series, df.fare_amount)
->>> save_png(png, "/tmp/arctern_heatmap_pandas.png")
+fig, ax = plt.subplots(figsize=(10, 6), dpi=200)
+arctern.plot_iconviz(ax, 
+                     arctern.ST_Point(df.pickup_longitude,df.pickup_latitude),  
+                     icon_path="/tmp/arctern-logo.png", 
+                     bounding_box=bbox,
+                     coordinate_system="EPSG:4326")
 ```
 
-热力图的绘制结果如下：
+![](./img/output_24_0.png)
 
-![](./img/quickstart/arctern_heatmap_pandas.png)
+## 渔网图
 
-直接在 matplotlib 中绘制
+### 透明渔网图
 
 ```python
->>> # 绘制热力图。
->>> fig, ax = plt.subplots(figsize=(10, 6), dpi=200)
->>> plot_heatmap(ax, points_series, df.fare_amount, bbox, coordinate_system="EPSG:4326")
->>> plt.savefig("/tmp/arctern_plot_heatmap_pandas.png")
+fish_vega = vega.vega_fishnetmap(1024, 
+                                 384, 
+                                 bounding_box=bbox, 
+                                 cell_size=8, 
+                                 cell_spacing=1, 
+                                 opacity=1.0, 
+                                 coordinate_system="EPSG:4326")
+png = arctern.fishnet_map_layer(fish_vega,
+                                arctern.ST_Point(df.pickup_longitude,df.pickup_latitude), 
+                                df.fare_amount)
+save_png(png, "/tmp/arctern_fishnetmap.png")
+plt.imshow(mpimg.imread("/tmp/arctern_fishnetmap.png"))
 ```
 
-绘制结果如下：
+![](./img/output_26_1.png)
 
-![](./img/quickstart/arctern_plot_heatmap_pandas.png)
-
-### 轮廓图
-
-执行以下命令绘制轮廓图：
+### 渔网图叠加背景地图
 
 ```python
->>> # 轮廓的填充颜色根据 fare_amount 在 #115f9a ~ #d0f400 之间变化
->>> vega = vega_choroplethmap(1024, 384, bounding_box=bbox, color_gradient=["#115f9a", "#d0f400"], color_bound=[2.5, 5], opacity=1.0, coordinate_system="EPSG:4326")
->>> png = choropleth_map_layer(vega, buildings_series, df.fare_amount)
->>> save_png(png, "/tmp/arctern_choroplethmap_pandas.png")
+fig, ax = plt.subplots(figsize=(10, 6), dpi=200)
+arctern.plot_fishnetmap(ax, 
+                        arctern.ST_Point(df.pickup_longitude,df.pickup_latitude), 
+                        df.fare_amount, 
+                        bbox, 
+                        cell_size=8, 
+                        cell_spacing=1, 
+                        opacity=1.0, 
+                        coordinate_system="EPSG:4326")
 ```
 
-轮廓图的绘制结果如下：
-
-![](./img/quickstart/arctern_choroplethmap_pandas.png)
-
-直接在 matplotlib 中绘制
-
-```python
->>> # 轮廓的填充颜色根据 fare_amount 在 #115f9a ~ #d0f400 之间变化
->>> fig, ax = plt.subplots(figsize=(10, 6), dpi=200)
->>> plot_choroplethmap(ax, buildings_series, df.fare_amount, bbox, color_gradient=["#115f9a", "#d0f400"], color_bound=[2.5, 5], opacity=1.0, coordinate_system="EPSG:4326")
->>> plt.savefig("/tmp/arctern_plot_choroplethmap_pandas.png")
-```
-
-绘制结果如下：
-
-![](./img/quickstart/arctern_plot_choroplethmap_pandas.png)
-
-### 图标图
-
-执行以下命令绘制图标图：
-
-```python
->>> vega = vega_icon(1024, 384, bounding_box=bbox, icon_path=ICON_PATH, coordinate_system="EPSG:4326")
->>> png = icon_viz_layer(vega, points_series)
->>> save_png(png, "/tmp/arctern_iconviz_pandas.png")
-```
-
-图标图的绘制结果如下：
-
-![](./img/quickstart/arctern_iconviz_pandas.png)
-
-也可以直接在 matplotlib 中绘制
-
-```python
->>> # 绘制图标图。
->>> fig, ax = plt.subplots(figsize=(10, 6), dpi=200)
->>> plot_iconviz(ax, points_series, ICON_PATH, bbox, coordinate_system="EPSG:4326")
->>> plt.savefig("/tmp/arctern_plot_iconviz_pandas.png")
-```
-
-![](./img/quickstart/arctern_plot_iconviz_pandas.png)
-
-### 渔网图
-
-执行以下命令绘制渔网图：
-
-```python
->>> vega = vega_fishnetmap(1024, 384, bounding_box=bbox, cell_size=8, cell_spacing=1, opacity=1.0, coordinate_system="EPSG:4326")
->>> png = fishnet_map_layer(vega, points_series, df.fare_amount)
->>> save_png(png, "/tmp/arctern_fishnetmap_pandas.png")
-```
-
-渔网图的绘制结果如下：
-
-![](./img/quickstart/arctern_fishnetmap_pandas.png)
-
-也可以直接在 matplotlib 中绘制
-
-```python
->>> fig, ax = plt.subplots(figsize=(10, 6), dpi=200)
->>> plot_fishnetmap(ax, points_series, df.fare_amount, bbox, cell_size=8, cell_spacing=1, opacity=1.0, coordinate_system="EPSG:4326")
->>> plt.savefig("/tmp/arctern_plot_fishnet_pandas.png")
-```
-
-![](./img/quickstart/arctern_plot_fishnet_pandas.png)
-
-
-## Matplotlib 使用其他地图提供商
-
-以 Mapbox 为例绘制 pointmap 为例
-
-首先, 参照 [Mapbox 文档](https://docs.mapbox.com/help/tutorials/get-started-tokens-api/)获取 Mapbox 的 token
-
-```python
->>> import contextily as cx
->>> accessToken="HERE IS YOUR TOKEN" # 在这里设置好 Token 
->>> source=cx.providers.MapBox(accessToken=accessToken)
->>> fig, ax = plt.subplots(figsize=(10, 6), dpi=200)
->>> plot_pointmap(ax, points_series, bbox, point_size=10, source=source)
->>> plt.show()
-```
-
-其他地图提供商可以参照 [contextily/_provider.py](https://github.com/geopandas/contextily/blob/e0bb25741f9448c5b6b0e54d403b0d03d9244abd/contextily/_providers.py) 文件
+![](./img/output_28_0.png)
