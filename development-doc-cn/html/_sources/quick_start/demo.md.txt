@@ -4,17 +4,13 @@
 
 ### 安装 Jupyter 和 Kepler.gl
 
-在后续步骤中，你需要使用 Jupyter Notebook 运行代码，以及使用 Kepler.gl 进行空间数据可视化。请按照以下步骤安装 Jupyter 和 Kepler.Gl：
-
-进入 Conda 环境：
+在后续步骤中，你需要使用 Jupyter Notebook 运行代码，以及使用 Kepler.gl 进行空间数据可视化。如果你的计算机未安装 Jupyter 和 Kepler.gl，请执行以下命令安装这两个工具：
 
 ```bash
+# 进入 Conda 环境
 $ conda activate arctern_env
-```
 
-安装 Jupyter 和 Kepler.Gl：
-
-```bash
+# 安装 Jupyter 和 Kepler.gl
 $ conda install -c conda-forge jupyterlab
 $ pip install keplergl
 ```

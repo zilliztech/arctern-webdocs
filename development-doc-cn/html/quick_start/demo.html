@@ -171,13 +171,12 @@
 <p>完成 <a class="reference internal" href="standalone_installation.html"><span class="doc">Arctern 的安装部署</span></a> 之后，本文档引导你使用 Arctern 分析帝国大厦附近的道路信息。</p>
 <div class="section" id="jupyter-kepler-gl">
 <h2>安装 Jupyter 和 Kepler.gl<a class="headerlink" href="#jupyter-kepler-gl" title="永久链接至标题">¶</a></h2>
-<p>在后续步骤中，你需要使用 Jupyter Notebook 运行代码，以及使用 Kepler.gl 进行空间数据可视化。请按照以下步骤安装 Jupyter 和 Kepler.Gl：</p>
-<p>进入 Conda 环境：</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ conda activate arctern_env
-</pre></div>
-</div>
-<p>安装 Jupyter 和 Kepler.Gl：</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ conda install -c conda-forge jupyterlab
+<p>在后续步骤中，你需要使用 Jupyter Notebook 运行代码，以及使用 Kepler.gl 进行空间数据可视化。如果你的计算机未安装 Jupyter 和 Kepler.gl，请执行以下命令安装这两个工具：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 进入 Conda 环境</span>
+$ conda activate arctern_env
+
+<span class="c1"># 安装 Jupyter 和 Kepler.gl</span>
+$ conda install -c conda-forge jupyterlab
 $ pip install keplergl
 </pre></div>
 </div>

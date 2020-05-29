@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>使用 Kepler.gl 渲染图片 &mdash; Arctern 0.1.x 文档</title>
+  <title>使用 Kepler.gl 渲染时空信息 &mdash; Arctern 0.1.x 文档</title>
   
 
   
@@ -90,7 +90,7 @@
 <li class="toctree-l2 current"><a class="reference internal" href="../visualization.html">可视化</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../how_to_visualize.html">如何渲染时空数据</a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="frontend_visualization.html">前端渲染</a><ul class="current">
-<li class="toctree-l4 current"><a class="current reference internal" href="#">使用 Kepler.gl 渲染图片</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">使用 Kepler.gl 渲染时空信息</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../backend_visualization/backend_visualization.html">后端渲染</a></li>
@@ -150,7 +150,7 @@
         
           <li><a href="frontend_visualization.html">前端渲染</a> &raquo;</li>
         
-      <li>使用 Kepler.gl 渲染图片</li>
+      <li>使用 Kepler.gl 渲染时空信息</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -170,7 +170,60 @@
            <div itemprop="articleBody">
             
   <div class="section" id="kepler-gl">
-<h1>使用 Kepler.gl 渲染图片<a class="headerlink" href="#kepler-gl" title="永久链接至标题">¶</a></h1>
+<h1>使用 Kepler.gl 渲染时空信息<a class="headerlink" href="#kepler-gl" title="永久链接至标题">¶</a></h1>
+<p><a class="reference external" href="https://kepler.gl/">Kepler.gl</a> 是一款功能强大的开源地理空间数据可视化工具。你只需在 Jupyter Notebook 中导入 Kepler.gl，就可以获得生动且直观的时空数据渲染效果。本文介绍如何使用 Kepler.gl 展示 Arctern 输出的时空信息。</p>
+<div class="section" id="jupyter-notebook-kepler-gl">
+<h2>安装 Jupyter Notebook 和 Kepler.gl<a class="headerlink" href="#jupyter-notebook-kepler-gl" title="永久链接至标题">¶</a></h2>
+<p>在后续步骤中，你需要使用 Jupyter Notebook 运行代码，以及使用 Kepler.gl 进行空间数据可视化。如果你的计算机未安装 Jupyter 和 Kepler.gl，请执行以下命令安装这两个工具：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 进入 Conda 环境</span>
+$ conda activate arctern_env
+
+<span class="c1"># 安装 Jupyter 和 Kepler.gl</span>
+$ conda install -c conda-forge jupyterlab
+$ pip install keplergl
+</pre></div>
+</div>
+</div>
+<div class="section" id="id1">
+<h2>加载 Kepler.gl 地图<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">KeplerGl</span></code>（查看 <a class="reference external" href="https://docs.kepler.gl/docs/keplergl-jupyter#1-load-keplergl-map">KeplerGl 接口说明</a>）创建一个地图对象 <code class="docutils literal notranslate"><span class="pre">map_1</span></code>：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 加载一个空地图</span>
+<span class="kn">from</span> <span class="nn">keplergl</span> <span class="kn">import</span> <span class="n">KeplerGl</span>
+<span class="n">map_1</span> <span class="o">=</span> <span class="n">KeplerGl</span><span class="p">()</span>
+<span class="n">map_1</span>
+</pre></div>
+</div>
+<p><img alt="load_map" src="../../../_images/load_map.png" /></p>
+</div>
+<div class="section" id="id2">
+<h2>添加数据<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>创建两个 LINESTRING 对象以表示两条道路，并将这两条道路的地理信息保存到 <code class="docutils literal notranslate"><span class="pre">df</span></code> 中。然后使用 <code class="docutils literal notranslate"><span class="pre">add_data</span></code> （查看 <a class="reference external" href="https://docs.kepler.gl/docs/keplergl-jupyter#add_data">add_data 接口说明</a>）将 <code class="docutils literal notranslate"><span class="pre">df</span></code> 作为输入数据加载到地图上。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="c1"># DataFrame</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;geos&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;LINESTRING (-73.996324 40.753388, -73.972088 40.743215)&#39;</span><span class="p">,</span> <span class="s1">&#39;LINESTRING (-73.989555 40.741531, -73.973952 40.762962)&#39;</span><span class="p">]})</span>
+<span class="n">map_1</span><span class="o">.</span><span class="n">add_data</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;data_1&#39;</span><span class="p">)</span>
+<span class="n">map_1</span>
+</pre></div>
+</div>
+<p><img alt="add_data" src="../../../_images/add_data.png" /></p>
+<p>同样，你也可以将 CSV、GeoJSON 等格式的数据输入到地图上：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># CSV</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;csv-data.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">csvData</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">map_1</span><span class="o">.</span><span class="n">add_data</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">csvData</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;data_2&#39;</span><span class="p">)</span>
+
+<span class="c1"># GeoJSON as string</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;sf_zip_geo.json&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">geojson</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="n">map_1</span><span class="o">.</span><span class="n">add_data</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">geojson</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;geojson&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>参考<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>更多示例及接口说明请参考 <a class="reference external" href="https://docs.kepler.gl/docs/keplergl-jupyter">Kepler.gl 官网关于 Jupyter Notebook 的使用介绍</a>。</p>
+</div>
 </div>
 
 
