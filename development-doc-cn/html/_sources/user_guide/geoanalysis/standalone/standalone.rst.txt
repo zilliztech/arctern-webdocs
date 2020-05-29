@@ -1,0 +1,10 @@
+.. _standalone:
+
+单机模式
+============
+
+.. toctree::
+   :maxdepth: 1
+
+   standalone_installation
+   pandas_api/pandas_api

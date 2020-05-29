@@ -1,0 +1,8 @@
+.. _pandas_api:
+
+Spark API
+============
+
+.. toctree::
+   :maxdepth: 2
+

@@ -37,8 +37,8 @@
   <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="API 参考" href="../api/api.html" />
-    <link rel="prev" title="安装部署" href="installation.html" /> 
+    <link rel="next" title="用户手册" href="../user_guide/user_guide.html" />
+    <link rel="prev" title="安装部署" href="standalone_installation.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -84,7 +84,7 @@
             
               <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="quick_start.html">快速开始</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="installation.html">安装部署</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standalone_installation.html">安装部署</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">使用 Arctern 分析空间数据</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#jupyter-kepler-gl">安装 Jupyter 和 Kepler.Gl</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#jupyter-notebook">运行 Jupyter Notebook</a></li>
@@ -97,7 +97,6 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../api/api.html">API 参考</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/user_guide.html">用户手册</a></li>
 </ul>
 
@@ -167,7 +166,7 @@
             
   <div class="section" id="arctern">
 <h1>使用 Arctern 分析空间数据<a class="headerlink" href="#arctern" title="永久链接至标题">¶</a></h1>
-<p>完成 <a class="reference internal" href="installation.html"><span class="doc">Arctern 的安装部署</span></a> 之后，本文档引导你使用 Arctern 分析帝国大厦附近的道路信息。</p>
+<p>完成 <a class="reference external" href="./installation">Arctern 的安装部署</a> 之后，本文档引导你使用 Arctern 分析帝国大厦附近的道路信息。</p>
 <div class="section" id="jupyter-kepler-gl">
 <h2>安装 Jupyter 和 Kepler.Gl<a class="headerlink" href="#jupyter-kepler-gl" title="永久链接至标题">¶</a></h2>
 <p>在后续步骤中，你需要使用 Jupyter Notebook 运行代码，以及使用 Kepler.Gl 进行空间数据可视化。请按照以下步骤安装 Jupyter 和 Kepler.Gl：</p>
@@ -222,14 +221,14 @@ $ pip install keplergl
 </div>
 <div class="section" id="kepler-gl">
 <h3>使用 Kepler.Gl 绘制地图<a class="headerlink" href="#kepler-gl" title="永久链接至标题">¶</a></h3>
-<p>使用 Kepler.Gl 在地图上绘制 <code class="docutils literal notranslate"><span class="pre">road1</span></code> 和 <code class="docutils literal notranslate"><span class="pre">road2</span></code>，观察到这两条路确实相交：</p>
+<p>使用 Kepler.Gl 在地图上绘制 <code class="docutils literal notranslate"><span class="pre">road1</span></code> 和 <code class="docutils literal notranslate"><span class="pre">road2</span></code>，观察这两条路是否相交：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">KeplerGl</span><span class="p">(</span><span class="n">height</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;road1&quot;</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;road1&quot;</span><span class="p">:[</span><span class="n">road1</span><span class="p">]}),</span>
 <span class="go">                          &quot;road2&quot;: pd.DataFrame(data={&quot;raod2&quot;:[road2]})})</span>
 </pre></div>
 </div>
-<p><img alt="用 Kepler.Gl 显示两条道路" src="../_images/crossed_road.png" /></p>
-<p>你还可以点击 Kepler.Gl 界面右上角的 <strong>&gt;</strong> 按钮以展开侧边栏，在其中设置每条路线的颜色和线宽：</p>
-<p><img alt="在 Kepler.Gl 中设置路线的颜色和线宽" src="../_images/kepler_set_witth.png" /></p>
+<p><img alt="../_images/crossed_road.png" src="../_images/crossed_road.png" /></p>
+<p>你还可以点击 Kepler.Gl 界面右上角的 <strong>&gt;</strong> 按钮以展开侧边栏，在其中设置每条路线的颜色和线宽。</p>
+<p><img alt="../_images/kepler_set_witth.png" src="../_images/kepler_set_witth.png" /></p>
 </div>
 </div>
 </div>
@@ -242,10 +241,10 @@ $ pip install keplergl
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../api/api.html" class="btn btn-neutral float-right" title="API 参考" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../user_guide/user_guide.html" class="btn btn-neutral float-right" title="用户手册" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="installation.html" class="btn btn-neutral float-left" title="安装部署" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="standalone_installation.html" class="btn btn-neutral float-left" title="安装部署" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -256,7 +255,7 @@ $ pip install keplergl
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 5月 28, 2020.
+        最后更新于 5月 29, 2020.
       </span>
 
     </p>
