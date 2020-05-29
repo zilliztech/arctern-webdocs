@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-29 11:26+0800\n"
+"POT-Creation-Date: 2020-05-29 16:13+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,7 +21,7 @@ msgid "安装部署"
 msgstr ""
 
 #: ../../source/quick_start/standalone_installation.md:3
-msgid "本文档将引导你安装 Arctern。"
+msgid "Arctern 既支持单机工作，也支持多个计算机通过集群模式协作。本文档将引导你在单机模式下安装 Arctern。如果你想了解如何部署 Arctern 的集群工作环境，请查看 模拟 Spark Standalone 集群的安装部署。"
 msgstr ""
 
 #: ../../source/quick_start/standalone_installation.md:5

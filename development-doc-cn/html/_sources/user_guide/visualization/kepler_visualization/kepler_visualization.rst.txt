@@ -1,9 +1,0 @@
-.. _kepler_visualization:
-
-Kepler.gl 可视化
-============
-
-.. toctree::
-   :maxdepth: 2
-
-   kepler_plot
