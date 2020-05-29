@@ -6,5 +6,5 @@
 .. toctree::
    :maxdepth: 2
 
+   geoanalysis/geoanalysis
    visualization/visualization
-   spark/spark
