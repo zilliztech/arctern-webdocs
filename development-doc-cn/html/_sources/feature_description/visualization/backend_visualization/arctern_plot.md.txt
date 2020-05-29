@@ -1,6 +1,6 @@
 # 使用 Arctern 绘制图层
 
-本文讲述如何使用 Arctern 绘制多种类型的透明图层，以及如何将这些透明图层叠加到地图背景上。
+本文介绍如何使用 Arctern 绘制多种类型的透明图层，以及如何将这些透明图层叠加到地图背景上。
 
 ## 生成模拟数据
 
@@ -100,23 +100,31 @@ arctern.plot_pointmap(ax,
 
 ### 透明带权点图
 
-通过 Arctern 的 `vega_weighted_pointmap` 和 `weighted_point_map_layer` 方法根据出租车运营数据绘制带权点图。其中，点的位置为上车地点，点的颜色根据出租车的行程费用（`df.fare_amount`）在 #115f9a ～ #d0f400 之间变化，点的大小根据出租车的总费用（`df.total_amount`）在 3 ～ 15 之间变化，点的不透明度为 1。保存图片后，通过 Matplotlib 的 `imshow` 方法预览该图片。
+通过 Arctern 的 `vega_weighted_pointmap` 和 `weighted_point_map_layer` 方法根据出租车运营数据绘制带权点图。其中，点的位置为上车地点，点的颜色根据出租车的行程费用（`df.fare_amount`）在 #115f9a ～ #d0f400 之间变化，点的大小根据出租车的总费用（`df.total_amount`）在 5 ～ 30 之间变化，点的不透明度为 1。保存图片后，通过 Matplotlib 的 `imshow` 方法预览该图片。
 
 <!-- 问题：确认2个变化范围 -->
 
 ```python
+color_bound=[df.fare_amount.min(), df.fare_amount.max()]
+
+size_bound=[5, 30]
+total_max=df.total_amount.max()
+total_min=df.total_amount.min()
+size_weights = [(v-total_min)/(total_max-total_min)*(size_bound[1]-size_bound[0])+size_bound[0] for v in df.total_amount]
+size_weights = pd.Series(size_weights)
+
 point_vega = vega.vega_weighted_pointmap(1024, 
                                     384, 
                                     bounding_box=bbox, 
                                     color_gradient=["#115f9a", "#d0f400"], 
-                                    color_bound=[1, 50], 
-                                    size_bound=[3, 15], 
-                                    opacity=1, 
+                                    color_bound=color_bound,
+                                    size_bound=size_bound,
+                                    opacity=1.0, 
                                     coordinate_system="EPSG:4326")
 png = arctern.weighted_point_map_layer(point_vega, 
                                        arctern.ST_Point(df.pickup_longitude,df.pickup_latitude),
-                                       color_weights=df.fare_amount, 
-                                       size_weights=df.total_amount)
+                                       color_weights=df.fare_amount,
+                                       size_weights=size_weights)
 save_png(png, "/tmp/arctern_weighted_pointmap.png")
 plt.imshow(mpimg.imread("/tmp/arctern_weighted_pointmap.png"))
 ```
@@ -125,21 +133,29 @@ plt.imshow(mpimg.imread("/tmp/arctern_weighted_pointmap.png"))
 
 ### 带权点图叠加地图背景
 
-通过 Matplotlib 的 `subplots` 方法创建一个图层。然后在该图层上使用 Arctern 的 `plot_weighted_pointmap` 方法根据出租车运营数据绘制带地图背景的带权点图。其中，点的位置为上车地点，点的颜色根据出租车的行程费用（`df.fare_amount`）在 #115f9a ～ #d0f400 之间变化，点的大小根据出租车的总费用（`df.total_amount`）在 3 ～ 15 之间变化，点的不透明度为 1。
+通过 Matplotlib 的 `subplots` 方法创建一个图层。然后在该图层上使用 Arctern 的 `plot_weighted_pointmap` 方法根据出租车运营数据绘制带地图背景的带权点图。其中，点的位置为上车地点，点的颜色根据出租车的行程费用（`df.fare_amount`）在 #115f9a ～ #d0f400 之间变化，点的大小根据出租车的总费用（`df.total_amount`）在 5 ～ 30 之间变化，点的不透明度为 1。
 
 <!-- 问题：确认2个变化范围（同上） -->
 
 ```python
+color_bound=[df.fare_amount.min(), df.fare_amount.max()]
+
+size_bound=[5, 30]
+total_max=df.total_amount.max()
+total_min=df.total_amount.min()
+size_weights = [(v-total_min)/(total_max-total_min)*(size_bound[1]-size_bound[0])+size_bound[0] for v in df.total_amount]
+size_weights = pd.Series(size_weights)
+
 fig, ax = plt.subplots(figsize=(10, 6), dpi=200)
 arctern.plot_weighted_pointmap(ax, 
                        arctern.ST_Point(df.pickup_longitude,df.pickup_latitude), 
-                       df.fare_amount, 
-                       df.total_amount, 
-                       bbox, 
+                       color_weights=df.fare_amount,
+                       size_weights=size_weights,
+                       bounding_box=bbox, 
                        color_gradient=["#115f9a", "#d0f400"], 
-                       color_bound=[1, 50], 
-                       size_bound=[3, 15], 
-                       opacity=1, 
+                       color_bound=color_bound, 
+                       size_bound=size_bound, 
+                       opacity=1.0, 
                        coordinate_system="EPSG:4326")
 ```
 
@@ -159,7 +175,7 @@ head_vega = vega.vega_heatmap(1024,
                               coordinate_system="EPSG:4326")
 png = arctern.heat_map_layer(head_vega, 
                      arctern.ST_Point(df.pickup_longitude,df.pickup_latitude), 
-                     df.fare_amount)
+                     weights=df.fare_amount)
 save_png(png, "/tmp/arctern_heatmap.png")
 plt.imshow(mpimg.imread("/tmp/arctern_heatmap.png"))
 ```
@@ -174,8 +190,8 @@ plt.imshow(mpimg.imread("/tmp/arctern_heatmap.png"))
 fig, ax = plt.subplots(figsize=(10, 6), dpi=200)
 arctern.plot_heatmap(ax, 
                      arctern.ST_Point(df.pickup_longitude,df.pickup_latitude), 
-                     df.fare_amount, 
-                     bbox, 
+                     weights=df.fare_amount, 
+                     bounding_box=bbox, 
                      coordinate_system="EPSG:4326")
 ```
 
@@ -199,12 +215,12 @@ choropleth_vega = vega.vega_choroplethmap(1024,
                                           384, 
                                           bounding_box=bbox, 
                                           color_gradient=["#115f9a", "#d0f400"], 
-                                          color_bound=[2.5, 5], 
+                                          color_bound=[5, 30], 
                                           opacity=1.0, 
                                           coordinate_system="EPSG:4326")
 png = arctern.choropleth_map_layer(choropleth_vega, 
                                    arctern.ST_GeomFromText(pd.Series([p1,p2])),
-                                   pd.Series([50,50]))
+                                   weights=pd.Series([5,30]))
 save_png(png, "/tmp/arctern_choroplethmap.png")
 plt.imshow(mpimg.imread("/tmp/arctern_choroplethmap.png"))
 ```
@@ -219,10 +235,10 @@ plt.imshow(mpimg.imread("/tmp/arctern_choroplethmap.png"))
 fig, ax = plt.subplots(figsize=(10, 6), dpi=200)
 arctern.plot_choroplethmap(ax, 
                            arctern.ST_GeomFromText(pd.Series([p1,p2])),
-                           pd.Series([50,50]),
-                           bbox, 
+                           weights=pd.Series([5,30]),
+                           bounding_box=bbox, 
                            color_gradient=["#115f9a", "#d0f400"], 
-                           color_bound=[2.5, 5], 
+                           color_bound=[5, 30], 
                            opacity=1.0, 
                            coordinate_system="EPSG:4326")
 ```
@@ -286,7 +302,7 @@ fish_vega = vega.vega_fishnetmap(1024,
                                  coordinate_system="EPSG:4326")
 png = arctern.fishnet_map_layer(fish_vega,
                                 arctern.ST_Point(df.pickup_longitude,df.pickup_latitude), 
-                                df.fare_amount)
+                                weights=df.fare_amount)
 save_png(png, "/tmp/arctern_fishnetmap.png")
 plt.imshow(mpimg.imread("/tmp/arctern_fishnetmap.png"))
 ```
@@ -301,8 +317,8 @@ plt.imshow(mpimg.imread("/tmp/arctern_fishnetmap.png"))
 fig, ax = plt.subplots(figsize=(10, 6), dpi=200)
 arctern.plot_fishnetmap(ax, 
                         arctern.ST_Point(df.pickup_longitude,df.pickup_latitude), 
-                        df.fare_amount, 
-                        bbox, 
+                        weights=df.fare_amount, 
+                        bounding_box=bbox, 
                         cell_size=8, 
                         cell_spacing=1, 
                         opacity=1.0, 
