@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-29 19:09+0800\n"
+"POT-Creation-Date: 2020-06-03 15:27+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,73 +20,73 @@ msgstr ""
 msgid "安装部署"
 msgstr ""
 
-#: ../../source/quick_start/standalone_installation.md:3
-msgid "Arctern 既支持单机工作，也支持多个计算机通过集群模式协作。本文档将引导你在单机模式下安装 Arctern。如果你想了解如何部署 Arctern 的集群工作环境，请查看 模拟 Spark Standalone 集群的安装部署。"
-msgstr ""
-
-#: ../../source/quick_start/standalone_installation.md:5
-msgid "系统要求"
+#: ../../source/quick_start/standalone_installation.md:4
+msgid "本文档将引导你在单机模式下安装 Arctern。"
 msgstr ""
 
 #: ../../source/quick_start/standalone_installation.md:7
-#: ../../source/quick_start/standalone_installation.md:61
-#: ../../source/quick_start/standalone_installation.md:97
+msgid "系统要求"
+msgstr ""
+
+#: ../../source/quick_start/standalone_installation.md:9
+#: ../../source/quick_start/standalone_installation.md:63
+#: ../../source/quick_start/standalone_installation.md:99
 msgid "CPU 版本"
 msgstr ""
 
-#: ../../source/quick_start/standalone_installation.md:28
-#: ../../source/quick_start/standalone_installation.md:67
+#: ../../source/quick_start/standalone_installation.md:30
+#: ../../source/quick_start/standalone_installation.md:69
 msgid "GPU 版本"
 msgstr ""
 
-#: ../../source/quick_start/standalone_installation.md:57
+#: ../../source/quick_start/standalone_installation.md:59
 msgid "注意： 你可以到 NVIDIA 官网 查询你的 GPU 是否支持 CUDA 功能。"
 msgstr ""
 
-#: ../../source/quick_start/standalone_installation.md:59
+#: ../../source/quick_start/standalone_installation.md:61
 msgid "安装依赖库"
 msgstr ""
 
-#: ../../source/quick_start/standalone_installation.md:73
+#: ../../source/quick_start/standalone_installation.md:75
 msgid "注意： 如果安装失败，请先执行 apt update 再执行以上命令。"
 msgstr ""
 
-#: ../../source/quick_start/standalone_installation.md:75
+#: ../../source/quick_start/standalone_installation.md:77
 msgid "安装 Miniconda"
 msgstr ""
 
-#: ../../source/quick_start/standalone_installation.md:77
+#: ../../source/quick_start/standalone_installation.md:79
 msgid "安装 Miniconda："
 msgstr ""
 
-#: ../../source/quick_start/standalone_installation.md:86
+#: ../../source/quick_start/standalone_installation.md:88
 msgid "关闭当前终端，并重新打开一个新的终端。在新终端中打印所有 Conda 环境。若出现 base 环境，则 Conda 安装成功。"
 msgstr ""
 
-#: ../../source/quick_start/standalone_installation.md:93
+#: ../../source/quick_start/standalone_installation.md:95
 msgid "安装 Arctern"
 msgstr ""
 
-#: ../../source/quick_start/standalone_installation.md:95
+#: ../../source/quick_start/standalone_installation.md:97
 msgid "安装 Arctern 并创建名为 arctern_env 的 Conda 环境："
 msgstr ""
 
-#: ../../source/quick_start/standalone_installation.md:103
+#: ../../source/quick_start/standalone_installation.md:105
 msgid "GPU版本"
 msgstr ""
 
-#: ../../source/quick_start/standalone_installation.md:109
+#: ../../source/quick_start/standalone_installation.md:111
 msgid "进入 Conda 环境："
 msgstr ""
 
-#: ../../source/quick_start/standalone_installation.md:115
+#: ../../source/quick_start/standalone_installation.md:117
 msgid "安装验证"
 msgstr ""
 
-#: ../../source/quick_start/standalone_installation.md:117
+#: ../../source/quick_start/standalone_installation.md:119
 msgid "进入 Python 环境，尝试导入 arctern 并确认版本是否正确。"
 msgstr ""
 
-#: ../../source/quick_start/standalone_installation.md:125
+#: ../../source/quick_start/standalone_installation.md:127
 msgid "卸载 Arctern"
 msgstr ""

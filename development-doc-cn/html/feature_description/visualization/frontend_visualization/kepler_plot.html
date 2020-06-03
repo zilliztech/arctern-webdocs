@@ -8,7 +8,11 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>使用 Kepler.gl 渲染时空信息 &mdash; Arctern 0.1.x 文档</title>
+  <title>使用 Kepler.gl 展示时空信息 &mdash; Arctern gis version : 0.1.1
+build type : Release/CPU 
+build time : 2020-05-11 08:10.53
+commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
+ 文档</title>
   
 
   
@@ -83,14 +87,13 @@
             
             
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../../overview.html">产品概述</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../quick_start/quick_start.html">快速开始</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../feature_description.html">功能说明</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../../spatiotemporal_analysis/spatiotemporal_analysis.html">时空数据分析</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../visualization.html">可视化</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../how_to_visualize.html">如何渲染时空数据</a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="frontend_visualization.html">前端渲染</a><ul class="current">
-<li class="toctree-l4 current"><a class="current reference internal" href="#">使用 Kepler.gl 渲染时空信息</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">使用 Kepler.gl 展示时空信息</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../backend_visualization/backend_visualization.html">后端渲染</a></li>
@@ -150,7 +153,7 @@
         
           <li><a href="frontend_visualization.html">前端渲染</a> &raquo;</li>
         
-      <li>使用 Kepler.gl 渲染时空信息</li>
+      <li>使用 Kepler.gl 展示时空信息</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -170,7 +173,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="kepler-gl">
-<h1>使用 Kepler.gl 渲染时空信息<a class="headerlink" href="#kepler-gl" title="永久链接至标题">¶</a></h1>
+<h1>使用 Kepler.gl 展示时空信息<a class="headerlink" href="#kepler-gl" title="永久链接至标题">¶</a></h1>
 <p><a class="reference external" href="https://kepler.gl/">Kepler.gl</a> 是一款功能强大的开源地理空间数据可视化工具。你只需在 Jupyter Notebook 中导入 Kepler.gl，就可以获得生动且直观的时空数据渲染效果。本文介绍如何使用 Kepler.gl 展示 Arctern 输出的时空信息。</p>
 <div class="section" id="jupyter-notebook-kepler-gl">
 <h2>安装 Jupyter Notebook 和 Kepler.gl<a class="headerlink" href="#jupyter-notebook-kepler-gl" title="永久链接至标题">¶</a></h2>
@@ -199,7 +202,6 @@ $ pip install keplergl
 <h2>添加数据<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
 <p>创建两个 LINESTRING 对象以表示两条道路，并将这两条道路的地理信息保存到 <code class="docutils literal notranslate"><span class="pre">df</span></code> 中。然后使用 <code class="docutils literal notranslate"><span class="pre">add_data</span></code> （查看 <a class="reference external" href="https://docs.kepler.gl/docs/keplergl-jupyter#add_data">add_data 接口说明</a>）将 <code class="docutils literal notranslate"><span class="pre">df</span></code> 作为输入数据加载到地图上。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="c1"># DataFrame</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;geos&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;LINESTRING (-73.996324 40.753388, -73.972088 40.743215)&#39;</span><span class="p">,</span> <span class="s1">&#39;LINESTRING (-73.989555 40.741531, -73.973952 40.762962)&#39;</span><span class="p">]})</span>
 <span class="n">map_1</span><span class="o">.</span><span class="n">add_data</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;data_1&#39;</span><span class="p">)</span>
 <span class="n">map_1</span>
@@ -212,7 +214,7 @@ $ pip install keplergl
     <span class="n">csvData</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 <span class="n">map_1</span><span class="o">.</span><span class="n">add_data</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">csvData</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;data_2&#39;</span><span class="p">)</span>
 
-<span class="c1"># GeoJSON as string</span>
+<span class="c1"># GeoJSON</span>
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;sf_zip_geo.json&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">geojson</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 
@@ -248,7 +250,7 @@ $ pip install keplergl
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 5月 29, 2020.
+        最后更新于 6月 03, 2020.
       </span>
 
     </p>
