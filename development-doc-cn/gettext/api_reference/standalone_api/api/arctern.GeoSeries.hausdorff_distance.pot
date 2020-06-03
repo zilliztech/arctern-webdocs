@@ -1,0 +1,49 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, zilliz
+# This file is distributed under the same license as the Arctern package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Arctern \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-06-03 15:27+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../source/api_reference/standalone_api/api/arctern.GeoSeries.hausdorff_distance.rst:2
+msgid "arctern.GeoSeries.hausdorff\\_distance"
+msgstr ""
+
+#: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/geoseries/geoseries.py:docstring of arctern.GeoSeries.hausdorff_distance:1
+msgid "Returns the Hausdorff distance between each geometry and other."
+msgstr ""
+
+#: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/geoseries/geoseries.py:docstring of arctern.GeoSeries.hausdorff_distance:3
+msgid "This is a measure of how similar or dissimilar 2 geometries are."
+msgstr ""
+
+#: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/geoseries/geoseries.py:docstring of arctern.GeoSeries.hausdorff_distance:0
+msgid "参数"
+msgstr ""
+
+#: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/geoseries/geoseries.py:docstring of arctern.GeoSeries.hausdorff_distance:7
+msgid "The geometries to calculate the hausdorff distance to each geometry."
+msgstr ""
+
+#: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/geoseries/geoseries.py:docstring of arctern.GeoSeries.hausdorff_distance:0
+msgid "返回类型"
+msgstr ""
+
+#: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/geoseries/geoseries.py:docstring of arctern.GeoSeries.hausdorff_distance:10
+msgid ":return : A Series contains the hausdorff distance between each geometry and other."
+msgstr ""
+
+#: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/geoseries/geoseries.py:docstring of arctern.GeoSeries.hausdorff_distance:0
+msgid "example"
+msgstr ""

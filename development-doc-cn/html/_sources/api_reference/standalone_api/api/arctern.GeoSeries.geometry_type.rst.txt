@@ -1,0 +1,6 @@
+arctern.GeoSeries.geometry\_type
+================================
+
+.. currentmodule:: arctern
+
+.. autoproperty:: GeoSeries.geometry_type
