@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-04 18:10+0800\n"
+"POT-Creation-Date: 2020-06-04 18:25+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -33,7 +33,7 @@ msgid "目前，Arctern 包含 OGC 标准中常用的 API，涵盖几何对象�
 msgstr ""
 
 #: ../../source/feature_description/visualization/how_to_visualize.md:9
-msgid "根据 Kepler.gl 用户手册，Kepler.gl 接收 OGC 标准的 WKT 数据作为输入。因此，使用 Arctern 的 ST_AsText 方法将时空数据从 Arctern 的内部数据格式转换成 WKT 格式之后，你即可调用 Kepler.gl 实现数据渲染。"
+msgid "根据 Kepler.gl 用户手册，Kepler.gl 接收 OGC 标准的 WKT 数据作为输入。因此，使用 Arctern 的 GeoSeries.to_wkt 方法将时空数据从 Arctern 的内部数据格式转换成 WKT 格式之后，你即可调用 Kepler.gl 实现数据渲染。"
 msgstr ""
 
 #: ../../source/feature_description/visualization/how_to_visualize.md:11
