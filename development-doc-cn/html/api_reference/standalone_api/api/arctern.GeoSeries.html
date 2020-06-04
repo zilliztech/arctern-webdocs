@@ -179,23 +179,23 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
 <dl class="py class">
 <dt id="arctern.GeoSeries">
 <em class="property">class </em><code class="sig-prename descclassname">arctern.</code><code class="sig-name descname">GeoSeries</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">index</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">name</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">crs</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/arctern/geoseries/geoseries.html#GeoSeries"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#arctern.GeoSeries" title="永久链接至目标">¶</a></dt>
-<dd><p>A Series to store geometry data which is WKB formed bytes object.</p>
+<dd><p>Series 存储几何体，此几何体是 WKB 格式的字节对象。</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>data</strong> (<em>array-like</em><em>, </em><em>Iterable</em><em>, </em><em>dict</em><em>, or </em><em>scalar value</em><em>(</em><em>str</em><em> or </em><em>bytes</em><em>)</em>) – Geometries to store, which can be WKB formed bytes or WKT formed string.</p></li>
+<li><p><strong>data</strong> (<em>array-like</em><em>, </em><em>Iterable</em><em>, </em><em>dict</em><em>, or </em><em>scalar value</em><em>(</em><em>str</em><em> or </em><em>bytes</em><em>)</em>) – 用于存储的几何体可以是 WKB 格式的字节对象或 WKT 格式的字符串。</p></li>
 <li><p><strong>index</strong> (<em>array-like</em><em> or </em><em>Index</em><em> (</em><em>1d</em><em>)</em>) – Same to Pandas Series.
 Values must be hashable and have the same length as <cite>data</cite>.
 Non-unique index values are allowed. Will default to
 RangeIndex (0, 1, 2, …, n) if not provided. If both a dict and index
 sequence are used, the index will override the keys found in the
 dict.</p></li>
-<li><p><strong>name</strong> (<em>str</em><em>, </em><em>optional</em>) – The name to give to the Series.</p></li>
-<li><p><strong>crs</strong> (<em>str</em><em>, </em><em>optional</em>) – The coordinate system for the GeoSeries, now only support SRID form.</p></li>
-<li><p><strong>kwargs</strong> – Additional arguments passed to the GeoSeries constructor, e.g. <code class="docutils literal notranslate"><span class="pre">copy</span></code></p></li>
+<li><p><strong>name</strong> (<em>str</em><em>, </em><em>optional</em>) – 赋给 Series 的名称</p></li>
+<li><p><strong>crs</strong> (<em>str</em><em>, </em><em>optional</em>) – GeoSeries 的参考坐标系现在只支持 SRID 格式。</p></li>
+<li><p><strong>kwargs</strong> – 传到 GeoSeries 构造器中的其他参数，例如 <code class="docutils literal notranslate"><span class="pre">copy</span></code>。</p></li>
 </ul>
 </dd>
-<dt class="field-even">Example</dt>
+<dt class="field-even">例子</dt>
 <dd class="field-even"><p></p></dd>
 </dl>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">GeoSeries</span>
@@ -212,7 +212,7 @@ dict.</p></li>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
 </dd></dl>
 
-<p class="rubric">Methods</p>
+<p class="rubric">方法</p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
@@ -336,7 +336,7 @@ dict.</p></li>
 <tr class="row-odd"><td><p><a class="reference internal" href="arctern.GeoSeries.convex_hull.html#arctern.GeoSeries.convex_hull" title="arctern.GeoSeries.convex_hull"><code class="xref py py-obj docutils literal notranslate"><span class="pre">convex_hull</span></code></a></p></td>
 <td><p>For each geometry, compute the smallest convex geometry that encloses all geometries in it.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">crs</span></code></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="arctern.GeoSeries.crs.html#arctern.GeoSeries.crs" title="arctern.GeoSeries.crs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">crs</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="arctern.GeoSeries.envelope.html#arctern.GeoSeries.envelope" title="arctern.GeoSeries.envelope"><code class="xref py py-obj docutils literal notranslate"><span class="pre">envelope</span></code></a></p></td>
@@ -385,7 +385,7 @@ dict.</p></li>
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 6月 03, 2020.
+        最后更新于 6月 04, 2020.
       </span>
 
     </p>

@@ -42,7 +42,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
     <link rel="index" title="索引" href="../../../genindex.html" />
     <link rel="search" title="搜索" href="../../../search.html" />
     <link rel="next" title="arctern.GeoSeries.isna" href="arctern.GeoSeries.isna.html" />
-    <link rel="prev" title="arctern.GeoSeries.union_aggr" href="arctern.GeoSeries.union_aggr.html" /> 
+    <link rel="prev" title="arctern.GeoSeries.hausdorff_distance" href="arctern.GeoSeries.hausdorff_distance.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -98,7 +98,6 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
 <li class="toctree-l3"><a class="reference internal" href="../geoseries.html#spatial-relationship">Spatial Relationship</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../geoseries.html#measurement">Measurement</a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="../geoseries.html#aggregation">Aggregation</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="arctern.GeoSeries.union_aggr.html">arctern.GeoSeries.union_aggr</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">arctern.GeoSeries.envelope_aggr</a></li>
 </ul>
 </li>
@@ -180,15 +179,15 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
 <dl class="py method">
 <dt id="arctern.GeoSeries.envelope_aggr">
 <code class="sig-prename descclassname">GeoSeries.</code><code class="sig-name descname">envelope_aggr</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/arctern/geoseries/geoseries.html#GeoSeries.envelope_aggr"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#arctern.GeoSeries.envelope_aggr" title="永久链接至目标">¶</a></dt>
-<dd><p>Compute the double-precision minimum bounding box geometry for the union of all geometries.</p>
+<dd><p>计算包含几何体集合的最小矩形边界范围，且该矩形的边与坐标轴平行。</p>
 <dl class="field-list simple">
 <dt class="field-odd">返回类型</dt>
 <dd class="field-odd"><p><a class="reference internal" href="arctern.GeoSeries.html#arctern.GeoSeries" title="arctern.GeoSeries">GeoSeries</a></p>
 </dd>
 <dt class="field-even">返回</dt>
-<dd class="field-even"><p>A GeoSeries contains only one geometry.</p>
+<dd class="field-even"><p>GeoSeries 只包含一个几何体。</p>
 </dd>
-<dt class="field-odd">Example</dt>
+<dt class="field-odd">例子</dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">GeoSeries</span>
@@ -215,7 +214,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
         <a href="arctern.GeoSeries.isna.html" class="btn btn-neutral float-right" title="arctern.GeoSeries.isna" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="arctern.GeoSeries.union_aggr.html" class="btn btn-neutral float-left" title="arctern.GeoSeries.union_aggr" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="arctern.GeoSeries.hausdorff_distance.html" class="btn btn-neutral float-left" title="arctern.GeoSeries.hausdorff_distance" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -226,7 +225,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 6月 03, 2020.
+        最后更新于 6月 04, 2020.
       </span>
 
     </p>

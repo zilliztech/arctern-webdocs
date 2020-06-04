@@ -100,6 +100,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
 <li class="toctree-l4 current"><a class="current reference internal" href="#">arctern.GeoSeries.intersection</a></li>
 <li class="toctree-l4"><a class="reference internal" href="arctern.GeoSeries.make_valid.html">arctern.GeoSeries.make_valid</a></li>
 <li class="toctree-l4"><a class="reference internal" href="arctern.GeoSeries.set_crs.html">arctern.GeoSeries.set_crs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="arctern.GeoSeries.crs.html">arctern.GeoSeries.crs</a></li>
 <li class="toctree-l4"><a class="reference internal" href="arctern.GeoSeries.to_crs.html">arctern.GeoSeries.to_crs</a></li>
 <li class="toctree-l4"><a class="reference internal" href="arctern.GeoSeries.curve_to_line.html">arctern.GeoSeries.curve_to_line</a></li>
 </ul>
@@ -185,19 +186,19 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
 <dl class="py method">
 <dt id="arctern.GeoSeries.intersection">
 <code class="sig-prename descclassname">GeoSeries.</code><code class="sig-name descname">intersection</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/arctern/geoseries/geoseries.html#GeoSeries.intersection"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#arctern.GeoSeries.intersection" title="永久链接至目标">¶</a></dt>
-<dd><p>Calculate the point set intersection between each geometry and other.</p>
+<dd><p>检查两个几何体是否存在交集，即它们存在共享空间。</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
 <dd class="field-odd"><p><strong>other</strong> (<em>scalar bytes object geometry</em><em> or </em><em>GeoSeries.
-Can be scalar WKB formed bytes object</em><em>, or </em><em>a GeoSeries.</em>) – The geometries to calculate the intersection point set between each geometry.</p>
+Can be scalar WKB formed bytes object</em><em>, or </em><em>a GeoSeries.</em>) – 用于计算每两个几何体的交集的几何体。</p>
 </dd>
 <dt class="field-even">返回类型</dt>
 <dd class="field-even"><p><a class="reference internal" href="arctern.GeoSeries.html#arctern.GeoSeries" title="arctern.GeoSeries">GeoSeries</a></p>
 </dd>
 <dt class="field-odd">返回</dt>
-<dd class="field-odd"><p>A GeoSeries contains geometries.</p>
+<dd class="field-odd"><p>GeoSeries 包含几何体。</p>
 </dd>
-<dt class="field-even">Example</dt>
+<dt class="field-even">例子</dt>
 <dd class="field-even"><p></p></dd>
 </dl>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">GeoSeries</span>
@@ -234,7 +235,7 @@ Can be scalar WKB formed bytes object</em><em>, or </em><em>a GeoSeries.</em>) �
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 6月 03, 2020.
+        最后更新于 6月 04, 2020.
       </span>
 
     </p>

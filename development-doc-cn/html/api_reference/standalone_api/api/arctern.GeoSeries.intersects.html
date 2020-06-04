@@ -185,17 +185,16 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
 <dl class="py method">
 <dt id="arctern.GeoSeries.intersects">
 <code class="sig-prename descclassname">GeoSeries.</code><code class="sig-name descname">intersects</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/arctern/geoseries/geoseries.html#GeoSeries.intersects"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#arctern.GeoSeries.intersects" title="永久链接至目标">¶</a></dt>
-<dd><p>Check whether each geometry intersects other (elementwise).</p>
+<dd><p>检查两个几何体是否存在交集。</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
-<dd class="field-odd"><p><strong>other</strong> (<em>scalar bytes object geometry</em><em> or </em><a class="reference internal" href="arctern.GeoSeries.html#arctern.GeoSeries" title="arctern.GeoSeries"><em>GeoSeries</em></a>) – The geometries to test if is intersected.
-Can be scalar WKB formed bytes object, or a GeoSeries.</p>
+<dd class="field-odd"><p><strong>other</strong> (<em>scalar bytes object geometry</em><em> or </em><a class="reference internal" href="arctern.GeoSeries.html#arctern.GeoSeries" title="arctern.GeoSeries"><em>GeoSeries</em></a>) – 用于测试是否存在交集的几何体。它可以是标量 WKB 格式的字节对象或 GeoSeries。</p>
 </dd>
 </dl>
 <p>:rtype : Series(dtype: bool)
 :return: A Series with value True if intersected.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Example</dt>
+<dt class="field-odd">例子</dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">GeoSeries</span>
@@ -207,7 +206,7 @@ Can be scalar WKB formed bytes object, or a GeoSeries.</p>
 <span class="go">dtype: bool</span>
 </pre></div>
 </div>
-<p>Alternatively other can be ca scalar bytes object.</p>
+<p>或者其他几何体可为标量字节对象。</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s2</span><span class="o">.</span><span class="n">intersects</span><span class="p">(</span><span class="n">s1</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 <span class="go">0    True</span>
 <span class="go">1    True</span>
@@ -240,7 +239,7 @@ Can be scalar WKB formed bytes object, or a GeoSeries.</p>
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 6月 03, 2020.
+        最后更新于 6月 04, 2020.
       </span>
 
     </p>

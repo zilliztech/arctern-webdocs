@@ -42,7 +42,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
     <link rel="index" title="索引" href="../../../genindex.html" />
     <link rel="search" title="搜索" href="../../../search.html" />
     <link rel="next" title="arctern.GeoSeries.curve_to_line" href="arctern.GeoSeries.curve_to_line.html" />
-    <link rel="prev" title="arctern.GeoSeries.set_crs" href="arctern.GeoSeries.set_crs.html" /> 
+    <link rel="prev" title="arctern.GeoSeries.crs" href="arctern.GeoSeries.crs.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -100,6 +100,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
 <li class="toctree-l4"><a class="reference internal" href="arctern.GeoSeries.intersection.html">arctern.GeoSeries.intersection</a></li>
 <li class="toctree-l4"><a class="reference internal" href="arctern.GeoSeries.make_valid.html">arctern.GeoSeries.make_valid</a></li>
 <li class="toctree-l4"><a class="reference internal" href="arctern.GeoSeries.set_crs.html">arctern.GeoSeries.set_crs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="arctern.GeoSeries.crs.html">arctern.GeoSeries.crs</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">arctern.GeoSeries.to_crs</a></li>
 <li class="toctree-l4"><a class="reference internal" href="arctern.GeoSeries.curve_to_line.html">arctern.GeoSeries.curve_to_line</a></li>
 </ul>
@@ -185,20 +186,18 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
 <dl class="py method">
 <dt id="arctern.GeoSeries.to_crs">
 <code class="sig-prename descclassname">GeoSeries.</code><code class="sig-name descname">to_crs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">crs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/arctern/geoseries/geoseries.html#GeoSeries.to_crs"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#arctern.GeoSeries.to_crs" title="永久链接至目标">¶</a></dt>
-<dd><p>Transform each geometry to a different coordinate reference system.
-The <code class="docutils literal notranslate"><span class="pre">crs</span></code> attribute on the current GeoSeries must be set.</p>
+<dd><p>转换几何体的坐标参考系，必须设置当前的 GeoSeries 的 <code class="docutils literal notranslate"><span class="pre">crs</span></code> 属性。</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
-<dd class="field-odd"><p><strong>crs</strong> (<em>string</em>) – Coordinate Reference System of the geometry objects.
-Must be SRID formed, e.g. “EPSG:4326”</p>
+<dd class="field-odd"><p><strong>crs</strong> (<em>string</em>) – 几何体的坐标参考系必须是 SRID 格式的，例如 “EPSG:4326”。</p>
 </dd>
 <dt class="field-even">返回类型</dt>
 <dd class="field-even"><p><a class="reference internal" href="arctern.GeoSeries.html#arctern.GeoSeries" title="arctern.GeoSeries">GeoSeries</a></p>
 </dd>
 <dt class="field-odd">返回</dt>
-<dd class="field-odd"><p>Geometries with transformed coordinate reference system.</p>
+<dd class="field-odd"><p>具有转换的坐标参考系的几何体。</p>
 </dd>
-<dt class="field-even">Example</dt>
+<dt class="field-even">例子</dt>
 <dd class="field-even"><p></p></dd>
 </dl>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">GeoSeries</span>
@@ -226,7 +225,7 @@ Must be SRID formed, e.g. “EPSG:4326”</p>
         <a href="arctern.GeoSeries.curve_to_line.html" class="btn btn-neutral float-right" title="arctern.GeoSeries.curve_to_line" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="arctern.GeoSeries.set_crs.html" class="btn btn-neutral float-left" title="arctern.GeoSeries.set_crs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="arctern.GeoSeries.crs.html" class="btn btn-neutral float-left" title="arctern.GeoSeries.crs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -237,7 +236,7 @@ Must be SRID formed, e.g. “EPSG:4326”</p>
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 6月 03, 2020.
+        最后更新于 6月 04, 2020.
       </span>
 
     </p>

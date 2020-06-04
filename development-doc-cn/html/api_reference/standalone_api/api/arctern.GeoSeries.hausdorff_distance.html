@@ -41,7 +41,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
   <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
     <link rel="index" title="索引" href="../../../genindex.html" />
     <link rel="search" title="搜索" href="../../../search.html" />
-    <link rel="next" title="arctern.GeoSeries.union_aggr" href="arctern.GeoSeries.union_aggr.html" />
+    <link rel="next" title="arctern.GeoSeries.envelope_aggr" href="arctern.GeoSeries.envelope_aggr.html" />
     <link rel="prev" title="arctern.GeoSeries.distance" href="arctern.GeoSeries.distance.html" /> 
 </head>
 
@@ -181,20 +181,20 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
 <dl class="py method">
 <dt id="arctern.GeoSeries.hausdorff_distance">
 <code class="sig-prename descclassname">GeoSeries.</code><code class="sig-name descname">hausdorff_distance</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/arctern/geoseries/geoseries.html#GeoSeries.hausdorff_distance"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#arctern.GeoSeries.hausdorff_distance" title="永久链接至目标">¶</a></dt>
-<dd><p>Returns the Hausdorff distance between each geometry and other.</p>
-<p>This is a measure of how similar or dissimilar 2 geometries are.</p>
+<dd><p>返回每个几何体与其他几何体之间的 Hausdorff 距离。</p>
+<p>此距离用于度量两个几何体之间的相似度。</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
 <dd class="field-odd"><p><strong>other</strong> (<em>scalar bytes object geometry</em><em> or </em><em>GeoSeries
-Can be scalar WKB formed bytes object</em><em>, or </em><em>a GeoSeries.</em>) – The geometries to calculate the hausdorff distance to each geometry.</p>
+Can be scalar WKB formed bytes object</em><em>, or </em><em>a GeoSeries.</em>) – 用于计算每两个几何体之间的 Hausdorff 距离的几何体。</p>
 </dd>
 <dt class="field-even">返回类型</dt>
 <dd class="field-even"><p>Series(dtype: float64)</p>
 </dd>
 </dl>
-<p>:return : A Series contains the hausdorff distance between each geometry and other.</p>
+<p>Series 包含每两个几何体之间的 Hausdorff 距离。</p>
 <dl class="field-list simple">
-<dt class="field-odd">Example</dt>
+<dt class="field-odd">例子</dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">GeoSeries</span>
@@ -218,7 +218,7 @@ Can be scalar WKB formed bytes object</em><em>, or </em><em>a GeoSeries.</em>) �
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="arctern.GeoSeries.union_aggr.html" class="btn btn-neutral float-right" title="arctern.GeoSeries.union_aggr" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="arctern.GeoSeries.envelope_aggr.html" class="btn btn-neutral float-right" title="arctern.GeoSeries.envelope_aggr" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="arctern.GeoSeries.distance.html" class="btn btn-neutral float-left" title="arctern.GeoSeries.distance" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -232,7 +232,7 @@ Can be scalar WKB formed bytes object</em><em>, or </em><em>a GeoSeries.</em>) �
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 6月 03, 2020.
+        最后更新于 6月 04, 2020.
       </span>
 
     </p>

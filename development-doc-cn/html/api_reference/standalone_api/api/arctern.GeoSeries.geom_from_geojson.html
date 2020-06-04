@@ -184,21 +184,21 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
 <dl class="py method">
 <dt id="arctern.GeoSeries.geom_from_geojson">
 <em class="property">classmethod </em><code class="sig-prename descclassname">GeoSeries.</code><code class="sig-name descname">geom_from_geojson</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">json</span></em>, <em class="sig-param"><span class="n">crs</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/arctern/geoseries/geoseries.html#GeoSeries.geom_from_geojson"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#arctern.GeoSeries.geom_from_geojson" title="永久链接至目标">¶</a></dt>
-<dd><p>Construct geometry from the GeoJSON representation string.</p>
+<dd><p>根据 GeoJson 字符串构造几何体。</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>json</strong> (<em>Series</em><em>(</em><em>dtype: object</em><em>)</em>) – Geometries in json format.</p></li>
-<li><p><strong>crs</strong> (<em>string</em><em>, </em><em>optional</em>) – Must be SRID format string.</p></li>
+<li><p><strong>json</strong> (<em>Series</em><em>(</em><em>dtype: object</em><em>)</em>) – Json 格式的几何体。</p></li>
+<li><p><strong>crs</strong> (<em>string</em><em>, </em><em>optional</em>) – 必须为 SRID 格式字符串。</p></li>
 </ul>
 </dd>
 <dt class="field-even">返回类型</dt>
 <dd class="field-even"><p><a class="reference internal" href="arctern.GeoSeries.html#arctern.GeoSeries" title="arctern.GeoSeries">GeoSeries</a></p>
 </dd>
 <dt class="field-odd">返回</dt>
-<dd class="field-odd"><p>A GeoSeries contains geometries.</p>
+<dd class="field-odd"><p>GeoSeries 包含 几何体。</p>
 </dd>
-<dt class="field-even">Example</dt>
+<dt class="field-even">例子</dt>
 <dd class="field-even"><p></p></dd>
 </dl>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pandas</span> <span class="kn">import</span> <span class="n">Series</span>
@@ -235,7 +235,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 6月 03, 2020.
+        最后更新于 6月 04, 2020.
       </span>
 
     </p>

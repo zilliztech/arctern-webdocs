@@ -181,23 +181,19 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
 <dl class="py method">
 <dt id="arctern.GeoSeries.equals">
 <code class="sig-prename descclassname">GeoSeries.</code><code class="sig-name descname">equals</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/arctern/geoseries/geoseries.html#GeoSeries.equals"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#arctern.GeoSeries.equals" title="永久链接至目标">¶</a></dt>
-<dd><p>Test whether two objects contain the same elements.</p>
-<p>This function allows two GeoSeries to be compared against each other to
-see if they have the same shape and geometries (same wkb bytes).
-NaNs in the same location are considered equal. The column headers do not
-need to have the same type, but the elements within the columns must
-be the same dtype.</p>
+<dd><p>测试两个对象是否包含相同元素。</p>
+<p>此方法用于比较两个 GeoSeries 是否具有相同的形状和几何体（相同的 WKB 字节）。在相同位置的 NaNs 视为相等。列标题不必是相同类型，但列中的元素必须是相同类型。</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
-<dd class="field-odd"><p><strong>other</strong> (<a class="reference internal" href="arctern.GeoSeries.html#arctern.GeoSeries" title="arctern.GeoSeries"><em>GeoSeries</em></a>) – The other GeoSeries to be compared with the first</p>
+<dd class="field-odd"><p><strong>other</strong> (<a class="reference internal" href="arctern.GeoSeries.html#arctern.GeoSeries" title="arctern.GeoSeries"><em>GeoSeries</em></a>) – 其他 GeoSeries 与第一个相比较。</p>
 </dd>
 <dt class="field-even">返回类型</dt>
 <dd class="field-even"><p>bool</p>
 </dd>
 <dt class="field-odd">返回</dt>
-<dd class="field-odd"><p>True if all geometries are the same in both objects, False otherwise.</p>
+<dd class="field-odd"><p>如果在两个对象中的所有几何体 “等价”, 返回 true, 反之返回 false。</p>
 </dd>
-<dt class="field-even">Example</dt>
+<dt class="field-even">例子</dt>
 <dd class="field-even"><p></p></dd>
 </dl>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">GeoSeries</span>
@@ -231,7 +227,7 @@ be the same dtype.</p>
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 6月 03, 2020.
+        最后更新于 6月 04, 2020.
       </span>
 
     </p>
