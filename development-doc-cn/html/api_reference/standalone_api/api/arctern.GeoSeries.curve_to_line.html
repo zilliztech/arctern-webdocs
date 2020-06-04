@@ -100,6 +100,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
 <li class="toctree-l4"><a class="reference internal" href="arctern.GeoSeries.intersection.html">arctern.GeoSeries.intersection</a></li>
 <li class="toctree-l4"><a class="reference internal" href="arctern.GeoSeries.make_valid.html">arctern.GeoSeries.make_valid</a></li>
 <li class="toctree-l4"><a class="reference internal" href="arctern.GeoSeries.set_crs.html">arctern.GeoSeries.set_crs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="arctern.GeoSeries.crs.html">arctern.GeoSeries.crs</a></li>
 <li class="toctree-l4"><a class="reference internal" href="arctern.GeoSeries.to_crs.html">arctern.GeoSeries.to_crs</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">arctern.GeoSeries.curve_to_line</a></li>
 </ul>
@@ -185,18 +186,15 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
 <dl class="py method">
 <dt id="arctern.GeoSeries.curve_to_line">
 <code class="sig-prename descclassname">GeoSeries.</code><code class="sig-name descname">curve_to_line</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/arctern/geoseries/geoseries.html#GeoSeries.curve_to_line"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#arctern.GeoSeries.curve_to_line" title="永久链接至目标">¶</a></dt>
-<dd><p>Convert curves in each geometry to approximate linear representation,
-e.g., CIRCULAR STRING to regular LINESTRING, CURVEPOLYGON to POLYGON,
-and MULTISURFACE to MULTIPOLYGON. Useful for outputting to devices
-that can’t support CIRCULARSTRING geometry types.</p>
+<dd><p>将几何图形中的曲线转换为近似的线性表示形式，例如，将 CIRCULAR STRING 转换为普通的 LINESTRING，将 CURVEPOLYGON 转换为 POLYGON，将 MULTISURFACE 转换为 MULTIPOLYGON。</p>
 <dl class="field-list simple">
 <dt class="field-odd">返回类型</dt>
 <dd class="field-odd"><p><a class="reference internal" href="arctern.GeoSeries.html#arctern.GeoSeries" title="arctern.GeoSeries">GeoSeries</a></p>
 </dd>
 <dt class="field-even">返回</dt>
-<dd class="field-even"><p>Converted geometries</p>
+<dd class="field-even"><p>转换后的几何体</p>
 </dd>
-<dt class="field-odd">Example</dt>
+<dt class="field-odd">例子</dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">GeoSeries</span>
@@ -231,7 +229,7 @@ that can’t support CIRCULARSTRING geometry types.</p>
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 6月 03, 2020.
+        最后更新于 6月 04, 2020.
       </span>
 
     </p>

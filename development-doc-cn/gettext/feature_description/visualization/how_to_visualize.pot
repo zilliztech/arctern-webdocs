@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-03 15:27+0800\n"
+"POT-Creation-Date: 2020-06-04 15:04+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -49,7 +49,7 @@ msgid "在不同数据量下，Arctern （CPU 版本和 GPU 版本）和 Kepler.
 msgstr ""
 
 #: ../../source/feature_description/visualization/how_to_visualize.md:80
-msgid "上表数据的时间单位：秒"
+msgid "注意： 上表数据的时间单位：秒"
 msgstr ""
 
 #: ../../source/feature_description/visualization/how_to_visualize.md:82

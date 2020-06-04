@@ -40,9 +40,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
     <link rel="index" title="索引" href="../../../genindex.html" />
-    <link rel="search" title="搜索" href="../../../search.html" />
-    <link rel="next" title="arctern.GeoSeries.centroid" href="arctern.GeoSeries.centroid.html" />
-    <link rel="prev" title="arctern.GeoSeries.area" href="arctern.GeoSeries.area.html" /> 
+    <link rel="search" title="搜索" href="../../../search.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -86,34 +84,10 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
               
             
             
-              <ul class="current">
+              <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../quick_start/quick_start.html">快速开始</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../feature_description/feature_description.html">功能说明</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../../api_reference.html">API 参考</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="../geoseries.html">GeoSeries</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="../geoseries.html#constructor">Constructor</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="../geoseries.html#attributes">Attributes</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="arctern.GeoSeries.is_valid.html">arctern.GeoSeries.is_valid</a></li>
-<li class="toctree-l4"><a class="reference internal" href="arctern.GeoSeries.length.html">arctern.GeoSeries.length</a></li>
-<li class="toctree-l4"><a class="reference internal" href="arctern.GeoSeries.is_simple.html">arctern.GeoSeries.is_simple</a></li>
-<li class="toctree-l4"><a class="reference internal" href="arctern.GeoSeries.area.html">arctern.GeoSeries.area</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">arctern.GeoSeries.geometry_type</a></li>
-<li class="toctree-l4"><a class="reference internal" href="arctern.GeoSeries.centroid.html">arctern.GeoSeries.centroid</a></li>
-<li class="toctree-l4"><a class="reference internal" href="arctern.GeoSeries.convex_hull.html">arctern.GeoSeries.convex_hull</a></li>
-<li class="toctree-l4"><a class="reference internal" href="arctern.GeoSeries.npoints.html">arctern.GeoSeries.npoints</a></li>
-<li class="toctree-l4"><a class="reference internal" href="arctern.GeoSeries.envelope.html">arctern.GeoSeries.envelope</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../geoseries.html#constructing-geometry">Constructing Geometry</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../geoseries.html#processing-geometry">Processing Geometry</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../geoseries.html#spatial-relationship">Spatial Relationship</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../geoseries.html#measurement">Measurement</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../geoseries.html#aggregation">Aggregation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../geoseries.html#pandas-methods">Pandas Methods</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../../api_reference.html">API 参考</a></li>
 </ul>
 
             
@@ -159,10 +133,6 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
     
       <li><a href="../../../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="../../api_reference.html">API 参考</a> &raquo;</li>
-        
-          <li><a href="../geoseries.html">GeoSeries</a> &raquo;</li>
-        
       <li>arctern.GeoSeries.geometry_type</li>
     
     
@@ -187,15 +157,15 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
 <dl class="py method">
 <dt id="arctern.GeoSeries.geometry_type">
 <em class="property">property </em><code class="sig-prename descclassname">GeoSeries.</code><code class="sig-name descname">geometry_type</code><a class="headerlink" href="#arctern.GeoSeries.geometry_type" title="永久链接至目标">¶</a></dt>
-<dd><p>For each geometry in geometries, return a string that indicates is type.</p>
+<dd><p>对输入的每一个几何体，返回表示其类型的字符串。</p>
 <dl class="field-list simple">
 <dt class="field-odd">返回类型</dt>
 <dd class="field-odd"><p>Series(dtype: object)</p>
 </dd>
 <dt class="field-even">返回</dt>
-<dd class="field-even"><p>The type of geometry, e.g. “ST_LINESTRING”, “ST_POLYGON”, “ST_POINT”, “ST_MULTIPOINT”</p>
+<dd class="field-even"><p>几何体的类型，例如 ST_LINESTRING，ST_POLYGON，ST_POINT，ST_MULTIPOINT。</p>
 </dd>
-<dt class="field-odd">Examples</dt>
+<dt class="field-odd">例子</dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">GeoSeries</span>
@@ -216,15 +186,6 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
           </div>
           <footer>
   
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="arctern.GeoSeries.centroid.html" class="btn btn-neutral float-right" title="arctern.GeoSeries.centroid" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="arctern.GeoSeries.area.html" class="btn btn-neutral float-left" title="arctern.GeoSeries.area" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
-  
 
   <hr/>
 
@@ -232,7 +193,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 6月 03, 2020.
+        最后更新于 6月 04, 2020.
       </span>
 
     </p>
