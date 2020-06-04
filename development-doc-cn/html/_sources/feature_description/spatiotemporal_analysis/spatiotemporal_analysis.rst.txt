@@ -10,4 +10,5 @@
    indexing_selecting_data
    crs_and_transform
    convert_from_and_to_geopandas_geoseries
+   geometric_manipulation
    aggregation
