@@ -1,0 +1,6 @@
+arctern.GeoSeries.union\_aggr
+=============================
+
+.. currentmodule:: arctern
+
+.. automethod:: GeoSeries.union_aggr
