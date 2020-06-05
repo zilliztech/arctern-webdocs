@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>几何体的基本操纵 &mdash; Arctern gis version : 0.1.1
+  <title>几何体的基本操作 &mdash; Arctern gis version : 0.1.1
 build type : Release/CPU 
 build time : 2020-05-11 08:10.53
 commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
@@ -41,8 +41,8 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
   <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="搜索" href="../../search.html" />
-    <link rel="next" title="聚合" href="aggregation.html" />
-    <link rel="prev" title="与 GeoPandas GeoSeries 互相转换" href="convert_from_and_to_geopandas_geoseries.html" /> 
+    <link rel="next" title="与 GeoPandas GeoSeries 互相转换" href="convert_from_and_to_geopandas_geoseries.html" />
+    <link rel="prev" title="文件读写" href="read_and_write_file.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -90,11 +90,9 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
 <li class="toctree-l1"><a class="reference internal" href="../../quick_start/quick_start.html">快速开始</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../feature_description.html">功能说明</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="spatiotemporal_analysis.html">时空数据分析</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="data_structure.html">数据结构</a></li>
 <li class="toctree-l3"><a class="reference internal" href="read_and_write_file.html">文件读写</a></li>
-<li class="toctree-l3"><a class="reference internal" href="indexing_selecting_data.html">索引和选择数据</a></li>
-<li class="toctree-l3"><a class="reference internal" href="crs_and_transform.html">Arctern 坐标参考系</a></li>
-<li class="toctree-l3"><a class="reference internal" href="convert_from_and_to_geopandas_geoseries.html">与 GeoPandas GeoSeries 互相转换</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">几何体的基本操纵</a><ul>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">几何体的基本操作</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#geoseries-length">GeoSeries.length</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#geoseries-area">GeoSeries.area</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#geoseries-centroid">GeoSeries.centroid</a></li>
@@ -123,8 +121,13 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
 <li class="toctree-l4"><a class="reference internal" href="#geoseries-point-x-y">GeoSeries.point(x, y)</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="convert_from_and_to_geopandas_geoseries.html">与 GeoPandas GeoSeries 互相转换</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spatial_relationship_calculation.html">空间关系运算</a></li>
+<li class="toctree-l3"><a class="reference internal" href="map_match.html">地图匹配</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plot_geometry.html">绘图方法</a></li>
+<li class="toctree-l3"><a class="reference internal" href="crs_and_transform.html">坐标参考系</a></li>
 <li class="toctree-l3"><a class="reference internal" href="aggregation.html">聚合</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nearest_road.html">地图匹配</a></li>
+<li class="toctree-l3"><a class="reference internal" href="indexing_selecting_data.html">索引和选择数据</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../visualization/visualization.html">可视化</a></li>
@@ -180,7 +183,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
         
           <li><a href="spatiotemporal_analysis.html">时空数据分析</a> &raquo;</li>
         
-      <li>几何体的基本操纵</li>
+      <li>几何体的基本操作</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -200,13 +203,13 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
            <div itemprop="articleBody">
             
   <div class="section" id="id1">
-<h1>几何体的基本操纵<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<h1>几何体的基本操作<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
 <p>Arctern 实现了多个符合 OGC 标准的 GIS 处理函数。它们被封装成 GeoSeries 类的属性和方法。其中的方法又分为一元操作方法和二元操作方法。</p>
 <div class="section" id="geoseries-length">
 <h2>GeoSeries.length<a class="headerlink" href="#geoseries-length" title="永久链接至标题">¶</a></h2>
 <ul class="simple">
 <li><p><strong>功能：</strong> 计算 GeoSeries 对象中每个几何体的长度。如果几何体不是  LineString 和 MultiLineString 类型的几何体， 则它的长度为 0 。</p></li>
-<li><p><strong>返回：</strong> 浮点型的 pandas.Series。</p></li>
+<li><p><strong>返回：</strong> 浮点型的 pandas.Series</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">GeoSeries</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">GeoSeries</span><span class="p">([</span><span class="s2">&quot;POINT(1 1)&quot;</span><span class="p">,</span> <span class="s2">&quot;LINESTRING (0 0, 0 2)&quot;</span><span class="p">,</span> <span class="s2">&quot;POLYGON ((0 0,0 4,4 4,0 0))&quot;</span><span class="p">])</span>
@@ -222,7 +225,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
 <h2>GeoSeries.area<a class="headerlink" href="#geoseries-area" title="永久链接至标题">¶</a></h2>
 <ul class="simple">
 <li><p><strong>功能：</strong> 计算 GeoSeries 对象中每个几何体的面积。</p></li>
-<li><p><strong>返回：</strong> 浮点型的 pandas.Series。</p></li>
+<li><p><strong>返回：</strong> 浮点型的 pandas.Series</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">GeoSeries</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">GeoSeries</span><span class="p">([</span><span class="s2">&quot;POINT(1 1)&quot;</span><span class="p">,</span> <span class="s2">&quot;POLYGON ((2 1, 3 3, 1 3, 2 1))&quot;</span><span class="p">])</span>
@@ -252,11 +255,13 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
 </div>
 <div class="section" id="geoseries-is-valid">
 <h2>GeoSeries.is_valid<a class="headerlink" href="#geoseries-is-valid" title="永久链接至标题">¶</a></h2>
-<ul>
+<ul class="simple">
 <li><p><strong>功能：</strong> 判断 GeoSeries 对象中的每个几何体是否有效。</p></li>
-<li><p><strong>返回：</strong> 布尔型的 pandas.Series。</p>
-<p>- <strong>True：</strong> 几何体有效。</p>
-<p>- <strong>False：</strong> 几何体无效。</p>
+<li><p><strong>返回：</strong> 布尔型的 pandas.Series</p>
+<ul>
+<li><p><strong>True：</strong> 几何体有效。</p></li>
+<li><p><strong>False：</strong> 几何体无效。</p></li>
+</ul>
 </li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">GeoSeries</span>
@@ -270,11 +275,13 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
 </div>
 <div class="section" id="geoseries-is-simple">
 <h2>GeoSeries.is_simple<a class="headerlink" href="#geoseries-is-simple" title="永久链接至标题">¶</a></h2>
-<ul>
+<ul class="simple">
 <li><p><strong>功能：</strong> 判断 GeoSeries 对象中的每个几何体是否简单。这里的“简单”表示某个几何图形没有异常的几何图形点，例如自相交或相切。</p></li>
-<li><p><strong>返回：</strong> 布尔型的 pandas.Series。</p>
-<p>- <strong>True：</strong> 几何体是简单的。</p>
-<p>- <strong>False：</strong> 几何体不是简单的。</p>
+<li><p><strong>返回：</strong> 布尔型的 pandas.Series</p>
+<ul>
+<li><p><strong>True：</strong> 几何体是简单的。</p></li>
+<li><p><strong>False：</strong> 几何体不是简单的。</p></li>
+</ul>
 </li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">GeoSeries</span>
@@ -291,7 +298,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
 <h2>GeoSeries.convex_hull<a class="headerlink" href="#geoseries-convex-hull" title="永久链接至标题">¶</a></h2>
 <ul class="simple">
 <li><p><strong>功能：</strong> 对于 GeoSeries 对象中的每个几何体，计算包围它的最小的凸几何体。</p></li>
-<li><p><strong>返回：</strong> GeoSeries。</p></li>
+<li><p><strong>返回：</strong> GeoSeries</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">GeoSeries</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">GeoSeries</span><span class="p">([</span><span class="s2">&quot;POINT(1 1)&quot;</span><span class="p">,</span> <span class="s2">&quot;POLYGON ((2 1, 5 1, 6 5, 4 2, 1 5, 2 1))&quot;</span><span class="p">])</span>
@@ -435,12 +442,14 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
 </div>
 <div class="section" id="geoseries-intersects-other">
 <h2>GeoSeries.intersects(other)<a class="headerlink" href="#geoseries-intersects-other" title="永久链接至标题">¶</a></h2>
-<ul>
+<ul class="simple">
 <li><p><strong>功能：</strong> 对于 GeoSeries 对象中的每个几何体，判断它是否与 <code class="docutils literal notranslate"><span class="pre">other</span></code> 对象中相同位置的几何体存在交集。</p></li>
 <li><p><strong>参数：</strong> <code class="docutils literal notranslate"><span class="pre">other</span></code> 为 GeoSeries 或者 WKB 类型的对象。</p></li>
 <li><p><strong>返回：</strong> 布尔型的 pandas.Series</p>
-<p>- <strong>True：</strong> 两个几何体存在交集。</p>
-<p>- <strong>False：</strong> 两个几何体不存在交集。</p>
+<ul>
+<li><p><strong>True：</strong> 两个几何体存在交集。</p></li>
+<li><p><strong>False：</strong> 两个几何体不存在交集。</p></li>
+</ul>
 </li>
 </ul>
 <div class="section" id="id4">
@@ -485,12 +494,14 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
 </div>
 <div class="section" id="geoseries-within-other">
 <h2>GeoSeries.within(other)<a class="headerlink" href="#geoseries-within-other" title="永久链接至标题">¶</a></h2>
-<ul>
+<ul class="simple">
 <li><p><strong>功能：</strong> 对于 GeoSeries 对象中的每个几何体，判断它是否在 <code class="docutils literal notranslate"><span class="pre">other</span></code> 对象中相同位置的几何体的内部。</p></li>
 <li><p><strong>参数：</strong> <code class="docutils literal notranslate"><span class="pre">other</span></code> 为 GeoSeries 或者 WKB 类型的对象。</p></li>
 <li><p><strong>返回：</strong> 布尔型的 pandas.Series</p>
-<p>- <strong>True：</strong> 两个几何体存在包含关系。</p>
-<p>- <strong>False：</strong> 两个几何体存在包含关系。</p>
+<ul>
+<li><p><strong>True：</strong> 两个几何体存在包含关系。</p></li>
+<li><p><strong>False：</strong> 两个几何体存在包含关系。</p></li>
+</ul>
 </li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s1</span> <span class="o">=</span> <span class="n">GeoSeries</span><span class="p">([</span><span class="s2">&quot;POLYGON((1 1, 4 1, 4 4, 1 4, 1 1))&quot;</span><span class="p">,</span> <span class="s2">&quot;POLYGON((5 1, 7 1, 7 3, 5 3, 5 1))&quot;</span><span class="p">,</span> <span class="s2">&quot;POLYGON((8 1, 9 1, 9 2, 8 2, 8 1))&quot;</span><span class="p">])</span>
@@ -506,12 +517,14 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
 </div>
 <div class="section" id="geoseries-contains-other">
 <h2>GeoSeries.contains(other)<a class="headerlink" href="#geoseries-contains-other" title="永久链接至标题">¶</a></h2>
-<ul>
+<ul class="simple">
 <li><p><strong>功能：</strong> 对于 GeoSeries 对象中的每个几何体，判断它是否包含 <code class="docutils literal notranslate"><span class="pre">other</span></code> 对象中相同位置的几何体。</p></li>
 <li><p><strong>参数：</strong> <code class="docutils literal notranslate"><span class="pre">other</span></code> 为 GeoSeries 或者 WKB 类型的对象。</p></li>
 <li><p><strong>返回：</strong> 布尔型的 pandas.Series</p>
-<p>- <strong>True：</strong> 两个几何体存在包含关系。</p>
-<p>- <strong>False：</strong> 两个几何体存在包含关系。</p>
+<ul>
+<li><p><strong>True：</strong> 两个几何体存在包含关系。</p></li>
+<li><p><strong>False：</strong> 两个几何体存在包含关系。</p></li>
+</ul>
 </li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">GeoSeries</span>
@@ -528,12 +541,14 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
 </div>
 <div class="section" id="geoseries-crosses-other">
 <h2>GeoSeries.crosses(other)<a class="headerlink" href="#geoseries-crosses-other" title="永久链接至标题">¶</a></h2>
-<ul>
+<ul class="simple">
 <li><p><strong>功能：</strong> 对于 GeoSeries 对象中的每个几何体，判断它是否与 <code class="docutils literal notranslate"><span class="pre">other</span></code> 对象中相同位置的几何体相交。</p></li>
 <li><p><strong>参数：</strong> <code class="docutils literal notranslate"><span class="pre">other</span></code> 为 GeoSeries 或者 WKB 类型的对象。</p></li>
 <li><p><strong>返回：</strong> 布尔型的 pandas.Series</p>
-<p>- <strong>True：</strong> 两个几何体存在相交关系。</p>
-<p>- <strong>False：</strong> 两个几何体存在相交关系。</p>
+<ul>
+<li><p><strong>True：</strong> 两个几何体存在相交关系。</p></li>
+<li><p><strong>False：</strong> 两个几何体存在相交关系。</p></li>
+</ul>
 </li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">GeoSeries</span>
@@ -549,12 +564,14 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
 </div>
 <div class="section" id="geoseries-geom-equals-other">
 <h2>GeoSeries.geom_equals(other)<a class="headerlink" href="#geoseries-geom-equals-other" title="永久链接至标题">¶</a></h2>
-<ul>
+<ul class="simple">
 <li><p><strong>功能：</strong> 对于 GeoSeries 对象中的每个几何体，判断它是否与 <code class="docutils literal notranslate"><span class="pre">other</span></code> 对象中相同位置的几何体等价。“等价”表示两个几何体的几何结构相同。</p></li>
 <li><p><strong>参数：</strong> <code class="docutils literal notranslate"><span class="pre">other</span></code> 为 GeoSeries 或者 WKB 类型的对象。</p></li>
 <li><p><strong>返回：</strong> 布尔型的 pandas.Series</p>
-<p>- <strong>True：</strong> 两个几何体等价。</p>
-<p>- <strong>False：</strong> 两个几何体不等价。</p>
+<ul>
+<li><p><strong>True：</strong> 两个几何体等价。</p></li>
+<li><p><strong>False：</strong> 两个几何体不等价。</p></li>
+</ul>
 </li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">GeoSeries</span>
@@ -569,12 +586,14 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
 </div>
 <div class="section" id="geoseries-touches-other">
 <h2>GeoSeries.touches(other)<a class="headerlink" href="#geoseries-touches-other" title="永久链接至标题">¶</a></h2>
-<ul>
+<ul class="simple">
 <li><p><strong>功能：</strong> 对于 GeoSeries 对象中的每个几何体，判断它是否与 <code class="docutils literal notranslate"><span class="pre">other</span></code> 对象中相同位置的几何体相邻。“相邻”表示两个几何体在边界上有共同的点。</p></li>
 <li><p><strong>参数：</strong> <code class="docutils literal notranslate"><span class="pre">other</span></code> 为 GeoSeries 或者 WKB 类型的对象。</p></li>
 <li><p><strong>返回：</strong> 布尔型的 pandas.Series</p>
-<p>- <strong>True：</strong> 两个几何体等价。</p>
-<p>- <strong>False：</strong> 两个几何体不等价。</p>
+<ul>
+<li><p><strong>True：</strong> 两个几何体等价。</p></li>
+<li><p><strong>False：</strong> 两个几何体不等价。</p></li>
+</ul>
 </li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">GeoSeries</span>
@@ -589,12 +608,14 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
 </div>
 <div class="section" id="geoseries-overlaps-other">
 <h2>GeoSeries.overlaps(other)<a class="headerlink" href="#geoseries-overlaps-other" title="永久链接至标题">¶</a></h2>
-<ul>
+<ul class="simple">
 <li><p><strong>功能：</strong> 对于 GeoSeries 对象中的每个几何体，判断它是否与 <code class="docutils literal notranslate"><span class="pre">other</span></code> 对象中相同位置的几何体重叠。“重叠”表示两个几何体相交且不互相包含。</p></li>
 <li><p><strong>参数：</strong> <code class="docutils literal notranslate"><span class="pre">other</span></code> 为 GeoSeries 或者 WKB 类型的对象。</p></li>
 <li><p><strong>返回：</strong> 布尔型的 pandas.Series</p>
-<p>- <strong>True：</strong> 两个几何体等价。</p>
-<p>- <strong>False：</strong> 两个几何体不等价。</p>
+<ul>
+<li><p><strong>True：</strong> 两个几何体等价。</p></li>
+<li><p><strong>False：</strong> 两个几何体不等价。</p></li>
+</ul>
 </li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">GeoSeries</span>
@@ -678,14 +699,16 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
 </div>
 <div class="section" id="geoseries-polygon-from-envelope-min-x-min-y-max-x-max-y-crs-none">
 <h2>GeoSeries.polygon_from_envelope(min_x, min_y, max_x, max_y, crs=None)<a class="headerlink" href="#geoseries-polygon-from-envelope-min-x-min-y-max-x-max-y-crs-none" title="永久链接至标题">¶</a></h2>
-<ul>
+<ul class="simple">
 <li><p><strong>功能：</strong> 对于 GeoSeries 对象中的每个几何体，根据给定的参数计算它的最小矩形边界范围，且该矩形的边与坐标轴平行。</p></li>
 <li><p><strong>参数：</strong></p>
-<p>- <code class="docutils literal notranslate"><span class="pre">min_x</span></code> 为浮点型的 pandas.Series，表示矩形横坐标的最小值。</p>
-<p>- <code class="docutils literal notranslate"><span class="pre">min_y</span></code> 为浮点型的 pandas.Series，表示矩形纵坐标的最小值。</p>
-<p>- <code class="docutils literal notranslate"><span class="pre">max_x</span></code> 为浮点型的 pandas.Series，表示矩形横坐标的最大值。</p>
-<p>- <code class="docutils literal notranslate"><span class="pre">max_y</span></code> 为浮点型的 pandas.Series，表示矩形纵坐标的最大值。</p>
-<p>- <code class="docutils literal notranslate"><span class="pre">crs</span></code> （可选参数）为字符串，比如“ESPG:4326”、“ESPG:3857”。</p>
+<ul>
+<li><p><strong>min_x：</strong> 浮点型的 pandas.Series，表示矩形横坐标的最小值。</p></li>
+<li><p><strong>min_y：</strong> 浮点型的 pandas.Series，表示矩形纵坐标的最小值。</p></li>
+<li><p><strong>max_x：</strong> 浮点型的 pandas.Series，表示矩形横坐标的最大值。</p></li>
+<li><p><strong>max_y：</strong> 浮点型的 pandas.Series，表示矩形纵坐标的最大值。</p></li>
+<li><p><strong>crs：</strong> （可选参数）字符串，比如“ESPG:4326”、“ESPG:3857”。</p></li>
+</ul>
 </li>
 <li><p><strong>返回：</strong> GeoSeries</p></li>
 </ul>
@@ -705,11 +728,13 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
 </div>
 <div class="section" id="geoseries-point-x-y">
 <h2>GeoSeries.point(x, y)<a class="headerlink" href="#geoseries-point-x-y" title="永久链接至标题">¶</a></h2>
-<ul>
+<ul class="simple">
 <li><p><strong>功能：</strong> 根据横坐标集合 <code class="docutils literal notranslate"><span class="pre">x</span></code> 和纵坐标集合 <code class="docutils literal notranslate"><span class="pre">y</span></code> 构造一组 POINT 对象。</p></li>
 <li><p><strong>参数：</strong></p>
-<p>- <code class="docutils literal notranslate"><span class="pre">x</span></code> 为浮点型的 pandas.Series，表示一组点的横坐标。</p>
-<p>- <code class="docutils literal notranslate"><span class="pre">y</span></code> 为浮点型的 pandas.Series，表示一组点的纵坐标。</p>
+<ul>
+<li><p><strong>x：</strong> 浮点型的 pandas.Series，表示一组点的横坐标。</p></li>
+<li><p><strong>y：</strong> 浮点型的 pandas.Series，表示一组点的纵坐标。</p></li>
+</ul>
 </li>
 <li><p><strong>返回：</strong> POINT</p></li>
 </ul>
@@ -735,10 +760,10 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="aggregation.html" class="btn btn-neutral float-right" title="聚合" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="convert_from_and_to_geopandas_geoseries.html" class="btn btn-neutral float-right" title="与 GeoPandas GeoSeries 互相转换" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="convert_from_and_to_geopandas_geoseries.html" class="btn btn-neutral float-left" title="与 GeoPandas GeoSeries 互相转换" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="read_and_write_file.html" class="btn btn-neutral float-left" title="文件读写" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -749,7 +774,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 6月 04, 2020.
+        最后更新于 6月 05, 2020.
       </span>
 
     </p>

@@ -41,8 +41,8 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
   <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="搜索" href="../../search.html" />
-    <link rel="next" title="索引和选择数据" href="indexing_selecting_data.html" />
-    <link rel="prev" title="时空数据分析" href="spatiotemporal_analysis.html" /> 
+    <link rel="next" title="几何体的基本操作" href="geometric_manipulation.html" />
+    <link rel="prev" title="数据结构" href="data_structure.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -90,17 +90,20 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
 <li class="toctree-l1"><a class="reference internal" href="../../quick_start/quick_start.html">快速开始</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../feature_description.html">功能说明</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="spatiotemporal_analysis.html">时空数据分析</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="data_structure.html">数据结构</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">文件读写</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id2">导入文件</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id3">文件导出</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="indexing_selecting_data.html">索引和选择数据</a></li>
-<li class="toctree-l3"><a class="reference internal" href="crs_and_transform.html">Arctern 坐标参考系</a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometric_manipulation.html">几何体的基本操作</a></li>
 <li class="toctree-l3"><a class="reference internal" href="convert_from_and_to_geopandas_geoseries.html">与 GeoPandas GeoSeries 互相转换</a></li>
-<li class="toctree-l3"><a class="reference internal" href="geometric_manipulation.html">几何体的基本操纵</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spatial_relationship_calculation.html">空间关系运算</a></li>
+<li class="toctree-l3"><a class="reference internal" href="map_match.html">地图匹配</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plot_geometry.html">绘图方法</a></li>
+<li class="toctree-l3"><a class="reference internal" href="crs_and_transform.html">坐标参考系</a></li>
 <li class="toctree-l3"><a class="reference internal" href="aggregation.html">聚合</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nearest_road.html">地图匹配</a></li>
+<li class="toctree-l3"><a class="reference internal" href="indexing_selecting_data.html">索引和选择数据</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../visualization/visualization.html">可视化</a></li>
@@ -182,28 +185,26 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
 <h2>导入文件<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
 <div class="section" id="wkt-wkb">
 <h3>WKT 和 WKB 格式<a class="headerlink" href="#wkt-wkb" title="永久链接至标题">¶</a></h3>
-<p>本例使用 <strong>wkt_geos.csv</strong> 文件演示如何从文件读取 WKT 和 WKB 数据。此文件主要定义了四个 WKT 格式的几何体对象，包括一个点（POINT）和三个多边形（POLYGON）。</p>
+<p>本例使用 <strong>wkt_geos.csv</strong> 文件演示如何从文件读取 WKT 和 WKB 数据。此文件主要定义了四个 WKT 格式的几何体对象，包括一个点（POINT）和三个多边形（POLYGON）。wkt_geos.csv 文件内容如下：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">geos</span>
+<span class="n">POINT</span> <span class="p">(</span><span class="mi">30</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">POLYGON</span> <span class="p">((</span><span class="mi">30</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">40</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">20</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">10</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">POLYGON</span> <span class="p">((</span><span class="mi">1</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">POLYGON</span> <span class="p">((</span><span class="mi">1</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span> <span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
 <p>首先，使用 pandas 的 <code class="docutils literal notranslate"><span class="pre">read_csv</span></code> 方法导入文件并构造 pandas.Series 对象 <code class="docutils literal notranslate"><span class="pre">data_wkt</span></code>：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">wkt_geos.csv 文件内容：</span>
-<span class="sd">geos</span>
-<span class="sd">POINT (30 10)</span>
-<span class="sd">POLYGON ((30 10, 40 40, 20 40, 10 20, 30 10))</span>
-<span class="sd">POLYGON ((1 2, 3 4, 5 6, 1 2))</span>
-<span class="sd">POLYGON ((1 1, 3 1, 3 3, 1 3, 1 1))</span>
-<span class="sd">&#39;&#39;&#39;</span>
-
-<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">arctern</span>
-<span class="o">&gt;&gt;&gt;</span> 
-<span class="o">&gt;&gt;&gt;</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;&lt;/path/to/wkt_geos.csv&gt;&quot;</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s1">&#39;|&#39;</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">data_wkt</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;geos&#39;</span><span class="p">]</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">data_wkt</span><span class="p">)</span>
-<span class="mi">0</span>                                    <span class="n">POINT</span> <span class="p">(</span><span class="mi">30</span> <span class="mi">10</span><span class="p">)</span>
-<span class="mi">1</span>    <span class="n">POLYGON</span> <span class="p">((</span><span class="mi">30</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">40</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">20</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">10</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span> <span class="mi">10</span><span class="p">))</span>
-<span class="mi">2</span>                   <span class="n">POLYGON</span> <span class="p">((</span><span class="mi">1</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span> <span class="mi">2</span><span class="p">))</span>
-<span class="mi">3</span>              <span class="n">POLYGON</span> <span class="p">((</span><span class="mi">1</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span> <span class="mi">1</span><span class="p">))</span>
-<span class="n">Name</span><span class="p">:</span> <span class="n">geos</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="nb">object</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">arctern</span>
+<span class="gp">&gt;&gt;&gt; </span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;&lt;/path/to/wkt_geos.csv&gt;&quot;</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s1">&#39;|&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data_wkt</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;geos&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">data_wkt</span><span class="p">)</span>
+<span class="go">0                                    POINT (30 10)</span>
+<span class="go">1    POLYGON ((30 10, 40 40, 20 40, 10 20, 30 10))</span>
+<span class="go">2                   POLYGON ((1 2, 3 4, 5 6, 1 2))</span>
+<span class="go">3              POLYGON ((1 1, 3 1, 3 3, 1 3, 1 1))</span>
+<span class="go">Name: geos, dtype: object</span>
 </pre></div>
 </div>
 <p>基于由 WKT 数据组成的 pandas.Series 对象 <code class="docutils literal notranslate"><span class="pre">data_wkt</span></code> 构造 arctern.GeoSeries 对象 <code class="docutils literal notranslate"><span class="pre">geo_wkt</span></code>：</p>
@@ -228,25 +229,24 @@ dtype: bool
 </div>
 <div class="section" id="geojson">
 <h3>GeoJson 格式<a class="headerlink" href="#geojson" title="永久链接至标题">¶</a></h3>
-<p>本例使用 <strong>geos.json</strong> 文件演示如何从文件读取 GeoJson 数据。此文件主要定义了四个 WKT 格式的几何体对象，包括一个点（POINT）和三个多边形（POLYGON）。</p>
+<p>本例使用 <strong>geos.json</strong> 文件演示如何从文件读取 GeoJson 数据。此文件主要定义了四个 WKT 格式的几何体对象，包括一个点（POINT）和三个多边形（POLYGON）。geos.json 文件内容如下：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;0&quot;</span><span class="p">:</span><span class="s2">&quot;{ </span><span class="se">\&quot;</span><span class="s2">type</span><span class="se">\&quot;</span><span class="s2">: </span><span class="se">\&quot;</span><span class="s2">Point</span><span class="se">\&quot;</span><span class="s2">, </span><span class="se">\&quot;</span><span class="s2">coordinates</span><span class="se">\&quot;</span><span class="s2">: [ 30.0, 10.0 ] }&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;1&quot;</span><span class="p">:</span><span class="s2">&quot;{ </span><span class="se">\&quot;</span><span class="s2">type</span><span class="se">\&quot;</span><span class="s2">: </span><span class="se">\&quot;</span><span class="s2">Polygon</span><span class="se">\&quot;</span><span class="s2">, </span><span class="se">\&quot;</span><span class="s2">coordinates</span><span class="se">\&quot;</span><span class="s2">: [ [ [ 30.0, 10.0 ], [ 40.0, 40.0 ], [ 20.0, 40.0 ], [ 10.0, 20.0 ], [ 30.0, 10.0 ] ] ] }&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;2&quot;</span><span class="p">:</span><span class="s2">&quot;{ </span><span class="se">\&quot;</span><span class="s2">type</span><span class="se">\&quot;</span><span class="s2">: </span><span class="se">\&quot;</span><span class="s2">Polygon</span><span class="se">\&quot;</span><span class="s2">, </span><span class="se">\&quot;</span><span class="s2">coordinates</span><span class="se">\&quot;</span><span class="s2">: [ [ [ 1.0, 2.0 ], [ 3.0, 4.0 ], [ 5.0, 6.0 ], [ 1.0, 2.0 ] ] ] }&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;3&quot;</span><span class="p">:</span><span class="s2">&quot;{ </span><span class="se">\&quot;</span><span class="s2">type</span><span class="se">\&quot;</span><span class="s2">: </span><span class="se">\&quot;</span><span class="s2">Polygon</span><span class="se">\&quot;</span><span class="s2">, </span><span class="se">\&quot;</span><span class="s2">coordinates</span><span class="se">\&quot;</span><span class="s2">: [ [ [ 1.0, 1.0 ], [ 3.0, 1.0 ], [ 3.0, 3.0 ], [ 1.0, 3.0 ], [ 1.0, 1.0 ] ] ] }&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 <p>首先，使用 pandas 的 <code class="docutils literal notranslate"><span class="pre">read_json</span></code> 方法导入文件并构造 pandas.Series 对象 <code class="docutils literal notranslate"><span class="pre">data_json</span></code>：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">geos.json 文件内容：</span>
-<span class="sd">{</span>
-<span class="sd">    &quot;0&quot;:&quot;{ \&quot;type\&quot;: \&quot;Point\&quot;, \&quot;coordinates\&quot;: [ 30.0, 10.0 ] }&quot;,</span>
-<span class="sd">    &quot;1&quot;:&quot;{ \&quot;type\&quot;: \&quot;Polygon\&quot;, \&quot;coordinates\&quot;: [ [ [ 30.0, 10.0 ], [ 40.0, 40.0 ], [ 20.0, 40.0 ], [ 10.0, 20.0 ], [ 30.0, 10.0 ] ] ] }&quot;,</span>
-<span class="sd">    &quot;2&quot;:&quot;{ \&quot;type\&quot;: \&quot;Polygon\&quot;, \&quot;coordinates\&quot;: [ [ [ 1.0, 2.0 ], [ 3.0, 4.0 ], [ 5.0, 6.0 ], [ 1.0, 2.0 ] ] ] }&quot;,</span>
-<span class="sd">    &quot;3&quot;:&quot;{ \&quot;type\&quot;: \&quot;Polygon\&quot;, \&quot;coordinates\&quot;: [ [ [ 1.0, 1.0 ], [ 3.0, 1.0 ], [ 3.0, 3.0 ], [ 1.0, 3.0 ], [ 1.0, 1.0 ] ] ] }&quot;</span>
-<span class="sd">}</span>
-<span class="sd">&#39;&#39;&#39;</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="s2">&quot;&lt;/path/to/geos.json&gt;&quot;</span><span class="p">,</span><span class="n">orient</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">data_json</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">data_json</span><span class="p">)</span>
-<span class="mi">0</span>    <span class="p">{</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Point&quot;</span><span class="p">,</span> <span class="s2">&quot;coordinates&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="mf">30.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="o">...</span>
-<span class="mi">1</span>    <span class="p">{</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Polygon&quot;</span><span class="p">,</span> <span class="s2">&quot;coordinates&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="p">[</span> <span class="p">[</span> <span class="mf">30.0</span><span class="o">...</span>
-<span class="mi">2</span>    <span class="p">{</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Polygon&quot;</span><span class="p">,</span> <span class="s2">&quot;coordinates&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="p">[</span> <span class="p">[</span> <span class="mf">1.0</span><span class="p">,</span><span class="o">...</span>
-<span class="mi">3</span>    <span class="p">{</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Polygon&quot;</span><span class="p">,</span> <span class="s2">&quot;coordinates&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="p">[</span> <span class="p">[</span> <span class="mf">1.0</span><span class="p">,</span><span class="o">...</span>
-<span class="n">Name</span><span class="p">:</span> <span class="n">geos</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="nb">object</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="s2">&quot;&lt;/path/to/geos.json&gt;&quot;</span><span class="p">,</span><span class="n">orient</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data_json</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">data_json</span><span class="p">)</span>
+<span class="go">0    { &quot;type&quot;: &quot;Point&quot;, &quot;coordinates&quot;: [ 30.0, 10.0...</span>
+<span class="go">1    { &quot;type&quot;: &quot;Polygon&quot;, &quot;coordinates&quot;: [ [ [ 30.0...</span>
+<span class="go">2    { &quot;type&quot;: &quot;Polygon&quot;, &quot;coordinates&quot;: [ [ [ 1.0,...</span>
+<span class="go">3    { &quot;type&quot;: &quot;Polygon&quot;, &quot;coordinates&quot;: [ [ [ 1.0,...</span>
+<span class="go">Name: geos, dtype: object</span>
 </pre></div>
 </div>
 <p>基于由 GeoJson 数据组成的 pandas.Series 对象 <code class="docutils literal notranslate"><span class="pre">data_json</span></code> 构造 arctern.GeoSeries 对象 <code class="docutils literal notranslate"><span class="pre">geo_json</span></code>：</p>
@@ -305,10 +305,10 @@ dtype: bool
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="indexing_selecting_data.html" class="btn btn-neutral float-right" title="索引和选择数据" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="geometric_manipulation.html" class="btn btn-neutral float-right" title="几何体的基本操作" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="spatiotemporal_analysis.html" class="btn btn-neutral float-left" title="时空数据分析" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="data_structure.html" class="btn btn-neutral float-left" title="数据结构" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -319,7 +319,7 @@ dtype: bool
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 6月 04, 2020.
+        最后更新于 6月 05, 2020.
       </span>
 
     </p>
