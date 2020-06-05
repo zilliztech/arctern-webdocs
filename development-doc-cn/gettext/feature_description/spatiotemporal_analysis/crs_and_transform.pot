@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-04 18:25+0800\n"
+"POT-Creation-Date: 2020-06-05 14:53+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../../source/feature_description/spatiotemporal_analysis/crs_and_transform.md:1
-msgid "Arctern 坐标参考系"
+msgid "坐标参考系"
 msgstr ""
 
 #: ../../source/feature_description/spatiotemporal_analysis/crs_and_transform.md:3

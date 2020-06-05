@@ -41,8 +41,8 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
   <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="搜索" href="../../search.html" />
-    <link rel="next" title="可视化" href="../visualization/visualization.html" />
-    <link rel="prev" title="聚合" href="aggregation.html" /> 
+    <link rel="next" title="绘图方法" href="plot_geometry.html" />
+    <link rel="prev" title="空间关系运算" href="spatial_relationship_calculation.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -90,12 +90,11 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
 <li class="toctree-l1"><a class="reference internal" href="../../quick_start/quick_start.html">快速开始</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../feature_description.html">功能说明</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="spatiotemporal_analysis.html">时空数据分析</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="data_structure.html">数据结构</a></li>
 <li class="toctree-l3"><a class="reference internal" href="read_and_write_file.html">文件读写</a></li>
-<li class="toctree-l3"><a class="reference internal" href="indexing_selecting_data.html">索引和选择数据</a></li>
-<li class="toctree-l3"><a class="reference internal" href="crs_and_transform.html">Arctern 坐标参考系</a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometric_manipulation.html">几何体的基本操作</a></li>
 <li class="toctree-l3"><a class="reference internal" href="convert_from_and_to_geopandas_geoseries.html">与 GeoPandas GeoSeries 互相转换</a></li>
-<li class="toctree-l3"><a class="reference internal" href="geometric_manipulation.html">几何体的基本操纵</a></li>
-<li class="toctree-l3"><a class="reference internal" href="aggregation.html">聚合</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spatial_relationship_calculation.html">空间关系运算</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">地图匹配</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id2">生成数据集</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#gps">判断 GPS 点附近固定范围内是否存在道路</a></li>
@@ -103,6 +102,10 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
 <li class="toctree-l4"><a class="reference internal" href="#id4">将 GPS 点绑定到最近的道路</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="plot_geometry.html">绘图方法</a></li>
+<li class="toctree-l3"><a class="reference internal" href="crs_and_transform.html">坐标参考系</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aggregation.html">聚合</a></li>
+<li class="toctree-l3"><a class="reference internal" href="indexing_selecting_data.html">索引和选择数据</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../visualization/visualization.html">可视化</a></li>
@@ -164,7 +167,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/feature_description/spatiotemporal_analysis/nearest_road.md.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/feature_description/spatiotemporal_analysis/map_match.md.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -285,9 +288,9 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
 </pre></div>
 </div>
 <p>下图分别是纠偏前后 GPS 点和道路的拓扑关系。我们可以看出 <code class="docutils literal notranslate"><span class="pre">nearest_location_on_road</span></code> 成功地将偏离道路的 GPS 点绑定到了最近的道路上。</p>
-<center class="half">
-    <img src="./img/topo_before_correction.png" width="400"/><img src="./img/topo_after_correction.png" width="400"/>
-</center></div>
+<p><img alt="../../_images/topo_before_correction.png" src="../../_images/topo_before_correction.png" />
+<img alt="../../_images/topo_after_correction.png" src="../../_images/topo_after_correction.png" /></p>
+</div>
 </div>
 
 
@@ -298,10 +301,10 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../visualization/visualization.html" class="btn btn-neutral float-right" title="可视化" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="plot_geometry.html" class="btn btn-neutral float-right" title="绘图方法" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="aggregation.html" class="btn btn-neutral float-left" title="聚合" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="spatial_relationship_calculation.html" class="btn btn-neutral float-left" title="空间关系运算" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -312,7 +315,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 6月 04, 2020.
+        最后更新于 6月 05, 2020.
       </span>
 
     </p>
