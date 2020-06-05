@@ -1,0 +1,258 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>within_which &mdash; Arctern gis version : 0.1.1
+build type : Release/CPU 
+build time : 2020-05-11 08:10.53
+commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
+ 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" />
+    <link rel="prev" title="Spatial Relationship" href="spatial_relationship.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Arctern
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../quick_start/quick_start.html">快速开始</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../feature_description/feature_description.html">功能说明</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api_reference.html">API 参考</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../standalone_api/geoseries.html">GeoSeries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../map_match/map_match.html">Map Macth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plot_api/plot_api.html">Plot</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="spatial_relationship.html">Spatial Relationship</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">within_which</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">示例:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Arctern</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../api_reference.html">API 参考</a> &raquo;</li>
+        
+          <li><a href="spatial_relationship.html">Spatial Relationship</a> &raquo;</li>
+        
+      <li>within_which</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/api_reference/spatial_relationship/within_which.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="within-which">
+<h1>within_which<a class="headerlink" href="#within-which" title="永久链接至标题">¶</a></h1>
+<p><strong>arctern.within_which(left, right)</strong></p>
+<p>为 <code class="docutils literal notranslate"><span class="pre">left</span></code> 中的几何体，查找满足 <code class="docutils literal notranslate"><span class="pre">within</span></code> 关系的 <code class="docutils literal notranslate"><span class="pre">right</span></code> 几何体。</p>
+<p>参数</p>
+<ul class="simple">
+<li><p>left(GeoSeries) – 参与计算的几何体</p></li>
+<li><p>right(GeoSeries) – 参与计算的几何体</p></li>
+</ul>
+<p>返回值类型</p>
+<p>pandas.Series(dtype: int64)</p>
+<p>返回</p>
+<p>对于 left 中的几何体 <code class="docutils literal notranslate"><span class="pre">left[i]</span></code>, 返回的 <code class="docutils literal notranslate"><span class="pre">ret[i]</span></code> 对应满足<code class="docutils literal notranslate"><span class="pre">within(left[i],</span> <span class="pre">right[j])</span></code> 的几何体下标 <code class="docutils literal notranslate"><span class="pre">j</span></code>. 有多个满足条件时任意选取一个，不存在时为 <code class="docutils literal notranslate"><span class="pre">pandas.NA</span></code>。</p>
+<div class="section" id="id1">
+<h2>示例:<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>  <span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">within_which</span><span class="p">,</span> <span class="n">GeoSeries</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="n">left</span> <span class="o">=</span> <span class="n">GeoSeries</span><span class="p">([</span><span class="s2">&quot;Point(0 0)&quot;</span><span class="p">,</span> <span class="s2">&quot;Point(0.1 0.1)&quot;</span><span class="p">,</span> <span class="s2">&quot;Point(1000 1000)&quot;</span><span class="p">,</span> <span class="s2">&quot;Point(10 10)&quot;</span><span class="p">])</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="n">right</span> <span class="o">=</span> <span class="n">GeoSeries</span><span class="p">([</span><span class="s2">&quot;Polygon((9 10, 11 12, 11 8, 9 10))&quot;</span><span class="p">,</span> <span class="s2">&quot;POLYGON ((-1 0, 1 2, 1 -2, -1 0))&quot;</span><span class="p">])</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="n">res</span> <span class="o">=</span> <span class="n">within_which</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">)</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+      <span class="mi">0</span>       <span class="mi">1</span>
+      <span class="mi">1</span>    <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>
+      <span class="mi">2</span>       <span class="mi">0</span>
+      <span class="n">dtype</span><span class="p">:</span> <span class="nb">object</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="n">is_in</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">notna</span><span class="p">()</span> <span class="c1"># faster way to check if left is within right.unary_union()</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">is_in</span><span class="p">)</span>
+      <span class="mi">0</span>     <span class="kc">True</span>
+      <span class="mi">1</span>    <span class="kc">False</span>
+      <span class="mi">2</span>     <span class="kc">True</span>
+      <span class="n">dtype</span><span class="p">:</span> <span class="nb">bool</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="spatial_relationship.html" class="btn btn-neutral float-left" title="Spatial Relationship" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, zilliz
+      <span class="lastupdated">
+        最后更新于 6月 05, 2020.
+      </span>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
