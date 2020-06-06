@@ -201,7 +201,7 @@
 </dl>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pandas</span> <span class="kn">import</span> <span class="n">Series</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">GeoSeries</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">json</span> <span class="o">=</span> <span class="n">Series</span><span class="p">([</span><span class="s2">&quot;{&quot;</span><span class="nb">type</span><span class="s2">&quot;:&quot;</span><span class="n">LineString</span><span class="s2">&quot;,&quot;</span><span class="n">coordinates</span><span class="s2">&quot;:[[1,2],[4,5],[7,8]]}&quot;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">json</span> <span class="o">=</span> <span class="n">Series</span><span class="p">([</span><span class="s1">&#39;{&quot;type&quot;:&quot;LineString&quot;,&quot;coordinates&quot;:[[1,2],[4,5],[7,8]]}&#39;</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">GeoSeries</span><span class="o">.</span><span class="n">geom_from_geojson</span><span class="p">(</span><span class="n">json</span><span class="p">)</span>
 <span class="go">0    LINESTRING (1 2,4 5,7 8)</span>
 <span class="go">dtype: GeoDtype</span>

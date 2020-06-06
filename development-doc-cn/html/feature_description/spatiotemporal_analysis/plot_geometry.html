@@ -94,7 +94,7 @@
 <li class="toctree-l3"><a class="reference internal" href="map_match.html">地图匹配</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">绘图方法</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#plot-geometry">plot_geometry</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id4">创建测试数据</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">生成测试数据</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id5">绘制几何图形</a></li>
 </ul>
 </li>
@@ -180,7 +180,6 @@
 <p>本文档介绍 Arctern 的绘图方法。</p>
 <div class="section" id="plot-geometry">
 <h2>plot_geometry<a class="headerlink" href="#plot-geometry" title="永久链接至标题">¶</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">plot_geometry</span></code> 方法可以用来绘制一组几何图形。</p>
 <div class="section" id="id2">
 <h3>方法定义<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>   <span class="k">def</span> <span class="nf">plot_geometry</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">geoms</span><span class="p">,</span> <span class="o">**</span><span class="n">style_kwds</span><span class="p">)</span>
@@ -190,18 +189,18 @@
 <div class="section" id="id3">
 <h3>参数介绍<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
 <ul class="simple">
-<li><p><strong>ax：</strong> matplotlib.axes._subplots.AxesSubplot 的实例，表示用于绘图的画布。</p></li>
-<li><p><strong>geoms：</strong> 表示当前要绘制的几何图形集合，接受 pandas Series、Arctrn GeoSeries 或者 pandas DataFrame 作为输入。其中的几何图形元素必须是 WKB 形式。</p></li>
-<li><p><strong>style_kwds：</strong> 绘图风格参数，包括：</p>
+<li><p><strong>ax:</strong> matplotlib.axes._subplots.AxesSubplot 的实例，表示用于绘图的画布。</p></li>
+<li><p><strong>geoms:</strong> 当前要绘制的几何图形集合，接受 pandas Series、Arctrn GeoSeries 或者 pandas DataFrame 作为输入。其中的几何图形元素必须是 WKB 形式。</p></li>
+<li><p><strong>style_kwds:</strong> 绘图风格参数，包括：</p>
 <ul>
-<li><p><strong>linewidth：</strong> 线宽设置 (线/多边形)</p></li>
-<li><p><strong>linestyle：</strong> 线型设置 (线/多边形)</p></li>
-<li><p><strong>edgecolor：</strong> 图形边缘颜色设置 (多边形)</p></li>
-<li><p><strong>facecolor：</strong> 图形填充颜色设置 (多边形)</p></li>
-<li><p><strong>color：</strong> 图形颜色 (点/线)</p></li>
-<li><p><strong>marker：</strong> 点的形状 (点)</p></li>
-<li><p><strong>markersize：</strong> 点的大小 (点)</p></li>
-<li><p><strong>alpha：</strong> 透明度</p></li>
+<li><p><strong>linewidth:</strong> 线或多边形的线宽</p></li>
+<li><p><strong>linestyle:</strong> 线或多边形的线型</p></li>
+<li><p><strong>edgecolor:</strong> 多边形的边缘颜色</p></li>
+<li><p><strong>facecolor:</strong> 多边形的填充颜色</p></li>
+<li><p><strong>color:</strong> 点或线的颜色</p></li>
+<li><p><strong>marker:</strong> 点的形状</p></li>
+<li><p><strong>markersize:</strong> 点的大小</p></li>
+<li><p><strong>alpha:</strong> 透明度</p></li>
 </ul>
 </li>
 </ul>
@@ -209,7 +208,7 @@
 </div>
 </div>
 <div class="section" id="id4">
-<h2>创建测试数据<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<h2>生成测试数据<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
 <p>使用 GeoSeries 的构造函数创建一些几何体对象，包括点（POINT）、线（LINESTRING）、多边形（POLYGON）、多点（MULTIPOINT）、多个多边形（MULTIPOLYGON）、几何体集合（GEOMETRYCOLLECTION）和多线（MULTILINESTRING）。在后续步骤中，我们将演示如何绘制这些几何图形。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">GeoSeries</span>
 <span class="gp">&gt;&gt;&gt; </span>
@@ -249,7 +248,7 @@
 <h3>线<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h3>
 <ul class="simple">
 <li><p><strong>颜色：</strong> 蓝</p></li>
-<li><p><strong>线型：</strong> 点划线</p></li>
+<li><p><strong>线型：</strong> “ -. “</p></li>
 <li><p><strong>透明度：</strong> 0.4</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">plot</span>
@@ -302,7 +301,7 @@
 <h3>多线<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h3>
 <ul class="simple">
 <li><p><strong>颜色：</strong> 蓝</p></li>
-<li><p><strong>线型：</strong> 虚线</p></li>
+<li><p><strong>线型：</strong> “ – “</p></li>
 <li><p><strong>透明度：</strong> 0.4</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">plot</span>
@@ -354,7 +353,7 @@
 <ul class="simple">
 <li><p><strong>多线</strong></p>
 <ul>
-<li><p><strong>线型：</strong> 点划线</p></li>
+<li><p><strong>线型：</strong> “ -. “</p></li>
 <li><p><strong>颜色：</strong> 蓝</p></li>
 </ul>
 </li>
@@ -363,7 +362,7 @@
 <li><p><strong>线型：</strong> 虚线</p></li>
 <li><p><strong>填充颜色：</strong> 绿</p></li>
 <li><p><strong>边缘颜色</strong>： 红</p></li>
-<li><p><strong>点型：</strong> “o”</p></li>
+<li><p><strong>点型：</strong> “ o “</p></li>
 <li><p><strong>透明度：</strong> 0.4</p></li>
 </ul>
 </li>
@@ -384,7 +383,7 @@
 <li><p><strong>线</strong></p>
 <ul>
 <li><p><strong>颜色：</strong> 蓝</p></li>
-<li><p><strong>线型：</strong> 点划线</p></li>
+<li><p><strong>线型：</strong> “ -. “</p></li>
 <li><p><strong>透明度：</strong> 0.4</p></li>
 </ul>
 </li>
