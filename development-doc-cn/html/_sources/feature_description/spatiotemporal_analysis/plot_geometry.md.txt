@@ -3,7 +3,6 @@
 本文档介绍 Arctern 的绘图方法。
 
 ## plot_geometry
-`plot_geometry` 方法可以用来绘制一组几何图形。
 
 ### 方法定义
 
@@ -12,21 +11,21 @@
 ```
 ### 参数介绍
 
-* **ax：** matplotlib.axes._subplots.AxesSubplot 的实例，表示用于绘图的画布。
-* **geoms：** 表示当前要绘制的几何图形集合，接受 pandas Series、Arctrn GeoSeries 或者 pandas DataFrame 作为输入。其中的几何图形元素必须是 WKB 形式。
-* **style_kwds：** 绘图风格参数，包括：
-  * **linewidth：** 线宽设置 (线/多边形)
-  * **linestyle：** 线型设置 (线/多边形)
-  * **edgecolor：** 图形边缘颜色设置 (多边形)
-  * **facecolor：** 图形填充颜色设置 (多边形)
-  * **color：** 图形颜色 (点/线)
-  * **marker：** 点的形状 (点)
-  * **markersize：** 点的大小 (点)
-  * **alpha：** 透明度
+* **ax:** matplotlib.axes._subplots.AxesSubplot 的实例，表示用于绘图的画布。
+* **geoms:** 当前要绘制的几何图形集合，接受 pandas Series、Arctrn GeoSeries 或者 pandas DataFrame 作为输入。其中的几何图形元素必须是 WKB 形式。
+* **style_kwds:** 绘图风格参数，包括：
+  * **linewidth:** 线或多边形的线宽
+  * **linestyle:** 线或多边形的线型
+  * **edgecolor:** 多边形的边缘颜色
+  * **facecolor:** 多边形的填充颜色
+  * **color:** 点或线的颜色
+  * **marker:** 点的形状
+  * **markersize:** 点的大小
+  * **alpha:** 透明度
 
 以下展示如何使用 `plot_geometry` 方法绘制几何图形。
 
-## 创建测试数据
+## 生成测试数据
 
 使用 GeoSeries 的构造函数创建一些几何体对象，包括点（POINT）、线（LINESTRING）、多边形（POLYGON）、多点（MULTIPOINT）、多个多边形（MULTIPOLYGON）、几何体集合（GEOMETRYCOLLECTION）和多线（MULTILINESTRING）。在后续步骤中，我们将演示如何绘制这些几何图形。
 
@@ -66,7 +65,7 @@ plt.show()
 ### 线
 
 - **颜色：** 蓝
-- **线型：** 点划线
+- **线型：** " -. "
 - **透明度：** 0.4
 
 ```python
@@ -119,7 +118,7 @@ plt.show()
 ### 多线
 
 - **颜色：** 蓝
-- **线型：** 虚线
+- **线型：** " -- "
 - **透明度：** 0.4
 
 ```python
@@ -171,13 +170,13 @@ plt.show()
 ### 多个几何图形
 
 - **多线**
-  * **线型：** 点划线 
+  * **线型：** " -. "
   * **颜色：** 蓝
 - **多边形**
   * **线型：** 虚线 
   * **填充颜色：** 绿 
   * **边缘颜色**： 红
-  * **点型：** "o"
+  * **点型：** " o "
   * **透明度：** 0.4
 
 ```python
@@ -195,7 +194,7 @@ plt.show()
 
 - **线**
    * **颜色：** 蓝
-   * **线型：** 点划线
+   * **线型：** " -. "
    * **透明度：** 0.4
 - **多边形**
    * **填充颜色：** 绿

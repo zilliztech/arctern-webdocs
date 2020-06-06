@@ -1,0 +1,488 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="python" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="python" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>GeoSeries &mdash; Arctern version : 0.2.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="arctern.GeoSeries" href="api/arctern.GeoSeries.html" />
+    <link rel="prev" title="API Reference" href="../api_reference.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Arctern
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../quick_start/quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../feature_description/feature_description.html">Feature Description</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api_reference.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">GeoSeries</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#constructor">Constructor</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/arctern.GeoSeries.html">arctern.GeoSeries</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#attributes">Attributes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/arctern.GeoSeries.is_valid.html">arctern.GeoSeries.is_valid</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/arctern.GeoSeries.length.html">arctern.GeoSeries.length</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/arctern.GeoSeries.is_simple.html">arctern.GeoSeries.is_simple</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/arctern.GeoSeries.area.html">arctern.GeoSeries.area</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/arctern.GeoSeries.centroid.html">arctern.GeoSeries.centroid</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/arctern.GeoSeries.convex_hull.html">arctern.GeoSeries.convex_hull</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/arctern.GeoSeries.npoints.html">arctern.GeoSeries.npoints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/arctern.GeoSeries.envelope.html">arctern.GeoSeries.envelope</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#constructing-geometry">Constructing Geometry</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/arctern.GeoSeries.point.html">arctern.GeoSeries.point</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/arctern.GeoSeries.polygon_from_envelope.html">arctern.GeoSeries.polygon_from_envelope</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/arctern.GeoSeries.geom_from_geojson.html">arctern.GeoSeries.geom_from_geojson</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/arctern.GeoSeries.as_geojson.html">arctern.GeoSeries.as_geojson</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/arctern.GeoSeries.to_wkt.html">arctern.GeoSeries.to_wkt</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/arctern.GeoSeries.to_wkb.html">arctern.GeoSeries.to_wkb</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#processing-geometry">Processing Geometry</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/arctern.GeoSeries.buffer.html">arctern.GeoSeries.buffer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/arctern.GeoSeries.precision_reduce.html">arctern.GeoSeries.precision_reduce</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/arctern.GeoSeries.intersection.html">arctern.GeoSeries.intersection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/arctern.GeoSeries.make_valid.html">arctern.GeoSeries.make_valid</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/arctern.GeoSeries.set_crs.html">arctern.GeoSeries.set_crs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/arctern.GeoSeries.to_crs.html">arctern.GeoSeries.to_crs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/arctern.GeoSeries.curve_to_line.html">arctern.GeoSeries.curve_to_line</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#spatial-relationship">Spatial Relationship</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/arctern.GeoSeries.geom_equals.html">arctern.GeoSeries.geom_equals</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/arctern.GeoSeries.touches.html">arctern.GeoSeries.touches</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/arctern.GeoSeries.overlaps.html">arctern.GeoSeries.overlaps</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/arctern.GeoSeries.crosses.html">arctern.GeoSeries.crosses</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/arctern.GeoSeries.contains.html">arctern.GeoSeries.contains</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/arctern.GeoSeries.intersects.html">arctern.GeoSeries.intersects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/arctern.GeoSeries.within.html">arctern.GeoSeries.within</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#measurement">Measurement</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/arctern.GeoSeries.distance_sphere.html">arctern.GeoSeries.distance_sphere</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/arctern.GeoSeries.distance.html">arctern.GeoSeries.distance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/arctern.GeoSeries.hausdorff_distance.html">arctern.GeoSeries.hausdorff_distance</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#aggregation">Aggregation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/arctern.GeoSeries.envelope_aggr.html">arctern.GeoSeries.envelope_aggr</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#pandas-methods">Pandas Methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/arctern.GeoSeries.isna.html">arctern.GeoSeries.isna</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/arctern.GeoSeries.notna.html">arctern.GeoSeries.notna</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/arctern.GeoSeries.fillna.html">arctern.GeoSeries.fillna</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/arctern.GeoSeries.equals.html">arctern.GeoSeries.equals</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../map_match/map_match.html">Map Match</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plot_api/plot_api.html">Plot</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Arctern</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../api_reference.html">API Reference</a> &raquo;</li>
+        
+      <li>GeoSeries</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/api_reference/standalone_api/geoseries.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="geoseries">
+<span id="id1"></span><h1>GeoSeries<a class="headerlink" href="#geoseries" title="Permalink to this headline">¶</a></h1>
+<p>GeoSeries is a Series to store and process geometry data by extending
+Pandas Series. It internally store geometry as bytes object.</p>
+<div class="section" id="constructor">
+<h2>Constructor<a class="headerlink" href="#constructor" title="Permalink to this headline">¶</a></h2>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/arctern.GeoSeries.html#arctern.GeoSeries" title="arctern.GeoSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GeoSeries</span></code></a>([data, index, name, crs])</p></td>
+<td><p>A Series to store geometry data which is WKB formed bytes object.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="attributes">
+<h2>Attributes<a class="headerlink" href="#attributes" title="Permalink to this headline">¶</a></h2>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/arctern.GeoSeries.is_valid.html#arctern.GeoSeries.is_valid" title="arctern.GeoSeries.is_valid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GeoSeries.is_valid</span></code></a></p></td>
+<td><p>Check if each geometry is of valid geometry format.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/arctern.GeoSeries.length.html#arctern.GeoSeries.length" title="arctern.GeoSeries.length"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GeoSeries.length</span></code></a></p></td>
+<td><p>Calculate the length of each geometry.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/arctern.GeoSeries.is_simple.html#arctern.GeoSeries.is_simple" title="arctern.GeoSeries.is_simple"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GeoSeries.is_simple</span></code></a></p></td>
+<td><p>Check whether each geometry is &quot;simple&quot;.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/arctern.GeoSeries.area.html#arctern.GeoSeries.area" title="arctern.GeoSeries.area"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GeoSeries.area</span></code></a></p></td>
+<td><p>Calculate the 2D Cartesian (planar) area of each geometry.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">GeoSeries.geometry_type</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/arctern.GeoSeries.centroid.html#arctern.GeoSeries.centroid" title="arctern.GeoSeries.centroid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GeoSeries.centroid</span></code></a></p></td>
+<td><p>Compute the centroid of each geometry.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/arctern.GeoSeries.convex_hull.html#arctern.GeoSeries.convex_hull" title="arctern.GeoSeries.convex_hull"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GeoSeries.convex_hull</span></code></a></p></td>
+<td><p>For each geometry, compute the smallest convex geometry that encloses all geometries in it.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/arctern.GeoSeries.npoints.html#arctern.GeoSeries.npoints" title="arctern.GeoSeries.npoints"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GeoSeries.npoints</span></code></a></p></td>
+<td><p>Calculates the points number for each geometry.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/arctern.GeoSeries.envelope.html#arctern.GeoSeries.envelope" title="arctern.GeoSeries.envelope"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GeoSeries.envelope</span></code></a></p></td>
+<td><p>Compute the double-precision minimum bounding box geometry for each geometry.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="constructing-geometry">
+<h2>Constructing Geometry<a class="headerlink" href="#constructing-geometry" title="Permalink to this headline">¶</a></h2>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/arctern.GeoSeries.point.html#arctern.GeoSeries.point" title="arctern.GeoSeries.point"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GeoSeries.point</span></code></a>(x, y[, crs])</p></td>
+<td><p>Construct Point geometries according to the coordinates.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/arctern.GeoSeries.polygon_from_envelope.html#arctern.GeoSeries.polygon_from_envelope" title="arctern.GeoSeries.polygon_from_envelope"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GeoSeries.polygon_from_envelope</span></code></a>(min_x, ...)</p></td>
+<td><p>Construct polygon(rectangle) geometries from arr_min_x, arr_min_y, arr_max_x, arr_max_y and special coordinate system.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/arctern.GeoSeries.geom_from_geojson.html#arctern.GeoSeries.geom_from_geojson" title="arctern.GeoSeries.geom_from_geojson"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GeoSeries.geom_from_geojson</span></code></a>(json[, crs])</p></td>
+<td><p>Construct geometry from the GeoJSON representation string.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/arctern.GeoSeries.as_geojson.html#arctern.GeoSeries.as_geojson" title="arctern.GeoSeries.as_geojson"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GeoSeries.as_geojson</span></code></a>()</p></td>
+<td><p>Transform each to GeoJSON format string.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/arctern.GeoSeries.to_wkt.html#arctern.GeoSeries.to_wkt" title="arctern.GeoSeries.to_wkt"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GeoSeries.to_wkt</span></code></a>()</p></td>
+<td><p>Transform each geometry to WKT formed string.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/arctern.GeoSeries.to_wkb.html#arctern.GeoSeries.to_wkb" title="arctern.GeoSeries.to_wkb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GeoSeries.to_wkb</span></code></a>()</p></td>
+<td><p>Transform each geometry to WKB formed bytes object.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="processing-geometry">
+<h2>Processing Geometry<a class="headerlink" href="#processing-geometry" title="Permalink to this headline">¶</a></h2>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/arctern.GeoSeries.buffer.html#arctern.GeoSeries.buffer" title="arctern.GeoSeries.buffer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GeoSeries.buffer</span></code></a>(distance)</p></td>
+<td><p>For each geometry, returns a geometry that represents all points whose distance from this geos is less than or equal to &quot;distance&quot;.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/arctern.GeoSeries.precision_reduce.html#arctern.GeoSeries.precision_reduce" title="arctern.GeoSeries.precision_reduce"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GeoSeries.precision_reduce</span></code></a>(precision)</p></td>
+<td><p>For the coordinates of each geometry, reduce the number of significant digits to the given number.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/arctern.GeoSeries.intersection.html#arctern.GeoSeries.intersection" title="arctern.GeoSeries.intersection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GeoSeries.intersection</span></code></a>(other)</p></td>
+<td><p>Calculate the point set intersection between each geometry and other.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/arctern.GeoSeries.make_valid.html#arctern.GeoSeries.make_valid" title="arctern.GeoSeries.make_valid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GeoSeries.make_valid</span></code></a>()</p></td>
+<td><p>Create a valid representation of each geometry without losing any of the input vertices.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">GeoSeries.simplify_preserve_topology</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/arctern.GeoSeries.set_crs.html#arctern.GeoSeries.set_crs" title="arctern.GeoSeries.set_crs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GeoSeries.set_crs</span></code></a>(crs)</p></td>
+<td><p>Set the coordinate system for the GeoSeries.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/arctern.GeoSeries.to_crs.html#arctern.GeoSeries.to_crs" title="arctern.GeoSeries.to_crs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GeoSeries.to_crs</span></code></a>(crs)</p></td>
+<td><p>Transform each geometry to a different coordinate reference system.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/arctern.GeoSeries.curve_to_line.html#arctern.GeoSeries.curve_to_line" title="arctern.GeoSeries.curve_to_line"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GeoSeries.curve_to_line</span></code></a>()</p></td>
+<td><p>Convert curves in each geometry to approximate linear representation, e.g., CIRCULAR STRING to regular LINESTRING, CURVEPOLYGON to POLYGON, and MULTISURFACE to MULTIPOLYGON.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="spatial-relationship">
+<h2>Spatial Relationship<a class="headerlink" href="#spatial-relationship" title="Permalink to this headline">¶</a></h2>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/arctern.GeoSeries.geom_equals.html#arctern.GeoSeries.geom_equals" title="arctern.GeoSeries.geom_equals"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GeoSeries.geom_equals</span></code></a>(other)</p></td>
+<td><p>Check whether each geometry is &quot;spatially equal&quot; to other.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/arctern.GeoSeries.touches.html#arctern.GeoSeries.touches" title="arctern.GeoSeries.touches"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GeoSeries.touches</span></code></a>(other)</p></td>
+<td><p>Check whether each geometry &quot;touches&quot; other.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/arctern.GeoSeries.overlaps.html#arctern.GeoSeries.overlaps" title="arctern.GeoSeries.overlaps"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GeoSeries.overlaps</span></code></a>(other)</p></td>
+<td><p>Check whether each geometry &quot;spatially overlaps&quot; other.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/arctern.GeoSeries.crosses.html#arctern.GeoSeries.crosses" title="arctern.GeoSeries.crosses"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GeoSeries.crosses</span></code></a>(other)</p></td>
+<td><p>Check whether each geometry and other(elementwise) &quot;spatially cross&quot;.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/arctern.GeoSeries.contains.html#arctern.GeoSeries.contains" title="arctern.GeoSeries.contains"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GeoSeries.contains</span></code></a>(other)</p></td>
+<td><p>Check whether each geometry contains other (elementwise).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/arctern.GeoSeries.intersects.html#arctern.GeoSeries.intersects" title="arctern.GeoSeries.intersects"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GeoSeries.intersects</span></code></a>(other)</p></td>
+<td><p>Check whether each geometry intersects other (elementwise).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/arctern.GeoSeries.within.html#arctern.GeoSeries.within" title="arctern.GeoSeries.within"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GeoSeries.within</span></code></a>(other)</p></td>
+<td><p>Check whether each geometry is within other (elementwise).</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="measurement">
+<h2>Measurement<a class="headerlink" href="#measurement" title="Permalink to this headline">¶</a></h2>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/arctern.GeoSeries.distance_sphere.html#arctern.GeoSeries.distance_sphere" title="arctern.GeoSeries.distance_sphere"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GeoSeries.distance_sphere</span></code></a>(other)</p></td>
+<td><p>Return minimum distance in meters between two lon/lat points.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/arctern.GeoSeries.distance.html#arctern.GeoSeries.distance" title="arctern.GeoSeries.distance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GeoSeries.distance</span></code></a>(other)</p></td>
+<td><p>Calculates the minimum 2D Cartesian (planar) distance between each geometry and other.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/arctern.GeoSeries.hausdorff_distance.html#arctern.GeoSeries.hausdorff_distance" title="arctern.GeoSeries.hausdorff_distance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GeoSeries.hausdorff_distance</span></code></a>(other)</p></td>
+<td><p>Returns the Hausdorff distance between each geometry and other.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="aggregation">
+<h2>Aggregation<a class="headerlink" href="#aggregation" title="Permalink to this headline">¶</a></h2>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">GeoSeries.union_aggr</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/arctern.GeoSeries.envelope_aggr.html#arctern.GeoSeries.envelope_aggr" title="arctern.GeoSeries.envelope_aggr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GeoSeries.envelope_aggr</span></code></a>()</p></td>
+<td><p>Compute the double-precision minimum bounding box geometry for the union of all geometries.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="pandas-methods">
+<h2>Pandas Methods<a class="headerlink" href="#pandas-methods" title="Permalink to this headline">¶</a></h2>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/arctern.GeoSeries.isna.html#arctern.GeoSeries.isna" title="arctern.GeoSeries.isna"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GeoSeries.isna</span></code></a>()</p></td>
+<td><p>Detect missing values.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/arctern.GeoSeries.notna.html#arctern.GeoSeries.notna" title="arctern.GeoSeries.notna"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GeoSeries.notna</span></code></a>()</p></td>
+<td><p>Detect non-missing values.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/arctern.GeoSeries.fillna.html#arctern.GeoSeries.fillna" title="arctern.GeoSeries.fillna"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GeoSeries.fillna</span></code></a>([value, method, axis, ...])</p></td>
+<td><p>Fill NA values with a geometry, which can be WKT or WKB formed.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/arctern.GeoSeries.equals.html#arctern.GeoSeries.equals" title="arctern.GeoSeries.equals"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GeoSeries.equals</span></code></a>(other)</p></td>
+<td><p>Test whether two objects contain the same elements.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="api/arctern.GeoSeries.html" class="btn btn-neutral float-right" title="arctern.GeoSeries" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../api_reference.html" class="btn btn-neutral float-left" title="API Reference" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, zilliz
+      <span class="lastupdated">
+        Last updated on Jun 06, 2020.
+      </span>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
