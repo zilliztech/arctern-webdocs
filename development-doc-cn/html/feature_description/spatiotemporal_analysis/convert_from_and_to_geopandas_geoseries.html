@@ -8,11 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>与 GeoPandas GeoSeries 互相转换 &mdash; Arctern gis version : 0.1.1
-build type : Release/CPU 
-build time : 2020-05-11 08:10.53
-commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
- 文档</title>
+  <title>与 GeoPandas GeoSeries 互相转换 &mdash; Arctern version : 0.2.0 文档</title>
   
 
   
@@ -41,7 +37,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
   <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="搜索" href="../../search.html" />
-    <link rel="next" title="空间关系运算" href="spatial_relationship_calculation.html" />
+    <link rel="next" title="空间关系运算" href="spatial_relationship_operation.html" />
     <link rel="prev" title="几何体的基本操作" href="geometric_manipulation.html" /> 
 </head>
 
@@ -99,7 +95,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
 <li class="toctree-l4"><a class="reference internal" href="#geopandas-geoseries-arctern-geoseries">将 GeoPandas GeoSeries 转换为 Arctern GeoSeries</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="spatial_relationship_calculation.html">空间关系运算</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spatial_relationship_operation.html">空间关系运算</a></li>
 <li class="toctree-l3"><a class="reference internal" href="map_match.html">地图匹配</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_geometry.html">绘图方法</a></li>
 <li class="toctree-l3"><a class="reference internal" href="crs_and_transform.html">坐标参考系</a></li>
@@ -198,7 +194,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
 </div>
 <div class="section" id="arctern-geoseries-geopandas-geoseries">
 <h2>将 Arctern GeoSeries 转换为 GeoPandas GeoSeries<a class="headerlink" href="#arctern-geoseries-geopandas-geoseries" title="永久链接至标题">¶</a></h2>
-<p>调用 Arctern GeoSeries 的 <code class="docutils literal notranslate"><span class="pre">to_geopandas</span></code> 接口可将 Arctern GeoSeries 转为 GeoPandas GeoSeries。</p>
+<p>使用 Arctern GeoSeries 的 <code class="docutils literal notranslate"><span class="pre">to_geopandas</span></code> 方法将 Arctern GeoSeries 转为 GeoPandas GeoSeries。</p>
 <!-- link: [to_geopandas](/path/to/to_geopandas) --><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">geopandas_geoseries</span> <span class="o">=</span> <span class="n">arctern_geoseries</span><span class="o">.</span><span class="n">to_geopandas</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">geopandas_geoseries</span>
 <span class="go">0    POLYGON ((0.00000 0.00000, 4.00000 0.00000, 4.00000 4.00000, 0.00000 4.00000, 0.00000 0.00000))</span>
@@ -208,7 +204,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
 </div>
 <div class="section" id="geopandas-geoseries-arctern-geoseries">
 <h2>将 GeoPandas GeoSeries 转换为 Arctern GeoSeries<a class="headerlink" href="#geopandas-geoseries-arctern-geoseries" title="永久链接至标题">¶</a></h2>
-<p>调用 Arctern GeoSeries 的 <code class="docutils literal notranslate"><span class="pre">from_geopandas</span></code> 接口可将 GeoPandas GeoSeries 转为 Arctern GeoSeries。</p>
+<p>使用 Arctern GeoSeries 的 <code class="docutils literal notranslate"><span class="pre">from_geopandas</span></code> 方法将 GeoPandas GeoSeries 转为 Arctern GeoSeries。</p>
 <!-- link: [from_geopandas](/path/to/from_geopandas) --><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">arctern_geoseries</span> <span class="o">=</span> <span class="n">arctern</span><span class="o">.</span><span class="n">GeoSeries</span><span class="o">.</span><span class="n">from_geopandas</span><span class="p">(</span><span class="n">geopandas_geoseries</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">arctern_geoseries</span>
 <span class="go">0    POLYGON ((0 0,4 0,4 4,0 4,0 0))</span>
@@ -299,7 +295,7 @@ Length: 1000000, dtype: bool
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="spatial_relationship_calculation.html" class="btn btn-neutral float-right" title="空间关系运算" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="spatial_relationship_operation.html" class="btn btn-neutral float-right" title="空间关系运算" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="geometric_manipulation.html" class="btn btn-neutral float-left" title="几何体的基本操作" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -313,7 +309,7 @@ Length: 1000000, dtype: bool
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 6月 05, 2020.
+        最后更新于 6月 06, 2020.
       </span>
 
     </p>

@@ -8,11 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>arctern.geoseries.geoseries &mdash; Arctern gis version : 0.1.1
-build type : Release/CPU 
-build time : 2020-05-11 08:10.53
-commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
- 文档</title>
+  <title>arctern.geoseries.geoseries &mdash; Arctern version : 0.2.0 文档</title>
   
 
   
@@ -171,25 +167,40 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
 <span class="c1"># pylint: disable=too-many-ancestors, protected-access</span>
 
 <span class="kn">from</span> <span class="nn">warnings</span> <span class="kn">import</span> <span class="n">warn</span>
-<span class="kn">from</span> <span class="nn">pandas</span> <span class="kn">import</span> <span class="n">Series</span>
+<span class="kn">from</span> <span class="nn">pandas</span> <span class="kn">import</span> <span class="n">Series</span><span class="p">,</span> <span class="n">DataFrame</span>
 <span class="kn">import</span> <span class="nn">arctern</span>
-<span class="kn">from</span> <span class="nn">.geoarray</span> <span class="kn">import</span> <span class="n">GeoArray</span><span class="p">,</span> <span class="n">is_geometry_array</span>
+<span class="kn">from</span> <span class="nn">.geoarray</span> <span class="kn">import</span> <span class="n">GeoArray</span><span class="p">,</span> <span class="n">is_geometry_array</span><span class="p">,</span> <span class="n">GeoDtype</span>
+
+
+<span class="k">def</span> <span class="nf">fix_dataframe_box_col_volues</span><span class="p">():</span>
+    <span class="k">def</span> <span class="nf">_box_col_values</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">items</span><span class="p">):</span>
+        <span class="n">klass</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_constructor_sliced</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">values</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">GeoDtype</span><span class="p">):</span>
+            <span class="n">klass</span> <span class="o">=</span> <span class="n">GeoSeries</span>
+
+        <span class="k">return</span> <span class="n">klass</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">items</span><span class="p">,</span> <span class="n">fastpath</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">DataFrame</span><span class="o">.</span><span class="n">_box_col_values</span> <span class="o">=</span> <span class="n">_box_col_values</span>
+
+
+<span class="n">fix_dataframe_box_col_volues</span><span class="p">()</span>
 
 
 <span class="k">def</span> <span class="nf">_property_op</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">this</span><span class="p">):</span>
     <span class="c1"># type: (function, GeoSeries) -&gt; Series[bool/float/object]</span>
-    <span class="k">return</span> <span class="n">Series</span><span class="p">(</span><span class="n">op</span><span class="p">(</span><span class="n">this</span><span class="o">.</span><span class="n">values</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="n">this</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">Series</span><span class="p">(</span><span class="n">op</span><span class="p">(</span><span class="n">this</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">this</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
 
 
 <span class="k">def</span> <span class="nf">_property_geo</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">this</span><span class="p">):</span>
     <span class="c1"># type: (function, GeoSeries) -&gt; GeoSeries</span>
-    <span class="k">return</span> <span class="n">GeoSeries</span><span class="p">(</span><span class="n">op</span><span class="p">(</span><span class="n">this</span><span class="o">.</span><span class="n">values</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="n">this</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="n">this</span><span class="o">.</span><span class="n">crs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">GeoSeries</span><span class="p">(</span><span class="n">op</span><span class="p">(</span><span class="n">this</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">this</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="n">this</span><span class="o">.</span><span class="n">crs</span><span class="p">)</span>
 
 
 <span class="k">def</span> <span class="nf">_unary_geo</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">this</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="c1"># type: (function, GeoSeries, args, kwargs) -&gt; GeoSeries</span>
     <span class="n">crs</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;crs&quot;</span><span class="p">,</span> <span class="n">this</span><span class="o">.</span><span class="n">crs</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">GeoSeries</span><span class="p">(</span><span class="n">op</span><span class="p">(</span><span class="n">this</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="n">this</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">this</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="n">crs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">GeoSeries</span><span class="p">(</span><span class="n">op</span><span class="p">(</span><span class="n">this</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">this</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">this</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="n">crs</span><span class="p">)</span>
 
 
 <span class="k">def</span> <span class="nf">_delegate_binary_op</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">this</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
@@ -202,7 +213,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
         <span class="k">pass</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">this</span><span class="p">),</span> <span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">))</span>
-    <span class="n">data</span> <span class="o">=</span> <span class="n">op</span><span class="p">(</span><span class="n">this</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">op</span><span class="p">(</span><span class="n">this</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
     <span class="k">return</span> <span class="n">data</span><span class="p">,</span> <span class="n">this</span><span class="o">.</span><span class="n">index</span>
 
 
@@ -264,7 +275,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
         <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s2">&quot;crs&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">crs</span><span class="p">:</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="n">data</span><span class="o">.</span><span class="n">crs</span><span class="p">:</span>
                 <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-            <span class="k">else</span><span class="p">:</span>
+            <span class="k">elif</span> <span class="ow">not</span> <span class="n">data</span><span class="o">.</span><span class="n">crs</span> <span class="o">==</span> <span class="n">crs</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
                     <span class="s2">&quot;csr of the passed geometry data is different from crs.&quot;</span>
                 <span class="p">)</span>
@@ -275,17 +286,20 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
 
         <span class="k">if</span> <span class="ow">not</span> <span class="n">is_geometry_array</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
             <span class="n">s</span> <span class="o">=</span> <span class="n">Series</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+            <span class="n">index</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">index</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">name</span>
             <span class="k">if</span> <span class="n">s</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
-                <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">bytes</span><span class="p">)</span>
+                <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">object</span><span class="p">)</span>
+            <span class="c1"># make sure missing value is None</span>
+            <span class="n">s</span><span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">isna</span><span class="p">()]</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="kn">from</span> <span class="nn">pandas.api.types</span> <span class="kn">import</span> <span class="n">infer_dtype</span>
+            <span class="n">inferred</span> <span class="o">=</span> <span class="n">infer_dtype</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">skipna</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">inferred</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;bytes&quot;</span><span class="p">,</span> <span class="s2">&quot;empty&quot;</span><span class="p">):</span>
+                <span class="k">pass</span>
+            <span class="k">elif</span> <span class="n">inferred</span> <span class="o">==</span> <span class="s2">&quot;string&quot;</span><span class="p">:</span>
+                <span class="n">s</span> <span class="o">=</span> <span class="n">arctern</span><span class="o">.</span><span class="n">ST_GeomFromText</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="kn">from</span> <span class="nn">pandas.api.types</span> <span class="kn">import</span> <span class="n">infer_dtype</span>
-                <span class="n">inferred</span> <span class="o">=</span> <span class="n">infer_dtype</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">skipna</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-                <span class="k">if</span> <span class="n">inferred</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;bytes&quot;</span><span class="p">,</span> <span class="s2">&quot;empty&quot;</span><span class="p">):</span>
-                    <span class="k">pass</span>
-                <span class="k">elif</span> <span class="n">inferred</span> <span class="o">==</span> <span class="s2">&quot;string&quot;</span><span class="p">:</span>
-                    <span class="n">s</span> <span class="o">=</span> <span class="n">arctern</span><span class="o">.</span><span class="n">ST_GeomFromText</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
-                <span class="k">else</span><span class="p">:</span>
-                    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Can not use no bytes or string data to construct GeoSeries.&quot;</span><span class="p">)</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Can not use no bytes or string data to construct GeoSeries.&quot;</span><span class="p">)</span>
             <span class="n">data</span> <span class="o">=</span> <span class="n">GeoArray</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
 
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
@@ -307,12 +321,29 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
     <span class="k">def</span> <span class="nf">crs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_crs</span>
 
+    <span class="nd">@crs</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">crs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">crs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set the coordinate system for the GeoSeries.</span>
+
+<span class="sd">        :type crs: str, optional</span>
+<span class="sd">        :param crs: SRID(spatial reference identifier) form.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_crs</span><span class="p">(</span><span class="n">crs</span><span class="p">)</span>
+
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">_constructor</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="c1"># Some operations result is not geometry type, we should return Series as constructor</span>
         <span class="c1"># e.g.(isna, notna)</span>
         <span class="k">def</span> <span class="nf">_try_constructor</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">crs</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
             <span class="k">try</span><span class="p">:</span>
+                <span class="kn">from</span> <span class="nn">pandas.core.internals</span> <span class="kn">import</span> <span class="n">SingleBlockManager</span>
+                <span class="c1"># astype will dispatch to here,Only if `dtype` is `GeoDtype`</span>
+                <span class="c1"># will return GeoSeries</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">SingleBlockManager</span><span class="p">):</span>
+                    <span class="n">dtype</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s1">&#39;dtype&#39;</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dtype</span><span class="p">,</span> <span class="n">GeoDtype</span><span class="p">):</span>
+                        <span class="k">raise</span> <span class="ne">TypeError</span>
                 <span class="k">return</span> <span class="n">GeoSeries</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="n">crs</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
             <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
                 <span class="k">return</span> <span class="n">Series</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
@@ -484,7 +515,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
         <span class="k">return</span> <span class="n">_property_op</span><span class="p">(</span><span class="n">arctern</span><span class="o">.</span><span class="n">ST_Area</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">geometry_type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">geom_type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        For each geometry in geometries, return a string that indicates is type.</span>
 
@@ -626,12 +657,12 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
             <span class="k">return</span> <span class="bp">self</span>
         <span class="k">return</span> <span class="n">_unary_geo</span><span class="p">(</span><span class="n">arctern</span><span class="o">.</span><span class="n">ST_Transform</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">crs</span><span class="p">,</span> <span class="n">crs</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="n">crs</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">simplify_preserve_to_pology</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">distance_tolerance</span><span class="p">):</span>
+<div class="viewcode-block" id="GeoSeries.simplify"><a class="viewcode-back" href="../../../api_reference/standalone_api/api/arctern.GeoSeries.simplify.html#arctern.GeoSeries.simplify">[文档]</a>    <span class="k">def</span> <span class="nf">simplify</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tolerance</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns a &quot;simplified&quot; version for each geometry using the Douglas-Peucker algorithm.</span>
 
-<span class="sd">        :type: distance_tolerance: float</span>
-<span class="sd">        :param distance_tolerance: The maximum distance between a point on a linestring and a curve.</span>
+<span class="sd">        :type: tolerance: float</span>
+<span class="sd">        :param tolerance: The maximum distance between a point on a linestring and a curve.</span>
 
 <span class="sd">        :rtype: GeoSeries</span>
 <span class="sd">        :return: Simplified geometries.</span>
@@ -639,27 +670,12 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
 <span class="sd">        :example:</span>
 <span class="sd">        &gt;&gt;&gt; from arctern import GeoSeries</span>
 <span class="sd">        &gt;&gt;&gt; s = GeoSeries([&quot;POLYGON ((1 1,1 2,2 2,2 1,1 1))&quot;, &quot;CIRCULARSTRING (0 0,1 1,2 0)&quot;])</span>
-<span class="sd">        &gt;&gt;&gt; s.simplify_preserve_to_pology(1)</span>
+<span class="sd">        &gt;&gt;&gt; s.simplify(1)</span>
 <span class="sd">        0    POLYGON ((1 1,1 2,2 2,2 1,1 1))</span>
 <span class="sd">        1               LINESTRING (0 0,2 0)</span>
 <span class="sd">        dtype: GeoDtype</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">_unary_geo</span><span class="p">(</span><span class="n">arctern</span><span class="o">.</span><span class="n">ST_SimplifyPreserveTopology</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span> <span class="n">distance_tolerance</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">projection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bottom_right</span><span class="p">,</span> <span class="n">top_left</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        TODO(shengjh): fill here</span>
-
-<span class="sd">        :param bottom_right:</span>
-<span class="sd">        :param top_left:</span>
-<span class="sd">        :param height:</span>
-<span class="sd">        :param width:</span>
-<span class="sd">        :return:</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">_unary_geo</span><span class="p">(</span><span class="n">arctern</span><span class="o">.</span><span class="n">projection</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span> <span class="n">bottom_right</span><span class="p">,</span> <span class="n">top_left</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">transform_and_projection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">src_rs</span><span class="p">,</span> <span class="n">dst_rs</span><span class="p">,</span> <span class="n">bottom_right</span><span class="p">,</span> <span class="n">top_left</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">_unary_geo</span><span class="p">(</span><span class="n">arctern</span><span class="o">.</span><span class="n">transform_and_projection</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span> <span class="n">src_rs</span><span class="p">,</span> <span class="n">dst_rs</span><span class="p">,</span> <span class="n">bottom_right</span><span class="p">,</span> <span class="n">top_left</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">_unary_geo</span><span class="p">(</span><span class="n">arctern</span><span class="o">.</span><span class="n">ST_SimplifyPreserveTopology</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span> <span class="n">tolerance</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="GeoSeries.buffer"><a class="viewcode-back" href="../../../api_reference/standalone_api/api/arctern.GeoSeries.buffer.html#arctern.GeoSeries.buffer">[文档]</a>    <span class="k">def</span> <span class="nf">buffer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">distance</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -721,7 +737,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">_unary_geo</span><span class="p">(</span><span class="n">arctern</span><span class="o">.</span><span class="n">ST_MakeValid</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="GeoSeries.union_aggr"><a class="viewcode-back" href="../../../api_reference/standalone_api/api/arctern.GeoSeries.union_aggr.html#arctern.GeoSeries.union_aggr">[文档]</a>    <span class="k">def</span> <span class="nf">union_aggr</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="GeoSeries.unary_union"><a class="viewcode-back" href="../../../api_reference/standalone_api/api/arctern.GeoSeries.unary_union.html#arctern.GeoSeries.unary_union">[文档]</a>    <span class="k">def</span> <span class="nf">unary_union</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Return a geometry that represents the union of all geometries in the GeoSeries.</span>
 
@@ -885,12 +901,14 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="kn">from</span> <span class="nn">pandas.api.types</span> <span class="kn">import</span> <span class="n">is_scalar</span>
         <span class="k">if</span> <span class="n">is_scalar</span><span class="p">(</span><span class="n">other</span><span class="p">):</span>
-            <span class="n">other</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">([</span><span class="n">other</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>
-        <span class="n">result</span> <span class="o">=</span> <span class="n">_binary_op</span><span class="p">(</span><span class="n">arctern</span><span class="o">.</span><span class="n">ST_Equals</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">bool</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="n">other</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">([</span><span class="n">other</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+        <span class="n">this</span> <span class="o">=</span> <span class="bp">self</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">this</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">equals</span><span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">index</span><span class="p">):</span>
+            <span class="n">warn</span><span class="p">(</span><span class="s2">&quot;The indices of the two GeoSeries are different.&quot;</span><span class="p">)</span>
+            <span class="n">this</span><span class="p">,</span> <span class="n">other</span> <span class="o">=</span> <span class="n">this</span><span class="o">.</span><span class="n">align</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">_binary_op</span><span class="p">(</span><span class="n">arctern</span><span class="o">.</span><span class="n">ST_Equals</span><span class="p">,</span> <span class="n">this</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">bool</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
         <span class="n">other_na</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span>
-        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-            <span class="k">if</span> <span class="n">value</span> <span class="ow">and</span> <span class="n">other_na</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
-                <span class="n">result</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">result</span><span class="p">[</span><span class="n">other_na</span> <span class="o">&amp;</span> <span class="n">this</span><span class="o">.</span><span class="n">isna</span><span class="p">()]</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="k">return</span> <span class="n">result</span></div>
 
 <div class="viewcode-block" id="GeoSeries.touches"><a class="viewcode-back" href="../../../api_reference/standalone_api/api/arctern.GeoSeries.touches.html#arctern.GeoSeries.touches">[文档]</a>    <span class="k">def</span> <span class="nf">touches</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
@@ -1096,6 +1114,27 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">_property_op</span><span class="p">(</span><span class="n">arctern</span><span class="o">.</span><span class="n">ST_AsGeoJSON</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span></div>
 
+    <span class="k">def</span> <span class="nf">to_geopandas</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Transform each arctern GeoSeries to GeoPandas GeoSeries.</span>
+
+<span class="sd">        :rtype: GeoPandas GeoSeries(dtype: geometry)</span>
+<span class="sd">        :return: A GeoPandas GeoSeries.</span>
+<span class="sd">        :example:</span>
+<span class="sd">        &gt;&gt;&gt; from arctern import GeoSeries</span>
+<span class="sd">        &gt;&gt;&gt; s = GeoSeries([&quot;POINT(1 1)&quot;])</span>
+<span class="sd">        &gt;&gt;&gt; s</span>
+<span class="sd">        0    POINT (1 1)</span>
+<span class="sd">        dtype: GeoDtype</span>
+<span class="sd">        &gt;&gt;&gt; s.to_geopandas()</span>
+<span class="sd">        0    POINT (1.00000 1.00000)</span>
+<span class="sd">        dtype: geometry</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">import</span> <span class="nn">geopandas</span>
+        <span class="kn">import</span> <span class="nn">shapely</span>
+
+        <span class="k">return</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">GeoSeries</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">shapely</span><span class="o">.</span><span class="n">wkb</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">None</span><span class="p">),</span> <span class="n">crs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">crs</span><span class="p">)</span>
+
 <div class="viewcode-block" id="GeoSeries.polygon_from_envelope"><a class="viewcode-back" href="../../../api_reference/standalone_api/api/arctern.GeoSeries.polygon_from_envelope.html#arctern.GeoSeries.polygon_from_envelope">[文档]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">polygon_from_envelope</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">min_x</span><span class="p">,</span> <span class="n">min_y</span><span class="p">,</span> <span class="n">max_x</span><span class="p">,</span> <span class="n">max_y</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -1188,7 +1227,37 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
 <span class="sd">        dtype: GeoDtype</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">crs</span> <span class="o">=</span> <span class="n">_validate_crs</span><span class="p">(</span><span class="n">crs</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">arctern</span><span class="o">.</span><span class="n">ST_GeomFromGeoJSON</span><span class="p">(</span><span class="n">json</span><span class="p">),</span> <span class="n">crs</span><span class="o">=</span><span class="n">crs</span><span class="p">)</span></div></div>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">arctern</span><span class="o">.</span><span class="n">ST_GeomFromGeoJSON</span><span class="p">(</span><span class="n">json</span><span class="p">),</span> <span class="n">crs</span><span class="o">=</span><span class="n">crs</span><span class="p">)</span></div>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_geopandas</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Construct geometries from geopandas GeoSeries.</span>
+
+<span class="sd">        :rtype data: geopandas.GeoSeries</span>
+<span class="sd">        :param data: Source geometries data.</span>
+
+<span class="sd">        :rtype: arctern.GeoSeries</span>
+<span class="sd">        :return: A arctern.GeoSeries constructed from geopandas.GeoSeries.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
+        <span class="kn">import</span> <span class="nn">shapely.wkb</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoSeries</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;data must be </span><span class="si">{</span><span class="n">gpd</span><span class="o">.</span><span class="n">GeoSeries</span><span class="si">}</span><span class="s2">, got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">data</span><span class="o">.</span><span class="n">crs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">crs</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">crs</span><span class="o">.</span><span class="n">to_authority</span><span class="p">()</span> <span class="ow">or</span> <span class="n">data</span><span class="o">.</span><span class="n">crs</span><span class="o">.</span><span class="n">source_crs</span><span class="o">.</span><span class="n">to_authority</span><span class="p">()</span>
+            <span class="n">crs</span> <span class="o">=</span> <span class="n">crs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;:&#39;</span> <span class="o">+</span> <span class="n">crs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">crs</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">x</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">x</span>
+            <span class="k">return</span> <span class="n">shapely</span><span class="o">.</span><span class="n">wkb</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">f</span><span class="p">),</span> <span class="n">crs</span><span class="o">=</span><span class="n">crs</span><span class="p">)</span></div>
 </pre></div>
 
            </div>
@@ -1203,7 +1272,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 6月 05, 2020.
+        最后更新于 6月 06, 2020.
       </span>
 
     </p>

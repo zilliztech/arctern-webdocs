@@ -8,11 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>arctern._wrapper_func &mdash; Arctern gis version : 0.1.1
-build type : Release/CPU 
-build time : 2020-05-11 08:10.53
-commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
- 文档</title>
+  <title>arctern._wrapper_func &mdash; Arctern version : 0.2.0 文档</title>
   
 
   
@@ -201,6 +197,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
     <span class="s2">&quot;ST_GeomFromText&quot;</span><span class="p">,</span>
     <span class="s2">&quot;ST_AsText&quot;</span><span class="p">,</span>
     <span class="s2">&quot;ST_AsGeoJSON&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;within_which&quot;</span><span class="p">,</span>
     <span class="s2">&quot;point_map_layer&quot;</span><span class="p">,</span>
     <span class="s2">&quot;weighted_point_map_layer&quot;</span><span class="p">,</span>
     <span class="s2">&quot;heat_map_layer&quot;</span><span class="p">,</span>
@@ -209,8 +206,9 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
     <span class="s2">&quot;fishnet_map_layer&quot;</span><span class="p">,</span>
     <span class="s2">&quot;projection&quot;</span><span class="p">,</span>
     <span class="s2">&quot;transform_and_projection&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;wkt2wkb&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;wkb2wkt&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;nearest_location_on_road&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;nearest_road&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;near_road&quot;</span><span class="p">,</span>
     <span class="s2">&quot;version&quot;</span>
 <span class="p">]</span>
 
@@ -245,7 +243,8 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
                     <span class="k">else</span><span class="p">:</span>
                         <span class="k">if</span> <span class="n">arg_type</span> <span class="o">==</span> <span class="s1">&#39;binary&#39;</span><span class="p">:</span>
                             <span class="n">arg_type</span> <span class="o">=</span> <span class="s1">&#39;object&#39;</span>
-                        <span class="n">arg</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="n">warpper_args</span><span class="p">[</span><span class="n">func_arg_idx</span><span class="p">]</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">array_len</span><span class="p">)],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">arg_type</span><span class="p">)</span>
+                        <span class="n">arg</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="n">warpper_args</span><span class="p">[</span><span class="n">func_arg_idx</span><span class="p">]</span>
+                                         <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">array_len</span><span class="p">)],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">arg_type</span><span class="p">)</span>
                         <span class="n">func_args</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span>
                 <span class="n">func_arg_idx</span> <span class="o">=</span> <span class="n">func_arg_idx</span> <span class="o">+</span> <span class="mi">1</span>
             <span class="k">while</span> <span class="n">func_arg_idx</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">warpper_args</span><span class="p">):</span>
@@ -312,7 +311,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
     <span class="k">return</span> <span class="n">result</span>
 
 
-<div class="viewcode-block" id="ST_Point"><a class="viewcode-back" href="../../hide_source/python/api/geospatial/function/geospatial/ST_Point.html#arctern._wrapper_func.ST_Point">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;double&#39;</span><span class="p">,</span> <span class="s1">&#39;double&#39;</span><span class="p">)</span>
+<div class="viewcode-block" id="ST_Point"><a class="viewcode-back" href="../../hide_source/python/api/geospatial/function/geospatial/ST_Point.html#arctern.ST_Point">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;double&#39;</span><span class="p">,</span> <span class="s1">&#39;double&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_Point</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Construct Point geometries according to the coordinates.</span>
@@ -346,7 +345,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
     <span class="k">return</span> <span class="n">_to_pandas_series</span><span class="p">(</span><span class="n">result</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="ST_GeomFromGeoJSON"><a class="viewcode-back" href="../../hide_source/python/api/geospatial/function/geospatial/ST_GeomFromGeoJSON.html#arctern._wrapper_func.ST_GeomFromGeoJSON">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;string&#39;</span><span class="p">)</span>
+<div class="viewcode-block" id="ST_GeomFromGeoJSON"><a class="viewcode-back" href="../../hide_source/python/api/geospatial/function/geospatial/ST_GeomFromGeoJSON.html#arctern.ST_GeomFromGeoJSON">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;string&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_GeomFromGeoJSON</span><span class="p">(</span><span class="n">json</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Construct geometry from the GeoJSON representation.</span>
@@ -373,7 +372,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
     <span class="k">return</span> <span class="n">_to_pandas_series</span><span class="p">(</span><span class="n">result</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="ST_GeomFromText"><a class="viewcode-back" href="../../hide_source/python/api/geospatial/function/geospatial/ST_GeomFromText.html#arctern._wrapper_func.ST_GeomFromText">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;string&#39;</span><span class="p">)</span>
+<div class="viewcode-block" id="ST_GeomFromText"><a class="viewcode-back" href="../../hide_source/python/api/geospatial/function/geospatial/ST_GeomFromText.html#arctern.ST_GeomFromText">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;string&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_GeomFromText</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Transform the representation of geometry from WKT to WKB.</span>
@@ -400,7 +399,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
     <span class="k">return</span> <span class="n">_to_pandas_series</span><span class="p">(</span><span class="n">result</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="ST_AsText"><a class="viewcode-back" href="../../hide_source/python/api/geospatial/function/geospatial/ST_AsText.html#arctern._wrapper_func.ST_AsText">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
+<div class="viewcode-block" id="ST_AsText"><a class="viewcode-back" href="../../hide_source/python/api/geospatial/function/geospatial/ST_AsText.html#arctern.ST_AsText">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_AsText</span><span class="p">(</span><span class="n">geos</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Transform the representation of geometry from WKB to WKT.</span>
@@ -427,7 +426,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
     <span class="k">return</span> <span class="n">_to_pandas_series</span><span class="p">(</span><span class="n">result</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="ST_AsGeoJSON"><a class="viewcode-back" href="../../hide_source/python/api/geospatial/function/geospatial/ST_AsGeoJson.html#arctern._wrapper_func.ST_AsGeoJSON">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
+<div class="viewcode-block" id="ST_AsGeoJSON"><a class="viewcode-back" href="../../hide_source/python/api/geospatial/function/geospatial/ST_AsGeoJson.html#arctern.ST_AsGeoJSON">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_AsGeoJSON</span><span class="p">(</span><span class="n">geos</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Return the GeoJSON representation of the geometry.</span>
@@ -454,7 +453,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
     <span class="k">return</span> <span class="n">_to_pandas_series</span><span class="p">(</span><span class="n">result</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="ST_Intersection"><a class="viewcode-back" href="../../hide_source/python/api/geospatial/function/geospatial/ST_Intersection.html#arctern._wrapper_func.ST_Intersection">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="s1">&#39;binary&#39;</span><span class="p">)</span>
+<div class="viewcode-block" id="ST_Intersection"><a class="viewcode-back" href="../../hide_source/python/api/geospatial/function/geospatial/ST_Intersection.html#arctern.ST_Intersection">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="s1">&#39;binary&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_Intersection</span><span class="p">(</span><span class="n">geo1</span><span class="p">,</span> <span class="n">geo2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculate the point set intersection of two geometry objects.</span>
@@ -487,7 +486,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
     <span class="k">return</span> <span class="n">_to_pandas_series</span><span class="p">(</span><span class="n">result</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="ST_IsValid"><a class="viewcode-back" href="../../hide_source/python/api/geospatial/function/geospatial/ST_IsValid.html#arctern._wrapper_func.ST_IsValid">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
+<div class="viewcode-block" id="ST_IsValid"><a class="viewcode-back" href="../../hide_source/python/api/geospatial/function/geospatial/ST_IsValid.html#arctern.ST_IsValid">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_IsValid</span><span class="p">(</span><span class="n">geos</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Check if geometry is of valid geometry format.</span>
@@ -513,7 +512,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
     <span class="k">return</span> <span class="n">arctern_caller</span><span class="p">(</span><span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_IsValid</span><span class="p">,</span> <span class="n">arr_geos</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="ST_PrecisionReduce"><a class="viewcode-back" href="../../hide_source/python/api/geospatial/function/geospatial/ST_PrecisionReduce.html#arctern._wrapper_func.ST_PrecisionReduce">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+<div class="viewcode-block" id="ST_PrecisionReduce"><a class="viewcode-back" href="../../hide_source/python/api/geospatial/function/geospatial/ST_PrecisionReduce.html#arctern.ST_PrecisionReduce">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_PrecisionReduce</span><span class="p">(</span><span class="n">geos</span><span class="p">,</span> <span class="n">precision</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    For the coordinates of the geometry, reduce the number of significant digits</span>
@@ -523,7 +522,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
 <span class="sd">    :param geos: Geometries in WKB form.</span>
 
 <span class="sd">    :type precision: int</span>
-<span class="sd">    :param precision: The number to of ignificant digits.</span>
+<span class="sd">    :param precision: The number of significant digits.</span>
 
 <span class="sd">    :rtype: Series(dtype: object)</span>
 <span class="sd">    :return: Geometry with reduced precision.</span>
@@ -543,7 +542,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
     <span class="k">return</span> <span class="n">arctern_caller</span><span class="p">(</span><span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_PrecisionReduce</span><span class="p">,</span> <span class="n">arr_geos</span><span class="p">,</span> <span class="n">precision</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="ST_Equals"><a class="viewcode-back" href="../../hide_source/python/api/geospatial/function/geospatial/ST_Equals.html#arctern._wrapper_func.ST_Equals">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="s1">&#39;binary&#39;</span><span class="p">)</span>
+<div class="viewcode-block" id="ST_Equals"><a class="viewcode-back" href="../../hide_source/python/api/geospatial/function/geospatial/ST_Equals.html#arctern.ST_Equals">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="s1">&#39;binary&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_Equals</span><span class="p">(</span><span class="n">geo1</span><span class="p">,</span> <span class="n">geo2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Check whether geometries are &quot;spatially equal&quot;. &quot;Spatially equal&quot; here means two geometries represent</span>
@@ -578,7 +577,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
     <span class="k">return</span> <span class="n">_to_pandas_series</span><span class="p">(</span><span class="n">result</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="ST_Touches"><a class="viewcode-back" href="../../hide_source/python/api/geospatial/function/geospatial/ST_Touches.html#arctern._wrapper_func.ST_Touches">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="s1">&#39;binary&#39;</span><span class="p">)</span>
+<div class="viewcode-block" id="ST_Touches"><a class="viewcode-back" href="../../hide_source/python/api/geospatial/function/geospatial/ST_Touches.html#arctern.ST_Touches">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="s1">&#39;binary&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_Touches</span><span class="p">(</span><span class="n">geo1</span><span class="p">,</span> <span class="n">geo2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Check whether geometries &quot;touch&quot;. &quot;Touch&quot; here means two geometries have common points, and the</span>
@@ -613,7 +612,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
     <span class="k">return</span> <span class="n">_to_pandas_series</span><span class="p">(</span><span class="n">result</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="ST_Overlaps"><a class="viewcode-back" href="../../hide_source/python/api/geospatial/function/geospatial/ST_Overlaps.html#arctern._wrapper_func.ST_Overlaps">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="s1">&#39;binary&#39;</span><span class="p">)</span>
+<div class="viewcode-block" id="ST_Overlaps"><a class="viewcode-back" href="../../hide_source/python/api/geospatial/function/geospatial/ST_Overlaps.html#arctern.ST_Overlaps">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="s1">&#39;binary&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_Overlaps</span><span class="p">(</span><span class="n">geo1</span><span class="p">,</span> <span class="n">geo2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Check whether geometries &quot;spatially overlap&quot;. &quot;Spatially overlap&quot; here means two geometries</span>
@@ -648,7 +647,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
     <span class="k">return</span> <span class="n">_to_pandas_series</span><span class="p">(</span><span class="n">result</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="ST_Crosses"><a class="viewcode-back" href="../../hide_source/python/api/geospatial/function/geospatial/ST_Crosses.html#arctern._wrapper_func.ST_Crosses">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="s1">&#39;binary&#39;</span><span class="p">)</span>
+<div class="viewcode-block" id="ST_Crosses"><a class="viewcode-back" href="../../hide_source/python/api/geospatial/function/geospatial/ST_Crosses.html#arctern.ST_Crosses">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="s1">&#39;binary&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_Crosses</span><span class="p">(</span><span class="n">geo1</span><span class="p">,</span> <span class="n">geo2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Check whether geometries &quot;spatially cross&quot;. &quot;Spatially cross&quot; here means two geometries have</span>
@@ -685,7 +684,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
     <span class="k">return</span> <span class="n">_to_pandas_series</span><span class="p">(</span><span class="n">result</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="ST_IsSimple"><a class="viewcode-back" href="../../hide_source/python/api/geospatial/function/geospatial/ST_IsSimple.html#arctern._wrapper_func.ST_IsSimple">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
+<div class="viewcode-block" id="ST_IsSimple"><a class="viewcode-back" href="../../hide_source/python/api/geospatial/function/geospatial/ST_IsSimple.html#arctern.ST_IsSimple">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_IsSimple</span><span class="p">(</span><span class="n">geos</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Check whether geometry is &quot;simple&quot;. &quot;Simple&quot; here means that a geometry has no anomalous geometric points</span>
@@ -712,7 +711,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
     <span class="k">return</span> <span class="n">arctern_caller</span><span class="p">(</span><span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_IsSimple</span><span class="p">,</span> <span class="n">arr_geos</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="ST_GeometryType"><a class="viewcode-back" href="../../hide_source/python/api/geospatial/function/geospatial/ST_GeometryType.html#arctern._wrapper_func.ST_GeometryType">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
+<div class="viewcode-block" id="ST_GeometryType"><a class="viewcode-back" href="../../hide_source/python/api/geospatial/function/geospatial/ST_GeometryType.html#arctern.ST_GeometryType">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_GeometryType</span><span class="p">(</span><span class="n">geos</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    For each geometry in geometries, return a string that indicates it&#39;s type.</span>
@@ -738,7 +737,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
     <span class="k">return</span> <span class="n">arctern_caller</span><span class="p">(</span><span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_GeometryType</span><span class="p">,</span> <span class="n">arr_geos</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="ST_MakeValid"><a class="viewcode-back" href="../../hide_source/python/api/geospatial/function/geospatial/ST_MakeValid.html#arctern._wrapper_func.ST_MakeValid">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
+<div class="viewcode-block" id="ST_MakeValid"><a class="viewcode-back" href="../../hide_source/python/api/geospatial/function/geospatial/ST_MakeValid.html#arctern.ST_MakeValid">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_MakeValid</span><span class="p">(</span><span class="n">geos</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Create a valid representation of the geometry without losing any of the input vertices. If</span>
@@ -764,7 +763,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
     <span class="k">return</span> <span class="n">arctern_caller</span><span class="p">(</span><span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_MakeValid</span><span class="p">,</span> <span class="n">arr_geos</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="ST_SimplifyPreserveTopology"><a class="viewcode-back" href="../../hide_source/python/api/geospatial/function/geospatial/ST_SimplifyPreserveTopology.html#arctern._wrapper_func.ST_SimplifyPreserveTopology">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
+<div class="viewcode-block" id="ST_SimplifyPreserveTopology"><a class="viewcode-back" href="../../hide_source/python/api/geospatial/function/geospatial/ST_SimplifyPreserveTopology.html#arctern.ST_SimplifyPreserveTopology">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_SimplifyPreserveTopology</span><span class="p">(</span><span class="n">geos</span><span class="p">,</span> <span class="n">distance_tolerance</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns a &quot;simplified&quot; version of the given geometry using the Douglas-Peucker algorithm.</span>
@@ -793,7 +792,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
     <span class="k">return</span> <span class="n">arctern_caller</span><span class="p">(</span><span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_SimplifyPreserveTopology</span><span class="p">,</span> <span class="n">arr_geos</span><span class="p">,</span> <span class="n">distance_tolerance</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="ST_PolygonFromEnvelope"><a class="viewcode-back" href="../../hide_source/python/api/geospatial/function/geospatial/ST_PolygonFromEnvelope.html#arctern._wrapper_func.ST_PolygonFromEnvelope">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;double&#39;</span><span class="p">,</span> <span class="s1">&#39;double&#39;</span><span class="p">,</span> <span class="s1">&#39;double&#39;</span><span class="p">,</span> <span class="s1">&#39;double&#39;</span><span class="p">)</span>
+<div class="viewcode-block" id="ST_PolygonFromEnvelope"><a class="viewcode-back" href="../../hide_source/python/api/geospatial/function/geospatial/ST_PolygonFromEnvelope.html#arctern.ST_PolygonFromEnvelope">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;double&#39;</span><span class="p">,</span> <span class="s1">&#39;double&#39;</span><span class="p">,</span> <span class="s1">&#39;double&#39;</span><span class="p">,</span> <span class="s1">&#39;double&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_PolygonFromEnvelope</span><span class="p">(</span><span class="n">min_x</span><span class="p">,</span> <span class="n">min_y</span><span class="p">,</span> <span class="n">max_x</span><span class="p">,</span> <span class="n">max_y</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Construct polygon(rectangle) geometries from arr_min_x, arr_min_y, arr_max_x,</span>
@@ -839,7 +838,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
     <span class="k">return</span> <span class="n">_to_pandas_series</span><span class="p">(</span><span class="n">result</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="ST_Contains"><a class="viewcode-back" href="../../hide_source/python/api/geospatial/function/geospatial/ST_Contains.html#arctern._wrapper_func.ST_Contains">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="s1">&#39;binary&#39;</span><span class="p">)</span>
+<div class="viewcode-block" id="ST_Contains"><a class="viewcode-back" href="../../hide_source/python/api/geospatial/function/geospatial/ST_Contains.html#arctern.ST_Contains">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="s1">&#39;binary&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_Contains</span><span class="p">(</span><span class="n">geo1</span><span class="p">,</span> <span class="n">geo2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Check whether geometry &quot;geo1&quot; contains geometry &quot;geo2&quot;. &quot;geo1 contains geo2&quot; means no points</span>
@@ -875,7 +874,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
     <span class="k">return</span> <span class="n">_to_pandas_series</span><span class="p">(</span><span class="n">result</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="ST_Intersects"><a class="viewcode-back" href="../../hide_source/python/api/geospatial/function/geospatial/ST_Intersects.html#arctern._wrapper_func.ST_Intersects">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="s1">&#39;binary&#39;</span><span class="p">)</span>
+<div class="viewcode-block" id="ST_Intersects"><a class="viewcode-back" href="../../hide_source/python/api/geospatial/function/geospatial/ST_Intersects.html#arctern.ST_Intersects">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="s1">&#39;binary&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_Intersects</span><span class="p">(</span><span class="n">geo1</span><span class="p">,</span> <span class="n">geo2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Check whether two geometries intersect (i.e., share any portion of space).</span>
@@ -909,8 +908,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
     <span class="k">return</span> <span class="n">_to_pandas_series</span><span class="p">(</span><span class="n">result</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="ST_Within"><a class="viewcode-back" href="../../hide_source/python/api/geospatial/function/geospatial/ST_Within.html#arctern._wrapper_func.ST_Within">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="s1">&#39;binary&#39;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">ST_Within</span><span class="p">(</span><span class="n">geo1</span><span class="p">,</span> <span class="n">geo2</span><span class="p">):</span>
+<div class="viewcode-block" id="ST_Within"><a class="viewcode-back" href="../../hide_source/python/api/geospatial/function/geospatial/ST_Within.html#arctern.ST_Within">[文档]</a><span class="k">def</span> <span class="nf">ST_Within</span><span class="p">(</span><span class="n">geo1</span><span class="p">,</span> <span class="n">geo2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Check whether geometry &quot;geo1&quot; is within geometry &quot;geo2&quot;. &quot;geo1 within geo2&quot; means no points of &quot;geo1&quot; lie in the</span>
 <span class="sd">    exterior of &quot;geo2&quot; and at least one point of the interior of &quot;geo1&quot; lies in the interior of &quot;geo2&quot;.</span>
@@ -936,6 +934,34 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
 <span class="sd">          dtype: bool</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="kn">import</span> <span class="nn">pyarrow</span> <span class="k">as</span> <span class="nn">pa</span>
+    <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">geo1</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">geo2</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">):</span>
+        <span class="n">arr_geo1</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="n">geo1</span><span class="p">]),</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
+        <span class="n">arr_geo1</span> <span class="o">=</span> <span class="n">_to_arrow_array_list</span><span class="p">(</span><span class="n">arr_geo1</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_Within2</span><span class="p">(</span><span class="n">arr_geo1</span><span class="p">,</span> <span class="n">geo2</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">_to_pandas_series</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">geo1</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">geo2</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">):</span>
+        <span class="n">series_geo1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="n">geo1</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">geo2</span><span class="o">.</span><span class="n">size</span><span class="p">)])</span>
+        <span class="n">arr_geo1</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">series_geo1</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
+        <span class="n">arr_geo2</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">geo2</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
+        <span class="n">arr_geo1</span> <span class="o">=</span> <span class="n">_to_arrow_array_list</span><span class="p">(</span><span class="n">arr_geo1</span><span class="p">)</span>
+        <span class="n">arr_geo2</span> <span class="o">=</span> <span class="n">_to_arrow_array_list</span><span class="p">(</span><span class="n">arr_geo2</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_Within</span><span class="p">(</span><span class="n">arr_geo1</span><span class="p">,</span> <span class="n">arr_geo2</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">_to_pandas_series</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">geo2</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">)</span> <span class="ow">and</span> <span class="n">geo2</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">arr_geo1</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">geo1</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
+        <span class="n">arr_geo1</span> <span class="o">=</span> <span class="n">_to_arrow_array_list</span><span class="p">(</span><span class="n">arr_geo1</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_Within2</span><span class="p">(</span><span class="n">arr_geo1</span><span class="p">,</span> <span class="n">geo2</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">_to_pandas_series</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">geo2</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">):</span>
+        <span class="n">arr_geo1</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">geo1</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
+        <span class="n">arr_geo1</span> <span class="o">=</span> <span class="n">_to_arrow_array_list</span><span class="p">(</span><span class="n">arr_geo1</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_Within2</span><span class="p">(</span><span class="n">arr_geo1</span><span class="p">,</span> <span class="n">geo2</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">_to_pandas_series</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
     <span class="n">arr_geo1</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">geo1</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
     <span class="n">arr_geo2</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">geo2</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
     <span class="n">arr_geo1</span> <span class="o">=</span> <span class="n">_to_arrow_array_list</span><span class="p">(</span><span class="n">arr_geo1</span><span class="p">)</span>
@@ -944,7 +970,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
     <span class="k">return</span> <span class="n">_to_pandas_series</span><span class="p">(</span><span class="n">result</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="ST_Distance"><a class="viewcode-back" href="../../hide_source/python/api/geospatial/function/geospatial/ST_Distance.html#arctern._wrapper_func.ST_Distance">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="s1">&#39;binary&#39;</span><span class="p">)</span>
+<div class="viewcode-block" id="ST_Distance"><a class="viewcode-back" href="../../hide_source/python/api/geospatial/function/geospatial/ST_Distance.html#arctern.ST_Distance">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="s1">&#39;binary&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_Distance</span><span class="p">(</span><span class="n">geo1</span><span class="p">,</span> <span class="n">geo2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculates the minimum 2D Cartesian (planar) distance between &quot;geo1&quot; and &quot;geo2&quot;.</span>
@@ -982,7 +1008,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
     <span class="k">return</span> <span class="n">_to_pandas_series</span><span class="p">(</span><span class="n">result</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="ST_DistanceSphere"><a class="viewcode-back" href="../../hide_source/python/api/geospatial/function/geospatial/ST_DistanceSphere.html#arctern._wrapper_func.ST_DistanceSphere">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="s1">&#39;binary&#39;</span><span class="p">)</span>
+<div class="viewcode-block" id="ST_DistanceSphere"><a class="viewcode-back" href="../../hide_source/python/api/geospatial/function/geospatial/ST_DistanceSphere.html#arctern.ST_DistanceSphere">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="s1">&#39;binary&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_DistanceSphere</span><span class="p">(</span><span class="n">geo1</span><span class="p">,</span> <span class="n">geo2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns minimum distance in meters between two lon/lat points.Uses a spherical earth</span>
@@ -1008,7 +1034,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
 <span class="sd">      &gt;&gt;&gt; data2 = pandas.Series([p21, p22])</span>
 <span class="sd">      &gt;&gt;&gt; rst = arctern.ST_DistanceSphere(arctern.ST_GeomFromText(data2), arctern.ST_GeomFromText(data1))</span>
 <span class="sd">      &gt;&gt;&gt; print(rst)</span>
-<span class="sd">          0         1.0</span>
+<span class="sd">          0         0.0</span>
 <span class="sd">          1    111226.3</span>
 <span class="sd">          dtype: float64</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -1021,7 +1047,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
     <span class="k">return</span> <span class="n">_to_pandas_series</span><span class="p">(</span><span class="n">result</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="ST_Area"><a class="viewcode-back" href="../../hide_source/python/api/geospatial/function/geospatial/ST_Area.html#arctern._wrapper_func.ST_Area">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
+<div class="viewcode-block" id="ST_Area"><a class="viewcode-back" href="../../hide_source/python/api/geospatial/function/geospatial/ST_Area.html#arctern.ST_Area">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_Area</span><span class="p">(</span><span class="n">geos</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculate the 2D Cartesian (planar) area of geometry.</span>
@@ -1048,7 +1074,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
     <span class="k">return</span> <span class="n">arctern_caller</span><span class="p">(</span><span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_Area</span><span class="p">,</span> <span class="n">arr_geos</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="ST_Centroid"><a class="viewcode-back" href="../../hide_source/python/api/geospatial/function/geospatial/ST_Centroid.html#arctern._wrapper_func.ST_Centroid">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
+<div class="viewcode-block" id="ST_Centroid"><a class="viewcode-back" href="../../hide_source/python/api/geospatial/function/geospatial/ST_Centroid.html#arctern.ST_Centroid">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_Centroid</span><span class="p">(</span><span class="n">geos</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Compute the centroid of geometry.</span>
@@ -1075,7 +1101,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
     <span class="k">return</span> <span class="n">arctern_caller</span><span class="p">(</span><span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_Centroid</span><span class="p">,</span> <span class="n">arr_geos</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="ST_Length"><a class="viewcode-back" href="../../hide_source/python/api/geospatial/function/geospatial/ST_Length.html#arctern._wrapper_func.ST_Length">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
+<div class="viewcode-block" id="ST_Length"><a class="viewcode-back" href="../../hide_source/python/api/geospatial/function/geospatial/ST_Length.html#arctern.ST_Length">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_Length</span><span class="p">(</span><span class="n">geos</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculate the length of linear geometries.</span>
@@ -1102,7 +1128,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
     <span class="k">return</span> <span class="n">arctern_caller</span><span class="p">(</span><span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_Length</span><span class="p">,</span> <span class="n">arr_geos</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="ST_HausdorffDistance"><a class="viewcode-back" href="../../hide_source/python/api/geospatial/function/geospatial/ST_HausdorffDistance.html#arctern._wrapper_func.ST_HausdorffDistance">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="s1">&#39;binary&#39;</span><span class="p">)</span>
+<div class="viewcode-block" id="ST_HausdorffDistance"><a class="viewcode-back" href="../../hide_source/python/api/geospatial/function/geospatial/ST_HausdorffDistance.html#arctern.ST_HausdorffDistance">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="s1">&#39;binary&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_HausdorffDistance</span><span class="p">(</span><span class="n">geo1</span><span class="p">,</span> <span class="n">geo2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns the Hausdorff distance between two geometries, a measure of how similar</span>
@@ -1139,7 +1165,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
     <span class="k">return</span> <span class="n">_to_pandas_series</span><span class="p">(</span><span class="n">result</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="ST_ConvexHull"><a class="viewcode-back" href="../../hide_source/python/api/geospatial/function/geospatial/ST_ConvexHull.html#arctern._wrapper_func.ST_ConvexHull">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
+<div class="viewcode-block" id="ST_ConvexHull"><a class="viewcode-back" href="../../hide_source/python/api/geospatial/function/geospatial/ST_ConvexHull.html#arctern.ST_ConvexHull">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_ConvexHull</span><span class="p">(</span><span class="n">geos</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Compute the smallest convex geometry that encloses all geometries in the given geometry.</span>
@@ -1165,7 +1191,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
     <span class="k">return</span> <span class="n">arctern_caller</span><span class="p">(</span><span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_ConvexHull</span><span class="p">,</span> <span class="n">arr_geos</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="ST_NPoints"><a class="viewcode-back" href="../../hide_source/python/api/geospatial/function/geospatial/ST_NPoints.html#arctern._wrapper_func.ST_NPoints">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
+<div class="viewcode-block" id="ST_NPoints"><a class="viewcode-back" href="../../hide_source/python/api/geospatial/function/geospatial/ST_NPoints.html#arctern.ST_NPoints">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_NPoints</span><span class="p">(</span><span class="n">geos</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculates the points number for every geometry in geometries.</span>
@@ -1191,7 +1217,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
     <span class="k">return</span> <span class="n">arctern_caller</span><span class="p">(</span><span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_NPoints</span><span class="p">,</span> <span class="n">arr_geos</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="ST_Envelope"><a class="viewcode-back" href="../../hide_source/python/api/geospatial/function/geospatial/ST_Envelope.html#arctern._wrapper_func.ST_Envelope">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
+<div class="viewcode-block" id="ST_Envelope"><a class="viewcode-back" href="../../hide_source/python/api/geospatial/function/geospatial/ST_Envelope.html#arctern.ST_Envelope">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_Envelope</span><span class="p">(</span><span class="n">geos</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Compute the double-precision minimum bounding box geometry for the given geometry.</span>
@@ -1232,7 +1258,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
     <span class="k">return</span> <span class="n">arctern_caller</span><span class="p">(</span><span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_Envelope</span><span class="p">,</span> <span class="n">arr_geos</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="ST_Buffer"><a class="viewcode-back" href="../../hide_source/python/api/geospatial/function/geospatial/ST_Buffer.html#arctern._wrapper_func.ST_Buffer">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
+<div class="viewcode-block" id="ST_Buffer"><a class="viewcode-back" href="../../hide_source/python/api/geospatial/function/geospatial/ST_Buffer.html#arctern.ST_Buffer">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_Buffer</span><span class="p">(</span><span class="n">geos</span><span class="p">,</span> <span class="n">distance</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns a geometry that represents all points whose distance from this geos is</span>
@@ -1264,7 +1290,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
     <span class="k">return</span> <span class="n">_to_pandas_series</span><span class="p">(</span><span class="n">result</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="ST_Union_Aggr"><a class="viewcode-back" href="../../hide_source/python/api/geospatial/function/aggr/ST_Union_Aggr.html#arctern._wrapper_func.ST_Union_Aggr">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
+<div class="viewcode-block" id="ST_Union_Aggr"><a class="viewcode-back" href="../../hide_source/python/api/geospatial/function/aggr/ST_Union_Aggr.html#arctern.ST_Union_Aggr">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_Union_Aggr</span><span class="p">(</span><span class="n">geos</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Return a geometry that represents the union of a set of geometries.</span>
@@ -1294,7 +1320,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
     <span class="k">return</span> <span class="n">result</span></div>
 
 
-<div class="viewcode-block" id="ST_Envelope_Aggr"><a class="viewcode-back" href="../../hide_source/python/api/geospatial/function/aggr/ST_Envelope_Aggr.html#arctern._wrapper_func.ST_Envelope_Aggr">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
+<div class="viewcode-block" id="ST_Envelope_Aggr"><a class="viewcode-back" href="../../hide_source/python/api/geospatial/function/aggr/ST_Envelope_Aggr.html#arctern.ST_Envelope_Aggr">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_Envelope_Aggr</span><span class="p">(</span><span class="n">geos</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Compute the double-precision minimum bounding box geometry for the union of given geometries.</span>
@@ -1324,7 +1350,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
     <span class="k">return</span> <span class="n">result</span></div>
 
 
-<div class="viewcode-block" id="ST_Transform"><a class="viewcode-back" href="../../hide_source/python/api/geospatial/function/geospatial/ST_Transform.html#arctern._wrapper_func.ST_Transform">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
+<div class="viewcode-block" id="ST_Transform"><a class="viewcode-back" href="../../hide_source/python/api/geospatial/function/geospatial/ST_Transform.html#arctern.ST_Transform">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_Transform</span><span class="p">(</span><span class="n">geos</span><span class="p">,</span> <span class="n">from_srid</span><span class="p">,</span> <span class="n">to_srid</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Return a new geometry with its coordinates transformed from spatial reference system &quot;src&quot; to a &quot;dst&quot;.</span>
@@ -1361,7 +1387,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
     <span class="k">return</span> <span class="n">arctern_caller</span><span class="p">(</span><span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_Transform</span><span class="p">,</span> <span class="n">arr_geos</span><span class="p">,</span> <span class="n">src</span><span class="p">,</span> <span class="n">dst</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="ST_CurveToLine"><a class="viewcode-back" href="../../hide_source/python/api/geospatial/function/geospatial/ST_CurveToLine.html#arctern._wrapper_func.ST_CurveToLine">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
+<div class="viewcode-block" id="ST_CurveToLine"><a class="viewcode-back" href="../../hide_source/python/api/geospatial/function/geospatial/ST_CurveToLine.html#arctern.ST_CurveToLine">[文档]</a><span class="nd">@arctern_udf</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ST_CurveToLine</span><span class="p">(</span><span class="n">geos</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Convert curves in a geometry to approximate linear representation, e.g., CIRCULAR STRING to regular LINESTRING, CURVEPOLYGON to POLYGON, and</span>
@@ -1389,6 +1415,36 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
     <span class="k">return</span> <span class="n">_to_pandas_series</span><span class="p">(</span><span class="n">result</span><span class="p">)</span></div>
 
 
+<div class="viewcode-block" id="within_which"><a class="viewcode-back" href="../../api_reference/map_match/api/arctern.within_which.html#arctern.within_which">[文档]</a><span class="k">def</span> <span class="nf">within_which</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate spatial join of two GeoSeries</span>
+<span class="sd">    :type left: GeoSeries</span>
+<span class="sd">    :type right: GeoSeries</span>
+<span class="sd">    :rtype: Series(dtype: object)</span>
+<span class="sd">    :example:</span>
+<span class="sd">      &gt;&gt;&gt; from arctern import *</span>
+<span class="sd">      &gt;&gt;&gt; data1 = GeoSeries([&quot;Point(0 0)&quot;, &quot;Point(1000 1000)&quot;, &quot;Point(10 10)&quot;])</span>
+<span class="sd">      &gt;&gt;&gt; data2 = GeoSeries([&quot;Polygon(9 10, 11 12, 11 8, 9 10)&quot;, &quot;POLYGON ((-1 0, 1 2, 1 -2, -1 0))&quot;])</span>
+<span class="sd">      &gt;&gt;&gt; res = within_which(data1, data2)</span>
+<span class="sd">      &gt;&gt;&gt; print(res)</span>
+<span class="sd">          0    1</span>
+<span class="sd">          1    &lt;NA&gt;</span>
+<span class="sd">          2    0</span>
+<span class="sd">          dtype: object</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">import</span> <span class="nn">pyarrow</span> <span class="k">as</span> <span class="nn">pa</span>
+    <span class="kn">import</span> <span class="nn">pandas</span>
+    <span class="n">pa_left</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
+    <span class="n">pa_right</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">right</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
+    <span class="n">vec_arr_left</span> <span class="o">=</span> <span class="n">_to_arrow_array_list</span><span class="p">(</span><span class="n">pa_left</span><span class="p">)</span>
+    <span class="n">vec_arr_right</span> <span class="o">=</span> <span class="n">_to_arrow_array_list</span><span class="p">(</span><span class="n">pa_right</span><span class="p">)</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">ST_IndexedWithin</span><span class="p">(</span><span class="n">vec_arr_left</span><span class="p">,</span> <span class="n">vec_arr_right</span><span class="p">)</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">_to_pandas_series</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">right</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">pandas</span><span class="o">.</span><span class="n">NA</span><span class="p">)</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">set_axis</span><span class="p">(</span><span class="n">left</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">res</span></div>
+
+
 <span class="k">def</span> <span class="nf">projection</span><span class="p">(</span><span class="n">geos</span><span class="p">,</span> <span class="n">bottom_right</span><span class="p">,</span> <span class="n">top_left</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">):</span>
     <span class="kn">import</span> <span class="nn">pyarrow</span> <span class="k">as</span> <span class="nn">pa</span>
     <span class="n">geos</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">geos</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
@@ -1414,23 +1470,9 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
 
     <span class="n">geos_rs</span> <span class="o">=</span> <span class="n">_to_arrow_array_list</span><span class="p">(</span><span class="n">geos</span><span class="p">)</span>
 
-    <span class="n">geos</span> <span class="o">=</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">transform_and_projection</span><span class="p">(</span><span class="n">geos_rs</span><span class="p">,</span> <span class="n">src</span><span class="p">,</span> <span class="n">dst</span><span class="p">,</span> <span class="n">bounding_box_max</span><span class="p">,</span> <span class="n">bounding_box_min</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span>
+    <span class="n">geos</span> <span class="o">=</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">transform_and_projection</span><span class="p">(</span>
+        <span class="n">geos_rs</span><span class="p">,</span> <span class="n">src</span><span class="p">,</span> <span class="n">dst</span><span class="p">,</span> <span class="n">bounding_box_max</span><span class="p">,</span> <span class="n">bounding_box_min</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">_to_pandas_series</span><span class="p">(</span><span class="n">geos</span><span class="p">)</span>
-
-
-<span class="k">def</span> <span class="nf">wkt2wkb</span><span class="p">(</span><span class="n">arr_wkt</span><span class="p">):</span>
-    <span class="kn">import</span> <span class="nn">pyarrow</span> <span class="k">as</span> <span class="nn">pa</span>
-    <span class="n">wkts</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">arr_wkt</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;string&#39;</span><span class="p">)</span>
-    <span class="n">rs</span> <span class="o">=</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">wkt2wkb</span><span class="p">(</span><span class="n">wkts</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">rs</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span>
-
-
-<span class="k">def</span> <span class="nf">wkb2wkt</span><span class="p">(</span><span class="n">arr_wkb</span><span class="p">):</span>
-    <span class="kn">import</span> <span class="nn">pyarrow</span> <span class="k">as</span> <span class="nn">pa</span>
-    <span class="n">wkbs</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">arr_wkb</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
-    <span class="n">rs</span> <span class="o">=</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">wkb2wkt</span><span class="p">(</span><span class="n">wkbs</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">rs</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span>
-
 
 <span class="k">def</span> <span class="nf">point_map_layer</span><span class="p">(</span><span class="n">vega</span><span class="p">,</span> <span class="n">points</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
     <span class="kn">import</span> <span class="nn">pyarrow</span> <span class="k">as</span> <span class="nn">pa</span>
@@ -1458,11 +1500,12 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
             <span class="n">geos_rs</span> <span class="o">=</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">transform_and_projection</span><span class="p">(</span><span class="n">geos_rs</span><span class="p">,</span> <span class="n">src</span><span class="p">,</span> <span class="n">dst</span><span class="p">,</span> <span class="n">bounding_box_max</span><span class="p">,</span> <span class="n">bounding_box_min</span><span class="p">,</span>
                                                              <span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">geos_rs</span> <span class="o">=</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">projection</span><span class="p">(</span><span class="n">geos_rs</span><span class="p">,</span> <span class="n">bounding_box_max</span><span class="p">,</span> <span class="n">bounding_box_min</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span>
+            <span class="n">geos_rs</span> <span class="o">=</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">projection</span><span class="p">(</span>
+                <span class="n">geos_rs</span><span class="p">,</span> <span class="n">bounding_box_max</span><span class="p">,</span> <span class="n">bounding_box_min</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span>
 
     <span class="n">vega_string</span> <span class="o">=</span> <span class="n">vega</span><span class="o">.</span><span class="n">build</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
     <span class="n">rs</span> <span class="o">=</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">point_map</span><span class="p">(</span><span class="n">vega_string</span><span class="p">,</span> <span class="n">geos_rs</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">rs</span><span class="o">.</span><span class="n">buffers</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">to_pybytes</span><span class="p">())</span>
+    <span class="k">return</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">rs</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
 
 
 <span class="c1"># pylint: disable=too-many-branches</span>
@@ -1497,7 +1540,8 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
             <span class="n">geos_rs</span> <span class="o">=</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">transform_and_projection</span><span class="p">(</span><span class="n">geos_rs</span><span class="p">,</span> <span class="n">src</span><span class="p">,</span> <span class="n">dst</span><span class="p">,</span> <span class="n">bounding_box_max</span><span class="p">,</span> <span class="n">bounding_box_min</span><span class="p">,</span>
                                                              <span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">geos_rs</span> <span class="o">=</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">projection</span><span class="p">(</span><span class="n">geos_rs</span><span class="p">,</span> <span class="n">bounding_box_max</span><span class="p">,</span> <span class="n">bounding_box_min</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span>
+            <span class="n">geos_rs</span> <span class="o">=</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">projection</span><span class="p">(</span>
+                <span class="n">geos_rs</span><span class="p">,</span> <span class="n">bounding_box_max</span><span class="p">,</span> <span class="n">bounding_box_min</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">color_weights</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">size_weights</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">rs</span> <span class="o">=</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">weighted_point_map</span><span class="p">(</span><span class="n">vega_string</span><span class="p">,</span> <span class="n">geos_rs</span><span class="p">)</span>
@@ -1512,7 +1556,8 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
             <span class="n">arr_s</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">size_weights</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;int64&#39;</span><span class="p">)</span>
         <span class="n">color_weights_rs</span> <span class="o">=</span> <span class="n">_to_arrow_array_list</span><span class="p">(</span><span class="n">arr_c</span><span class="p">)</span>
         <span class="n">size_weights_rs</span> <span class="o">=</span> <span class="n">_to_arrow_array_list</span><span class="p">(</span><span class="n">arr_s</span><span class="p">)</span>
-        <span class="n">rs</span> <span class="o">=</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">weighted_color_size_point_map</span><span class="p">(</span><span class="n">vega_string</span><span class="p">,</span> <span class="n">geos_rs</span><span class="p">,</span> <span class="n">color_weights_rs</span><span class="p">,</span> <span class="n">size_weights_rs</span><span class="p">)</span>
+        <span class="n">rs</span> <span class="o">=</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">weighted_color_size_point_map</span><span class="p">(</span>
+            <span class="n">vega_string</span><span class="p">,</span> <span class="n">geos_rs</span><span class="p">,</span> <span class="n">color_weights_rs</span><span class="p">,</span> <span class="n">size_weights_rs</span><span class="p">)</span>
     <span class="k">elif</span> <span class="n">color_weights</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">size_weights</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">size_weights</span><span class="o">.</span><span class="n">dtypes</span> <span class="o">==</span> <span class="s1">&#39;float64&#39;</span><span class="p">:</span>
             <span class="n">arr_s</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">size_weights</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;double&#39;</span><span class="p">)</span>
@@ -1528,7 +1573,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
         <span class="n">color_weights_rs</span> <span class="o">=</span> <span class="n">_to_arrow_array_list</span><span class="p">(</span><span class="n">arr_c</span><span class="p">)</span>
         <span class="n">rs</span> <span class="o">=</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">weighted_color_point_map</span><span class="p">(</span><span class="n">vega_string</span><span class="p">,</span> <span class="n">geos_rs</span><span class="p">,</span> <span class="n">color_weights_rs</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">rs</span><span class="o">.</span><span class="n">buffers</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">to_pybytes</span><span class="p">())</span>
+    <span class="k">return</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">rs</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
 
 
 <span class="k">def</span> <span class="nf">heat_map_layer</span><span class="p">(</span><span class="n">vega</span><span class="p">,</span> <span class="n">points</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
@@ -1557,7 +1602,8 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
             <span class="n">geos_rs</span> <span class="o">=</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">transform_and_projection</span><span class="p">(</span><span class="n">geos_rs</span><span class="p">,</span> <span class="n">src</span><span class="p">,</span> <span class="n">dst</span><span class="p">,</span> <span class="n">bounding_box_max</span><span class="p">,</span> <span class="n">bounding_box_min</span><span class="p">,</span>
                                                              <span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">geos_rs</span> <span class="o">=</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">projection</span><span class="p">(</span><span class="n">geos_rs</span><span class="p">,</span> <span class="n">bounding_box_max</span><span class="p">,</span> <span class="n">bounding_box_min</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span>
+            <span class="n">geos_rs</span> <span class="o">=</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">projection</span><span class="p">(</span>
+                <span class="n">geos_rs</span><span class="p">,</span> <span class="n">bounding_box_max</span><span class="p">,</span> <span class="n">bounding_box_min</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span>
 
     <span class="c1"># weights handler</span>
     <span class="k">if</span> <span class="n">weights</span><span class="o">.</span><span class="n">dtypes</span> <span class="o">==</span> <span class="s1">&#39;float64&#39;</span><span class="p">:</span>
@@ -1569,7 +1615,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
 
     <span class="n">vega_string</span> <span class="o">=</span> <span class="n">vega</span><span class="o">.</span><span class="n">build</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
     <span class="n">rs</span> <span class="o">=</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">heat_map</span><span class="p">(</span><span class="n">vega_string</span><span class="p">,</span> <span class="n">geos_rs</span><span class="p">,</span> <span class="n">weights_rs</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">rs</span><span class="o">.</span><span class="n">buffers</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">to_pybytes</span><span class="p">())</span>
+    <span class="k">return</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">rs</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
 
 
 <span class="k">def</span> <span class="nf">choropleth_map_layer</span><span class="p">(</span><span class="n">vega</span><span class="p">,</span> <span class="n">region_boundaries</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
@@ -1598,7 +1644,8 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
             <span class="n">geos_rs</span> <span class="o">=</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">transform_and_projection</span><span class="p">(</span><span class="n">geos_rs</span><span class="p">,</span> <span class="n">src</span><span class="p">,</span> <span class="n">dst</span><span class="p">,</span> <span class="n">bounding_box_max</span><span class="p">,</span> <span class="n">bounding_box_min</span><span class="p">,</span>
                                                              <span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">geos_rs</span> <span class="o">=</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">projection</span><span class="p">(</span><span class="n">geos_rs</span><span class="p">,</span> <span class="n">bounding_box_max</span><span class="p">,</span> <span class="n">bounding_box_min</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span>
+            <span class="n">geos_rs</span> <span class="o">=</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">projection</span><span class="p">(</span>
+                <span class="n">geos_rs</span><span class="p">,</span> <span class="n">bounding_box_max</span><span class="p">,</span> <span class="n">bounding_box_min</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span>
 
     <span class="n">vega_string</span> <span class="o">=</span> <span class="n">vega</span><span class="o">.</span><span class="n">build</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
 
@@ -1611,7 +1658,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
     <span class="n">weights_rs</span> <span class="o">=</span> <span class="n">_to_arrow_array_list</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
 
     <span class="n">rs</span> <span class="o">=</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">choropleth_map</span><span class="p">(</span><span class="n">vega_string</span><span class="p">,</span> <span class="n">geos_rs</span><span class="p">,</span> <span class="n">weights_rs</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">rs</span><span class="o">.</span><span class="n">buffers</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">to_pybytes</span><span class="p">())</span>
+    <span class="k">return</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">rs</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
 
 
 <span class="k">def</span> <span class="nf">icon_viz_layer</span><span class="p">(</span><span class="n">vega</span><span class="p">,</span> <span class="n">points</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
@@ -1640,12 +1687,14 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
             <span class="n">geos_rs</span> <span class="o">=</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">transform_and_projection</span><span class="p">(</span><span class="n">geos_rs</span><span class="p">,</span> <span class="n">src</span><span class="p">,</span> <span class="n">dst</span><span class="p">,</span> <span class="n">bounding_box_max</span><span class="p">,</span> <span class="n">bounding_box_min</span><span class="p">,</span>
                                                              <span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">geos_rs</span> <span class="o">=</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">projection</span><span class="p">(</span><span class="n">geos_rs</span><span class="p">,</span> <span class="n">bounding_box_max</span><span class="p">,</span> <span class="n">bounding_box_min</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span>
+            <span class="n">geos_rs</span> <span class="o">=</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">projection</span><span class="p">(</span>
+                <span class="n">geos_rs</span><span class="p">,</span> <span class="n">bounding_box_max</span><span class="p">,</span> <span class="n">bounding_box_min</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span>
 
     <span class="n">vega_string</span> <span class="o">=</span> <span class="n">vega</span><span class="o">.</span><span class="n">build</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
 
     <span class="n">rs</span> <span class="o">=</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">icon_viz</span><span class="p">(</span><span class="n">vega_string</span><span class="p">,</span> <span class="n">geos_rs</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">rs</span><span class="o">.</span><span class="n">buffers</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">to_pybytes</span><span class="p">())</span>
+    <span class="k">return</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">rs</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+
 
 <span class="k">def</span> <span class="nf">fishnet_map_layer</span><span class="p">(</span><span class="n">vega</span><span class="p">,</span> <span class="n">points</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
     <span class="kn">import</span> <span class="nn">pyarrow</span> <span class="k">as</span> <span class="nn">pa</span>
@@ -1670,9 +1719,11 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
 
         <span class="c1"># transform and projection</span>
         <span class="k">if</span> <span class="n">coor</span> <span class="o">!=</span> <span class="s1">&#39;EPSG:3857&#39;</span><span class="p">:</span>
-            <span class="n">geos_rs</span> <span class="o">=</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">transform_and_projection</span><span class="p">(</span><span class="n">geos_rs</span><span class="p">,</span> <span class="n">src</span><span class="p">,</span> <span class="n">dst</span><span class="p">,</span> <span class="n">bounding_box_max</span><span class="p">,</span> <span class="n">bounding_box_min</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span>
+            <span class="n">geos_rs</span> <span class="o">=</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">transform_and_projection</span><span class="p">(</span>
+                <span class="n">geos_rs</span><span class="p">,</span> <span class="n">src</span><span class="p">,</span> <span class="n">dst</span><span class="p">,</span> <span class="n">bounding_box_max</span><span class="p">,</span> <span class="n">bounding_box_min</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">geos_rs</span> <span class="o">=</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">projection</span><span class="p">(</span><span class="n">geos_rs</span><span class="p">,</span> <span class="n">bounding_box_max</span><span class="p">,</span> <span class="n">bounding_box_min</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span>
+            <span class="n">geos_rs</span> <span class="o">=</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">projection</span><span class="p">(</span>
+                <span class="n">geos_rs</span><span class="p">,</span> <span class="n">bounding_box_max</span><span class="p">,</span> <span class="n">bounding_box_min</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span>
 
     <span class="c1"># weights handler</span>
     <span class="k">if</span> <span class="n">weights</span><span class="o">.</span><span class="n">dtypes</span> <span class="o">==</span> <span class="s1">&#39;float64&#39;</span><span class="p">:</span>
@@ -1684,13 +1735,125 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
 
     <span class="n">vega_string</span> <span class="o">=</span> <span class="n">vega</span><span class="o">.</span><span class="n">build</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
     <span class="n">rs</span> <span class="o">=</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">fishnet_map</span><span class="p">(</span><span class="n">vega_string</span><span class="p">,</span> <span class="n">geos_rs</span><span class="p">,</span> <span class="n">weights_rs</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">rs</span><span class="o">.</span><span class="n">buffers</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">to_pybytes</span><span class="p">())</span>
+    <span class="k">return</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">rs</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
 
-<span class="k">def</span> <span class="nf">version</span><span class="p">():</span>
+<div class="viewcode-block" id="nearest_location_on_road"><a class="viewcode-back" href="../../api_reference/map_match/api/arctern.nearest_location_on_road.html#arctern.nearest_location_on_road">[文档]</a><span class="k">def</span> <span class="nf">nearest_location_on_road</span><span class="p">(</span><span class="n">roads</span><span class="p">,</span> <span class="n">points</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    :return: version of arctern</span>
+<span class="sd">    Compute the location on roads closest to each point in points, The points passed do not need to be part of a continuous path.</span>
+
+<span class="sd">    :type roads: Series(dtype: object)</span>
+<span class="sd">    :param roads: LineStrings in WKB form.</span>
+
+<span class="sd">    :type points: Series(dtype: object)</span>
+<span class="sd">    :param points: Points in WKB form.</span>
+
+<span class="sd">    :rtype: Series(dtype: object)</span>
+<span class="sd">    :return: Points in WKB form.</span>
+
+<span class="sd">    :example:</span>
+<span class="sd">      &gt;&gt;&gt; from arctern import *</span>
+<span class="sd">      &gt;&gt;&gt; import pandas</span>
+<span class="sd">      &gt;&gt;&gt; data1=pandas.Series([&quot;LINESTRING (1 2,1 3)&quot;])</span>
+<span class="sd">      &gt;&gt;&gt; data2=pandas.Series([&quot;POINT (1.001 2.5)&quot;])</span>
+<span class="sd">      &gt;&gt;&gt; rst = arctern.ST_AsText(arctern.nearest_location_on_road(arctern.ST_GeomFromText(data1), arctern.ST_GeomFromText(data2)))</span>
+<span class="sd">      &gt;&gt;&gt; print(rst)</span>
+<span class="sd">          0    POINT (1.0 2.5)</span>
+<span class="sd">          dtype: object</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">GIS_Version</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+    <span class="kn">import</span> <span class="nn">pyarrow</span> <span class="k">as</span> <span class="nn">pa</span>
+    <span class="n">arr_roads</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">roads</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
+    <span class="n">arr_gps_points</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
+    <span class="n">arr_roads</span> <span class="o">=</span> <span class="n">_to_arrow_array_list</span><span class="p">(</span><span class="n">arr_roads</span><span class="p">)</span>
+    <span class="n">arr_gps_points</span> <span class="o">=</span> <span class="n">_to_arrow_array_list</span><span class="p">(</span><span class="n">arr_gps_points</span><span class="p">)</span>
+    <span class="n">location_rst</span> <span class="o">=</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">nearest_location_on_road</span><span class="p">(</span><span class="n">arr_roads</span><span class="p">,</span> <span class="n">arr_gps_points</span><span class="p">)</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">_to_pandas_series</span><span class="p">(</span><span class="n">location_rst</span><span class="p">)</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">set_axis</span><span class="p">(</span><span class="n">points</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">res</span></div>
+
+<div class="viewcode-block" id="nearest_road"><a class="viewcode-back" href="../../api_reference/map_match/api/arctern.nearest_road.html#arctern.nearest_road">[文档]</a><span class="k">def</span> <span class="nf">nearest_road</span><span class="p">(</span><span class="n">roads</span><span class="p">,</span> <span class="n">points</span><span class="p">,):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compute the closest road for each point in points, The points passed do not need to be part of a continuous path.</span>
+
+<span class="sd">    :type roads: Series(dtype: object)</span>
+<span class="sd">    :param roads: LineStrings in WKB form.</span>
+
+<span class="sd">    :type points: Series(dtype: object)</span>
+<span class="sd">    :param points: Points in WKB form.</span>
+
+<span class="sd">    :rtype: Series(dtype: object)</span>
+<span class="sd">    :return: Points in WKB form.</span>
+
+<span class="sd">    :example:</span>
+<span class="sd">      &gt;&gt;&gt; from arctern import *</span>
+<span class="sd">      &gt;&gt;&gt; import pandas</span>
+<span class="sd">      &gt;&gt;&gt; data1=pandas.Series([&quot;LINESTRING (1 2,1 3)&quot;])</span>
+<span class="sd">      &gt;&gt;&gt; data2=pandas.Series([&quot;POINT (1.001 2.5)&quot;])</span>
+<span class="sd">      &gt;&gt;&gt; rst = arctern.ST_AsText(arctern.nearest_road(arctern.ST_GeomFromText(data1), arctern.ST_GeomFromText(data2)))</span>
+<span class="sd">      &gt;&gt;&gt; print(rst)</span>
+<span class="sd">          0    LINESTRING (1 2,1 3)</span>
+<span class="sd">          dtype: object</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">import</span> <span class="nn">pyarrow</span> <span class="k">as</span> <span class="nn">pa</span>
+    <span class="n">arr_roads</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">roads</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
+    <span class="n">arr_gps_points</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
+    <span class="n">arr_roads</span> <span class="o">=</span> <span class="n">_to_arrow_array_list</span><span class="p">(</span><span class="n">arr_roads</span><span class="p">)</span>
+    <span class="n">arr_gps_points</span> <span class="o">=</span> <span class="n">_to_arrow_array_list</span><span class="p">(</span><span class="n">arr_gps_points</span><span class="p">)</span>
+    <span class="n">road_rst</span> <span class="o">=</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">nearest_road</span><span class="p">(</span><span class="n">arr_roads</span><span class="p">,</span> <span class="n">arr_gps_points</span><span class="p">)</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">_to_pandas_series</span><span class="p">(</span><span class="n">road_rst</span><span class="p">)</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">set_axis</span><span class="p">(</span><span class="n">points</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">res</span></div>
+
+<div class="viewcode-block" id="near_road"><a class="viewcode-back" href="../../api_reference/map_match/api/arctern.near_road.html#arctern.near_road">[文档]</a><span class="k">def</span> <span class="nf">near_road</span><span class="p">(</span><span class="n">roads</span><span class="p">,</span> <span class="n">points</span><span class="p">,</span> <span class="n">distance</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Check if there is a road within distance meters of each point. The points passed do not need to be part of a continuous path.</span>
+
+<span class="sd">    :type roads: Series(dtype: object)</span>
+<span class="sd">    :param roads: LineStrings in WKB form.</span>
+
+<span class="sd">    :type points: Series(dtype: object)</span>
+<span class="sd">    :param points: Points in WKB form.</span>
+
+<span class="sd">    :type distance: double</span>
+<span class="sd">    :param distance: distance meters around the point in points</span>
+
+<span class="sd">    :rtype: Series(dtype: bool)</span>
+<span class="sd">    :return: True if there is a road within 100 meters of the point.</span>
+
+<span class="sd">    :example:</span>
+<span class="sd">      &gt;&gt;&gt; from arctern import *</span>
+<span class="sd">      &gt;&gt;&gt; import pandas</span>
+<span class="sd">      &gt;&gt;&gt; data1=pandas.Series([&quot;LINESTRING (1 2,1 3)&quot;])</span>
+<span class="sd">      &gt;&gt;&gt; data2=pandas.Series([&quot;POINT (1.001 2.5)&quot;])</span>
+<span class="sd">      &gt;&gt;&gt; rst = arctern.near_road(arctern.ST_GeomFromText(data1), arctern.ST_GeomFromText(data2), 100)</span>
+<span class="sd">      &gt;&gt;&gt; print(rst)</span>
+<span class="sd">          0    True</span>
+<span class="sd">          dtype: object</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">import</span> <span class="nn">pyarrow</span> <span class="k">as</span> <span class="nn">pa</span>
+    <span class="n">arr_roads</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">roads</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
+    <span class="n">arr_gps_points</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
+    <span class="n">arr_roads</span> <span class="o">=</span> <span class="n">_to_arrow_array_list</span><span class="p">(</span><span class="n">arr_roads</span><span class="p">)</span>
+    <span class="n">arr_gps_points</span> <span class="o">=</span> <span class="n">_to_arrow_array_list</span><span class="p">(</span><span class="n">arr_gps_points</span><span class="p">)</span>
+    <span class="n">bool_rst</span> <span class="o">=</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">near_road</span><span class="p">(</span><span class="n">arr_roads</span><span class="p">,</span> <span class="n">arr_gps_points</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">distance</span><span class="p">))</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">_to_pandas_series</span><span class="p">(</span><span class="n">bool_rst</span><span class="p">)</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">set_axis</span><span class="p">(</span><span class="n">points</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">res</span></div>
+
+<span class="k">def</span> <span class="nf">version</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return the information of arctern version.</span>
+
+<span class="sd">    :type verbose: bool</span>
+<span class="sd">    :param verbose: whether to get other information besides version</span>
+
+<span class="sd">    :rtype: str</span>
+<span class="sd">    :return: Information of arctern version.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">full_version_info</span> <span class="o">=</span> <span class="n">arctern_core_</span><span class="o">.</span><span class="n">GIS_Version</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">full_version_info</span>
+    <span class="n">only_versin_info</span> <span class="o">=</span> <span class="n">full_version_info</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">only_versin_info</span>
 </pre></div>
 
            </div>
@@ -1705,7 +1868,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 6月 05, 2020.
+        最后更新于 6月 06, 2020.
       </span>
 
     </p>

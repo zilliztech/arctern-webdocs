@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-05 15:54+0800\n"
+"POT-Creation-Date: 2020-06-06 11:49+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -73,7 +73,11 @@ msgid "Calculate the 2D Cartesian (planar) area of each geometry."
 msgstr ""
 
 #: ../../source/api_reference/standalone_api/geoseries.rst:33:<autosummary>:1
-msgid ":obj:`GeoSeries.geom_type <GeoSeries.geom_type>`\\"
+msgid ":obj:`GeoSeries.geom_type <arctern.GeoSeries.geom_type>`\\"
+msgstr ""
+
+#: ../../source/api_reference/standalone_api/geoseries.rst:33:<autosummary>:1
+msgid "For each geometry in geometries, return a string that indicates is type."
 msgstr ""
 
 #: ../../source/api_reference/standalone_api/geoseries.rst:33:<autosummary>:1
@@ -197,7 +201,11 @@ msgid "Create a valid representation of each geometry without losing any of the 
 msgstr ""
 
 #: ../../source/api_reference/standalone_api/geoseries.rst:62:<autosummary>:1
-msgid ":obj:`GeoSeries.simplify <GeoSeries.simplify>`\\"
+msgid ":obj:`GeoSeries.simplify <arctern.GeoSeries.simplify>`\\ \\(tolerance\\)"
+msgstr ""
+
+#: ../../source/api_reference/standalone_api/geoseries.rst:62:<autosummary>:1
+msgid "Returns a \"simplified\" version for each geometry using the Douglas-Peucker algorithm."
 msgstr ""
 
 #: ../../source/api_reference/standalone_api/geoseries.rst:62:<autosummary>:1
@@ -321,7 +329,11 @@ msgid "Aggregation"
 msgstr ""
 
 #: ../../source/api_reference/standalone_api/geoseries.rst:92:<autosummary>:1
-msgid ":obj:`GeoSeries.unary_union <GeoSeries.unary_union>`\\"
+msgid ":obj:`GeoSeries.unary_union <arctern.GeoSeries.unary_union>`\\ \\(\\)"
+msgstr ""
+
+#: ../../source/api_reference/standalone_api/geoseries.rst:92:<autosummary>:1
+msgid "Return a geometry that represents the union of all geometries in the GeoSeries."
 msgstr ""
 
 #: ../../source/api_reference/standalone_api/geoseries.rst:92:<autosummary>:1

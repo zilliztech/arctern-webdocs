@@ -8,11 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>几何体的基本操作 &mdash; Arctern gis version : 0.1.1
-build type : Release/CPU 
-build time : 2020-05-11 08:10.53
-commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
- 文档</title>
+  <title>几何体的基本操作 &mdash; Arctern version : 0.2.0 文档</title>
   
 
   
@@ -122,7 +118,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="convert_from_and_to_geopandas_geoseries.html">与 GeoPandas GeoSeries 互相转换</a></li>
-<li class="toctree-l3"><a class="reference internal" href="spatial_relationship_calculation.html">空间关系运算</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spatial_relationship_operation.html">空间关系运算</a></li>
 <li class="toctree-l3"><a class="reference internal" href="map_match.html">地图匹配</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_geometry.html">绘图方法</a></li>
 <li class="toctree-l3"><a class="reference internal" href="crs_and_transform.html">坐标参考系</a></li>
@@ -208,7 +204,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
 <div class="section" id="geoseries-length">
 <h2>GeoSeries.length<a class="headerlink" href="#geoseries-length" title="永久链接至标题">¶</a></h2>
 <ul class="simple">
-<li><p><strong>功能：</strong> 计算 GeoSeries 对象中每个几何体的长度。如果几何体不是  LineString 和 MultiLineString 类型的几何体， 则它的长度为 0 。</p></li>
+<li><p><strong>功能：</strong> 计算 GeoSeries 对象中每个几何体的长度。如果几何体不是 LineString 和 MultiLineString 类型的几何体， 则它的长度为 0 。</p></li>
 <li><p><strong>返回：</strong> 浮点型的 pandas.Series</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">GeoSeries</span>
@@ -591,8 +587,8 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
 <li><p><strong>参数：</strong> <code class="docutils literal notranslate"><span class="pre">other</span></code> 为 GeoSeries 或者 WKB 类型的对象。</p></li>
 <li><p><strong>返回：</strong> 布尔型的 pandas.Series</p>
 <ul>
-<li><p><strong>True：</strong> 两个几何体等价。</p></li>
-<li><p><strong>False：</strong> 两个几何体不等价。</p></li>
+<li><p><strong>True：</strong> 两个几何体相邻。</p></li>
+<li><p><strong>False：</strong> 两个几何体不相邻。</p></li>
 </ul>
 </li>
 </ul>
@@ -613,8 +609,8 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
 <li><p><strong>参数：</strong> <code class="docutils literal notranslate"><span class="pre">other</span></code> 为 GeoSeries 或者 WKB 类型的对象。</p></li>
 <li><p><strong>返回：</strong> 布尔型的 pandas.Series</p>
 <ul>
-<li><p><strong>True：</strong> 两个几何体等价。</p></li>
-<li><p><strong>False：</strong> 两个几何体不等价。</p></li>
+<li><p><strong>True：</strong> 两个几何体重叠。</p></li>
+<li><p><strong>False：</strong> 两个几何体不重叠。</p></li>
 </ul>
 </li>
 </ul>
@@ -774,7 +770,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 6月 05, 2020.
+        最后更新于 6月 06, 2020.
       </span>
 
     </p>

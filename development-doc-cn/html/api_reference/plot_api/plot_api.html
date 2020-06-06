@@ -8,11 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Plot &mdash; Arctern gis version : 0.1.1
-build type : Release/CPU 
-build time : 2020-05-11 08:10.53
-commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
- 文档</title>
+  <title>Plot &mdash; Arctern version : 0.2.0 文档</title>
   
 
   
@@ -41,8 +37,8 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
   <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="搜索" href="../../search.html" />
-    <link rel="next" title="plot_pointmap" href="plot_pointmap.html" />
-    <link rel="prev" title="Map Macth" href="../map_match/map_match.html" /> 
+    <link rel="next" title="plot_geometry" href="plot_geometry.html" />
+    <link rel="prev" title="arctern.within_which" href="../map_match/api/arctern.within_which.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -91,17 +87,17 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
 <li class="toctree-l1"><a class="reference internal" href="../../feature_description/feature_description.html">功能说明</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../api_reference.html">API 参考</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../standalone_api/geoseries.html">GeoSeries</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../map_match/map_match.html">Map Macth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../map_match/map_match.html">Map Match</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Plot</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="plot_pointmap.html">plot_pointmap</a></li>
-<li class="toctree-l3"><a class="reference internal" href="plot_weighted_pointmap.html">plot_weighted_pointmap</a></li>
-<li class="toctree-l3"><a class="reference internal" href="plot_heatmap.html">plot_heatmap</a></li>
-<li class="toctree-l3"><a class="reference internal" href="plot_choroplethmap.html">plot_choropleth_map</a></li>
-<li class="toctree-l3"><a class="reference internal" href="plot_iconviz.html">plot_iconviz</a></li>
-<li class="toctree-l3"><a class="reference internal" href="plot_fishnetmap.html">fishnet_map_layer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plot_geometry.html">plot_geometry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plot_pointmap.html">plot.pointmap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plot_weighted_pointmap.html">plot.weighted_pointmap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plot_heatmap.html">plot.heatmap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plot_choroplethmap.html">plot.choroplethmap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plot_iconviz.html">plot.iconviz</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plot_fishnetmap.html">plot.fishnetmap</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../spatial_relationship/spatial_relationship.html">Spatial Relationship</a></li>
 </ul>
 </li>
 </ul>
@@ -174,12 +170,13 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
 <span id="plot-api"></span><h1>Plot<a class="headerlink" href="#plot" title="永久链接至标题">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="plot_pointmap.html">plot_pointmap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="plot_weighted_pointmap.html">plot_weighted_pointmap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="plot_heatmap.html">plot_heatmap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="plot_choroplethmap.html">plot_choropleth_map</a></li>
-<li class="toctree-l1"><a class="reference internal" href="plot_iconviz.html">plot_iconviz</a></li>
-<li class="toctree-l1"><a class="reference internal" href="plot_fishnetmap.html">fishnet_map_layer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_geometry.html">plot_geometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_pointmap.html">plot.pointmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_weighted_pointmap.html">plot.weighted_pointmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_heatmap.html">plot.heatmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_choroplethmap.html">plot.choroplethmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_iconviz.html">plot.iconviz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_fishnetmap.html">plot.fishnetmap</a></li>
 </ul>
 </div>
 </div>
@@ -192,10 +189,10 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="plot_pointmap.html" class="btn btn-neutral float-right" title="plot_pointmap" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="plot_geometry.html" class="btn btn-neutral float-right" title="plot_geometry" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../map_match/map_match.html" class="btn btn-neutral float-left" title="Map Macth" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../map_match/api/arctern.within_which.html" class="btn btn-neutral float-left" title="arctern.within_which" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -206,7 +203,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 6月 05, 2020.
+        最后更新于 6月 06, 2020.
       </span>
 
     </p>

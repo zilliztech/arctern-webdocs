@@ -8,11 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>地图匹配 &mdash; Arctern gis version : 0.1.1
-build type : Release/CPU 
-build time : 2020-05-11 08:10.53
-commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
- 文档</title>
+  <title>地图匹配 &mdash; Arctern version : 0.2.0 文档</title>
   
 
   
@@ -42,7 +38,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="搜索" href="../../search.html" />
     <link rel="next" title="绘图方法" href="plot_geometry.html" />
-    <link rel="prev" title="空间关系运算" href="spatial_relationship_calculation.html" /> 
+    <link rel="prev" title="空间关系运算" href="spatial_relationship_operation.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -94,10 +90,10 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
 <li class="toctree-l3"><a class="reference internal" href="read_and_write_file.html">文件读写</a></li>
 <li class="toctree-l3"><a class="reference internal" href="geometric_manipulation.html">几何体的基本操作</a></li>
 <li class="toctree-l3"><a class="reference internal" href="convert_from_and_to_geopandas_geoseries.html">与 GeoPandas GeoSeries 互相转换</a></li>
-<li class="toctree-l3"><a class="reference internal" href="spatial_relationship_calculation.html">空间关系运算</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spatial_relationship_operation.html">空间关系运算</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">地图匹配</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id2">生成数据集</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#gps">判断 GPS 点附近固定范围内是否存在道路</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gps">在 GPS 点附近查找道路</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id3">获得距离 GPS 点最近的道路</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id4">将 GPS 点绑定到最近的道路</a></li>
 </ul>
@@ -195,7 +191,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
 </div>
 </div>
 <div class="section" id="gps">
-<h2>判断 GPS 点附近固定范围内是否存在道路<a class="headerlink" href="#gps" title="永久链接至标题">¶</a></h2>
+<h2>在 GPS 点附近查找道路<a class="headerlink" href="#gps" title="永久链接至标题">¶</a></h2>
 <p>使用 <code class="docutils literal notranslate"><span class="pre">near_road</span></code> 方法可以判断 GPS 点附近固定范围内是否存在道路。假设 <code class="docutils literal notranslate"><span class="pre">points</span></code> 为某城市内出租车上下客的位置，<code class="docutils literal notranslate"><span class="pre">roads</span></code> 为对应城市的路网信息。那么，如果乘客上下车的位置不在道路上或者偏离道路太远，那么这些位置数据就可以被认定为噪点。</p>
 <blockquote>
 <div><p><strong>注意：</strong> GPS 点和路网数据的坐标系必须是“EPSG:4326”。</p>
@@ -304,7 +300,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
         <a href="plot_geometry.html" class="btn btn-neutral float-right" title="绘图方法" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="spatial_relationship_calculation.html" class="btn btn-neutral float-left" title="空间关系运算" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="spatial_relationship_operation.html" class="btn btn-neutral float-left" title="空间关系运算" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -315,7 +311,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 6月 05, 2020.
+        最后更新于 6月 06, 2020.
       </span>
 
     </p>
