@@ -24,6 +24,7 @@ arctern.GeoSeries
       ~GeoSeries.envelope_aggr
       ~GeoSeries.equals
       ~GeoSeries.fillna
+      ~GeoSeries.from_geopandas
       ~GeoSeries.geom_equals
       ~GeoSeries.geom_from_geojson
       ~GeoSeries.hausdorff_distance
@@ -36,15 +37,14 @@ arctern.GeoSeries
       ~GeoSeries.point
       ~GeoSeries.polygon_from_envelope
       ~GeoSeries.precision_reduce
-      ~GeoSeries.projection
       ~GeoSeries.set_crs
-      ~GeoSeries.simplify_preserve_to_pology
+      ~GeoSeries.simplify
       ~GeoSeries.to_crs
+      ~GeoSeries.to_geopandas
       ~GeoSeries.to_wkb
       ~GeoSeries.to_wkt
       ~GeoSeries.touches
-      ~GeoSeries.transform_and_projection
-      ~GeoSeries.union_aggr
+      ~GeoSeries.unary_union
       ~GeoSeries.within
    
    
@@ -60,7 +60,7 @@ arctern.GeoSeries
       ~GeoSeries.convex_hull
       ~GeoSeries.crs
       ~GeoSeries.envelope
-      ~GeoSeries.geometry_type
+      ~GeoSeries.geom_type
       ~GeoSeries.is_simple
       ~GeoSeries.is_valid
       ~GeoSeries.length

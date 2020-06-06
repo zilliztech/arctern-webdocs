@@ -8,11 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>文件读写 &mdash; Arctern gis version : 0.1.1
-build type : Release/CPU 
-build time : 2020-05-11 08:10.53
-commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
- 文档</title>
+  <title>文件读写 &mdash; Arctern version : 0.2.0 文档</title>
   
 
   
@@ -98,7 +94,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
 </li>
 <li class="toctree-l3"><a class="reference internal" href="geometric_manipulation.html">几何体的基本操作</a></li>
 <li class="toctree-l3"><a class="reference internal" href="convert_from_and_to_geopandas_geoseries.html">与 GeoPandas GeoSeries 互相转换</a></li>
-<li class="toctree-l3"><a class="reference internal" href="spatial_relationship_calculation.html">空间关系运算</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spatial_relationship_operation.html">空间关系运算</a></li>
 <li class="toctree-l3"><a class="reference internal" href="map_match.html">地图匹配</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_geometry.html">绘图方法</a></li>
 <li class="toctree-l3"><a class="reference internal" href="crs_and_transform.html">坐标参考系</a></li>
@@ -185,7 +181,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
 <h2>导入文件<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
 <div class="section" id="wkt-wkb">
 <h3>WKT 和 WKB 格式<a class="headerlink" href="#wkt-wkb" title="永久链接至标题">¶</a></h3>
-<p>本例使用 <strong>wkt_geos.csv</strong> 文件演示如何从文件读取 WKT 和 WKB 数据。此文件主要定义了四个 WKT 格式的几何体对象，包括一个点（POINT）和三个多边形（POLYGON）。wkt_geos.csv 文件内容如下：</p>
+<p>本例使用 <strong>wkt_geos.csv</strong> 文件演示如何从文件读取 WKT 和 WKB 数据。此文件主要定义了四个 WKT 格式的几何体对象，包括一个点（POINT）和三个多边形（POLYGON）。文件内容如下：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">geos</span>
 <span class="n">POINT</span> <span class="p">(</span><span class="mi">30</span> <span class="mi">10</span><span class="p">)</span>
 <span class="n">POLYGON</span> <span class="p">((</span><span class="mi">30</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">40</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">20</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">10</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span> <span class="mi">10</span><span class="p">))</span>
@@ -229,7 +225,7 @@ dtype: bool
 </div>
 <div class="section" id="geojson">
 <h3>GeoJson 格式<a class="headerlink" href="#geojson" title="永久链接至标题">¶</a></h3>
-<p>本例使用 <strong>geos.json</strong> 文件演示如何从文件读取 GeoJson 数据。此文件主要定义了四个 WKT 格式的几何体对象，包括一个点（POINT）和三个多边形（POLYGON）。geos.json 文件内容如下：</p>
+<p>本例使用 <strong>geos.json</strong> 文件演示如何从文件读取 GeoJson 数据。此文件主要定义了四个 WKT 格式的几何体对象，包括一个点（POINT）和三个多边形（POLYGON）。文件内容如下：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;0&quot;</span><span class="p">:</span><span class="s2">&quot;{ </span><span class="se">\&quot;</span><span class="s2">type</span><span class="se">\&quot;</span><span class="s2">: </span><span class="se">\&quot;</span><span class="s2">Point</span><span class="se">\&quot;</span><span class="s2">, </span><span class="se">\&quot;</span><span class="s2">coordinates</span><span class="se">\&quot;</span><span class="s2">: [ 30.0, 10.0 ] }&quot;</span><span class="p">,</span>
     <span class="s2">&quot;1&quot;</span><span class="p">:</span><span class="s2">&quot;{ </span><span class="se">\&quot;</span><span class="s2">type</span><span class="se">\&quot;</span><span class="s2">: </span><span class="se">\&quot;</span><span class="s2">Polygon</span><span class="se">\&quot;</span><span class="s2">, </span><span class="se">\&quot;</span><span class="s2">coordinates</span><span class="se">\&quot;</span><span class="s2">: [ [ [ 30.0, 10.0 ], [ 40.0, 40.0 ], [ 20.0, 40.0 ], [ 10.0, 20.0 ], [ 30.0, 10.0 ] ] ] }&quot;</span><span class="p">,</span>
@@ -268,7 +264,7 @@ dtype: bool
 <h2>文件导出<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
 <div class="section" id="wkt">
 <h3>WKT 格式<a class="headerlink" href="#wkt" title="永久链接至标题">¶</a></h3>
-<p>首先，调用 GeoSeries 的 <code class="docutils literal notranslate"><span class="pre">to_wkt</span></code> 方法从 GeoSeries 对象得到一个 pandas.Series 对象。然后，调用 pandas.Series 的 <code class="docutils literal notranslate"><span class="pre">to_csv</span></code> 方法将数据保存为 CSV 文件。</p>
+<p>首先，使用 GeoSeries 的 <code class="docutils literal notranslate"><span class="pre">to_wkt</span></code> 方法从 GeoSeries 对象得到一个 pandas.Series 对象。然后，使用 pandas.Series 的 <code class="docutils literal notranslate"><span class="pre">to_csv</span></code> 方法将数据保存为 CSV 文件。</p>
 <!--  [to_wkt](/path/to/to_wkt)  --><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">out_file_data</span> <span class="o">=</span> <span class="n">geo_wkb</span><span class="o">.</span><span class="n">to_wkt</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">out_file_data</span><span class="p">)</span>
 <span class="go">0                                POINT (30 10)</span>
@@ -282,7 +278,7 @@ dtype: bool
 </div>
 <div class="section" id="id4">
 <h3>GeoJson 格式<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
-<p>首先，调用 GeoSeries 的 <code class="docutils literal notranslate"><span class="pre">as_geojson</span></code> 方法从 GeoSeries 对象得到一个 pandas.Series 对象。然后，调用 pandas.Series 的 <code class="docutils literal notranslate"><span class="pre">to_json</span></code> 方法将数据保存为 JSON 文件。</p>
+<p>首先，使用 GeoSeries 的 <code class="docutils literal notranslate"><span class="pre">as_geojson</span></code> 方法从 GeoSeries 对象得到一个 pandas.Series 对象。然后，使用 pandas.Series 的 <code class="docutils literal notranslate"><span class="pre">to_json</span></code> 方法将数据保存为 JSON 文件。</p>
 <!--  [as_geojson](/path/to/as_geojson) --><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">out_file_data</span> <span class="o">=</span> <span class="n">geo_wkb</span><span class="o">.</span><span class="n">as_geojson</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="p">(</span><span class="n">out_file_data</span><span class="p">)</span>
 <span class="go">0    { &quot;type&quot;: &quot;Point&quot;, &quot;coordinates&quot;: [ 30.0, 10.0...</span>
@@ -319,7 +315,7 @@ dtype: bool
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 6月 05, 2020.
+        最后更新于 6月 06, 2020.
       </span>
 
     </p>

@@ -8,11 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Map Macth &mdash; Arctern gis version : 0.1.1
-build type : Release/CPU 
-build time : 2020-05-11 08:10.53
-commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
- 文档</title>
+  <title>Map Match &mdash; Arctern version : 0.2.0 文档</title>
   
 
   
@@ -41,7 +37,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
   <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="搜索" href="../../search.html" />
-    <link rel="next" title="Plot" href="../plot_api/plot_api.html" />
+    <link rel="next" title="arctern.nearest_location_on_road" href="api/arctern.nearest_location_on_road.html" />
     <link rel="prev" title="arctern.GeoSeries.equals" href="../standalone_api/api/arctern.GeoSeries.equals.html" /> 
 </head>
 
@@ -91,9 +87,14 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
 <li class="toctree-l1"><a class="reference internal" href="../../feature_description/feature_description.html">功能说明</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../api_reference.html">API 参考</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../standalone_api/geoseries.html">GeoSeries</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Map Macth</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Map Match</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/arctern.nearest_location_on_road.html">arctern.nearest_location_on_road</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/arctern.nearest_road.html">arctern.nearest_road</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/arctern.near_road.html">arctern.near_road</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/arctern.within_which.html">arctern.within_which</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../plot_api/plot_api.html">Plot</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../spatial_relationship/spatial_relationship.html">Spatial Relationship</a></li>
 </ul>
 </li>
 </ul>
@@ -143,7 +144,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
         
           <li><a href="../api_reference.html">API 参考</a> &raquo;</li>
         
-      <li>Map Macth</li>
+      <li>Map Match</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -162,22 +163,25 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="map-macth">
-<span id="map-match"></span><h1>Map Macth<a class="headerlink" href="#map-macth" title="永久链接至标题">¶</a></h1>
+  <div class="section" id="map-match">
+<span id="id1"></span><h1>Map Match<a class="headerlink" href="#map-match" title="永久链接至标题">¶</a></h1>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">arctern.nearest_location_on_road</span></code></p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/arctern.nearest_location_on_road.html#arctern.nearest_location_on_road" title="arctern.nearest_location_on_road"><code class="xref py py-obj docutils literal notranslate"><span class="pre">arctern.nearest_location_on_road</span></code></a>(roads, points)</p></td>
+<td><p>Compute the location on roads closest to each point in points, The points passed do not need to be part of a continuous path.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">arctern.nearest_road</span></code></p></td>
-<td><p></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="api/arctern.nearest_road.html#arctern.nearest_road" title="arctern.nearest_road"><code class="xref py py-obj docutils literal notranslate"><span class="pre">arctern.nearest_road</span></code></a>(roads, points)</p></td>
+<td><p>Compute the closest road for each point in points, The points passed do not need to be part of a continuous path.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">arctern.near_road</span></code></p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/arctern.near_road.html#arctern.near_road" title="arctern.near_road"><code class="xref py py-obj docutils literal notranslate"><span class="pre">arctern.near_road</span></code></a>(roads, points[, distance])</p></td>
+<td><p>Check if there is a road within distance meters of each point.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/arctern.within_which.html#arctern.within_which" title="arctern.within_which"><code class="xref py py-obj docutils literal notranslate"><span class="pre">arctern.within_which</span></code></a>(left, right)</p></td>
+<td><p>Calculate spatial join of two GeoSeries :type left: GeoSeries :type right: GeoSeries :rtype: Series(dtype: object) :example:   &gt;&gt;&gt; from arctern import *   &gt;&gt;&gt; data1 = GeoSeries([“Point(0 0)”, “Point(1000 1000)”, “Point(10 10)”])   &gt;&gt;&gt; data2 = GeoSeries([“Polygon(9 10, 11 12, 11 8, 9 10)”, “POLYGON ((-1 0, 1 2, 1 -2, -1 0))”])   &gt;&gt;&gt; res = within_which(data1, data2)   &gt;&gt;&gt; print(res)       0    1       1    &lt;NA&gt;       2    0       dtype: object</p></td>
 </tr>
 </tbody>
 </table>
@@ -191,7 +195,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../plot_api/plot_api.html" class="btn btn-neutral float-right" title="Plot" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="api/arctern.nearest_location_on_road.html" class="btn btn-neutral float-right" title="arctern.nearest_location_on_road" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../standalone_api/api/arctern.GeoSeries.equals.html" class="btn btn-neutral float-left" title="arctern.GeoSeries.equals" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -205,7 +209,7 @@ commit id : ecd116a6af480a44b545964d1b7a99ed3beb2400
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 6月 05, 2020.
+        最后更新于 6月 06, 2020.
       </span>
 
     </p>
