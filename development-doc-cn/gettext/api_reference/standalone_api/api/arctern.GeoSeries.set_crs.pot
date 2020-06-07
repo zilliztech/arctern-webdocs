@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-06 17:46+0800\n"
+"POT-Creation-Date: 2020-06-07 21:04+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -30,4 +30,8 @@ msgstr ""
 
 #: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/geoseries/geoseries.py:docstring of arctern.GeoSeries.set_crs:4
 msgid "SRID(spatial reference identifier) form."
+msgstr ""
+
+#: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/geoseries/geoseries.py:docstring of arctern.GeoSeries.set_crs:0
+msgid "example"
 msgstr ""

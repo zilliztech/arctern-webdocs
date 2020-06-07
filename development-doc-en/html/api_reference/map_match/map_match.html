@@ -93,7 +93,7 @@
 <li class="toctree-l3"><a class="reference internal" href="api/arctern.within_which.html">arctern.within_which</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../plot_api/plot_api.html">Plot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plot/plot.html">Plot</a></li>
 </ul>
 </li>
 </ul>
@@ -180,7 +180,7 @@
 <td><p>Check if there is a road within distance meters of each point.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="api/arctern.within_which.html#arctern.within_which" title="arctern.within_which"><code class="xref py py-obj docutils literal notranslate"><span class="pre">arctern.within_which</span></code></a>(left, right)</p></td>
-<td><p>Calculate spatial join of two GeoSeries :type left: GeoSeries :type right: GeoSeries :rtype: Series(dtype: object) :example:   &gt;&gt;&gt; from arctern import *   &gt;&gt;&gt; data1 = GeoSeries([&quot;Point(0 0)&quot;, &quot;Point(1000 1000)&quot;, &quot;Point(10 10)&quot;])   &gt;&gt;&gt; data2 = GeoSeries([&quot;Polygon((9 10, 11 12, 11 8, 9 10))&quot;, &quot;Polygon((-1 0, 1 2, 1 -2, -1 0))&quot;])   &gt;&gt;&gt; res = within_which(data1, data2)   &gt;&gt;&gt; print(res)       0    1       1    &lt;NA&gt;       2    0       dtype: object</p></td>
+<td><p>For each geometry in left, search geometries that satisfy &quot;within&quot; relationship in right</p></td>
 </tr>
 </tbody>
 </table>
@@ -208,7 +208,7 @@
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        Last updated on Jun 06, 2020.
+        Last updated on Jun 07, 2020.
       </span>
 
     </p>

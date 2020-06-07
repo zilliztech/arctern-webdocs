@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-06 17:46+0800\n"
+"POT-Creation-Date: 2020-06-07 21:04+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -218,6 +218,10 @@ msgstr ""
 
 #: ../../source/api_reference/standalone_api/geoseries.rst:62:<autosummary>:1
 msgid ":obj:`GeoSeries.crs <arctern.GeoSeries.crs>`\\"
+msgstr ""
+
+#: ../../source/api_reference/standalone_api/geoseries.rst:62:<autosummary>:1
+msgid "Return the coordinate system of the GeoSeries."
 msgstr ""
 
 #: ../../source/api_reference/standalone_api/geoseries.rst:62:<autosummary>:1
