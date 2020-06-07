@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-06 17:46+0800\n"
+"POT-Creation-Date: 2020-06-07 21:04+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,7 +21,7 @@ msgid "聚合"
 msgstr ""
 
 #: ../../source/feature_description/spatiotemporal_analysis/aggregation.md:2
-msgid "空间数据处理领域对聚合操作有广泛的需求。空间数据聚合处理需要对几何特征进行聚合，我们暂时仅支持两种聚合方法，即 unary_union 和 envelope_aggr。这两个聚合函数的功能如下："
+msgid "空间数据处理领域对聚合操作有广泛的需求。Arctern 暂时仅支持两种聚合方法，即 unary_union 和 envelope_aggr。这两个聚合函数的功能如下："
 msgstr ""
 
 #: ../../source/feature_description/spatiotemporal_analysis/aggregation.md:3
@@ -37,7 +37,7 @@ msgid "本文档将介绍如何使用 Arctern GeoSeries 的聚合方法。"
 msgstr ""
 
 #: ../../source/feature_description/spatiotemporal_analysis/aggregation.md:8
-msgid "创建测试数据"
+msgid "生成测试数据"
 msgstr ""
 
 #: ../../source/feature_description/spatiotemporal_analysis/aggregation.md:10

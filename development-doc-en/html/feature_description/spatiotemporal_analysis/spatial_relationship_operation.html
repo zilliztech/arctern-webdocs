@@ -95,6 +95,9 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="map_match.html">Map match</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_geometry.html">Plot methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="crs_and_transform.html">Coordinate reference system</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aggregation.html">Aggregation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="indexing_selecting_data.html">Indexing and selecting data</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../visualization/visualization.html">Visualization</a></li>
@@ -196,7 +199,7 @@
 <li><p>The two points at the top right corner are in the red rectangle, so the return values corresponding to these points are 1.</p></li>
 <li><p>The point in the middle is not in any rectangle, so its corresponding return value is <code class="docutils literal notranslate"><span class="pre">&lt;NA&gt;</span></code>.</p></li>
 </ul>
-<p><img alt="feature_description/spatiotemporal_analysis/./img/within_which_example.png" src="feature_description/spatiotemporal_analysis/./img/within_which_example.png" /></p>
+<p><img alt="../../_images/within_which_example.png" src="../../_images/within_which_example.png" /></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">within_which</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">GeoSeries</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">points</span> <span class="o">=</span> <span class="n">GeoSeries</span><span class="p">([</span><span class="s2">&quot;Point(0 0)&quot;</span><span class="p">,</span><span class="s2">&quot;Point(1 0)&quot;</span><span class="p">,</span><span class="s2">&quot;Point(0 1)&quot;</span><span class="p">,</span><span class="s2">&quot;Point(1 1)&quot;</span><span class="p">,</span> <span class="s2">&quot;Point(3 3)&quot;</span><span class="p">,</span><span class="s2">&quot;Point(5 5)&quot;</span><span class="p">,</span><span class="s2">&quot;Point(5 6)&quot;</span><span class="p">])</span>
@@ -238,7 +241,7 @@
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        Last updated on Jun 06, 2020.
+        Last updated on Jun 07, 2020.
       </span>
 
     </p>

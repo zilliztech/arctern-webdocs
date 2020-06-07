@@ -6,14 +6,12 @@ arctern.GeoSeries
 .. autoclass:: GeoSeries
 
    
-   .. automethod:: __init__
 
    
    .. rubric:: Methods
 
    .. autosummary::
    
-      ~GeoSeries.__init__
       ~GeoSeries.as_geojson
       ~GeoSeries.buffer
       ~GeoSeries.contains

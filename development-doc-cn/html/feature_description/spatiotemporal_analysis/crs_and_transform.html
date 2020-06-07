@@ -94,7 +94,7 @@
 <li class="toctree-l3"><a class="reference internal" href="map_match.html">地图匹配</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_geometry.html">绘图方法</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">坐标参考系</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id2">坐标参考系统</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">支持的坐标参考系统</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id3">转换坐标参考系</a></li>
 </ul>
 </li>
@@ -178,16 +178,20 @@
 <h1>坐标参考系<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
 <p>本文档介绍 CRS（Coordinate Reference System，坐标参考系），以及如何使用 Arctern 进行坐标系转换。</p>
 <div class="section" id="id2">
-<h2>坐标参考系统<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<h2>支持的坐标参考系统<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
 <p>Arctern 支持经纬度坐标系、墨卡托投影坐标系等常用的坐标参考系，关于坐标参考系的详细信息请查看 <a class="reference external" href="https://spatialreference.org">Spatial Reference</a> 网站。</p>
 <p>在 Arctern 中，你需要使用 SRID（Spatial Reference System Identifier，空间参考系标识符）格式的字符串来表示某个坐标参考系。例如，使用字符串 “EPSG:4326” 表示经纬度坐标系。</p>
 </div>
 <div class="section" id="id3">
 <h2>转换坐标参考系<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
-<p>Arctern 支持在不同的坐标参考系之间转换同一几何体。在转换之前，你需要先设置当前几何体对象的坐标参考系，然后对几何体执行坐标转换。</p>
+<p>在 Arctern 中转换坐标参考系的方法如下：</p>
+<ol class="simple">
+<li><p>使用 <code class="docutils literal notranslate"><span class="pre">set_crs</span></code> 方法设置几何体的当前使用的坐标参考系。</p></li>
+<li><p>使用 <code class="docutils literal notranslate"><span class="pre">to_crs</span></code> 方法对几何体执行坐标系转换。</p></li>
+</ol>
 <p>以下展示如何使用 Arctern 将几何体对象由经纬度坐标系转换到墨卡托投影坐标系。</p>
 <div class="section" id="id4">
-<h3>创建数据集<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
+<h3>生成数据集<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
 <p>通过创建 GeoSeries 数据集，你可以批量地对数据集内所有几何体对象进行坐标参考系的转换。</p>
 <p>首先，创建 WKT 格式的几何体对象：点 <code class="docutils literal notranslate"><span class="pre">point</span></code>、线 <code class="docutils literal notranslate"><span class="pre">linestring</span></code> 和多边形 <code class="docutils literal notranslate"><span class="pre">polygon</span></code>。然后，创建一个包含这三个几何体对象的 GeoSeries 对象 <code class="docutils literal notranslate"><span class="pre">geos</span></code> 。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">GeoSeries</span>
@@ -226,7 +230,7 @@
 </div>
 <div class="section" id="id7">
 <h3>验证结果<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h3>
-<p>使用 GeoSeries 的 <code class="docutils literal notranslate"><span class="pre">crs</span></code> 方法，查看 <code class="docutils literal notranslate"><span class="pre">geos</span></code> 当前所属的坐标系。由输出结果可知，<code class="docutils literal notranslate"><span class="pre">geos</span></code> 的坐标参考系已成功转换为墨卡托投影坐标系。</p>
+<p>使用 GeoSeries 的 <code class="docutils literal notranslate"><span class="pre">crs</span></code> 属性，查看 <code class="docutils literal notranslate"><span class="pre">geos</span></code> 当前所属的坐标系。由输出结果可知，<code class="docutils literal notranslate"><span class="pre">geos</span></code> 的坐标参考系已成功转换为墨卡托投影坐标系。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">geos</span><span class="o">.</span><span class="n">crs</span>
 <span class="go">&#39;EPSG:3857&#39;</span>
 </pre></div>
@@ -257,7 +261,7 @@
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 6月 06, 2020.
+        最后更新于 6月 07, 2020.
       </span>
 
     </p>

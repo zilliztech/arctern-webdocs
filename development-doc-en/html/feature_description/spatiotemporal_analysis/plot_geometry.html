@@ -36,7 +36,7 @@
   <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Visualization" href="../visualization/visualization.html" />
+    <link rel="next" title="Coordinate reference system" href="crs_and_transform.html" />
     <link rel="prev" title="Map match" href="map_match.html" /> 
 </head>
 
@@ -97,6 +97,9 @@
 <li class="toctree-l4"><a class="reference internal" href="#plot-geometric-figures">Plot geometric figures</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="crs_and_transform.html">Coordinate reference system</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aggregation.html">Aggregation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="indexing_selecting_data.html">Indexing and selecting data</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../visualization/visualization.html">Visualization</a></li>
@@ -238,7 +241,7 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p><img alt="feature_description/spatiotemporal_analysis/./img/point_s.png" src="feature_description/spatiotemporal_analysis/./img/point_s.png" /></p>
+<p><img alt="../../_images/point_s.png" src="../../_images/point_s.png" /></p>
 </div>
 <div class="section" id="line">
 <h3>Line<a class="headerlink" href="#line" title="Permalink to this headline">¶</a></h3>
@@ -255,7 +258,7 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p><img alt="feature_description/spatiotemporal_analysis/./img/linestring_s.png" src="feature_description/spatiotemporal_analysis/./img/linestring_s.png" /></p>
+<p><img alt="../../_images/linestring_s.png" src="../../_images/linestring_s.png" /></p>
 </div>
 <div class="section" id="polygon">
 <h3>Polygon<a class="headerlink" href="#polygon" title="Permalink to this headline">¶</a></h3>
@@ -273,7 +276,7 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p><img alt="feature_description/spatiotemporal_analysis/./img/polygon_s.png" src="feature_description/spatiotemporal_analysis/./img/polygon_s.png" /></p>
+<p><img alt="../../_images/polygon_s.png" src="../../_images/polygon_s.png" /></p>
 </div>
 <div class="section" id="multiple-points">
 <h3>Multiple points<a class="headerlink" href="#multiple-points" title="Permalink to this headline">¶</a></h3>
@@ -291,7 +294,7 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p><img alt="feature_description/spatiotemporal_analysis/./img/multi_point_s.png" src="feature_description/spatiotemporal_analysis/./img/multi_point_s.png" /></p>
+<p><img alt="../../_images/multi_point_s.png" src="../../_images/multi_point_s.png" /></p>
 </div>
 <div class="section" id="multiple-lines">
 <h3>Multiple lines<a class="headerlink" href="#multiple-lines" title="Permalink to this headline">¶</a></h3>
@@ -308,7 +311,7 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p><img alt="feature_description/spatiotemporal_analysis/./img/multi_linestring_s.png" src="feature_description/spatiotemporal_analysis/./img/multi_linestring_s.png" /></p>
+<p><img alt="../../_images/multi_linestring_s.png" src="../../_images/multi_linestring_s.png" /></p>
 </div>
 <div class="section" id="multiple-polygons">
 <h3>Multiple polygons<a class="headerlink" href="#multiple-polygons" title="Permalink to this headline">¶</a></h3>
@@ -324,7 +327,7 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p><img alt="feature_description/spatiotemporal_analysis/./img/multi_polygon_s.png" src="feature_description/spatiotemporal_analysis/./img/multi_polygon_s.png" /></p>
+<p><img alt="../../_images/multi_polygon_s.png" src="../../_images/multi_polygon_s.png" /></p>
 </div>
 <div class="section" id="geometry-collection">
 <h3>Geometry collection<a class="headerlink" href="#geometry-collection" title="Permalink to this headline">¶</a></h3>
@@ -342,18 +345,18 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p><img alt="feature_description/spatiotemporal_analysis/./img/geom_collection_s.png" src="feature_description/spatiotemporal_analysis/./img/geom_collection_s.png" /></p>
+<p><img alt="../../_images/geom_collection_s.png" src="../../_images/geom_collection_s.png" /></p>
 </div>
 <div class="section" id="multiple-geometries">
 <h3>Multiple Geometries<a class="headerlink" href="#multiple-geometries" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><p><strong>多线</strong></p>
+<li><p><strong>Multiple lines</strong></p>
 <ul>
 <li><p><strong>Line style:</strong> &quot; -. &quot;</p></li>
 <li><p><strong>Color:</strong> Blue</p></li>
 </ul>
 </li>
-<li><p><strong>多边形</strong></p>
+<li><p><strong>Polygon</strong></p>
 <ul>
 <li><p><strong>Line style:</strong> &quot; -- &quot;</p></li>
 <li><p><strong>Face color:</strong> Green</p></li>
@@ -371,7 +374,7 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p><img alt="feature_description/spatiotemporal_analysis/./img/geoms.png" src="feature_description/spatiotemporal_analysis/./img/geoms.png" /></p>
+<p><img alt="../../_images/geoms.png" src="../../_images/geoms.png" /></p>
 </div>
 <div class="section" id="plot-geometries-multiple-times">
 <h3>Plot geometries multiple times<a class="headerlink" href="#plot-geometries-multiple-times" title="Permalink to this headline">¶</a></h3>
@@ -410,7 +413,7 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p><img alt="feature_description/spatiotemporal_analysis/./img/multi_plot.png" src="feature_description/spatiotemporal_analysis/./img/multi_plot.png" /></p>
+<p><img alt="../../_images/multi_plot.png" src="../../_images/multi_plot.png" /></p>
 </div>
 </div>
 </div>
@@ -423,7 +426,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../visualization/visualization.html" class="btn btn-neutral float-right" title="Visualization" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="crs_and_transform.html" class="btn btn-neutral float-right" title="Coordinate reference system" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="map_match.html" class="btn btn-neutral float-left" title="Map match" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -437,7 +440,7 @@
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        Last updated on Jun 06, 2020.
+        Last updated on Jun 07, 2020.
       </span>
 
     </p>
