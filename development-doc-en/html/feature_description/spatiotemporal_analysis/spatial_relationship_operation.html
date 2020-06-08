@@ -90,7 +90,7 @@
 <li class="toctree-l3"><a class="reference internal" href="geometric_manipulation.html">Basic manipulations of geometry</a></li>
 <li class="toctree-l3"><a class="reference internal" href="convert_from_and_to_geopandas_geoseries.html">Convert with GeoPandas GeoSeries</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Spatial relationship operations</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#which-within-left-right">which_within(left, right)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#within-which-left-right">within_which(left, right)</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="map_match.html">Map match</a></li>
@@ -174,9 +174,9 @@
             
   <div class="section" id="spatial-relationship-operations">
 <h1>Spatial relationship operations<a class="headerlink" href="#spatial-relationship-operations" title="Permalink to this headline">¶</a></h1>
-<p>After indexing geometric objects, Arctern can batch perform spatial relationship operations on geometric data (currently Arctern only supports the <code class="docutils literal notranslate"><span class="pre">within</span></code> method, which is similar to SQL Join).</p>
-<div class="section" id="which-within-left-right">
-<h2>which_within(left, right)<a class="headerlink" href="#which-within-left-right" title="Permalink to this headline">¶</a></h2>
+<p>After indexing geometric objects, Arctern can batch perform spatial relationship operations on geometric data (currently Arctern only supports the <a class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.within.html"><code class="docutils literal notranslate"><span class="pre">GeoSeries.within</span></code></a> method, which is similar to SQL Join).</p>
+<div class="section" id="within-which-left-right">
+<h2>within_which(left, right)<a class="headerlink" href="#within-which-left-right" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="logic">
 <h3>Logic<a class="headerlink" href="#logic" title="Permalink to this headline">¶</a></h3>
 <ol class="simple">
@@ -193,7 +193,7 @@
 </div>
 <div class="section" id="example">
 <h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
-<p>In the figure below, there is a green rectangle (<code class="docutils literal notranslate"><span class="pre">polygons[0]</span></code>), a red rectangle (<code class="docutils literal notranslate"><span class="pre">polygons[1]</span></code>), and some points (<code class="docutils literal notranslate"><span class="pre">points</span></code>) . The <code class="docutils literal notranslate"><span class="pre">which_within</span></code> method is used to determine whether the points are inside these two rectangles.</p>
+<p>In the figure below, there is a green rectangle (<code class="docutils literal notranslate"><span class="pre">polygons[0]</span></code>), a red rectangle (<code class="docutils literal notranslate"><span class="pre">polygons[1]</span></code>), and some points (<code class="docutils literal notranslate"><span class="pre">points</span></code>) . The <a class="reference external" href="../../api_reference/map_match/api/arctern.within_which.html"><code class="docutils literal notranslate"><span class="pre">within_which</span></code></a> method is used to determine whether the points are inside these two rectangles.</p>
 <ul class="simple">
 <li><p>The four points at the bottom left corner are in the green rectangle, so the return values corresponding to these points are 0.</p></li>
 <li><p>The two points at the top right corner are in the red rectangle, so the return values corresponding to these points are 1.</p></li>
@@ -241,7 +241,7 @@
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        Last updated on Jun 07, 2020.
+        Last updated on Jun 08, 2020.
       </span>
 
     </p>

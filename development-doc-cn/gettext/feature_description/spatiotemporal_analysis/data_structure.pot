@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-07 21:04+0800\n"
+"POT-Creation-Date: 2020-06-08 17:20+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -93,7 +93,7 @@ msgid "GeoSeries.area: 计算 GeoSeries 对象中每个几何体的面积。"
 msgstr ""
 
 #: ../../source/feature_description/spatiotemporal_analysis/data_structure.md:59
-msgid "GeoSeries.distance: 对于 GeoSeries 对象中的每个几何体，创建一个与它的最远距离不大于 distance 的几何体。"
+msgid "GeoSeries.distance: 对于 GeoSeries 对象中的每个几何体，创建一个与它的最远距离不大于给定距离的几何体。"
 msgstr ""
 
 #: ../../source/feature_description/spatiotemporal_analysis/data_structure.md:60
@@ -101,7 +101,7 @@ msgid "GeoSeries.distance_sphere: 对于 GeoSeries 对象中的每个几何体�
 msgstr ""
 
 #: ../../source/feature_description/spatiotemporal_analysis/data_structure.md:61
-msgid "GeoSeries.hausdorff_distance: 对于 GeoSeries 对象中的每个几何体，判断它与 other 对象中相同位置的几何体之间的 Hausdorff 距离。此距离用于度量两个几何体之间的相似度。"
+msgid "GeoSeries.hausdorff_distance: 对于 GeoSeries 对象中的每个几何体，判断它与其他 GeoSeries 对象中相同位置的几何体之间的 Hausdorff 距离。此距离用于度量两个几何体之间的相似度。"
 msgstr ""
 
 #: ../../source/feature_description/spatiotemporal_analysis/data_structure.md:63
@@ -109,15 +109,15 @@ msgid "几何关系计算"
 msgstr ""
 
 #: ../../source/feature_description/spatiotemporal_analysis/data_structure.md:65
-msgid "GeoSeries.touches: 对于 GeoSeries 对象中的每个几何体，判断它是否与 other 对象中相同位置的几何体相邻。“相邻”表示两个几何体在边界上有共同的点。"
+msgid "GeoSeries.touches: 对于 GeoSeries 对象中的每个几何体，判断它是否与其他 GeoSeries 对象中相同位置的几何体相邻。“相邻”表示两个几何体在边界上有共同的点。"
 msgstr ""
 
 #: ../../source/feature_description/spatiotemporal_analysis/data_structure.md:66
-msgid "GeoSeries.overlaps: 对于 GeoSeries 对象中的每个几何体，判断它是否与 other 对象中相同位置的几何体重叠。“重叠”表示两个几何体相交且不互相包含。"
+msgid "GeoSeries.overlaps: 对于 GeoSeries 对象中的每个几何体，判断它是否与其他 GeoSeries 对象中相同位置的几何体重叠。“重叠”表示两个几何体相交且不互相包含。"
 msgstr ""
 
 #: ../../source/feature_description/spatiotemporal_analysis/data_structure.md:67
-msgid "GeoSeries.intersects: 对于 GeoSeries 对象中的每个几何体，判断它是否与 other 对象中相同位置的几何体存在交集。"
+msgid "GeoSeries.intersects: 对于 GeoSeries 对象中的每个几何体，判断它是否与其他 GeoSeries 对象中相同位置的几何体存在交集。"
 msgstr ""
 
 #: ../../source/feature_description/spatiotemporal_analysis/data_structure.md:69
@@ -125,7 +125,7 @@ msgid "几何转换"
 msgstr ""
 
 #: ../../source/feature_description/spatiotemporal_analysis/data_structure.md:71
-msgid "GeoSeries.precision_reduce: 对于 GeoSeries 对象中的每个几何体，根据指定的有效数字位数 precision 创建降低坐标精度后的几何体。"
+msgid "GeoSeries.precision_reduce: 对于 GeoSeries 对象中的每个几何体，根据给定的有效数字位数创建降低坐标精度后的几何体。"
 msgstr ""
 
 #: ../../source/feature_description/spatiotemporal_analysis/data_structure.md:72

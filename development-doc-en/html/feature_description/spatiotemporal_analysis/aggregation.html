@@ -175,7 +175,7 @@
             
   <div class="section" id="aggregation">
 <h1>Aggregation<a class="headerlink" href="#aggregation" title="Permalink to this headline">¶</a></h1>
-<p>Spatial data processing has extensive demands for aggregation operations. Currently, Arctern only supports two aggregation methods: <code class="docutils literal notranslate"><span class="pre">unary_union</span></code> and <code class="docutils literal notranslate"><span class="pre">envelope_aggr</span></code>. The description of these methods are as follows:</p>
+<p>Spatial data processing has extensive demands for aggregation operations. Currently, Arctern only supports two aggregation methods: <a class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.unary_union.html"><code class="docutils literal notranslate"><span class="pre">unary_union</span></code></a> and <a class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.envelope_aggr.html"><code class="docutils literal notranslate"><span class="pre">envelope_aggr</span></code></a>. The description of these methods are as follows:</p>
 <ul class="simple">
 <li><p><strong>unary_union:</strong> Returns a geometry that represents the union of a set of geometries.</p></li>
 <li><p><strong>envelope_aggr:</strong> Calculate the minimum rectangular bounding box that contains a set of geometries, and the sides of the rectangle are parallel to the coordinate axis.</p></li>
@@ -195,7 +195,7 @@
 <h2>Tests<a class="headerlink" href="#tests" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="get-the-union-of-a-set-of-geometries">
 <h3>Get the union of a set of geometries<a class="headerlink" href="#get-the-union-of-a-set-of-geometries" title="Permalink to this headline">¶</a></h3>
-<p>Select all the elements of <code class="docutils literal notranslate"><span class="pre">polygon_s</span></code> and use the <code class="docutils literal notranslate"><span class="pre">unary_union</span></code> method to get their union:</p>
+<p>Select all the elements of <code class="docutils literal notranslate"><span class="pre">polygon_s</span></code> and use the <a class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.unary_union.html"><code class="docutils literal notranslate"><span class="pre">unary_union</span></code></a> method to get their union:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">polygon_s</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]]</span><span class="o">.</span><span class="n">unary_union</span><span class="p">()</span>
 <span class="go">0    MULTIPOLYGON (((0 0,0 1,1 1,0 0)),((1 1,2 3,2 1,1 1)))</span>
 <span class="go">dtype: GeoDtype</span>
@@ -206,7 +206,7 @@
 </div>
 <div class="section" id="get-the-minimum-rectangular-bounding-box-of-a-set-of-geometries">
 <h3>Get the minimum rectangular bounding box of a set of geometries<a class="headerlink" href="#get-the-minimum-rectangular-bounding-box-of-a-set-of-geometries" title="Permalink to this headline">¶</a></h3>
-<p>Select all the elements of <code class="docutils literal notranslate"><span class="pre">polygon_s</span></code> and use the <code class="docutils literal notranslate"><span class="pre">envelope_aggr</span></code> method to get their minimum rectangular bounding box:</p>
+<p>Select all the elements of <code class="docutils literal notranslate"><span class="pre">polygon_s</span></code> and use the <a class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.envelope_aggr.html"><code class="docutils literal notranslate"><span class="pre">envelope_aggr</span></code></a> method to get their minimum rectangular bounding box:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">geos</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">]]</span><span class="o">.</span><span class="n">envelope_aggr</span><span class="p">()</span>
 <span class="go">0    POLYGON ((0 0,0 3,2 3,2 0,0 0))</span>
 <span class="go">dtype: GeoDtype</span>
@@ -240,7 +240,7 @@
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        Last updated on Jun 07, 2020.
+        Last updated on Jun 08, 2020.
       </span>
 
     </p>

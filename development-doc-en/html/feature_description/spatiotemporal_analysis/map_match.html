@@ -191,7 +191,7 @@
 </div>
 <div class="section" id="find-a-road-near-a-gps-point">
 <h2>Find a road near a GPS point<a class="headerlink" href="#find-a-road-near-a-gps-point" title="Permalink to this headline">¶</a></h2>
-<p>The <code class="docutils literal notranslate"><span class="pre">near_road</span></code> method checks whether there is a road within a fixed range near the GPS point. Suppose <code class="docutils literal notranslate"><span class="pre">points</span></code> are the pick-up locations of taxis, and <code class="docutils literal notranslate"><span class="pre">roads</span></code> is the road network information of the corresponding city. Then, if some pick-up locations are not on the road or deviate too far from the road, then these positions can be regarded as noise.</p>
+<p>The <a class="reference external" href="../../api_reference/map_match/api/arctern.near_road.html"><code class="docutils literal notranslate"><span class="pre">near_road</span></code></a> method checks whether there is a road within a fixed range near the GPS point. Suppose <code class="docutils literal notranslate"><span class="pre">points</span></code> are the pick-up locations of taxis, and <code class="docutils literal notranslate"><span class="pre">roads</span></code> is the road network information of the corresponding city. Then, if some pick-up locations are not on the road or deviate too far from the road, then these positions can be regarded as noise.</p>
 <blockquote>
 <div><p><strong>Note:</strong> The coordinate reference system of the GPS points and road network must be &quot;EPSG:4326&quot;.</p>
 </div></blockquote>
@@ -221,7 +221,7 @@
 </div>
 <div class="section" id="get-the-road-closest-to-a-gps-point">
 <h2>Get the road closest to a GPS point<a class="headerlink" href="#get-the-road-closest-to-a-gps-point" title="Permalink to this headline">¶</a></h2>
-<p>The <code class="docutils literal notranslate"><span class="pre">nearest_road</span></code> method gets the road closest to the GPS point. Its operation logic is as follows:</p>
+<p>The <a class="reference external" href="../../api_reference/map_match/api/arctern.nearest_road.html"><code class="docutils literal notranslate"><span class="pre">nearest_road</span></code></a> method gets the road closest to the GPS point. Its operation logic is as follows:</p>
 <ol class="simple">
 <li><p>Create an index tree (Rtree) based on road network information.</p></li>
 <li><p>Find all roads near a GPS point based on the index tree, and select the road closest to the GPS point.</p></li>
@@ -260,7 +260,7 @@
 </div>
 <div class="section" id="bind-gps-points-to-the-nearest-roads">
 <h2>Bind GPS points to the nearest roads<a class="headerlink" href="#bind-gps-points-to-the-nearest-roads" title="Permalink to this headline">¶</a></h2>
-<p>The <code class="docutils literal notranslate"><span class="pre">nearest_location_on_road</span></code> method binds GPS points to the nearest roads. Suppose a GPS point represents the location of a taxi. Due to GPS accuracy problems, there may be some deviations of the location of GPS points. So some GPS points may fall into nearby buildings or rivers. In this case, we need to use the <code class="docutils literal notranslate"><span class="pre">nearest_location_on_road</span></code> method to correct the position of these GPS points.</p>
+<p>The <a class="reference external" href="../../api_reference/map_match/api/arctern.nearest_location_on_road.html"><code class="docutils literal notranslate"><span class="pre">nearest_location_on_road</span></code></a> method binds GPS points to the nearest roads. Suppose a GPS point represents the location of a taxi. Due to GPS accuracy problems, there may be some deviations of the location of GPS points. So some GPS points may fall into nearby buildings or rivers. In this case, we need to use the <a class="reference external" href="../../api_reference/map_match/api/arctern.nearest_location_on_road.html"><code class="docutils literal notranslate"><span class="pre">nearest_location_on_road</span></code></a> method to correct the position of these GPS points.</p>
 <blockquote>
 <div><p><strong>Note:</strong> The coordinate reference system of the GPS points and road network must be &quot;EPSG:4326&quot;.</p>
 </div></blockquote>
@@ -285,7 +285,7 @@
 <span class="go">dtype: GeoDtype</span>
 </pre></div>
 </div>
-<p>The following figures shows the topological relations between the GPS points and roads before and after correction. The figures shows that <code class="docutils literal notranslate"><span class="pre">nearest_location_on_road</span></code> has successfully bound those GPS points that deviated from the road to the nearest road.</p>
+<p>The following figures shows the topological relations between the GPS points and roads before and after correction. The figures shows that <a class="reference external" href="../../api_reference/map_match/api/arctern.nearest_location_on_road.html"><code class="docutils literal notranslate"><span class="pre">nearest_location_on_road</span></code></a> has successfully bound those GPS points that deviated from the road to the nearest road.</p>
 <p><img alt="../../_images/topo_before_correction.png" src="../../_images/topo_before_correction.png" />
 <img alt="../../_images/topo_after_correction.png" src="../../_images/topo_after_correction.png" /></p>
 </div>
@@ -313,7 +313,7 @@
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        Last updated on Jun 07, 2020.
+        Last updated on Jun 08, 2020.
       </span>
 
     </p>
