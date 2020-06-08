@@ -185,8 +185,8 @@
 <h2>Transforming CRS<a class="headerlink" href="#transforming-crs" title="Permalink to this headline">¶</a></h2>
 <p>To transform CRS of a geometry,</p>
 <ol class="simple">
-<li><p>use the <code class="docutils literal notranslate"><span class="pre">set_crs</span></code> method to set the currently used CRS of the geometry;</p></li>
-<li><p>use the <code class="docutils literal notranslate"><span class="pre">to_crs</span></code> method to perform CRS transformation on the geometry.</p></li>
+<li><p>use the <a class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.set_crs.html"><code class="docutils literal notranslate"><span class="pre">set_crs</span></code></a> method to set the currently used CRS of the geometry;</p></li>
+<li><p>use the <a class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.to_crs.html"><code class="docutils literal notranslate"><span class="pre">to_crs</span></code></a> method to perform CRS transformation on the geometry.</p></li>
 </ol>
 <p>The following shows how to use Arctern to transform the coordinates of a geometry from the latitude and longitude coordinate system to the UTM system.</p>
 <div class="section" id="generating-dataset">
@@ -209,7 +209,7 @@
 </div>
 <div class="section" id="setting-crs">
 <h3>Setting CRS<a class="headerlink" href="#setting-crs" title="Permalink to this headline">¶</a></h3>
-<p>The <code class="docutils literal notranslate"><span class="pre">set_crs</span></code> method sets the currently used CRS of <code class="docutils literal notranslate"><span class="pre">geos</span></code>.</p>
+<p>The <a class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.set_crs.html"><code class="docutils literal notranslate"><span class="pre">set_crs</span></code></a> method sets the currently used CRS of <code class="docutils literal notranslate"><span class="pre">geos</span></code>.</p>
 <p>In this example, we use the latitude and longitude coordinate system (EPSG:4326) as the initial coordinate reference system.</p>
 <!-- [set_crs](/path/to/set_crs) --><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">geos</span><span class="o">.</span><span class="n">set_crs</span><span class="p">(</span><span class="s2">&quot;EPSG:4326&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">geos</span><span class="o">.</span><span class="n">crs</span>
@@ -219,7 +219,7 @@
 </div>
 <div class="section" id="id1">
 <h3>Transforming CRS<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
-<p>The <code class="docutils literal notranslate"><span class="pre">to_crs</span></code> method transforms the CRS of <code class="docutils literal notranslate"><span class="pre">geos</span></code> from the latitude and longitude coordinate system (EPSG:4326) to the UTM system (EPSG:3857).</p>
+<p>The <a class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.to_crs.html"><code class="docutils literal notranslate"><span class="pre">to_crs</span></code></a> method transforms the CRS of <code class="docutils literal notranslate"><span class="pre">geos</span></code> from the latitude and longitude coordinate system (EPSG:4326) to the UTM system (EPSG:3857).</p>
 <!-- [to_crs](/path/to/to_crs) --><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">geos</span> <span class="o">=</span> <span class="n">geos</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="n">crs</span><span class="o">=</span><span class="s2">&quot;EPSG:3857&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">geos</span>
 <span class="go">0           POINT (-8236863.41622516 4975182.82064036)</span>
@@ -231,7 +231,7 @@
 </div>
 <div class="section" id="result">
 <h3>Result<a class="headerlink" href="#result" title="Permalink to this headline">¶</a></h3>
-<p>The <code class="docutils literal notranslate"><span class="pre">crs</span></code> attribute of GeoSeries objects shows the current CRS. According to the result, the CRS of <code class="docutils literal notranslate"><span class="pre">geos</span></code> has been successfully transformed to the UTM system.</p>
+<p>The <a class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.crs.html"><code class="docutils literal notranslate"><span class="pre">crs</span></code></a> attribute of GeoSeries objects shows the current CRS. According to the result, the CRS of <code class="docutils literal notranslate"><span class="pre">geos</span></code> has been successfully transformed to the UTM system.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">geos</span><span class="o">.</span><span class="n">crs</span>
 <span class="go">&#39;EPSG:3857&#39;</span>
 </pre></div>
@@ -262,7 +262,7 @@
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        Last updated on Jun 07, 2020.
+        Last updated on Jun 08, 2020.
       </span>
 
     </p>
