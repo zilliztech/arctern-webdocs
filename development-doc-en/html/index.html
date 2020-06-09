@@ -81,9 +81,9 @@
             
             
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="quick_start/quick_start.html">Quick Start</a></li>
-<li class="toctree-l1"><a class="reference internal" href="feature_description/feature_description.html">Feature Description</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api_reference/api_reference.html">API Reference</a></li>
+<li class="toctree-l1"><a target="_blank" class="reference internal" href="quick_start/quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a target="_blank" class="reference internal" href="feature_description/feature_description.html">Feature Description</a></li>
+<li class="toctree-l1"><a target="_blank" class="reference internal" href="api_reference/api_reference.html">API Reference</a></li>
 </ul>
 
             
@@ -150,34 +150,28 @@
             
   <div class="section" id="welcome-to-arctern-documentation">
 <h1>Welcome to Arctern Documentation<a class="headerlink" href="#welcome-to-arctern-documentation" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
 <p>Arctern is a fast scalable spatial-temporal analytics framework.</p>
 <p>Scalability is key to building productive data science pipelines. To address the scalability challenge, we launched Arctern, an open-source spatial-temporal analytic framework for boosting end-to-end data science performance. Arctern aims to improve scalability from two aspects:</p>
 <ul class="simple">
 <li><p>Unified data analytic and processing interface across different platforms, from laptops to clusters and cloud.</p></li>
 <li><p>Rich and consistent algorithms and models, including trajectory processing, spatial clustering, and regression, etc., across different data science pipeline stages.</p></li>
 </ul>
-</div>
-<div class="section" id="arctern-s-approach-and-current-progress">
-<h2>Arctern's approach and current progress<a class="headerlink" href="#arctern-s-approach-and-current-progress" title="Permalink to this headline">¶</a></h2>
 <p>We adopt GeoPandas‘s interface and plan to build the GeoDataFrame and GeoSeries that scale both up and out. On top of GeoDataFrame/GeoSeries, we will develop a consistent spatial-temporal algorithm set across execution environments.</p>
-<p>We have now developed an efficient multi-thread GeoSeries implementation, and the distributed version is in progress. In the latest version 0.2.0, Arctern achieves 24x speedup against GeoPandas. Even under single-thread execution, Arctern outperforms GeoPandas 7x on average. The detailed evaluation results are illustrated in the figure below.</p>
-<img alt="_images/performance_geopandas_vs_arctern.png" src="_images/performance_geopandas_vs_arctern.png" />
+<p>We have now developed an efficient multi-thread GeoSeries implementation, and the distributed version is in progress. In the latest version 0.2.0, Arctern achieves 7x speedup against GeoPandas. The detailed evaluation results are illustrated in the figure below.</p>
+<img alt="_images/arcternVSgeopandas.png" src="_images/arcternVSgeopandas.png" />
 <p>We are also conducting experimental GPU acceleration for spatial-temporal data analysis and rendering. By now Arctern provides six GPU-accelerated rendering methods and eight spatial-relation operations, which outperform their CPU-based counterparts with up to 36x speedup.</p>
 <p>In the next few releases, our team will focus on:</p>
 <ul class="simple">
 <li><p>Developing a distributed version of GeoSeries. Our first distributed implementation of GeoDataFrame/GeoSeries will be based on Spark. It is developed in sync with Spark 3.0 since its preview release. Spark's supports on GPU scheduling and column-based processing is highly in line with our idea of high-performance spatial-temporal data processing. Besides, the introduced Koalas interface offers a promising option for implementing consistent GeoDataFrame/GeoSeries interfaces on Spark.</p></li>
 <li><p>Enriching our spatial-temporal algorithm sets. We will concentrate on KNN search and trajectory analysis in the project's early stages.</p></li>
 </ul>
-</div>
 <div class="section" id="table-of-contents">
 <h2>Table of contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="quick_start/quick_start.html">Quick Start</a></li>
-<li class="toctree-l1"><a class="reference internal" href="feature_description/feature_description.html">Feature Description</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api_reference/api_reference.html">API Reference</a></li>
+<li class="toctree-l1"><a target="_blank" class="reference internal" href="quick_start/quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a target="_blank" class="reference internal" href="feature_description/feature_description.html">Feature Description</a></li>
+<li class="toctree-l1"><a target="_blank" class="reference internal" href="api_reference/api_reference.html">API Reference</a></li>
 </ul>
 </div>
 </div>
@@ -203,7 +197,7 @@
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        Last updated on Jun 08, 2020.
+        Last updated on Jun 09, 2020.
       </span>
 
     </p>

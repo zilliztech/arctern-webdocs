@@ -180,18 +180,18 @@
 <dl class="py method">
 <dt id="arctern.GeoSeries.notna">
 <code class="sig-prename descclassname">GeoSeries.</code><code class="sig-name descname">notna</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/arctern/geoseries/geoseries.html#GeoSeries.notna"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#arctern.GeoSeries.notna" title="永久链接至目标">¶</a></dt>
-<dd><p>检测未丢失的值。</p>
-<p>Inverse of isna.</p>
+<dd><p>Detects existing (non-missing) values.</p>
 <dl class="field-list simple">
-<dt class="field-odd">返回类型</dt>
-<dd class="field-odd"><p>Series(dtype: bool)</p>
+<dt class="field-odd">返回</dt>
+<dd class="field-odd"><p><strong>Series(dtype</strong> – Mask of boolean values for each element in GeoSeries that indicates whether an element is not an NA value.
+* True: An element is a non-missing value.
+* False: An element is a NA value, such as None.</p>
 </dd>
-<dt class="field-even">返回</dt>
-<dd class="field-even"><p>在 GeoSeries 中每个元素的布尔值表明此元素是否为 NA 值。</p>
+<dt class="field-even">返回类型</dt>
+<dd class="field-even"><p>bool)</p>
 </dd>
-<dt class="field-odd">例子</dt>
-<dd class="field-odd"><p></p></dd>
 </dl>
+<p class="rubric">实际案例</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">GeoSeries</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">GeoSeries</span><span class="p">([</span><span class="s2">&quot;Point (1 1)&quot;</span><span class="p">,</span> <span class="s2">&quot;POLYGON ((1 1,2 1,2 2,1 2,1 1))&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">notna</span><span class="p">()</span>
@@ -228,7 +228,7 @@
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 6月 08, 2020.
+        最后更新于 6月 09, 2020.
       </span>
 
     </p>

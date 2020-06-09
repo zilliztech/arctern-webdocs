@@ -179,42 +179,50 @@
 <dl class="py method">
 <dt id="arctern.GeoSeries.fillna">
 <code class="sig-prename descclassname">GeoSeries.</code><code class="sig-name descname">fillna</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">method</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">axis</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">inplace</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">limit</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">downcast</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/arctern/geoseries/geoseries.html#GeoSeries.fillna"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arctern.GeoSeries.fillna" title="Permalink to this definition">¶</a></dt>
-<dd><p>Fill NA values with a geometry, which can be WKT or WKB formed.</p>
+<dd><p>Fills NA values with a geometry in WKT or WKB format.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>value</strong> (<em>scalar</em><em>, </em><em>dict</em><em>, </em><em>Series</em><em>, or </em><em>DataFrame</em>) -- Value to use to fill holes (e.g. &quot;POINT (1 1)&quot;), alternately a
-dict/Series/DataFrame of values specifying which value to use for
-each index (for a Series) or column (for a DataFrame).  Values not
-in the dict/Series/DataFrame will not be filled. This value cannot
-be a list.</p></li>
-<li><p><strong>method</strong> (<em>{'backfill'</em><em>, </em><em>'bfill'</em><em>, </em><em>'pad'</em><em>, </em><em>'ffill'</em><em>, </em><em>None}</em><em>, </em><em>default None</em>) -- Method to use for filling holes in reindexed Series
-pad / ffill: propagate last valid observation forward to next valid
-backfill / bfill: use next valid observation to fill gap.</p></li>
-<li><p><strong>axis</strong> (<em>{0</em><em> or </em><em>‘index’}</em>) -- Axis along which to fill missing values.</p></li>
-<li><p><strong>inplace</strong> (<em>bool</em><em>, </em><em>default False</em>) -- If True, fill in-place. Note: this will modify any
-other views on this object (e.g., a no-copy slice for a column
-in a DataFrame).</p></li>
-<li><p><strong>limit</strong> (<em>int</em><em>, </em><em>default None</em>) -- If method is specified, this is the maximum number of consecutive
-NaN values to forward/backward fill. In other words, if there is
-a gap with more than this number of consecutive NaNs, it will only
-be partially filled. If method is not specified, this is the
-maximum number of entries along the entire axis where NaNs will be
-filled. Must be greater than 0 if not None.</p></li>
-<li><p><strong>downcast</strong> (<em>dict</em><em>, </em><em>default is None</em>) -- A dict of item-&gt;dtype of what to downcast if possible,
+<li><p><strong>value</strong> -- Value to use to fill holes. This value should be the representation of a geometry in WKT or WKB format. For exmaple, &quot;POINT (1 1)&quot;.</p></li>
+<li><p><strong>method</strong> (<em>{'backfill'</em><em>, </em><em>'bfill'</em><em>, </em><em>'pad'</em><em>, </em><em>'ffill'</em><em>, </em><em>None}</em><em>, </em><em>by default None</em>) -- Method to use for filling holes in reindexed Series.
+* <em>pad/ffill:</em> Propagates the last valid observation forward to fill gap.
+* <em>backfill/bfill:</em> Propagates the next valid observation backward to fill gap.</p></li>
+<li><p><strong>axis</strong> (<em>{0</em><em> or </em><em>'index'}</em>) -- Axis along which to fill missing values.</p></li>
+<li><p><strong>inplace</strong> (<em>bool</em><em>, </em><em>by default False</em>) -- <ul>
+<li><dl class="simple">
+<dt><em>True:</em> Fills NA values in-place.</dt><dd><p><strong>Note:</strong> this will modify any other views on this object.</p>
+</dd>
+</dl>
+</li>
+<li><p><em>False:</em> Create a new GeoSeries object, and then fill NA values in it.</p></li>
+</ul>
+</p></li>
+<li><p><strong>limit</strong> (<em>int</em><em>, </em><em>by default None</em>) -- <ul>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">method</span></code> is specified, this is the maximum number of consecutive</p></li>
+</ul>
+<p>NA values to forward/backward fill. In other words, if there is
+a gap with more than this number of consecutive NAs, it will only
+be partially filled.
+* If <code class="docutils literal notranslate"><span class="pre">method</span></code> is not specified, this is the maximum number of entries along the entire axis where NaNs will be filled.
+<strong>Note:</strong> It must be greater than 0 if not None.</p>
+</p></li>
+<li><p><strong>downcast</strong> (<em>dict</em><em>, </em><em>by default None</em>) -- A dict of item-&gt;dtype of what to downcast if possible,
 or the string 'infer' which will try to downcast to an appropriate
-equal type (e.g. float64 to int64 if possible).</p></li>
+equal type (for example, float64 to int64 if possible).</p></li>
 </ul>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference internal" href="arctern.GeoSeries.html#arctern.GeoSeries" title="arctern.GeoSeries">GeoSeries</a> or None</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>None if <code class="docutils literal notranslate"><span class="pre">inplace=False</span></code></p></li>
+<li><p>Object with missing values filled if <code class="docutils literal notranslate"><span class="pre">inplace=True</span></code>.</p></li>
+</ul>
+</p>
 </dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>Object with missing values filled or None if <code class="docutils literal notranslate"><span class="pre">inplace=True</span></code>.</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="arctern.GeoSeries.html#arctern.GeoSeries" title="arctern.GeoSeries">GeoSeries</a> or None</p>
 </dd>
-<dt class="field-even">Example</dt>
-<dd class="field-even"><p></p></dd>
 </dl>
+<p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">GeoSeries</span><span class="p">([</span><span class="s2">&quot;Point (1 1)&quot;</span><span class="p">,</span> <span class="s2">&quot;POLYGON ((1 1,2 1,2 2,1 2,1 1))&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span>
 <span class="go">0                        POINT (1 1)</span>
@@ -224,7 +232,7 @@ equal type (e.g. float64 to int64 if possible).</p></li>
 <span class="go">dtype: GeoDtype</span>
 </pre></div>
 </div>
-<p>Replace all NaN elements with WKT formed str.</p>
+<p>Replace all NA elements with a string in WKT format.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s2">&quot;POINT (1 2)&quot;</span><span class="p">)</span>
 <span class="go">0                        POINT (1 1)</span>
 <span class="go">1    POLYGON ((1 1,2 1,2 2,1 2,1 1))</span>
@@ -233,7 +241,7 @@ equal type (e.g. float64 to int64 if possible).</p></li>
 <span class="go">dtype: GeoDtype</span>
 </pre></div>
 </div>
-<p>We can also replace all NaN elements with WKB formed bytes.</p>
+<p>We can also replace all NA elements with an object in WKB format. Here we use <code class="docutils literal notranslate"><span class="pre">s[1]</span></code> as an example of WKB objects because <code class="docutils literal notranslate"><span class="pre">s</span></code> is a GeoSeries and all elements stored in GeoSeries are transformed to WKB format.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 <span class="go">0                        POINT (1 1)</span>
 <span class="go">1    POLYGON ((1 1,2 1,2 2,1 2,1 1))</span>
@@ -268,7 +276,7 @@ equal type (e.g. float64 to int64 if possible).</p></li>
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        Last updated on Jun 08, 2020.
+        Last updated on Jun 09, 2020.
       </span>
 
     </p>

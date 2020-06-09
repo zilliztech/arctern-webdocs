@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-08 17:20+0800\n"
+"POT-Creation-Date: 2020-06-09 18:13+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,35 +21,35 @@ msgid "arctern.GeoSeries"
 msgstr ""
 
 #: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/geoseries/geoseries.py:docstring of arctern.GeoSeries:1
-msgid "A Series to store geometry data which is WKB formed bytes object."
+msgid "One-dimensional Series to store an array of geometry objects."
 msgstr ""
 
 #: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/geoseries/geoseries.py:docstring of arctern.GeoSeries:0
 msgid "参数"
 msgstr ""
 
-#: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/geoseries/geoseries.py:docstring of arctern.GeoSeries:4
-msgid "Geometries to store, which can be WKB formed bytes or WKT formed string."
+#: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/geoseries/geoseries.py:docstring of arctern.GeoSeries:3
+msgid "Contains geometric data stored in GeoSeries. The geometric data can be in `WKT (Well-Known Text) <https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry>`_ or `WKB <https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry#Well-known_binary>`_ format."
 msgstr ""
 
-#: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/geoseries/geoseries.py:docstring of arctern.GeoSeries:7
-msgid "Same to Pandas Series. Values must be hashable and have the same length as `data`. Non-unique index values are allowed. Will default to RangeIndex (0, 1, 2, ..., n) if not provided. If both a dict and index sequence are used, the index will override the keys found in the dict."
+#: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/geoseries/geoseries.py:docstring of arctern.GeoSeries:5
+msgid "Same to the index of pandas.Series. Values must be hashable and have the same length as data. Non-unique index values are allowed. Will default to RangeIndex (0, 1, 2, …, n) if not provided. If both a dict and index sequence are used, the index will override the keys found in the dict."
 msgstr ""
 
-#: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/geoseries/geoseries.py:docstring of arctern.GeoSeries:15
-msgid "The name to give to the Series."
+#: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/geoseries/geoseries.py:docstring of arctern.GeoSeries:8
+msgid "The name to give to the GeoSeries."
 msgstr ""
 
-#: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/geoseries/geoseries.py:docstring of arctern.GeoSeries:18
-msgid "The coordinate system for the GeoSeries, now only support SRID form."
+#: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/geoseries/geoseries.py:docstring of arctern.GeoSeries:10
+msgid "The Coordinate Reference System (CRS) set to all geometries in GeoSeries. Only supports SRID as a WKT representation of CRS by now, for example, ``\"EPSG:4326\"``."
 msgstr ""
 
-#: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/geoseries/geoseries.py:docstring of arctern.GeoSeries:20
-msgid "Additional arguments passed to the GeoSeries constructor, e.g. ``copy``"
+#: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/geoseries/geoseries.py:docstring of arctern.GeoSeries:13
+msgid "Options to pass to the GeoSeries constructor, for example, ``copy``."
 msgstr ""
 
-#: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/geoseries/geoseries.py:docstring of arctern.GeoSeries:0
-msgid "example"
+#: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/geoseries/geoseries.py:docstring of arctern.GeoSeries:16
+msgid "实际案例"
 msgstr ""
 
 #: ../../source/api_reference/standalone_api/api/arctern.GeoSeries.rst:12
@@ -125,7 +125,7 @@ msgid ":obj:`equals <arctern.GeoSeries.equals>`\\ \\(other\\)"
 msgstr ""
 
 #: ../../source/api_reference/standalone_api/api/arctern.GeoSeries.rst:51:<autosummary>:1
-msgid "Test whether two objects contain the same elements."
+msgid "Tests whether two objects contain the same elements."
 msgstr ""
 
 #: ../../source/api_reference/standalone_api/api/arctern.GeoSeries.rst:51:<autosummary>:1
@@ -133,7 +133,7 @@ msgid ":obj:`fillna <arctern.GeoSeries.fillna>`\\ \\(\\[value\\, method\\, axis\
 msgstr ""
 
 #: ../../source/api_reference/standalone_api/api/arctern.GeoSeries.rst:51:<autosummary>:1
-msgid "Fill NA values with a geometry, which can be WKT or WKB formed."
+msgid "Fills NA values with a geometry in WKT or WKB format."
 msgstr ""
 
 #: ../../source/api_reference/standalone_api/api/arctern.GeoSeries.rst:51:<autosummary>:1
@@ -189,7 +189,7 @@ msgid ":obj:`isna <arctern.GeoSeries.isna>`\\ \\(\\)"
 msgstr ""
 
 #: ../../source/api_reference/standalone_api/api/arctern.GeoSeries.rst:51:<autosummary>:1
-msgid "Detect missing values."
+msgid "Detects missing values."
 msgstr ""
 
 #: ../../source/api_reference/standalone_api/api/arctern.GeoSeries.rst:51:<autosummary>:1
@@ -205,7 +205,7 @@ msgid ":obj:`notna <arctern.GeoSeries.notna>`\\ \\(\\)"
 msgstr ""
 
 #: ../../source/api_reference/standalone_api/api/arctern.GeoSeries.rst:51:<autosummary>:1
-msgid "Detect non-missing values."
+msgid "Detects existing (non-missing) values."
 msgstr ""
 
 #: ../../source/api_reference/standalone_api/api/arctern.GeoSeries.rst:51:<autosummary>:1
@@ -245,7 +245,7 @@ msgid ":obj:`set_crs <arctern.GeoSeries.set_crs>`\\ \\(crs\\)"
 msgstr ""
 
 #: ../../source/api_reference/standalone_api/api/arctern.GeoSeries.rst:51:<autosummary>:1
-msgid "Set the coordinate system for the GeoSeries."
+msgid "Sets the Coordinate Reference System (CRS) for all geometries in GeoSeries."
 msgstr ""
 
 #: ../../source/api_reference/standalone_api/api/arctern.GeoSeries.rst:51:<autosummary>:1
@@ -321,7 +321,7 @@ msgid ":obj:`area <arctern.GeoSeries.area>`\\"
 msgstr ""
 
 #: ../../source/api_reference/standalone_api/api/arctern.GeoSeries.rst:65:<autosummary>:1
-msgid "Calculate the 2D Cartesian (planar) area of each geometry."
+msgid "Calculates the 2D Cartesian (planar) area of each geometry in the GeoSeries."
 msgstr ""
 
 #: ../../source/api_reference/standalone_api/api/arctern.GeoSeries.rst:65:<autosummary>:1
@@ -345,7 +345,7 @@ msgid ":obj:`crs <arctern.GeoSeries.crs>`\\"
 msgstr ""
 
 #: ../../source/api_reference/standalone_api/api/arctern.GeoSeries.rst:65:<autosummary>:1
-msgid "Return the coordinate system of the GeoSeries."
+msgid "Returns the Coordinate Reference System (CRS) of the GeoSeries."
 msgstr ""
 
 #: ../../source/api_reference/standalone_api/api/arctern.GeoSeries.rst:65:<autosummary>:1
@@ -361,7 +361,7 @@ msgid ":obj:`geom_type <arctern.GeoSeries.geom_type>`\\"
 msgstr ""
 
 #: ../../source/api_reference/standalone_api/api/arctern.GeoSeries.rst:65:<autosummary>:1
-msgid "For each geometry in geometries, return a string that indicates is type."
+msgid "Returns a series of string that indicates the type of each geometry in the GeoSeries."
 msgstr ""
 
 #: ../../source/api_reference/standalone_api/api/arctern.GeoSeries.rst:65:<autosummary>:1
@@ -369,7 +369,7 @@ msgid ":obj:`is_simple <arctern.GeoSeries.is_simple>`\\"
 msgstr ""
 
 #: ../../source/api_reference/standalone_api/api/arctern.GeoSeries.rst:65:<autosummary>:1
-msgid "Check whether each geometry is \"simple\"."
+msgid "Tests whether each geometry in the GeoSeries is simple."
 msgstr ""
 
 #: ../../source/api_reference/standalone_api/api/arctern.GeoSeries.rst:65:<autosummary>:1
@@ -377,7 +377,7 @@ msgid ":obj:`is_valid <arctern.GeoSeries.is_valid>`\\"
 msgstr ""
 
 #: ../../source/api_reference/standalone_api/api/arctern.GeoSeries.rst:65:<autosummary>:1
-msgid "Check if each geometry is of valid geometry format."
+msgid "Tests whether each geometry in the GeoSeries is in valid format, such as WKT and WKB formats."
 msgstr ""
 
 #: ../../source/api_reference/standalone_api/api/arctern.GeoSeries.rst:65:<autosummary>:1
@@ -385,7 +385,7 @@ msgid ":obj:`length <arctern.GeoSeries.length>`\\"
 msgstr ""
 
 #: ../../source/api_reference/standalone_api/api/arctern.GeoSeries.rst:65:<autosummary>:1
-msgid "Calculate the length of each geometry."
+msgid "Calculates the length of each geometry in the GeoSeries."
 msgstr ""
 
 #: ../../source/api_reference/standalone_api/api/arctern.GeoSeries.rst:65:<autosummary>:1

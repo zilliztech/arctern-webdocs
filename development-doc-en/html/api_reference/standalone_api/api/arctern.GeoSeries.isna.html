@@ -179,19 +179,18 @@
 <dl class="py method">
 <dt id="arctern.GeoSeries.isna">
 <code class="sig-prename descclassname">GeoSeries.</code><code class="sig-name descname">isna</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/arctern/geoseries/geoseries.html#GeoSeries.isna"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arctern.GeoSeries.isna" title="Permalink to this definition">¶</a></dt>
-<dd><p>Detect missing values.</p>
-<p>NA value in GeoSeries is represented as None.</p>
+<dd><p>Detects missing values.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>Series(dtype: bool)</p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>Series(dtype</strong> -- Mask of boolean values for each element in the GeoSeries that indicates whether an element is an NA value.
+* True: An element is a NA value, such as None.
+* False: An element is a non-missing value.</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Mask of bool values for each element in GeoSeries
-that indicates whether an element is not an NA value.</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool)</p>
 </dd>
-<dt class="field-odd">Example</dt>
-<dd class="field-odd"><p></p></dd>
 </dl>
+<p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">GeoSeries</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">GeoSeries</span><span class="p">([</span><span class="s2">&quot;Point (1 1)&quot;</span><span class="p">,</span> <span class="s2">&quot;POLYGON ((1 1,2 1,2 2,1 2,1 1))&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span>
@@ -228,7 +227,7 @@ that indicates whether an element is not an NA value.</p>
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        Last updated on Jun 08, 2020.
+        Last updated on Jun 09, 2020.
       </span>
 
     </p>

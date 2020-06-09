@@ -37,7 +37,7 @@
   <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
     <link rel="index" title="索引" href="../../../genindex.html" />
     <link rel="search" title="搜索" href="../../../search.html" />
-    <link rel="next" title="arctern.GeoSeries.buffer" href="arctern.GeoSeries.buffer.html" />
+    <link rel="next" title="arctern.GeoSeries.to_geopandas" href="arctern.GeoSeries.to_geopandas.html" />
     <link rel="prev" title="arctern.GeoSeries.to_wkt" href="arctern.GeoSeries.to_wkt.html" /> 
 </head>
 
@@ -96,6 +96,8 @@
 <li class="toctree-l4"><a class="reference internal" href="arctern.GeoSeries.as_geojson.html">arctern.GeoSeries.as_geojson</a></li>
 <li class="toctree-l4"><a class="reference internal" href="arctern.GeoSeries.to_wkt.html">arctern.GeoSeries.to_wkt</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">arctern.GeoSeries.to_wkb</a></li>
+<li class="toctree-l4"><a class="reference internal" href="arctern.GeoSeries.to_geopandas.html">arctern.GeoSeries.to_geopandas</a></li>
+<li class="toctree-l4"><a class="reference internal" href="arctern.GeoSeries.from_geopandas.html">arctern.GeoSeries.from_geopandas</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../geoseries.html#processing-geometry">Processing Geometry</a></li>
@@ -193,12 +195,13 @@
 <dt class="field-odd">Example</dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
-<pre class="doctest literal-block">&gt;&gt;&gt; from arctern import GeoSeries
-&gt;&gt;&gt; s = GeoSeries([&quot;POINT(1 1)&quot;])
-&gt;&gt;&gt; s.to_wkb()
-0    b'ð?ð?'
-dtype: object
-</pre>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">GeoSeries</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">GeoSeries</span><span class="p">([</span><span class="s2">&quot;POINT(1 1)&quot;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">to_wkb</span><span class="p">()</span>
+<span class="go">0    b&#39;\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\xf0?\x00\x00\x00\x00\x00\x00\xf0?&#39;</span>
+<span class="go">dtype: object</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </div>
@@ -211,7 +214,7 @@ dtype: object
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="arctern.GeoSeries.buffer.html" class="btn btn-neutral float-right" title="arctern.GeoSeries.buffer" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="arctern.GeoSeries.to_geopandas.html" class="btn btn-neutral float-right" title="arctern.GeoSeries.to_geopandas" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="arctern.GeoSeries.to_wkt.html" class="btn btn-neutral float-left" title="arctern.GeoSeries.to_wkt" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -225,7 +228,7 @@ dtype: object
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 6月 08, 2020.
+        最后更新于 6月 09, 2020.
       </span>
 
     </p>
