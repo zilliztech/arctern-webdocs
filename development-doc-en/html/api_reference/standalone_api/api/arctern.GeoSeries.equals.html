@@ -179,25 +179,24 @@
 <dl class="py method">
 <dt id="arctern.GeoSeries.equals">
 <code class="sig-prename descclassname">GeoSeries.</code><code class="sig-name descname">equals</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/arctern/geoseries/geoseries.html#GeoSeries.equals"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arctern.GeoSeries.equals" title="Permalink to this definition">¶</a></dt>
-<dd><p>Test whether two objects contain the same elements.</p>
-<p>This function allows two GeoSeries to be compared against each other to
-see if they have the same shape and geometries (same wkb bytes).
-NaNs in the same location are considered equal. The column headers do not
-need to have the same type, but the elements within the columns must
-be the same dtype.</p>
+<dd><p>Tests whether two objects contain the same elements.</p>
+<p>This function allows two GeoSeries to be compared against each other to see if they have the same shape and elements. NaNs in the same location are considered equal. The column headers do not need to have the same type, but the elements within the columns must be the same dtype.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>other</strong> (<a class="reference internal" href="arctern.GeoSeries.html#arctern.GeoSeries" title="arctern.GeoSeries"><em>GeoSeries</em></a>) -- The other GeoSeries to be compared with the first</p>
+<dd class="field-odd"><p><strong>other</strong> (<a class="reference internal" href="arctern.GeoSeries.html#arctern.GeoSeries" title="arctern.GeoSeries"><em>GeoSeries</em></a>) -- The other GeoSeries to be compared with the first GeoSeries.</p>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>bool</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>True:</em> All geometries are the same in both objects.</p></li>
+<li><p><em>False:</em> The two objects are different in shape or elements.</p></li>
+</ul>
+</p>
 </dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>True if all geometries are the same in both objects, False otherwise.</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
 </dd>
-<dt class="field-even">Example</dt>
-<dd class="field-even"><p></p></dd>
 </dl>
+<p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">GeoSeries</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s1</span> <span class="o">=</span> <span class="n">GeoSeries</span><span class="p">([</span><span class="s2">&quot;POINT(1 1)&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s2</span> <span class="o">=</span> <span class="n">GeoSeries</span><span class="p">([</span><span class="s2">&quot;Point(1 1)&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">])</span>
@@ -245,7 +244,7 @@ be the same dtype.</p>
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        Last updated on Jun 08, 2020.
+        Last updated on Jun 09, 2020.
       </span>
 
     </p>

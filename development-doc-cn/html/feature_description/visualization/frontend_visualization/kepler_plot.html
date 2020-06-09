@@ -204,19 +204,6 @@ $ pip install keplergl
 </pre></div>
 </div>
 <p><img alt="add_data" src="../../../_images/add_data.png" /></p>
-<p>同样，你也可以将 CSV、GeoJSON 等格式的数据输入到地图上：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># CSV</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;csv-data.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-<span class="gp">... </span>    <span class="n">csvData</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">map_1</span><span class="o">.</span><span class="n">add_data</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">csvData</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;data_2&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># GeoJSON</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;sf_zip_geo.json&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-<span class="gp">... </span>    <span class="n">geojson</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">map_1</span><span class="o">.</span><span class="n">add_data</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">geojson</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;geojson&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
 </div>
 <div class="section" id="id3">
 <h2>参考<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
@@ -246,7 +233,7 @@ $ pip install keplergl
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 6月 08, 2020.
+        最后更新于 6月 09, 2020.
       </span>
 
     </p>

@@ -193,7 +193,7 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="n">p1</span> <span class="o">=</span> <span class="s2">&quot;POINT(1 2)&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">p2</span> <span class="o">=</span> <span class="s2">&quot;POINT(1 1)&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">GeoSeries</span><span class="p">([</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">union_aggr</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">unary_union</span><span class="p">()</span>
 <span class="go">0    MULTIPOINT (1 2,1 1)</span>
 <span class="go">dtype: GeoDtype</span>
 </pre></div>
@@ -224,7 +224,7 @@
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 6月 08, 2020.
+        最后更新于 6月 09, 2020.
       </span>
 
     </p>
