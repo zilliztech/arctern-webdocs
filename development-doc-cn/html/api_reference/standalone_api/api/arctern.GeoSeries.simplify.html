@@ -185,29 +185,29 @@
 <dl class="py method">
 <dt id="arctern.GeoSeries.simplify">
 <code class="sig-prename descclassname">GeoSeries.</code><code class="sig-name descname">simplify</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tolerance</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/arctern/geoseries/geoseries.html#GeoSeries.simplify"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#arctern.GeoSeries.simplify" title="永久链接至目标">¶</a></dt>
-<dd><p>Returns a “simplified” version for each geometry using the Douglas-Peucker algorithm.</p>
+<dd><p>Returns a simplified version for each geometry in the GeoSeries using the <a class="reference external" href="https://en.wikipedia.org/wiki/Ramer%E2%80%93Douglas%E2%80%93Peucker_algorithm">Douglas-Peucker algorithm</a>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>tolerance: float</p>
-</dd>
-<dt class="field-even">参数</dt>
-<dd class="field-even"><p><strong>tolerance</strong> – The maximum distance between a point on a linestring and a curve.</p>
-</dd>
-<dt class="field-odd">返回类型</dt>
-<dd class="field-odd"><p><a class="reference internal" href="arctern.GeoSeries.html#arctern.GeoSeries" title="arctern.GeoSeries">GeoSeries</a></p>
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>tolerance</strong> (<em>float</em>) – Distance tolerance.</p>
 </dd>
 <dt class="field-even">返回</dt>
 <dd class="field-even"><p>Simplified geometries.</p>
 </dd>
-<dt class="field-odd">Example</dt>
-<dd class="field-odd"><p></p></dd>
+<dt class="field-odd">返回类型</dt>
+<dd class="field-odd"><p><a class="reference internal" href="arctern.GeoSeries.html#arctern.GeoSeries" title="arctern.GeoSeries">GeoSeries</a></p>
+</dd>
 </dl>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">GeoSeries</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">GeoSeries</span><span class="p">([</span><span class="s2">&quot;POLYGON ((1 1,1 2,2 2,2 1,1 1))&quot;</span><span class="p">,</span> <span class="s2">&quot;CIRCULARSTRING (0 0,1 1,2 0)&quot;</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">simplify</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="go">0    POLYGON ((1 1,1 2,2 2,2 1,1 1))</span>
-<span class="go">1               LINESTRING (0 0,2 0)</span>
-<span class="go">dtype: GeoDtype</span>
+<p class="rubric">实际案例</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">GeoSeries</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern.plot</span> <span class="kn">import</span> <span class="n">plot_geometry</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">g0</span> <span class="o">=</span> <span class="n">GeoSeries</span><span class="p">([</span><span class="s2">&quot;CURVEPOLYGON(CIRCULARSTRING(0 0, 10 0, 10 10, 0 10, 0 0))&quot;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">g0</span> <span class="o">=</span> <span class="n">g0</span><span class="o">.</span><span class="n">curve_to_line</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot_geometry</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="n">g0</span><span class="p">,</span><span class="n">facecolor</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot_geometry</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="n">g0</span><span class="o">.</span><span class="n">simplify</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="n">facecolor</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -236,7 +236,7 @@
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 6月 09, 2020.
+        最后更新于 6月 10, 2020.
       </span>
 
     </p>

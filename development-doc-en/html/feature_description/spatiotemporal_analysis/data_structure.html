@@ -83,21 +83,21 @@
             
               <ul class="current">
 <li class="toctree-l1"><a target="_blank" class="reference internal" href="../../quick_start/quick_start.html">Quick Start</a></li>
-<li class="toctree-l1 current"><a target="_blank" class="reference internal" href="../feature_description.html">Feature Description</a><ul class="current">
-<li class="toctree-l2 current"><a target="_blank" class="reference internal" href="spatiotemporal_analysis.html">Spatiotemporal Analysis</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../feature_description.html">Feature Description</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="spatiotemporal_analysis.html">Spatiotemporal Analysis</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Data structure</a><ul>
-<li class="toctree-l4"><a target="_blank" class="reference internal" href="#geoseries">GeoSeries</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#geoseries">GeoSeries</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a target="_blank" class="reference internal" href="read_and_write_file.html">Reading and writing files</a></li>
-<li class="toctree-l3"><a target="_blank" class="reference internal" href="geometric_manipulation.html">Basic manipulations of geometry</a></li>
-<li class="toctree-l3"><a target="_blank" class="reference internal" href="convert_from_and_to_geopandas_geoseries.html">Convert with GeoPandas GeoSeries</a></li>
-<li class="toctree-l3"><a target="_blank" class="reference internal" href="spatial_relationship_operation.html">Spatial relationship operations</a></li>
-<li class="toctree-l3"><a target="_blank" class="reference internal" href="map_match.html">Map match</a></li>
-<li class="toctree-l3"><a target="_blank" class="reference internal" href="plot_geometry.html">Plot methods</a></li>
-<li class="toctree-l3"><a target="_blank" class="reference internal" href="crs_and_transform.html">Coordinate reference system</a></li>
-<li class="toctree-l3"><a target="_blank" class="reference internal" href="aggregation.html">Aggregation</a></li>
-<li class="toctree-l3"><a target="_blank" class="reference internal" href="indexing_selecting_data.html">Indexing and selecting data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="read_and_write_file.html">Reading and writing files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometric_manipulation.html">Basic manipulations of geometry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="convert_from_and_to_geopandas_geoseries.html">Convert with GeoPandas GeoSeries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spatial_relationship_operation.html">Spatial relationship operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="map_match.html">Map match</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plot_geometry.html">Plot methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="crs_and_transform.html">Coordinate reference system</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aggregation.html">Aggregation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="indexing_selecting_data.html">Indexing and selecting data</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a target="_blank" class="reference internal" href="../visualization/visualization.html">Visualization</a></li>
@@ -183,13 +183,14 @@
 <div class="section" id="initializing-from-wkt-format-data">
 <h4>Initializing from WKT format data<a class="headerlink" href="#initializing-from-wkt-format-data" title="Permalink to this headline">¶</a></h4>
 <p>You can put multiple string data in WKT format into a list, numpy.ndarray, or pandas.Series, and then pass in the GeoSeries constructor to create GeoSeries objects.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;POINT(1 1)&#39;</span><span class="p">,</span> <span class="s1">&#39;POINT(1 3)&#39;</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;POINT(1 1)&#39;</span><span class="p">,</span> <span class="s1">&#39;POINT(1 3)&#39;</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">arctern</span><span class="o">.</span><span class="n">GeoSeries</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span>
 <span class="go">0    POINT (1 1)</span>
 <span class="go">1    POINT (1 3)</span>
 <span class="go">dtype: GeoDtype</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">arctern</span><span class="o">.</span><span class="n">GeoSeries</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span>
 <span class="go">0    POINT (1 1)</span>
@@ -221,31 +222,31 @@
 <li><p>When performing a binary operation on a GeoSeries object and a geometry (object in WKB format), Arctern performs an operation on each geometry in the GeoSeries object and this geometry.</p></li>
 </ul>
 <p>If the result of the operation is geometry, a new GeoSeries object is returned, otherwise a Pandas Series object is returned.</p>
-<p>The following lists some of the GeoSeries methods, including operations on geometry measurement, relationship calculation, and conversion. For detailed interface introduction, please see <a class="reference external" href="../../api_reference/standalone_api/geoseries.html">API Reference</a>.</p>
+<p>The following lists some of the GeoSeries methods, including operations on geometry measurement, relationship calculation, and conversion. For detailed interface introduction, please see <a target="_blank" class="reference external" href="../../api_reference/standalone_api/geoseries.html">API Reference</a>.</p>
 <div class="section" id="geometric-measurement">
 <h4>Geometric measurement<a class="headerlink" href="#geometric-measurement" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
-<li><p><strong><a class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.is_valid.html">GeoSeries.is_valid</a>:</strong> Check whether each geometry in the GeoSeries object is valid.</p></li>
-<li><p><strong><a class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.area.html">GeoSeries.area</a>:</strong> Calculate the area of each geometry in a GeoSeries object.</p></li>
-<li><p><strong><a class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.distance.html">GeoSeries.distance</a>:</strong> For each geometry in the GeoSeries object, create a geometry with the maximum distance not greater than the given distance.</p></li>
-<li><p><strong><a class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.distance_sphere.html">GeoSeries.distance_sphere</a>:</strong> For each geometry in the GeoSeries object, the minimum distance between two points on the earth's surface is calculated based on the latitude and longitude coordinates. This method uses the earth and radius defined by the SRID.</p></li>
-<li><p><strong><a class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.hausdorff_distance.html">GeoSeries.hausdorff_distance</a>:</strong> For each geometry in the GeoSeries object, check the Hausdorff distance between it and the geometry at the same position in the other GeoSeries object. This distance is to measure the similarity between two geometries.</p></li>
+<li><p><strong><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.is_valid.html">GeoSeries.is_valid</a>:</strong> Check whether each geometry in the GeoSeries object is valid.</p></li>
+<li><p><strong><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.area.html">GeoSeries.area</a>:</strong> Calculate the area of each geometry in a GeoSeries object.</p></li>
+<li><p><strong><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.distance.html">GeoSeries.distance</a>:</strong> For each geometry in the GeoSeries object, create a geometry with the maximum distance not greater than the given distance.</p></li>
+<li><p><strong><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.distance_sphere.html">GeoSeries.distance_sphere</a>:</strong> For each geometry in the GeoSeries object, the minimum distance between two points on the earth's surface is calculated based on the latitude and longitude coordinates. This method uses the earth and radius defined by the SRID.</p></li>
+<li><p><strong><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.hausdorff_distance.html">GeoSeries.hausdorff_distance</a>:</strong> For each geometry in the GeoSeries object, check the Hausdorff distance between it and the geometry at the same position in the other GeoSeries object. This distance is to measure the similarity between two geometries.</p></li>
 </ul>
 </div>
 <div class="section" id="geometric-relationship-operation">
 <h4>Geometric relationship operation<a class="headerlink" href="#geometric-relationship-operation" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
-<li><p><strong><a class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.touches.html">GeoSeries.touches</a>:</strong> For each geometry in the GeoSeries object, check whether it touches the geometry at the same position in the other GeoSeries object. &quot;touches&quot; means that two geometries have a common point on the boundary.</p></li>
-<li><p><strong><a class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.overlaps.html">GeoSeries.overlaps</a>:</strong> For each geometry in the GeoSeries object, check whether it overlaps the geometry at the same position in the other GeoSeries object. &quot;overlaps&quot; means that the two geometries cross and do not contain each other.</p></li>
-<li><p><strong><a class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.intersects.html">GeoSeries.intersects</a>:</strong> For each geometry in the GeoSeries object, check whether it intersects with the geometry at the same position in the other GeoSeries object.</p></li>
+<li><p><strong><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.touches.html">GeoSeries.touches</a>:</strong> For each geometry in the GeoSeries object, check whether it touches the geometry at the same position in the other GeoSeries object. &quot;touches&quot; means that two geometries have a common point on the boundary.</p></li>
+<li><p><strong><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.overlaps.html">GeoSeries.overlaps</a>:</strong> For each geometry in the GeoSeries object, check whether it overlaps the geometry at the same position in the other GeoSeries object. &quot;overlaps&quot; means that the two geometries cross and do not contain each other.</p></li>
+<li><p><strong><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.intersects.html">GeoSeries.intersects</a>:</strong> For each geometry in the GeoSeries object, check whether it intersects with the geometry at the same position in the other GeoSeries object.</p></li>
 </ul>
 </div>
 <div class="section" id="geometric-conversion">
 <h4>Geometric conversion<a class="headerlink" href="#geometric-conversion" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
-<li><p><strong><a class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.precision_reduce.html">GeoSeries.precision_reduce</a>:</strong> For each geometry in the GeoSeries object, the geometry with reduced coordinate accuracy is created according to the given valid digits number.</p></li>
-<li><p><strong><a class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.make_valid.html">GeoSeries.make_valid</a>:</strong> For each geometry in the GeoSeries object, create a new valid geometry based on it. During the construction of the new geometry, no vertices of the original geometry are deleted. If the original geometry is already valid, then return the original geometry directly.</p></li>
-<li><p><strong><a class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.curve_to_line.html">GeoSeries.curve_to_line</a>:</strong> For each geometry in the GeoSeries object, calculate its approximate representation. The approximate representation method is to convert the curve in each geometric figure into an approximate linear representation.</p></li>
+<li><p><strong><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.precision_reduce.html">GeoSeries.precision_reduce</a>:</strong> For each geometry in the GeoSeries object, the geometry with reduced coordinate accuracy is created according to the given valid digits number.</p></li>
+<li><p><strong><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.make_valid.html">GeoSeries.make_valid</a>:</strong> For each geometry in the GeoSeries object, create a new valid geometry based on it. During the construction of the new geometry, no vertices of the original geometry are deleted. If the original geometry is already valid, then return the original geometry directly.</p></li>
+<li><p><strong><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.curve_to_line.html">GeoSeries.curve_to_line</a>:</strong> For each geometry in the GeoSeries object, calculate its approximate representation. The approximate representation method is to convert the curve in each geometric figure into an approximate linear representation.</p></li>
 </ul>
 </div>
 </div>
@@ -274,7 +275,7 @@
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        Last updated on Jun 09, 2020.
+        Last updated on Jun 10, 2020.
       </span>
 
     </p>

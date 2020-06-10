@@ -83,14 +83,14 @@
             
             
               <ul class="current">
-<li class="toctree-l1 current"><a target="_blank" class="reference internal" href="quick_start.html">快速开始</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="quick_start.html">快速开始</a><ul class="current">
 <li class="toctree-l2"><a target="_blank" class="reference internal" href="standalone_installation.html">安装部署</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">使用 Arctern 分析空间数据</a><ul>
-<li class="toctree-l3"><a target="_blank" class="reference internal" href="#jupyter-kepler-gl">安装 Jupyter 和 Kepler.gl</a></li>
-<li class="toctree-l3"><a target="_blank" class="reference internal" href="#jupyter-notebook">运行 Jupyter Notebook</a></li>
-<li class="toctree-l3"><a target="_blank" class="reference internal" href="#id1">运行 Arctern</a><ul>
-<li class="toctree-l4"><a target="_blank" class="reference internal" href="#id2">使用 Arctern 分析道路信息</a></li>
-<li class="toctree-l4"><a target="_blank" class="reference internal" href="#kepler-gl">使用 Kepler.gl 绘制地图</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#jupyter-kepler-gl">安装 Jupyter 和 Kepler.gl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#jupyter-notebook">运行 Jupyter Notebook</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">运行 Arctern</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">使用 Arctern 分析道路信息</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#kepler-gl">使用 Kepler.gl 绘制地图</a></li>
 </ul>
 </li>
 </ul>
@@ -167,7 +167,7 @@
             
   <div class="section" id="arctern">
 <h1>使用 Arctern 分析空间数据<a class="headerlink" href="#arctern" title="永久链接至标题">¶</a></h1>
-<p>完成 <a target="_blank" class="reference internal" href="standalone_installation.html"><span class="doc">Arctern 的安装部署</span></a> 之后，本文档引导你使用 Arctern 分析帝国大厦附近的道路信息。</p>
+<p>完成 <a class="reference internal" href="standalone_installation.html"><span class="doc">Arctern 的安装部署</span></a> 之后，本文档引导你使用 Arctern 分析帝国大厦附近的道路信息。</p>
 <div class="section" id="jupyter-kepler-gl">
 <h2>安装 Jupyter 和 Kepler.gl<a class="headerlink" href="#jupyter-kepler-gl" title="永久链接至标题">¶</a></h2>
 <p>在后续步骤中，你需要使用 Jupyter Notebook 运行代码，以及使用 Kepler.gl 进行空间数据可视化。如果你的计算机未安装 Jupyter 和 Kepler.gl，请执行以下命令安装这两个工具：</p>
@@ -201,7 +201,7 @@ $ pip install keplergl
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">arctern</span>
 </pre></div>
 </div>
-<p>以帝国大厦附近的两条道路为分析对象，创建 <a class="reference external" href="https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry">WKT</a> 格式的 LINESTRING 对象（<code class="docutils literal notranslate"><span class="pre">road1</span></code>、<code class="docutils literal notranslate"><span class="pre">road2</span></code>）以表示这两条道路。</p>
+<p>以帝国大厦附近的两条道路为分析对象，创建 <a target="_blank" class="reference external" href="https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry">WKT</a> 格式的 LINESTRING 对象（<code class="docutils literal notranslate"><span class="pre">road1</span></code>、<code class="docutils literal notranslate"><span class="pre">road2</span></code>）以表示这两条道路。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># road1 道路两端的经纬度坐标分别是 (-73.996324, 40.753388)、(-73.972088, 40.743215)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># road2 道路两端的经纬度坐标分别是 (-73.989555, 40.741531)、(-73.973952, 40.762962)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">road1</span> <span class="o">=</span> <span class="s1">&#39;LINESTRING (-73.996324 40.753388, -73.972088 40.743215)&#39;</span>
@@ -256,7 +256,7 @@ $ pip install keplergl
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 6月 09, 2020.
+        最后更新于 6月 10, 2020.
       </span>
 
     </p>

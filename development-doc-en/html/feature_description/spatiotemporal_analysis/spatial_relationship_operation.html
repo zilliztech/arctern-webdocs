@@ -83,21 +83,21 @@
             
               <ul class="current">
 <li class="toctree-l1"><a target="_blank" class="reference internal" href="../../quick_start/quick_start.html">Quick Start</a></li>
-<li class="toctree-l1 current"><a target="_blank" class="reference internal" href="../feature_description.html">Feature Description</a><ul class="current">
-<li class="toctree-l2 current"><a target="_blank" class="reference internal" href="spatiotemporal_analysis.html">Spatiotemporal Analysis</a><ul class="current">
-<li class="toctree-l3"><a target="_blank" class="reference internal" href="data_structure.html">Data structure</a></li>
-<li class="toctree-l3"><a target="_blank" class="reference internal" href="read_and_write_file.html">Reading and writing files</a></li>
-<li class="toctree-l3"><a target="_blank" class="reference internal" href="geometric_manipulation.html">Basic manipulations of geometry</a></li>
-<li class="toctree-l3"><a target="_blank" class="reference internal" href="convert_from_and_to_geopandas_geoseries.html">Convert with GeoPandas GeoSeries</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../feature_description.html">Feature Description</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="spatiotemporal_analysis.html">Spatiotemporal Analysis</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="data_structure.html">Data structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="read_and_write_file.html">Reading and writing files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometric_manipulation.html">Basic manipulations of geometry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="convert_from_and_to_geopandas_geoseries.html">Convert with GeoPandas GeoSeries</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Spatial relationship operations</a><ul>
-<li class="toctree-l4"><a target="_blank" class="reference internal" href="#within-which-left-right">within_which(left, right)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#within-which-left-right">within_which(left, right)</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a target="_blank" class="reference internal" href="map_match.html">Map match</a></li>
-<li class="toctree-l3"><a target="_blank" class="reference internal" href="plot_geometry.html">Plot methods</a></li>
-<li class="toctree-l3"><a target="_blank" class="reference internal" href="crs_and_transform.html">Coordinate reference system</a></li>
-<li class="toctree-l3"><a target="_blank" class="reference internal" href="aggregation.html">Aggregation</a></li>
-<li class="toctree-l3"><a target="_blank" class="reference internal" href="indexing_selecting_data.html">Indexing and selecting data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="map_match.html">Map match</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plot_geometry.html">Plot methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="crs_and_transform.html">Coordinate reference system</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aggregation.html">Aggregation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="indexing_selecting_data.html">Indexing and selecting data</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a target="_blank" class="reference internal" href="../visualization/visualization.html">Visualization</a></li>
@@ -174,7 +174,7 @@
             
   <div class="section" id="spatial-relationship-operations">
 <h1>Spatial relationship operations<a class="headerlink" href="#spatial-relationship-operations" title="Permalink to this headline">¶</a></h1>
-<p>After indexing geometric objects, Arctern can batch perform spatial relationship operations on geometric data (currently Arctern only supports the <a class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.within.html"><code class="docutils literal notranslate"><span class="pre">GeoSeries.within</span></code></a> method, which is similar to SQL Join).</p>
+<p>After indexing geometric objects, Arctern can batch perform spatial relationship operations on geometric data (currently Arctern only supports the <a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.within.html"><code class="docutils literal notranslate"><span class="pre">GeoSeries.within</span></code></a> method, which is similar to SQL Join).</p>
 <div class="section" id="within-which-left-right">
 <h2>within_which(left, right)<a class="headerlink" href="#within-which-left-right" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="logic">
@@ -193,7 +193,7 @@
 </div>
 <div class="section" id="example">
 <h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
-<p>In the figure below, there is a green rectangle (<code class="docutils literal notranslate"><span class="pre">polygons[0]</span></code>), a red rectangle (<code class="docutils literal notranslate"><span class="pre">polygons[1]</span></code>), and some points (<code class="docutils literal notranslate"><span class="pre">points</span></code>) . The <a class="reference external" href="../../api_reference/map_match/api/arctern.within_which.html"><code class="docutils literal notranslate"><span class="pre">within_which</span></code></a> method is used to determine whether the points are inside these two rectangles.</p>
+<p>In the figure below, there is a green rectangle (<code class="docutils literal notranslate"><span class="pre">polygons[0]</span></code>), a red rectangle (<code class="docutils literal notranslate"><span class="pre">polygons[1]</span></code>), and some points (<code class="docutils literal notranslate"><span class="pre">points</span></code>) . The <a target="_blank" class="reference external" href="../../api_reference/map_match/api/arctern.within_which.html"><code class="docutils literal notranslate"><span class="pre">within_which</span></code></a> method is used to determine whether the points are inside these two rectangles.</p>
 <ul class="simple">
 <li><p>The four points at the bottom left corner are in the green rectangle, so the return values corresponding to these points are 0.</p></li>
 <li><p>The two points at the top right corner are in the red rectangle, so the return values corresponding to these points are 1.</p></li>
@@ -241,7 +241,7 @@
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        Last updated on Jun 09, 2020.
+        Last updated on Jun 10, 2020.
       </span>
 
     </p>

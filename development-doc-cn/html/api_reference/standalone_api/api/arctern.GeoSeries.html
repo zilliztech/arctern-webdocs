@@ -177,17 +177,15 @@
 <dl class="py class">
 <dt id="arctern.GeoSeries">
 <em class="property">class </em><code class="sig-prename descclassname">arctern.</code><code class="sig-name descname">GeoSeries</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">index</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">name</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">crs</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/arctern/geoseries/geoseries.html#GeoSeries"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#arctern.GeoSeries" title="永久链接至目标">¶</a></dt>
-<dd><p>One-dimensional Series to store an array of geometry objects.</p>
+<dd><p>用于存储一组几何对象的一维 Series。</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>data</strong> (<em>array-like</em><em>, </em><em>Iterable</em><em>, </em><em>dict</em><em>, or </em><em>scalar value</em><em>(</em><em>str</em><em> or </em><em>bytes</em><em>)</em>) – Contains geometric data stored in GeoSeries. The geometric data can be in <a class="reference external" href="https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry">WKT (Well-Known Text)</a> or <a class="reference external" href="https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry#Well-known_binary">WKB</a> format.</p></li>
-<li><p><strong>index</strong> (<em>array-like</em><em> or </em><em>Index</em><em> (</em><em>1d</em><em>)</em>) – Same to the index of pandas.Series.
-Values must be hashable and have the same length as data. Non-unique index values are allowed. Will default to RangeIndex (0, 1, 2, …, n) if not provided. If both a dict and index sequence are used, the index will override the keys found in the dict.</p></li>
-<li><p><strong>name</strong> (<em>str</em><em>, </em><em>optional</em>) – The name to give to the GeoSeries.</p></li>
-<li><p><strong>crs</strong> (<em>str</em><em>, </em><em>optional</em>) – The Coordinate Reference System (CRS) set to all geometries in GeoSeries.
-Only supports SRID as a WKT representation of CRS by now, for example, <code class="docutils literal notranslate"><span class="pre">&quot;EPSG:4326&quot;</span></code>.</p></li>
-<li><p><strong>**kwargs</strong> – Options to pass to the GeoSeries constructor, for example, <code class="docutils literal notranslate"><span class="pre">copy</span></code>.</p></li>
+<li><p><strong>data</strong> (<em>array-like</em><em>, </em><em>Iterable</em><em>, </em><em>dict</em><em>, or </em><em>scalar value</em><em>(</em><em>str</em><em> or </em><em>bytes</em><em>)</em>) – 包含存储在 GeoSeries 中的几何数据。几何数据可以是 <a class="reference external" href="https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry">WKT (Well-Known Text)</a> 或 <a class="reference external" href="https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry#Well-known_binary">WKB</a> 格式。</p></li>
+<li><p><strong>index</strong> (<em>array-like</em><em> or </em><em>Index</em><em> (</em><em>1d</em><em>)</em>) – 与 pandas.Series 的索引相同。值必须是可哈希的，并且与 <code class="docutils literal notranslate"><span class="pre">data</span></code> 的长度相同。允许使用非唯一索引值。如果未提供，将默认为 RangeIndex（0，1，2，…，n）。如果同时使用了字典和索引序列，那么索引将覆盖在字典中找到的键。</p></li>
+<li><p><strong>name</strong> (<em>str</em><em>, </em><em>optional</em>) – 提供给 GeoSeries 的名称。</p></li>
+<li><p><strong>crs</strong> (<em>str</em><em>, </em><em>optional</em>) – 为 GeoSeries 中的所有几何体设置坐标参考系（CRS）。目前仅支持 SRID 作为 CRS 的 WKT 表示，例如 <code class="docutils literal notranslate"><span class="pre">&quot;EPSG:4326&quot;</span></code>。</p></li>
+<li><p><strong>**kwargs</strong> – 传到 GeoSeries 构造器中的其他参数，例如 <code class="docutils literal notranslate"><span class="pre">copy</span></code>。</p></li>
 </ul>
 </dd>
 </dl>
@@ -211,25 +209,25 @@ Only supports SRID as a WKT representation of CRS by now, for example, <code cla
 <td><p>将每个几何体转换为 GeoJSON 格式的字符串。</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="arctern.GeoSeries.buffer.html#arctern.GeoSeries.buffer" title="arctern.GeoSeries.buffer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">buffer</span></code></a>(distance)</p></td>
-<td><p>对于 GeoSeries 对象中的每个几何体，创建一个与它的最远距离不大于 <cite>distance</cite> 的几何体。</p></td>
+<td><p>For each geometry, returns a new geometry at a distance of <code class="docutils literal notranslate"><span class="pre">distance</span></code> from it.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="arctern.GeoSeries.contains.html#arctern.GeoSeries.contains" title="arctern.GeoSeries.contains"><code class="xref py py-obj docutils literal notranslate"><span class="pre">contains</span></code></a>(other)</p></td>
-<td><p>对于 GeoSeries 对象中的每个几何体，判断它是否包含 <cite>other</cite> 对象中相同位置的几何体。</p></td>
+<td><p>For each geometry in the GeoSeries and the corresponding geometry given in <code class="docutils literal notranslate"><span class="pre">other</span></code>, tests whether the first geometry contains the other.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="arctern.GeoSeries.crosses.html#arctern.GeoSeries.crosses" title="arctern.GeoSeries.crosses"><code class="xref py py-obj docutils literal notranslate"><span class="pre">crosses</span></code></a>(other)</p></td>
-<td><p>对于 GeoSeries 对象中的每个几何体，判断它是否与 other 对象中相同位置的几何体相交。</p></td>
+<td><p>For each geometry in the GeoSeries and the corresponding geometry given in <code class="docutils literal notranslate"><span class="pre">other</span></code>, tests whether the first geometry spatially crosses the other.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="arctern.GeoSeries.curve_to_line.html#arctern.GeoSeries.curve_to_line" title="arctern.GeoSeries.curve_to_line"><code class="xref py py-obj docutils literal notranslate"><span class="pre">curve_to_line</span></code></a>()</p></td>
-<td><p>对于 GeoSeries 对象中的每个几何体，计算它的近似表示。近似表示的方法是将每个几何图形中的曲线转换为近似线性表示。</p></td>
+<td><p>Converts curves in each geometry to approximate linear representation.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="arctern.GeoSeries.distance.html#arctern.GeoSeries.distance" title="arctern.GeoSeries.distance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">distance</span></code></a>(other)</p></td>
-<td><p>对于 GeoSeries 对象中的每个几何体，判断它与 <cite>other</cite> 对象中相同位置的几何体之间的最短二维笛卡尔（平面）距离。</p></td>
+<td><p>For each geometry in the GeoSeries and the corresponding geometry given in <code class="docutils literal notranslate"><span class="pre">other</span></code>, calculates the minimum 2D Cartesian (planar) distance between them.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="arctern.GeoSeries.distance_sphere.html#arctern.GeoSeries.distance_sphere" title="arctern.GeoSeries.distance_sphere"><code class="xref py py-obj docutils literal notranslate"><span class="pre">distance_sphere</span></code></a>(other)</p></td>
-<td><p>对于 GeoSeries 对象中的每个几何体，根据经纬度坐标计算地球表面两点之间的最短球面距离。该方法使用 SRID 定义的地球和半径。</p></td>
+<td><p>For each point in the GeoSeries and the corresponding point given in <code class="docutils literal notranslate"><span class="pre">other</span></code>, calculates the minimum spherical distance between them.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="arctern.GeoSeries.envelope_aggr.html#arctern.GeoSeries.envelope_aggr" title="arctern.GeoSeries.envelope_aggr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">envelope_aggr</span></code></a>()</p></td>
-<td><p>计算包含一组几何体的最小矩形边界范围，且该矩形的边与坐标轴平行。</p></td>
+<td><p>Returns the minimum bounding box for the union of all geometries in the GeoSeries.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="arctern.GeoSeries.equals.html#arctern.GeoSeries.equals" title="arctern.GeoSeries.equals"><code class="xref py py-obj docutils literal notranslate"><span class="pre">equals</span></code></a>(other)</p></td>
 <td><p>Tests whether two objects contain the same elements.</p></td>
@@ -241,7 +239,7 @@ Only supports SRID as a WKT representation of CRS by now, for example, <code cla
 <td><p>由 geopandas GeoSeries 构造几何体。</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="arctern.GeoSeries.geom_equals.html#arctern.GeoSeries.geom_equals" title="arctern.GeoSeries.geom_equals"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_equals</span></code></a>(other)</p></td>
-<td><p>对于 GeoSeries 对象中的每个几何体，判断它是否与 <cite>other</cite> 对象中相同位置的几何体等价。“等价”表示两个几何体的几何结构相同。</p></td>
+<td><p>For each geometry in the GeoSeries and the corresponding geometry given in <code class="docutils literal notranslate"><span class="pre">other</span></code>, tests whether the first geometry equals the other.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="arctern.GeoSeries.geom_from_geojson.html#arctern.GeoSeries.geom_from_geojson" title="arctern.GeoSeries.geom_from_geojson"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_from_geojson</span></code></a>(json[, crs])</p></td>
 <td><p>根据 GeoJson 字符串构造几何体。</p></td>
@@ -253,19 +251,19 @@ Only supports SRID as a WKT representation of CRS by now, for example, <code cla
 <td><p>对于 GeoSeries 对象中的每个几何体，计算它与 <cite>other</cite> 对象中相同位置的几何体之间交集。</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="arctern.GeoSeries.intersects.html#arctern.GeoSeries.intersects" title="arctern.GeoSeries.intersects"><code class="xref py py-obj docutils literal notranslate"><span class="pre">intersects</span></code></a>(other)</p></td>
-<td><p>对于 GeoSeries 对象中的每个几何体，判断它是否与 <cite>other</cite> 对象中相同位置的几何体存在交集。</p></td>
+<td><p>For each geometry in the GeoSeries and the corresponding geometry given in <code class="docutils literal notranslate"><span class="pre">other</span></code>, tests whether they intersect each other.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="arctern.GeoSeries.isna.html#arctern.GeoSeries.isna" title="arctern.GeoSeries.isna"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isna</span></code></a>()</p></td>
 <td><p>Detects missing values.</p></td>
 </tr>
 <tr class="row-even"><td><p>对于 GeoSeries 对象中的每个几何体，根据它创建一个新的有效的几何体。在构造新几何体过程中，不会删除原始几何体的任何顶点。如果原始几何体本来就是有效的，则直接返回原始几何体。</p></td>
-<td><p>Create a valid representation of each geometry without losing any of the input vertices.</p></td>
+<td><p>Creates a valid representation of each geometry in the GeoSeries without losing any of the input vertices.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="arctern.GeoSeries.notna.html#arctern.GeoSeries.notna" title="arctern.GeoSeries.notna"><code class="xref py py-obj docutils literal notranslate"><span class="pre">notna</span></code></a>()</p></td>
 <td><p>Detects existing (non-missing) values.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="arctern.GeoSeries.overlaps.html#arctern.GeoSeries.overlaps" title="arctern.GeoSeries.overlaps"><code class="xref py py-obj docutils literal notranslate"><span class="pre">overlaps</span></code></a>(other)</p></td>
-<td><p>对于 GeoSeries 对象中的每个几何体，判断它是否与 <cite>other</cite> 对象中相同位置的几何体重叠。“重叠”表示两个几何体相交且不互相包含。</p></td>
+<td><p>For each geometry in the GeoSeries and the corresponding geometry given in <code class="docutils literal notranslate"><span class="pre">other</span></code>, tests whether the first geometry “spatially overlaps” the other.</p></td>
 </tr>
 <tr class="row-odd"><td><p>根据横坐标集合 <cite>x</cite> 和纵坐标集合 <cite>y</cite> 构造一组 POINT 对象。</p></td>
 <td><p>Construct Point geometries according to the coordinates.</p></td>
@@ -274,16 +272,16 @@ Only supports SRID as a WKT representation of CRS by now, for example, <code cla
 <td><p>对于 GeoSeries 对象中的每个几何体，根据给定的参数计算它的最小矩形边界范围，且该矩形的边与坐标轴平行。</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="arctern.GeoSeries.precision_reduce.html#arctern.GeoSeries.precision_reduce" title="arctern.GeoSeries.precision_reduce"><code class="xref py py-obj docutils literal notranslate"><span class="pre">precision_reduce</span></code></a>(precision)</p></td>
-<td><p>对于 GeoSeries 对象中的每个几何体，根据指定的有效数字位数 <cite>precision</cite> 创建降低坐标精度后的几何体。</p></td>
+<td><p>For the coordinates of each geometry in the GeoSeries, reduces the number of significant digits to the given number.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="arctern.GeoSeries.set_crs.html#arctern.GeoSeries.set_crs" title="arctern.GeoSeries.set_crs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_crs</span></code></a>(crs)</p></td>
 <td><p>Sets the Coordinate Reference System (CRS) for all geometries in GeoSeries.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="arctern.GeoSeries.simplify.html#arctern.GeoSeries.simplify" title="arctern.GeoSeries.simplify"><code class="xref py py-obj docutils literal notranslate"><span class="pre">simplify</span></code></a>(tolerance)</p></td>
-<td><p>对于 GeoSeries 对象中的每个几何体，计算它的简化表示。简化表示的算法是 Douglas-Peucker 算法。</p></td>
+<td><p>Returns a simplified version for each geometry in the GeoSeries using the <a class="reference external" href="https://en.wikipedia.org/wiki/Ramer%E2%80%93Douglas%E2%80%93Peucker_algorithm">Douglas-Peucker algorithm</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="arctern.GeoSeries.to_crs.html#arctern.GeoSeries.to_crs" title="arctern.GeoSeries.to_crs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_crs</span></code></a>(crs)</p></td>
-<td><p>转换几何体的坐标参考系。</p></td>
+<td><p>Transforms the Coordinate Reference System (CRS) of the GeoSeries to <cite>crs</cite>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="arctern.GeoSeries.to_geopandas.html#arctern.GeoSeries.to_geopandas" title="arctern.GeoSeries.to_geopandas"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_geopandas</span></code></a>()</p></td>
 <td><p>将 Arctern GeoSeries 转换为 GeoPandas GeoSeries。</p></td>
@@ -295,13 +293,13 @@ Only supports SRID as a WKT representation of CRS by now, for example, <code cla
 <td><p>将几何体转换为 WKT 格式的字符串。</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="arctern.GeoSeries.touches.html#arctern.GeoSeries.touches" title="arctern.GeoSeries.touches"><code class="xref py py-obj docutils literal notranslate"><span class="pre">touches</span></code></a>(other)</p></td>
-<td><p>对于 GeoSeries 对象中的每个几何体，判断它是否与 <cite>other</cite> 对象中相同位置的几何体相邻。“相邻”表示两个几何体在边界上有共同的点。</p></td>
+<td><p>For each geometry in the GeoSeries and the corresponding geometry given in <code class="docutils literal notranslate"><span class="pre">other</span></code>, tests whether the first geometry touches the other.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="arctern.GeoSeries.unary_union.html#arctern.GeoSeries.unary_union" title="arctern.GeoSeries.unary_union"><code class="xref py py-obj docutils literal notranslate"><span class="pre">unary_union</span></code></a>()</p></td>
-<td><p>返回一个代表一组几何体的并集的几何体。</p></td>
+<td><p>Returns a geometry that represents the union of all geometries in the GeoSeries.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="arctern.GeoSeries.within.html#arctern.GeoSeries.within" title="arctern.GeoSeries.within"><code class="xref py py-obj docutils literal notranslate"><span class="pre">within</span></code></a>(other)</p></td>
-<td><p>对于 GeoSeries 对象中的每个几何体，判断它是否在 <cite>other</cite> 对象中相同位置的几何体的内部。</p></td>
+<td><p>For each geometry in the GeoSeries and the corresponding geometry given in <code class="docutils literal notranslate"><span class="pre">other</span></code>, tests whether the first geometry is within the other.</p></td>
 </tr>
 </tbody>
 </table>
@@ -316,19 +314,19 @@ Only supports SRID as a WKT representation of CRS by now, for example, <code cla
 <td><p>Calculates the 2D Cartesian (planar) area of each geometry in the GeoSeries.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="arctern.GeoSeries.centroid.html#arctern.GeoSeries.centroid" title="arctern.GeoSeries.centroid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">centroid</span></code></a></p></td>
-<td><p>计算 GeoSeries 对象中每个几何体的中心点。</p></td>
+<td><p>Returns the centroid of each geometry in the GeoSeries.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="arctern.GeoSeries.convex_hull.html#arctern.GeoSeries.convex_hull" title="arctern.GeoSeries.convex_hull"><code class="xref py py-obj docutils literal notranslate"><span class="pre">convex_hull</span></code></a></p></td>
-<td><p>对于 GeoSeries 对象中的每个几何体，计算包围它的最小的凸几何体。</p></td>
+<td><p>For each geometry in the GeoSeries, returns the smallest convex geometry that encloses it.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="arctern.GeoSeries.crs.html#arctern.GeoSeries.crs" title="arctern.GeoSeries.crs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">crs</span></code></a></p></td>
 <td><p>Returns the Coordinate Reference System (CRS) of the GeoSeries.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="arctern.GeoSeries.envelope.html#arctern.GeoSeries.envelope" title="arctern.GeoSeries.envelope"><code class="xref py py-obj docutils literal notranslate"><span class="pre">envelope</span></code></a></p></td>
-<td><p>对于 GeoSeries 对象中的每个几何体，计算它的最小矩形边界范围。</p></td>
+<td><p>Returns the minimum bounding box for each geometry in the GeoSeries.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="arctern.GeoSeries.geom_type.html#arctern.GeoSeries.geom_type" title="arctern.GeoSeries.geom_type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_type</span></code></a></p></td>
-<td><p>Returns a series of string that indicates the type of each geometry in the GeoSeries.</p></td>
+<td><p>Returns the type of each geometry in the GeoSeries.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="arctern.GeoSeries.is_simple.html#arctern.GeoSeries.is_simple" title="arctern.GeoSeries.is_simple"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_simple</span></code></a></p></td>
 <td><p>Tests whether each geometry in the GeoSeries is simple.</p></td>
@@ -340,7 +338,7 @@ Only supports SRID as a WKT representation of CRS by now, for example, <code cla
 <td><p>Calculates the length of each geometry in the GeoSeries.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="arctern.GeoSeries.npoints.html#arctern.GeoSeries.npoints" title="arctern.GeoSeries.npoints"><code class="xref py py-obj docutils literal notranslate"><span class="pre">npoints</span></code></a></p></td>
-<td><p>对于 GeoSeries 对象中的每个几何体，计算它的点的数量。</p></td>
+<td><p>Returns the number of points for each geometry in the GeoSeries.</p></td>
 </tr>
 </tbody>
 </table>
@@ -370,7 +368,7 @@ Only supports SRID as a WKT representation of CRS by now, for example, <code cla
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 6月 09, 2020.
+        最后更新于 6月 10, 2020.
       </span>
 
     </p>

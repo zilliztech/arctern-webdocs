@@ -184,22 +184,22 @@
 <dl class="py method">
 <dt id="arctern.GeoSeries.to_crs">
 <code class="sig-prename descclassname">GeoSeries.</code><code class="sig-name descname">to_crs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">crs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/arctern/geoseries/geoseries.html#GeoSeries.to_crs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arctern.GeoSeries.to_crs" title="Permalink to this definition">¶</a></dt>
-<dd><p>Transform each geometry to a different coordinate reference system.
-The <code class="docutils literal notranslate"><span class="pre">crs</span></code> attribute on the current GeoSeries must be set.</p>
+<dd><p>Transforms the Coordinate Reference System (CRS) of the GeoSeries to <cite>crs</cite>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>crs</strong> (<em>string</em>) -- Coordinate Reference System of the geometry objects.
-Must be SRID formed, e.g. &quot;EPSG:4326&quot;</p>
+<dd class="field-odd"><p><strong>crs</strong> (<em>str</em>) -- A string representation of CRS.
+The string is made up of an authority code and a SRID (Spatial Reference Identifier), for example, <code class="docutils literal notranslate"><span class="pre">&quot;EPSG:4326&quot;</span></code>.</p>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference internal" href="arctern.GeoSeries.html#arctern.GeoSeries" title="arctern.GeoSeries">GeoSeries</a></p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>GeoSeries with transformed CRS.</p>
 </dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>Geometries with transformed coordinate reference system.</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="arctern.GeoSeries.html#arctern.GeoSeries" title="arctern.GeoSeries">GeoSeries</a></p>
 </dd>
-<dt class="field-even">Example</dt>
-<dd class="field-even"><p></p></dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>Arctern supports common CRSs listed at the <a class="reference external" href="https://spatialreference.org/">Spatial Reference</a> website.</p>
+<p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">GeoSeries</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">GeoSeries</span><span class="p">([</span><span class="s2">&quot;POINT (1 2)&quot;</span><span class="p">],</span> <span class="n">crs</span><span class="o">=</span><span class="s2">&quot;EPSG:4326&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span>
@@ -236,7 +236,7 @@ Must be SRID formed, e.g. &quot;EPSG:4326&quot;</p>
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        Last updated on Jun 09, 2020.
+        Last updated on Jun 10, 2020.
       </span>
 
     </p>

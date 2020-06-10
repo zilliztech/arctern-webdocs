@@ -184,26 +184,34 @@
 <dl class="py method">
 <dt id="arctern.GeoSeries.buffer">
 <code class="sig-prename descclassname">GeoSeries.</code><code class="sig-name descname">buffer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">distance</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/arctern/geoseries/geoseries.html#GeoSeries.buffer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arctern.GeoSeries.buffer" title="Permalink to this definition">¶</a></dt>
-<dd><p>For each geometry, returns a geometry that represents all points
-whose distance from this geos is less than or equal to &quot;distance&quot;.</p>
+<dd><p>For each geometry, returns a new geometry at a distance of <code class="docutils literal notranslate"><span class="pre">distance</span></code> from it.</p>
+<ul class="simple">
+<li><p>If <code class="docutils literal notranslate"><span class="pre">distance</span></code> &amp;ge; 0, the new geometry is a scaled-up version outside the original goemetry.</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">distance</span></code> &amp;le; 0, the new geometry is a scaled-down version inside the original goemetry.</p></li>
+</ul>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>distance</strong> (<em>float</em>) -- he maximum distance of the returned geometry from each geometry.</p>
+<dd class="field-odd"><p><strong>distance</strong> (<em>float</em>) -- The maximum distance between the returned geometry and the original.</p>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference internal" href="arctern.GeoSeries.html#arctern.GeoSeries" title="arctern.GeoSeries">GeoSeries</a></p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>GeoSeries that contains the new geometries at a distance of <code class="docutils literal notranslate"><span class="pre">distance</span></code> from the original.</p>
 </dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>Geometries.</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="arctern.GeoSeries.html#arctern.GeoSeries" title="arctern.GeoSeries">GeoSeries</a></p>
 </dd>
-<dt class="field-even">Example</dt>
-<dd class="field-even"><p></p></dd>
 </dl>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">GeoSeries</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">GeoSeries</span><span class="p">([</span><span class="s2">&quot;POINT (0 1)&quot;</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="go">0    POLYGON EMPTY</span>
-<span class="go">dtype: GeoDtype</span>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">GeoSeries</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern.plot</span> <span class="kn">import</span> <span class="n">plot_geometry</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">g0</span> <span class="o">=</span> <span class="n">GeoSeries</span><span class="p">([</span><span class="s2">&quot;CURVEPOLYGON(CIRCULARSTRING(0 0, 10 0, 10 10, 0 10, 0 0))&quot;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">g0</span> <span class="o">=</span> <span class="n">g0</span><span class="o">.</span><span class="n">curve_to_line</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot_geometry</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="n">g0</span><span class="p">,</span><span class="n">facecolor</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;red&quot;</span><span class="p">],</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot_geometry</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="n">g0</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">),</span><span class="n">facecolor</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;green&quot;</span><span class="p">],</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot_geometry</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="n">g0</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="n">facecolor</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;blue&quot;</span><span class="p">],</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -232,7 +240,7 @@ whose distance from this geos is less than or equal to &quot;distance&quot;.</p>
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        Last updated on Jun 09, 2020.
+        Last updated on Jun 10, 2020.
       </span>
 
     </p>

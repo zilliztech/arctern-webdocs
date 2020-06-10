@@ -177,17 +177,16 @@
 <dl class="py method">
 <dt id="arctern.GeoSeries.unary_union">
 <code class="sig-prename descclassname">GeoSeries.</code><code class="sig-name descname">unary_union</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/arctern/geoseries/geoseries.html#GeoSeries.unary_union"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arctern.GeoSeries.unary_union" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return a geometry that represents the union of all geometries in the GeoSeries.</p>
+<dd><p>Returns a geometry that represents the union of all geometries in the GeoSeries.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference internal" href="arctern.GeoSeries.html#arctern.GeoSeries" title="arctern.GeoSeries">GeoSeries</a></p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A GeoSeries that contains only one geometry, which is the union of all geometries in the first GeoSeries.</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>A GeoSeries contains only one geometry.</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="arctern.GeoSeries.html#arctern.GeoSeries" title="arctern.GeoSeries">GeoSeries</a></p>
 </dd>
-<dt class="field-odd">Example</dt>
-<dd class="field-odd"><p></p></dd>
 </dl>
+<p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">GeoSeries</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">p1</span> <span class="o">=</span> <span class="s2">&quot;POINT(1 2)&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">p2</span> <span class="o">=</span> <span class="s2">&quot;POINT(1 1)&quot;</span>
@@ -223,7 +222,7 @@
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        Last updated on Jun 09, 2020.
+        Last updated on Jun 10, 2020.
       </span>
 
     </p>

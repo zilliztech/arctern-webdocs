@@ -185,20 +185,22 @@
 <dl class="py method">
 <dt id="arctern.GeoSeries.to_crs">
 <code class="sig-prename descclassname">GeoSeries.</code><code class="sig-name descname">to_crs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">crs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/arctern/geoseries/geoseries.html#GeoSeries.to_crs"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#arctern.GeoSeries.to_crs" title="永久链接至目标">¶</a></dt>
-<dd><p>转换几何体的坐标参考系，必须设置当前的 GeoSeries 的 <code class="docutils literal notranslate"><span class="pre">crs</span></code> 属性。</p>
+<dd><p>Transforms the Coordinate Reference System (CRS) of the GeoSeries to <cite>crs</cite>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
-<dd class="field-odd"><p><strong>crs</strong> (<em>string</em>) – 几何体的坐标参考系必须是 SRID 格式的，例如 “EPSG:4326”。</p>
+<dd class="field-odd"><p><strong>crs</strong> (<em>str</em>) – A string representation of CRS.
+The string is made up of an authority code and a SRID (Spatial Reference Identifier), for example, <code class="docutils literal notranslate"><span class="pre">&quot;EPSG:4326&quot;</span></code>.</p>
 </dd>
-<dt class="field-even">返回类型</dt>
-<dd class="field-even"><p><a class="reference internal" href="arctern.GeoSeries.html#arctern.GeoSeries" title="arctern.GeoSeries">GeoSeries</a></p>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>GeoSeries with transformed CRS.</p>
 </dd>
-<dt class="field-odd">返回</dt>
-<dd class="field-odd"><p>具有转换的坐标参考系的几何体。</p>
+<dt class="field-odd">返回类型</dt>
+<dd class="field-odd"><p><a class="reference internal" href="arctern.GeoSeries.html#arctern.GeoSeries" title="arctern.GeoSeries">GeoSeries</a></p>
 </dd>
-<dt class="field-even">例子</dt>
-<dd class="field-even"><p></p></dd>
 </dl>
+<p class="rubric">提示</p>
+<p>Arctern supports common CRSs listed at the <a class="reference external" href="https://spatialreference.org/">Spatial Reference</a> website.</p>
+<p class="rubric">实际案例</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">GeoSeries</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">GeoSeries</span><span class="p">([</span><span class="s2">&quot;POINT (1 2)&quot;</span><span class="p">],</span> <span class="n">crs</span><span class="o">=</span><span class="s2">&quot;EPSG:4326&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span>
@@ -235,7 +237,7 @@
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 6月 09, 2020.
+        最后更新于 6月 10, 2020.
       </span>
 
     </p>

@@ -84,15 +84,15 @@
             
               <ul class="current">
 <li class="toctree-l1"><a target="_blank" class="reference internal" href="../../quick_start/quick_start.html">快速开始</a></li>
-<li class="toctree-l1 current"><a target="_blank" class="reference internal" href="../feature_description.html">功能说明</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../feature_description.html">功能说明</a><ul class="current">
 <li class="toctree-l2"><a target="_blank" class="reference internal" href="../spatiotemporal_analysis/spatiotemporal_analysis.html">时空数据分析</a></li>
-<li class="toctree-l2 current"><a target="_blank" class="reference internal" href="visualization.html">可视化</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="visualization.html">可视化</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">如何渲染时空数据</a><ul>
-<li class="toctree-l4"><a target="_blank" class="reference internal" href="#arctern-kepler-gl">Arctern 和 Kepler.gl 的渲染能力对比</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#arctern-kepler-gl">Arctern 和 Kepler.gl 的渲染能力对比</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a target="_blank" class="reference internal" href="frontend_visualization/frontend_visualization.html">前端渲染</a></li>
-<li class="toctree-l3"><a target="_blank" class="reference internal" href="backend_visualization/backend_visualization.html">后端渲染</a></li>
+<li class="toctree-l3"><a class="reference internal" href="frontend_visualization/frontend_visualization.html">前端渲染</a></li>
+<li class="toctree-l3"><a class="reference internal" href="backend_visualization/backend_visualization.html">后端渲染</a></li>
 </ul>
 </li>
 </ul>
@@ -170,8 +170,8 @@
 <h1>如何渲染时空数据<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
 <p>时空数据渲染就是使用图形化的方式展示数据的整体面貌。</p>
 <p>例如，在手机导航软件中，路段的颜色会根据其拥堵状况而变化。在普通拥堵路况下，路段被标记为黄色；在严重拥堵路况下，路段被标记为红色。这样你就可以根据路段的颜色快速地了解某块地理区域内的整体道路拥堵状态，而不用陷入特定数据的特定细节。</p>
-<p>目前，Arctern 包含 <a class="reference external" href="https://en.wikipedia.org/wiki/Open_Geospatial_Consortium">OGC</a> 标准中常用的 API，涵盖几何对象的构造、访问、关系分析，以及度量。因此，任何接受 OGC 标准格式输入的第三方 Web 渲染工具都可以为 Arctern 所用，比如 <a class="reference external" href="https://kepler.gl/">Kepler.gl</a>。</p>
-<p>根据 <a class="reference external" href="https://docs.kepler.gl/docs/user-guides">Kepler.gl 用户手册</a>，Kepler.gl 接收 OGC 标准的 <a class="reference external" href="https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry">WKT</a> 数据作为输入。因此，使用 Arctern 的 <a class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.to_wkt.html"><code class="docutils literal notranslate"><span class="pre">GeoSeries.to_wkt</span></code></a> 方法将时空数据从 Arctern 的内部数据格式转换成 WKT 格式之后，你即可调用 Kepler.gl 实现数据渲染。</p>
+<p>目前，Arctern 包含 <a target="_blank" class="reference external" href="https://en.wikipedia.org/wiki/Open_Geospatial_Consortium">OGC</a> 标准中常用的 API，涵盖几何对象的构造、访问、关系分析，以及度量。因此，任何接受 OGC 标准格式输入的第三方 Web 渲染工具都可以为 Arctern 所用，比如 <a target="_blank" class="reference external" href="https://kepler.gl/">Kepler.gl</a>。</p>
+<p>根据 <a target="_blank" class="reference external" href="https://docs.kepler.gl/docs/user-guides">Kepler.gl 用户手册</a>，Kepler.gl 接收 OGC 标准的 <a target="_blank" class="reference external" href="https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry">WKT</a> 数据作为输入。因此，使用 Arctern 的 <a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.to_wkt.html"><code class="docutils literal notranslate"><span class="pre">GeoSeries.to_wkt</span></code></a> 方法将时空数据从 Arctern 的内部数据格式转换成 WKT 格式之后，你即可调用 Kepler.gl 实现数据渲染。</p>
 <p>除了调用传统的 Web 渲染工具实现图形化展示，Arctern 本身提供服务器端的渲染。Arctern 支持渲染大规模数据的轮廓图、热力图、散点图、图标图、渔网图等。另外 Arctern 的服务器端渲染支持 GPU 加速。</p>
 <div class="section" id="arctern-kepler-gl">
 <h2>Arctern 和 Kepler.gl 的渲染能力对比<a class="headerlink" href="#arctern-kepler-gl" title="永久链接至标题">¶</a></h2>
@@ -271,7 +271,7 @@
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 6月 09, 2020.
+        最后更新于 6月 10, 2020.
       </span>
 
     </p>

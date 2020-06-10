@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-09 18:13+0800\n"
+"POT-Creation-Date: 2020-06-10 19:31+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -33,7 +33,7 @@ msgid "Contains geometric data stored in GeoSeries. The geometric data can be in
 msgstr ""
 
 #: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/geoseries/geoseries.py:docstring of arctern.GeoSeries:5
-msgid "Same to the index of pandas.Series. Values must be hashable and have the same length as data. Non-unique index values are allowed. Will default to RangeIndex (0, 1, 2, …, n) if not provided. If both a dict and index sequence are used, the index will override the keys found in the dict."
+msgid "Same to the index of pandas.Series. Values must be hashable and have the same length as ``data``. Non-unique index values are allowed. Will default to RangeIndex (0, 1, 2, …, n) if not provided. If both a dict and index sequence are used, the index will override the keys found in the dict."
 msgstr ""
 
 #: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/geoseries/geoseries.py:docstring of arctern.GeoSeries:8
@@ -69,7 +69,7 @@ msgid ":obj:`buffer <arctern.GeoSeries.buffer>`\\ \\(distance\\)"
 msgstr ""
 
 #: ../../source/api_reference/standalone_api/api/arctern.GeoSeries.rst:51:<autosummary>:1
-msgid "For each geometry, returns a geometry that represents all points whose distance from this geos is less than or equal to \"distance\"."
+msgid "For each geometry, returns a new geometry at a distance of ``distance`` from it."
 msgstr ""
 
 #: ../../source/api_reference/standalone_api/api/arctern.GeoSeries.rst:51:<autosummary>:1
@@ -77,7 +77,7 @@ msgid ":obj:`contains <arctern.GeoSeries.contains>`\\ \\(other\\)"
 msgstr ""
 
 #: ../../source/api_reference/standalone_api/api/arctern.GeoSeries.rst:51:<autosummary>:1
-msgid "Check whether each geometry contains other (elementwise)."
+msgid "For each geometry in the GeoSeries and the corresponding geometry given in ``other``, tests whether the first geometry contains the other."
 msgstr ""
 
 #: ../../source/api_reference/standalone_api/api/arctern.GeoSeries.rst:51:<autosummary>:1
@@ -85,7 +85,7 @@ msgid ":obj:`crosses <arctern.GeoSeries.crosses>`\\ \\(other\\)"
 msgstr ""
 
 #: ../../source/api_reference/standalone_api/api/arctern.GeoSeries.rst:51:<autosummary>:1
-msgid "Check whether each geometry and other(elementwise) \"spatially cross\"."
+msgid "For each geometry in the GeoSeries and the corresponding geometry given in ``other``, tests whether the first geometry spatially crosses the other."
 msgstr ""
 
 #: ../../source/api_reference/standalone_api/api/arctern.GeoSeries.rst:51:<autosummary>:1
@@ -93,7 +93,7 @@ msgid ":obj:`curve_to_line <arctern.GeoSeries.curve_to_line>`\\ \\(\\)"
 msgstr ""
 
 #: ../../source/api_reference/standalone_api/api/arctern.GeoSeries.rst:51:<autosummary>:1
-msgid "Convert curves in each geometry to approximate linear representation, e.g., CIRCULAR STRING to regular LINESTRING, CURVEPOLYGON to POLYGON, and MULTISURFACE to MULTIPOLYGON."
+msgid "Converts curves in each geometry to approximate linear representation."
 msgstr ""
 
 #: ../../source/api_reference/standalone_api/api/arctern.GeoSeries.rst:51:<autosummary>:1
@@ -101,7 +101,7 @@ msgid ":obj:`distance <arctern.GeoSeries.distance>`\\ \\(other\\)"
 msgstr ""
 
 #: ../../source/api_reference/standalone_api/api/arctern.GeoSeries.rst:51:<autosummary>:1
-msgid "Calculates the minimum 2D Cartesian (planar) distance between each geometry and other."
+msgid "For each geometry in the GeoSeries and the corresponding geometry given in ``other``, calculates the minimum 2D Cartesian (planar) distance between them."
 msgstr ""
 
 #: ../../source/api_reference/standalone_api/api/arctern.GeoSeries.rst:51:<autosummary>:1
@@ -109,7 +109,7 @@ msgid ":obj:`distance_sphere <arctern.GeoSeries.distance_sphere>`\\ \\(other\\)"
 msgstr ""
 
 #: ../../source/api_reference/standalone_api/api/arctern.GeoSeries.rst:51:<autosummary>:1
-msgid "Return minimum distance in meters between two lon/lat points."
+msgid "For each point in the GeoSeries and the corresponding point given in ``other``, calculates the minimum spherical distance between them."
 msgstr ""
 
 #: ../../source/api_reference/standalone_api/api/arctern.GeoSeries.rst:51:<autosummary>:1
@@ -117,7 +117,7 @@ msgid ":obj:`envelope_aggr <arctern.GeoSeries.envelope_aggr>`\\ \\(\\)"
 msgstr ""
 
 #: ../../source/api_reference/standalone_api/api/arctern.GeoSeries.rst:51:<autosummary>:1
-msgid "Compute the double-precision minimum bounding box geometry for the union of all geometries."
+msgid "Returns the minimum bounding box for the union of all geometries in the GeoSeries."
 msgstr ""
 
 #: ../../source/api_reference/standalone_api/api/arctern.GeoSeries.rst:51:<autosummary>:1
@@ -149,7 +149,7 @@ msgid ":obj:`geom_equals <arctern.GeoSeries.geom_equals>`\\ \\(other\\)"
 msgstr ""
 
 #: ../../source/api_reference/standalone_api/api/arctern.GeoSeries.rst:51:<autosummary>:1
-msgid "Check whether each geometry is \"spatially equal\" to other."
+msgid "For each geometry in the GeoSeries and the corresponding geometry given in ``other``, tests whether the first geometry equals the other."
 msgstr ""
 
 #: ../../source/api_reference/standalone_api/api/arctern.GeoSeries.rst:51:<autosummary>:1
@@ -181,7 +181,7 @@ msgid ":obj:`intersects <arctern.GeoSeries.intersects>`\\ \\(other\\)"
 msgstr ""
 
 #: ../../source/api_reference/standalone_api/api/arctern.GeoSeries.rst:51:<autosummary>:1
-msgid "Check whether each geometry intersects other (elementwise)."
+msgid "For each geometry in the GeoSeries and the corresponding geometry given in ``other``, tests whether they intersect each other."
 msgstr ""
 
 #: ../../source/api_reference/standalone_api/api/arctern.GeoSeries.rst:51:<autosummary>:1
@@ -197,7 +197,7 @@ msgid ":obj:`make_valid <arctern.GeoSeries.make_valid>`\\ \\(\\)"
 msgstr ""
 
 #: ../../source/api_reference/standalone_api/api/arctern.GeoSeries.rst:51:<autosummary>:1
-msgid "Create a valid representation of each geometry without losing any of the input vertices."
+msgid "Creates a valid representation of each geometry in the GeoSeries without losing any of the input vertices."
 msgstr ""
 
 #: ../../source/api_reference/standalone_api/api/arctern.GeoSeries.rst:51:<autosummary>:1
@@ -213,7 +213,7 @@ msgid ":obj:`overlaps <arctern.GeoSeries.overlaps>`\\ \\(other\\)"
 msgstr ""
 
 #: ../../source/api_reference/standalone_api/api/arctern.GeoSeries.rst:51:<autosummary>:1
-msgid "Check whether each geometry \"spatially overlaps\" other."
+msgid "For each geometry in the GeoSeries and the corresponding geometry given in ``other``, tests whether the first geometry \"spatially overlaps\" the other."
 msgstr ""
 
 #: ../../source/api_reference/standalone_api/api/arctern.GeoSeries.rst:51:<autosummary>:1
@@ -237,7 +237,7 @@ msgid ":obj:`precision_reduce <arctern.GeoSeries.precision_reduce>`\\ \\(precisi
 msgstr ""
 
 #: ../../source/api_reference/standalone_api/api/arctern.GeoSeries.rst:51:<autosummary>:1
-msgid "For the coordinates of each geometry, reduce the number of significant digits to the given number."
+msgid "For the coordinates of each geometry in the GeoSeries, reduces the number of significant digits to the given number."
 msgstr ""
 
 #: ../../source/api_reference/standalone_api/api/arctern.GeoSeries.rst:51:<autosummary>:1
@@ -253,7 +253,7 @@ msgid ":obj:`simplify <arctern.GeoSeries.simplify>`\\ \\(tolerance\\)"
 msgstr ""
 
 #: ../../source/api_reference/standalone_api/api/arctern.GeoSeries.rst:51:<autosummary>:1
-msgid "Returns a \"simplified\" version for each geometry using the Douglas-Peucker algorithm."
+msgid "Returns a simplified version for each geometry in the GeoSeries using the `Douglas-Peucker algorithm <https://en.wikipedia.org/wiki/Ramer%E2%80%93Douglas%E2%80%93Peucker_algorithm>`_."
 msgstr ""
 
 #: ../../source/api_reference/standalone_api/api/arctern.GeoSeries.rst:51:<autosummary>:1
@@ -261,7 +261,7 @@ msgid ":obj:`to_crs <arctern.GeoSeries.to_crs>`\\ \\(crs\\)"
 msgstr ""
 
 #: ../../source/api_reference/standalone_api/api/arctern.GeoSeries.rst:51:<autosummary>:1
-msgid "Transform each geometry to a different coordinate reference system."
+msgid "Transforms the Coordinate Reference System (CRS) of the GeoSeries to `crs`."
 msgstr ""
 
 #: ../../source/api_reference/standalone_api/api/arctern.GeoSeries.rst:51:<autosummary>:1
@@ -293,7 +293,7 @@ msgid ":obj:`touches <arctern.GeoSeries.touches>`\\ \\(other\\)"
 msgstr ""
 
 #: ../../source/api_reference/standalone_api/api/arctern.GeoSeries.rst:51:<autosummary>:1
-msgid "Check whether each geometry \"touches\" other."
+msgid "For each geometry in the GeoSeries and the corresponding geometry given in ``other``, tests whether the first geometry touches the other."
 msgstr ""
 
 #: ../../source/api_reference/standalone_api/api/arctern.GeoSeries.rst:51:<autosummary>:1
@@ -301,7 +301,7 @@ msgid ":obj:`unary_union <arctern.GeoSeries.unary_union>`\\ \\(\\)"
 msgstr ""
 
 #: ../../source/api_reference/standalone_api/api/arctern.GeoSeries.rst:51:<autosummary>:1
-msgid "Return a geometry that represents the union of all geometries in the GeoSeries."
+msgid "Returns a geometry that represents the union of all geometries in the GeoSeries."
 msgstr ""
 
 #: ../../source/api_reference/standalone_api/api/arctern.GeoSeries.rst:51:<autosummary>:1
@@ -309,7 +309,7 @@ msgid ":obj:`within <arctern.GeoSeries.within>`\\ \\(other\\)"
 msgstr ""
 
 #: ../../source/api_reference/standalone_api/api/arctern.GeoSeries.rst:51:<autosummary>:1
-msgid "Check whether each geometry is within other (elementwise)."
+msgid "For each geometry in the GeoSeries and the corresponding geometry given in ``other``, tests whether the first geometry is within the other."
 msgstr ""
 
 #: ../../source/api_reference/standalone_api/api/arctern.GeoSeries.rst:53
@@ -329,7 +329,7 @@ msgid ":obj:`centroid <arctern.GeoSeries.centroid>`\\"
 msgstr ""
 
 #: ../../source/api_reference/standalone_api/api/arctern.GeoSeries.rst:65:<autosummary>:1
-msgid "Compute the centroid of each geometry."
+msgid "Returns the centroid of each geometry in the GeoSeries."
 msgstr ""
 
 #: ../../source/api_reference/standalone_api/api/arctern.GeoSeries.rst:65:<autosummary>:1
@@ -337,7 +337,7 @@ msgid ":obj:`convex_hull <arctern.GeoSeries.convex_hull>`\\"
 msgstr ""
 
 #: ../../source/api_reference/standalone_api/api/arctern.GeoSeries.rst:65:<autosummary>:1
-msgid "For each geometry, compute the smallest convex geometry that encloses all geometries in it."
+msgid "For each geometry in the GeoSeries, returns the smallest convex geometry that encloses it."
 msgstr ""
 
 #: ../../source/api_reference/standalone_api/api/arctern.GeoSeries.rst:65:<autosummary>:1
@@ -353,7 +353,7 @@ msgid ":obj:`envelope <arctern.GeoSeries.envelope>`\\"
 msgstr ""
 
 #: ../../source/api_reference/standalone_api/api/arctern.GeoSeries.rst:65:<autosummary>:1
-msgid "Compute the double-precision minimum bounding box geometry for each geometry."
+msgid "Returns the minimum bounding box for each geometry in the GeoSeries."
 msgstr ""
 
 #: ../../source/api_reference/standalone_api/api/arctern.GeoSeries.rst:65:<autosummary>:1
@@ -361,7 +361,7 @@ msgid ":obj:`geom_type <arctern.GeoSeries.geom_type>`\\"
 msgstr ""
 
 #: ../../source/api_reference/standalone_api/api/arctern.GeoSeries.rst:65:<autosummary>:1
-msgid "Returns a series of string that indicates the type of each geometry in the GeoSeries."
+msgid "Returns the type of each geometry in the GeoSeries."
 msgstr ""
 
 #: ../../source/api_reference/standalone_api/api/arctern.GeoSeries.rst:65:<autosummary>:1
@@ -393,5 +393,5 @@ msgid ":obj:`npoints <arctern.GeoSeries.npoints>`\\"
 msgstr ""
 
 #: ../../source/api_reference/standalone_api/api/arctern.GeoSeries.rst:65:<autosummary>:1
-msgid "Calculates the points number for each geometry."
+msgid "Returns the number of points for each geometry in the GeoSeries."
 msgstr ""
