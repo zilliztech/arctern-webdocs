@@ -84,22 +84,22 @@
             
               <ul class="current">
 <li class="toctree-l1"><a target="_blank" class="reference internal" href="../../quick_start/quick_start.html">快速开始</a></li>
-<li class="toctree-l1 current"><a target="_blank" class="reference internal" href="../feature_description.html">功能说明</a><ul class="current">
-<li class="toctree-l2 current"><a target="_blank" class="reference internal" href="spatiotemporal_analysis.html">时空数据分析</a><ul class="current">
-<li class="toctree-l3"><a target="_blank" class="reference internal" href="data_structure.html">数据结构</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../feature_description.html">功能说明</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="spatiotemporal_analysis.html">时空数据分析</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="data_structure.html">数据结构</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">文件读写</a><ul>
-<li class="toctree-l4"><a target="_blank" class="reference internal" href="#id2">导入文件</a></li>
-<li class="toctree-l4"><a target="_blank" class="reference internal" href="#id3">文件导出</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">导入文件</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">文件导出</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a target="_blank" class="reference internal" href="geometric_manipulation.html">几何体的基本操作</a></li>
-<li class="toctree-l3"><a target="_blank" class="reference internal" href="convert_from_and_to_geopandas_geoseries.html">与 GeoPandas GeoSeries 互相转换</a></li>
-<li class="toctree-l3"><a target="_blank" class="reference internal" href="spatial_relationship_operation.html">空间关系运算</a></li>
-<li class="toctree-l3"><a target="_blank" class="reference internal" href="map_match.html">地图匹配</a></li>
-<li class="toctree-l3"><a target="_blank" class="reference internal" href="plot_geometry.html">绘图方法</a></li>
-<li class="toctree-l3"><a target="_blank" class="reference internal" href="crs_and_transform.html">坐标参考系</a></li>
-<li class="toctree-l3"><a target="_blank" class="reference internal" href="aggregation.html">聚合</a></li>
-<li class="toctree-l3"><a target="_blank" class="reference internal" href="indexing_selecting_data.html">索引和选择数据</a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometric_manipulation.html">几何体的基本操作</a></li>
+<li class="toctree-l3"><a class="reference internal" href="convert_from_and_to_geopandas_geoseries.html">与 GeoPandas GeoSeries 互相转换</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spatial_relationship_operation.html">空间关系运算</a></li>
+<li class="toctree-l3"><a class="reference internal" href="map_match.html">地图匹配</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plot_geometry.html">绘图方法</a></li>
+<li class="toctree-l3"><a class="reference internal" href="crs_and_transform.html">坐标参考系</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aggregation.html">聚合</a></li>
+<li class="toctree-l3"><a class="reference internal" href="indexing_selecting_data.html">索引和选择数据</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a target="_blank" class="reference internal" href="../visualization/visualization.html">可视化</a></li>
@@ -176,7 +176,7 @@
             
   <div class="section" id="id1">
 <h1>文件读写<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
-<p>Arctern 继承 pandas 的文件读写接口，支持读写数据类型为 <a class="reference external" href="https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry">WKT</a>、<a class="reference external" href="https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry#Well-known_binary">WKB</a> 以及 <a class="reference external" href="https://geojson.org/">GeoJson</a> 的文件。关于通过 pandas 读写文件的具体方法可参考 <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/io.html">pandas 官方文档</a>。</p>
+<p>Arctern 继承 pandas 的文件读写接口，支持读写数据类型为 <a target="_blank" class="reference external" href="https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry">WKT</a>、<a target="_blank" class="reference external" href="https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry#Well-known_binary">WKB</a> 以及 <a target="_blank" class="reference external" href="https://geojson.org/">GeoJson</a> 的文件。关于通过 pandas 读写文件的具体方法可参考 <a target="_blank" class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/io.html">pandas 官方文档</a>。</p>
 <div class="section" id="id2">
 <h2>导入文件<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
 <div class="section" id="wkt-wkb">
@@ -189,7 +189,7 @@
 <span class="n">POLYGON</span> <span class="p">((</span><span class="mi">1</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span> <span class="mi">1</span><span class="p">))</span>
 </pre></div>
 </div>
-<p>首先，使用 pandas 的 <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html"><code class="docutils literal notranslate"><span class="pre">read_csv</span></code></a> 方法导入文件并构造 pandas.Series 对象 <code class="docutils literal notranslate"><span class="pre">data_wkt</span></code>：</p>
+<p>首先，使用 pandas 的 <a target="_blank" class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html"><code class="docutils literal notranslate"><span class="pre">read_csv</span></code></a> 方法导入文件并构造 pandas.Series 对象 <code class="docutils literal notranslate"><span class="pre">data_wkt</span></code>：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">arctern</span>
 <span class="gp">&gt;&gt;&gt; </span>
@@ -207,13 +207,13 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">geo_wkt</span> <span class="o">=</span> <span class="n">arctern</span><span class="o">.</span><span class="n">GeoSeries</span><span class="p">(</span><span class="n">data_wkt</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>为了演示如何读取 WKB 格式的数据并创建 GeoSeries 对象，我们将之前从  <strong>wkt_geos.csv</strong> 文件中读取并创建的 pandas.Series 对象从 WKT 格式转换为 WKB 格式。具体方法是使用 <a class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.to_wkb.html"><code class="docutils literal notranslate"><span class="pre">to_wkb</span></code></a> 方法从 GeoSeries 对象 <code class="docutils literal notranslate"><span class="pre">geo_wkt</span></code> 得到  WKB 格式的 pandas.Series 对象 <code class="docutils literal notranslate"><span class="pre">data_wkb</span></code>。</p>
+<p>为了演示如何读取 WKB 格式的数据并创建 GeoSeries 对象，我们将之前从  <strong>wkt_geos.csv</strong> 文件中读取并创建的 pandas.Series 对象从 WKT 格式转换为 WKB 格式。具体方法是使用 <a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.to_wkb.html"><code class="docutils literal notranslate"><span class="pre">to_wkb</span></code></a> 方法从 GeoSeries 对象 <code class="docutils literal notranslate"><span class="pre">geo_wkt</span></code> 得到  WKB 格式的 pandas.Series 对象 <code class="docutils literal notranslate"><span class="pre">data_wkb</span></code>。</p>
 <p>然后，基于 WKB 格式的 pandas.Series 对象 <code class="docutils literal notranslate"><span class="pre">data_wkb</span></code> 构造 arctern.GeoSeries 对象 <code class="docutils literal notranslate"><span class="pre">geo_wkb</span></code>：</p>
 <!-- [to_wkb](/path/to/to_wkb) --><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data_wkb</span> <span class="o">=</span> <span class="n">geo_wkt</span><span class="o">.</span><span class="n">to_wkb</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">geo_wkb</span> <span class="o">=</span> <span class="n">arctern</span><span class="o">.</span><span class="n">GeoSeries</span><span class="p">(</span><span class="n">data_wkb</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>使用 GeoSeries 的 <a class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.geom_equals.html"><code class="docutils literal notranslate"><span class="pre">geom_equals</span></code></a> 方法比较 <code class="docutils literal notranslate"><span class="pre">geo_wkt</span></code> 和 <code class="docutils literal notranslate"><span class="pre">geo_wkb</span></code> 两个 GeoSeries 对象，发现它们是相同的。这是因为   <code class="docutils literal notranslate"><span class="pre">geo_wkt</span></code> 和 <code class="docutils literal notranslate"><span class="pre">geo_wkb</span></code> 本质上都是由同一数据构造的 GeoSeries 对象。</p>
+<p>使用 GeoSeries 的 <a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.geom_equals.html"><code class="docutils literal notranslate"><span class="pre">geom_equals</span></code></a> 方法比较 <code class="docutils literal notranslate"><span class="pre">geo_wkt</span></code> 和 <code class="docutils literal notranslate"><span class="pre">geo_wkb</span></code> 两个 GeoSeries 对象，发现它们是相同的。这是因为   <code class="docutils literal notranslate"><span class="pre">geo_wkt</span></code> 和 <code class="docutils literal notranslate"><span class="pre">geo_wkb</span></code> 本质上都是由同一数据构造的 GeoSeries 对象。</p>
 <div class="highlight-pytho notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; geo_wkt.geom_equals(geo_wkb)
 0    True
 1    True
@@ -234,7 +234,7 @@ dtype: bool
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>首先，使用 pandas 的 <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_json.html"><code class="docutils literal notranslate"><span class="pre">read_json</span></code></a> 方法导入文件并构造 pandas.Series 对象 <code class="docutils literal notranslate"><span class="pre">data_json</span></code>：</p>
+<p>首先，使用 pandas 的 <a target="_blank" class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_json.html"><code class="docutils literal notranslate"><span class="pre">read_json</span></code></a> 方法导入文件并构造 pandas.Series 对象 <code class="docutils literal notranslate"><span class="pre">data_json</span></code>：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="s2">&quot;&lt;/path/to/geos.json&gt;&quot;</span><span class="p">,</span><span class="n">orient</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">data_json</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">data_json</span><span class="p">)</span>
@@ -249,7 +249,7 @@ dtype: bool
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">geo_json</span> <span class="o">=</span> <span class="n">arctern</span><span class="o">.</span><span class="n">GeoSeries</span><span class="o">.</span><span class="n">geom_from_geojson</span><span class="p">(</span><span class="n">data_json</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>使用 GeoSeries 的 <a class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.geom_equals.html"><code class="docutils literal notranslate"><span class="pre">geom_equals</span></code></a> 方法比较 <code class="docutils literal notranslate"><span class="pre">geo_wkb</span></code> 和 <code class="docutils literal notranslate"><span class="pre">geo_json</span></code> 两个 GeoSeries 对象，发现它们是相同的。这是因为   <code class="docutils literal notranslate"><span class="pre">geo_wkb</span></code> 和 <code class="docutils literal notranslate"><span class="pre">geo_json</span></code> 的源文件（<strong>wkt_geos.csv</strong> 和 <strong>geos.json</strong>）中定义的是相同的几何体。</p>
+<p>使用 GeoSeries 的 <a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.geom_equals.html"><code class="docutils literal notranslate"><span class="pre">geom_equals</span></code></a> 方法比较 <code class="docutils literal notranslate"><span class="pre">geo_wkb</span></code> 和 <code class="docutils literal notranslate"><span class="pre">geo_json</span></code> 两个 GeoSeries 对象，发现它们是相同的。这是因为   <code class="docutils literal notranslate"><span class="pre">geo_wkb</span></code> 和 <code class="docutils literal notranslate"><span class="pre">geo_json</span></code> 的源文件（<strong>wkt_geos.csv</strong> 和 <strong>geos.json</strong>）中定义的是相同的几何体。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">geo_json</span><span class="o">.</span><span class="n">geom_equals</span><span class="p">(</span><span class="n">geo_wkb</span><span class="p">)</span>
 <span class="go">0    True</span>
 <span class="go">1    True</span>
@@ -264,7 +264,7 @@ dtype: bool
 <h2>文件导出<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
 <div class="section" id="wkt">
 <h3>WKT 格式<a class="headerlink" href="#wkt" title="永久链接至标题">¶</a></h3>
-<p>首先，使用 GeoSeries 的 <a class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.to_wkt.html"><code class="docutils literal notranslate"><span class="pre">to_wkt</span></code></a> 方法从 GeoSeries 对象得到一个 pandas.Series 对象。然后，使用 pandas.Series 的 <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.to_csv.html"><code class="docutils literal notranslate"><span class="pre">to_csv</span></code></a> 方法将数据保存为 CSV 文件。</p>
+<p>首先，使用 GeoSeries 的 <a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.to_wkt.html"><code class="docutils literal notranslate"><span class="pre">to_wkt</span></code></a> 方法从 GeoSeries 对象得到一个 pandas.Series 对象。然后，使用 pandas.Series 的 <a target="_blank" class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.to_csv.html"><code class="docutils literal notranslate"><span class="pre">to_csv</span></code></a> 方法将数据保存为 CSV 文件。</p>
 <!--  [to_wkt](/path/to/to_wkt)  --><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">out_file_data</span> <span class="o">=</span> <span class="n">geo_wkb</span><span class="o">.</span><span class="n">to_wkt</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">out_file_data</span><span class="p">)</span>
 <span class="go">0                                POINT (30 10)</span>
@@ -278,7 +278,7 @@ dtype: bool
 </div>
 <div class="section" id="id4">
 <h3>GeoJson 格式<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
-<p>首先，使用 GeoSeries 的 <a class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.as_geojson.html"><code class="docutils literal notranslate"><span class="pre">as_geojson</span></code></a> 方法从 GeoSeries 对象得到一个 pandas.Series 对象。然后，使用 pandas.Series 的 <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.to_json.html"><code class="docutils literal notranslate"><span class="pre">to_json</span></code></a> 方法将数据保存为 JSON 文件。</p>
+<p>首先，使用 GeoSeries 的 <a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.as_geojson.html"><code class="docutils literal notranslate"><span class="pre">as_geojson</span></code></a> 方法从 GeoSeries 对象得到一个 pandas.Series 对象。然后，使用 pandas.Series 的 <a target="_blank" class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.to_json.html"><code class="docutils literal notranslate"><span class="pre">to_json</span></code></a> 方法将数据保存为 JSON 文件。</p>
 <!--  [as_geojson](/path/to/as_geojson) --><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">out_file_data</span> <span class="o">=</span> <span class="n">geo_wkb</span><span class="o">.</span><span class="n">as_geojson</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="p">(</span><span class="n">out_file_data</span><span class="p">)</span>
 <span class="go">0    { &quot;type&quot;: &quot;Point&quot;, &quot;coordinates&quot;: [ 30.0, 10.0...</span>
@@ -315,7 +315,7 @@ dtype: bool
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 6月 09, 2020.
+        最后更新于 6月 10, 2020.
       </span>
 
     </p>

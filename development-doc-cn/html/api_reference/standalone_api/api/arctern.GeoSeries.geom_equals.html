@@ -183,21 +183,22 @@
 <dl class="py method">
 <dt id="arctern.GeoSeries.geom_equals">
 <code class="sig-prename descclassname">GeoSeries.</code><code class="sig-name descname">geom_equals</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/arctern/geoseries/geoseries.html#GeoSeries.geom_equals"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#arctern.GeoSeries.geom_equals" title="永久链接至目标">¶</a></dt>
-<dd><p>检查任意两个几何体是否“等价”。</p>
-<p>“等价”表示两个几何体代表相同的几何体。</p>
+<dd><p>For each geometry in the GeoSeries and the corresponding geometry given in <code class="docutils literal notranslate"><span class="pre">other</span></code>, tests whether the first geometry equals the other.</p>
+<p>“Equal” means two geometries represent the same geometry structure.</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
-<dd class="field-odd"><p><strong>other</strong> (<em>scalar bytes object geometry</em><em> or </em><a class="reference internal" href="arctern.GeoSeries.html#arctern.GeoSeries" title="arctern.GeoSeries"><em>GeoSeries</em></a>) – 用来测试几何体是否相同的几何体。它可为标量 WKB 格式的字节对象或 GeoSeries。</p>
+<dd class="field-odd"><p><strong>other</strong> (<em>geometry</em><em> or </em><a class="reference internal" href="arctern.GeoSeries.html#arctern.GeoSeries" title="arctern.GeoSeries"><em>GeoSeries</em></a>) – The geometry or GeoSeries to test whether it equals the geometries in the first GeoSeries.
+* If <code class="docutils literal notranslate"><span class="pre">other</span></code> is a geometry, this function tests the equivalence relation between each geometry in the GeoSeries and <code class="docutils literal notranslate"><span class="pre">other</span></code>.
+* If <code class="docutils literal notranslate"><span class="pre">other</span></code> is a GeoSeries, this function tests the equivalence relation between each geometry in the GeoSeries and the geometry with the same index in <code class="docutils literal notranslate"><span class="pre">other</span></code>.</p>
 </dd>
-<dt class="field-even">返回类型</dt>
-<dd class="field-even"><p>Series(dtype: bool)</p>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>Mask of boolean values for each element in the GeoSeries that indicates whether it equals the geometries in <code class="docutils literal notranslate"><span class="pre">other</span></code>.</p>
 </dd>
-<dt class="field-odd">返回</dt>
-<dd class="field-odd"><p>返回值为 True 的 Series 表示每个几何体都“等价”。</p>
+<dt class="field-odd">返回类型</dt>
+<dd class="field-odd"><p>Series</p>
 </dd>
-<dt class="field-even">例子</dt>
-<dd class="field-even"><p></p></dd>
 </dl>
+<p class="rubric">实际案例</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">GeoSeries</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s1</span> <span class="o">=</span> <span class="n">GeoSeries</span><span class="p">([</span><span class="s2">&quot;POLYGON((0 0,1 0,1 1,0 1,0 0))&quot;</span><span class="p">,</span> <span class="s2">&quot;POLYGON((8 0,9 0,9 1,8 1,8 0))&quot;</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s2</span> <span class="o">=</span> <span class="n">GeoSeries</span><span class="p">([</span><span class="s2">&quot;POLYGON((0 0,0 8,8 8,8 0,0 0))&quot;</span><span class="p">,</span> <span class="s2">&quot;POLYGON((0 0,0 8,8 8,8 0,0 0))&quot;</span><span class="p">])</span>
@@ -233,7 +234,7 @@
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 6月 09, 2020.
+        最后更新于 6月 10, 2020.
       </span>
 
     </p>

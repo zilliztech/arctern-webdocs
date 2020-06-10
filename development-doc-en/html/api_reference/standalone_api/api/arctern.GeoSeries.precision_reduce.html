@@ -184,21 +184,19 @@
 <dl class="py method">
 <dt id="arctern.GeoSeries.precision_reduce">
 <code class="sig-prename descclassname">GeoSeries.</code><code class="sig-name descname">precision_reduce</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">precision</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/arctern/geoseries/geoseries.html#GeoSeries.precision_reduce"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arctern.GeoSeries.precision_reduce" title="Permalink to this definition">¶</a></dt>
-<dd><p>For the coordinates of each geometry, reduce the number of significant digits
-to the given number. The last decimal place will be rounded.</p>
+<dd><p>For the coordinates of each geometry in the GeoSeries, reduces the number of significant digits to the given number. The digit in the last decimal place will be rounded.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>precision</strong> (<em>int</em>) -- The number of significant digits.</p>
+<dd class="field-odd"><p><strong>precision</strong> (<em>int</em>) -- Number of significant digits.</p>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference internal" href="arctern.GeoSeries.html#arctern.GeoSeries" title="arctern.GeoSeries">GeoSeries</a></p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A GeoSeries that stores geometries with reduced precision.</p>
 </dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>Geometries with reduced precision.</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="arctern.GeoSeries.html#arctern.GeoSeries" title="arctern.GeoSeries">GeoSeries</a></p>
 </dd>
-<dt class="field-even">Example</dt>
-<dd class="field-even"><p></p></dd>
 </dl>
+<p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">GeoSeries</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">GeoSeries</span><span class="p">([</span><span class="s2">&quot;POINT (1.333 2.666)&quot;</span><span class="p">,</span> <span class="s2">&quot;POINT (2.655 4.447)&quot;</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">precision_reduce</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
@@ -233,7 +231,7 @@ to the given number. The last decimal place will be rounded.</p>
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        Last updated on Jun 09, 2020.
+        Last updated on Jun 10, 2020.
       </span>
 
     </p>

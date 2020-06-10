@@ -83,15 +83,15 @@
             
               <ul class="current">
 <li class="toctree-l1"><a target="_blank" class="reference internal" href="../../quick_start/quick_start.html">Quick Start</a></li>
-<li class="toctree-l1 current"><a target="_blank" class="reference internal" href="../feature_description.html">Feature Description</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../feature_description.html">Feature Description</a><ul class="current">
 <li class="toctree-l2"><a target="_blank" class="reference internal" href="../spatiotemporal_analysis/spatiotemporal_analysis.html">Spatiotemporal Analysis</a></li>
-<li class="toctree-l2 current"><a target="_blank" class="reference internal" href="visualization.html">Visualization</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="visualization.html">Visualization</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">How to visualize spatiotemporal data</a><ul>
-<li class="toctree-l4"><a target="_blank" class="reference internal" href="#comparison-of-rendering-performance-between-arctern-and-kepler-gl">Comparison of rendering performance between Arctern and Kepler.gl</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#comparison-of-rendering-performance-between-arctern-and-kepler-gl">Comparison of rendering performance between Arctern and Kepler.gl</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a target="_blank" class="reference internal" href="frontend_visualization/frontend_visualization.html">Front-End Visualization</a></li>
-<li class="toctree-l3"><a target="_blank" class="reference internal" href="backend_visualization/backend_visualization.html">Back-End Visualization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="frontend_visualization/frontend_visualization.html">Front-End Visualization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="backend_visualization/backend_visualization.html">Back-End Visualization</a></li>
 </ul>
 </li>
 </ul>
@@ -169,8 +169,8 @@
 <h1>How to visualize spatiotemporal data<a class="headerlink" href="#how-to-visualize-spatiotemporal-data" title="Permalink to this headline">¶</a></h1>
 <p>Spatiotemporal data rendering is to display the overall appearance of data in a graphical way.</p>
 <p>For example, in most navigation applications, the color of the road segment will change according to its congestion. Roads are marked in yellow at ordinary congestion levels and marked in red at severe congestion levels. Therefore, you can quickly understand the overall road congestion status in a geographical area according to the colors of roads, without falling into the specific details of specific data.</p>
-<p>Currently, Arctern includes APIs commonly used in the <a class="reference external" href="https://en.wikipedia.org/wiki/Open_Geospatial_Consortium">OGC</a> standard, including the constructor, accessor, relationship analysis, and measurement of geometric objects. Therefore, any third-party web rendering tool that accepts input in OGC standard format, such as <a class="reference external" href="https://kepler.gl/">Kepler.gl</a>, can be used by Arctern.</p>
-<p>According to the <a class="reference external" href="https://docs.kepler.gl/docs/user-guides">Kepler.gl User Guide</a>, Kepler.gl accepts OGC standard [WKT](https://en.wikipedia.org/wiki/Well -known_text_representation_of_geometry) data as input. Therefore, you can use Arctern's <a class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.to_wkt.html"><code class="docutils literal notranslate"><span class="pre">GeoSeries.to_wkt</span></code></a> method to convert spatiotemporal data from Arctern’s internal data format to WKT format, and then render the data via Kepler.gl.</p>
+<p>Currently, Arctern includes APIs commonly used in the <a target="_blank" class="reference external" href="https://en.wikipedia.org/wiki/Open_Geospatial_Consortium">OGC</a> standard, including the constructor, accessor, relationship analysis, and measurement of geometric objects. Therefore, any third-party web rendering tool that accepts input in OGC standard format, such as <a target="_blank" class="reference external" href="https://kepler.gl/">Kepler.gl</a>, can be used by Arctern.</p>
+<p>According to the <a target="_blank" class="reference external" href="https://docs.kepler.gl/docs/user-guides">Kepler.gl User Guide</a>, Kepler.gl accepts OGC standard [WKT](https://en.wikipedia.org/wiki/Well -known_text_representation_of_geometry) data as input. Therefore, you can use Arctern's <a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.to_wkt.html"><code class="docutils literal notranslate"><span class="pre">GeoSeries.to_wkt</span></code></a> method to convert spatiotemporal data from Arctern’s internal data format to WKT format, and then render the data via Kepler.gl.</p>
 <p>Except for utilizing traditional web rendering tools to visualize graphical data, Arctern itself provides server-side rendering. Arctern supports the rendering of large-scale data in different types of maps, such as choropleth map, heat map, point map, icon map, and fishnet map. Also, Arctern's server-side rendering can take advantage of GPU acceleration to improve its performance.</p>
 <div class="section" id="comparison-of-rendering-performance-between-arctern-and-kepler-gl">
 <h2>Comparison of rendering performance between Arctern and Kepler.gl<a class="headerlink" href="#comparison-of-rendering-performance-between-arctern-and-kepler-gl" title="Permalink to this headline">¶</a></h2>
@@ -270,7 +270,7 @@
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        Last updated on Jun 09, 2020.
+        Last updated on Jun 10, 2020.
       </span>
 
     </p>

@@ -180,42 +180,30 @@
 <dl class="py method">
 <dt id="arctern.GeoSeries.fillna">
 <code class="sig-prename descclassname">GeoSeries.</code><code class="sig-name descname">fillna</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">method</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">axis</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">inplace</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">limit</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">downcast</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/arctern/geoseries/geoseries.html#GeoSeries.fillna"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#arctern.GeoSeries.fillna" title="永久链接至目标">¶</a></dt>
-<dd><p>Fills NA values with a geometry in WKT or WKB format.</p>
+<dd><p>用 WKT 或 WKB 格式的几何体填充 NA 值。</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>value</strong> – Value to use to fill holes. This value should be the representation of a geometry in WKT or WKB format. For exmaple, “POINT (1 1)”.</p></li>
-<li><p><strong>method</strong> (<em>{'backfill'</em><em>, </em><em>'bfill'</em><em>, </em><em>'pad'</em><em>, </em><em>'ffill'</em><em>, </em><em>None}</em><em>, </em><em>by default None</em>) – Method to use for filling holes in reindexed Series.
-* <em>pad/ffill:</em> Propagates the last valid observation forward to fill gap.
-* <em>backfill/bfill:</em> Propagates the next valid observation backward to fill gap.</p></li>
-<li><p><strong>axis</strong> (<em>{0</em><em> or </em><em>'index'}</em>) – Axis along which to fill missing values.</p></li>
+<li><p><strong>value</strong> – 用于填充空缺的值。此值应由 WKT 或 WKB 格式的几何体表示。例如，”POINT (1 1)”。</p></li>
+<li><p><strong>method</strong> (<em>{'backfill'</em><em>, </em><em>'bfill'</em><em>, </em><em>'pad'</em><em>, </em><em>'ffill'</em><em>, </em><em>None}</em><em>, </em><em>by default None</em>) – 在重新索引的 Series 中用于填充空缺的方法。* <em>pad/ffill：</em> 向前传递上一个有效观察值以填充空缺。* <em>backfill/bfill:</em> 向后传递下一个有效观察值以填补空缺。</p></li>
+<li><p><strong>axis</strong> (<em>{0</em><em> or </em><em>'index'}</em>) – 沿着此坐标轴填充缺失值。</p></li>
 <li><p><strong>inplace</strong> (<em>bool</em><em>, </em><em>by default False</em>) – <ul>
 <li><dl class="simple">
-<dt><em>True:</em> Fills NA values in-place.</dt><dd><p><strong>Note:</strong> this will modify any other views on this object.</p>
+<dt><em>True:</em> 原处填充 NA 值。</dt><dd><p><strong>注意：</strong> 该操作将修改此对象的任何其他视图。</p>
 </dd>
 </dl>
 </li>
-<li><p><em>False:</em> Create a new GeoSeries object, and then fill NA values in it.</p></li>
+<li><p><em>False:</em> 创建一个新的 GeoSeries 对象，在其中填充 NA 值。</p></li>
 </ul>
 </p></li>
-<li><p><strong>limit</strong> (<em>int</em><em>, </em><em>by default None</em>) – <ul>
-<li><p>If <code class="docutils literal notranslate"><span class="pre">method</span></code> is specified, this is the maximum number of consecutive</p></li>
-</ul>
-<p>NA values to forward/backward fill. In other words, if there is
-a gap with more than this number of consecutive NAs, it will only
-be partially filled.
-* If <code class="docutils literal notranslate"><span class="pre">method</span></code> is not specified, this is the maximum number of entries along the entire axis where NaNs will be filled.
-<strong>Note:</strong> It must be greater than 0 if not None.</p>
-</p></li>
-<li><p><strong>downcast</strong> (<em>dict</em><em>, </em><em>by default None</em>) – A dict of item-&gt;dtype of what to downcast if possible,
-or the string ‘infer’ which will try to downcast to an appropriate
-equal type (for example, float64 to int64 if possible).</p></li>
+<li><p><strong>limit</strong> (<em>int</em><em>, </em><em>by default None</em>) – 如果设置了 <code class="docutils literal notranslate"><span class="pre">method</span></code>，这是要向前/向后填充的连续 NA 值的最大数量。换句话说，如果空缺大于这个连续 NA 值的数量，它只会被部分填充。* 如果没有设置 <code class="docutils literal notranslate"><span class="pre">method</span></code>，这是填充了 NaN 的整个坐标轴上的最大条目数。<strong>Note:</strong> 如果不为 None，则必须大于0。</p></li>
+<li><p><strong>downcast</strong> (<em>dict</em><em>, </em><em>by default None</em>) – 一个指示向下数据类型转换方式的 item-&gt;dtype 字典或字符串 ‘infer’，它将尝试向下转换为适当的相等类型（例如，如果可能，则从 float64 转换为 int64）。</p></li>
 </ul>
 </dd>
 <dt class="field-even">返回</dt>
 <dd class="field-even"><p><ul class="simple">
-<li><p>None if <code class="docutils literal notranslate"><span class="pre">inplace=False</span></code></p></li>
-<li><p>Object with missing values filled if <code class="docutils literal notranslate"><span class="pre">inplace=True</span></code>.</p></li>
+<li><p>如果 <code class="docutils literal notranslate"><span class="pre">inplace</span> <span class="pre">=</span> <span class="pre">False</span></code>，则为 None。</p></li>
+<li><p>如果 <code class="docutils literal notranslate"><span class="pre">inplace</span> <span class="pre">=</span> <span class="pre">True</span></code>，则填充缺失值的对象。</p></li>
 </ul>
 </p>
 </dd>
@@ -233,7 +221,7 @@ equal type (for example, float64 to int64 if possible).</p></li>
 <span class="go">dtype: GeoDtype</span>
 </pre></div>
 </div>
-<p>Replace all NA elements with a string in WKT format.</p>
+<p>用 WKT 格式的字符串替换所有 NA 元素。</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s2">&quot;POINT (1 2)&quot;</span><span class="p">)</span>
 <span class="go">0                        POINT (1 1)</span>
 <span class="go">1    POLYGON ((1 1,2 1,2 2,1 2,1 1))</span>
@@ -242,7 +230,7 @@ equal type (for example, float64 to int64 if possible).</p></li>
 <span class="go">dtype: GeoDtype</span>
 </pre></div>
 </div>
-<p>We can also replace all NA elements with an object in WKB format. Here we use <code class="docutils literal notranslate"><span class="pre">s[1]</span></code> as an example of WKB objects because <code class="docutils literal notranslate"><span class="pre">s</span></code> is a GeoSeries and all elements stored in GeoSeries are transformed to WKB format.</p>
+<p>也可以用 WKB 格式的对象替换所有 NA 元素。这里以 <code class="docutils literal notranslate"><span class="pre">s[1]</span></code> 作为 WKB 对象的示例，因为 <code class="docutils literal notranslate"><span class="pre">s</span></code> 是一个 GeoSeries，并且存储在 GeoSeries 中的所有元素都转换为 WKB 格式。</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 <span class="go">0                        POINT (1 1)</span>
 <span class="go">1    POLYGON ((1 1,2 1,2 2,1 2,1 1))</span>
@@ -277,7 +265,7 @@ equal type (for example, float64 to int64 if possible).</p></li>
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 6月 09, 2020.
+        最后更新于 6月 10, 2020.
       </span>
 
     </p>

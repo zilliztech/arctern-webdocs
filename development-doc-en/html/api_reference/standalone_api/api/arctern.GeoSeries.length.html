@@ -190,14 +190,15 @@
 <li><p>POINT / MULTIPOINT / POLYGON / MULTIPOLYGON / CURVEPOLYGON / MULTICURVE: 0</p></li>
 <li><p>LINESTRING: Length of a single straight line.</p></li>
 <li><p>MULTILINESTRING: Sum of length of multiple straight lines.</p></li>
-<li><p>CIRCULARSTRING: Length of a single curve line.</p></li>
+<li><p>CIRCULARSTRING: Length of a single curvilinear line.</p></li>
+<li><p>MULTISURFACE / COMPOUNDCURVE / GEOMETRYCOLLECTION: For a geometry collection among the 3 types, calculates the sum of length of all geometries in the collection.</p></li>
 </ul>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><strong>Series(dtype</strong> -- Length of each geometry in the GeoSeries.</p>
+<dd class="field-odd"><p>Length of each geometry in the GeoSeries.</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p>float64)</p>
+<dd class="field-even"><p>Series</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -235,7 +236,7 @@
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        Last updated on Jun 09, 2020.
+        Last updated on Jun 10, 2020.
       </span>
 
     </p>

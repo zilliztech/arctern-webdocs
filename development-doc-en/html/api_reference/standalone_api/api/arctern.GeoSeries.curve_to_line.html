@@ -184,20 +184,23 @@
 <dl class="py method">
 <dt id="arctern.GeoSeries.curve_to_line">
 <code class="sig-prename descclassname">GeoSeries.</code><code class="sig-name descname">curve_to_line</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/arctern/geoseries/geoseries.html#GeoSeries.curve_to_line"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arctern.GeoSeries.curve_to_line" title="Permalink to this definition">¶</a></dt>
-<dd><p>Convert curves in each geometry to approximate linear representation,
-e.g., CIRCULAR STRING to regular LINESTRING, CURVEPOLYGON to POLYGON,
-and MULTISURFACE to MULTIPOLYGON. Useful for outputting to devices
-that can't support CIRCULARSTRING geometry types.</p>
+<dd><p>Converts curves in each geometry to approximate linear representation.</p>
+<p>For example,</p>
+<ul class="simple">
+<li><p>CIRCULAR STRING to LINESTRING,</p></li>
+<li><p>CURVEPOLYGON to POLYGON,</p></li>
+<li><p>MULTISURFACE to MULTIPOLYGON.</p></li>
+</ul>
+<p>It is useful for outputting to devices that can't support CIRCULARSTRING geometry types.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference internal" href="arctern.GeoSeries.html#arctern.GeoSeries" title="arctern.GeoSeries">GeoSeries</a></p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Converted linear geometries.</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Converted geometries</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="arctern.GeoSeries.html#arctern.GeoSeries" title="arctern.GeoSeries">GeoSeries</a></p>
 </dd>
-<dt class="field-odd">Example</dt>
-<dd class="field-odd"><p></p></dd>
 </dl>
+<p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">GeoSeries</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">GeoSeries</span><span class="p">([</span><span class="s2">&quot;CURVEPOLYGON(CIRCULARSTRING(0 0, 4 0, 4 4, 0 4, 0 0))&quot;</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">rst</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">curve_to_line</span><span class="p">()</span><span class="o">.</span><span class="n">to_wkt</span><span class="p">()</span>
@@ -230,7 +233,7 @@ that can't support CIRCULARSTRING geometry types.</p>
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        Last updated on Jun 09, 2020.
+        Last updated on Jun 10, 2020.
       </span>
 
     </p>

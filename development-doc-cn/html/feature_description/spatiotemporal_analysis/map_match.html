@@ -84,24 +84,24 @@
             
               <ul class="current">
 <li class="toctree-l1"><a target="_blank" class="reference internal" href="../../quick_start/quick_start.html">快速开始</a></li>
-<li class="toctree-l1 current"><a target="_blank" class="reference internal" href="../feature_description.html">功能说明</a><ul class="current">
-<li class="toctree-l2 current"><a target="_blank" class="reference internal" href="spatiotemporal_analysis.html">时空数据分析</a><ul class="current">
-<li class="toctree-l3"><a target="_blank" class="reference internal" href="data_structure.html">数据结构</a></li>
-<li class="toctree-l3"><a target="_blank" class="reference internal" href="read_and_write_file.html">文件读写</a></li>
-<li class="toctree-l3"><a target="_blank" class="reference internal" href="geometric_manipulation.html">几何体的基本操作</a></li>
-<li class="toctree-l3"><a target="_blank" class="reference internal" href="convert_from_and_to_geopandas_geoseries.html">与 GeoPandas GeoSeries 互相转换</a></li>
-<li class="toctree-l3"><a target="_blank" class="reference internal" href="spatial_relationship_operation.html">空间关系运算</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../feature_description.html">功能说明</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="spatiotemporal_analysis.html">时空数据分析</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="data_structure.html">数据结构</a></li>
+<li class="toctree-l3"><a class="reference internal" href="read_and_write_file.html">文件读写</a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometric_manipulation.html">几何体的基本操作</a></li>
+<li class="toctree-l3"><a class="reference internal" href="convert_from_and_to_geopandas_geoseries.html">与 GeoPandas GeoSeries 互相转换</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spatial_relationship_operation.html">空间关系运算</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">地图匹配</a><ul>
-<li class="toctree-l4"><a target="_blank" class="reference internal" href="#id2">生成数据集</a></li>
-<li class="toctree-l4"><a target="_blank" class="reference internal" href="#gps">在 GPS 点附近查找道路</a></li>
-<li class="toctree-l4"><a target="_blank" class="reference internal" href="#id3">获得距离 GPS 点最近的道路</a></li>
-<li class="toctree-l4"><a target="_blank" class="reference internal" href="#id4">将 GPS 点绑定到最近的道路</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">生成数据集</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gps">在 GPS 点附近查找道路</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">获得距离 GPS 点最近的道路</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">将 GPS 点绑定到最近的道路</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a target="_blank" class="reference internal" href="plot_geometry.html">绘图方法</a></li>
-<li class="toctree-l3"><a target="_blank" class="reference internal" href="crs_and_transform.html">坐标参考系</a></li>
-<li class="toctree-l3"><a target="_blank" class="reference internal" href="aggregation.html">聚合</a></li>
-<li class="toctree-l3"><a target="_blank" class="reference internal" href="indexing_selecting_data.html">索引和选择数据</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plot_geometry.html">绘图方法</a></li>
+<li class="toctree-l3"><a class="reference internal" href="crs_and_transform.html">坐标参考系</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aggregation.html">聚合</a></li>
+<li class="toctree-l3"><a class="reference internal" href="indexing_selecting_data.html">索引和选择数据</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a target="_blank" class="reference internal" href="../visualization/visualization.html">可视化</a></li>
@@ -192,7 +192,7 @@
 </div>
 <div class="section" id="gps">
 <h2>在 GPS 点附近查找道路<a class="headerlink" href="#gps" title="永久链接至标题">¶</a></h2>
-<p>使用 <a class="reference external" href="../../api_reference/map_match/api/arctern.near_road.html"><code class="docutils literal notranslate"><span class="pre">near_road</span></code></a> 方法可以判断 GPS 点附近固定范围内是否存在道路。假设 <code class="docutils literal notranslate"><span class="pre">points</span></code> 为某城市内出租车上下客的位置，<code class="docutils literal notranslate"><span class="pre">roads</span></code> 为对应城市的路网信息。那么，如果乘客上下车的位置不在道路上或者偏离道路太远，那么这些位置数据就可以被认定为噪点。</p>
+<p>使用 <a target="_blank" class="reference external" href="../../api_reference/map_match/api/arctern.near_road.html"><code class="docutils literal notranslate"><span class="pre">near_road</span></code></a> 方法可以判断 GPS 点附近固定范围内是否存在道路。假设 <code class="docutils literal notranslate"><span class="pre">points</span></code> 为某城市内出租车上下客的位置，<code class="docutils literal notranslate"><span class="pre">roads</span></code> 为对应城市的路网信息。那么，如果乘客上下车的位置不在道路上或者偏离道路太远，那么这些位置数据就可以被认定为噪点。</p>
 <blockquote>
 <div><p><strong>注意：</strong> GPS 点和路网数据的坐标系必须是“EPSG:4326”。</p>
 </div></blockquote>
@@ -222,7 +222,7 @@
 </div>
 <div class="section" id="id3">
 <h2>获得距离 GPS 点最近的道路<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
-<p>使用 <a class="reference external" href="../../api_reference/map_match/api/arctern.nearest_road.html"><code class="docutils literal notranslate"><span class="pre">nearest_road</span></code></a> 方法可以获得距离 GPS 点最近的道路。该方法的运行逻辑是：</p>
+<p>使用 <a target="_blank" class="reference external" href="../../api_reference/map_match/api/arctern.nearest_road.html"><code class="docutils literal notranslate"><span class="pre">nearest_road</span></code></a> 方法可以获得距离 GPS 点最近的道路。该方法的运行逻辑是：</p>
 <ol class="simple">
 <li><p>基于路网信息建立索引树（Rtree）。</p></li>
 <li><p>基于索引树快速查询 GPS 点附近的所有道路， 最后在查询出来的道路中筛选出距离 GPS 点最近的道路。</p></li>
@@ -261,7 +261,7 @@
 </div>
 <div class="section" id="id4">
 <h2>将 GPS 点绑定到最近的道路<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
-<p><a class="reference external" href="../../api_reference/map_match/api/arctern.nearest_location_on_road.html"><code class="docutils literal notranslate"><span class="pre">nearest_location_on_road</span></code></a> 方法可以将 GPS 点绑定到距离最近的道路上。 假设 GPS 点表示某城市内出租车上下客的位置。由于 GPS 精度问题，GPS 点的位置可能存在一定的偏差。那么，部分 GPS 点可能偏离到附近的建筑物或河道里。因此，我们需要使用 <a class="reference external" href="../../api_reference/map_match/api/arctern.nearest_location_on_road.html"><code class="docutils literal notranslate"><span class="pre">nearest_location_on_road</span></code></a> 方法对 GPS 点的位置进行纠偏。</p>
+<p><a target="_blank" class="reference external" href="../../api_reference/map_match/api/arctern.nearest_location_on_road.html"><code class="docutils literal notranslate"><span class="pre">nearest_location_on_road</span></code></a> 方法可以将 GPS 点绑定到距离最近的道路上。 假设 GPS 点表示某城市内出租车上下客的位置。由于 GPS 精度问题，GPS 点的位置可能存在一定的偏差。那么，部分 GPS 点可能偏离到附近的建筑物或河道里。因此，我们需要使用 <a target="_blank" class="reference external" href="../../api_reference/map_match/api/arctern.nearest_location_on_road.html"><code class="docutils literal notranslate"><span class="pre">nearest_location_on_road</span></code></a> 方法对 GPS 点的位置进行纠偏。</p>
 <blockquote>
 <div><p><strong>注意：</strong> GPS 点和路网数据的坐标系必须是“EPSG:4326”。</p>
 </div></blockquote>
@@ -286,7 +286,7 @@
 <span class="go">dtype: GeoDtype</span>
 </pre></div>
 </div>
-<p>下图分别是纠偏前后 GPS 点和道路的拓扑关系。我们可以看出 <a class="reference external" href="../../api_reference/map_match/api/arctern.nearest_location_on_road.html"><code class="docutils literal notranslate"><span class="pre">nearest_location_on_road</span></code></a> 成功地将偏离道路的 GPS 点绑定到了最近的道路上。</p>
+<p>下图分别是纠偏前后 GPS 点和道路的拓扑关系。我们可以看出 <a target="_blank" class="reference external" href="../../api_reference/map_match/api/arctern.nearest_location_on_road.html"><code class="docutils literal notranslate"><span class="pre">nearest_location_on_road</span></code></a> 成功地将偏离道路的 GPS 点绑定到了最近的道路上。</p>
 <p><img alt="../../_images/topo_before_correction.png" src="../../_images/topo_before_correction.png" />
 <img alt="../../_images/topo_after_correction.png" src="../../_images/topo_after_correction.png" /></p>
 </div>
@@ -314,7 +314,7 @@
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 6月 09, 2020.
+        最后更新于 6月 10, 2020.
       </span>
 
     </p>
