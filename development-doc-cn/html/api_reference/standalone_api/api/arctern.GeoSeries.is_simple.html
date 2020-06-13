@@ -185,13 +185,14 @@
 <dl class="py method">
 <dt id="arctern.GeoSeries.is_simple">
 <em class="property">property </em><code class="sig-prename descclassname">GeoSeries.</code><code class="sig-name descname">is_simple</code><a class="headerlink" href="#arctern.GeoSeries.is_simple" title="永久链接至目标">¶</a></dt>
-<dd><p>检测 GeoSeries 中的每个几何体是否为“简单”的。</p>
-<p>此处的“简单”是指几何体没有异常点，例如自相交或自相切。</p>
+<dd><p>Tests whether each geometry in the GeoSeries is simple.</p>
+<p>Here “simple” means that a geometry has no anomalous point, such as a self-intersection or a self-tangency.</p>
 <dl class="field-list simple">
 <dt class="field-odd">返回</dt>
-<dd class="field-odd"><p><ul class="simple">
-<li><p><em>True:</em> 所有几何体都是“简单”的。</p></li>
-<li><p><em>False:</em> 至少一个几何体不是“简单”的。</p></li>
+<dd class="field-odd"><p><p>Mask of boolean values for each element in the GeoSeries that indicates whether an element is simple.</p>
+<ul class="simple">
+<li><p><em>True:</em> The geometry is simple.</p></li>
+<li><p><em>False:</em> The geometry is not simple.</p></li>
 </ul>
 </p>
 </dd>
@@ -234,7 +235,7 @@
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 6月 10, 2020.
+        最后更新于 6月 13, 2020.
       </span>
 
     </p>

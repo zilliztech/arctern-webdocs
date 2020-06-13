@@ -183,24 +183,22 @@
 <dl class="py method">
 <dt id="arctern.GeoSeries.to_wkb">
 <code class="sig-prename descclassname">GeoSeries.</code><code class="sig-name descname">to_wkb</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/arctern/geoseries/geoseries.html#GeoSeries.to_wkb"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arctern.GeoSeries.to_wkb" title="Permalink to this definition">¶</a></dt>
-<dd><p>Transform each geometry to WKB formed bytes object.</p>
+<dd><p>Transforms all geometries in the GeoSeries to <a class="reference external" href="https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry#Well-known_binary">WKB</a> strings.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>Series(dtype: object)</p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Sequence of geometries in WKB format.</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>A Series contains geometries as WKB formed bytes object.</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Series</p>
 </dd>
-<dt class="field-odd">Example</dt>
-<dd class="field-odd"><p></p></dd>
 </dl>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">GeoSeries</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">GeoSeries</span><span class="p">([</span><span class="s2">&quot;POINT(1 1)&quot;</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">to_wkb</span><span class="p">()</span>
-<span class="go">0    b&#39;\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\xf0?\x00\x00\x00\x00\x00\x00\xf0?&#39;</span>
-<span class="go">dtype: object</span>
-</pre></div>
-</div>
+<p class="rubric">Examples</p>
+<pre class="doctest literal-block">&gt;&gt;&gt; from arctern import GeoSeries
+&gt;&gt;&gt; s = GeoSeries([&quot;POINT(1 1)&quot;])
+&gt;&gt;&gt; s.to_wkb()
+0    b'ð?ð?'
+dtype: object
+</pre>
 </dd></dl>
 
 </div>
@@ -227,7 +225,7 @@
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        Last updated on Jun 10, 2020.
+        Last updated on Jun 13, 2020.
       </span>
 
     </p>

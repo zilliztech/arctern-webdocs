@@ -179,18 +179,20 @@
 <dt id="arctern.GeoSeries.distance">
 <code class="sig-prename descclassname">GeoSeries.</code><code class="sig-name descname">distance</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/arctern/geoseries/geoseries.html#GeoSeries.distance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arctern.GeoSeries.distance" title="Permalink to this definition">¶</a></dt>
 <dd><p>For each geometry in the GeoSeries and the corresponding geometry given in <code class="docutils literal notranslate"><span class="pre">other</span></code>, calculates the minimum 2D Cartesian (planar) distance between them.</p>
-<dl class="simple">
-<dt>other<span class="classifier">geometry or GeoSeries</span></dt><dd><p>The geometry or GeoSeries to calculate whether the distance between it and the geometries in the first GeoSeries.
-* If <code class="docutils literal notranslate"><span class="pre">other</span></code> is a geometry, this function calculates the distance between each geometry in the GeoSeries and <code class="docutils literal notranslate"><span class="pre">other</span></code>.
-* If <code class="docutils literal notranslate"><span class="pre">other</span></code> is a GeoSeries, this function calculates the distance between each geometry in the GeoSeries and the geometry with the same index in <code class="docutils literal notranslate"><span class="pre">other</span></code>.</p>
-</dd>
-</dl>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>A Series contains the distances between each geometry in the GeoSeries and the corresponding geometry given in <code class="docutils literal notranslate"><span class="pre">other</span></code>.</p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>other</strong> (<em>geometry</em><em> or </em><a class="reference internal" href="arctern.GeoSeries.html#arctern.GeoSeries" title="arctern.GeoSeries"><em>GeoSeries</em></a>) -- <p>The geometry or GeoSeries to calculate the distance between it and the geometries in the first GeoSeries.</p>
+<ul class="simple">
+<li><p>If <code class="docutils literal notranslate"><span class="pre">other</span></code> is a geometry, this function calculates the distance between each geometry in the GeoSeries and <code class="docutils literal notranslate"><span class="pre">other</span></code>.</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">other</span></code> is a GeoSeries, this function calculates the distance between each geometry in the GeoSeries and the geometry with the same index in <code class="docutils literal notranslate"><span class="pre">other</span></code>.</p></li>
+</ul>
+</p>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>Series</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Distance between each geometry in the GeoSeries and the corresponding geometry given in <code class="docutils literal notranslate"><span class="pre">other</span></code>.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Series</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -233,7 +235,7 @@
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        Last updated on Jun 10, 2020.
+        Last updated on Jun 13, 2020.
       </span>
 
     </p>

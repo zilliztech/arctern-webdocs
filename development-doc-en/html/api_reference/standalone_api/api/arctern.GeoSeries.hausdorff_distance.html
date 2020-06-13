@@ -178,22 +178,25 @@
 <dl class="py method">
 <dt id="arctern.GeoSeries.hausdorff_distance">
 <code class="sig-prename descclassname">GeoSeries.</code><code class="sig-name descname">hausdorff_distance</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/arctern/geoseries/geoseries.html#GeoSeries.hausdorff_distance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arctern.GeoSeries.hausdorff_distance" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the Hausdorff distance between each geometry and other.</p>
-<p>This is a measure of how similar or dissimilar 2 geometries are.</p>
+<dd><p>For each point in the GeoSeries and the corresponding point given in <code class="docutils literal notranslate"><span class="pre">other</span></code>, calculates the Hausdorff distance between them.</p>
+<p>Hausdorff distance is a measure of how similar two geometries are.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>other</strong> (<em>scalar bytes object geometry</em><em> or </em><em>GeoSeries
-Can be scalar WKB formed bytes object</em><em>, or </em><em>a GeoSeries.</em>) -- The geometries to calculate the hausdorff distance to each geometry.</p>
+<dd class="field-odd"><p><strong>other</strong> (<em>geometry</em><em> or </em><a class="reference internal" href="arctern.GeoSeries.html#arctern.GeoSeries" title="arctern.GeoSeries"><em>GeoSeries</em></a>) -- <p>The geometry or GeoSeries to calculate the Hausdorff distance between it and the geometries in the first GeoSeries.</p>
+<ul class="simple">
+<li><p>If <code class="docutils literal notranslate"><span class="pre">other</span></code> is a geometry, this function calculates the Hausdorff distance between each geometry in the GeoSeries and <code class="docutils literal notranslate"><span class="pre">other</span></code>.</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">other</span></code> is a GeoSeries, this function calculates the Hausdorff distance between each geometry in the GeoSeries and the geometry with the same index in <code class="docutils literal notranslate"><span class="pre">other</span></code>.</p></li>
+</ul>
+</p>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>Series(dtype: float64)</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Hausdorff distance between each geometry in the GeoSeries and the corresponding geometry given in <code class="docutils literal notranslate"><span class="pre">other</span></code>.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Series</p>
 </dd>
 </dl>
-<p>:return : A Series contains the hausdorff distance between each geometry and other.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Example</dt>
-<dd class="field-odd"><p></p></dd>
-</dl>
+<p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">GeoSeries</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s1</span> <span class="o">=</span> <span class="n">GeoSeries</span><span class="p">([</span><span class="s2">&quot;POLYGON((0 0 ,0 1, 1 1, 1 0, 0 0))&quot;</span><span class="p">,</span> <span class="s2">&quot;POINT(0 0)&quot;</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s2</span> <span class="o">=</span> <span class="n">GeoSeries</span><span class="p">([</span><span class="s2">&quot;POLYGON((0 0 ,0 2, 1 1, 1 0, 0 0))&quot;</span><span class="p">,</span> <span class="s2">&quot;POINT(0 1)&quot;</span><span class="p">])</span>
@@ -229,7 +232,7 @@ Can be scalar WKB formed bytes object</em><em>, or </em><em>a GeoSeries.</em>) -
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        Last updated on Jun 10, 2020.
+        Last updated on Jun 13, 2020.
       </span>
 
     </p>

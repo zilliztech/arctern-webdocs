@@ -172,29 +172,79 @@
 <dl class="py function">
 <dt id="arctern.plot.plot_geometry">
 <code class="sig-prename descclassname">arctern.plot.</code><code class="sig-name descname">plot_geometry</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ax</span></em>, <em class="sig-param"><span class="n">geoms</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">style_kwds</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/arctern/plot/_plot.html#plot_geometry"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arctern.plot.plot_geometry" title="Permalink to this definition">¶</a></dt>
-<dd><p>Plot a collection of geometries to <cite>ax</cite>. Parameters 'linewidth', 'linestyle', 'edgecolor',
-'facecolor', 'color', 'marker', 'markersize' are used to describe the style of plotted figure.</p>
-<p>For geometry types <cite>Polygon</cite> and <cite>MultiPolygon</cite>, only 'linewidth', 'linestyle', 'edgecolor',
-'facecolor' are effective.</p>
-<p>For geometry types <cite>Linestring</cite> and <cite>MultiLinestring</cite>, only 'color', 'linewidth', 'linestyle' are effective.</p>
-<p>For geometry types <cite>Point</cite> and <cite>MultiPoint</cite>, only 'color', 'marker', 'markersize' are effective.</p>
-<dl class="field-list">
+<dd><p>Plots a collection of geometries.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>ax</strong> (<em>matplotlib.axes.Axes</em>) -- The axes where geometries will be plotted.</p></li>
-<li><p><strong>geoms</strong> (<em>Series</em><em> or </em><em>DataFrame</em>) -- sequence of geometries.</p></li>
-<li><p><strong>linewidth</strong> (<em>list</em><em>(</em><em>float</em><em>)</em>) -- The width of line, the default value is 1.0.</p></li>
-<li><p><strong>linestyle</strong> (<em>list</em><em>(</em><em>string</em><em>)</em>) -- The style of the line， the default value is '-'.</p></li>
-<li><p><strong>edgecolor</strong> (<em>list</em><em>(</em><em>string</em><em>)</em>) -- The edge color of the geometry, the default value is 'black'.</p></li>
-<li><p><strong>facecolor</strong> (<em>list</em><em>(</em><em>string</em><em>)</em>) -- The color of the face of the geometry, the default value is 'C0'.</p></li>
-<li><p><strong>color</strong> (<em>list</em><em>(</em><em>string</em><em>)</em>) -- The color of the geometry, the default value is 'C0'.</p></li>
-<li><p><strong>marker</strong> (<em>string</em>) -- The shape of point, the default value is 'o'.</p></li>
-<li><p><strong>markersize</strong> (<em>double</em>) -- The size of points, the default value is 6.0.</p></li>
-<li><p><strong>alpha</strong> (<em>double</em>) -- The transparency of the geometry, the default value is 1.0.</p></li>
+<li><p><strong>geoms</strong> (<em>Series</em><em> or </em><em>DataFrame</em>) -- Sequence of geometries.</p></li>
+<li><p><strong>**style_kwds</strong> -- <p><code class="docutils literal notranslate"><span class="pre">style_kwds</span></code> specify the properties that describe the style of geometric graphs.</p>
+<p>Here is a list of availble style properties:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 12%" />
+<col style="width: 21%" />
+<col style="width: 8%" />
+<col style="width: 59%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Property</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Applied to</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>color</p></td>
+<td><p>str, color</p></td>
+<td><p>'C0'</p></td>
+<td><p>Point, MultiPoint, Linestring, MultiLinestring</p></td>
+</tr>
+<tr class="row-odd"><td><p>edgecolor</p></td>
+<td><p>str, edge color</p></td>
+<td><p>'black'</p></td>
+<td><p>Polygon, MultiPolygon</p></td>
+</tr>
+<tr class="row-even"><td><p>facecolor</p></td>
+<td><p>str, face color</p></td>
+<td><p>'C0'</p></td>
+<td><p>Polygon, MultiPolygon</p></td>
+</tr>
+<tr class="row-odd"><td><p>linewidth</p></td>
+<td><p>float, line width</p></td>
+<td><p>1.0</p></td>
+<td><p>Linestring, MultiLinestring, Polygon, MultiPolygon</p></td>
+</tr>
+<tr class="row-even"><td><p>linestyle</p></td>
+<td><p>str, line style</p></td>
+<td><p>'-'</p></td>
+<td><p>Linestring, MultiLinestring, Polygon, MultiPolygon</p></td>
+</tr>
+<tr class="row-odd"><td><p>marker</p></td>
+<td><p>str, marker style</p></td>
+<td><p>'o'</p></td>
+<td><p>Point, MultiPoint</p></td>
+</tr>
+<tr class="row-even"><td><p>markersize</p></td>
+<td><p>float, marker size</p></td>
+<td><p>6.0</p></td>
+<td><p>Point, MultiPoint</p></td>
+</tr>
+<tr class="row-odd"><td><p>alpha</p></td>
+<td><p>float, opacity</p></td>
+<td><p>1.0</p></td>
+<td><p>All</p></td>
+</tr>
+</tbody>
+</table>
+</p></li>
 </ul>
 </dd>
-<dt class="field-even">Example</dt>
-<dd class="field-even"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span>
+</dl>
+<p class="rubric">Notes</p>
+<p>See <a class="reference external" href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.plot.html?highlight=plot#matplotlib.pyplot.plot">matplotlib.pyplot.plot document</a> for detailed description of marker styles, line styles, and colors.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">arctern</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">raw_data</span> <span class="o">=</span> <span class="p">[]</span>
@@ -221,8 +271,6 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;/tmp/plot_test.png&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-</dd>
-</dl>
 </dd></dl>
 
 </div>
@@ -249,7 +297,7 @@
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        Last updated on Jun 10, 2020.
+        Last updated on Jun 13, 2020.
       </span>
 
     </p>

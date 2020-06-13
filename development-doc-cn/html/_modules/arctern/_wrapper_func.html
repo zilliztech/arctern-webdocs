@@ -1417,29 +1417,35 @@
 
 <div class="viewcode-block" id="within_which"><a class="viewcode-back" href="../../api_reference/map_match/api/arctern.within_which.html#arctern.within_which">[文档]</a><span class="k">def</span> <span class="nf">within_which</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    For each geometry in left, search geometries that satisfy &quot;within&quot; relationship in right</span>
+<span class="sd">    For each geometry in ``left``, search for a geometry in ``right`` that contains it.</span>
 
-<span class="sd">    :type left: GeoSeries</span>
-<span class="sd">    :param left: Sequence of Geometries</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    left : GeoSeries</span>
+<span class="sd">        Sequence of geometries.</span>
+<span class="sd">    right : GeoSeries</span>
+<span class="sd">        Sequence of geometries.</span>
 
-<span class="sd">    :type right: GeoSeries</span>
-<span class="sd">    :param right: Sequence of Geometries</span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Series</span>
+<span class="sd">        The indexes of geometries in ``right``.</span>
+<span class="sd">        For example, the value *j* with index *i* in the returned Series indicates that the geometry ``left[i]`` is within the geometry ``right[j]``.</span>
+<span class="sd">        </span>
+<span class="sd">        * When there are multiple candidates, return one of them.</span>
+<span class="sd">        * When there is no candidate, return NA.</span>
 
-<span class="sd">    :rtype: Series(dtype: object)</span>
-<span class="sd">    :return: For each `left[i]`, find `j` satisfying that `left[i]` is within `right[j]`.</span>
-<span class="sd">             When there are multiple candidates, return one of them.</span>
-<span class="sd">             When not exists, return `pandas.NA`</span>
-
-<span class="sd">    :example:</span>
-<span class="sd">      &gt;&gt;&gt; from arctern import *</span>
-<span class="sd">      &gt;&gt;&gt; data1 = GeoSeries([&quot;Point(0 0)&quot;, &quot;Point(1000 1000)&quot;, &quot;Point(10 10)&quot;])</span>
-<span class="sd">      &gt;&gt;&gt; data2 = GeoSeries([&quot;Polygon((9 10, 11 12, 11 8, 9 10))&quot;, &quot;Polygon((-1 0, 1 2, 1 -2, -1 0))&quot;])</span>
-<span class="sd">      &gt;&gt;&gt; res = within_which(data1, data2)</span>
-<span class="sd">      &gt;&gt;&gt; print(res)</span>
-<span class="sd">          0    1</span>
-<span class="sd">          1    &lt;NA&gt;</span>
-<span class="sd">          2    0</span>
-<span class="sd">          dtype: object</span>
+<span class="sd">    Examples</span>
+<span class="sd">    -------</span>
+<span class="sd">    &gt;&gt;&gt; from arctern import *</span>
+<span class="sd">    &gt;&gt;&gt; data1 = GeoSeries([&quot;Point(0 0)&quot;, &quot;Point(1000 1000)&quot;, &quot;Point(10 10)&quot;])</span>
+<span class="sd">    &gt;&gt;&gt; data2 = GeoSeries([&quot;Polygon((9 10, 11 12, 11 8, 9 10))&quot;, &quot;Polygon((-1 0, 1 2, 1 -2, -1 0))&quot;])</span>
+<span class="sd">    &gt;&gt;&gt; res = within_which(data1, data2)</span>
+<span class="sd">    &gt;&gt;&gt; print(res)</span>
+<span class="sd">        0    1</span>
+<span class="sd">        1    &lt;NA&gt;</span>
+<span class="sd">        2    0</span>
+<span class="sd">        dtype: object</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="kn">import</span> <span class="nn">pyarrow</span> <span class="k">as</span> <span class="nn">pa</span>
     <span class="kn">import</span> <span class="nn">pandas</span>
@@ -1748,25 +1754,29 @@
 
 <div class="viewcode-block" id="nearest_location_on_road"><a class="viewcode-back" href="../../api_reference/map_match/api/arctern.nearest_location_on_road.html#arctern.nearest_location_on_road">[文档]</a><span class="k">def</span> <span class="nf">nearest_location_on_road</span><span class="p">(</span><span class="n">roads</span><span class="p">,</span> <span class="n">points</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Compute the location on roads closest to each point in points, The points passed do not need to be part of a continuous path.</span>
+<span class="sd">    Returns the location on ``roads`` closest to the ``points``. The points do not need to be part of a continuous path.</span>
 
-<span class="sd">    :type roads: Series(dtype: object)</span>
-<span class="sd">    :param roads: LineStrings in WKB form.</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    roads : Series</span>
+<span class="sd">        LINGSTRING objects in WKB format.</span>
+<span class="sd">    points : Series</span>
+<span class="sd">        POINT objects in WKB format.</span>
 
-<span class="sd">    :type points: Series(dtype: object)</span>
-<span class="sd">    :param points: Points in WKB form.</span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Series</span>
+<span class="sd">        A POINT object in WKB format.</span>
 
-<span class="sd">    :rtype: Series(dtype: object)</span>
-<span class="sd">    :return: Points in WKB form.</span>
-
-<span class="sd">    :example:</span>
-<span class="sd">      &gt;&gt;&gt; import arctern</span>
-<span class="sd">      &gt;&gt;&gt; data1 = arctern.GeoSeries([&quot;LINESTRING (1 2,1 3)&quot;])</span>
-<span class="sd">      &gt;&gt;&gt; data2 = arctern.GeoSeries([&quot;POINT (1.001 2.5)&quot;])</span>
-<span class="sd">      &gt;&gt;&gt; rst = arctern.GeoSeries(arctern.nearest_location_on_road(data1, data2)).to_wkt()</span>
-<span class="sd">      &gt;&gt;&gt; rst</span>
-<span class="sd">          0    POINT (1.0 2.5)</span>
-<span class="sd">          dtype: object</span>
+<span class="sd">    Examples</span>
+<span class="sd">    -------</span>
+<span class="sd">    &gt;&gt;&gt; import arctern</span>
+<span class="sd">    &gt;&gt;&gt; data1 = arctern.GeoSeries([&quot;LINESTRING (1 2,1 3)&quot;])</span>
+<span class="sd">    &gt;&gt;&gt; data2 = arctern.GeoSeries([&quot;POINT (1.001 2.5)&quot;])</span>
+<span class="sd">    &gt;&gt;&gt; rst = arctern.GeoSeries(arctern.nearest_location_on_road(data1, data2)).to_wkt()</span>
+<span class="sd">    &gt;&gt;&gt; rst</span>
+<span class="sd">        0    POINT (1.0 2.5)</span>
+<span class="sd">        dtype: object</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="kn">import</span> <span class="nn">pyarrow</span> <span class="k">as</span> <span class="nn">pa</span>
     <span class="n">arr_roads</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">roads</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
@@ -1780,25 +1790,29 @@
 
 <div class="viewcode-block" id="nearest_road"><a class="viewcode-back" href="../../api_reference/map_match/api/arctern.nearest_road.html#arctern.nearest_road">[文档]</a><span class="k">def</span> <span class="nf">nearest_road</span><span class="p">(</span><span class="n">roads</span><span class="p">,</span> <span class="n">points</span><span class="p">,):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Compute the closest road for each point in points, The points passed do not need to be part of a continuous path.</span>
+<span class="sd">    Returns the road in ``roads`` closest to the ``points``. The points do not need to be part of a continuous path.</span>
 
-<span class="sd">    :type roads: Series(dtype: object)</span>
-<span class="sd">    :param roads: LineStrings in WKB form.</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    roads : Series</span>
+<span class="sd">        LINGSTRING objects in WKB format.</span>
+<span class="sd">    points : Series</span>
+<span class="sd">        POINT objects in WKB format.</span>
 
-<span class="sd">    :type points: Series(dtype: object)</span>
-<span class="sd">    :param points: Points in WKB form.</span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Series</span>
+<span class="sd">        A LINGSTRING object in WKB format.</span>
 
-<span class="sd">    :rtype: Series(dtype: object)</span>
-<span class="sd">    :return: Points in WKB form.</span>
-
-<span class="sd">    :example:</span>
-<span class="sd">      &gt;&gt;&gt; import arctern</span>
-<span class="sd">      &gt;&gt;&gt; data1 = arctern.GeoSeries([&quot;LINESTRING (1 2,1 3)&quot;])</span>
-<span class="sd">      &gt;&gt;&gt; data2 = arctern.GeoSeries([&quot;POINT (1.001 2.5)&quot;])</span>
-<span class="sd">      &gt;&gt;&gt; rst = arctern.GeoSeries(arctern.nearest_road(data1, data2)).to_wkt()</span>
-<span class="sd">      &gt;&gt;&gt; rst</span>
-<span class="sd">          0    LINESTRING (1 2,1 3)</span>
-<span class="sd">          dtype: object</span>
+<span class="sd">    Examples</span>
+<span class="sd">    -------</span>
+<span class="sd">    &gt;&gt;&gt; import arctern</span>
+<span class="sd">    &gt;&gt;&gt; data1 = arctern.GeoSeries([&quot;LINESTRING (1 2,1 3)&quot;])</span>
+<span class="sd">    &gt;&gt;&gt; data2 = arctern.GeoSeries([&quot;POINT (1.001 2.5)&quot;])</span>
+<span class="sd">    &gt;&gt;&gt; rst = arctern.GeoSeries(arctern.nearest_road(data1, data2)).to_wkt()</span>
+<span class="sd">    &gt;&gt;&gt; rst</span>
+<span class="sd">        0    LINESTRING (1 2,1 3)</span>
+<span class="sd">        dtype: object</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="kn">import</span> <span class="nn">pyarrow</span> <span class="k">as</span> <span class="nn">pa</span>
     <span class="n">arr_roads</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">roads</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
@@ -1812,22 +1826,28 @@
 
 <div class="viewcode-block" id="near_road"><a class="viewcode-back" href="../../api_reference/map_match/api/arctern.near_road.html#arctern.near_road">[文档]</a><span class="k">def</span> <span class="nf">near_road</span><span class="p">(</span><span class="n">roads</span><span class="p">,</span> <span class="n">points</span><span class="p">,</span> <span class="n">distance</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Check if there is a road within distance meters of each point. The points passed do not need to be part of a continuous path.</span>
+<span class="sd">    Tests whether there is a road within the given ``distance`` of all ``points``. The points do not need to be part of a continuous path.</span>
 
-<span class="sd">    :type roads: Series(dtype: object)</span>
-<span class="sd">    :param roads: LineStrings in WKB form.</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    roads : Series</span>
+<span class="sd">        LINGSTRING objects in WKB format.</span>
+<span class="sd">    points : Series</span>
+<span class="sd">        POINT objects in WKB format.</span>
+<span class="sd">    distance : double, optional</span>
+<span class="sd">        Searching distance around the points, by default 100.</span>
 
-<span class="sd">    :type points: Series(dtype: object)</span>
-<span class="sd">    :param points: Points in WKB form.</span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Series</span>
+<span class="sd">        A Series that contains only one boolean value that indicates whether there is a road within the given ``distance`` of all ``points``.</span>
 
-<span class="sd">    :type distance: double</span>
-<span class="sd">    :param distance: distance meters around the point in points</span>
+<span class="sd">        * *True*: The road exists.</span>
+<span class="sd">        * *False*: The road does not exist.</span>
 
-<span class="sd">    :rtype: Series(dtype: bool)</span>
-<span class="sd">    :return: True if there is a road within 100 meters of the point.</span>
-
-<span class="sd">    :example:</span>
-<span class="sd">      &gt;&gt;&gt; import arctern</span>
+<span class="sd">    Examples</span>
+<span class="sd">    -------</span>
+<span class="sd">    &gt;&gt;&gt; import arctern</span>
 <span class="sd">      &gt;&gt;&gt; data1 = arctern.GeoSeries([&quot;LINESTRING (1 2,1 3)&quot;])</span>
 <span class="sd">      &gt;&gt;&gt; data2 = arctern.GeoSeries([&quot;POINT (1.0001 2.5)&quot;])</span>
 <span class="sd">      &gt;&gt;&gt; rst = arctern.near_road(data1, data2)</span>
@@ -1874,7 +1894,7 @@
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 6月 10, 2020.
+        最后更新于 6月 13, 2020.
       </span>
 
     </p>

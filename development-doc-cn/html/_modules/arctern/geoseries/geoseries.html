@@ -244,17 +244,21 @@
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    data : array-like, Iterable, dict, or scalar value(str or bytes)</span>
-<span class="sd">        Contains geometric data stored in GeoSeries. The geometric data can be in `WKT (Well-Known Text) &lt;https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry&gt;`_ or `WKB &lt;https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry#Well-known_binary&gt;`_ format.</span>
+<span class="sd">        Contains geometric data stored in GeoSeries. The geometric data can be in `WKT &lt;https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry&gt;`_ or `WKB &lt;https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry#Well-known_binary&gt;`_ format.</span>
 <span class="sd">    index : array-like or Index (1d)</span>
-<span class="sd">        Same to the index of pandas.Series.</span>
-<span class="sd">        Values must be hashable and have the same length as ``data``. Non-unique index values are allowed. Will default to RangeIndex (0, 1, 2, …, n) if not provided. If both a dict and index sequence are used, the index will override the keys found in the dict.</span>
+<span class="sd">        Same to the index of pandas.Series, by default ``RangeIndex (0, 1, 2, …, n)``.</span>
+<span class="sd">        Index values must be hashable and have the same length as ``data``. Non-unique index values are allowed. If both a dict and index sequence are used, the index will override the keys found in the dict.</span>
 <span class="sd">    name : str, optional</span>
 <span class="sd">        The name to give to the GeoSeries.</span>
 <span class="sd">    crs : str, optional</span>
 <span class="sd">        The Coordinate Reference System (CRS) set to all geometries in GeoSeries.</span>
-<span class="sd">        Only supports SRID as a WKT representation of CRS by now, for example, ``&quot;EPSG:4326&quot;``.</span>
+<span class="sd">        Only supports SRID as a WKT representation of CRS by now, for example, &quot;EPSG:4326&quot;.</span>
 <span class="sd">    **kwargs :</span>
-<span class="sd">        Options to pass to the GeoSeries constructor, for example, ``copy``.</span>
+<span class="sd">        Parameters to pass to the GeoSeries constructor, for example, ``copy``.</span>
+<span class="sd">        ``copy`` is a boolean value, by default False.</span>
+
+<span class="sd">        * *True:* Copys input data.</span>
+<span class="sd">        * *False:* Points to input data.</span>
 
 <span class="sd">    Examples</span>
 <span class="sd">    -------</span>
@@ -317,7 +321,7 @@
 <span class="sd">        ----------</span>
 <span class="sd">        crs : str</span>
 <span class="sd">            A string representation of CRS.</span>
-<span class="sd">            The string is made up of an authority code and a SRID (Spatial Reference Identifier), for example, ``&quot;EPSG:4326&quot;``.</span>
+<span class="sd">            The string is made up of an authority code and a SRID (Spatial Reference Identifier), for example, &quot;EPSG:4326&quot;.</span>
 
 <span class="sd">        Notes</span>
 <span class="sd">        -------</span>
@@ -362,7 +366,7 @@
 <span class="sd">        ----------</span>
 <span class="sd">        crs : str</span>
 <span class="sd">            A string representation of CRS.</span>
-<span class="sd">            The string is made up of an authority code and a SRID (Spatial Reference Identifier), for example, ``&quot;EPSG:4326&quot;``.</span>
+<span class="sd">            The string is made up of an authority code and a SRID (Spatial Reference Identifier), for example, &quot;EPSG:4326&quot;.</span>
 
 <span class="sd">        Examples</span>
 <span class="sd">        -------</span>
@@ -454,35 +458,31 @@
 <span class="sd">        ----------</span>
 <span class="sd">        value :</span>
 <span class="sd">            Value to use to fill holes. This value should be the representation of a geometry in WKT or WKB format. For exmaple, &quot;POINT (1 1)&quot;.</span>
-<span class="sd">        method : {&#39;backfill&#39;, &#39;bfill&#39;, &#39;pad&#39;, &#39;ffill&#39;, None}, by default None</span>
-<span class="sd">            Method to use for filling holes in reindexed Series.</span>
+<span class="sd">        method : {&#39;backfill&#39;, &#39;bfill&#39;, &#39;pad&#39;, &#39;ffill&#39;, None}</span>
+<span class="sd">            Method to use for filling holes in reindexed Series, by default None.</span>
+
 <span class="sd">            * *pad/ffill:* Propagates the last valid observation forward to fill gap.</span>
 <span class="sd">            * *backfill/bfill:* Propagates the next valid observation backward to fill gap.</span>
 <span class="sd">        axis : {0 or &#39;index&#39;}</span>
 <span class="sd">            Axis along which to fill missing values.</span>
-<span class="sd">        inplace : bool, by default False</span>
+<span class="sd">        inplace : bool, optional</span>
+<span class="sd">            Whether to fill NA values in-place, by default False</span>
 
-<span class="sd">            * *True:* Fills NA values in-place.</span>
-<span class="sd">                **Note:** This will modify any other views on this object.</span>
+<span class="sd">            * *True:* Fills NA values in-place. This will modify any other views on this object.</span>
 <span class="sd">            * *False:* Create a new GeoSeries object, and then fill NA values in it.</span>
+<span class="sd">        limit : int, optional</span>
+<span class="sd">            Limited number of NA values to be filled, by default None It must be greater than 0 if not None.</span>
 
-<span class="sd">        limit : int, by default None</span>
-<span class="sd">            * If ``method`` is specified, this is the maximum number of consecutive</span>
-<span class="sd">            NA values to forward/backward fill. In other words, if there is</span>
-<span class="sd">            a gap with more than this number of consecutive NAs, it will only</span>
-<span class="sd">            be partially filled.</span>
+<span class="sd">            * If ``method`` is specified, this is the maximum number of consecutive NA values to forward/backward fill. In other words, if there is a gap with more than this number of consecutive NAs, it will only be partially filled.</span>
 <span class="sd">            * If ``method`` is not specified, this is the maximum number of entries along the entire axis where NaNs will be filled.</span>
-<span class="sd">            **Note:** It must be greater than 0 if not None.</span>
-<span class="sd">        downcast : dict, by default None</span>
-<span class="sd">            A dict of item-&gt;dtype of what to downcast if possible,</span>
-<span class="sd">            or the string &#39;infer&#39; which will try to downcast to an appropriate</span>
-<span class="sd">            equal type (for example, float64 to int64 if possible).</span>
+<span class="sd">        downcast : dict, optional</span>
+<span class="sd">            A dict of item-&gt;dtype of what to downcast if possible, or the string &#39;infer&#39; which will try to downcast to an appropriate equal type (for example, float64 to int64 if possible). By default None.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        GeoSeries or None</span>
 <span class="sd">            * None if ``inplace=False``.</span>
-<span class="sd">            * Object with missing values filled if ``inplace=True``.</span>
+<span class="sd">            * A GeoSeries with missing values filled if ``inplace=True``.</span>
 
 <span class="sd">        Examples</span>
 <span class="sd">        -------</span>
@@ -522,8 +522,9 @@
 <span class="sd">        -------</span>
 <span class="sd">        Series</span>
 <span class="sd">            Mask of boolean values for each element in the GeoSeries that indicates whether an element is an NA value.</span>
-<span class="sd">            * True: An element is a NA value, such as None.</span>
-<span class="sd">            * False: An element is a non-missing value.</span>
+
+<span class="sd">            * *True*: An element is a NA value, such as None.</span>
+<span class="sd">            * *False*: An element is a non-missing value.</span>
 
 <span class="sd">        Examples</span>
 <span class="sd">        -------</span>
@@ -546,8 +547,9 @@
 <span class="sd">        -------</span>
 <span class="sd">        Series</span>
 <span class="sd">            Mask of boolean values for each element in GeoSeries that indicates whether an element is not an NA value.</span>
-<span class="sd">            * True: An element is a non-missing value.</span>
-<span class="sd">            * False: An element is a NA value, such as None.</span>
+
+<span class="sd">            * *True*: An element is a non-missing value.</span>
+<span class="sd">            * *False*: An element is a NA value, such as None.</span>
 
 <span class="sd">        Examples</span>
 <span class="sd">        -------</span>
@@ -574,8 +576,10 @@
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        Series</span>
-<span class="sd">            * *True:* All geometries are valid.</span>
-<span class="sd">            * *False:* At least one geometry is invalid.</span>
+<span class="sd">            Mask of boolean values for each element in the GeoSeries that indicates whether an element is valid.</span>
+
+<span class="sd">            * *True:* The geometry is valid.</span>
+<span class="sd">            * *False:* The geometry is invalid.</span>
 
 <span class="sd">        Examples</span>
 <span class="sd">        -------</span>
@@ -627,8 +631,10 @@
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        Series</span>
-<span class="sd">            * *True:* All geometries are simple.</span>
-<span class="sd">            * *False:* At least one geometry is not simple.</span>
+<span class="sd">            Mask of boolean values for each element in the GeoSeries that indicates whether an element is simple.</span>
+
+<span class="sd">            * *True:* The geometry is simple.</span>
+<span class="sd">            * *False:* The geometry is not simple.</span>
 
 <span class="sd">        Examples</span>
 <span class="sd">        -------</span>
@@ -722,14 +728,10 @@
 <span class="sd">        * For a geometry collection, the returned geometry is the smallest convex geometry that encloses all geometries in the collection.</span>
 <span class="sd">        * For a point or line, the returned geometry is the same as the original.</span>
 
-<span class="sd">        * For a polygon, the returned geometry is the smallest convex geometry that encloses it.</span>
-<span class="sd">        * For a geometry collection, the returned geometry is the smallest convex geometry that encloses all geometries in the collection.</span>
-<span class="sd">        * For a point or line, the returned geometry is the same as the original.</span>
-
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        GeoSeries</span>
-<span class="sd">            Convex Geometry of each geometry in the GeoSeries.</span>
+<span class="sd">            Sequence of convex geometries.</span>
 
 <span class="sd">        Examples</span>
 <span class="sd">        -------</span>
@@ -794,7 +796,7 @@
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        Series</span>
-<span class="sd">            Number of points for each geometry in the GeoSeries.</span>
+<span class="sd">            Number of points of each geometry in the GeoSeries.</span>
 
 <span class="sd">        Examples</span>
 <span class="sd">        -------</span>
@@ -812,12 +814,12 @@
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns the minimum bounding box for each geometry in the GeoSeries.</span>
 
-<span class="sd">        The bounding box is a rectangular geometry object, and its sides are parallel to the axes.</span>
+<span class="sd">        The bounding box is a rectangular geometry object, and its edges are parallel to the axes.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        GeoSeries</span>
-<span class="sd">            Minimum bounding box for each geometry in the GeoSeries.</span>
+<span class="sd">            Minimum bounding box of each geometry in the GeoSeries.</span>
 
 <span class="sd">        Examples</span>
 <span class="sd">        -------</span>
@@ -868,7 +870,7 @@
 <span class="sd">        ----------</span>
 <span class="sd">        crs : str</span>
 <span class="sd">            A string representation of CRS.</span>
-<span class="sd">            The string is made up of an authority code and a SRID (Spatial Reference Identifier), for example, ``&quot;EPSG:4326&quot;``.</span>
+<span class="sd">            The string is made up of an authority code and a SRID (Spatial Reference Identifier), for example, &quot;EPSG:4326&quot;.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -911,7 +913,7 @@
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        GeoSeries</span>
-<span class="sd">            Simplified geometries.</span>
+<span class="sd">            Sequence of simplified geometries.</span>
 
 <span class="sd">        Examples</span>
 <span class="sd">        -------</span>
@@ -930,20 +932,20 @@
 
 <div class="viewcode-block" id="GeoSeries.buffer"><a class="viewcode-back" href="../../../api_reference/standalone_api/api/arctern.GeoSeries.buffer.html#arctern.GeoSeries.buffer">[文档]</a>    <span class="k">def</span> <span class="nf">buffer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">distance</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        For each geometry, returns a new geometry at a distance of ``distance`` from it.</span>
+<span class="sd">        For each geometry, moves all of its points away from its centroid to construct a new geometry. The distance of movement is specified as ``distance``.</span>
 
-<span class="sd">        * If ``distance`` &amp;ge; 0, the new geometry is a scaled-up version outside the original goemetry.</span>
-<span class="sd">        * If ``distance`` &amp;le; 0, the new geometry is a scaled-down version inside the original goemetry.</span>
+<span class="sd">        * If ``distance`` &gt; 0, the new geometry is a scaled-up version outside the original geometry.</span>
+<span class="sd">        * If ``distance`` &lt; 0, the new geometry is a scaled-down version inside the original geometry.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        distance : float</span>
-<span class="sd">            The maximum distance between the returned geometry and the original.</span>
+<span class="sd">            Distance of movement.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        GeoSeries</span>
-<span class="sd">            GeoSeries that contains the new geometries at a distance of ``distance`` from the original.</span>
+<span class="sd">            Sequence of geometries.</span>
 
 <span class="sd">        Examples</span>
 <span class="sd">        -------</span>
@@ -973,7 +975,7 @@
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        GeoSeries</span>
-<span class="sd">            A GeoSeries that stores geometries with reduced precision.</span>
+<span class="sd">            Sequence of geometries with reduced precision.</span>
 
 <span class="sd">        Examples</span>
 <span class="sd">        -------</span>
@@ -995,7 +997,7 @@
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        GeoSeries</span>
-<span class="sd">            A GeoSeries with valid geometries.</span>
+<span class="sd">            Sequence of valid geometries.</span>
 
 <span class="sd">        Examples</span>
 <span class="sd">        -------</span>
@@ -1009,7 +1011,7 @@
 
 <div class="viewcode-block" id="GeoSeries.unary_union"><a class="viewcode-back" href="../../../api_reference/standalone_api/api/arctern.GeoSeries.unary_union.html#arctern.GeoSeries.unary_union">[文档]</a>    <span class="k">def</span> <span class="nf">unary_union</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Returns a geometry that represents the union of all geometries in the GeoSeries.</span>
+<span class="sd">        Calculates a geometry that represents the union of all geometries in the GeoSeries.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1037,7 +1039,7 @@
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        GeoSeries</span>
-<span class="sd">            Minimum bounding box for the union of all geometries in the GeoSeries.</span>
+<span class="sd">            A GeoSeries that contains only one geometry, which is the minimum bounding box for the union of all geometries in the first GeoSeries.</span>
 
 <span class="sd">        Examples</span>
 <span class="sd">        -------</span>
@@ -1062,6 +1064,7 @@
 <span class="sd">        ----------</span>
 <span class="sd">        other : geometry or GeoSeries</span>
 <span class="sd">            The geometry or GeoSeries to test whether it is intersected with the geometries in the first GeoSeries.</span>
+
 <span class="sd">            * If ``other`` is a geometry, this function tests the intersection relation between each geometry in the GeoSeries and ``other``.</span>
 <span class="sd">            * If ``other`` is a GeoSeries, this function tests the intersection relation between each geometry in the GeoSeries and the geometry with the same index in ``other``.</span>
 
@@ -1069,6 +1072,9 @@
 <span class="sd">        -------</span>
 <span class="sd">        Series</span>
 <span class="sd">            Mask of boolean values for each element in the GeoSeries that indicates whether it intersects the geometries in ``other``.</span>
+
+<span class="sd">            * *True*: The two geometries intersect each other.</span>
+<span class="sd">            * *False*: The two geometries do not intersect each other.</span>
 
 <span class="sd">        Examples</span>
 <span class="sd">        -------</span>
@@ -1097,6 +1103,7 @@
 <span class="sd">        ----------</span>
 <span class="sd">        other : geometry or GeoSeries</span>
 <span class="sd">            The geometry or GeoSeries to test whether the geometries in the first GeoSeries is within it.</span>
+
 <span class="sd">            * If ``other`` is a geometry, this function tests the &quot;within&quot; relation between each geometry in the GeoSeries and ``other``.</span>
 <span class="sd">            * If ``other`` is a GeoSeries, this function tests the &quot;within&quot; relation between each geometry in the GeoSeries and the geometry with the same index in ``other``.</span>
 
@@ -1104,6 +1111,8 @@
 <span class="sd">        -------</span>
 <span class="sd">        Series</span>
 <span class="sd">            Mask of boolean values for each element in the GeoSeries that indicates whether it is within the geometries in ``other``.</span>
+<span class="sd">            * *True*: The first geometry is within the other.</span>
+<span class="sd">            * *False*: The first geometry is not within the other.</span>
 
 <span class="sd">        Examples</span>
 <span class="sd">        -------</span>
@@ -1125,6 +1134,7 @@
 <span class="sd">        ----------</span>
 <span class="sd">        other : geometry or GeoSeries</span>
 <span class="sd">            The geometry or GeoSeries to test whether the geometries in the first GeoSeries contains it.</span>
+
 <span class="sd">            * If ``other`` is a geometry, this function tests the &quot;contain&quot; relation between each geometry in the GeoSeries and ``other``.</span>
 <span class="sd">            * If ``other`` is a GeoSeries, this function tests the &quot;contain&quot; relation between each geometry in the GeoSeries and the geometry with the same index in ``other``.</span>
 
@@ -1132,6 +1142,9 @@
 <span class="sd">        -------</span>
 <span class="sd">        Series</span>
 <span class="sd">            Mask of boolean values for each element in the GeoSeries that indicates whether it contains the geometries in ``other``.</span>
+
+<span class="sd">            * *True*: The first geometry contains the other.</span>
+<span class="sd">            * *False*: The first geometry does not contain the other.</span>
 
 <span class="sd">        Examples</span>
 <span class="sd">        -------</span>
@@ -1155,6 +1168,7 @@
 <span class="sd">        ----------</span>
 <span class="sd">        other : geometry or GeoSeries</span>
 <span class="sd">            The geometry or GeoSeries to test whether it crosses the geometries in the first GeoSeries.</span>
+
 <span class="sd">            * If ``other`` is a geometry, this function tests the &quot;cross&quot; relation between each geometry in the GeoSeries and ``other``.</span>
 <span class="sd">            * If ``other`` is a GeoSeries, this function tests the &quot;cross&quot; relation between each geometry in the GeoSeries and the geometry with the same index in ``other``.</span>
 
@@ -1162,6 +1176,9 @@
 <span class="sd">        -------</span>
 <span class="sd">        Series</span>
 <span class="sd">            Mask of boolean values for each element in the GeoSeries that indicates whether it crosses the geometries in ``other``.</span>
+
+<span class="sd">            * *True*: The first geometry crosses the other.</span>
+<span class="sd">            * *False*: The first geometry does not cross the other.</span>
 
 <span class="sd">        Examples</span>
 <span class="sd">        -------</span>
@@ -1185,6 +1202,7 @@
 <span class="sd">        ----------</span>
 <span class="sd">        other : geometry or GeoSeries</span>
 <span class="sd">            The geometry or GeoSeries to test whether it equals the geometries in the first GeoSeries.</span>
+
 <span class="sd">            * If ``other`` is a geometry, this function tests the equivalence relation between each geometry in the GeoSeries and ``other``.</span>
 <span class="sd">            * If ``other`` is a GeoSeries, this function tests the equivalence relation between each geometry in the GeoSeries and the geometry with the same index in ``other``.</span>
 
@@ -1192,6 +1210,9 @@
 <span class="sd">        -------</span>
 <span class="sd">        Series</span>
 <span class="sd">            Mask of boolean values for each element in the GeoSeries that indicates whether it equals the geometries in ``other``.</span>
+
+<span class="sd">            * *True*: The first geometry equals the other.</span>
+<span class="sd">            * *False*: The first geometry does not equal the other.</span>
 
 <span class="sd">        Examples</span>
 <span class="sd">        -------</span>
@@ -1225,6 +1246,7 @@
 <span class="sd">        ----------</span>
 <span class="sd">        other : geometry or GeoSeries</span>
 <span class="sd">            The geometry or GeoSeries to test whether it touches the geometries in the first GeoSeries.</span>
+
 <span class="sd">            * If ``other`` is a geometry, this function tests the &quot;touch&quot; relation between each geometry in the GeoSeries and ``other``.</span>
 <span class="sd">            * If ``other`` is a GeoSeries, this function tests the &quot;touch&quot; relation between each geometry in the GeoSeries and the geometry with the same index in ``other``.</span>
 
@@ -1232,6 +1254,9 @@
 <span class="sd">        -------</span>
 <span class="sd">        Series</span>
 <span class="sd">            Mask of boolean values for each element in the GeoSeries that indicates whether it touches the geometries in ``other``.</span>
+
+<span class="sd">            * *True*: The first geometry touches the other.</span>
+<span class="sd">            * *False*: The first geometry does not touch the other.</span>
 
 <span class="sd">        Examples</span>
 <span class="sd">        -------</span>
@@ -1255,6 +1280,7 @@
 <span class="sd">        ----------</span>
 <span class="sd">        other : geometry or GeoSeries</span>
 <span class="sd">            The geometry or GeoSeries to test whether it overlaps the geometries in the first GeoSeries.</span>
+
 <span class="sd">            * If ``other`` is a geometry, this function tests the &quot;overlap&quot; relation between each geometry in the GeoSeries and ``other``.</span>
 <span class="sd">            * If ``other`` is a GeoSeries, this function tests the &quot;overlap&quot; relation between each geometry in the GeoSeries and the geometry with the same index in ``other``.</span>
 
@@ -1262,6 +1288,9 @@
 <span class="sd">        -------</span>
 <span class="sd">        Series</span>
 <span class="sd">            Mask of boolean values for each element in the GeoSeries that indicates whether it overlaps the geometries in ``other``.</span>
+
+<span class="sd">            * *True*: The first geometry overlaps the other.</span>
+<span class="sd">            * *False*: The first geometry does not overlap the other.</span>
 
 <span class="sd">        Examples</span>
 <span class="sd">        -------</span>
@@ -1279,15 +1308,18 @@
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        For each geometry in the GeoSeries and the corresponding geometry given in ``other``, calculates the minimum 2D Cartesian (planar) distance between them.</span>
 
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
 <span class="sd">        other : geometry or GeoSeries</span>
-<span class="sd">            The geometry or GeoSeries to calculate whether the distance between it and the geometries in the first GeoSeries.</span>
+<span class="sd">            The geometry or GeoSeries to calculate the distance between it and the geometries in the first GeoSeries.</span>
+
 <span class="sd">            * If ``other`` is a geometry, this function calculates the distance between each geometry in the GeoSeries and ``other``.</span>
 <span class="sd">            * If ``other`` is a GeoSeries, this function calculates the distance between each geometry in the GeoSeries and the geometry with the same index in ``other``.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        Series</span>
-<span class="sd">            A Series contains the distances between each geometry in the GeoSeries and the corresponding geometry given in ``other``.</span>
+<span class="sd">            Distance between each geometry in the GeoSeries and the corresponding geometry given in ``other``.</span>
 
 <span class="sd">        Examples</span>
 <span class="sd">        -------</span>
@@ -1314,14 +1346,15 @@
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        other : geometry or GeoSeries</span>
-<span class="sd">            The geometry or GeoSeries to calculate whether the spherical distance between it and the geometries in the first GeoSeries.</span>
+<span class="sd">            The geometry or GeoSeries to calculate the spherical distance between it and the geometries in the first GeoSeries.</span>
+
 <span class="sd">            * If ``other`` is a geometry, this function calculates the spherical distance between each geometry in the GeoSeries and ``other``. The ``crs`` of ``other`` is &quot;EPSG:4326&quot; bu default.</span>
 <span class="sd">            * If ``other`` is a GeoSeries, this function calculates the spherical distance between each geometry in the GeoSeries and the geometry with the same index in ``other``.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        Series</span>
-<span class="sd">            A Series contains the spherical distance between each geometry in the GeoSeries and the corresponding geometry given in ``other``.</span>
+<span class="sd">            Spherical distance between each geometry in the GeoSeries and the corresponding geometry given in ``other``.</span>
 
 <span class="sd">        Notes</span>
 <span class="sd">        -------</span>
@@ -1342,18 +1375,25 @@
 
 <div class="viewcode-block" id="GeoSeries.hausdorff_distance"><a class="viewcode-back" href="../../../api_reference/standalone_api/api/arctern.GeoSeries.hausdorff_distance.html#arctern.GeoSeries.hausdorff_distance">[文档]</a>    <span class="k">def</span> <span class="nf">hausdorff_distance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Returns the Hausdorff distance between each geometry and other.</span>
+<span class="sd">        For each point in the GeoSeries and the corresponding point given in ``other``, calculates the Hausdorff distance between them.</span>
 
-<span class="sd">        This is a measure of how similar or dissimilar 2 geometries are.</span>
+<span class="sd">        Hausdorff distance is a measure of how similar two geometries are.</span>
 
-<span class="sd">        :type other: scalar bytes object geometry or GeoSeries</span>
-<span class="sd">                     Can be scalar WKB formed bytes object, or a GeoSeries.</span>
-<span class="sd">        :param other: The geometries to calculate the hausdorff distance to each geometry.</span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        other : geometry or GeoSeries</span>
+<span class="sd">            The geometry or GeoSeries to calculate the Hausdorff distance between it and the geometries in the first GeoSeries.</span>
 
-<span class="sd">        :rtype: Series(dtype: float64)</span>
-<span class="sd">        :return : A Series contains the hausdorff distance between each geometry and other.</span>
+<span class="sd">            * If ``other`` is a geometry, this function calculates the Hausdorff distance between each geometry in the GeoSeries and ``other``.</span>
+<span class="sd">            * If ``other`` is a GeoSeries, this function calculates the Hausdorff distance between each geometry in the GeoSeries and the geometry with the same index in ``other``.</span>
 
-<span class="sd">        :example:</span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Series</span>
+<span class="sd">            Hausdorff distance between each geometry in the GeoSeries and the corresponding geometry given in ``other``.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        -------</span>
 <span class="sd">        &gt;&gt;&gt; from arctern import GeoSeries</span>
 <span class="sd">        &gt;&gt;&gt; s1 = GeoSeries([&quot;POLYGON((0 0 ,0 1, 1 1, 1 0, 0 0))&quot;, &quot;POINT(0 0)&quot;])</span>
 <span class="sd">        &gt;&gt;&gt; s2 = GeoSeries([&quot;POLYGON((0 0 ,0 2, 1 1, 1 0, 0 0))&quot;, &quot;POINT(0 1)&quot;])</span>
@@ -1370,16 +1410,23 @@
 
 <div class="viewcode-block" id="GeoSeries.intersection"><a class="viewcode-back" href="../../../api_reference/standalone_api/api/arctern.GeoSeries.intersection.html#arctern.GeoSeries.intersection">[文档]</a>    <span class="k">def</span> <span class="nf">intersection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Calculate the point set intersection between each geometry and other.</span>
+<span class="sd">        For each point in the GeoSeries and the corresponding point given in ``other``, calculates the intersection of them.</span>
 
-<span class="sd">        :type other: scalar bytes object geometry or GeoSeries.</span>
-<span class="sd">                      Can be scalar WKB formed bytes object, or a GeoSeries.</span>
-<span class="sd">        :param other: The geometries to calculate the intersection point set between each geometry.</span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        other : geometry or GeoSeries</span>
+<span class="sd">            The geometry or GeoSeries to calculate the intersection of it and the geometries in the first GeoSeries.</span>
 
-<span class="sd">        :rtype: GeoSeries</span>
-<span class="sd">        :return: A GeoSeries contains geometries.</span>
+<span class="sd">            * If ``other`` is a geometry, this function calculates the intersection of each geometry in the GeoSeries and ``other``.</span>
+<span class="sd">            * If ``other`` is a GeoSeries, this function calculates the intersection of each geometry in the GeoSeries and the geometry with the same index in ``other``.</span>
 
-<span class="sd">        :example:</span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        GeoSeries</span>
+<span class="sd">            A GeoSeries that contains only one geometry, which is the intersection of each geometry in the GeoSeries and the corresponding geometry given in ``other``.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        -------</span>
 <span class="sd">        &gt;&gt;&gt; from arctern import GeoSeries</span>
 <span class="sd">        &gt;&gt;&gt; s1 = GeoSeries([&quot;POLYGON ((1 1,1 2,2 2,2 1,1 1))&quot;])</span>
 <span class="sd">        &gt;&gt;&gt; s2 = GeoSeries([&quot;POLYGON ((2 1,3 1,3 2,2 2,2 1))&quot;])</span>
@@ -1395,12 +1442,15 @@
 
 <div class="viewcode-block" id="GeoSeries.to_wkt"><a class="viewcode-back" href="../../../api_reference/standalone_api/api/arctern.GeoSeries.to_wkt.html#arctern.GeoSeries.to_wkt">[文档]</a>    <span class="k">def</span> <span class="nf">to_wkt</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Transform each geometry to WKT formed string.</span>
+<span class="sd">        Transforms all geometries in the GeoSeries to `WKT &lt;https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry&gt;`_ strings.</span>
 
-<span class="sd">        :rtype: Series(dtype: object)</span>
-<span class="sd">        :return: A Series contains geometries as WKT formed string.</span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Series</span>
+<span class="sd">            Sequence of geometries in WKT format.</span>
 
-<span class="sd">        :example:</span>
+<span class="sd">        Examples</span>
+<span class="sd">        -------</span>
 <span class="sd">        &gt;&gt;&gt; from arctern import GeoSeries</span>
 <span class="sd">        &gt;&gt;&gt; s = GeoSeries([&quot;POINT(1 1)&quot;])</span>
 <span class="sd">        &gt;&gt;&gt; s</span>
@@ -1413,13 +1463,16 @@
         <span class="k">return</span> <span class="n">_property_op</span><span class="p">(</span><span class="n">arctern</span><span class="o">.</span><span class="n">ST_AsText</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="GeoSeries.to_wkb"><a class="viewcode-back" href="../../../api_reference/standalone_api/api/arctern.GeoSeries.to_wkb.html#arctern.GeoSeries.to_wkb">[文档]</a>    <span class="k">def</span> <span class="nf">to_wkb</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Transform each geometry to WKB formed bytes object.</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Transforms all geometries in the GeoSeries to `WKB &lt;https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry#Well-known_binary&gt;`_ strings.</span>
 
-<span class="sd">        :rtype: Series(dtype: object)</span>
-<span class="sd">        :return: A Series contains geometries as WKB formed bytes object.</span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Series</span>
+<span class="sd">            Sequence of geometries in WKB format.</span>
 
-<span class="sd">        :example:</span>
+<span class="sd">        Examples</span>
+<span class="sd">        -------</span>
 <span class="sd">        &gt;&gt;&gt; from arctern import GeoSeries</span>
 <span class="sd">        &gt;&gt;&gt; s = GeoSeries([&quot;POINT(1 1)&quot;])</span>
 <span class="sd">        &gt;&gt;&gt; s.to_wkb()</span>
@@ -1430,12 +1483,15 @@
 
 <div class="viewcode-block" id="GeoSeries.as_geojson"><a class="viewcode-back" href="../../../api_reference/standalone_api/api/arctern.GeoSeries.as_geojson.html#arctern.GeoSeries.as_geojson">[文档]</a>    <span class="k">def</span> <span class="nf">as_geojson</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Transform each to GeoJSON format string.</span>
+<span class="sd">        Transforms all geometries in the GeoSeries to GeoJSON strings.</span>
 
-<span class="sd">        :rtype: Series(dtype: object)</span>
-<span class="sd">        :return: A Series contains geometries as GeoJSON formed string.</span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Series</span>
+<span class="sd">            Sequence of geometries in GeoJSON format.</span>
 
-<span class="sd">        :example:</span>
+<span class="sd">        Examples</span>
+<span class="sd">        -------</span>
 <span class="sd">        &gt;&gt;&gt; from arctern import GeoSeries</span>
 <span class="sd">        &gt;&gt;&gt; s = GeoSeries([&quot;POINT(1 1)&quot;])</span>
 <span class="sd">        &gt;&gt;&gt; s</span>
@@ -1449,11 +1505,15 @@
 
 <div class="viewcode-block" id="GeoSeries.to_geopandas"><a class="viewcode-back" href="../../../api_reference/standalone_api/api/arctern.GeoSeries.to_geopandas.html#arctern.GeoSeries.to_geopandas">[文档]</a>    <span class="k">def</span> <span class="nf">to_geopandas</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Transform each arctern GeoSeries to GeoPandas GeoSeries.</span>
+<span class="sd">        Transforms an arctern.GeoSeries object to a geopandas.GeoSeries object.</span>
 
-<span class="sd">        :rtype: GeoPandas GeoSeries(dtype: geometry)</span>
-<span class="sd">        :return: A GeoPandas GeoSeries.</span>
-<span class="sd">        :example:</span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        geopandas.GeoSeries</span>
+<span class="sd">            A geopandas.GeoSeries object.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        -------</span>
 <span class="sd">        &gt;&gt;&gt; from arctern import GeoSeries</span>
 <span class="sd">        &gt;&gt;&gt; s = GeoSeries([&quot;POINT(1 1)&quot;])</span>
 <span class="sd">        &gt;&gt;&gt; s</span>
@@ -1471,33 +1531,38 @@
 <div class="viewcode-block" id="GeoSeries.polygon_from_envelope"><a class="viewcode-back" href="../../../api_reference/standalone_api/api/arctern.GeoSeries.polygon_from_envelope.html#arctern.GeoSeries.polygon_from_envelope">[文档]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">polygon_from_envelope</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">min_x</span><span class="p">,</span> <span class="n">min_y</span><span class="p">,</span> <span class="n">max_x</span><span class="p">,</span> <span class="n">max_y</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Construct polygon(rectangle) geometries from arr_min_x, arr_min_y, arr_max_x,</span>
-<span class="sd">        arr_max_y and special coordinate system. The edges of polygon are parallel to coordinate axis.</span>
+<span class="sd">        Constructs rectangular POLYGON objects within the given spatial range. The edges of the rectangles are parallel to the coordinate axises.</span>
 
-<span class="sd">        :type min_x: Series(dtype: float64)</span>
-<span class="sd">        :param min_x: The minimum value of x coordinate of the rectangles.</span>
+<span class="sd">        ``min_x``, ``min_y``, ``max_x``, and ``max_y`` are Series so that polygons can be created in batch. The number of values in the four Series should be the same.</span>
 
-<span class="sd">        :type min_y: Series(dtype: float64)</span>
-<span class="sd">        :param min_y: The minimum value of y coordinate of the rectangles.</span>
+<span class="sd">        Suppose that the demension of ``min_x`` is *N*, the returned GeoSeries of this function should contains *N* rectangles. The shape and position of the rectangle with index *i* is defined by its bottom left vertex *(min_x[i], min_y[i])* and top right vertex *(max_x[i], max_y[i])*.</span>
 
-<span class="sd">        :type max_x: Series(dtype: float64)</span>
-<span class="sd">        :param max_x: The maximum value of x coordinate of the rectangles.</span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        min_x : Series</span>
+<span class="sd">            The minimum x coordinates of the rectangles.</span>
+<span class="sd">        min_y : Series</span>
+<span class="sd">            The minimum y coordinates of the rectangles.</span>
+<span class="sd">        max_x : Series</span>
+<span class="sd">            The maximum x coordinates of the rectangles.</span>
+<span class="sd">        max_y : Series</span>
+<span class="sd">            The maximum y coordinates of the rectangles.</span>
+<span class="sd">        crs : str, optional</span>
+<span class="sd">            A string representation of Coordinate Reference System (CRS).</span>
+<span class="sd">            The string is made up of an authority code and a SRID (Spatial Reference Identifier), for example, &quot;EPSG:4326&quot;.</span>
 
-<span class="sd">        :type max_y: Series(dtype: float64)</span>
-<span class="sd">        :param max_y: The maximum value of y coordinate of the rectangles.</span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        GeoSeries</span>
+<span class="sd">            Sequence of rectangular POLYGON objects within the given spatial range.</span>
 
-<span class="sd">        :type crs: string, optional</span>
-<span class="sd">        :param crs: Must be SRID format string.</span>
-
-<span class="sd">        :rtype: GeoSeries</span>
-<span class="sd">        :return: A GeoSeries contains geometries.</span>
-
-<span class="sd">        :example:</span>
+<span class="sd">        Examples</span>
+<span class="sd">        -------</span>
 <span class="sd">        &gt;&gt;&gt; from pandas import Series</span>
 <span class="sd">        &gt;&gt;&gt; from arctern import GeoSeries</span>
 <span class="sd">        &gt;&gt;&gt; min_x = Series([0.0, 1.0])</span>
 <span class="sd">        &gt;&gt;&gt; max_x = Series([2.0, 1.5])</span>
-<span class="sd">        &gt;&gt;&gt; min_y = Series([0.0, 1.0])</span>
+<span class="sd">        &gt;&gt;&gt; min_y = Series([0.0, 1.0])  </span>
 <span class="sd">        &gt;&gt;&gt; max_y = Series([1.0, 1.5])</span>
 <span class="sd">        &gt;&gt;&gt; GeoSeries.polygon_from_envelope(min_x, min_y, max_x, max_y)</span>
 <span class="sd">        0                POLYGON ((0 0,0 1,2 1,2 0,0 0))</span>
@@ -1510,21 +1575,29 @@
 <div class="viewcode-block" id="GeoSeries.point"><a class="viewcode-back" href="../../../api_reference/standalone_api/api/arctern.GeoSeries.point.html#arctern.GeoSeries.point">[文档]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">point</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Construct Point geometries according to the coordinates.</span>
+<span class="sd">        Constructs POINT objects based on the given coordinates.</span>
 
-<span class="sd">        :type x: Series(dtype: float64)</span>
-<span class="sd">        :param x: Abscissa of the point.</span>
+<span class="sd">        ``x`` and ``y`` are Series so that points can be created in batch. The number of values in the two Series should be the same.</span>
 
-<span class="sd">        :type y: Series(dtype: float64)</span>
-<span class="sd">        :param y: Ordinate of the point.</span>
+<span class="sd">        Suppose that the demension of ``x`` is *N*, the returned GeoSeries of this function should contains *N* points. The position of the *i*th point is defined by its coordinates *(x, y).*</span>
 
-<span class="sd">        :type crs: string, optional</span>
-<span class="sd">        :param crs: Must be SRID format string.</span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        x : Series</span>
+<span class="sd">            X coordinates of points.</span>
+<span class="sd">        y : Series</span>
+<span class="sd">            Y coordinates of points.</span>
+<span class="sd">        crs : str, optional</span>
+<span class="sd">            A string representation of Coordinate Reference System (CRS).</span>
+<span class="sd">            The string is made up of an authority code and a SRID (Spatial Reference Identifier), for example, &quot;EPSG:4326&quot;.</span>
 
-<span class="sd">        :rtype: GeoSeries</span>
-<span class="sd">        :return: A GeoSeries contains point geometries.</span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        GeoSeries</span>
+<span class="sd">            Sequence of POINT objects.</span>
 
-<span class="sd">        :example:</span>
+<span class="sd">        Examples</span>
+<span class="sd">        -------</span>
 <span class="sd">        &gt;&gt;&gt; from pandas import Series</span>
 <span class="sd">        &gt;&gt;&gt; from arctern import GeoSeries</span>
 <span class="sd">        &gt;&gt;&gt; x = Series([1.3, 2.5])</span>
@@ -1540,18 +1613,25 @@
 <div class="viewcode-block" id="GeoSeries.geom_from_geojson"><a class="viewcode-back" href="../../../api_reference/standalone_api/api/arctern.GeoSeries.geom_from_geojson.html#arctern.GeoSeries.geom_from_geojson">[文档]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">geom_from_geojson</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">json</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Construct geometry from the GeoJSON representation string.</span>
+<span class="sd">        Constructs geometries from GeoJSON strings.</span>
 
-<span class="sd">        :type json: Series(dtype: object)</span>
-<span class="sd">        :param json: Geometries in json format.</span>
+<span class="sd">        ``json`` is Series so that geometries can be created in batch.</span>
 
-<span class="sd">        :type crs: string, optional</span>
-<span class="sd">        :param crs: Must be SRID format string.</span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        json : Series</span>
+<span class="sd">            String representations of geometries in JSON format.</span>
+<span class="sd">        crs : str, optional</span>
+<span class="sd">            A string representation of Coordinate Reference System (CRS).</span>
+<span class="sd">            The string is made up of an authority code and a SRID (Spatial Reference Identifier), for example, &quot;EPSG:4326&quot;.</span>
 
-<span class="sd">        :rtype: GeoSeries</span>
-<span class="sd">        :return: A GeoSeries contains geometries.</span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        GeoSeries</span>
+<span class="sd">            Sequence of geometries.</span>
 
-<span class="sd">        :example:</span>
+<span class="sd">        Examples</span>
+<span class="sd">        -------</span>
 <span class="sd">        &gt;&gt;&gt; from pandas import Series</span>
 <span class="sd">        &gt;&gt;&gt; from arctern import GeoSeries</span>
 <span class="sd">        &gt;&gt;&gt; json = Series([&#39;{&quot;type&quot;:&quot;LineString&quot;,&quot;coordinates&quot;:[[1,2],[4,5],[7,8]]}&#39;])</span>
@@ -1565,15 +1645,20 @@
 <div class="viewcode-block" id="GeoSeries.from_geopandas"><a class="viewcode-back" href="../../../api_reference/standalone_api/api/arctern.GeoSeries.from_geopandas.html#arctern.GeoSeries.from_geopandas">[文档]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">from_geopandas</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Construct geometries from geopandas GeoSeries.</span>
+<span class="sd">        Constructs an arctern.GeoSeries object from a geopandas.GeoSeries object.</span>
 
-<span class="sd">        :rtype data: geopandas.GeoSeries</span>
-<span class="sd">        :param data: Source geometries data.</span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        data : geopandas.GeoSeries</span>
+<span class="sd">            A geopandas.GeoSeries object.</span>
 
-<span class="sd">        :rtype: arctern.GeoSeries</span>
-<span class="sd">        :return: A arctern.GeoSeries constructed from geopandas.GeoSeries.</span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        arctern.GeoSeries</span>
+<span class="sd">            An arctern.GeoSeries object.</span>
 
-<span class="sd">        :example:</span>
+<span class="sd">        Examples</span>
+<span class="sd">        -------</span>
 <span class="sd">        &gt;&gt;&gt; import geopandas as gpd</span>
 <span class="sd">        &gt;&gt;&gt; from shapely.geometry import Point, Polygon</span>
 <span class="sd">        &gt;&gt;&gt; from arctern import GeoSeries</span>
@@ -1615,7 +1700,7 @@
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 6月 10, 2020.
+        最后更新于 6月 13, 2020.
       </span>
 
     </p>

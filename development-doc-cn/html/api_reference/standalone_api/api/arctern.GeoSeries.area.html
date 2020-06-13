@@ -185,19 +185,19 @@
 <dl class="py method">
 <dt id="arctern.GeoSeries.area">
 <em class="property">property </em><code class="sig-prename descclassname">GeoSeries.</code><code class="sig-name descname">area</code><a class="headerlink" href="#arctern.GeoSeries.area" title="永久链接至目标">¶</a></dt>
-<dd><p>计算 GeoSeries 中每个几何体的 2D 笛卡尔（平面）面积。</p>
-<p>计算几何体面积的方法如下：</p>
+<dd><p>Calculates the 2D Cartesian (planar) area of each geometry in the GeoSeries.</p>
+<p>The ways to calculate the area of geometries are as follows:</p>
 <ul class="simple">
 <li><p>POINT / MULTIPOINT / LINESTRING / MULTILINESTRING / CIRCULARSTRING: 0</p></li>
-<li><p>POLYGON: 单个多边形的面积。</p></li>
-<li><p>MULTIPOLYGON: 多个多边形的面积总和。</p></li>
-<li><p>CURVEPOLYGON: 单个曲线多边形的面积。</p></li>
-<li><p>MULTICURVE: 多个曲线多边形的面积总和。</p></li>
-<li><p>MULTISURFACE / COMPOUNDCURVE / GEOMETRYCOLLECTION: 对于 3 种类型中的几何体集合，计算集合中所有几何体的面积之和。</p></li>
+<li><p>POLYGON: Area of a single polygon.</p></li>
+<li><p>MULTIPOLYGON: Sum of area of multiple polygons.</p></li>
+<li><p>CURVEPOLYGON: Area of a single curvilinear polygon.</p></li>
+<li><p>MULTICURVE: Sum of area of multiple curvilinear polygons.</p></li>
+<li><p>MULTISURFACE / COMPOUNDCURVE / GEOMETRYCOLLECTION: For a geometry collection among the 3 types, calculates the sum of area of all geometries in the collection.</p></li>
 </ul>
 <dl class="field-list simple">
 <dt class="field-odd">返回</dt>
-<dd class="field-odd"><p>GeoSeries 中每个几何体的 2D 笛卡尔（平面）面积。</p>
+<dd class="field-odd"><p>2D Cartesian (planar) area of each geometry in the GeoSeries.</p>
 </dd>
 <dt class="field-even">返回类型</dt>
 <dd class="field-even"><p>Series</p>
@@ -238,7 +238,7 @@
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 6月 10, 2020.
+        最后更新于 6月 13, 2020.
       </span>
 
     </p>
