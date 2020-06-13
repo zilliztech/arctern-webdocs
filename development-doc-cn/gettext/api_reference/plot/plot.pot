@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-10 19:31+0800\n"
+"POT-Creation-Date: 2020-06-13 11:47+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,7 +25,7 @@ msgid ":obj:`arctern.plot.plot_geometry <arctern.plot.plot_geometry>`\\ \\(ax\\,
 msgstr ""
 
 #: ../../source/api_reference/plot/plot.rst:15:<autosummary>:1
-msgid "Plot a collection of geometries to `ax`."
+msgid "Plots a collection of geometries."
 msgstr ""
 
 #: ../../source/api_reference/plot/plot.rst:15:<autosummary>:1
@@ -33,7 +33,7 @@ msgid ":obj:`arctern.plot.pointmap <arctern.plot.pointmap>`\\ \\(ax\\, points\\,
 msgstr ""
 
 #: ../../source/api_reference/plot/plot.rst:15:<autosummary>:1
-msgid "Plot pointmap in Matplotlib"
+msgid "Plots a point map in Matplotlib."
 msgstr ""
 
 #: ../../source/api_reference/plot/plot.rst:15:<autosummary>:1
@@ -41,7 +41,7 @@ msgid ":obj:`arctern.plot.weighted_pointmap <arctern.plot.weighted_pointmap>`\\ 
 msgstr ""
 
 #: ../../source/api_reference/plot/plot.rst:15:<autosummary>:1
-msgid "Plot weighted pointmap in Matplotlib"
+msgid "Plots a weighted point map in Matplotlib."
 msgstr ""
 
 #: ../../source/api_reference/plot/plot.rst:15:<autosummary>:1
@@ -49,7 +49,7 @@ msgid ":obj:`arctern.plot.heatmap <arctern.plot.heatmap>`\\ \\(ax\\, points\\, w
 msgstr ""
 
 #: ../../source/api_reference/plot/plot.rst:15:<autosummary>:1
-msgid "Plot heatmap in matplotlibs"
+msgid "Plots a heat map in matplotlib."
 msgstr ""
 
 #: ../../source/api_reference/plot/plot.rst:15:<autosummary>:1
@@ -57,7 +57,7 @@ msgid ":obj:`arctern.plot.choroplethmap <arctern.plot.choroplethmap>`\\ \\(ax\\,
 msgstr ""
 
 #: ../../source/api_reference/plot/plot.rst:15:<autosummary>:1
-msgid "Render region boundaries in matplotlib"
+msgid "Plots a choropleth map in matplotlib."
 msgstr ""
 
 #: ../../source/api_reference/plot/plot.rst:15:<autosummary>:1
@@ -65,7 +65,7 @@ msgid ":obj:`arctern.plot.iconviz <arctern.plot.iconviz>`\\ \\(ax\\, points\\, .
 msgstr ""
 
 #: ../../source/api_reference/plot/plot.rst:15:<autosummary>:1
-msgid "Plot points as icons on map in Matplotlib"
+msgid "Plots an icon map in Matplotlib."
 msgstr ""
 
 #: ../../source/api_reference/plot/plot.rst:15:<autosummary>:1
@@ -73,5 +73,5 @@ msgid ":obj:`arctern.plot.fishnetmap <arctern.plot.fishnetmap>`\\ \\(ax\\, point
 msgstr ""
 
 #: ../../source/api_reference/plot/plot.rst:15:<autosummary>:1
-msgid "Plot fishnetmap in Matplotlib"
+msgid "Plots a fishnet map in Matplotlib."
 msgstr ""

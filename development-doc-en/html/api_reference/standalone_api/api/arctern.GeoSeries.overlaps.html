@@ -186,12 +186,20 @@
 <p>&quot;Spatially overlap&quot; here means two geometries intersect but one does not completely contain another.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>other</strong> (<em>geometry</em><em> or </em><a class="reference internal" href="arctern.GeoSeries.html#arctern.GeoSeries" title="arctern.GeoSeries"><em>GeoSeries</em></a>) -- The geometry or GeoSeries to test whether it overlaps the geometries in the first GeoSeries.
-* If <code class="docutils literal notranslate"><span class="pre">other</span></code> is a geometry, this function tests the &quot;overlap&quot; relation between each geometry in the GeoSeries and <code class="docutils literal notranslate"><span class="pre">other</span></code>.
-* If <code class="docutils literal notranslate"><span class="pre">other</span></code> is a GeoSeries, this function tests the &quot;overlap&quot; relation between each geometry in the GeoSeries and the geometry with the same index in <code class="docutils literal notranslate"><span class="pre">other</span></code>.</p>
+<dd class="field-odd"><p><strong>other</strong> (<em>geometry</em><em> or </em><a class="reference internal" href="arctern.GeoSeries.html#arctern.GeoSeries" title="arctern.GeoSeries"><em>GeoSeries</em></a>) -- <p>The geometry or GeoSeries to test whether it overlaps the geometries in the first GeoSeries.</p>
+<ul class="simple">
+<li><p>If <code class="docutils literal notranslate"><span class="pre">other</span></code> is a geometry, this function tests the &quot;overlap&quot; relation between each geometry in the GeoSeries and <code class="docutils literal notranslate"><span class="pre">other</span></code>.</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">other</span></code> is a GeoSeries, this function tests the &quot;overlap&quot; relation between each geometry in the GeoSeries and the geometry with the same index in <code class="docutils literal notranslate"><span class="pre">other</span></code>.</p></li>
+</ul>
+</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Mask of boolean values for each element in the GeoSeries that indicates whether it overlaps the geometries in <code class="docutils literal notranslate"><span class="pre">other</span></code>.</p>
+<dd class="field-even"><p><p>Mask of boolean values for each element in the GeoSeries that indicates whether it overlaps the geometries in <code class="docutils literal notranslate"><span class="pre">other</span></code>.</p>
+<ul class="simple">
+<li><p><em>True</em>: The first geometry overlaps the other.</p></li>
+<li><p><em>False</em>: The first geometry does not overlap the other.</p></li>
+</ul>
+</p>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>Series</p>
@@ -233,7 +241,7 @@
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        Last updated on Jun 10, 2020.
+        Last updated on Jun 13, 2020.
       </span>
 
     </p>

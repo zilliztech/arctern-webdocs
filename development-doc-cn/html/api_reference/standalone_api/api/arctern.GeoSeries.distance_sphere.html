@@ -179,23 +179,26 @@
 <dl class="py method">
 <dt id="arctern.GeoSeries.distance_sphere">
 <code class="sig-prename descclassname">GeoSeries.</code><code class="sig-name descname">distance_sphere</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/arctern/geoseries/geoseries.html#GeoSeries.distance_sphere"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#arctern.GeoSeries.distance_sphere" title="永久链接至目标">¶</a></dt>
-<dd><p>For each point in the GeoSeries and the corresponding point given in <code class="docutils literal notranslate"><span class="pre">other</span></code>, calculates the minimum spherical distance between them.</p>
-<p>This function uses a spherical earth and radius derived from the spheroid defined by the SRID.</p>
+<dd><p>对于 GeoSeries 中的每个几何体以及 <code class="docutils literal notranslate"><span class="pre">other</span></code> 中给出的对应几何体，计算它们之间的最小球面距离。</p>
+<p>此方法使用从 SRID 定义的球体派生的球形地球和半径。</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
-<dd class="field-odd"><p><strong>other</strong> (<em>geometry</em><em> or </em><a class="reference internal" href="arctern.GeoSeries.html#arctern.GeoSeries" title="arctern.GeoSeries"><em>GeoSeries</em></a>) – The geometry or GeoSeries to calculate whether the spherical distance between it and the geometries in the first GeoSeries.
-* If <code class="docutils literal notranslate"><span class="pre">other</span></code> is a geometry, this function calculates the spherical distance between each geometry in the GeoSeries and <code class="docutils literal notranslate"><span class="pre">other</span></code>. The <code class="docutils literal notranslate"><span class="pre">crs</span></code> of <code class="docutils literal notranslate"><span class="pre">other</span></code> is “EPSG:4326” bu default.
-* If <code class="docutils literal notranslate"><span class="pre">other</span></code> is a GeoSeries, this function calculates the spherical distance between each geometry in the GeoSeries and the geometry with the same index in <code class="docutils literal notranslate"><span class="pre">other</span></code>.</p>
+<dd class="field-odd"><p><strong>other</strong> (<em>geometry</em><em> or </em><a class="reference internal" href="arctern.GeoSeries.html#arctern.GeoSeries" title="arctern.GeoSeries"><em>GeoSeries</em></a>) – <p>The geometry or GeoSeries to calculate the spherical distance between it and the geometries in the first GeoSeries.</p>
+<ul class="simple">
+<li><p>If <code class="docutils literal notranslate"><span class="pre">other</span></code> is a geometry, this function calculates the spherical distance between each geometry in the GeoSeries and <code class="docutils literal notranslate"><span class="pre">other</span></code>. The <code class="docutils literal notranslate"><span class="pre">crs</span></code> of <code class="docutils literal notranslate"><span class="pre">other</span></code> is “EPSG:4326” bu default.</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">other</span></code> is a GeoSeries, this function calculates the spherical distance between each geometry in the GeoSeries and the geometry with the same index in <code class="docutils literal notranslate"><span class="pre">other</span></code>.</p></li>
+</ul>
+</p>
 </dd>
 <dt class="field-even">返回</dt>
-<dd class="field-even"><p>A Series contains the spherical distance between each geometry in the GeoSeries and the corresponding geometry given in <code class="docutils literal notranslate"><span class="pre">other</span></code>.</p>
+<dd class="field-even"><p>Spherical distance between each geometry in the GeoSeries and the corresponding geometry given in <code class="docutils literal notranslate"><span class="pre">other</span></code>.</p>
 </dd>
 <dt class="field-odd">返回类型</dt>
 <dd class="field-odd"><p>Series</p>
 </dd>
 </dl>
 <p class="rubric">提示</p>
-<p>Only the longitude and latitude coordinate reference system (“EPSG:4326”) can be used to calculate spherical distance.</p>
+<p>只有经度和纬度坐标参考系（”EPSG:4326”）才能用于计算球面距离。</p>
 <p class="rubric">实际案例</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">GeoSeries</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s1</span> <span class="o">=</span> <span class="n">GeoSeries</span><span class="p">([</span><span class="s2">&quot;POINT(10 2)&quot;</span><span class="p">],</span> <span class="n">crs</span><span class="o">=</span><span class="s2">&quot;EPSG:4326&quot;</span><span class="p">)</span>
@@ -231,7 +234,7 @@
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 6月 10, 2020.
+        最后更新于 6月 13, 2020.
       </span>
 
     </p>

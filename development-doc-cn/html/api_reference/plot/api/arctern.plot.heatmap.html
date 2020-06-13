@@ -173,26 +173,23 @@
 <dl class="py function">
 <dt id="arctern.plot.heatmap">
 <code class="sig-prename descclassname">arctern.plot.</code><code class="sig-name descname">heatmap</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ax</span></em>, <em class="sig-param"><span class="n">points</span></em>, <em class="sig-param"><span class="n">weights</span></em>, <em class="sig-param"><span class="n">bounding_box</span></em>, <em class="sig-param"><span class="n">map_zoom_level</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">coordinate_system</span><span class="o">=</span><span class="default_value">'EPSG:3857'</span></em>, <em class="sig-param"><span class="n">aggregation_type</span><span class="o">=</span><span class="default_value">'max'</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">extra_contextily_params</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/arctern/plot/_plot_with_map.html#heatmap"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#arctern.plot.heatmap" title="永久链接至目标">¶</a></dt>
-<dd><p>Plot heatmap in matplotlibs</p>
+<dd><p>Plots a heat map in matplotlib.</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>ax</strong> (<em>AxesSubplot</em>) – Matplotlib axes object on which to add the basemap.</p></li>
-<li><p><strong>points</strong> (<a class="reference internal" href="../../standalone_api/api/arctern.GeoSeries.html#arctern.GeoSeries" title="arctern.GeoSeries"><em>GeoSeries</em></a>) – Sequence of Points</p></li>
-<li><p><strong>weights</strong> (<em>Series</em><em>(</em><em>dtype: float|int64</em><em>)</em>) – Weights of point intensity</p></li>
-<li><p><strong>bounding_box</strong> (<em>list</em>) – Specify the bounding rectangle [west, south, east, north].</p></li>
-<li><p><strong>map_zoom_level</strong> (<em>int</em>) – Zoom level of heatmap. Default as auto.</p></li>
-<li><p><strong>coordinate_system</strong> (<em>str</em>) – Coordinate Reference System of the geometry objects.
-Must be SRID formed, e.g. ‘EPSG:4326’ or ‘EPSG:3857’
-Default as ‘EPSG:3857’</p></li>
-<li><p><strong>aggregation_type</strong> (<em>str</em>) – Aggregation type of data processing. Default as ‘max’</p></li>
-<li><p><strong>extra_contextily_params</strong> (<em>dict</em>) – Extra parameters will be passed to contextily.add_basemap.
-See <a class="reference external" href="https://contextily.readthedocs.io/en/latest/reference.html">https://contextily.readthedocs.io/en/latest/reference.html</a> for details</p></li>
+<li><p><strong>ax</strong> (<em>matplotlib.axes.Axes</em>) – Axes where geometries will be plotted.</p></li>
+<li><p><strong>points</strong> (<a class="reference internal" href="../../standalone_api/api/arctern.GeoSeries.html#arctern.GeoSeries" title="arctern.GeoSeries"><em>GeoSeries</em></a>) – Sequence of points.</p></li>
+<li><p><strong>weights</strong> (<em>Series</em>) – Weights of point intensity.</p></li>
+<li><p><strong>bounding_box</strong> (<em>list</em>) – Bounding box of the map. For example, [west, south, east, north].</p></li>
+<li><p><strong>map_zoom_level</strong> (<em>[</em><em>type</em><em>]</em><em>, </em><em>optional</em>) – Zoom level of the map by default ‘auto’.</p></li>
+<li><p><strong>coordinate_system</strong> (<em>str</em><em>, </em><em>optional</em>) – The Coordinate Reference System (CRS) set to all geometries, by default ‘EPSG:3857’.
+Only supports SRID as a WKT representation of CRS by now.</p></li>
+<li><p><strong>aggregation_type</strong> (<em>str</em><em>, </em><em>optional</em>) – Aggregation type, by default ‘max’.</p></li>
+<li><p><strong>**extra_contextily_params</strong> (<em>dict</em>) – Extra parameters passed to <a class="reference external" href="https://contextily.readthedocs.io/en/latest/reference.html">contextily.add_basemap.</a></p></li>
 </ul>
 </dd>
-<dt class="field-even">Example</dt>
-<dd class="field-even"><p></p></dd>
 </dl>
+<p class="rubric">实际案例</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">arctern</span>
@@ -234,7 +231,7 @@ See <a class="reference external" href="https://contextily.readthedocs.io/en/lat
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 6月 10, 2020.
+        最后更新于 6月 13, 2020.
       </span>
 
     </p>

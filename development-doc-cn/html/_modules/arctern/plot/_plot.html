@@ -391,73 +391,70 @@
 
 <div class="viewcode-block" id="plot_geometry"><a class="viewcode-back" href="../../../api_reference/plot/api/arctern.plot.plot_geometry.html#arctern.plot.plot_geometry">[文档]</a><span class="k">def</span> <span class="nf">plot_geometry</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">geoms</span><span class="p">,</span> <span class="o">**</span><span class="n">style_kwds</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Plot a collection of geometries to `ax`. Parameters &#39;linewidth&#39;, &#39;linestyle&#39;, &#39;edgecolor&#39;,</span>
-<span class="sd">    &#39;facecolor&#39;, &#39;color&#39;, &#39;marker&#39;, &#39;markersize&#39; are used to describe the style of plotted figure.</span>
+<span class="sd">    Plots a collection of geometries.</span>
 
-<span class="sd">    For geometry types `Polygon` and `MultiPolygon`, only &#39;linewidth&#39;, &#39;linestyle&#39;, &#39;edgecolor&#39;,</span>
-<span class="sd">    &#39;facecolor&#39; are effective.</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    ax : matplotlib.axes.Axes</span>
+<span class="sd">        The axes where geometries will be plotted.</span>
+<span class="sd">    geoms : Series or DataFrame</span>
+<span class="sd">        Sequence of geometries.</span>
+<span class="sd">    **style_kwds:</span>
+<span class="sd">        ``style_kwds`` specify the properties that describe the style of geometric graphs.</span>
+<span class="sd">        </span>
+<span class="sd">        Here is a list of availble style properties:</span>
 
-<span class="sd">    For geometry types `Linestring` and `MultiLinestring`, only &#39;color&#39;, &#39;linewidth&#39;, &#39;linestyle&#39; are effective.</span>
+<span class="sd">        +----------+------------------+-------+--------------------------------------------------+</span>
+<span class="sd">        |Property  |Description       |Default|Applied to                                        |</span>
+<span class="sd">        +==========+==================+=======+==================================================+</span>
+<span class="sd">        |color     |str, color        |&#39;C0&#39;   |Point, MultiPoint, Linestring, MultiLinestring    |</span>
+<span class="sd">        +----------+------------------+-------+--------------------------------------------------+</span>
+<span class="sd">        |edgecolor |str, edge color   |&#39;black&#39;|Polygon, MultiPolygon                             |</span>
+<span class="sd">        +----------+------------------+-------+--------------------------------------------------+</span>
+<span class="sd">        |facecolor |str, face color   |&#39;C0&#39;   |Polygon, MultiPolygon                             |</span>
+<span class="sd">        +----------+------------------+-------+--------------------------------------------------+</span>
+<span class="sd">        |linewidth |float, line width |1.0    |Linestring, MultiLinestring, Polygon, MultiPolygon|</span>
+<span class="sd">        +----------+------------------+-------+--------------------------------------------------+</span>
+<span class="sd">        |linestyle |str, line style   |&#39;-&#39;    |Linestring, MultiLinestring, Polygon, MultiPolygon|</span>
+<span class="sd">        +----------+------------------+-------+--------------------------------------------------+</span>
+<span class="sd">        |marker    |str, marker style |&#39;o&#39;    |Point, MultiPoint                                 |</span>
+<span class="sd">        +----------+------------------+-------+--------------------------------------------------+</span>
+<span class="sd">        |markersize|float, marker size|6.0    |Point, MultiPoint                                 |</span>
+<span class="sd">        +----------+------------------+-------+--------------------------------------------------+</span>
+<span class="sd">        |alpha     |float, opacity    |1.0    |All                                               |</span>
+<span class="sd">        +----------+------------------+-------+--------------------------------------------------+</span>
 
-<span class="sd">    For geometry types `Point` and `MultiPoint`, only &#39;color&#39;, &#39;marker&#39;, &#39;markersize&#39; are effective.</span>
+<span class="sd">    Notes</span>
+<span class="sd">    -------</span>
+<span class="sd">    See `matplotlib.pyplot.plot document &lt;https://matplotlib.org/api/_as_gen/matplotlib.pyplot.plot.html?highlight=plot#matplotlib.pyplot.plot&gt;`_ for detailed description of marker styles, line styles, and colors.</span>
 
-<span class="sd">    :type ax: matplotlib.axes.Axes</span>
-<span class="sd">    :param ax: The axes where geometries will be plotted.</span>
-
-<span class="sd">    :type geoms: Series or DataFrame</span>
-<span class="sd">    :param geoms: sequence of geometries.</span>
-
-<span class="sd">    :type linewidth: list(float)</span>
-<span class="sd">    :param linewidth: The width of line, the default value is 1.0.</span>
-
-<span class="sd">    :type linestyle: list(string)</span>
-<span class="sd">    :param linestyle: The style of the line， the default value is &#39;-&#39;.</span>
-
-<span class="sd">    :type edgecolor: list(string)</span>
-<span class="sd">    :param edgecolor: The edge color of the geometry, the default value is &#39;black&#39;.</span>
-
-<span class="sd">    :type facecolor: list(string)</span>
-<span class="sd">    :param facecolor: The color of the face of the geometry, the default value is &#39;C0&#39;.</span>
-
-<span class="sd">    :type color: list(string)</span>
-<span class="sd">    :param color: The color of the geometry, the default value is &#39;C0&#39;.</span>
-
-<span class="sd">    :type marker: string</span>
-<span class="sd">    :param marker: The shape of point, the default value is &#39;o&#39;.</span>
-
-<span class="sd">    :type markersize: double</span>
-<span class="sd">    :param markersize: The size of points, the default value is 6.0.</span>
-
-<span class="sd">    :type alpha: double</span>
-<span class="sd">    :param alpha: The transparency of the geometry, the default value is 1.0.</span>
-
-
-<span class="sd">    :example:</span>
-<span class="sd">       &gt;&gt;&gt; import pandas</span>
-<span class="sd">       &gt;&gt;&gt; import matplotlib.pyplot as plt</span>
-<span class="sd">       &gt;&gt;&gt; import arctern</span>
-<span class="sd">       &gt;&gt;&gt; raw_data = []</span>
-<span class="sd">       &gt;&gt;&gt; raw_data.append(&#39;point(0 0)&#39;)</span>
-<span class="sd">       &gt;&gt;&gt; raw_data.append(&#39;linestring(0 10, 5 5, 10 0)&#39;)</span>
-<span class="sd">       &gt;&gt;&gt; raw_data.append(&#39;polygon((2 2,2 3,3 3,3 2,2 2))&#39;)</span>
-<span class="sd">       &gt;&gt;&gt; raw_data.append(&quot;GEOMETRYCOLLECTION(&quot;</span>
-<span class="sd">       ...                 &quot;polygon((1 1,1 2,2 2,2 1,1 1)),&quot;</span>
-<span class="sd">       ...                 &quot;linestring(0 1, 5 6, 10 11),&quot;</span>
-<span class="sd">       ...                 &quot;POINT(4 7))&quot;)</span>
-<span class="sd">       &gt;&gt;&gt; arr_wkt = pandas.Series(raw_data)</span>
-<span class="sd">       &gt;&gt;&gt; arr_wkb = (arctern.GeoSeries(arr_wkt)).curve_to_line()</span>
-<span class="sd">       &gt;&gt;&gt; df = pandas.DataFrame({&#39;wkb&#39;:arr_wkb})</span>
-<span class="sd">       &gt;&gt;&gt; fig, ax = plt.subplots()</span>
-<span class="sd">       &gt;&gt;&gt; arctern.plot.plot_geometry(ax, df,</span>
-<span class="sd">       ...                            color=[&#39;orange&#39;, &#39;green&#39;, &#39;blue&#39;, &#39;red&#39;],</span>
-<span class="sd">       ...                            marker=&#39;^&#39;,</span>
-<span class="sd">       ...                            markersize=100,</span>
-<span class="sd">       ...                            linewidth=[None, 7, 8, 5],</span>
-<span class="sd">       ...                            linestyle=[None, &#39;dashed&#39;, &#39;dashdot&#39;, None],</span>
-<span class="sd">       ...                            edgecolor=[None, None, &#39;red&#39;, None],</span>
-<span class="sd">       ...                            facecolor=[None, None, &#39;black&#39;, None])</span>
-<span class="sd">       &gt;&gt;&gt; ax.grid()</span>
-<span class="sd">       &gt;&gt;&gt; fig.savefig(&#39;/tmp/plot_test.png&#39;)</span>
+<span class="sd">    Examples</span>
+<span class="sd">    -------</span>
+<span class="sd">    &gt;&gt;&gt; import pandas</span>
+<span class="sd">    &gt;&gt;&gt; import matplotlib.pyplot as plt</span>
+<span class="sd">    &gt;&gt;&gt; import arctern</span>
+<span class="sd">    &gt;&gt;&gt; raw_data = []</span>
+<span class="sd">    &gt;&gt;&gt; raw_data.append(&#39;point(0 0)&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; raw_data.append(&#39;linestring(0 10, 5 5, 10 0)&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; raw_data.append(&#39;polygon((2 2,2 3,3 3,3 2,2 2))&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; raw_data.append(&quot;GEOMETRYCOLLECTION(&quot;</span>
+<span class="sd">    ...                 &quot;polygon((1 1,1 2,2 2,2 1,1 1)),&quot;</span>
+<span class="sd">    ...                 &quot;linestring(0 1, 5 6, 10 11),&quot;</span>
+<span class="sd">    ...                 &quot;POINT(4 7))&quot;)</span>
+<span class="sd">    &gt;&gt;&gt; arr_wkt = pandas.Series(raw_data)</span>
+<span class="sd">    &gt;&gt;&gt; arr_wkb = (arctern.GeoSeries(arr_wkt)).curve_to_line()</span>
+<span class="sd">    &gt;&gt;&gt; df = pandas.DataFrame({&#39;wkb&#39;:arr_wkb})</span>
+<span class="sd">    &gt;&gt;&gt; fig, ax = plt.subplots()</span>
+<span class="sd">    &gt;&gt;&gt; arctern.plot.plot_geometry(ax, df,</span>
+<span class="sd">    ...                            color=[&#39;orange&#39;, &#39;green&#39;, &#39;blue&#39;, &#39;red&#39;],</span>
+<span class="sd">    ...                            marker=&#39;^&#39;,</span>
+<span class="sd">    ...                            markersize=100,</span>
+<span class="sd">    ...                            linewidth=[None, 7, 8, 5],</span>
+<span class="sd">    ...                            linestyle=[None, &#39;dashed&#39;, &#39;dashdot&#39;, None],</span>
+<span class="sd">    ...                            edgecolor=[None, None, &#39;red&#39;, None],</span>
+<span class="sd">    ...                            facecolor=[None, None, &#39;black&#39;, None])</span>
+<span class="sd">    &gt;&gt;&gt; ax.grid()</span>
+<span class="sd">    &gt;&gt;&gt; fig.savefig(&#39;/tmp/plot_test.png&#39;)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="kn">import</span> <span class="nn">pandas.core.series</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">geoms</span><span class="p">,</span> <span class="n">pandas</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">series</span><span class="o">.</span><span class="n">Series</span><span class="p">):</span>
@@ -481,7 +478,7 @@
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 6月 10, 2020.
+        最后更新于 6月 13, 2020.
       </span>
 
     </p>

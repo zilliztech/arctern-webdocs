@@ -82,8 +82,8 @@
             
             
               <ul class="current">
-<li class="toctree-l1"><a target="_blank" class="reference internal" href="../../quick_start/quick_start.html">Quick Start</a></li>
-<li class="toctree-l1"><a target="_blank" class="reference internal" href="../../feature_description/feature_description.html">Feature Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick_start/quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../feature_description/feature_description.html">Feature Description</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../api_reference.html">API Reference</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">GeoSeries</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#constructor">Constructor</a><ul>
@@ -155,8 +155,8 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a target="_blank" class="reference internal" href="../map_match/map_match.html">Map Match</a></li>
-<li class="toctree-l2"><a target="_blank" class="reference internal" href="../plot/plot.html">Plot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../map_match/map_match.html">Map Match</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plot/plot.html">Plot</a></li>
 </ul>
 </li>
 </ul>
@@ -290,28 +290,28 @@ Pandas Series. It internally store geometry as bytes object.</p>
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="api/arctern.GeoSeries.point.html#arctern.GeoSeries.point" title="arctern.GeoSeries.point"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GeoSeries.point</span></code></a>(x, y[, crs])</p></td>
-<td><p>Construct Point geometries according to the coordinates.</p></td>
+<td><p>Constructs POINT objects based on the given coordinates.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="api/arctern.GeoSeries.polygon_from_envelope.html#arctern.GeoSeries.polygon_from_envelope" title="arctern.GeoSeries.polygon_from_envelope"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GeoSeries.polygon_from_envelope</span></code></a>(min_x, ...)</p></td>
-<td><p>Construct polygon(rectangle) geometries from arr_min_x, arr_min_y, arr_max_x, arr_max_y and special coordinate system.</p></td>
+<td><p>Constructs rectangular POLYGON objects within the given spatial range.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="api/arctern.GeoSeries.geom_from_geojson.html#arctern.GeoSeries.geom_from_geojson" title="arctern.GeoSeries.geom_from_geojson"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GeoSeries.geom_from_geojson</span></code></a>(json[, crs])</p></td>
-<td><p>Construct geometry from the GeoJSON representation string.</p></td>
+<td><p>Constructs geometries from GeoJSON strings.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="api/arctern.GeoSeries.as_geojson.html#arctern.GeoSeries.as_geojson" title="arctern.GeoSeries.as_geojson"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GeoSeries.as_geojson</span></code></a>()</p></td>
-<td><p>Transform each to GeoJSON format string.</p></td>
+<td><p>Transforms all geometries in the GeoSeries to GeoJSON strings.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="api/arctern.GeoSeries.to_wkt.html#arctern.GeoSeries.to_wkt" title="arctern.GeoSeries.to_wkt"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GeoSeries.to_wkt</span></code></a>()</p></td>
-<td><p>Transform each geometry to WKT formed string.</p></td>
+<td><p>Transforms all geometries in the GeoSeries to <a target="_blank" class="reference external" href="https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry">WKT</a> strings.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="api/arctern.GeoSeries.to_wkb.html#arctern.GeoSeries.to_wkb" title="arctern.GeoSeries.to_wkb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GeoSeries.to_wkb</span></code></a>()</p></td>
-<td><p>Transform each geometry to WKB formed bytes object.</p></td>
+<td><p>Transforms all geometries in the GeoSeries to <a target="_blank" class="reference external" href="https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry#Well-known_binary">WKB</a> strings.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="api/arctern.GeoSeries.to_geopandas.html#arctern.GeoSeries.to_geopandas" title="arctern.GeoSeries.to_geopandas"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GeoSeries.to_geopandas</span></code></a>()</p></td>
-<td><p>Transform each arctern GeoSeries to GeoPandas GeoSeries.</p></td>
+<td><p>Transforms an arctern.GeoSeries object to a geopandas.GeoSeries object.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="api/arctern.GeoSeries.from_geopandas.html#arctern.GeoSeries.from_geopandas" title="arctern.GeoSeries.from_geopandas"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GeoSeries.from_geopandas</span></code></a>(data)</p></td>
-<td><p>Construct geometries from geopandas GeoSeries.</p></td>
+<td><p>Constructs an arctern.GeoSeries object from a geopandas.GeoSeries object.</p></td>
 </tr>
 </tbody>
 </table>
@@ -325,13 +325,13 @@ Pandas Series. It internally store geometry as bytes object.</p>
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="api/arctern.GeoSeries.buffer.html#arctern.GeoSeries.buffer" title="arctern.GeoSeries.buffer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GeoSeries.buffer</span></code></a>(distance)</p></td>
-<td><p>For each geometry, returns a new geometry at a distance of <code class="docutils literal notranslate"><span class="pre">distance</span></code> from it.</p></td>
+<td><p>For each geometry, moves all of its points away from its centroid to construct a new geometry.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="api/arctern.GeoSeries.precision_reduce.html#arctern.GeoSeries.precision_reduce" title="arctern.GeoSeries.precision_reduce"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GeoSeries.precision_reduce</span></code></a>(precision)</p></td>
 <td><p>For the coordinates of each geometry in the GeoSeries, reduces the number of significant digits to the given number.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="api/arctern.GeoSeries.intersection.html#arctern.GeoSeries.intersection" title="arctern.GeoSeries.intersection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GeoSeries.intersection</span></code></a>(other)</p></td>
-<td><p>Calculate the point set intersection between each geometry and other.</p></td>
+<td><p>For each point in the GeoSeries and the corresponding point given in <code class="docutils literal notranslate"><span class="pre">other</span></code>, calculates the intersection of them.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="api/arctern.GeoSeries.make_valid.html#arctern.GeoSeries.make_valid" title="arctern.GeoSeries.make_valid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GeoSeries.make_valid</span></code></a>()</p></td>
 <td><p>Creates a valid representation of each geometry in the GeoSeries without losing any of the input vertices.</p></td>
@@ -401,7 +401,7 @@ Pandas Series. It internally store geometry as bytes object.</p>
 <td><p>For each geometry in the GeoSeries and the corresponding geometry given in <code class="docutils literal notranslate"><span class="pre">other</span></code>, calculates the minimum 2D Cartesian (planar) distance between them.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="api/arctern.GeoSeries.hausdorff_distance.html#arctern.GeoSeries.hausdorff_distance" title="arctern.GeoSeries.hausdorff_distance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GeoSeries.hausdorff_distance</span></code></a>(other)</p></td>
-<td><p>Returns the Hausdorff distance between each geometry and other.</p></td>
+<td><p>For each point in the GeoSeries and the corresponding point given in <code class="docutils literal notranslate"><span class="pre">other</span></code>, calculates the Hausdorff distance between them.</p></td>
 </tr>
 </tbody>
 </table>
@@ -415,7 +415,7 @@ Pandas Series. It internally store geometry as bytes object.</p>
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="api/arctern.GeoSeries.unary_union.html#arctern.GeoSeries.unary_union" title="arctern.GeoSeries.unary_union"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GeoSeries.unary_union</span></code></a>()</p></td>
-<td><p>Returns a geometry that represents the union of all geometries in the GeoSeries.</p></td>
+<td><p>Calculates a geometry that represents the union of all geometries in the GeoSeries.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="api/arctern.GeoSeries.envelope_aggr.html#arctern.GeoSeries.envelope_aggr" title="arctern.GeoSeries.envelope_aggr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GeoSeries.envelope_aggr</span></code></a>()</p></td>
 <td><p>Returns the minimum bounding box for the union of all geometries in the GeoSeries.</p></td>
@@ -470,7 +470,7 @@ Pandas Series. It internally store geometry as bytes object.</p>
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        Last updated on Jun 10, 2020.
+        Last updated on Jun 13, 2020.
       </span>
 
     </p>

@@ -183,23 +183,19 @@
 <dl class="py method">
 <dt id="arctern.GeoSeries.from_geopandas">
 <em class="property">classmethod </em><code class="sig-prename descclassname">GeoSeries.</code><code class="sig-name descname">from_geopandas</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/arctern/geoseries/geoseries.html#GeoSeries.from_geopandas"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arctern.GeoSeries.from_geopandas" title="Permalink to this definition">¶</a></dt>
-<dd><p>Construct geometries from geopandas GeoSeries.</p>
+<dd><p>Constructs an arctern.GeoSeries object from a geopandas.GeoSeries object.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Rtype data</dt>
-<dd class="field-odd"><p>geopandas.GeoSeries</p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>geopandas.GeoSeries</em>) -- A geopandas.GeoSeries object.</p>
 </dd>
-<dt class="field-even">Parameters</dt>
-<dd class="field-even"><p><strong>data</strong> -- Source geometries data.</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>An arctern.GeoSeries object.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><a class="reference internal" href="arctern.GeoSeries.html#arctern.GeoSeries" title="arctern.GeoSeries">arctern.GeoSeries</a></p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>A arctern.GeoSeries constructed from geopandas.GeoSeries.</p>
-</dd>
-<dt class="field-odd">Example</dt>
-<dd class="field-odd"><p></p></dd>
 </dl>
+<p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">shapely.geometry</span> <span class="kn">import</span> <span class="n">Point</span><span class="p">,</span> <span class="n">Polygon</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">GeoSeries</span>
@@ -237,7 +233,7 @@
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        Last updated on Jun 10, 2020.
+        Last updated on Jun 13, 2020.
       </span>
 
     </p>

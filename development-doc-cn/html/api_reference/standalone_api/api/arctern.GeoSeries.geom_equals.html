@@ -183,16 +183,24 @@
 <dl class="py method">
 <dt id="arctern.GeoSeries.geom_equals">
 <code class="sig-prename descclassname">GeoSeries.</code><code class="sig-name descname">geom_equals</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/arctern/geoseries/geoseries.html#GeoSeries.geom_equals"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#arctern.GeoSeries.geom_equals" title="永久链接至目标">¶</a></dt>
-<dd><p>For each geometry in the GeoSeries and the corresponding geometry given in <code class="docutils literal notranslate"><span class="pre">other</span></code>, tests whether the first geometry equals the other.</p>
-<p>“Equal” means two geometries represent the same geometry structure.</p>
+<dd><p>对于 GeoSeries 中的每个几何体以及 <code class="docutils literal notranslate"><span class="pre">other</span></code> 中给出的对应几何体，检测第一个几何体是否与另一个几何体等价。</p>
+<p>“等价”表示两个几何体表示相同的几何体结构。</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
-<dd class="field-odd"><p><strong>other</strong> (<em>geometry</em><em> or </em><a class="reference internal" href="arctern.GeoSeries.html#arctern.GeoSeries" title="arctern.GeoSeries"><em>GeoSeries</em></a>) – The geometry or GeoSeries to test whether it equals the geometries in the first GeoSeries.
-* If <code class="docutils literal notranslate"><span class="pre">other</span></code> is a geometry, this function tests the equivalence relation between each geometry in the GeoSeries and <code class="docutils literal notranslate"><span class="pre">other</span></code>.
-* If <code class="docutils literal notranslate"><span class="pre">other</span></code> is a GeoSeries, this function tests the equivalence relation between each geometry in the GeoSeries and the geometry with the same index in <code class="docutils literal notranslate"><span class="pre">other</span></code>.</p>
+<dd class="field-odd"><p><strong>other</strong> (<em>geometry</em><em> or </em><a class="reference internal" href="arctern.GeoSeries.html#arctern.GeoSeries" title="arctern.GeoSeries"><em>GeoSeries</em></a>) – <p>The geometry or GeoSeries to test whether it equals the geometries in the first GeoSeries.</p>
+<ul class="simple">
+<li><p>If <code class="docutils literal notranslate"><span class="pre">other</span></code> is a geometry, this function tests the equivalence relation between each geometry in the GeoSeries and <code class="docutils literal notranslate"><span class="pre">other</span></code>.</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">other</span></code> is a GeoSeries, this function tests the equivalence relation between each geometry in the GeoSeries and the geometry with the same index in <code class="docutils literal notranslate"><span class="pre">other</span></code>.</p></li>
+</ul>
+</p>
 </dd>
 <dt class="field-even">返回</dt>
-<dd class="field-even"><p>Mask of boolean values for each element in the GeoSeries that indicates whether it equals the geometries in <code class="docutils literal notranslate"><span class="pre">other</span></code>.</p>
+<dd class="field-even"><p><p>Mask of boolean values for each element in the GeoSeries that indicates whether it equals the geometries in <code class="docutils literal notranslate"><span class="pre">other</span></code>.</p>
+<ul class="simple">
+<li><p><em>True</em>: The first geometry equals the other.</p></li>
+<li><p><em>False</em>: The first geometry does not equal the other.</p></li>
+</ul>
+</p>
 </dd>
 <dt class="field-odd">返回类型</dt>
 <dd class="field-odd"><p>Series</p>
@@ -234,7 +242,7 @@
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 6月 10, 2020.
+        最后更新于 6月 13, 2020.
       </span>
 
     </p>

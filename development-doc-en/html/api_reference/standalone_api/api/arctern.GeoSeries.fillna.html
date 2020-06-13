@@ -184,37 +184,32 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>value</strong> -- Value to use to fill holes. This value should be the representation of a geometry in WKT or WKB format. For exmaple, &quot;POINT (1 1)&quot;.</p></li>
-<li><p><strong>method</strong> (<em>{'backfill'</em><em>, </em><em>'bfill'</em><em>, </em><em>'pad'</em><em>, </em><em>'ffill'</em><em>, </em><em>None}</em><em>, </em><em>by default None</em>) -- Method to use for filling holes in reindexed Series.
-* <em>pad/ffill:</em> Propagates the last valid observation forward to fill gap.
-* <em>backfill/bfill:</em> Propagates the next valid observation backward to fill gap.</p></li>
+<li><p><strong>method</strong> (<em>{'backfill'</em><em>, </em><em>'bfill'</em><em>, </em><em>'pad'</em><em>, </em><em>'ffill'</em><em>, </em><em>None}</em>) -- <p>Method to use for filling holes in reindexed Series, by default None.</p>
+<ul>
+<li><p><em>pad/ffill:</em> Propagates the last valid observation forward to fill gap.</p></li>
+<li><p><em>backfill/bfill:</em> Propagates the next valid observation backward to fill gap.</p></li>
+</ul>
+</p></li>
 <li><p><strong>axis</strong> (<em>{0</em><em> or </em><em>'index'}</em>) -- Axis along which to fill missing values.</p></li>
-<li><p><strong>inplace</strong> (<em>bool</em><em>, </em><em>by default False</em>) -- <ul>
-<li><dl class="simple">
-<dt><em>True:</em> Fills NA values in-place.</dt><dd><p><strong>Note:</strong> This will modify any other views on this object.</p>
-</dd>
-</dl>
-</li>
+<li><p><strong>inplace</strong> (<em>bool</em><em>, </em><em>optional</em>) -- <p>Whether to fill NA values in-place, by default False</p>
+<ul>
+<li><p><em>True:</em> Fills NA values in-place. This will modify any other views on this object.</p></li>
 <li><p><em>False:</em> Create a new GeoSeries object, and then fill NA values in it.</p></li>
 </ul>
 </p></li>
-<li><p><strong>limit</strong> (<em>int</em><em>, </em><em>by default None</em>) -- <ul>
-<li><p>If <code class="docutils literal notranslate"><span class="pre">method</span></code> is specified, this is the maximum number of consecutive</p></li>
+<li><p><strong>limit</strong> (<em>int</em><em>, </em><em>optional</em>) -- <p>Limited number of NA values to be filled, by default None It must be greater than 0 if not None.</p>
+<ul>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">method</span></code> is specified, this is the maximum number of consecutive NA values to forward/backward fill. In other words, if there is a gap with more than this number of consecutive NAs, it will only be partially filled.</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">method</span></code> is not specified, this is the maximum number of entries along the entire axis where NaNs will be filled.</p></li>
 </ul>
-<p>NA values to forward/backward fill. In other words, if there is
-a gap with more than this number of consecutive NAs, it will only
-be partially filled.
-* If <code class="docutils literal notranslate"><span class="pre">method</span></code> is not specified, this is the maximum number of entries along the entire axis where NaNs will be filled.
-<strong>Note:</strong> It must be greater than 0 if not None.</p>
 </p></li>
-<li><p><strong>downcast</strong> (<em>dict</em><em>, </em><em>by default None</em>) -- A dict of item-&gt;dtype of what to downcast if possible,
-or the string 'infer' which will try to downcast to an appropriate
-equal type (for example, float64 to int64 if possible).</p></li>
+<li><p><strong>downcast</strong> (<em>dict</em><em>, </em><em>optional</em>) -- A dict of item-&gt;dtype of what to downcast if possible, or the string 'infer' which will try to downcast to an appropriate equal type (for example, float64 to int64 if possible). By default None.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><ul class="simple">
 <li><p>None if <code class="docutils literal notranslate"><span class="pre">inplace=False</span></code>.</p></li>
-<li><p>Object with missing values filled if <code class="docutils literal notranslate"><span class="pre">inplace=True</span></code>.</p></li>
+<li><p>A GeoSeries with missing values filled if <code class="docutils literal notranslate"><span class="pre">inplace=True</span></code>.</p></li>
 </ul>
 </p>
 </dd>
@@ -276,7 +271,7 @@ equal type (for example, float64 to int64 if possible).</p></li>
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        Last updated on Jun 10, 2020.
+        Last updated on Jun 13, 2020.
       </span>
 
     </p>

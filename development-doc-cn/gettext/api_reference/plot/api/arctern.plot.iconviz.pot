@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-10 19:31+0800\n"
+"POT-Creation-Date: 2020-06-13 11:47+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,37 +21,37 @@ msgid "arctern.plot.iconviz"
 msgstr ""
 
 #: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/plot/_plot_with_map.py:docstring of arctern.plot.iconviz:1
-msgid "Plot points as icons on map in Matplotlib"
+msgid "Plots an icon map in Matplotlib."
 msgstr ""
 
 #: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/plot/_plot_with_map.py:docstring of arctern.plot.iconviz:0
 msgid "参数"
 msgstr ""
 
-#: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/plot/_plot_with_map.py:docstring of arctern.plot.iconviz:4
-msgid "Matplotlib axes object on which to add the basemap."
+#: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/plot/_plot_with_map.py:docstring of arctern.plot.iconviz:3
+msgid "Axes where geometries will be plotted."
+msgstr ""
+
+#: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/plot/_plot_with_map.py:docstring of arctern.plot.iconviz:5
+msgid "Sequence of points."
 msgstr ""
 
 #: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/plot/_plot_with_map.py:docstring of arctern.plot.iconviz:7
-msgid "Sequence of Points"
+msgid "Bounding box of the map. For example, [west, south, east, north]."
 msgstr ""
 
-#: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/plot/_plot_with_map.py:docstring of arctern.plot.iconviz:10
-msgid "Specify the bounding rectangle [west, south, east, north]."
+#: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/plot/_plot_with_map.py:docstring of arctern.plot.iconviz:9
+msgid "Absolute path to icon file."
 msgstr ""
 
-#: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/plot/_plot_with_map.py:docstring of arctern.plot.iconviz:13
-msgid "Absolute path to icon file"
+#: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/plot/_plot_with_map.py:docstring of arctern.plot.iconviz:11
+msgid "The Coordinate Reference System (CRS) set to all geometries, by default 'EPSG:3857'. Only supports SRID as a WKT representation of CRS by now."
 msgstr ""
 
-#: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/plot/_plot_with_map.py:docstring of arctern.plot.iconviz:16
-msgid "Coordinate Reference System of the geometry objects. Must be SRID formed, e.g. 'EPSG:4326' or 'EPSG:3857' Default as 'EPSG:3857'"
+#: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/plot/_plot_with_map.py:docstring of arctern.plot.iconviz:14
+msgid "Extra parameters passed to `contextily.add_basemap. <https://contextily.readthedocs.io/en/latest/reference.html>`_"
 msgstr ""
 
-#: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/plot/_plot_with_map.py:docstring of arctern.plot.iconviz:21
-msgid "Extra parameters will be passed to contextily.add_basemap. See https://contextily.readthedocs.io/en/latest/reference.html for details"
-msgstr ""
-
-#: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/plot/_plot_with_map.py:docstring of arctern.plot.iconviz:0
-msgid "example"
+#: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/plot/_plot_with_map.py:docstring of arctern.plot.iconviz:18
+msgid "实际案例"
 msgstr ""
