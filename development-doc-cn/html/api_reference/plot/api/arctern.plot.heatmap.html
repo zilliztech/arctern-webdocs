@@ -87,7 +87,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../feature_description/feature_description.html">功能说明</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../api_reference.html">API 参考</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../../standalone_api/geoseries.html">GeoSeries</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../map_match/map_match.html">Map Match</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../map_match/map_match.html">地图匹配</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../plot.html">Plot</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="arctern.plot.plot_geometry.html">arctern.plot.plot_geometry</a></li>
 <li class="toctree-l3"><a class="reference internal" href="arctern.plot.pointmap.html">arctern.plot.pointmap</a></li>
@@ -173,19 +173,18 @@
 <dl class="py function">
 <dt id="arctern.plot.heatmap">
 <code class="sig-prename descclassname">arctern.plot.</code><code class="sig-name descname">heatmap</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ax</span></em>, <em class="sig-param"><span class="n">points</span></em>, <em class="sig-param"><span class="n">weights</span></em>, <em class="sig-param"><span class="n">bounding_box</span></em>, <em class="sig-param"><span class="n">map_zoom_level</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">coordinate_system</span><span class="o">=</span><span class="default_value">'EPSG:3857'</span></em>, <em class="sig-param"><span class="n">aggregation_type</span><span class="o">=</span><span class="default_value">'max'</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">extra_contextily_params</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/arctern/plot/_plot_with_map.html#heatmap"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#arctern.plot.heatmap" title="永久链接至目标">¶</a></dt>
-<dd><p>Plots a heat map in matplotlib.</p>
+<dd><p>在 Matplotlib 中绘制热地图。</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>ax</strong> (<em>matplotlib.axes.Axes</em>) – Axes where geometries will be plotted.</p></li>
-<li><p><strong>points</strong> (<a class="reference internal" href="../../standalone_api/api/arctern.GeoSeries.html#arctern.GeoSeries" title="arctern.GeoSeries"><em>GeoSeries</em></a>) – Sequence of points.</p></li>
-<li><p><strong>weights</strong> (<em>Series</em>) – Weights of point intensity.</p></li>
-<li><p><strong>bounding_box</strong> (<em>list</em>) – Bounding box of the map. For example, [west, south, east, north].</p></li>
-<li><p><strong>map_zoom_level</strong> (<em>[</em><em>type</em><em>]</em><em>, </em><em>optional</em>) – Zoom level of the map by default ‘auto’.</p></li>
-<li><p><strong>coordinate_system</strong> (<em>str</em><em>, </em><em>optional</em>) – The Coordinate Reference System (CRS) set to all geometries, by default ‘EPSG:3857’.
-Only supports SRID as a WKT representation of CRS by now.</p></li>
-<li><p><strong>aggregation_type</strong> (<em>str</em><em>, </em><em>optional</em>) – Aggregation type, by default ‘max’.</p></li>
-<li><p><strong>**extra_contextily_params</strong> (<em>dict</em>) – Extra parameters passed to <a class="reference external" href="https://contextily.readthedocs.io/en/latest/reference.html">contextily.add_basemap.</a></p></li>
+<li><p><strong>ax</strong> (<em>matplotlib.axes.Axes</em>) – 绘制几何图形的画布的坐标轴。</p></li>
+<li><p><strong>points</strong> (<a class="reference internal" href="../../standalone_api/api/arctern.GeoSeries.html#arctern.GeoSeries" title="arctern.GeoSeries"><em>GeoSeries</em></a>) – 一组点。</p></li>
+<li><p><strong>weights</strong> (<em>Series</em>) – 点密度的权重。</p></li>
+<li><p><strong>bounding_box</strong> (<em>list</em>) – 地图的边界，如 [west, south, east, north]。</p></li>
+<li><p><strong>map_zoom_level</strong> (<em>[</em><em>type</em><em>]</em><em>, </em><em>optional</em>) – 地图的缩放级别，默认值为 ‘auto’。</p></li>
+<li><p><strong>coordinate_system</strong> (<em>str</em><em>, </em><em>optional</em>) – 为所有几何图形设置 CRS（Coordinate Reference System，坐标参考系），默认值为 ‘EPSG:3857’。目前仅支持 SRID（Spatial Reference Identifier，空间参考标识符）作为 CRS 的 WKT 表示。</p></li>
+<li><p><strong>aggregation_type</strong> (<em>str</em><em>, </em><em>optional</em>) – 聚合类型，默认值为 ‘max’。</p></li>
+<li><p><strong>**extra_contextily_params</strong> (<em>dict</em>) – 传到 <a class="reference external" href="https://contextily.readthedocs.io/en/latest/reference.html">contextily.add_basemap</a> 中的其他参数。</p></li>
 </ul>
 </dd>
 </dl>
@@ -231,7 +230,7 @@ Only supports SRID as a WKT representation of CRS by now.</p></li>
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 6月 13, 2020.
+        最后更新于 6月 15, 2020.
       </span>
 
     </p>
