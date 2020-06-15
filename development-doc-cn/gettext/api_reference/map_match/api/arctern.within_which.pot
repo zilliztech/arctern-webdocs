@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-13 11:47+0800\n"
+"POT-Creation-Date: 2020-06-15 17:24+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -39,18 +39,6 @@ msgstr ""
 
 #: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/_wrapper_func.py:docstring of arctern.within_which:8
 msgid "The indexes of geometries in ``right``. For example, the value *j* with index *i* in the returned Series indicates that the geometry ``left[i]`` is within the geometry ``right[j]``.  * When there are multiple candidates, return one of them. * When there is no candidate, return NA."
-msgstr ""
-
-#: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/_wrapper_func.py:docstring of arctern.within_which:8
-msgid "The indexes of geometries in ``right``. For example, the value *j* with index *i* in the returned Series indicates that the geometry ``left[i]`` is within the geometry ``right[j]``."
-msgstr ""
-
-#: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/_wrapper_func.py:docstring of arctern.within_which:11
-msgid "When there are multiple candidates, return one of them."
-msgstr ""
-
-#: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/_wrapper_func.py:docstring of arctern.within_which:12
-msgid "When there is no candidate, return NA."
 msgstr ""
 
 #: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/_wrapper_func.py:docstring of arctern.within_which:0

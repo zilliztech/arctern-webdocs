@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-13 11:47+0800\n"
+"POT-Creation-Date: 2020-06-15 17:24+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,36 +36,12 @@ msgstr ""
 msgid "The geometry or GeoSeries to test whether it crosses the geometries in the first GeoSeries.  * If ``other`` is a geometry, this function tests the \"cross\" relation between each geometry in the GeoSeries and ``other``. * If ``other`` is a GeoSeries, this function tests the \"cross\" relation between each geometry in the GeoSeries and the geometry with the same index in ``other``."
 msgstr ""
 
-#: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/geoseries/geoseries.py:docstring of arctern.GeoSeries.crosses:5
-msgid "The geometry or GeoSeries to test whether it crosses the geometries in the first GeoSeries."
-msgstr ""
-
-#: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/geoseries/geoseries.py:docstring of arctern.GeoSeries.crosses:7
-msgid "If ``other`` is a geometry, this function tests the \"cross\" relation between each geometry in the GeoSeries and ``other``."
-msgstr ""
-
-#: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/geoseries/geoseries.py:docstring of arctern.GeoSeries.crosses:8
-msgid "If ``other`` is a GeoSeries, this function tests the \"cross\" relation between each geometry in the GeoSeries and the geometry with the same index in ``other``."
-msgstr ""
-
 #: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/geoseries/geoseries.py:docstring of arctern.GeoSeries.crosses:0
 msgid "返回"
 msgstr ""
 
 #: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/geoseries/geoseries.py:docstring of arctern.GeoSeries.crosses:11
 msgid "Mask of boolean values for each element in the GeoSeries that indicates whether it crosses the geometries in ``other``.  * *True*: The first geometry crosses the other. * *False*: The first geometry does not cross the other."
-msgstr ""
-
-#: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/geoseries/geoseries.py:docstring of arctern.GeoSeries.crosses:11
-msgid "Mask of boolean values for each element in the GeoSeries that indicates whether it crosses the geometries in ``other``."
-msgstr ""
-
-#: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/geoseries/geoseries.py:docstring of arctern.GeoSeries.crosses:13
-msgid "*True*: The first geometry crosses the other."
-msgstr ""
-
-#: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/geoseries/geoseries.py:docstring of arctern.GeoSeries.crosses:14
-msgid "*False*: The first geometry does not cross the other."
 msgstr ""
 
 #: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/geoseries/geoseries.py:docstring of arctern.GeoSeries.crosses:0

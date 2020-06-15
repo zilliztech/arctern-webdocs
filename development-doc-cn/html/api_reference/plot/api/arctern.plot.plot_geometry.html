@@ -87,7 +87,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../feature_description/feature_description.html">功能说明</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../api_reference.html">API 参考</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../../standalone_api/geoseries.html">GeoSeries</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../map_match/map_match.html">Map Match</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../map_match/map_match.html">地图匹配</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../plot.html">Plot</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">arctern.plot.plot_geometry</a></li>
 <li class="toctree-l3"><a class="reference internal" href="arctern.plot.pointmap.html">arctern.plot.pointmap</a></li>
@@ -173,14 +173,14 @@
 <dl class="py function">
 <dt id="arctern.plot.plot_geometry">
 <code class="sig-prename descclassname">arctern.plot.</code><code class="sig-name descname">plot_geometry</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ax</span></em>, <em class="sig-param"><span class="n">geoms</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">style_kwds</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/arctern/plot/_plot.html#plot_geometry"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#arctern.plot.plot_geometry" title="永久链接至目标">¶</a></dt>
-<dd><p>Plots a collection of geometries.</p>
+<dd><p>绘制一组几何图形。</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>ax</strong> (<em>matplotlib.axes.Axes</em>) – The axes where geometries will be plotted.</p></li>
-<li><p><strong>geoms</strong> (<em>Series</em><em> or </em><em>DataFrame</em>) – Sequence of geometries.</p></li>
-<li><p><strong>**style_kwds</strong> – <p><code class="docutils literal notranslate"><span class="pre">style_kwds</span></code> specify the properties that describe the style of geometric graphs.</p>
-<p>Here is a list of availble style properties:</p>
+<li><p><strong>ax</strong> (<em>matplotlib.axes.Axes</em>) – 绘制几何图形的画布的坐标轴。</p></li>
+<li><p><strong>geoms</strong> (<em>Series</em><em> or </em><em>DataFrame</em>) – 一组点。</p></li>
+<li><p><strong>**style_kwds</strong> – <p><code class="docutils literal notranslate"><span class="pre">style_kwds</span></code> 指定描述几何图形样式的属性。</p>
+<p>下面是可用样式属性的列表：</p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 12%" />
@@ -189,52 +189,52 @@
 <col style="width: 59%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>Property</p></th>
-<th class="head"><p>Description</p></th>
-<th class="head"><p>Default</p></th>
-<th class="head"><p>Applied to</p></th>
+<tr class="row-odd"><th class="head"><p>属性</p></th>
+<th class="head"><p>描述</p></th>
+<th class="head"><p>默认值</p></th>
+<th class="head"><p>适用于</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>color</p></td>
-<td><p>str, color</p></td>
+<tr class="row-even"><td><p>颜色</p></td>
+<td><p>str, 颜色</p></td>
 <td><p>’C0’</p></td>
 <td><p>Point, MultiPoint, Linestring, MultiLinestring</p></td>
 </tr>
-<tr class="row-odd"><td><p>edgecolor</p></td>
-<td><p>str, edge color</p></td>
+<tr class="row-odd"><td><p>边缘颜色</p></td>
+<td><p>str, 边缘颜色</p></td>
 <td><p>’black’</p></td>
 <td><p>Polygon, MultiPolygon</p></td>
 </tr>
-<tr class="row-even"><td><p>facecolor</p></td>
-<td><p>str, face color</p></td>
+<tr class="row-even"><td><p>表面颜色</p></td>
+<td><p>str, 表面颜色</p></td>
 <td><p>’C0’</p></td>
 <td><p>Polygon, MultiPolygon</p></td>
 </tr>
-<tr class="row-odd"><td><p>linewidth</p></td>
-<td><p>float, line width</p></td>
+<tr class="row-odd"><td><p>线宽度</p></td>
+<td><p>float, 线宽度</p></td>
 <td><p>1.0</p></td>
 <td><p>Linestring, MultiLinestring, Polygon, MultiPolygon</p></td>
 </tr>
-<tr class="row-even"><td><p>linestyle</p></td>
-<td><p>str, line style</p></td>
+<tr class="row-even"><td><p>线样式</p></td>
+<td><p>str, 线样式</p></td>
 <td><p>’-‘</p></td>
 <td><p>Linestring, MultiLinestring, Polygon, MultiPolygon</p></td>
 </tr>
-<tr class="row-odd"><td><p>marker</p></td>
-<td><p>str, marker style</p></td>
+<tr class="row-odd"><td><p>标志</p></td>
+<td><p>str, 标志</p></td>
 <td><p>’o’</p></td>
 <td><p>Point, MultiPoint</p></td>
 </tr>
-<tr class="row-even"><td><p>markersize</p></td>
-<td><p>float, marker size</p></td>
+<tr class="row-even"><td><p>标志尺寸</p></td>
+<td><p>float, 标志尺寸</p></td>
 <td><p>6.0</p></td>
 <td><p>Point, MultiPoint</p></td>
 </tr>
 <tr class="row-odd"><td><p>alpha</p></td>
-<td><p>float, opacity</p></td>
+<td><p>float, 不透明度</p></td>
 <td><p>1.0</p></td>
-<td><p>All</p></td>
+<td><p>所有</p></td>
 </tr>
 </tbody>
 </table>
@@ -243,7 +243,7 @@
 </dd>
 </dl>
 <p class="rubric">提示</p>
-<p>See <a class="reference external" href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.plot.html?highlight=plot#matplotlib.pyplot.plot">matplotlib.pyplot.plot document</a> for detailed description of marker styles, line styles, and colors.</p>
+<p>关于标志样式、线样式和颜色的详细说明，请参见 <a class="reference external" href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.plot.html?highlight=plot#matplotlib.pyplot.plot">matplotlib.pyplot.plot 文档</a> 。</p>
 <p class="rubric">实际案例</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -298,7 +298,7 @@
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 6月 13, 2020.
+        最后更新于 6月 15, 2020.
       </span>
 
     </p>

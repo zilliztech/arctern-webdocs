@@ -466,12 +466,12 @@
 <span class="sd">        axis : {0 or &#39;index&#39;}</span>
 <span class="sd">            Axis along which to fill missing values.</span>
 <span class="sd">        inplace : bool, optional</span>
-<span class="sd">            Whether to fill NA values in-place, by default False</span>
+<span class="sd">            Whether to fill NA values in-place, by default False.</span>
 
 <span class="sd">            * *True:* Fills NA values in-place. This will modify any other views on this object.</span>
 <span class="sd">            * *False:* Create a new GeoSeries object, and then fill NA values in it.</span>
 <span class="sd">        limit : int, optional</span>
-<span class="sd">            Limited number of NA values to be filled, by default None It must be greater than 0 if not None.</span>
+<span class="sd">            Limited number of NA values to be filled, by default None. It must be greater than 0 if not None.</span>
 
 <span class="sd">            * If ``method`` is specified, this is the maximum number of consecutive NA values to forward/backward fill. In other words, if there is a gap with more than this number of consecutive NAs, it will only be partially filled.</span>
 <span class="sd">            * If ``method`` is not specified, this is the maximum number of entries along the entire axis where NaNs will be filled.</span>
@@ -864,7 +864,7 @@
 
 <div class="viewcode-block" id="GeoSeries.to_crs"><a class="viewcode-back" href="../../../api_reference/standalone_api/api/arctern.GeoSeries.to_crs.html#arctern.GeoSeries.to_crs">[文档]</a>    <span class="k">def</span> <span class="nf">to_crs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">crs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Transforms the Coordinate Reference System (CRS) of the GeoSeries to `crs`.</span>
+<span class="sd">        Transforms the Coordinate Reference System (CRS) of the GeoSeries to ``crs``.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1016,7 +1016,7 @@
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        GeoSeries</span>
-<span class="sd">            A GeoSeries that contains only one geometry, which is the union of all geometries in the first GeoSeries.</span>
+<span class="sd">            A GeoSeries that contains only one geometry, which is the union of all geometries in the GeoSeries.</span>
 
 <span class="sd">        Examples</span>
 <span class="sd">        -------</span>
@@ -1039,7 +1039,7 @@
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        GeoSeries</span>
-<span class="sd">            A GeoSeries that contains only one geometry, which is the minimum bounding box for the union of all geometries in the first GeoSeries.</span>
+<span class="sd">            A GeoSeries that contains only one geometry, which is the minimum bounding box for the union of all geometries in the GeoSeries.</span>
 
 <span class="sd">        Examples</span>
 <span class="sd">        -------</span>
@@ -1463,7 +1463,7 @@
         <span class="k">return</span> <span class="n">_property_op</span><span class="p">(</span><span class="n">arctern</span><span class="o">.</span><span class="n">ST_AsText</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="GeoSeries.to_wkb"><a class="viewcode-back" href="../../../api_reference/standalone_api/api/arctern.GeoSeries.to_wkb.html#arctern.GeoSeries.to_wkb">[文档]</a>    <span class="k">def</span> <span class="nf">to_wkb</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Transforms all geometries in the GeoSeries to `WKB &lt;https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry#Well-known_binary&gt;`_ strings.</span>
 
 <span class="sd">        Returns</span>
@@ -1562,7 +1562,7 @@
 <span class="sd">        &gt;&gt;&gt; from arctern import GeoSeries</span>
 <span class="sd">        &gt;&gt;&gt; min_x = Series([0.0, 1.0])</span>
 <span class="sd">        &gt;&gt;&gt; max_x = Series([2.0, 1.5])</span>
-<span class="sd">        &gt;&gt;&gt; min_y = Series([0.0, 1.0])  </span>
+<span class="sd">        &gt;&gt;&gt; min_y = Series([0.0, 1.0])</span>
 <span class="sd">        &gt;&gt;&gt; max_y = Series([1.0, 1.5])</span>
 <span class="sd">        &gt;&gt;&gt; GeoSeries.polygon_from_envelope(min_x, min_y, max_x, max_y)</span>
 <span class="sd">        0                POLYGON ((0 0,0 1,2 1,2 0,0 0))</span>
@@ -1700,7 +1700,7 @@
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 6月 13, 2020.
+        最后更新于 6月 15, 2020.
       </span>
 
     </p>

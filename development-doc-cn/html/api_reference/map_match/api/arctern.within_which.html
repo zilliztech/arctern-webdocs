@@ -87,7 +87,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../feature_description/feature_description.html">功能说明</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../api_reference.html">API 参考</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../../standalone_api/geoseries.html">GeoSeries</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="../map_match.html">Map Match</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../map_match.html">地图匹配</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="arctern.nearest_location_on_road.html">arctern.nearest_location_on_road</a></li>
 <li class="toctree-l3"><a class="reference internal" href="arctern.nearest_road.html">arctern.nearest_road</a></li>
 <li class="toctree-l3"><a class="reference internal" href="arctern.near_road.html">arctern.near_road</a></li>
@@ -144,7 +144,7 @@
         
           <li><a href="../../api_reference.html">API 参考</a> &raquo;</li>
         
-          <li><a href="../map_match.html">Map Match</a> &raquo;</li>
+          <li><a href="../map_match.html">地图匹配</a> &raquo;</li>
         
       <li>arctern.within_which</li>
     
@@ -170,22 +170,16 @@
 <dl class="py function">
 <dt id="arctern.within_which">
 <code class="sig-prename descclassname">arctern.</code><code class="sig-name descname">within_which</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">left</span></em>, <em class="sig-param"><span class="n">right</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/arctern/_wrapper_func.html#within_which"><span class="viewcode-link">[源代码]</span></a><a class="headerlink" href="#arctern.within_which" title="永久链接至目标">¶</a></dt>
-<dd><p>For each geometry in <code class="docutils literal notranslate"><span class="pre">left</span></code>, search for a geometry in <code class="docutils literal notranslate"><span class="pre">right</span></code> that contains it.</p>
+<dd><p>对于 <code class="docutils literal notranslate"><span class="pre">left</span></code> 中的每个几何体，在 <code class="docutils literal notranslate"><span class="pre">right</span></code> 中搜索包含该几何体的几何体。</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>left</strong> (<a class="reference internal" href="../../standalone_api/api/arctern.GeoSeries.html#arctern.GeoSeries" title="arctern.GeoSeries"><em>GeoSeries</em></a>) – Sequence of geometries.</p></li>
-<li><p><strong>right</strong> (<a class="reference internal" href="../../standalone_api/api/arctern.GeoSeries.html#arctern.GeoSeries" title="arctern.GeoSeries"><em>GeoSeries</em></a>) – Sequence of geometries.</p></li>
+<li><p><strong>left</strong> (<a class="reference internal" href="../../standalone_api/api/arctern.GeoSeries.html#arctern.GeoSeries" title="arctern.GeoSeries"><em>GeoSeries</em></a>) – 几何体序列。</p></li>
+<li><p><strong>right</strong> (<a class="reference internal" href="../../standalone_api/api/arctern.GeoSeries.html#arctern.GeoSeries" title="arctern.GeoSeries"><em>GeoSeries</em></a>) – 几何体序列。</p></li>
 </ul>
 </dd>
 <dt class="field-even">返回</dt>
-<dd class="field-even"><p><p>The indexes of geometries in <code class="docutils literal notranslate"><span class="pre">right</span></code>.
-For example, the value <em>j</em> with index <em>i</em> in the returned Series indicates that the geometry <code class="docutils literal notranslate"><span class="pre">left[i]</span></code> is within the geometry <code class="docutils literal notranslate"><span class="pre">right[j]</span></code>.</p>
-<ul class="simple">
-<li><p>When there are multiple candidates, return one of them.</p></li>
-<li><p>When there is no candidate, return NA.</p></li>
-</ul>
-</p>
+<dd class="field-even"><p>在 <code class="docutils literal notranslate"><span class="pre">right</span></code> 中的几何体索引。例如，返回的 Series 中，索引为 <em>i</em>、值为 <em>j</em> 的元素表示几何体 <code class="docutils literal notranslate"><span class="pre">left[i]</span></code> 在几何体 <code class="docutils literal notranslate"><span class="pre">right[j]</span></code> 之内。</p>
 </dd>
 <dt class="field-odd">返回类型</dt>
 <dd class="field-odd"><p>Series</p>
@@ -229,7 +223,7 @@ For example, the value <em>j</em> with index <em>i</em> in the returned Series i
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 6月 13, 2020.
+        最后更新于 6月 15, 2020.
       </span>
 
     </p>

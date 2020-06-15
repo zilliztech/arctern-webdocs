@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-13 11:47+0800\n"
+"POT-Creation-Date: 2020-06-15 17:24+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -30,18 +30,6 @@ msgstr ""
 
 #: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/geoseries/geoseries.py:docstring of arctern.GeoSeries.is_valid:3
 msgid "Mask of boolean values for each element in the GeoSeries that indicates whether an element is valid.  * *True:* The geometry is valid. * *False:* The geometry is invalid."
-msgstr ""
-
-#: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/geoseries/geoseries.py:docstring of arctern.GeoSeries.is_valid:3
-msgid "Mask of boolean values for each element in the GeoSeries that indicates whether an element is valid."
-msgstr ""
-
-#: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/geoseries/geoseries.py:docstring of arctern.GeoSeries.is_valid:5
-msgid "*True:* The geometry is valid."
-msgstr ""
-
-#: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/geoseries/geoseries.py:docstring of arctern.GeoSeries.is_valid:6
-msgid "*False:* The geometry is invalid."
 msgstr ""
 
 #: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/geoseries/geoseries.py:docstring of arctern.GeoSeries.is_valid:0

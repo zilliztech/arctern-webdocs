@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-13 11:47+0800\n"
+"POT-Creation-Date: 2020-06-15 17:24+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -46,18 +46,6 @@ msgstr ""
 
 #: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/_wrapper_func.py:docstring of arctern.near_road:10
 msgid "A Series that contains only one boolean value that indicates whether there is a road within the given ``distance`` of all ``points``.  * *True*: The road exists. * *False*: The road does not exist."
-msgstr ""
-
-#: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/_wrapper_func.py:docstring of arctern.near_road:10
-msgid "A Series that contains only one boolean value that indicates whether there is a road within the given ``distance`` of all ``points``."
-msgstr ""
-
-#: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/_wrapper_func.py:docstring of arctern.near_road:12
-msgid "*True*: The road exists."
-msgstr ""
-
-#: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/_wrapper_func.py:docstring of arctern.near_road:13
-msgid "*False*: The road does not exist."
 msgstr ""
 
 #: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/_wrapper_func.py:docstring of arctern.near_road:0

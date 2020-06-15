@@ -87,11 +87,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../feature_description/feature_description.html">功能说明</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../api_reference.html">API 参考</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../geoseries.html">GeoSeries</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="../geoseries.html#constructor">Constructor</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../geoseries.html#attributes">Attributes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../geoseries.html#constructing-geometry">Constructing Geometry</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../geoseries.html#processing-geometry">Processing Geometry</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="../geoseries.html#spatial-relationship">Spatial Relationship</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../geoseries.html#constructor">构造函数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../geoseries.html#attributes">属性</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../geoseries.html#constructing-geometry">构造几何体</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../geoseries.html#processing-geometry">处理几何体</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../geoseries.html#spatial-relationship">空间关系</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="arctern.GeoSeries.geom_equals.html">arctern.GeoSeries.geom_equals</a></li>
 <li class="toctree-l4"><a class="reference internal" href="arctern.GeoSeries.touches.html">arctern.GeoSeries.touches</a></li>
 <li class="toctree-l4"><a class="reference internal" href="arctern.GeoSeries.overlaps.html">arctern.GeoSeries.overlaps</a></li>
@@ -101,12 +101,12 @@
 <li class="toctree-l4"><a class="reference internal" href="arctern.GeoSeries.within.html">arctern.GeoSeries.within</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../geoseries.html#measurement">Measurement</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../geoseries.html#aggregation">Aggregation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../geoseries.html#pandas-methods">Pandas Methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../geoseries.html#measurement">测量</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../geoseries.html#aggregation">聚合</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../geoseries.html#pandas-methods">Pandas 方法</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../map_match/map_match.html">Map Match</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../map_match/map_match.html">地图匹配</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../plot/plot.html">Plot</a></li>
 </ul>
 </li>
@@ -186,20 +186,10 @@
 <dd><p>对于 GeoSeries 中的每个几何体以及 <code class="docutils literal notranslate"><span class="pre">other</span></code> 中给出的对应的几何体，检测它们是否相交。</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
-<dd class="field-odd"><p><strong>other</strong> (<em>geometry</em><em> or </em><a class="reference internal" href="arctern.GeoSeries.html#arctern.GeoSeries" title="arctern.GeoSeries"><em>GeoSeries</em></a>) – <p>The geometry or GeoSeries to test whether it is intersected with the geometries in the first GeoSeries.</p>
-<ul class="simple">
-<li><p>If <code class="docutils literal notranslate"><span class="pre">other</span></code> is a geometry, this function tests the intersection relation between each geometry in the GeoSeries and <code class="docutils literal notranslate"><span class="pre">other</span></code>.</p></li>
-<li><p>If <code class="docutils literal notranslate"><span class="pre">other</span></code> is a GeoSeries, this function tests the intersection relation between each geometry in the GeoSeries and the geometry with the same index in <code class="docutils literal notranslate"><span class="pre">other</span></code>.</p></li>
-</ul>
-</p>
+<dd class="field-odd"><p><strong>other</strong> (<em>geometry</em><em> or </em><a class="reference internal" href="arctern.GeoSeries.html#arctern.GeoSeries" title="arctern.GeoSeries"><em>GeoSeries</em></a>) – 用于检查与第一个 GeoSeries 中的几何体是否相交的几何体或 GeoSeries。* 如果 <code class="docutils literal notranslate"><span class="pre">other</span></code> 是几何体，那么此方法检查 GeoSeries 中的每个几何体是否与 <code class="docutils literal notranslate"><span class="pre">other</span></code> 相交。* 如果 <code class="docutils literal notranslate"><span class="pre">other</span></code> 是一个 GeoSeries，那么此方法检查 GeoSeries 中的每个几何体是否与 <code class="docutils literal notranslate"><span class="pre">other</span></code> 中具有相同索引的几何体相交。</p>
 </dd>
 <dt class="field-even">返回</dt>
-<dd class="field-even"><p><p>Mask of boolean values for each element in the GeoSeries that indicates whether it intersects the geometries in <code class="docutils literal notranslate"><span class="pre">other</span></code>.</p>
-<ul class="simple">
-<li><p><em>True</em>: The two geometries intersect each other.</p></li>
-<li><p><em>False</em>: The two geometries do not intersect each other.</p></li>
-</ul>
-</p>
+<dd class="field-even"><p>GeoSeries 中每个元素对应的布尔值，指示元素是否与 <code class="docutils literal notranslate"><span class="pre">other</span></code> 中的几何体相交。 * <em>True</em>: 两个几何体相交。* <em>False</em>: 两个几何体不相交。</p>
 </dd>
 <dt class="field-odd">返回类型</dt>
 <dd class="field-odd"><p>Series</p>
@@ -215,7 +205,7 @@
 <span class="go">dtype: bool</span>
 </pre></div>
 </div>
-<p>Alternatively, <code class="docutils literal notranslate"><span class="pre">other</span></code> can be a geometry in WKB format.</p>
+<p>或者，<code class="docutils literal notranslate"><span class="pre">other</span></code> 可以是 WKB 格式的几何体。”</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s2</span><span class="o">.</span><span class="n">intersects</span><span class="p">(</span><span class="n">s1</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 <span class="go">0    True</span>
 <span class="go">1    True</span>
@@ -248,7 +238,7 @@
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 6月 13, 2020.
+        最后更新于 6月 15, 2020.
       </span>
 
     </p>
