@@ -85,7 +85,11 @@
 <li class="toctree-l1 current"><a class="reference internal" href="quick_start.html">Quick Start</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Installation</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#system-requirements">System requirements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#installing-dependent-libraries">Installing dependent libraries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installing-dependent-libraries">Installing dependent libraries</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#ubuntu">Ubuntu</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#centos">Centos</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#installing-miniconda">Installing Miniconda</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#installing-arctern">Installing Arctern</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#installation-verification">Installation verification</a></li>
@@ -201,7 +205,7 @@
 <tbody>
 <tr>
 <td align="left">Operating system</td>
-<td align="left">Ubuntu LTS 18.04</td>
+<td align="left">Ubuntu LTS 18.04, Centos 7</td>
 </tr>
 <tr>
 <td align="left">Conda</td>
@@ -222,6 +226,8 @@
 </div>
 <div class="section" id="installing-dependent-libraries">
 <h2>Installing dependent libraries<a class="headerlink" href="#installing-dependent-libraries" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="ubuntu">
+<h3>Ubuntu<a class="headerlink" href="#ubuntu" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>CPU version</p></li>
 </ul>
@@ -237,6 +243,13 @@
 <blockquote>
 <div><p><strong>Note:</strong> If the installation fails, please run <code class="docutils literal notranslate"><span class="pre">apt</span> <span class="pre">update</span></code> and then run the above commands again.</p>
 </div></blockquote>
+</div>
+<div class="section" id="centos">
+<h3>Centos<a class="headerlink" href="#centos" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo yum install mesa-libGLU-devel mesa-libOSMesa-devel
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="installing-miniconda">
 <h2>Installing Miniconda<a class="headerlink" href="#installing-miniconda" title="Permalink to this headline">¶</a></h2>
@@ -313,7 +326,7 @@ $ conda remove -n arctern_env --all
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        Last updated on Jun 15, 2020.
+        Last updated on Jun 16, 2020.
       </span>
 
     </p>
