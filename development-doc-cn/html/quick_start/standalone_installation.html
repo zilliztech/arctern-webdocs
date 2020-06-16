@@ -86,7 +86,11 @@
 <li class="toctree-l1 current"><a class="reference internal" href="quick_start.html">快速开始</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">安装部署</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id2">系统要求</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">安装依赖库</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">安装依赖库</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#ubuntu">Ubuntu</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#centos">Centos</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#miniconda">安装 Miniconda</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#arctern">安装 Arctern</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id4">安装验证</a></li>
@@ -202,7 +206,7 @@
 <tbody>
 <tr>
 <td align="left">操作系统</td>
-<td align="left">Ubuntu LTS 18.04</td>
+<td align="left">Ubuntu LTS 18.04, Centos 7</td>
 </tr>
 <tr>
 <td align="left">Conda</td>
@@ -223,6 +227,8 @@
 </div>
 <div class="section" id="id3">
 <h2>安装依赖库<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<div class="section" id="ubuntu">
+<h3>Ubuntu<a class="headerlink" href="#ubuntu" title="永久链接至标题">¶</a></h3>
 <ul class="simple">
 <li><p>CPU 版本</p></li>
 </ul>
@@ -236,8 +242,15 @@
 </pre></div>
 </div>
 <blockquote>
-<div><p><strong>注意：</strong> 如果安装失败，请先执行 <code class="docutils literal notranslate"><span class="pre">apt</span> <span class="pre">update</span></code> 再执行以上命令。</p>
+<div><p><strong>注意：</strong> 如果安装失败，请先执行 <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">update</span></code> 再执行以上命令。</p>
 </div></blockquote>
+</div>
+<div class="section" id="centos">
+<h3>Centos<a class="headerlink" href="#centos" title="永久链接至标题">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo yum install mesa-libGLU-devel mesa-libOSMesa-devel
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="miniconda">
 <h2>安装 Miniconda<a class="headerlink" href="#miniconda" title="永久链接至标题">¶</a></h2>
@@ -314,7 +327,7 @@ $ conda remove -n arctern_env --all
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 6月 15, 2020.
+        最后更新于 6月 16, 2020.
       </span>
 
     </p>
