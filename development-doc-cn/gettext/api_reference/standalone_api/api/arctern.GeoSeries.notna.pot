@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-17 11:08+0800\n"
+"POT-Creation-Date: 2020-06-19 14:58+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,7 +29,19 @@ msgid "返回"
 msgstr ""
 
 #: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/geoseries/geoseries.py:docstring of arctern.GeoSeries.notna:3
-msgid "Mask of boolean values for each element in GeoSeries that indicates whether an element is not an NA value.  * *True*: An element is a non-missing value. * *False*: An element is a NA value, such as None."
+msgid "Mask of boolean values for each element in the GeoSeries that indicates whether an element is not an NA value.  * *True*: An element is a non-missing value. * *False*: An element is a NA value, such as None."
+msgstr ""
+
+#: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/geoseries/geoseries.py:docstring of arctern.GeoSeries.notna:3
+msgid "Mask of boolean values for each element in the GeoSeries that indicates whether an element is not an NA value."
+msgstr ""
+
+#: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/geoseries/geoseries.py:docstring of arctern.GeoSeries.notna:5
+msgid "*True*: An element is a non-missing value."
+msgstr ""
+
+#: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/geoseries/geoseries.py:docstring of arctern.GeoSeries.notna:6
+msgid "*False*: An element is a NA value, such as None."
 msgstr ""
 
 #: ../../../../../miniconda3/envs/arctern-0.1.1/lib/python3.7/site-packages/arctern-0.1.0-py3.7.egg/arctern/geoseries/geoseries.py:docstring of arctern.GeoSeries.notna:0

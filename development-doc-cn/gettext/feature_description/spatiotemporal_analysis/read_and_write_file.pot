@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-17 11:08+0800\n"
+"POT-Creation-Date: 2020-06-19 14:58+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -53,7 +53,7 @@ msgid "然后，基于 WKB 格式的 pandas.Series 对象 data_wkb 构造 arcter
 msgstr ""
 
 #: ../../source/feature_description/spatiotemporal_analysis/read_and_write_file.md:52
-msgid "使用 GeoSeries 的 geom_equals 方法比较 geo_wkt 和 geo_wkb 两个 GeoSeries 对象，发现它们是相同的。这是因为   geo_wkt 和 geo_wkb 本质上都是由同一数据构造的 GeoSeries 对象。"
+msgid "使用 GeoSeries 的 geom_equals 方法比较 geo_wkt 和 geo_wkb 两个 GeoSeries 对象，发现它们是相同的。这是因为 geo_wkt 和 geo_wkb 本质上都是由同一数据构造的 GeoSeries 对象。"
 msgstr ""
 
 #: ../../source/feature_description/spatiotemporal_analysis/read_and_write_file.md:63
@@ -74,7 +74,7 @@ msgid "基于由 GeoJson 数据组成的 pandas.Series 对象 data_json 构造 a
 msgstr ""
 
 #: ../../source/feature_description/spatiotemporal_analysis/read_and_write_file.md:95
-msgid "使用 GeoSeries 的 geom_equals 方法比较 geo_wkb 和 geo_json 两个 GeoSeries 对象，发现它们是相同的。这是因为   geo_wkb 和 geo_json 的源文件（wkt_geos.csv 和 geos.json）中定义的是相同的几何体。"
+msgid "使用 GeoSeries 的 geom_equals 方法比较 geo_wkb 和 geo_json 两个 GeoSeries 对象，发现它们是相同的。这是因为 geo_wkb 和 geo_json 的源文件（wkt_geos.csv 和 geos.json）中定义的是相同的几何体。"
 msgstr ""
 
 #: ../../source/feature_description/spatiotemporal_analysis/read_and_write_file.md:106

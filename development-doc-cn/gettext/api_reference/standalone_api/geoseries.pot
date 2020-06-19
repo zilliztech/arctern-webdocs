@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-17 11:08+0800\n"
+"POT-Creation-Date: 2020-06-19 14:58+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -253,7 +253,7 @@ msgid ":obj:`GeoSeries.curve_to_line <arctern.GeoSeries.curve_to_line>`\\ \\(\\)
 msgstr ""
 
 #: ../../source/api_reference/standalone_api/geoseries.rst:64:<autosummary>:1
-msgid "Converts curves in each geometry to approximate linear representation."
+msgid "Converts curves in each geometry to approximate linear representations."
 msgstr ""
 
 #: ../../source/api_reference/standalone_api/geoseries.rst:66

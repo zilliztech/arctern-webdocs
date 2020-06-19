@@ -213,7 +213,7 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="n">geo_wkb</span> <span class="o">=</span> <span class="n">arctern</span><span class="o">.</span><span class="n">GeoSeries</span><span class="p">(</span><span class="n">data_wkb</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>使用 GeoSeries 的 <a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.geom_equals.html"><code class="docutils literal notranslate"><span class="pre">geom_equals</span></code></a> 方法比较 <code class="docutils literal notranslate"><span class="pre">geo_wkt</span></code> 和 <code class="docutils literal notranslate"><span class="pre">geo_wkb</span></code> 两个 GeoSeries 对象，发现它们是相同的。这是因为   <code class="docutils literal notranslate"><span class="pre">geo_wkt</span></code> 和 <code class="docutils literal notranslate"><span class="pre">geo_wkb</span></code> 本质上都是由同一数据构造的 GeoSeries 对象。</p>
+<p>使用 GeoSeries 的 <a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.geom_equals.html"><code class="docutils literal notranslate"><span class="pre">geom_equals</span></code></a> 方法比较 <code class="docutils literal notranslate"><span class="pre">geo_wkt</span></code> 和 <code class="docutils literal notranslate"><span class="pre">geo_wkb</span></code> 两个 GeoSeries 对象，发现它们是相同的。这是因为 <code class="docutils literal notranslate"><span class="pre">geo_wkt</span></code> 和 <code class="docutils literal notranslate"><span class="pre">geo_wkb</span></code> 本质上都是由同一数据构造的 GeoSeries 对象。</p>
 <div class="highlight-pytho notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; geo_wkt.geom_equals(geo_wkb)
 0    True
 1    True
@@ -249,7 +249,7 @@ dtype: bool
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">geo_json</span> <span class="o">=</span> <span class="n">arctern</span><span class="o">.</span><span class="n">GeoSeries</span><span class="o">.</span><span class="n">geom_from_geojson</span><span class="p">(</span><span class="n">data_json</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>使用 GeoSeries 的 <a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.geom_equals.html"><code class="docutils literal notranslate"><span class="pre">geom_equals</span></code></a> 方法比较 <code class="docutils literal notranslate"><span class="pre">geo_wkb</span></code> 和 <code class="docutils literal notranslate"><span class="pre">geo_json</span></code> 两个 GeoSeries 对象，发现它们是相同的。这是因为   <code class="docutils literal notranslate"><span class="pre">geo_wkb</span></code> 和 <code class="docutils literal notranslate"><span class="pre">geo_json</span></code> 的源文件（<strong>wkt_geos.csv</strong> 和 <strong>geos.json</strong>）中定义的是相同的几何体。</p>
+<p>使用 GeoSeries 的 <a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.geom_equals.html"><code class="docutils literal notranslate"><span class="pre">geom_equals</span></code></a> 方法比较 <code class="docutils literal notranslate"><span class="pre">geo_wkb</span></code> 和 <code class="docutils literal notranslate"><span class="pre">geo_json</span></code> 两个 GeoSeries 对象，发现它们是相同的。这是因为 <code class="docutils literal notranslate"><span class="pre">geo_wkb</span></code> 和 <code class="docutils literal notranslate"><span class="pre">geo_json</span></code> 的源文件（<strong>wkt_geos.csv</strong> 和 <strong>geos.json</strong>）中定义的是相同的几何体。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">geo_json</span><span class="o">.</span><span class="n">geom_equals</span><span class="p">(</span><span class="n">geo_wkb</span><span class="p">)</span>
 <span class="go">0    True</span>
 <span class="go">1    True</span>
@@ -315,7 +315,7 @@ dtype: bool
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 6月 17, 2020.
+        最后更新于 6月 19, 2020.
       </span>
 
     </p>

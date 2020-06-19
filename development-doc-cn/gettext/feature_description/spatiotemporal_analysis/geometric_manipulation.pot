@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Arctern \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-17 11:08+0800\n"
+"POT-Creation-Date: 2020-06-19 14:58+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,404 +29,492 @@ msgid "GeoSeries.length"
 msgstr ""
 
 #: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:7
-msgid "功能： 计算 GeoSeries 对象中每个几何体的长度。如果几何体不是 LineString 和 MultiLineString 类型的几何体， 则它的长度为 0 。"
+msgid "功能： 计算 GeoSeries 中每个几何体的长度。计算几何体长度的方法如下："
 msgstr ""
 
 #: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:8
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:23
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:388
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:405
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:420
-msgid "返回： 浮点型的 pandas.Series"
+msgid "POINT / MULTIPOINT / POLYGON / MULTIPOLYGON / CURVEPOLYGON / MULTICURVE: 0"
 msgstr ""
 
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:20
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:9
+msgid "LINESTRING: 一条直线的长度。"
+msgstr ""
+
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:10
+msgid "MULTILINESTRING: 多条直线的长度总和。"
+msgstr ""
+
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:11
+msgid "CIRCULARSTRING: 一条曲线的长度。"
+msgstr ""
+
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:12
+msgid "MULTISURFACE / COMPOUNDCURVE / GEOMETRYCOLLECTION: 对于 3 种类型中的几何体集合，计算集合中所有几何体的长度之和。"
+msgstr ""
+
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:13
+msgid "返回： GeoSeries 中每个几何体的长度。"
+msgstr ""
+
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:25
 msgid "GeoSeries.area"
 msgstr ""
 
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:22
-msgid "功能： 计算 GeoSeries 对象中每个几何体的面积。"
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:27
+msgid "功能： 计算 GeoSeries 中每个几何体的 2D 笛卡尔（平面）面积。计算几何体面积的方法如下："
 msgstr ""
 
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:36
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:28
+msgid "POINT / MULTIPOINT / LINESTRING / MULTILINESTRING / CIRCULARSTRING: 0"
+msgstr ""
+
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:29
+msgid "POLYGON: 单个多边形的面积。"
+msgstr ""
+
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:30
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:32
+msgid "MULTIPOLYGON: 多个多边形的面积总和。"
+msgstr ""
+
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:31
+msgid "CURVEPOLYGON: 单个曲线多边形的面积。"
+msgstr ""
+
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:33
+msgid "MULTISURFACE / COMPOUNDCURVE / GEOMETRYCOLLECTION: 对于 3 种类型中的几何体集合，计算集合中所有几何体的面积之和。"
+msgstr ""
+
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:34
+msgid "返回： GeoSeries 中每个几何体的 2D 笛卡尔（平面）面积。"
+msgstr ""
+
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:47
 msgid "GeoSeries.centroid"
 msgstr ""
 
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:38
-msgid "功能： 计算 GeoSeries 对象中每个几何体的中心点。"
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:49
+msgid "功能： 返回 GeoSeries 中每个几何体的中心。"
 msgstr ""
 
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:39
-msgid "返回： GeoSeries。"
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:50
+msgid "返回： GeoSeries 中每个几何体的中心。"
 msgstr ""
 
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:51
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:62
 msgid "GeoSeries.is_valid"
 msgstr ""
 
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:53
-msgid "功能： 判断 GeoSeries 对象中的每个几何体是否有效。"
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:64
+msgid "功能： 检查 GeoSeries 中的每个几何体是否为有效格式，例如 WKT 和 WKB 格式。"
 msgstr ""
 
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:54
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:70
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:229
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:273
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:292
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:312
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:332
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:350
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:369
-msgid "返回： 布尔型的 pandas.Series"
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:65
+msgid "返回： GeoSeries 中每个元素对应的布尔值，指示元素是否为有效的。"
 msgstr ""
 
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:55
-msgid "True: 几何体有效。"
-msgstr ""
-
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:56
-msgid "False: 几何体无效。"
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:66
+msgid "True: 几何体是有效的。"
 msgstr ""
 
 #: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:67
+msgid "False: 几何体是无效的。"
+msgstr ""
+
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:78
 msgid "GeoSeries.is_simple"
 msgstr ""
 
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:69
-msgid "功能： 判断 GeoSeries 对象中的每个几何体是否简单。这里的“简单”表示某个几何图形没有异常的几何图形点，例如自相交或相切。"
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:80
+msgid "功能： 检查 GeoSeries 中的每个几何体是否为“简单”的。此处的“简单”是指几何体没有异常点，例如自相交或自相切。"
 msgstr ""
 
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:71
-msgid "True: 几何体是简单的。"
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:81
+msgid "返回： GeoSeries 中每个元素对应的布尔值，指示元素是否为“简单”的。"
 msgstr ""
 
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:72
-msgid "False: 几何体不是简单的。"
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:82
+msgid "True: 几何体是“简单”的。"
 msgstr ""
 
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:84
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:83
+msgid "False: 几何体不是“简单”的。"
+msgstr ""
+
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:95
 msgid "GeoSeries.convex_hull"
 msgstr ""
 
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:86
-msgid "功能： 对于 GeoSeries 对象中的每个几何体，计算包围它的最小的凸几何体。"
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:97
+msgid "功能： 对于 GeoSeries 中的每个几何体，返回包围它的最小凸几何体。"
 msgstr ""
 
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:87
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:116
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:131
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:145
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:161
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:196
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:212
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:437
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:458
-msgid "返回： GeoSeries"
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:98
+msgid "对于多边形，返回的几何体是包围它的最小凸几何体。"
 msgstr ""
 
 #: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:99
-msgid "GeoSeries.npoints"
+msgid "对于几何体集合，返回的几何体是将集合中的所有几何体包围起来的最小凸几何体。"
+msgstr ""
+
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:100
+msgid "对于点或线，返回的几何体与原来的几何体相同。"
 msgstr ""
 
 #: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:101
-msgid "功能： 对于 GeoSeries 对象中的每个几何体，计算它的点的数量。"
-msgstr ""
-
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:102
-msgid "返回： int64 类型的 pandas.Series"
+msgid "返回： 凸几何体的序列。"
 msgstr ""
 
 #: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:113
-msgid "GeoSeries.curve_to_line"
+msgid "GeoSeries.npoints"
 msgstr ""
 
 #: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:115
-msgid "功能： 对于 GeoSeries 对象中的每个几何体，计算它的近似表示。近似表示的方法是将每个几何图形中的曲线转换为近似线性表示。"
+msgid "功能： 返回 GeoSeries 中每个几何体的点的数量。"
+msgstr ""
+
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:116
+msgid "返回： GeoSeries 中每个几何体的点的数量。"
 msgstr ""
 
 #: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:127
-msgid "GeoSeries.simplify(tolerance)"
+msgid "GeoSeries.curve_to_line"
 msgstr ""
 
 #: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:129
-msgid "功能： 对于 GeoSeries 对象中的每个几何体，计算它的简化表示。简化表示的算法是 Douglas-Peucker 算法。"
+msgid "功能： 将每个几何体中的曲线转换为近似线性表示。例如，"
 msgstr ""
 
 #: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:130
-msgid "参数： tolerance 为浮点型数字，表示线串上的点和曲线之间的最大距离。"
+msgid "将 CIRCULAR STRING 转换为 LINESTRING，"
 msgstr ""
 
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:142
-msgid "GeoSeries.envelope"
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:131
+msgid "将 CURVEPOLYGON 转换为 POLYGON，"
+msgstr ""
+
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:132
+msgid "将 MULTISURFACE 转换为 MULTIPOLYGON。"
+msgstr ""
+
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:133
+msgid "返回： 转换后的线性几何体。"
 msgstr ""
 
 #: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:144
-msgid "功能： 对于 GeoSeries 对象中的每个几何体，计算它的最小矩形边界范围。"
+msgid "GeoSeries.simplify(tolerance)"
 msgstr ""
 
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:157
-msgid "GeoSeries.buffer(distance)"
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:146
+msgid "功能： 返回使用 Douglas-Peucker 算法 计算的 GeoSeries 中每个几何体的简化版本。"
 msgstr ""
 
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:159
-msgid "功能： 对于 GeoSeries 对象中的每个几何体，创建一个与它的最远距离不大于 distance 的几何体。"
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:147
+msgid "返回： 简化的几何体的序列。"
+msgstr ""
+
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:158
+msgid "GeoSeries.envelope"
 msgstr ""
 
 #: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:160
-msgid "参数： distance 为浮点型数字，表示新几何体与原几何体之间的最大距离。"
+msgid "功能： 返回 GeoSeries 中每个几何体的最小边界矩形。边界矩形是一个矩形几何体对象，其边平行于坐标轴。"
 msgstr ""
 
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:163
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:233
-msgid "示例 1"
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:161
+msgid "返回： GeoSeries 中每个几何体的最小边界矩形。"
 msgstr ""
 
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:165
-msgid "将 distance 设为 0，则返回一个空的多边形。"
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:173
+msgid "GeoSeries.buffer(distance)"
 msgstr ""
 
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:174
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:245
-msgid "示例 2"
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:175
+msgid "功能： 对于每个几何体，将其所有点向远离几何体中心的方向移动以构造新的几何体。移动距离被指定为 distance。"
 msgstr ""
 
 #: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:176
+msgid "如果 distance > 0，则新几何体是原来的几何体之外的按比例放大版本。"
+msgstr ""
+
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:177
+msgid "如果 distance < 0，则新几何体是原来的几何体内部的按比例缩小版本。"
+msgstr ""
+
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:178
+msgid "返回： 几何体序列。"
+msgstr ""
+
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:180
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:250
+msgid "示例 1"
+msgstr ""
+
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:182
+msgid "将 distance 设为 0，则返回一个空的多边形。"
+msgstr ""
+
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:191
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:262
+msgid "示例 2"
+msgstr ""
+
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:193
 msgid "将 distance 设为 1.0，则返回一个多边形。该多边形近似表示一个半径为 1.0、圆心为 Point(0, 1) 的圆，该圆的面积为近似为 3.14。"
 msgstr ""
 
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:192
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:209
 msgid "GeoSeries.precision_reduce(precision)"
 msgstr ""
 
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:194
-msgid "功能： 对于 GeoSeries 对象中的每个几何体，根据指定的有效数字位数 precision 创建降低坐标精度后的几何体。"
-msgstr ""
-
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:195
-msgid "参数： precision 为整型数字，表示有效数字位数。"
-msgstr ""
-
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:198
-msgid "以下示例中，由于设置的有效位数是 3， 结果中所有点的坐标只保留了 3 位有效数字。其中 POINT (1.333 2.666) 的坐标 2.666 的最后有效位采用四舍五入的规则，变为 2.67 。"
-msgstr ""
-
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:209
-msgid "GeoSeries.make_valid"
-msgstr ""
-
 #: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:211
-msgid "功能： 对于 GeoSeries 对象中的每个几何体，根据它创建一个新的有效的几何体。在构造新几何体过程中，不会删除原始几何体的任何顶点。如果原始几何体本来就是有效的，则直接返回原始几何体。"
+msgid "功能： 对于 GeoSeries 中每个几何体的坐标，将有效数字的位数减少到给定的 precision。 最后一位小数位的数字将四舍五入。"
+msgstr ""
+
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:212
+msgid "返回： 精度降低后的几何体序列。"
 msgstr ""
 
 #: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:214
-msgid "在以下示例中，输入的几何体在 POINT (2 2) 附近存在自相交的情况。因此，make_valid 方法返回一个新的几何体集合，该集合包含一个多边形和一个线串。"
+msgid "以下示例中，由于设置的有效位数是 3， 结果中所有点的坐标只保留了 3 位有效数字。其中 POINT (1.333 2.666) 的坐标 2.666 的最后有效位采用四舍五入的规则，变为 2.67 。"
 msgstr ""
 
 #: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:225
-msgid "GeoSeries.intersects(other)"
+msgid "GeoSeries.make_valid"
 msgstr ""
 
 #: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:227
-msgid "功能： 对于 GeoSeries 对象中的每个几何体，判断它是否与 other 对象中相同位置的几何体存在交集。"
+msgid "功能： 在不丢失任何输入顶点的情况下，为 GeoSeries 中的每个几何体创建有效的表示。"
 msgstr ""
 
 #: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:228
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:272
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:291
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:311
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:331
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:349
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:368
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:387
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:404
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:419
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:436
-msgid "参数： other 为 GeoSeries 或者 WKB 类型的对象。"
+msgid "如果几何体已经有效，则将不执行任何操作。"
+msgstr ""
+
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:229
+msgid "如果无法使几何体有效，则将其设置为 None。"
 msgstr ""
 
 #: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:230
-msgid "True: 两个几何体存在交集。"
+msgid "返回： 有效几何体的序列。"
 msgstr ""
 
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:231
-msgid "False: 两个几何体不存在交集。"
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:232
+msgid "在以下示例中，输入的几何体在 POINT (2 2) 附近存在自相交的情况。因此，make_valid 方法返回一个新的几何体集合，该集合包含一个多边形和一个线串。"
 msgstr ""
 
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:257
-msgid "示例 3"
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:243
+msgid "GeoSeries.intersects(other)"
 msgstr ""
 
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:269
-msgid "GeoSeries.within(other)"
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:245
+msgid "功能： 对于 GeoSeries 中的每个几何体以及 other 中给出的对应的几何体，检测它们是否相交。"
 msgstr ""
 
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:271
-msgid "功能： 对于 GeoSeries 对象中的每个几何体，判断它是否在 other 对象中相同位置的几何体的内部。"
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:246
+msgid "返回： GeoSeries 中每个元素对应的布尔值，指示元素是否与 other 中的几何体相交。"
 msgstr ""
 
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:274
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:293
-msgid "True: 两个几何体存在包含关系。"
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:247
+msgid "True: 两个几何体相交。"
+msgstr ""
+
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:248
+msgid "False: 两个几何体不相交。"
 msgstr ""
 
 #: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:275
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:294
-msgid "False: 两个几何体存在包含关系。"
+msgid "示例 3"
 msgstr ""
 
 #: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:288
-msgid "GeoSeries.contains(other)"
+msgid "GeoSeries.within(other)"
 msgstr ""
 
 #: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:290
-msgid "功能： 对于 GeoSeries 对象中的每个几何体，判断它是否包含 other 对象中相同位置的几何体。"
+msgid "功能： 对于 GeoSeries 中的每个几何体以及 other 中给出的对应的几何体，检测第一个几何体是否在另一个几何体内部。"
+msgstr ""
+
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:291
+msgid "返回： GeoSeries 中每个元素对应的布尔值，指示元素是否在 other 中的几何体内部。"
+msgstr ""
+
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:292
+msgid "True: 第一个几何体在另一个几何体内部。"
+msgstr ""
+
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:293
+msgid "False: 第一个几何体不在另一个几何体内部。"
+msgstr ""
+
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:306
+msgid "GeoSeries.contains(other)"
 msgstr ""
 
 #: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:308
-msgid "GeoSeries.crosses(other)"
+msgid "功能： 对于 GeoSeries 中的每个几何体以及 other 中给出的对应的几何体，检测第一个几何体是否包含另一个几何体。"
+msgstr ""
+
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:309
+msgid "返回： GeoSeries 中每个元素对应的布尔值，指示元素是否包含 other 中的几何体。"
 msgstr ""
 
 #: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:310
-msgid "功能： 对于 GeoSeries 对象中的每个几何体，判断它是否与 other 对象中相同位置的几何体相交。"
+msgid "True: 第一个几何体包含另一个几何体。"
 msgstr ""
 
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:313
-msgid "True: 两个几何体存在相交关系。"
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:311
+msgid "False: 第一个几何体不包含另一个几何体。"
 msgstr ""
 
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:314
-msgid "False: 两个几何体存在相交关系。"
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:325
+msgid "GeoSeries.crosses(other)"
+msgstr ""
+
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:327
+msgid "功能： 对于 GeoSeries 中的每个几何体以及 other 中给出的对应几何体，检查第一个几何体是否与另一个几何体空间相交。“空间相交”是指两个几何体的一些但非所有内部点都相同。几何体内部的交集不得为空集，并且其维度必须小于两个输入几何体的最大维度。"
 msgstr ""
 
 #: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:328
-msgid "GeoSeries.geom_equals(other)"
+msgid "返回： GeoSeries 中每个元素对应的布尔值，指示元素是否与 other 中的几何体空间相交。"
+msgstr ""
+
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:329
+msgid "True: 第一个几何体与另一个几何体空间相交。"
 msgstr ""
 
 #: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:330
-msgid "功能： 对于 GeoSeries 对象中的每个几何体，判断它是否与 other 对象中相同位置的几何体等价。“等价”表示两个几何体的几何结构相同。"
+msgid "False: 第一个几何体不与另一个几何体空间相交。"
 msgstr ""
 
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:333
-msgid "True: 两个几何体等价。"
-msgstr ""
-
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:334
-msgid "False: 两个几何体不等价。"
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:344
+msgid "GeoSeries.geom_equals(other)"
 msgstr ""
 
 #: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:346
-msgid "GeoSeries.touches(other)"
+msgid "功能： 对于 GeoSeries 中的每个几何体以及 other 中给出的对应几何体，检查第一个几何体是否与另一个几何体等价。“等价”表示两个几何体表示相同的几何体结构。"
+msgstr ""
+
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:347
+msgid "返回： GeoSeries 中每个元素对应的布尔值，指示元素是否与 other 中的几何体等价。"
 msgstr ""
 
 #: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:348
-msgid "功能： 对于 GeoSeries 对象中的每个几何体，判断它是否与 other 对象中相同位置的几何体相邻。“相邻”表示两个几何体在边界上有共同的点。"
+msgid "True: 第一个几何体与另一个几何体等价。"
 msgstr ""
 
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:351
-msgid "True: 两个几何体相邻。"
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:349
+msgid "False: 第一个几何体不与另一个几何体等价。"
 msgstr ""
 
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:352
-msgid "False: 两个几何体不相邻。"
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:361
+msgid "GeoSeries.touches(other)"
+msgstr ""
+
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:363
+msgid "功能： 对于 GeoSeries 中的每个几何体以及 other 中给出的对应几何体，检测它们是否接触。“接触”表示两个几何体具有公共点，并且公共点仅位于它们的边界上。"
+msgstr ""
+
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:364
+msgid "返回： GeoSeries 中每个元素对应的布尔值，指示元素是否接触 other 中的几何体。"
 msgstr ""
 
 #: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:365
+msgid "True: 第一个几何体接触另一个几何体。"
+msgstr ""
+
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:366
+msgid "False: 第一个几何体不接触另一个几何体。"
+msgstr ""
+
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:379
 msgid "GeoSeries.overlaps(other)"
 msgstr ""
 
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:367
-msgid "功能： 对于 GeoSeries 对象中的每个几何体，判断它是否与 other 对象中相同位置的几何体重叠。“重叠”表示两个几何体相交且不互相包含。"
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:381
+msgid "功能： 对于 GeoSeries 中的每个几何体以及 other 中给出的对应几何体，检查第一个几何体是否与另一个几何体空间重叠。“空间重叠”表示两个几何体相交，但一个不完全包含另一个。"
 msgstr ""
 
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:370
-msgid "True: 两个几何体重叠。"
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:382
+msgid "返回： GeoSeries 中每个元素对应的布尔值，指示元素是否与 other 中的几何体空间重叠。"
 msgstr ""
 
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:371
-msgid "False: 两个几何体不重叠。"
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:383
+msgid "True: 第一个几何体与另一个几何体空间重叠。"
 msgstr ""
 
 #: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:384
+msgid "False: 第一个几何体不与另一个几何体空间重叠。"
+msgstr ""
+
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:397
 msgid "GeoSeries.distance(other)"
 msgstr ""
 
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:386
-msgid "功能： 对于 GeoSeries 对象中的每个几何体，判断它与 other 对象中相同位置的几何体之间的最短二维笛卡尔（平面）距离。"
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:399
+msgid "功能： 对于 GeoSeries 中的每个几何体以及 other 中给出的对应几何体，计算它们之间的最小 2D 笛卡尔（平面）距离。"
 msgstr ""
 
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:401
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:400
+msgid "返回： GeoSeries 中的每个几何体与 other 中给出的对应几何体之间的距离。"
+msgstr ""
+
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:413
 msgid "GeoSeries.distance_sphere(other)"
 msgstr ""
 
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:403
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:415
 msgid "功能： 对于 GeoSeries 对象中的每个几何体，根据经纬度坐标计算地球表面两点之间的最短球面距离。该方法使用 SRID 定义的地球和半径。"
 msgstr ""
 
 #: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:416
+msgid "返回： 浮点型的 pandas.Series"
+msgstr ""
+
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:427
 msgid "GeoSeries.hausdorff_distance(other)"
 msgstr ""
 
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:418
-msgid "功能： 对于 GeoSeries 对象中的每个几何体，判断它与 other 对象中相同位置的几何体之间的 Hausdorff 距离。此距离用于度量两个几何体之间的相似度。"
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:429
+msgid "功能： 对于 GeoSeries 中的每个几何体以及 other 中给出的对应几何体，计算它们之间的最小球面距离。此方法使用由 SRID（Spatial Reference Identifier，空间参考标识符）定义的球体派生的球形地球和半径。"
 msgstr ""
 
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:433
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:430
+msgid "返回： GeoSeries 中每个几何体 与 other 中给定的对应几何之间的球面距离。"
+msgstr ""
+
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:443
 msgid "GeoSeries.intersection(other)"
 msgstr ""
 
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:435
-msgid "功能： 对于 GeoSeries 对象中的每个几何体，计算它与 other 对象中相同位置的几何体之间交集。"
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:445
+msgid "功能： 对于 GeoSeries 中的每个几何体以及 other 中给出的对应几何体，计算它们的交集。"
 msgstr ""
 
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:449
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:446
+msgid "返回： GeoSeries 中的每个几何体与 other 中给出的对应几何体的交集。"
+msgstr ""
+
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:458
 msgid "GeoSeries.polygon_from_envelope(min_x, min_y, max_x, max_y, crs=None)"
 msgstr ""
 
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:451
-msgid "功能： 对于 GeoSeries 对象中的每个几何体，根据给定的参数计算它的最小矩形边界范围，且该矩形的边与坐标轴平行。"
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:460
+msgid "功能： 在给定的空间范围内构造矩形 POLYGON 对象。矩形的边平行于坐标轴。min_x、min_y、max_x 和 max_y 是 Series，因此可以批量创建多边形。这四个 Series 中的值的数量应相同。假设 min_x 的维度为 N，则此函数返回的 GeoSeries 应包含 N 个矩形。索引为 i 的矩形的形状和位置由其左下顶点 (min_x[i], min_y[i]) 和右上顶点 (max_x[i], max_y[i]) 定义。"
 msgstr ""
 
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:452
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:461
+msgid "返回： 给定空间范围内的矩形 POLYGON 对象的序列。"
+msgstr ""
+
 #: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:477
-msgid "参数："
-msgstr ""
-
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:453
-msgid "min_x: 浮点型的 pandas.Series，表示矩形横坐标的最小值。"
-msgstr ""
-
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:454
-msgid "min_y: 浮点型的 pandas.Series，表示矩形纵坐标的最小值。"
-msgstr ""
-
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:455
-msgid "max_x: 浮点型的 pandas.Series，表示矩形横坐标的最大值。"
-msgstr ""
-
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:456
-msgid "max_y: 浮点型的 pandas.Series，表示矩形纵坐标的最大值。"
-msgstr ""
-
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:457
-msgid "crs: （可选参数）字符串，比如“ESPG:4326”、“ESPG:3857”。"
-msgstr ""
-
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:474
 msgid "GeoSeries.point(x, y)"
 msgstr ""
 
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:476
-msgid "功能： 根据横坐标集合 x 和纵坐标集合 y 构造一组 POINT 对象。"
-msgstr ""
-
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:478
-msgid "x: 浮点型的 pandas.Series，表示一组点的横坐标。"
-msgstr ""
-
 #: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:479
-msgid "y: 浮点型的 pandas.Series，表示一组点的纵坐标。"
+msgid "功能： 根据给定的坐标构造 POINT 对象。x 和 y 是 Series，因此可以批量创建点。这两个 Series 中的值的数量应相同。 假设 x 的维度为 N，则此函数返回的 GeoSeries 应包含 N 个点。第 i 个的点的位置由其坐标 (x[i], y[i]) 定义。"
 msgstr ""
 
-#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:480
-msgid "返回： POINT"
+#: ../../source/feature_description/spatiotemporal_analysis/geometric_manipulation.md:481
+msgid "返回： POINT 对象的序列。"
 msgstr ""

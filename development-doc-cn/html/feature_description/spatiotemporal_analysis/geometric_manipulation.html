@@ -204,8 +204,16 @@
 <div class="section" id="geoseries-length">
 <h2><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.length.html">GeoSeries.length</a><a class="headerlink" href="#geoseries-length" title="永久链接至标题">¶</a></h2>
 <ul class="simple">
-<li><p><strong>功能：</strong> 计算 GeoSeries 对象中每个几何体的长度。如果几何体不是 LineString 和 MultiLineString 类型的几何体， 则它的长度为 0 。</p></li>
-<li><p><strong>返回：</strong> 浮点型的 pandas.Series</p></li>
+<li><p><strong>功能：</strong> 计算 GeoSeries 中每个几何体的长度。计算几何体长度的方法如下：</p>
+<ul>
+<li><p>POINT / MULTIPOINT / POLYGON / MULTIPOLYGON / CURVEPOLYGON / MULTICURVE: 0</p></li>
+<li><p>LINESTRING: 一条直线的长度。</p></li>
+<li><p>MULTILINESTRING: 多条直线的长度总和。</p></li>
+<li><p>CIRCULARSTRING: 一条曲线的长度。</p></li>
+<li><p>MULTISURFACE / COMPOUNDCURVE / GEOMETRYCOLLECTION: 对于 3 种类型中的几何体集合，计算集合中所有几何体的长度之和。</p></li>
+</ul>
+</li>
+<li><p><strong>返回：</strong> GeoSeries 中每个几何体的长度。</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">GeoSeries</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">GeoSeries</span><span class="p">([</span><span class="s2">&quot;POINT(1 1)&quot;</span><span class="p">,</span> <span class="s2">&quot;LINESTRING (0 0, 0 2)&quot;</span><span class="p">,</span> <span class="s2">&quot;POLYGON ((0 0,0 4,4 4,0 0))&quot;</span><span class="p">])</span>
@@ -220,8 +228,17 @@
 <div class="section" id="geoseries-area">
 <h2><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.area.html">GeoSeries.area</a><a class="headerlink" href="#geoseries-area" title="永久链接至标题">¶</a></h2>
 <ul class="simple">
-<li><p><strong>功能：</strong> 计算 GeoSeries 对象中每个几何体的面积。</p></li>
-<li><p><strong>返回：</strong> 浮点型的 pandas.Series</p></li>
+<li><p><strong>功能：</strong> 计算 GeoSeries 中每个几何体的 2D 笛卡尔（平面）面积。计算几何体面积的方法如下：</p>
+<ul>
+<li><p>POINT / MULTIPOINT / LINESTRING / MULTILINESTRING / CIRCULARSTRING: 0</p></li>
+<li><p>POLYGON: 单个多边形的面积。</p></li>
+<li><p>MULTIPOLYGON: 多个多边形的面积总和。</p></li>
+<li><p>CURVEPOLYGON: 单个曲线多边形的面积。</p></li>
+<li><p>MULTIPOLYGON: 多个多边形的面积总和。</p></li>
+<li><p>MULTISURFACE / COMPOUNDCURVE / GEOMETRYCOLLECTION: 对于 3 种类型中的几何体集合，计算集合中所有几何体的面积之和。</p></li>
+</ul>
+</li>
+<li><p><strong>返回：</strong> GeoSeries 中每个几何体的 2D 笛卡尔（平面）面积。</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">GeoSeries</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">GeoSeries</span><span class="p">([</span><span class="s2">&quot;POINT(1 1)&quot;</span><span class="p">,</span> <span class="s2">&quot;POLYGON ((2 1, 3 3, 1 3, 2 1))&quot;</span><span class="p">])</span>
@@ -236,8 +253,8 @@
 <div class="section" id="geoseries-centroid">
 <h2><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.centroid.html">GeoSeries.centroid</a><a class="headerlink" href="#geoseries-centroid" title="永久链接至标题">¶</a></h2>
 <ul class="simple">
-<li><p><strong>功能：</strong> 计算 GeoSeries 对象中每个几何体的中心点。</p></li>
-<li><p><strong>返回：</strong> GeoSeries。</p></li>
+<li><p><strong>功能：</strong> 返回 GeoSeries 中每个几何体的中心。</p></li>
+<li><p><strong>返回：</strong> GeoSeries 中每个几何体的中心。</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">GeoSeries</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">GeoSeries</span><span class="p">([</span><span class="s2">&quot;POLYGON ((1 1, 1.5 1, 1.5 1.25, 1 1.25, 1 1))&quot;</span><span class="p">,</span> <span class="s2">&quot;POLYGON ((2 1, 3 3, 1 3, 2 1))&quot;</span><span class="p">])</span>
@@ -252,11 +269,11 @@
 <div class="section" id="geoseries-is-valid">
 <h2><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.is_valid.html">GeoSeries.is_valid</a><a class="headerlink" href="#geoseries-is-valid" title="永久链接至标题">¶</a></h2>
 <ul class="simple">
-<li><p><strong>功能：</strong> 判断 GeoSeries 对象中的每个几何体是否有效。</p></li>
-<li><p><strong>返回：</strong> 布尔型的 pandas.Series</p>
+<li><p><strong>功能：</strong> 检查 GeoSeries 中的每个几何体是否为有效格式，例如 WKT 和 WKB 格式。</p></li>
+<li><p><strong>返回：</strong> GeoSeries 中每个元素对应的布尔值，指示元素是否为有效的。</p>
 <ul>
-<li><p><strong>True:</strong> 几何体有效。</p></li>
-<li><p><strong>False:</strong> 几何体无效。</p></li>
+<li><p><em>True:</em> 几何体是有效的。</p></li>
+<li><p><em>False:</em> 几何体是无效的。</p></li>
 </ul>
 </li>
 </ul>
@@ -272,11 +289,11 @@
 <div class="section" id="geoseries-is-simple">
 <h2><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.is_simple.html">GeoSeries.is_simple</a><a class="headerlink" href="#geoseries-is-simple" title="永久链接至标题">¶</a></h2>
 <ul class="simple">
-<li><p><strong>功能：</strong> 判断 GeoSeries 对象中的每个几何体是否简单。这里的“简单”表示某个几何图形没有异常的几何图形点，例如自相交或相切。</p></li>
-<li><p><strong>返回：</strong> 布尔型的 pandas.Series</p>
+<li><p><strong>功能：</strong> 检查 GeoSeries 中的每个几何体是否为“简单”的。此处的“简单”是指几何体没有异常点，例如自相交或自相切。</p></li>
+<li><p><strong>返回：</strong> GeoSeries 中每个元素对应的布尔值，指示元素是否为“简单”的。</p>
 <ul>
-<li><p><strong>True:</strong> 几何体是简单的。</p></li>
-<li><p><strong>False:</strong> 几何体不是简单的。</p></li>
+<li><p><em>True:</em> 几何体是“简单”的。</p></li>
+<li><p><em>False:</em> 几何体不是“简单”的。</p></li>
 </ul>
 </li>
 </ul>
@@ -293,8 +310,14 @@
 <div class="section" id="geoseries-convex-hull">
 <h2><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.convex_hull.html">GeoSeries.convex_hull</a><a class="headerlink" href="#geoseries-convex-hull" title="永久链接至标题">¶</a></h2>
 <ul class="simple">
-<li><p><strong>功能：</strong> 对于 GeoSeries 对象中的每个几何体，计算包围它的最小的凸几何体。</p></li>
-<li><p><strong>返回：</strong> GeoSeries</p></li>
+<li><p><strong>功能：</strong> 对于 GeoSeries 中的每个几何体，返回包围它的最小凸几何体。</p>
+<ul>
+<li><p>对于多边形，返回的几何体是包围它的最小凸几何体。</p></li>
+<li><p>对于几何体集合，返回的几何体是将集合中的所有几何体包围起来的最小凸几何体。</p></li>
+<li><p>对于点或线，返回的几何体与原来的几何体相同。</p></li>
+</ul>
+</li>
+<li><p><strong>返回：</strong> 凸几何体的序列。</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">GeoSeries</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">GeoSeries</span><span class="p">([</span><span class="s2">&quot;POINT(1 1)&quot;</span><span class="p">,</span> <span class="s2">&quot;POLYGON ((2 1, 5 1, 6 5, 4 2, 1 5, 2 1))&quot;</span><span class="p">])</span>
@@ -309,8 +332,8 @@
 <div class="section" id="geoseries-npoints">
 <h2><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.npoints.html">GeoSeries.npoints</a><a class="headerlink" href="#geoseries-npoints" title="永久链接至标题">¶</a></h2>
 <ul class="simple">
-<li><p><strong>功能：</strong> 对于 GeoSeries 对象中的每个几何体，计算它的点的数量。</p></li>
-<li><p><strong>返回：</strong> int64 类型的 pandas.Series</p></li>
+<li><p><strong>功能：</strong> 返回 GeoSeries 中每个几何体的点的数量。</p></li>
+<li><p><strong>返回：</strong> GeoSeries 中每个几何体的点的数量。</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">GeoSeries</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">GeoSeries</span><span class="p">([</span><span class="s2">&quot;POINT(1 1)&quot;</span><span class="p">,</span> <span class="s2">&quot;POLYGON ((1 1, 3 1, 3 3, 1 3, 1 1))&quot;</span><span class="p">])</span>
@@ -324,8 +347,14 @@
 <div class="section" id="geoseries-curve-to-line">
 <h2><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.curve_to_line.html">GeoSeries.curve_to_line</a><a class="headerlink" href="#geoseries-curve-to-line" title="永久链接至标题">¶</a></h2>
 <ul class="simple">
-<li><p><strong>功能：</strong> 对于 GeoSeries 对象中的每个几何体，计算它的近似表示。近似表示的方法是将每个几何图形中的曲线转换为近似线性表示。</p></li>
-<li><p><strong>返回：</strong> GeoSeries</p></li>
+<li><p><strong>功能：</strong> 将每个几何体中的曲线转换为近似线性表示。例如，</p>
+<ul>
+<li><p>将 CIRCULAR STRING 转换为 LINESTRING，</p></li>
+<li><p>将 CURVEPOLYGON 转换为 POLYGON，</p></li>
+<li><p>将 MULTISURFACE 转换为 MULTIPOLYGON。</p></li>
+</ul>
+</li>
+<li><p><strong>返回：</strong> 转换后的线性几何体。</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">GeoSeries</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">GeoSeries</span><span class="p">([</span><span class="s2">&quot;CURVEPOLYGON(CIRCULARSTRING(0 0, 4 0, 4 4, 0 4, 0 0))&quot;</span><span class="p">])</span>
@@ -339,9 +368,8 @@
 <div class="section" id="geoseries-simplify-tolerance">
 <h2><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.simplify.html">GeoSeries.simplify(tolerance)</a><a class="headerlink" href="#geoseries-simplify-tolerance" title="永久链接至标题">¶</a></h2>
 <ul class="simple">
-<li><p><strong>功能：</strong> 对于 GeoSeries 对象中的每个几何体，计算它的简化表示。简化表示的算法是 Douglas-Peucker 算法。</p></li>
-<li><p><strong>参数：</strong> <code class="docutils literal notranslate"><span class="pre">tolerance</span></code> 为浮点型数字，表示线串上的点和曲线之间的最大距离。</p></li>
-<li><p><strong>返回：</strong> GeoSeries</p></li>
+<li><p><strong>功能：</strong> 返回使用 Douglas-Peucker 算法 计算的 GeoSeries 中每个几何体的简化版本。</p></li>
+<li><p><strong>返回：</strong> 简化的几何体的序列。</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">GeoSeries</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">GeoSeries</span><span class="p">([</span><span class="s2">&quot;POLYGON ((1 1,1 2,2 2,2 1,1 1))&quot;</span><span class="p">,</span> <span class="s2">&quot;CIRCULARSTRING (0 0,1 1,2 0)&quot;</span><span class="p">])</span>
@@ -355,8 +383,8 @@
 <div class="section" id="geoseries-envelope">
 <h2><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.envelope.html">GeoSeries.envelope</a><a class="headerlink" href="#geoseries-envelope" title="永久链接至标题">¶</a></h2>
 <ul class="simple">
-<li><p><strong>功能：</strong> 对于 GeoSeries 对象中的每个几何体，计算它的最小矩形边界范围。</p></li>
-<li><p><strong>返回：</strong> GeoSeries</p></li>
+<li><p><strong>功能：</strong> 返回 GeoSeries 中每个几何体的最小边界矩形。边界矩形是一个矩形几何体对象，其边平行于坐标轴。</p></li>
+<li><p><strong>返回：</strong> GeoSeries 中每个几何体的最小边界矩形。</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">GeoSeries</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">GeoSeries</span><span class="p">([</span><span class="s2">&quot;POINT(1 1)&quot;</span><span class="p">,</span> <span class="s2">&quot;POLYGON ((4.76 3.16, 3.67 5.17, 2.85 2.21, 4.04 0.99, 7.00 2.83))&quot;</span><span class="p">])</span>
@@ -371,9 +399,13 @@
 <div class="section" id="geoseries-buffer-distance">
 <h2><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.buffer.html">GeoSeries.buffer(distance)</a><a class="headerlink" href="#geoseries-buffer-distance" title="永久链接至标题">¶</a></h2>
 <ul class="simple">
-<li><p><strong>功能：</strong> 对于 GeoSeries 对象中的每个几何体，创建一个与它的最远距离不大于 <code class="docutils literal notranslate"><span class="pre">distance</span></code> 的几何体。</p></li>
-<li><p><strong>参数：</strong> <code class="docutils literal notranslate"><span class="pre">distance</span></code> 为浮点型数字，表示新几何体与原几何体之间的最大距离。</p></li>
-<li><p><strong>返回：</strong> GeoSeries</p></li>
+<li><p><strong>功能：</strong> 对于每个几何体，将其所有点向远离几何体中心的方向移动以构造新的几何体。移动距离被指定为 <code class="docutils literal notranslate"><span class="pre">distance</span></code>。</p>
+<ul>
+<li><p>如果 <code class="docutils literal notranslate"><span class="pre">distance</span></code> &gt; 0，则新几何体是原来的几何体之外的按比例放大版本。</p></li>
+<li><p>如果 <code class="docutils literal notranslate"><span class="pre">distance</span></code> &lt; 0，则新几何体是原来的几何体内部的按比例缩小版本。</p></li>
+</ul>
+</li>
+<li><p><strong>返回：</strong> 几何体序列。</p></li>
 </ul>
 <div class="section" id="id2">
 <h3>示例 1<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h3>
@@ -406,9 +438,8 @@
 <div class="section" id="geoseries-precision-reduce-precision">
 <h2><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.precision_reduce.html">GeoSeries.precision_reduce(precision)</a><a class="headerlink" href="#geoseries-precision-reduce-precision" title="永久链接至标题">¶</a></h2>
 <ul class="simple">
-<li><p><strong>功能：</strong> 对于 GeoSeries 对象中的每个几何体，根据指定的有效数字位数 <code class="docutils literal notranslate"><span class="pre">precision</span></code> 创建降低坐标精度后的几何体。</p></li>
-<li><p><strong>参数：</strong> <code class="docutils literal notranslate"><span class="pre">precision</span></code> 为整型数字，表示有效数字位数。</p></li>
-<li><p><strong>返回：</strong> GeoSeries</p></li>
+<li><p><strong>功能：</strong> 对于 GeoSeries 中每个几何体的坐标，将有效数字的位数减少到给定的 <code class="docutils literal notranslate"><span class="pre">precision</span></code>。 最后一位小数位的数字将四舍五入。</p></li>
+<li><p><strong>返回：</strong> 精度降低后的几何体序列。</p></li>
 </ul>
 <p>以下示例中，由于设置的有效位数是 3， 结果中所有点的坐标只保留了 3 位有效数字。其中 POINT (1.333 2.666) 的坐标 2.666 的最后有效位采用四舍五入的规则，变为 2.67 。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">GeoSeries</span>
@@ -423,8 +454,13 @@
 <div class="section" id="geoseries-make-valid">
 <h2><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.make_valid.html">GeoSeries.make_valid</a><a class="headerlink" href="#geoseries-make-valid" title="永久链接至标题">¶</a></h2>
 <ul class="simple">
-<li><p><strong>功能：</strong> 对于 GeoSeries 对象中的每个几何体，根据它创建一个新的有效的几何体。在构造新几何体过程中，不会删除原始几何体的任何顶点。如果原始几何体本来就是有效的，则直接返回原始几何体。</p></li>
-<li><p><strong>返回：</strong> GeoSeries</p></li>
+<li><p><strong>功能：</strong> 在不丢失任何输入顶点的情况下，为 GeoSeries 中的每个几何体创建有效的表示。</p>
+<ul>
+<li><p>如果几何体已经有效，则将不执行任何操作。</p></li>
+<li><p>如果无法使几何体有效，则将其设置为 None。</p></li>
+</ul>
+</li>
+<li><p><strong>返回：</strong> 有效几何体的序列。</p></li>
 </ul>
 <p>在以下示例中，输入的几何体在 POINT (2 2) 附近存在自相交的情况。因此，<code class="docutils literal notranslate"><span class="pre">make_valid</span></code> 方法返回一个新的几何体集合，该集合包含一个多边形和一个线串。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">GeoSeries</span>
@@ -439,12 +475,11 @@
 <div class="section" id="geoseries-intersects-other">
 <h2><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.intersects.html">GeoSeries.intersects(other)</a><a class="headerlink" href="#geoseries-intersects-other" title="永久链接至标题">¶</a></h2>
 <ul class="simple">
-<li><p><strong>功能：</strong> 对于 GeoSeries 对象中的每个几何体，判断它是否与 <code class="docutils literal notranslate"><span class="pre">other</span></code> 对象中相同位置的几何体存在交集。</p></li>
-<li><p><strong>参数：</strong> <code class="docutils literal notranslate"><span class="pre">other</span></code> 为 GeoSeries 或者 WKB 类型的对象。</p></li>
-<li><p><strong>返回：</strong> 布尔型的 pandas.Series</p>
+<li><p><strong>功能：</strong> 对于 GeoSeries 中的每个几何体以及 <code class="docutils literal notranslate"><span class="pre">other</span></code> 中给出的对应的几何体，检测它们是否相交。</p></li>
+<li><p><strong>返回：</strong> GeoSeries 中每个元素对应的布尔值，指示元素是否与 other 中的几何体相交。</p>
 <ul>
-<li><p><strong>True:</strong> 两个几何体存在交集。</p></li>
-<li><p><strong>False:</strong> 两个几何体不存在交集。</p></li>
+<li><p><em>True:</em> 两个几何体相交。</p></li>
+<li><p><em>False:</em> 两个几何体不相交。</p></li>
 </ul>
 </li>
 </ul>
@@ -491,12 +526,11 @@
 <div class="section" id="geoseries-within-other">
 <h2><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.within.html">GeoSeries.within(other)</a><a class="headerlink" href="#geoseries-within-other" title="永久链接至标题">¶</a></h2>
 <ul class="simple">
-<li><p><strong>功能：</strong> 对于 GeoSeries 对象中的每个几何体，判断它是否在 <code class="docutils literal notranslate"><span class="pre">other</span></code> 对象中相同位置的几何体的内部。</p></li>
-<li><p><strong>参数：</strong> <code class="docutils literal notranslate"><span class="pre">other</span></code> 为 GeoSeries 或者 WKB 类型的对象。</p></li>
-<li><p><strong>返回：</strong> 布尔型的 pandas.Series</p>
+<li><p><strong>功能：</strong> 对于 GeoSeries 中的每个几何体以及 other 中给出的对应的几何体，检测第一个几何体是否在另一个几何体内部。</p></li>
+<li><p><strong>返回：</strong> GeoSeries 中每个元素对应的布尔值，指示元素是否在 <code class="docutils literal notranslate"><span class="pre">other</span></code> 中的几何体内部。</p>
 <ul>
-<li><p><strong>True:</strong> 两个几何体存在包含关系。</p></li>
-<li><p><strong>False:</strong> 两个几何体存在包含关系。</p></li>
+<li><p><em>True:</em> 第一个几何体在另一个几何体内部。</p></li>
+<li><p><em>False:</em> 第一个几何体不在另一个几何体内部。</p></li>
 </ul>
 </li>
 </ul>
@@ -514,12 +548,11 @@
 <div class="section" id="geoseries-contains-other">
 <h2><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.contains.html">GeoSeries.contains(other)</a><a class="headerlink" href="#geoseries-contains-other" title="永久链接至标题">¶</a></h2>
 <ul class="simple">
-<li><p><strong>功能：</strong> 对于 GeoSeries 对象中的每个几何体，判断它是否包含 <code class="docutils literal notranslate"><span class="pre">other</span></code> 对象中相同位置的几何体。</p></li>
-<li><p><strong>参数：</strong> <code class="docutils literal notranslate"><span class="pre">other</span></code> 为 GeoSeries 或者 WKB 类型的对象。</p></li>
-<li><p><strong>返回：</strong> 布尔型的 pandas.Series</p>
+<li><p><strong>功能：</strong> 对于 GeoSeries 中的每个几何体以及 <code class="docutils literal notranslate"><span class="pre">other</span></code> 中给出的对应的几何体，检测第一个几何体是否包含另一个几何体。</p></li>
+<li><p><strong>返回：</strong> GeoSeries 中每个元素对应的布尔值，指示元素是否包含 <code class="docutils literal notranslate"><span class="pre">other</span></code> 中的几何体。</p>
 <ul>
-<li><p><strong>True:</strong> 两个几何体存在包含关系。</p></li>
-<li><p><strong>False:</strong> 两个几何体存在包含关系。</p></li>
+<li><p><em>True:</em> 第一个几何体包含另一个几何体。</p></li>
+<li><p><em>False:</em> 第一个几何体不包含另一个几何体。</p></li>
 </ul>
 </li>
 </ul>
@@ -538,12 +571,11 @@
 <div class="section" id="geoseries-crosses-other">
 <h2><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.crosses.html">GeoSeries.crosses(other)</a><a class="headerlink" href="#geoseries-crosses-other" title="永久链接至标题">¶</a></h2>
 <ul class="simple">
-<li><p><strong>功能：</strong> 对于 GeoSeries 对象中的每个几何体，判断它是否与 <code class="docutils literal notranslate"><span class="pre">other</span></code> 对象中相同位置的几何体相交。</p></li>
-<li><p><strong>参数：</strong> <code class="docutils literal notranslate"><span class="pre">other</span></code> 为 GeoSeries 或者 WKB 类型的对象。</p></li>
-<li><p><strong>返回：</strong> 布尔型的 pandas.Series</p>
+<li><p><strong>功能：</strong> 对于 GeoSeries 中的每个几何体以及 <code class="docutils literal notranslate"><span class="pre">other</span></code> 中给出的对应几何体，检查第一个几何体是否与另一个几何体空间相交。“空间相交”是指两个几何体的一些但非所有内部点都相同。几何体内部的交集不得为空集，并且其维度必须小于两个输入几何体的最大维度。</p></li>
+<li><p><strong>返回：</strong> GeoSeries 中每个元素对应的布尔值，指示元素是否与 <code class="docutils literal notranslate"><span class="pre">other</span></code> 中的几何体空间相交。</p>
 <ul>
-<li><p><strong>True:</strong> 两个几何体存在相交关系。</p></li>
-<li><p><strong>False:</strong> 两个几何体存在相交关系。</p></li>
+<li><p><em>True:</em> 第一个几何体与另一个几何体空间相交。</p></li>
+<li><p><em>False:</em> 第一个几何体不与另一个几何体空间相交。</p></li>
 </ul>
 </li>
 </ul>
@@ -561,12 +593,11 @@
 <div class="section" id="geoseries-geom-equals-other">
 <h2><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.geom_equals.html">GeoSeries.geom_equals(other)</a><a class="headerlink" href="#geoseries-geom-equals-other" title="永久链接至标题">¶</a></h2>
 <ul class="simple">
-<li><p><strong>功能：</strong> 对于 GeoSeries 对象中的每个几何体，判断它是否与 <code class="docutils literal notranslate"><span class="pre">other</span></code> 对象中相同位置的几何体等价。“等价”表示两个几何体的几何结构相同。</p></li>
-<li><p><strong>参数：</strong> <code class="docutils literal notranslate"><span class="pre">other</span></code> 为 GeoSeries 或者 WKB 类型的对象。</p></li>
-<li><p><strong>返回：</strong> 布尔型的 pandas.Series</p>
+<li><p><strong>功能：</strong> 对于 GeoSeries 中的每个几何体以及 <code class="docutils literal notranslate"><span class="pre">other</span></code> 中给出的对应几何体，检查第一个几何体是否与另一个几何体等价。“等价”表示两个几何体表示相同的几何体结构。</p></li>
+<li><p><strong>返回：</strong> GeoSeries 中每个元素对应的布尔值，指示元素是否与 <code class="docutils literal notranslate"><span class="pre">other</span></code> 中的几何体等价。</p>
 <ul>
-<li><p><strong>True:</strong> 两个几何体等价。</p></li>
-<li><p><strong>False:</strong> 两个几何体不等价。</p></li>
+<li><p><em>True:</em> 第一个几何体与另一个几何体等价。</p></li>
+<li><p><em>False:</em> 第一个几何体不与另一个几何体等价。</p></li>
 </ul>
 </li>
 </ul>
@@ -583,12 +614,11 @@
 <div class="section" id="geoseries-touches-other">
 <h2><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.touches.html">GeoSeries.touches(other)</a><a class="headerlink" href="#geoseries-touches-other" title="永久链接至标题">¶</a></h2>
 <ul class="simple">
-<li><p><strong>功能：</strong> 对于 GeoSeries 对象中的每个几何体，判断它是否与 <code class="docutils literal notranslate"><span class="pre">other</span></code> 对象中相同位置的几何体相邻。“相邻”表示两个几何体在边界上有共同的点。</p></li>
-<li><p><strong>参数：</strong> <code class="docutils literal notranslate"><span class="pre">other</span></code> 为 GeoSeries 或者 WKB 类型的对象。</p></li>
-<li><p><strong>返回：</strong> 布尔型的 pandas.Series</p>
+<li><p><strong>功能：</strong> 对于 GeoSeries 中的每个几何体以及 <code class="docutils literal notranslate"><span class="pre">other</span></code> 中给出的对应几何体，检测它们是否接触。“接触”表示两个几何体具有公共点，并且公共点仅位于它们的边界上。</p></li>
+<li><p><strong>返回：</strong> GeoSeries 中每个元素对应的布尔值，指示元素是否接触 other 中的几何体。</p>
 <ul>
-<li><p><strong>True:</strong> 两个几何体相邻。</p></li>
-<li><p><strong>False:</strong> 两个几何体不相邻。</p></li>
+<li><p><em>True:</em> 第一个几何体接触另一个几何体。</p></li>
+<li><p><em>False:</em> 第一个几何体不接触另一个几何体。</p></li>
 </ul>
 </li>
 </ul>
@@ -605,12 +635,11 @@
 <div class="section" id="geoseries-overlaps-other">
 <h2><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.overlaps.html">GeoSeries.overlaps(other)</a><a class="headerlink" href="#geoseries-overlaps-other" title="永久链接至标题">¶</a></h2>
 <ul class="simple">
-<li><p><strong>功能：</strong> 对于 GeoSeries 对象中的每个几何体，判断它是否与 <code class="docutils literal notranslate"><span class="pre">other</span></code> 对象中相同位置的几何体重叠。“重叠”表示两个几何体相交且不互相包含。</p></li>
-<li><p><strong>参数：</strong> <code class="docutils literal notranslate"><span class="pre">other</span></code> 为 GeoSeries 或者 WKB 类型的对象。</p></li>
-<li><p><strong>返回：</strong> 布尔型的 pandas.Series</p>
+<li><p><strong>功能：</strong> 对于 GeoSeries 中的每个几何体以及 other 中给出的对应几何体，检查第一个几何体是否与另一个几何体空间重叠。“空间重叠”表示两个几何体相交，但一个不完全包含另一个。</p></li>
+<li><p><strong>返回：</strong> GeoSeries 中每个元素对应的布尔值，指示元素是否与 other 中的几何体空间重叠。</p>
 <ul>
-<li><p><strong>True:</strong> 两个几何体重叠。</p></li>
-<li><p><strong>False:</strong> 两个几何体不重叠。</p></li>
+<li><p><em>True:</em> 第一个几何体与另一个几何体空间重叠。</p></li>
+<li><p><em>False:</em> 第一个几何体不与另一个几何体空间重叠。</p></li>
 </ul>
 </li>
 </ul>
@@ -627,9 +656,8 @@
 <div class="section" id="geoseries-distance-other">
 <h2><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.distance.html">GeoSeries.distance(other)</a><a class="headerlink" href="#geoseries-distance-other" title="永久链接至标题">¶</a></h2>
 <ul class="simple">
-<li><p><strong>功能：</strong> 对于 GeoSeries 对象中的每个几何体，判断它与 <code class="docutils literal notranslate"><span class="pre">other</span></code> 对象中相同位置的几何体之间的最短二维笛卡尔（平面）距离。</p></li>
-<li><p><strong>参数：</strong> <code class="docutils literal notranslate"><span class="pre">other</span></code> 为 GeoSeries 或者 WKB 类型的对象。</p></li>
-<li><p><strong>返回：</strong> 浮点型的 pandas.Series</p></li>
+<li><p><strong>功能：</strong> 对于 GeoSeries 中的每个几何体以及 <code class="docutils literal notranslate"><span class="pre">other</span></code> 中给出的对应几何体，计算它们之间的最小 2D 笛卡尔（平面）距离。</p></li>
+<li><p><strong>返回：</strong> GeoSeries 中的每个几何体与 <code class="docutils literal notranslate"><span class="pre">other</span></code> 中给出的对应几何体之间的距离。</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">GeoSeries</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s1</span> <span class="o">=</span> <span class="n">GeoSeries</span><span class="p">([</span><span class="s2">&quot;LINESTRING(8 0,9 2)&quot;</span><span class="p">,</span> <span class="s2">&quot;POINT(10 2)&quot;</span><span class="p">])</span>
@@ -646,7 +674,6 @@
 <h2><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.distance_sphere.html">GeoSeries.distance_sphere(other)</a><a class="headerlink" href="#geoseries-distance-sphere-other" title="永久链接至标题">¶</a></h2>
 <ul class="simple">
 <li><p><strong>功能：</strong> 对于 GeoSeries 对象中的每个几何体，根据经纬度坐标计算地球表面两点之间的最短球面距离。该方法使用 SRID 定义的地球和半径。</p></li>
-<li><p><strong>参数：</strong> <code class="docutils literal notranslate"><span class="pre">other</span></code> 为 GeoSeries 或者 WKB 类型的对象。</p></li>
 <li><p><strong>返回：</strong> 浮点型的 pandas.Series</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">GeoSeries</span>
@@ -661,9 +688,8 @@
 <div class="section" id="geoseries-hausdorff-distance-other">
 <h2><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.hausdorff_distance.html">GeoSeries.hausdorff_distance(other)</a><a class="headerlink" href="#geoseries-hausdorff-distance-other" title="永久链接至标题">¶</a></h2>
 <ul class="simple">
-<li><p><strong>功能：</strong> 对于 GeoSeries 对象中的每个几何体，判断它与 <code class="docutils literal notranslate"><span class="pre">other</span></code> 对象中相同位置的几何体之间的 Hausdorff 距离。此距离用于度量两个几何体之间的相似度。</p></li>
-<li><p><strong>参数：</strong> <code class="docutils literal notranslate"><span class="pre">other</span></code> 为 GeoSeries 或者 WKB 类型的对象。</p></li>
-<li><p><strong>返回：</strong> 浮点型的 pandas.Series</p></li>
+<li><p><strong>功能：</strong> 对于 GeoSeries 中的每个几何体以及 <code class="docutils literal notranslate"><span class="pre">other</span></code> 中给出的对应几何体，计算它们之间的最小球面距离。此方法使用由 SRID（Spatial Reference Identifier，空间参考标识符）定义的球体派生的球形地球和半径。</p></li>
+<li><p><strong>返回：</strong> GeoSeries 中每个几何体 与 other 中给定的对应几何之间的球面距离。</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">GeoSeries</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s1</span> <span class="o">=</span> <span class="n">GeoSeries</span><span class="p">([</span><span class="s2">&quot;POLYGON((0 0 ,0 1, 1 1, 1 0, 0 0))&quot;</span><span class="p">,</span> <span class="s2">&quot;POINT(0 0)&quot;</span><span class="p">])</span>
@@ -679,9 +705,8 @@
 <div class="section" id="geoseries-intersection-other">
 <h2><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.intersection.html">GeoSeries.intersection(other)</a><a class="headerlink" href="#geoseries-intersection-other" title="永久链接至标题">¶</a></h2>
 <ul class="simple">
-<li><p><strong>功能：</strong> 对于 GeoSeries 对象中的每个几何体，计算它与 <code class="docutils literal notranslate"><span class="pre">other</span></code> 对象中相同位置的几何体之间交集。</p></li>
-<li><p><strong>参数：</strong> <code class="docutils literal notranslate"><span class="pre">other</span></code> 为 GeoSeries 或者 WKB 类型的对象。</p></li>
-<li><p><strong>返回：</strong> GeoSeries</p></li>
+<li><p><strong>功能：</strong> 对于 GeoSeries 中的每个几何体以及 other 中给出的对应几何体，计算它们的交集。</p></li>
+<li><p><strong>返回：</strong> GeoSeries 中的每个几何体与 other 中给出的对应几何体的交集。</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">GeoSeries</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s1</span> <span class="o">=</span> <span class="n">GeoSeries</span><span class="p">([</span><span class="s2">&quot;POLYGON ((1 1,1 2,2 2,2 1,1 1))&quot;</span><span class="p">])</span>
@@ -696,17 +721,8 @@
 <div class="section" id="geoseries-polygon-from-envelope-min-x-min-y-max-x-max-y-crs-none">
 <h2><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.polygon_from_envelope.html">GeoSeries.polygon_from_envelope(min_x, min_y, max_x, max_y, crs=None)</a><a class="headerlink" href="#geoseries-polygon-from-envelope-min-x-min-y-max-x-max-y-crs-none" title="永久链接至标题">¶</a></h2>
 <ul class="simple">
-<li><p><strong>功能：</strong> 对于 GeoSeries 对象中的每个几何体，根据给定的参数计算它的最小矩形边界范围，且该矩形的边与坐标轴平行。</p></li>
-<li><p><strong>参数：</strong></p>
-<ul>
-<li><p><strong>min_x:</strong> 浮点型的 pandas.Series，表示矩形横坐标的最小值。</p></li>
-<li><p><strong>min_y:</strong> 浮点型的 pandas.Series，表示矩形纵坐标的最小值。</p></li>
-<li><p><strong>max_x:</strong> 浮点型的 pandas.Series，表示矩形横坐标的最大值。</p></li>
-<li><p><strong>max_y:</strong> 浮点型的 pandas.Series，表示矩形纵坐标的最大值。</p></li>
-<li><p><strong>crs:</strong> （可选参数）字符串，比如“ESPG:4326”、“ESPG:3857”。</p></li>
-</ul>
-</li>
-<li><p><strong>返回：</strong> GeoSeries</p></li>
+<li><p><strong>功能：</strong> 在给定的空间范围内构造矩形 POLYGON 对象。矩形的边平行于坐标轴。<code class="docutils literal notranslate"><span class="pre">min_x</span></code>、<code class="docutils literal notranslate"><span class="pre">min_y</span></code>、<code class="docutils literal notranslate"><span class="pre">max_x</span></code> 和 <code class="docutils literal notranslate"><span class="pre">max_y</span></code> 是 Series，因此可以批量创建多边形。这四个 Series 中的值的数量应相同。假设 <code class="docutils literal notranslate"><span class="pre">min_x</span></code> 的维度为 <em>N</em>，则此函数返回的 GeoSeries 应包含 <em>N</em> 个矩形。索引为 <em>i</em> 的矩形的形状和位置由其左下顶点 <em>(min_x[i], min_y[i])</em> 和右上顶点 <em>(max_x[i], max_y[i])</em> 定义。</p></li>
+<li><p><strong>返回：</strong> 给定空间范围内的矩形 POLYGON 对象的序列。</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pandas</span> <span class="kn">import</span> <span class="n">Series</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">GeoSeries</span>
@@ -725,14 +741,9 @@
 <div class="section" id="geoseries-point-x-y">
 <h2><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.point.html">GeoSeries.point(x, y)</a><a class="headerlink" href="#geoseries-point-x-y" title="永久链接至标题">¶</a></h2>
 <ul class="simple">
-<li><p><strong>功能：</strong> 根据横坐标集合 <code class="docutils literal notranslate"><span class="pre">x</span></code> 和纵坐标集合 <code class="docutils literal notranslate"><span class="pre">y</span></code> 构造一组 POINT 对象。</p></li>
-<li><p><strong>参数：</strong></p>
-<ul>
-<li><p><strong>x:</strong> 浮点型的 pandas.Series，表示一组点的横坐标。</p></li>
-<li><p><strong>y:</strong> 浮点型的 pandas.Series，表示一组点的纵坐标。</p></li>
-</ul>
-</li>
-<li><p><strong>返回：</strong> POINT</p></li>
+<li><p><strong>功能：</strong> 根据给定的坐标构造 POINT 对象。<code class="docutils literal notranslate"><span class="pre">x</span></code> 和 <code class="docutils literal notranslate"><span class="pre">y</span></code> 是 Series，因此可以批量创建点。这两个 Series 中的值的数量应相同。
+假设 <code class="docutils literal notranslate"><span class="pre">x</span></code> 的维度为 <em>N</em>，则此函数返回的 GeoSeries 应包含 <em>N</em> 个点。第 <em>i</em> 个的点的位置由其坐标 <em>(x[i], y[i])</em> 定义。</p></li>
+<li><p><strong>返回：</strong> POINT 对象的序列。</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pandas</span> <span class="kn">import</span> <span class="n">Series</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">GeoSeries</span>
@@ -770,7 +781,7 @@
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 6月 17, 2020.
+        最后更新于 6月 19, 2020.
       </span>
 
     </p>

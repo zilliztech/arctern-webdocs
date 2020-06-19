@@ -175,7 +175,7 @@
             
   <div class="section" id="reading-and-writing-files">
 <h1>Reading and writing files<a class="headerlink" href="#reading-and-writing-files" title="Permalink to this headline">¶</a></h1>
-<p>Arctern inherits the file reading and writing interface of pandas and supports reading and writing data types of <a target="_blank" class="reference external" href="https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry">WKT</a>, [WKB](https://en.wikipedia.org/ wiki/Well-known_text_representation_of_geometry#Well-known_binary) and <a target="_blank" class="reference external" href="https://geojson.org/">GeoJson</a> files. For the specific methods of reading and writing files through pandas, please refer to <a target="_blank" class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/io.html">pandas Documentation</a>.</p>
+<p>Arctern inherits the file reading and writing interface of pandas and supports reading and writing data types of <a target="_blank" class="reference external" href="https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry">WKT</a>, <a target="_blank" class="reference external" href="https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry#Well-known_binary">WKB</a> and <a target="_blank" class="reference external" href="https://geojson.org/">GeoJson</a> files. For the specific methods of reading and writing files through pandas, please refer to <a target="_blank" class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/io.html">pandas Documentation</a>.</p>
 <div class="section" id="importing-files">
 <h2>Importing files<a class="headerlink" href="#importing-files" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="from-wkt-and-wkb-format">
@@ -202,7 +202,7 @@
 <span class="go">Name: geos, dtype: object</span>
 </pre></div>
 </div>
-<p>Construct an arctern.GeoSeries object <code class="docutils literal notranslate"><span class="pre">geo_wkt</span></code> based on the pandas.Series object <code class="docutils literal notranslate"><span class="pre">data_wkt</span></code> that consists of WKT data:</p>
+<p>Construct an arctern.GeoSeries object <code class="docutils literal notranslate"><span class="pre">geo_wkt</span></code> based on the pandas.Series object <code class="docutils literal notranslate"><span class="pre">data_wkt</span></code> made up of WKT data:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">geo_wkt</span> <span class="o">=</span> <span class="n">arctern</span><span class="o">.</span><span class="n">GeoSeries</span><span class="p">(</span><span class="n">data_wkt</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -244,11 +244,11 @@ dtype: bool
 <span class="go">Name: geos, dtype: object</span>
 </pre></div>
 </div>
-<p>Construct an arctern.GeoSeries object <code class="docutils literal notranslate"><span class="pre">geo_json</span></code> based on the pandas.Series object <code class="docutils literal notranslate"><span class="pre">data_json</span></code> that consists of GeoJson data:</p>
+<p>Construct an arctern.GeoSeries object <code class="docutils literal notranslate"><span class="pre">geo_json</span></code> based on the pandas.Series object <code class="docutils literal notranslate"><span class="pre">data_json</span></code> made up of GeoJson data:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">geo_json</span> <span class="o">=</span> <span class="n">arctern</span><span class="o">.</span><span class="n">GeoSeries</span><span class="o">.</span><span class="n">geom_from_geojson</span><span class="p">(</span><span class="n">data_json</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Use the <a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.geom_equals.html"><code class="docutils literal notranslate"><span class="pre">geom_equals</span></code></a> method of GeoSeries to compare <code class="docutils literal notranslate"><span class="pre">geo_wkb</span></code> and <code class="docutils literal notranslate"><span class="pre">geo_json</span></code>. It turns out that these two GeoSeries objects are the the source files of <code class="docutils literal notranslate"><span class="pre">geo_wkb</span></code> and <code class="docutils literal notranslate"><span class="pre">geo_json</span></code> (<strong>wkt_geos.csv</strong> and <strong>geos.json</strong>) define the same geometry.</p>
+<p>Use the <a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.geom_equals.html"><code class="docutils literal notranslate"><span class="pre">geom_equals</span></code></a> method of GeoSeries to compare <code class="docutils literal notranslate"><span class="pre">geo_wkb</span></code> and <code class="docutils literal notranslate"><span class="pre">geo_json</span></code>. It turns out that these two GeoSeries objects are the same because the source files of <code class="docutils literal notranslate"><span class="pre">geo_wkb</span></code> and <code class="docutils literal notranslate"><span class="pre">geo_json</span></code> (<strong>wkt_geos.csv</strong> and <strong>geos.json</strong>) define the same geometry.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">geo_json</span><span class="o">.</span><span class="n">geom_equals</span><span class="p">(</span><span class="n">geo_wkb</span><span class="p">)</span>
 <span class="go">0    True</span>
 <span class="go">1    True</span>
@@ -314,7 +314,7 @@ dtype: bool
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        Last updated on Jun 17, 2020.
+        Last updated on Jun 19, 2020.
       </span>
 
     </p>

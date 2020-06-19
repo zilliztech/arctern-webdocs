@@ -217,36 +217,36 @@
 <h3>Method overview<a class="headerlink" href="#method-overview" title="Permalink to this headline">¶</a></h3>
 <p>GeoSeries implements common operations on geometry (unary operations and binary operations).</p>
 <ul class="simple">
-<li><p>When performing a unary operation on a GeoSeries object, Arctern performs the operation on all the geometry stored in the GeoSeries object.</p></li>
-<li><p>When performing binary operations on two GeoSeries objects, Arctern performs one-to-one operations on each of the geometries in the two GeoSeries objects according to the index.</p></li>
+<li><p>When performing a unary operation on a GeoSeries object, Arctern performs the operation on all the geometries stored in the GeoSeries object.</p></li>
+<li><p>When performing binary operations on two GeoSeries objects, Arctern performs one-to-one operations on each geometry in the two GeoSeries objects according to the index.</p></li>
 <li><p>When performing a binary operation on a GeoSeries object and a geometry (object in WKB format), Arctern performs an operation on each geometry in the GeoSeries object and this geometry.</p></li>
 </ul>
-<p>If the result of the operation is geometry, a new GeoSeries object is returned, otherwise a Pandas Series object is returned.</p>
-<p>The following lists some of the GeoSeries methods, including operations on geometry measurement, relationship calculation, and conversion. For detailed interface introduction, please see <a target="_blank" class="reference external" href="../../api_reference/standalone_api/geoseries.html">API Reference</a>.</p>
+<p>If the result of the operation is geometric data, a new GeoSeries object is returned; otherwise a Pandas Series object is returned.</p>
+<p>The following lists some of the GeoSeries methods, including operations on geometry measurement, relationship calculation, and conversion. For detailed information of APIs, please see <a target="_blank" class="reference external" href="../../api_reference/standalone_api/geoseries.html">API Reference</a>.</p>
 <div class="section" id="geometric-measurement">
 <h4>Geometric measurement<a class="headerlink" href="#geometric-measurement" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
-<li><p><strong><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.is_valid.html">GeoSeries.is_valid</a>:</strong> Check whether each geometry in the GeoSeries object is valid.</p></li>
-<li><p><strong><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.area.html">GeoSeries.area</a>:</strong> Calculate the area of each geometry in a GeoSeries object.</p></li>
-<li><p><strong><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.distance.html">GeoSeries.distance</a>:</strong> For each geometry in the GeoSeries object, create a geometry with the maximum distance not greater than the given distance.</p></li>
-<li><p><strong><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.distance_sphere.html">GeoSeries.distance_sphere</a>:</strong> For each geometry in the GeoSeries object, the minimum distance between two points on the earth's surface is calculated based on the latitude and longitude coordinates. This method uses the earth and radius defined by the SRID.</p></li>
-<li><p><strong><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.hausdorff_distance.html">GeoSeries.hausdorff_distance</a>:</strong> For each geometry in the GeoSeries object, check the Hausdorff distance between it and the geometry at the same position in the other GeoSeries object. This distance is to measure the similarity between two geometries.</p></li>
+<li><p><strong><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.is_valid.html">GeoSeries.is_valid</a>:</strong> Tests whether each geometry in the GeoSeries is in valid format, such as WKT and WKB formats.</p></li>
+<li><p><strong><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.area.html">GeoSeries.area</a>:</strong> Calculates the 2D Cartesian (planar) area of each geometry in the GeoSeries.</p></li>
+<li><p><strong><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.distance.html">GeoSeries.distance</a>:</strong> For each geometry in the GeoSeries and the corresponding geometry given in <code class="docutils literal notranslate"><span class="pre">other</span></code>, calculates the minimum 2D Cartesian (planar) distance between them.</p></li>
+<li><p><strong><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.distance_sphere.html">GeoSeries.distance_sphere</a>:</strong> For each point in the GeoSeries and the corresponding point given in <code class="docutils literal notranslate"><span class="pre">other</span></code>, calculates the minimum spherical distance between them.</p></li>
+<li><p><strong><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.hausdorff_distance.html">GeoSeries.hausdorff_distance</a>:</strong> For each point in the GeoSeries and the corresponding point given in <code class="docutils literal notranslate"><span class="pre">other</span></code>, calculates the Hausdorff distance between them.</p></li>
 </ul>
 </div>
 <div class="section" id="geometric-relationship-operation">
 <h4>Geometric relationship operation<a class="headerlink" href="#geometric-relationship-operation" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
-<li><p><strong><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.touches.html">GeoSeries.touches</a>:</strong> For each geometry in the GeoSeries object, check whether it touches the geometry at the same position in the other GeoSeries object. &quot;touches&quot; means that two geometries have a common point on the boundary.</p></li>
-<li><p><strong><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.overlaps.html">GeoSeries.overlaps</a>:</strong> For each geometry in the GeoSeries object, check whether it overlaps the geometry at the same position in the other GeoSeries object. &quot;overlaps&quot; means that the two geometries cross and do not contain each other.</p></li>
-<li><p><strong><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.intersects.html">GeoSeries.intersects</a>:</strong> For each geometry in the GeoSeries object, check whether it intersects with the geometry at the same position in the other GeoSeries object.</p></li>
+<li><p><strong><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.touches.html">GeoSeries.touches</a>:</strong> For each geometry in the GeoSeries and the corresponding geometry given in <code class="docutils literal notranslate"><span class="pre">other</span></code>, tests whether the first geometry touches the other.</p></li>
+<li><p><strong><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.overlaps.html">GeoSeries.overlaps</a>:</strong> For each geometry in the GeoSeries and the corresponding geometry given in <code class="docutils literal notranslate"><span class="pre">other</span></code>, tests whether the first geometry &quot;spatially overlaps&quot; the other.</p></li>
+<li><p><strong><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.intersects.html">GeoSeries.intersects</a>:</strong> For each geometry in the GeoSeries and the corresponding geometry given in <code class="docutils literal notranslate"><span class="pre">other</span></code>, tests whether they intersect each other.</p></li>
 </ul>
 </div>
 <div class="section" id="geometric-conversion">
 <h4>Geometric conversion<a class="headerlink" href="#geometric-conversion" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
-<li><p><strong><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.precision_reduce.html">GeoSeries.precision_reduce</a>:</strong> For each geometry in the GeoSeries object, the geometry with reduced coordinate accuracy is created according to the given valid digits number.</p></li>
-<li><p><strong><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.make_valid.html">GeoSeries.make_valid</a>:</strong> For each geometry in the GeoSeries object, create a new valid geometry based on it. During the construction of the new geometry, no vertices of the original geometry are deleted. If the original geometry is already valid, then return the original geometry directly.</p></li>
-<li><p><strong><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.curve_to_line.html">GeoSeries.curve_to_line</a>:</strong> For each geometry in the GeoSeries object, calculate its approximate representation. The approximate representation method is to convert the curve in each geometric figure into an approximate linear representation.</p></li>
+<li><p><strong><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.precision_reduce.html">GeoSeries.precision_reduce</a>:</strong> For the coordinates of each geometry in the GeoSeries, reduces the number of significant digits to the given number.</p></li>
+<li><p><strong><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.make_valid.html">GeoSeries.make_valid</a>:</strong> Creates a valid representation of each geometry in the GeoSeries without losing any of the input vertices.</p></li>
+<li><p><strong><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.curve_to_line.html">GeoSeries.curve_to_line</a>:</strong> Converts curves in each geometry to approximate linear representation.</p></li>
 </ul>
 </div>
 </div>
@@ -275,7 +275,7 @@
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        Last updated on Jun 17, 2020.
+        Last updated on Jun 19, 2020.
       </span>
 
     </p>

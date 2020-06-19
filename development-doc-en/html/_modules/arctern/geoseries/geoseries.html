@@ -545,7 +545,7 @@
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        Series</span>
-<span class="sd">            Mask of boolean values for each element in GeoSeries that indicates whether an element is not an NA value.</span>
+<span class="sd">            Mask of boolean values for each element in the GeoSeries that indicates whether an element is not an NA value.</span>
 
 <span class="sd">            * *True*: An element is a non-missing value.</span>
 <span class="sd">            * *False*: An element is a NA value, such as None.</span>
@@ -837,7 +837,7 @@
 
 <div class="viewcode-block" id="GeoSeries.curve_to_line"><a class="viewcode-back" href="../../../api_reference/standalone_api/api/arctern.GeoSeries.curve_to_line.html#arctern.GeoSeries.curve_to_line">[docs]</a>    <span class="k">def</span> <span class="nf">curve_to_line</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Converts curves in each geometry to approximate linear representation.</span>
+<span class="sd">        Converts curves in each geometry to approximate linear representations.</span>
 
 <span class="sd">        For example,</span>
 
@@ -1578,7 +1578,7 @@
 
 <span class="sd">        ``x`` and ``y`` are Series so that points can be created in batch. The number of values in the two Series should be the same.</span>
 
-<span class="sd">        Suppose that the demension of ``x`` is *N*, the returned GeoSeries of this function should contains *N* points. The position of the *i*th point is defined by its coordinates *(x, y).*</span>
+<span class="sd">        Suppose that the demension of ``x`` is *N*, the returned GeoSeries of this function should contains *N* points. The position of the *i*th point is defined by its coordinates *(x[i], y[i]).*</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1699,7 +1699,7 @@
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        Last updated on Jun 17, 2020.
+        Last updated on Jun 19, 2020.
       </span>
 
     </p>

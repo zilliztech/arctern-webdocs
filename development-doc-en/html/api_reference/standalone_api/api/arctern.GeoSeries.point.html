@@ -185,7 +185,7 @@
 <em class="property">classmethod </em><code class="sig-prename descclassname">GeoSeries.</code><code class="sig-name descname">point</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">y</span></em>, <em class="sig-param"><span class="n">crs</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/arctern/geoseries/geoseries.html#GeoSeries.point"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arctern.GeoSeries.point" title="Permalink to this definition">¶</a></dt>
 <dd><p>Constructs POINT objects based on the given coordinates.</p>
 <p><code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> are Series so that points can be created in batch. The number of values in the two Series should be the same.</p>
-<p>Suppose that the demension of <code class="docutils literal notranslate"><span class="pre">x</span></code> is <em>N</em>, the returned GeoSeries of this function should contains <em>N</em> points. The position of the <em>i*th point is defined by its coordinates *(x, y).</em></p>
+<p>Suppose that the demension of <code class="docutils literal notranslate"><span class="pre">x</span></code> is <em>N</em>, the returned GeoSeries of this function should contains <em>N</em> points. The position of the <em>i*th point is defined by its coordinates *(x[i], y[i]).</em></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -239,7 +239,7 @@ The string is made up of an authority code and a SRID (Spatial Reference Identif
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        Last updated on Jun 17, 2020.
+        Last updated on Jun 19, 2020.
       </span>
 
     </p>

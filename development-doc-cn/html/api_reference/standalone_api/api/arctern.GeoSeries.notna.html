@@ -183,7 +183,12 @@
 <dd><p>检查存在的（非缺失）值。</p>
 <dl class="field-list simple">
 <dt class="field-odd">返回</dt>
-<dd class="field-odd"><p>GeoSeries 中每个元素对应的布尔值，指示元素是否不为 NA 值。 * <em>True</em>: 元素是缺失值。 * <em>False</em>: 元素是 NA 值，例如 None。</p>
+<dd class="field-odd"><p><p>Mask of boolean values for each element in the GeoSeries that indicates whether an element is not an NA value.</p>
+<ul class="simple">
+<li><p><em>True</em>: An element is a non-missing value.</p></li>
+<li><p><em>False</em>: An element is a NA value, such as None.</p></li>
+</ul>
+</p>
 </dd>
 <dt class="field-even">返回类型</dt>
 <dd class="field-even"><p>Series</p>
@@ -226,7 +231,7 @@
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        最后更新于 6月 17, 2020.
+        最后更新于 6月 19, 2020.
       </span>
 
     </p>

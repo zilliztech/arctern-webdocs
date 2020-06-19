@@ -112,8 +112,8 @@
 <li class="toctree-l4"><a class="reference internal" href="#geoseries-distance-sphere-other">GeoSeries.distance_sphere(other)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#geoseries-hausdorff-distance-other">GeoSeries.hausdorff_distance(other)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#geoseries-intersection-other">GeoSeries.intersection(other)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id3">GeoSeries.intersection(other)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#geoseries-polygon-from-envelope-min-x-min-y-max-x-max-y-crs-none">GeoSeries.polygon_from_envelope(min_x, min_y, max_x, max_y, crs=None)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#geoseries-polygon-from-envelope-cls-min-x-min-y-max-x-max-y-crs-none">GeoSeries.polygon_from_envelope(cls, min_x, min_y, max_x, max_y, crs=None)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#geoseries-point-x-y">GeoSeries.point(x, y)</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="convert_from_and_to_geopandas_geoseries.html">Convert with GeoPandas GeoSeries</a></li>
@@ -203,8 +203,16 @@
 <div class="section" id="geoseries-length">
 <h2><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.length.html">GeoSeries.length</a><a class="headerlink" href="#geoseries-length" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p><strong>Functions:</strong> Calculate the length of each geometry in the GeoSeries object. If the geometry is not of type LineString and MultiLineString, its length is 0.</p></li>
-<li><p><strong>Returns:</strong> Floating point pandas.Series</p></li>
+<li><p><strong>Function:</strong> Calculates the length of each geometry in the GeoSeries. The ways to calculate the length of geometries are as follows:</p>
+<ul>
+<li><p>POINT / MULTIPOINT / POLYGON / MULTIPOLYGON / CURVEPOLYGON / MULTICURVE: 0</p></li>
+<li><p>LINESTRING: Length of a single straight line.</p></li>
+<li><p>MULTILINESTRING: Sum of length of multiple straight lines.</p></li>
+<li><p>CIRCULARSTRING: Length of a single curvilinear line.</p></li>
+<li><p>MULTISURFACE / COMPOUNDCURVE / GEOMETRYCOLLECTION: For a geometry collection among the 3 types, calculates the sum of length of all geometries in the collection.</p></li>
+</ul>
+</li>
+<li><p><strong>Returns:</strong> Length of each geometry in the GeoSeries.</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">GeoSeries</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">GeoSeries</span><span class="p">([</span><span class="s2">&quot;POINT(1 1)&quot;</span><span class="p">,</span> <span class="s2">&quot;LINESTRING (0 0, 0 2)&quot;</span><span class="p">,</span> <span class="s2">&quot;POLYGON ((0 0,0 4,4 4,0 0))&quot;</span><span class="p">])</span>
@@ -219,8 +227,17 @@
 <div class="section" id="geoseries-area">
 <h2><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.area.html">GeoSeries.area</a><a class="headerlink" href="#geoseries-area" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p><strong>Functions:</strong> Calculate the area of each geometry in a GeoSeries object.</p></li>
-<li><p><strong>Returns:</strong> Floating point pandas.Series</p></li>
+<li><p><strong>Function:</strong> Calculates the 2D Cartesian (planar) area of each geometry in the GeoSeries. The ways to calculate the area of geometries are as follows:</p>
+<ul>
+<li><p>POINT / MULTIPOINT / LINESTRING / MULTILINESTRING / CIRCULARSTRING: 0</p></li>
+<li><p>POLYGON: Area of a single polygon.</p></li>
+<li><p>MULTIPOLYGON: Sum of area of multiple polygons.</p></li>
+<li><p>CURVEPOLYGON: Area of a single curvilinear polygon.</p></li>
+<li><p>MULTICURVE: Sum of area of multiple curvilinear polygons.</p></li>
+<li><p>MULTISURFACE / COMPOUNDCURVE / GEOMETRYCOLLECTION: For a geometry collection among the 3 types, calculates the sum of area of all geometries in the collection.</p></li>
+</ul>
+</li>
+<li><p><strong>Returns:</strong> 2D Cartesian (planar) area of each geometry in the GeoSeries.</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">GeoSeries</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">GeoSeries</span><span class="p">([</span><span class="s2">&quot;POINT(1 1)&quot;</span><span class="p">,</span> <span class="s2">&quot;POLYGON ((2 1, 3 3, 1 3, 2 1))&quot;</span><span class="p">])</span>
@@ -235,8 +252,8 @@
 <div class="section" id="geoseries-centroid">
 <h2><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.centroid.html">GeoSeries.centroid</a><a class="headerlink" href="#geoseries-centroid" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p><strong>Functions:</strong> Calculate the center point of each geometry in a GeoSeries object.</p></li>
-<li><p><strong>Returns:</strong> GeoSeries。</p></li>
+<li><p><strong>Function:</strong> Returns the centroid of each geometry in the GeoSeries.</p></li>
+<li><p><strong>Returns:</strong> The centroid of each geometry in the GeoSeries.</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">GeoSeries</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">GeoSeries</span><span class="p">([</span><span class="s2">&quot;POLYGON ((1 1, 1.5 1, 1.5 1.25, 1 1.25, 1 1))&quot;</span><span class="p">,</span> <span class="s2">&quot;POLYGON ((2 1, 3 3, 1 3, 2 1))&quot;</span><span class="p">])</span>
@@ -251,11 +268,11 @@
 <div class="section" id="geoseries-is-valid">
 <h2><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.is_valid.html">GeoSeries.is_valid</a><a class="headerlink" href="#geoseries-is-valid" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p><strong>Functions:</strong> Determine whether each geometry in the GeoSeries object is valid.</p></li>
-<li><p><strong>Returns:</strong> Boolean pandas.Series</p>
+<li><p><strong>Function:</strong> Tests whether each geometry in the GeoSeries object is valid.</p></li>
+<li><p><strong>Returns:</strong> Mask of boolean values for each element in the GeoSeries that indicates whether an element is valid.</p>
 <ul>
-<li><p><strong>True:</strong> Geometry is valid。</p></li>
-<li><p><strong>False:</strong> Geometry is invalid。</p></li>
+<li><p><em>True:</em> The geometry is valid.</p></li>
+<li><p><em>False:</em> The geometry is invalid.</p></li>
 </ul>
 </li>
 </ul>
@@ -271,11 +288,11 @@
 <div class="section" id="geoseries-is-simple">
 <h2><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.is_simple.html">GeoSeries.is_simple</a><a class="headerlink" href="#geoseries-is-simple" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p><strong>Functions:</strong> Determine if each geometry in the GeoSeries object is simple. &quot;Simple&quot; here means that a certain geometric figure has no abnormal geometric figure points, such as self-intersection or tangent.</p></li>
-<li><p><strong>Returns:</strong> Boolean pandas.Series</p>
+<li><p><strong>Function:</strong> Tests whether each geometry in the GeoSeries is simple. Here &quot;simple&quot; means that a geometry has no anomalous point, such as a self-intersection or a self-tangency.</p></li>
+<li><p><strong>Returns:</strong> Mask of boolean values for each element in the GeoSeries that indicates whether an element is simple.</p>
 <ul>
-<li><p><strong>True:</strong> Geometry is simple.</p></li>
-<li><p><strong>False:</strong> Geometry is not simple.</p></li>
+<li><p><em>True:</em> The geometry is simple.</p></li>
+<li><p><em>False:</em> The geometry is not simple.</p></li>
 </ul>
 </li>
 </ul>
@@ -292,8 +309,14 @@
 <div class="section" id="geoseries-convex-hull">
 <h2><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.convex_hull.html">GeoSeries.convex_hull</a><a class="headerlink" href="#geoseries-convex-hull" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p><strong>Functions:</strong> For each geometry in the GeoSeries object, calculate the smallest convex geometry surrounding it.</p></li>
-<li><p><strong>Returns:</strong> GeoSeries</p></li>
+<li><p><strong>Function:</strong> For each geometry in the GeoSeries, returns the smallest convex geometry that encloses it.</p>
+<ul>
+<li><p>For a polygon, the returned geometry is the smallest convex geometry that encloses it.</p></li>
+<li><p>For a geometry collection, the returned geometry is the smallest convex geometry that encloses all geometries in the collection.</p></li>
+<li><p>For a point or line, the returned geometry is the same as the original.</p></li>
+</ul>
+</li>
+<li><p><strong>Returns:</strong> Sequence of convex geometries.</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">GeoSeries</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">GeoSeries</span><span class="p">([</span><span class="s2">&quot;POINT(1 1)&quot;</span><span class="p">,</span> <span class="s2">&quot;POLYGON ((2 1, 5 1, 6 5, 4 2, 1 5, 2 1))&quot;</span><span class="p">])</span>
@@ -308,8 +331,8 @@
 <div class="section" id="geoseries-npoints">
 <h2><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.npoints.html">GeoSeries.npoints</a><a class="headerlink" href="#geoseries-npoints" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p><strong>Functions:</strong> For each geometry in the GeoSeries object, calculate the number of points.</p></li>
-<li><p><strong>Returns:</strong> int64 type pandas.Series</p></li>
+<li><p><strong>Function:</strong> Returns the number of points for each geometry in the GeoSeries.</p></li>
+<li><p><strong>Returns:</strong> Number of points of each geometry in the GeoSeries.</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">GeoSeries</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">GeoSeries</span><span class="p">([</span><span class="s2">&quot;POINT(1 1)&quot;</span><span class="p">,</span> <span class="s2">&quot;POLYGON ((1 1, 3 1, 3 3, 1 3, 1 1))&quot;</span><span class="p">])</span>
@@ -323,8 +346,14 @@
 <div class="section" id="geoseries-curve-to-line">
 <h2><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.curve_to_line.html">GeoSeries.curve_to_line</a><a class="headerlink" href="#geoseries-curve-to-line" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p><strong>Functions:</strong> For each geometry in the GeoSeries object, calculate its approximate representation. The approximate representation method is to convert the curve in each geometric figure into an approximate linear representation.</p></li>
-<li><p><strong>Returns:</strong> GeoSeries</p></li>
+<li><p><strong>Function:</strong> Converts curves in each geometry to approximate linear representations. For example,</p>
+<ul>
+<li><p>CIRCULAR STRING to LINESTRING,</p></li>
+<li><p>CURVEPOLYGON to POLYGON,</p></li>
+<li><p>MULTISURFACE to MULTIPOLYGON.</p></li>
+</ul>
+</li>
+<li><p><strong>Returns:</strong> Converted linear geometries.</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">GeoSeries</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">GeoSeries</span><span class="p">([</span><span class="s2">&quot;CURVEPOLYGON(CIRCULARSTRING(0 0, 4 0, 4 4, 0 4, 0 0))&quot;</span><span class="p">])</span>
@@ -338,8 +367,7 @@
 <div class="section" id="geoseries-simplify-tolerance">
 <h2><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.simplify.html">GeoSeries.simplify(tolerance)</a><a class="headerlink" href="#geoseries-simplify-tolerance" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p><strong>Functions:</strong> For each geometry in the GeoSeries object, calculate its simplified representation. The simplified representation algorithm is Douglas-Peucker algorithm.</p></li>
-<li><p><strong>Parameters:</strong> <code class="docutils literal notranslate"><span class="pre">tolerance</span></code> is a floating-point number, indicating the maximum distance between a point on the line string and the curve.</p></li>
+<li><p><strong>Function:</strong> For each geometry in the GeoSeries object, calculate its simplified representation. The simplified representation algorithm is Douglas-Peucker algorithm.</p></li>
 <li><p><strong>Returns:</strong> GeoSeries</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">GeoSeries</span>
@@ -354,8 +382,8 @@
 <div class="section" id="geoseries-envelope">
 <h2><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.envelope.html">GeoSeries.envelope</a><a class="headerlink" href="#geoseries-envelope" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p><strong>Functions:</strong> For each geometry in the GeoSeries object, calculate its minimum rectangular bounding box.</p></li>
-<li><p><strong>Returns:</strong> GeoSeries</p></li>
+<li><p><strong>Function:</strong> Returns the minimum bounding box for each geometry in the GeoSeries. The bounding box is a rectangular geometry object, and its edges are parallel to the axes.</p></li>
+<li><p><strong>Returns:</strong> Minimum bounding box of each geometry in the GeoSeries.</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">GeoSeries</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">GeoSeries</span><span class="p">([</span><span class="s2">&quot;POINT(1 1)&quot;</span><span class="p">,</span> <span class="s2">&quot;POLYGON ((4.76 3.16, 3.67 5.17, 2.85 2.21, 4.04 0.99, 7.00 2.83))&quot;</span><span class="p">])</span>
@@ -370,9 +398,13 @@
 <div class="section" id="geoseries-buffer-distance">
 <h2><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.buffer.html">GeoSeries.buffer(distance)</a><a class="headerlink" href="#geoseries-buffer-distance" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p><strong>Functions:</strong> For each geometry in the GeoSeries object, create a geometry with the maximum distance not greater than <code class="docutils literal notranslate"><span class="pre">distance</span></code>.</p></li>
-<li><p><strong>Parameters</strong> <code class="docutils literal notranslate"><span class="pre">distance</span></code> is a floating point number, indicating the maximum distance between the new geometry and the original geometry.</p></li>
-<li><p><strong>Returns:</strong> GeoSeries</p></li>
+<li><p><strong>Function:</strong> For each geometry, moves all of its points away from its centroid to construct a new geometry. The distance of movement is specified as <code class="docutils literal notranslate"><span class="pre">distance</span></code>.</p>
+<ul>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">distance</span></code> &gt; 0, the new geometry is a scaled-up version outside the original geometry.</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">distance</span></code> &lt; 0, the new geometry is a scaled-down version inside the original geometry.</p></li>
+</ul>
+</li>
+<li><p><strong>Returns:</strong> Sequence of geometries.</p></li>
 </ul>
 <div class="section" id="example-1">
 <h3>Example 1<a class="headerlink" href="#example-1" title="Permalink to this headline">¶</a></h3>
@@ -405,11 +437,10 @@
 <div class="section" id="geoseries-precision-reduce-precision">
 <h2><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.precision_reduce.html">GeoSeries.precision_reduce(precision)</a><a class="headerlink" href="#geoseries-precision-reduce-precision" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p><strong>Functions:</strong> For each geometry in the GeoSeries object, the geometry with reduced coordinate accuracy is created according to the specified valid digits number <code class="docutils literal notranslate"><span class="pre">precision</span></code>.</p></li>
-<li><p><strong>Parameters:</strong> <code class="docutils literal notranslate"><span class="pre">precision</span></code> is an integer number, indicating the number of valid digits.</p></li>
-<li><p><strong>Returns:</strong> GeoSeries</p></li>
+<li><p><strong>Function:</strong> For the coordinates of each geometry in the GeoSeries, reduces the number of significant digits to the given <code class="docutils literal notranslate"><span class="pre">precision</span></code>. The digit in the last decimal place will be rounded.</p></li>
+<li><p><strong>Returns:</strong> Sequence of geometries with reduced precision.</p></li>
 </ul>
-<p>In the following example, since the effective digits are set to 3, the coordinates of all points in the result retain only 3 valid digits. In the POINT (1.333 2.666) of the coordinate, the last valid digit of 2.666 is rounded to 2.67.</p>
+<p>In the following example, since the effective digits are set to 3, the coordinates of all points in the result retain only 3 valid digits. For the POINT (1.333 2.666) object, the last valid digit of 2.666 is rounded to 2.67.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">GeoSeries</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">GeoSeries</span><span class="p">([</span><span class="s2">&quot;POINT (1.333 2.666)&quot;</span><span class="p">,</span> <span class="s2">&quot;POINT (2.655 4.447)&quot;</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">precision_reduce</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
@@ -422,10 +453,10 @@
 <div class="section" id="geoseries-make-valid">
 <h2><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.make_valid.html">GeoSeries.make_valid</a><a class="headerlink" href="#geoseries-make-valid" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p><strong>Functions:</strong> For each geometry in the GeoSeries object, create a new valid geometry based on it. During the construction of the new geometry, no vertices of the original geometry are deleted. If the original geometry is already valid, then return the original geometry directly.</p></li>
-<li><p><strong>Returns:</strong> GeoSeries</p></li>
+<li><p><strong>Function:</strong> Creates a valid representation of each geometry in the GeoSeries without losing any of the input vertices. If the geometry is already-valid, then nothing will be done. If the geometry can't be made to valid, it will be set to None.</p></li>
+<li><p><strong>Returns:</strong> Sequence of valid geometries.</p></li>
 </ul>
-<p>In the following example, the imported geometry is self-intersecting near POINT (2 2). Therefore, the <code class="docutils literal notranslate"><span class="pre">make_valid</span></code> method returns a new union of geometry, which contains a polygon and a line string.</p>
+<p>In the following example, the imported geometry is self-intersecting near POINT (2 2). Therefore, the <code class="docutils literal notranslate"><span class="pre">make_valid</span></code> method returns a new union of geometries, which contains a polygon and a line string.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">GeoSeries</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">GeoSeries</span><span class="p">([</span><span class="s2">&quot;POLYGON ((2 1,3 1,3 2,2 2,2 8,2 1))&quot;</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">make_valid</span><span class="p">()</span>
@@ -438,12 +469,11 @@
 <div class="section" id="geoseries-intersects-other">
 <h2><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.intersects.html">GeoSeries.intersects(other)</a><a class="headerlink" href="#geoseries-intersects-other" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p><strong>Functions:</strong> For each geometry in the GeoSeries object, check whether it intersects with the geometry at the same position in the <code class="docutils literal notranslate"><span class="pre">other</span></code> object.</p></li>
-<li><p><strong>Parameters:</strong> <code class="docutils literal notranslate"><span class="pre">other</span></code> is GeoSeries or WKB formed object.</p></li>
-<li><p><strong>Returns:</strong> Boolean pandas.Series</p>
+<li><p><strong>Function:</strong> For each geometry in the GeoSeries and the corresponding geometry given in <code class="docutils literal notranslate"><span class="pre">other</span></code>, tests whether they intersect each other.</p></li>
+<li><p><strong>Returns:</strong> Mask of boolean values for each element in the GeoSeries that indicates whether it intersects the geometries in <code class="docutils literal notranslate"><span class="pre">other</span></code>.</p>
 <ul>
-<li><p><strong>True:</strong> Two geometries have intersection.</p></li>
-<li><p><strong>False:</strong> Two geometries have no intersection.</p></li>
+<li><p><em>True</em>: The two geometries intersect each other.</p></li>
+<li><p><em>False</em>: The two geometries do not intersect each other.</p></li>
 </ul>
 </li>
 </ul>
@@ -490,12 +520,11 @@
 <div class="section" id="geoseries-within-other">
 <h2><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.within.html">GeoSeries.within(other)</a><a class="headerlink" href="#geoseries-within-other" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p><strong>Functions:</strong> For each geometry in the GeoSeries object, check whether it is within the geometry at the same position in the <code class="docutils literal notranslate"><span class="pre">other</span></code> object.</p></li>
-<li><p><strong>Parameters:</strong> <code class="docutils literal notranslate"><span class="pre">other</span></code> is GeoSeries or WKB formed object.</p></li>
-<li><p><strong>Returns:</strong> Boolean pandas.Series</p>
+<li><p><strong>Function:</strong> For each geometry in the GeoSeries and the corresponding geometry given in <code class="docutils literal notranslate"><span class="pre">other</span></code>, tests whether the first geometry is within the other.</p></li>
+<li><p><strong>Returns:</strong> Mask of boolean values for each element in the GeoSeries that indicates whether it is within the geometries in <code class="docutils literal notranslate"><span class="pre">other</span></code>.</p>
 <ul>
-<li><p><strong>True:</strong> Each geometry is within other.</p></li>
-<li><p><strong>False:</strong> Each geometry is not within other.</p></li>
+<li><p><em>True</em>: The first geometry is within the other.</p></li>
+<li><p><em>False</em>: The first geometry is not within the other.</p></li>
 </ul>
 </li>
 </ul>
@@ -513,12 +542,11 @@
 <div class="section" id="geoseries-contains-other">
 <h2><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.contains.html">GeoSeries.contains(other)</a><a class="headerlink" href="#geoseries-contains-other" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p><strong>Functions:</strong> For each geometry in the GeoSeries object, check whether it contains the geometry at the same position in the <code class="docutils literal notranslate"><span class="pre">other</span></code> object.</p></li>
-<li><p><strong>Parameters:</strong> <code class="docutils literal notranslate"><span class="pre">other</span></code> is GeoSeries or WKB formed object.</p></li>
-<li><p><strong>Returns:</strong> Boolean pandas.Series</p>
+<li><p><strong>Function:</strong> For each geometry in the GeoSeries and the corresponding geometry given in <code class="docutils literal notranslate"><span class="pre">other</span></code>, tests whether the first geometry contains the other.</p></li>
+<li><p><strong>Returns:</strong> Mask of boolean values for each element in the GeoSeries that indicates whether it contains the geometries in <code class="docutils literal notranslate"><span class="pre">other</span></code>.</p>
 <ul>
-<li><p><strong>True:</strong> Each geometry contains other.</p></li>
-<li><p><strong>False:</strong> Each geometry does not contain other.</p></li>
+<li><p><em>True</em>: The first geometry contains the other.</p></li>
+<li><p><em>False</em>: The first geometry does not contain the other.</p></li>
 </ul>
 </li>
 </ul>
@@ -537,12 +565,11 @@
 <div class="section" id="geoseries-crosses-other">
 <h2><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.crosses.html">GeoSeries.crosses(other)</a><a class="headerlink" href="#geoseries-crosses-other" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p><strong>Functions:</strong> For each geometry in the GeoSeries object, check whether it crosses the geometry at the same position in the <code class="docutils literal notranslate"><span class="pre">other</span></code> object.</p></li>
-<li><p><strong>Parameters:</strong> <code class="docutils literal notranslate"><span class="pre">other</span></code> is GeoSeries or WKB formed object.</p></li>
-<li><p><strong>Returns:</strong> Boolean pandas.Series</p>
+<li><p><strong>Function:</strong> For each geometry in the GeoSeries and the corresponding geometry given in <code class="docutils literal notranslate"><span class="pre">other</span></code>, tests whether the first geometry spatially crosses the other. &quot;Spatially cross&quot; means two geometries have some, but not all interior points in common. The intersection of the interiors of the geometries must not be the empty set and must have a dimensionality less than the maximum dimension of the two input geometries.</p></li>
+<li><p><strong>Returns:</strong> Mask of boolean values for each element in the GeoSeries that indicates whether it crosses the geometries in <code class="docutils literal notranslate"><span class="pre">other</span></code>.</p>
 <ul>
-<li><p><strong>True:</strong> Two geometries cross.</p></li>
-<li><p><strong>False:</strong> Two geometries do not cross.</p></li>
+<li><p><em>True</em>: The first geometry crosses the other.</p></li>
+<li><p><em>False</em>: The first geometry does not cross the other.</p></li>
 </ul>
 </li>
 </ul>
@@ -560,12 +587,11 @@
 <div class="section" id="geoseries-geom-equals-other">
 <h2><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.geom_equals.html">GeoSeries.geom_equals(other)</a><a class="headerlink" href="#geoseries-geom-equals-other" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p><strong>Functions:</strong> For each geometry in the GeoSeries object, check whether it equals the geometry at the same position in the <code class="docutils literal notranslate"><span class="pre">other</span></code> object. &quot;equals&quot; means that the two geometries have the same geometric structure.</p></li>
-<li><p><strong>Parameters:</strong> <code class="docutils literal notranslate"><span class="pre">other</span></code> is GeoSeries or WKB formed object.</p></li>
-<li><p><strong>Returns:</strong> Boolean pandas.Series</p>
+<li><p><strong>Function:</strong> For each geometry in the GeoSeries and the corresponding geometry given in <code class="docutils literal notranslate"><span class="pre">other</span></code>, tests whether the first geometry equals the other. &quot;Equal&quot; means two geometries represent the same geometry structure.</p></li>
+<li><p><strong>Returns:</strong> Mask of boolean values for each element in the GeoSeries that indicates whether it equals the geometries in <code class="docutils literal notranslate"><span class="pre">other</span></code>.</p>
 <ul>
-<li><p><strong>True:</strong> Two geometries equal.</p></li>
-<li><p><strong>False:</strong> Two geometries do not equal.</p></li>
+<li><p><em>True</em>: The first geometry equals the other.</p></li>
+<li><p><em>False</em>: The first geometry does not equal the other.</p></li>
 </ul>
 </li>
 </ul>
@@ -582,12 +608,11 @@
 <div class="section" id="geoseries-touches-other">
 <h2><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.touches.html">GeoSeries.touches(other)</a><a class="headerlink" href="#geoseries-touches-other" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p><strong>Functions:</strong> For each geometry in the GeoSeries object, check whether it touches the geometry at the same position in the <code class="docutils literal notranslate"><span class="pre">other</span></code> object. &quot;touches&quot; means that two geometries have a common point on the boundary.</p></li>
-<li><p><strong>Parameters:</strong> <code class="docutils literal notranslate"><span class="pre">other</span></code> is GeoSeries or WKB formed object.</p></li>
-<li><p><strong>Returns:</strong> Boolean pandas.Series</p>
+<li><p><strong>Function:</strong> For each geometry in the GeoSeries and the corresponding geometry given in <code class="docutils literal notranslate"><span class="pre">other</span></code>, tests whether the first geometry touches the other. &quot;Touch&quot; means two geometries have common points, and the common points locate only on their boundaries.</p></li>
+<li><p><strong>Returns:</strong> Mask of boolean values for each element in the GeoSeries that indicates whether it touches the geometries in <code class="docutils literal notranslate"><span class="pre">other</span></code>.</p>
 <ul>
-<li><p><strong>True:</strong> Two geometries touch.</p></li>
-<li><p><strong>False:</strong> Two geometries do not touch.</p></li>
+<li><p><em>True</em>: The first geometry touches the other.</p></li>
+<li><p><em>False</em>: The first geometry does not touch the other.</p></li>
 </ul>
 </li>
 </ul>
@@ -604,12 +629,11 @@
 <div class="section" id="geoseries-overlaps-other">
 <h2><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.overlaps.html">GeoSeries.overlaps(other)</a><a class="headerlink" href="#geoseries-overlaps-other" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p><strong>Functions:</strong> For each geometry in the GeoSeries object, check whether it overlaps the geometry at the same position in the <code class="docutils literal notranslate"><span class="pre">other</span></code> object. &quot;overlaps&quot; means that the two geometries cross and do not contain each other.</p></li>
-<li><p><strong>Parameters:</strong> <code class="docutils literal notranslate"><span class="pre">other</span></code> is GeoSeries or WKB formed object.</p></li>
-<li><p><strong>Returns:</strong> Boolean pandas.Series</p>
+<li><p><strong>Function:</strong> For each geometry in the GeoSeries and the corresponding geometry given in <code class="docutils literal notranslate"><span class="pre">other</span></code>, tests whether the first geometry &quot;spatially overlaps&quot; the other. &quot;Spatially overlap&quot; here means two geometries intersect but one does not completely contain another.</p></li>
+<li><p><strong>Returns:</strong> Mask of boolean values for each element in the GeoSeries that indicates whether it overlaps the geometries in <code class="docutils literal notranslate"><span class="pre">other</span></code>.</p>
 <ul>
-<li><p><strong>True:</strong> Two geometries overlap.</p></li>
-<li><p><strong>False:</strong> Two geometries do not overlap.</p></li>
+<li><p><em>True</em>: The first geometry overlaps the other.</p></li>
+<li><p><em>False</em>: The first geometry does not overlap the other.</p></li>
 </ul>
 </li>
 </ul>
@@ -626,9 +650,8 @@
 <div class="section" id="geoseries-distance-other">
 <h2><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.distance.html">GeoSeries.distance(other)</a><a class="headerlink" href="#geoseries-distance-other" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p><strong>Functions:</strong> For each geometry in the GeoSeries object, check the shortest 2D Cartesian (planar) distance between the geometry at the same position in the <code class="docutils literal notranslate"><span class="pre">other</span></code> object.</p></li>
-<li><p><strong>Parameters:</strong> <code class="docutils literal notranslate"><span class="pre">other</span></code> is GeoSeries or WKB formed object.</p></li>
-<li><p><strong>Returns:</strong> Floating point pandas.Series</p></li>
+<li><p><strong>Function:</strong> For each geometry in the GeoSeries and the corresponding geometry given in <code class="docutils literal notranslate"><span class="pre">other</span></code>, calculates the minimum 2D Cartesian (planar) distance between them.</p></li>
+<li><p><strong>Returns:</strong> Distance between each geometry in the GeoSeries and the corresponding geometry given in <code class="docutils literal notranslate"><span class="pre">other</span></code>.</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">GeoSeries</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s1</span> <span class="o">=</span> <span class="n">GeoSeries</span><span class="p">([</span><span class="s2">&quot;LINESTRING(8 0,9 2)&quot;</span><span class="p">,</span> <span class="s2">&quot;POINT(10 2)&quot;</span><span class="p">])</span>
@@ -644,9 +667,8 @@
 <div class="section" id="geoseries-distance-sphere-other">
 <h2><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.distance_sphere.html">GeoSeries.distance_sphere(other)</a><a class="headerlink" href="#geoseries-distance-sphere-other" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p><strong>Functions:</strong> For each geometry in the GeoSeries object, the minimum distance between two points on the earth's surface is calculated based on the latitude and longitude coordinates. This method uses the earth and radius defined by the SRID.</p></li>
-<li><p><strong>Parameters:</strong> <code class="docutils literal notranslate"><span class="pre">other</span></code> is GeoSeries or WKB formed object.</p></li>
-<li><p><strong>Returns:</strong> Floating point pandas.Series</p></li>
+<li><p><strong>Function:</strong> For each point in the GeoSeries and the corresponding point given in <code class="docutils literal notranslate"><span class="pre">other</span></code>, calculates the minimum spherical distance between them. This function uses a spherical earth and radius derived from the spheroid defined by the SRID.</p></li>
+<li><p><strong>Returns:</strong> Spherical distance between each geometry in the GeoSeries and the corresponding geometry given in <code class="docutils literal notranslate"><span class="pre">other</span></code>.</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">GeoSeries</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s1</span> <span class="o">=</span> <span class="n">GeoSeries</span><span class="p">([</span><span class="s2">&quot;POINT(10 2)&quot;</span><span class="p">],</span> <span class="n">crs</span><span class="o">=</span><span class="s2">&quot;EPSG:4326&quot;</span><span class="p">)</span>
@@ -660,9 +682,8 @@
 <div class="section" id="geoseries-hausdorff-distance-other">
 <h2><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.hausdorff_distance.html">GeoSeries.hausdorff_distance(other)</a><a class="headerlink" href="#geoseries-hausdorff-distance-other" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p><strong>Functions:</strong> For each geometry in the GeoSeries object, check the Hausdorff distance between it and the geometry at the same position in the <code class="docutils literal notranslate"><span class="pre">other</span></code> object. This distance is to measure the similarity between two geometries.</p></li>
-<li><p><strong>Parameters:</strong> <code class="docutils literal notranslate"><span class="pre">other</span></code> is GeoSeries or WKB formed object.</p></li>
-<li><p><strong>Returns:</strong> Floating point pandas.Series</p></li>
+<li><p><strong>Function:</strong> For each point in the GeoSeries and the corresponding point given in <code class="docutils literal notranslate"><span class="pre">other</span></code>, calculates the Hausdorff distance between them. Hausdorff distance is a measure of how similar two geometries are.</p></li>
+<li><p><strong>Returns:</strong> Hausdorff distance between each geometry in the GeoSeries and the corresponding geometry given in <code class="docutils literal notranslate"><span class="pre">other</span></code>.</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">GeoSeries</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s1</span> <span class="o">=</span> <span class="n">GeoSeries</span><span class="p">([</span><span class="s2">&quot;POLYGON((0 0 ,0 1, 1 1, 1 0, 0 0))&quot;</span><span class="p">,</span> <span class="s2">&quot;POINT(0 0)&quot;</span><span class="p">])</span>
@@ -678,9 +699,8 @@
 <div class="section" id="geoseries-intersection-other">
 <h2>GeoSeries.intersection(other)<a class="headerlink" href="#geoseries-intersection-other" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p><strong>Functions:</strong> For each geometry in the GeoSeries object, calculate the intersection with the geometry at the same position in the <code class="docutils literal notranslate"><span class="pre">other</span></code> object.</p></li>
-<li><p><strong>Parameters:</strong> <code class="docutils literal notranslate"><span class="pre">other</span></code> is GeoSeries or WKB formed object.</p></li>
-<li><p><strong>Returns:</strong> GeoSeries</p></li>
+<li><p><strong>Function:</strong> For each point in the GeoSeries and the corresponding point given in <code class="docutils literal notranslate"><span class="pre">other</span></code>, calculates the intersection of them.</p></li>
+<li><p><strong>Returns:</strong> Intersection of each geometry in the GeoSeries and the corresponding geometry given in <code class="docutils literal notranslate"><span class="pre">other</span></code>.</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">GeoSeries</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s1</span> <span class="o">=</span> <span class="n">GeoSeries</span><span class="p">([</span><span class="s2">&quot;POLYGON ((1 1,1 2,2 2,2 1,1 1))&quot;</span><span class="p">])</span>
@@ -692,20 +712,11 @@
 </div>
 <p><img alt="../../_images/intersection.png" src="../../_images/intersection.png" /></p>
 </div>
-<div class="section" id="id3">
-<h2><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.intersection.html">GeoSeries.intersection(other)</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="geoseries-polygon-from-envelope-cls-min-x-min-y-max-x-max-y-crs-none">
+<h2><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.polygon_from_envelope.html">GeoSeries.polygon_from_envelope(cls, min_x, min_y, max_x, max_y, crs=None)</a><a class="headerlink" href="#geoseries-polygon-from-envelope-cls-min-x-min-y-max-x-max-y-crs-none" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p><strong>Functions:</strong> For each geometry in the GeoSeries object, calculate its minimum rectangular bounding box according to the given Parameters, and the sides of the box are parallel to the coordinate axis.</p></li>
-<li><p><strong>Parameters:</strong></p>
-<ul>
-<li><p><strong>min_x:</strong> Floating point pandas.Series, represents the minimum value of the rectangular abscissa。</p></li>
-<li><p><strong>min_y:</strong> Floating point pandas.Series, represents the minimum value of the rectangular ordinate.</p></li>
-<li><p><strong>max_x:</strong> Floating point pandas.Series, represents the maximum value of the rectangular abscissa.</p></li>
-<li><p><strong>max_y:</strong> Floating point pandas.Series, represents the maximum value of the rectangular ordinate.</p></li>
-<li><p><strong>crs:</strong> （Optional Parameters）String, such as &quot;ESPG:4326&quot;、&quot;ESPG:3857&quot;.</p></li>
-</ul>
-</li>
-<li><p><strong>Returns:</strong> GeoSeries</p></li>
+<li><p><strong>Function:</strong> Constructs rectangular POLYGON objects within the given spatial range. The edges of the rectangles are parallel to the coordinate axises. <code class="docutils literal notranslate"><span class="pre">min_x</span></code>, <code class="docutils literal notranslate"><span class="pre">min_y</span></code>, <code class="docutils literal notranslate"><span class="pre">max_x</span></code>, and <code class="docutils literal notranslate"><span class="pre">max_y</span></code> are Series so that polygons can be created in batch. The number of values in the four Series should be the same. Suppose that the demension of <code class="docutils literal notranslate"><span class="pre">min_x</span></code> is <em>N</em>, the returned GeoSeries of this function should contains <em>N</em> rectangles. The shape and position of the rectangle with index <em>i</em> is defined by its bottom left vertex <em>(min_x[i], min_y[i])</em> and top right vertex <em>(max_x[i], max_y[i])</em>.</p></li>
+<li><p><strong>Returns:</strong> Sequence of rectangular POLYGON objects within the given spatial range.</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pandas</span> <span class="kn">import</span> <span class="n">Series</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">GeoSeries</span>
@@ -721,17 +732,11 @@
 </div>
 <p><img alt="../../_images/polygon_from_envelope.png" src="../../_images/polygon_from_envelope.png" /></p>
 </div>
-<div class="section" id="geoseries-polygon-from-envelope-min-x-min-y-max-x-max-y-crs-none">
-<h2><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.polygon_from_envelope.html">GeoSeries.polygon_from_envelope(min_x, min_y, max_x, max_y, crs=None)</a><a class="headerlink" href="#geoseries-polygon-from-envelope-min-x-min-y-max-x-max-y-crs-none" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="geoseries-point-x-y">
+<h2><a target="_blank" class="reference external" href="../../api_reference/standalone_api/api/arctern.GeoSeries.point.html">GeoSeries.point(x, y)</a><a class="headerlink" href="#geoseries-point-x-y" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p><strong>Functions:</strong> Construct a group of POINT objects according to the abscissa set <code class="docutils literal notranslate"><span class="pre">x</span></code> and the ordinate set <code class="docutils literal notranslate"><span class="pre">y</span></code>.</p></li>
-<li><p><strong>Parameters:</strong></p>
-<ul>
-<li><p><strong>x:</strong> Floating point pandas.Series, represents the abscissa of a group of points.。</p></li>
-<li><p><strong>y:</strong> Floating point pandas.Series, represents the ordinate of a group of points.</p></li>
-</ul>
-</li>
-<li><p><strong>Returns:</strong> POINT</p></li>
+<li><p><strong>Function:</strong> Constructs POINT objects based on the given coordinates. <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> are Series so that points can be created in batch. The number of values in the two Series should be the same. Suppose that the demension of <code class="docutils literal notranslate"><span class="pre">x</span></code> is <em>N</em>, the returned GeoSeries of this function should contains <em>N</em> points. The position of the <em>i</em>th point is defined by its coordinates <em>(x[i], y[i]).</em></p></li>
+<li><p><strong>Returns:</strong> Sequence of POINT objects.</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pandas</span> <span class="kn">import</span> <span class="n">Series</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">arctern</span> <span class="kn">import</span> <span class="n">GeoSeries</span>
@@ -769,7 +774,7 @@
     <p>
         &copy; Copyright 2020, zilliz
       <span class="lastupdated">
-        Last updated on Jun 17, 2020.
+        Last updated on Jun 19, 2020.
       </span>
 
     </p>
